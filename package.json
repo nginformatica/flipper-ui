@@ -2,6 +2,7 @@
   "name": "storybook",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://nginformatica.github.io/flipper-ui",
   "dependencies": {
     "prop-types": "15.6.2",
     "ramda": "0.25.0",
