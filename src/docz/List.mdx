@@ -1,0 +1,66 @@
+---
+name: List
+route: /list
+---
+
+import List from '../components/List'
+import { MdBackup } from 'react-icons/md'
+import { Playground, PropsTable } from 'docz'
+
+# List
+
+## Properties
+<PropsTable of={ List } />
+
+## Full list
+<Playground>
+    <List
+        options={
+            [
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 1'
+                },
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 2'
+                },
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 3'
+                },
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 4'
+                }
+            ]
+        }
+    />
+</Playground>
+
+## Only icons
+<Playground>
+    <List
+        onlyIcons
+        options={
+            [
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 1'
+                },
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 2'
+                },
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 3'
+                },
+                {
+                    icon: <MdBackup size="24" />,
+                    label: 'Menu 4'
+                }
+            ]
+        }
+    />
+</Playground>

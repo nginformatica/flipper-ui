@@ -1,0 +1,44 @@
+---
+name: Tree
+route: /tree
+---
+
+import Tree from '../components/Tree'
+import { Playground, PropsTable } from 'docz'
+
+# Tree
+
+## Properties
+<PropsTable of={ Tree } />
+
+## Demo
+<Playground>
+    <Tree
+        nodes={ [
+            {
+                id: 0,
+                name: 'Tree',
+                nodes: [
+                    {
+                        id: 1,
+                        name: 'Branch'
+                    },
+                    {
+                        id: 2,
+                        name: 'Branch'
+                    },
+                    {
+                        id: 3,
+                        name: 'Branch',
+                        nodes: [
+                            {
+                                id: 5,
+                                name: 'Leaf'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ] }
+    />
+</Playground>

@@ -1,0 +1,25 @@
+---
+name: Checkbox
+route: /checkbox
+---
+
+import Checkbox from '../components/Checkbox'
+import { Playground, PropsTable } from 'docz'
+
+# Checkbox
+
+## Properties
+<PropsTable of={ Checkbox } />
+
+## Normal
+<Playground>
+    <Checkbox
+        label={ 'Li e aceito os termos de uso' }
+        onClick={ () => alert('You clicked on the checkbox!') }
+    />
+</Playground>
+
+## Without label
+<Playground>
+    <Checkbox onClick={ () => alert('You clicked on the checkbox!') } />
+</Playground>

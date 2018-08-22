@@ -1,0 +1,100 @@
+---
+name: Sidebar
+route: /sidebar
+---
+
+import Sidebar from '../components/Sidebar'
+import Container from '../components/Container'
+import List from '../components/List'
+import { MdBackup } from 'react-icons/md'
+import { Playground, PropsTable } from 'docz'
+
+# Sidebar
+
+## Properties
+<PropsTable of={ Sidebar } />
+
+## Normal
+<Playground>
+    <Container
+        style={ { height: 256 } }>
+        <Sidebar onToggle={ () => alert('Toogle sidebar') }>
+            <List
+                onlyIcons
+                options={
+                    [
+                        {
+                            name: 'menu1',
+                            icon: <MdBackup size="24" />,
+                            label: 'Menu 1'
+                        },
+                        {
+                            name: 'menu2',
+                            icon: <MdBackup size="24" />,
+                            label: 'Menu 2'
+                        }
+                    ]
+                }
+            />
+        </Sidebar>
+    </Container>
+</Playground>
+
+## Right Sidebar
+<Playground>
+    <Container
+        style={ {
+            margin: '24px',
+            flexDirection: 'row-reverse',
+            height: 256
+        } }>
+        <Sidebar
+            place="right"
+            position="relative"
+            onToggle={ () => alert('Toogle sidebar') }>
+            <List
+                onlyIcons
+                options={
+                    [
+                        {
+                            name: 'menu1',
+                            icon: <MdBackup size="24" />,
+                            label: 'Menu 1'
+                        },
+                        {
+                            name: 'menu2',
+                            icon: <MdBackup size="24" />,
+                            label: 'Menu 2'
+                        }
+                    ]
+                }
+            />
+        </Sidebar>
+    </Container>
+</Playground>
+
+## Opened Sidebar
+<Playground>
+    <Container style={ { height: 256 } }>
+        <Sidebar
+            open
+            onToggle={ () => alert('Toogle sidebar') }>
+            <List
+                options={
+                    [
+                        {
+                            name: 'menu1',
+                            icon: <MdBackup size="24" />,
+                            label: 'Menu 1'
+                        },
+                        {
+                            name: 'menu2',
+                            icon: <MdBackup size="24" />,
+                            label: 'Menu 2'
+                        }
+                    ]
+                }
+            />
+        </Sidebar>
+    </Container>
+</Playground>

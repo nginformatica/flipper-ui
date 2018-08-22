@@ -1,0 +1,23 @@
+---
+name: Pagination
+route: /pagination
+---
+
+import Pagination from '../components/Pagination'
+import { Playground, PropsTable } from 'docz'
+
+# Pagination
+
+## Properties
+<PropsTable of={ Pagination } />
+
+## Demo
+<Playground>
+    <Pagination
+        pages={ 5 }
+        active={ 3 }
+        onNext={ () => alert('Next page') }
+        onPrevious={ () => alert('Previous page') }
+        onNavigate={ page => alert('You tried navigete to page ' + page) }
+    />
+</Playground>

@@ -1,0 +1,29 @@
+---
+name: Picker
+route: /picker
+---
+
+import Picker from '../components/Picker'
+import { Playground, PropsTable } from 'docz'
+
+# Picker
+
+## Properties
+<PropsTable of={ Picker } />
+
+## Demo
+<Playground>
+    <Picker
+        value={ 'first' }
+        options={
+            [{
+                label: 'First option',
+                value: 'first'
+            }, {
+                label: 'Second Option',
+                value: 'second'
+            }]
+        }
+        onChange={ () => {} }
+    />
+</Playground>

@@ -1,0 +1,24 @@
+---
+name: Node
+route: /node
+---
+
+import Node from '../components/Node'
+import { Playground, PropsTable } from 'docz'
+
+# Node
+
+## Properties
+<PropsTable of={ Node } />
+
+## Node
+<Playground>
+    <Node id={ 1 } name="Branch">
+        <Node id={ 2 } name="I am a Node" />
+    </Node>
+</Playground>
+
+## Empty Node
+<Playground>
+    <Node id={ 1 } name="Branch" />
+</Playground>

@@ -1,0 +1,20 @@
+---
+name: Stepper
+route: /stepper
+---
+
+import Stepper from '../components/Stepper'
+import { Playground, PropsTable } from 'docz'
+
+# Stepper
+
+## Properties
+<PropsTable of={ Stepper } />
+
+## Demo
+<Playground>
+    <Stepper
+        active={ 2 }
+        steps={ ['1', '2', '3', '4', '5'] }
+    />
+</Playground>
