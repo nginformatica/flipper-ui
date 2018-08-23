@@ -1,4 +1,4 @@
 export default {
-    dest: '/documentation',
+    dest: '/docs',
     base: '/flipper-ui/'
 }
