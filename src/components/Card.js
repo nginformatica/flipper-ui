@@ -9,6 +9,7 @@ const getPercent = pipe(prop('xs'), multiply(100), divide(__, 12))
 const Container = styled.div`
     width: calc(${getPercent}% - 24px);
     background: ${primary.normal};
+    font-family: 'Roboto', sans-serif;
     display: block;
     border-radius: 12px;
     margin: 12px;

@@ -5,6 +5,8 @@ import { white } from '../colors'
 
 const StyledBox = styled.div`
     background-color: ${white};
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.2em;
     opacity: 0.95;
     border-radius: 6px;
     min-height: 400px;

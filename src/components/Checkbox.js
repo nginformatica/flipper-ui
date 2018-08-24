@@ -6,6 +6,7 @@ import { primary, background } from '../colors'
 const Label = styled.label`
     padding: 12px;
     transition: all 500ms ease;
+    font-family: 'Roboto', sans-serif;
     cursor: pointer;
     margin: 0.75em;
     border-radius: 6px;
@@ -16,7 +17,7 @@ const Label = styled.label`
 `
 
 const Input = styled.input`
-    margin-right: ${props => props.label !== '' ? '12px' : '0px' }
+    margin-right: ${props => props.label !== '' ? '12px' : '0px' };
 `
 
 const Checkbox = ({ label, style, onChange }) =>

@@ -49,17 +49,14 @@ const StyledButton = styled.button`
         ? '0.80em'
         : '1em'
     };
-    border: 2px solid ${getBackgroundColor};
-    border-radius: 3px;
     font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.2em;
     background: ${getBackgroundColor};
     color: ${getColor};
     cursor: pointer;
-    height: ${props => props.mini
-        ? '24px'
-        : '36px'
-    };
     transition: all 500ms ease;
+    border-radius: 3px;
     border: 2px solid ${props => props.outline
         ? primary.normal
         : getBackgroundColor(props)
@@ -67,6 +64,10 @@ const StyledButton = styled.button`
     box-shadow: ${props => props.raised
         ? '1px 1px 3px 0px rgba(66,66,66,0.75)'
         : 'none'
+    };
+    height: ${props => props.mini
+        ? '24px'
+        : '36px'
     };
     display: flex;
     align-items: center;
