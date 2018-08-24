@@ -19,7 +19,7 @@ const Ul = styled.ul`
 const Li = styled.li`
     font-size: 16px;
     margin: 12px;
-    background: ${transparent}
+    background: ${transparent};
     padding: 12px;
     padding-left: ${props =>  props.inset ? '12px' : '48px'};
     list-style: none;

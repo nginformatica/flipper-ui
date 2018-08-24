@@ -74,7 +74,7 @@ const StyledButton = styled.button`
     &:hover {
         background: ${getHoverBackground};
         border: 2px solid ${getHoverBackground};
-        color: ${getHoverColor}
+        color: ${getHoverColor};
     }
 `
 

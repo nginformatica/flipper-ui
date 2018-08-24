@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
     line-height: 36px;
     display: flex;
     align-items: center;
-    background: ${background.normal}
+    background: ${background.normal};
 `
 
 const Header = ({ children, style }) =>

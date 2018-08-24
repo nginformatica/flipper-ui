@@ -10,7 +10,7 @@ const Label = styled.label`
     margin: 0.75em;
     border-radius: 6px;
     &:hover {
-        color: ${primary.normal}
+        color: ${primary.normal};
         background: ${background.light}
     }
 `

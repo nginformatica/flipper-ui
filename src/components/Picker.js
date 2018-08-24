@@ -22,7 +22,7 @@ const Select = styled.select`
 `
 
 const Option = styled.option`
-    font-size: 14px
+    font-size: 14px;
 `
 
 class Picker extends Component {
