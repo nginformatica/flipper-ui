@@ -8513,10 +8513,6 @@ react-hot-loader@4.3.4:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
 
-react-icons@3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.0.5.tgz#9f22a319a48b562e052af2255a3dda8ded363d1c"
-
 react-imported-component@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/react-imported-component/-/react-imported-component-4.6.2.tgz#0a7f35bf021adf2a1f2a4874ce72418a0995db3d"
