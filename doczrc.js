@@ -1,4 +1,5 @@
 export default {
     dest: '/docs',
-    base: '/flipper-ui/'
+    base: '/flipper-ui/',
+    description: 'Flipper-ui React Components'
 }
