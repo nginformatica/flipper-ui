@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { background, primary, text } from '../colors'
 
 const StyledTextArea = styled.textarea`
+    outline: none;
     padding: 0.5em;
     border-radius: 6px;
     margin: 1em;

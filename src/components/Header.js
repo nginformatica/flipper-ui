@@ -10,10 +10,11 @@ const StyledHeader = styled.header`
     z-index: 1;
     padding: 12px 24px;
     width: calc(100% - 48px);
+    font-family: 'Roboto', sans-serif;
     line-height: 36px;
     display: flex;
     align-items: center;
-    background: ${background.normal}
+    background: ${background.normal};
 `
 
 const Header = ({ children, style }) =>

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { background, primary, text, white } from '../colors'
 
 const Select = styled.select`
+    outline: none;
     padding: 0.5em;
     border-radius: 6px;
     line-height: 1.5em;
@@ -22,7 +23,7 @@ const Select = styled.select`
 `
 
 const Option = styled.option`
-    font-size: 14px
+    font-size: 14px;
 `
 
 class Picker extends Component {

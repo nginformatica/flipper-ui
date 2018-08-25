@@ -9,12 +9,12 @@ const StyledAvatar = styled.div`
     align-items: center;
     color: ${props => props.primary ? white : text};
     font-size: 16px;
-    background: ${props => props.primary ? primary.normal : background.normal};
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    background: ${props => props.primary ? primary.normal : background.normal};
     transition: all 500ms ease;
     height: 36px;
     width: 36px;
-    font-weight: bold;
     justify-content: center;
     display: flex;
 `

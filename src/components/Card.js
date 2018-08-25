@@ -8,7 +8,8 @@ const getPercent = pipe(prop('xs'), multiply(100), divide(__, 12))
 
 const Container = styled.div`
     width: calc(${getPercent}% - 24px);
-    background: ${primary.normal}
+    background: ${primary.normal};
+    font-family: 'Roboto', sans-serif;
     display: block;
     border-radius: 12px;
     margin: 12px;
@@ -16,7 +17,7 @@ const Container = styled.div`
 
 const Header = styled.div`
     border-radius: 12px;
-    color: ${white}
+    color: ${white};
     padding: 0.75em;
 `
 
@@ -25,7 +26,7 @@ const Content = styled.div`
     border-radius: 12px;
     min-height: 52px;
     padding: 12px;
-    border: 1px solid ${primary.normal}
+    border: 1px solid ${primary.normal};
 `
 
 const Card = ({ children, style, title, xs }) =>

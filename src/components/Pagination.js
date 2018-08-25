@@ -8,6 +8,7 @@ import Button from './Button'
 const Content = styled.div`
     display: flex;
     align-items: center;
+    font-family: 'Roboto', sans-serif;
     justify-content: center;
     margin: 0.75em;
 `

@@ -10,6 +10,11 @@ export const background = {
     dark: '#BDBDBD'
 }
 
+export const silver = {
+    medium: '#666666'
+}
+
 export const white = '#FFFFFF'
+export const black = '#000000'
 export const transparent = '#FFFFFF00'
 export const text = '#424242'
