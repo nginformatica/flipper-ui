@@ -11,5 +11,6 @@ export const background = {
 }
 
 export const white = '#FFFFFF'
+export const black = '#000000'
 export const transparent = '#FFFFFF00'
 export const text = '#424242'

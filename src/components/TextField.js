@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { background, primary, text } from '../colors'
 
 const StyledTextField = styled.input`
+    outline: none;
     padding: 8px;
     border-radius: 6px;
     line-height: 1.5em;

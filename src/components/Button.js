@@ -37,6 +37,7 @@ const getHoverColor = cond([
 ])
 
 const StyledButton = styled.button`
+    outline: none;
     margin: ${props => props.mini
         ? '0.25em'
         : '1em'
@@ -51,7 +52,10 @@ const StyledButton = styled.button`
     };
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
-    line-height: 1.2em;
+    line-height: ${props => props.mini
+        ? '24px'
+        : '18px'
+    };
     background: ${getBackgroundColor};
     color: ${getColor};
     cursor: pointer;
@@ -69,13 +73,16 @@ const StyledButton = styled.button`
         ? '24px'
         : '36px'
     };
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     &:hover {
         background: ${getHoverBackground};
         border: 2px solid ${getHoverBackground};
         color: ${getHoverColor};
+    }
+    &:active {
+        opacity: 0.7;
     }
 `
 
