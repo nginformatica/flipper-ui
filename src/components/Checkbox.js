@@ -17,7 +17,7 @@ const Label = styled.label`
 `
 
 const Input = styled.input`
-    margin-right: ${props => props.label !== '' ? '12px' : '0px' };
+    margin-right: ${props => props.label ? '0px' : '12px' };
 `
 
 const Checkbox = ({ label, style, onChange }) =>

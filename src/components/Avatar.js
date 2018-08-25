@@ -11,7 +11,6 @@ const StyledAvatar = styled.div`
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    line-height: 1.2em;
     background: ${props => props.primary ? primary.normal : background.normal};
     transition: all 500ms ease;
     height: 36px;

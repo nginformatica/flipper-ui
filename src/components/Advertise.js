@@ -1,17 +1,17 @@
 import React from 'react'
 import _ from 'prop-types'
 import styled from 'styled-components'
-import { white } from '../colors'
+import { white, black, silver } from '../colors'
 
 const AdvertiseContainer = styled.div`
-    background-color: #FFFFFF;
+    background-color: ${white};
     opacity: 0.95;
     border-radius: 6px;
     padding: 12px 18px 12px 32px;
 `
 
 const AdvertiseContent = styled.div`
-    border-left: 1px solid #000000;
+    border-left: 1px solid ${black};
     padding-left: 18px;
 `
 
@@ -21,26 +21,26 @@ const Comment = styled.p`
     padding: 6px 0px;
 `
 
-const Person = styled.p`
-    color: #666666;
+const Author = styled.p`
+    color: ${silver.medium};
     margin: 0px;
     padding: 6px 0px;
 `
 
-const Advertise = ({ comment, person, styleComment, stylePerson, ...otherProps }) =>
+const Advertise = ({ comment, author, styleComment, styleAuthor, ...otherProps }) =>
     <AdvertiseContainer { ...otherProps }>
         <AdvertiseContent>
-            <Comment>{ comment }</Comment>
-            <Person>- { person }</Person>
+            <Comment style={ styleComment }>{ comment }</Comment>
+            <Author style={ styleAuthor }>- { author }</Author>
         </AdvertiseContent>
     </AdvertiseContainer>
 
 Advertise.propTypes = {
     comment: _.string,
-    person: _.string,
+    author: _.string,
     style: _.object,
-    styleComment: _.object,
-    stylePerson: _.object
+    commentStyle: _.object,
+    authorStyle: _.object
 }
 
 export default Advertise
