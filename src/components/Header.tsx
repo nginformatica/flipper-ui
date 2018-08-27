@@ -3,7 +3,13 @@ import _ from 'prop-types'
 import styled from 'styled-components'
 import { background } from '../colors'
 
-const StyledHeader = styled.header`
+interface IProps {
+    children?: React.ReactNode,
+    position?: string,
+    style?: object
+}
+
+const StyledHeader = styled.header<IProps>`
     position: ${props => props.position || 'sticky'};
     top: 0;
     left: 0;
@@ -17,7 +23,7 @@ const StyledHeader = styled.header`
     background: ${background.normal};
 `
 
-const Header = ({ children, style }) =>
+const Header = ({ children, style }: IProps) =>
     <StyledHeader style={ style }>
         { children }
     </StyledHeader>
@@ -27,20 +33,10 @@ const StyledHeaderTitle = styled.h2`
     flex: 1;
 `
 
-export const HeaderTitle = ({ children, style }) =>
+export const HeaderTitle = ({ children, style }: IProps) =>
     <StyledHeaderTitle style={ style }>
         { children }
     </StyledHeaderTitle>
 
-
-Header.propTypes = {
-    children: _.node,
-    style: _.object
-}
-
-HeaderTitle.propTypes = {
-    children: _.node,
-    style: _.object
-}
 
 export default Header

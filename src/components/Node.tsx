@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { evolve, not } from 'ramda'
 import styled from 'styled-components'
-import _ from 'prop-types'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { background, transparent, primary } from '../colors'
 
@@ -35,7 +34,17 @@ const Li = styled.li`
     }
 `
 
-class Node extends Component {
+interface IProps {
+    id: number,
+    name: string,
+    style: object,
+    children: React.ReactNode
+}
+interface IState {
+    open: boolean
+}
+
+class Node extends React.Component<IProps, IState> {
     constructor(props) {
         super(props)
         this.state = { open: false }
@@ -69,13 +78,6 @@ class Node extends Component {
             </Ul>
         )
     }
-}
-
-Node.propTypes = {
-    id: _.number.isRequired,
-    name: _.string.isRequired,
-    style: _.object,
-    children: _.node
 }
 
 export default Node

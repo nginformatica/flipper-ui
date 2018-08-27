@@ -1,9 +1,14 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
 import { background, primary, text, white } from '../colors'
 
-const StyledAvatar = styled.div`
+interface IProps {
+    style?: object,
+    primary?: boolean,
+    children: React.ReactNode | string | null
+}
+
+const StyledAvatar = styled.div<IProps>`
     border-radius: 50%;
     margin: 0.75em;
     align-items: center;
@@ -19,14 +24,9 @@ const StyledAvatar = styled.div`
     display: flex;
 `
 
-const Avatar = ({ children, ...otherProps }) =>
+const Avatar = ({ children, ...otherProps }: IProps) =>
     <StyledAvatar { ...otherProps }>
         { children }
     </StyledAvatar>
-
-Avatar.propTypes = {
-    style: _.object,
-    primary: _.bool
-}
 
 export default Avatar

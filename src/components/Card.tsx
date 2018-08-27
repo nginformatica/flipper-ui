@@ -1,12 +1,23 @@
 import React from 'react'
-import { __, divide, multiply, pipe, prop } from 'ramda'
-import _ from 'prop-types'
+import { divide, multiply, pipe, prop } from 'ramda'
 import styled from 'styled-components'
 import { primary, white } from '../colors'
 
-const getPercent = pipe(prop('xs'), multiply(100), divide(__, 12))
+interface IProps {
+    xs?: number
+    title?: string
+    children?: React.ReactNode | string | null
+    style: object
+}
 
-const Container = styled.div`
+interface IContainer {
+    xs: number
+    style: object
+}
+
+const getPercent = pipe(prop('xs'), multiply(100), num => divide(num, 12))
+
+const Container = styled.div<IContainer>`
     width: calc(${getPercent}% - 24px);
     background: ${primary.normal};
     font-family: 'Roboto', sans-serif;
@@ -29,23 +40,12 @@ const Content = styled.div`
     border: 1px solid ${primary.normal};
 `
 
-const Card = ({ children, style, title, xs }) =>
+const Card = ({ children, style, title, xs = 12 }: IProps) =>
     <Container
         xs={ xs }
         style={ style }>
         <Header>{ title }</Header>
         <Content>{ children }</Content>
     </Container>
-
-Card.defaultProps = {
-    xs: 12
-}
-
-Card.propTypes = {
-    xs: _.number,
-    title: _.string,
-    children: _.node,
-    style: _.object
-}
 
 export default Card

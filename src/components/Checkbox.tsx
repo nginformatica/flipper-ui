@@ -3,6 +3,18 @@ import _ from 'prop-types'
 import styled from 'styled-components'
 import { primary, background } from '../colors'
 
+interface IProps {
+    label?: string
+    style?: object
+    onChange?: () => void
+}
+
+interface IInput {
+    label?: string
+    type: string
+    onChange?: () => void
+}
+
 const Label = styled.label`
     padding: 12px;
     transition: all 500ms ease;
@@ -16,23 +28,18 @@ const Label = styled.label`
     }
 `
 
-const Input = styled.input`
+const Input = styled.input<IInput>`
     margin-right: ${props => props.label ? '0px' : '12px' };
 `
 
-const Checkbox = ({ label, style, onChange }) =>
+const Checkbox = ({ label, style, onChange }: IProps) =>
     <Label style={ style }>
         <Input
+            label={ label }
             type="checkbox"
             onChange={ onChange }
         />
         { label }
     </Label>
-
-Checkbox.propTypes = {
-    label: _.string,
-    style: _.object,
-    onChange: _.func
-}
 
 export default Checkbox

@@ -4,6 +4,17 @@ import { T, cond, prop } from 'ramda'
 import styled from 'styled-components'
 import { background, transparent, text, primary, white } from '../colors'
 
+interface IProps {
+    mini?: boolean,
+    outline?: boolean,
+    active?: boolean,
+    raised?: boolean,
+    transparent?: boolean,
+    style?: object,
+    children?: React.ReactNode | string | null,
+    onClick?: () => void
+}
+
 const getBackgroundColor = cond([
     [prop('outline'), () => white],
     [prop('raised'), () => primary.normal],
@@ -36,7 +47,7 @@ const getHoverColor = cond([
     [T, () => text]
 ])
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<IProps>`
     outline: none;
     margin: ${props => props.mini
         ? '0.25em'
@@ -86,18 +97,9 @@ const StyledButton = styled.button`
     }
 `
 
-const Button = ({ children, ...otherProps }) =>
+const Button = ({ children, ...otherProps }: IProps)  =>
     <StyledButton { ...otherProps }>
         { children }
     </StyledButton>
-
-Button.propTypes = {
-    mini: _.bool,
-    outline: _.bool,
-    active: _.bool,
-    transparent: _.bool,
-    style: _.object,
-    onClick: _.func
-}
 
 export default Button
