@@ -3,13 +3,12 @@ import React from 'react'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import styled from 'styled-components'
 import { background, primary, transparent } from '../colors'
-import { TChildren } from './Avatar'
 
 interface IProps {
     id: number
     name: string
     style: object
-    children: TChildren
+    children: React.ReactNode
 }
 
 interface IState {

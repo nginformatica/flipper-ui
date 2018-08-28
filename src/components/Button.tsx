@@ -2,7 +2,6 @@ import { cond, prop, T } from 'ramda'
 import React from 'react'
 import styled from 'styled-components'
 import { background, primary, text, transparent, white } from '../colors'
-import { TChildren } from './Avatar'
 
 interface IProps {
     mini?: boolean
@@ -11,7 +10,7 @@ interface IProps {
     raised?: boolean
     transparent?: boolean
     style?: object
-    children?: TChildren
+    children?: React.ReactNode
     onClick?: () => void
 }
 

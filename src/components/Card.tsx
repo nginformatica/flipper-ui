@@ -2,12 +2,11 @@ import { divide, multiply, pipe, prop } from 'ramda'
 import React from 'react'
 import styled from 'styled-components'
 import { primary, white } from '../colors'
-import { TChildren } from './Avatar'
 
 interface IProps {
     xs?: number
     title?: string
-    children?: TChildren
+    children?: React.ReactNode
     style: object
 }
 
@@ -17,7 +16,7 @@ interface IContainer {
 }
 
 // __ from ramda was not recognized by TS
-const getPercent = pipe(prop('xs'), multiply(100),num => divide(num, 12))
+const getPercent = pipe(prop('xs'), multiply(100), num => divide(num, 12))
 
 const Container = styled.div<IContainer>`
     width: calc(${getPercent}% - 24px);

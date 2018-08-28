@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { text, white } from '../colors'
-import { TChildren } from './Avatar'
 
 interface IProps {
-    children?: TChildren
+    children?: React.ReactNode
     style?: object
 }
 

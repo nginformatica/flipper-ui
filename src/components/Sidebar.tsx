@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
 import { background } from '../colors'
-import { TChildren } from './Avatar'
 import Button from './Button'
 
 interface IProps {
@@ -11,7 +10,7 @@ interface IProps {
     place?: string
     position?: string
     onToggle: () => {}
-    children: TChildren
+    children: React.ReactNode
 }
 
 interface IWrapper {

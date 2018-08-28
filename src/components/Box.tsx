@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { white } from '../colors'
-import { TChildren } from './Avatar'
 
 interface IProps {
     style?: object
     primary?: boolean
-    children: TChildren
+    children: React.ReactNode
 }
 
 const StyledBox = styled.div`

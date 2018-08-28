@@ -4,7 +4,7 @@ import ListItem from './ListItem'
 
 interface IProps {
     onlyIcons?: boolean
-    options?: Array<{ name, icon, label }>
+    options?: Array<{ name: string, icon: React.ReactNode, label: string }>
     style?: object
     onClick?: (name) => {}
 }
