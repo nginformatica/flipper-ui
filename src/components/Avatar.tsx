@@ -3,6 +3,9 @@ import React from 'react'
 
 interface IProps {
     style?: object
+    sizes?: string
+    src?: string
+    imgProps?: object
     primary?: boolean
     children: React.ReactNode
 }

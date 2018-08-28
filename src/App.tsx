@@ -5,9 +5,9 @@ import Button from './components/Button'
 import Paper from './components/Paper'
 
 const App = (
-    <Paper>
+    <Paper padding={ 24 }>
         <Avatar>A</Avatar>
-        <Button outline>Click me</Button>
+        <Button variant="outlined">Click me</Button>
     </Paper>
 )
 
