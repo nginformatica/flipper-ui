@@ -17,6 +17,10 @@
         "trailing-comma": [
             true,
             "never"
+        ],
+        "arrow-parens": [
+            true,
+            "ban-single-arg-parens"
         ]
     },
     "rulesDirectory": []

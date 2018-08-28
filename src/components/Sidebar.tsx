@@ -1,4 +1,3 @@
-import _ from 'prop-types'
 import React, { Component } from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
@@ -45,23 +44,23 @@ const styles = {
 const Wrapper = styled.div<IWrapper>`
     display: block;
     position: relative;
-    width: ${(props) => props.width}px;
-    ${(props) => props.place}: 0;
+    width: ${props => props.width}px;
+    ${props => props.place}: 0;
 `
 
 const StyledSidebar = styled.div<ISidebar>`
-    position: ${(props) => props.position};
-    width: ${(props) => props.width}px;
+    position: ${props => props.position};
+    width: ${props => props.width}px;
     height: 100%;
-    top: ${(props) => props.top || 0}px;
+    top: ${props => props.top || 0}px;
     text-align: center;
     bottom: 0;
     background: ${background.normal};
-    ${(props) => props.place}: 0;
+    ${props => props.place}: 0;
 `
 
 const Action = styled.div<IAction>`
-    flex-direction: ${(props) => props.place === 'left'
+    flex-direction: ${props => props.place === 'left'
         ? 'row-reverse'
         : 'row'
     };

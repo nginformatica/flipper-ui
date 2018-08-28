@@ -9,7 +9,7 @@ interface IProps {
 
 const StyledLine = styled.hr<IProps>`
     flex: 1;
-    border: 1px solid ${(props) => props.primary
+    border: 1px solid ${props => props.primary
         ? primaryColor.normal
         : background.normal
     };

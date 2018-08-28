@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const StyledHeader = styled.header<IProps>`
-    position: ${(props) => props.position || 'sticky'};
+    position: ${props => props.position || 'sticky'};
     top: 0;
     left: 0;
     z-index: 1;

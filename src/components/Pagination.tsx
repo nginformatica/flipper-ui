@@ -1,4 +1,3 @@
-import _ from 'prop-types'
 import { inc, times } from 'ramda'
 import React, { Component } from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
@@ -36,7 +35,7 @@ class Pagination extends Component<IProps> {
                     <MdKeyboardArrowLeft />
                 </Button>
                 {
-                    pages.map((page) =>
+                    pages.map(page =>
                         <Button
                             mini
                             key={ page }

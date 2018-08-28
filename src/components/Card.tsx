@@ -17,7 +17,7 @@ interface IContainer {
 }
 
 // __ from ramda was not recognized by TS
-const getPercent = pipe(prop('xs'), multiply(100), (num) => divide(num, 12))
+const getPercent = pipe(prop('xs'), multiply(100),num => divide(num, 12))
 
 const Container = styled.div<IContainer>`
     width: calc(${getPercent}% - 24px);

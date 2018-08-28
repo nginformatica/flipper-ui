@@ -1,4 +1,3 @@
-import _ from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import ListItem from './ListItem'
@@ -18,7 +17,7 @@ const StyledList = styled.div`
 const List = ({ options = [], style, onlyIcons, onClick }: IProps) =>
     <StyledList style={ style }>
         {
-            options.map((option) =>
+            options.map(option =>
                 <ListItem
                     key={ option.name }
                     icon={ option.icon }

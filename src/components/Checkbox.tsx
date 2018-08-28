@@ -28,7 +28,7 @@ const Label = styled.label`
 `
 
 const Input = styled.input<IInput>`
-    margin-right: ${(props) => props.label ? '0px' : '12px' };
+    margin-right: ${props => props.label ? '0px' : '12px' };
 `
 
 const Checkbox = ({ label, style, onChange }: IProps) =>

@@ -1,4 +1,3 @@
-import _ from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import { background, text } from '../colors'
