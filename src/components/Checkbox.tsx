@@ -1,7 +1,6 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
-import { primary, background } from '../colors'
+import { background, primary } from '../colors'
 
 interface IProps {
     label?: string
@@ -29,14 +28,14 @@ const Label = styled.label`
 `
 
 const Input = styled.input<IInput>`
-    margin-right: ${props => props.label ? '0px' : '12px' };
+    margin-right: ${(props) => props.label ? '0px' : '12px' };
 `
 
 const Checkbox = ({ label, style, onChange }: IProps) =>
     <Label style={ style }>
         <Input
             label={ label }
-            type="checkbox"
+            type='checkbox'
             onChange={ onChange }
         />
         { label }

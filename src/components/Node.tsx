@@ -1,8 +1,24 @@
-import * as React from 'react'
 import { evolve, not } from 'ramda'
-import styled from 'styled-components'
+import React from 'react'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
-import { background, transparent, primary } from '../colors'
+import styled from 'styled-components'
+import { background, primary, transparent } from '../colors'
+import { TChildren } from './Avatar'
+
+interface IProps {
+    id: number
+    name: string
+    style: object
+    children: TChildren
+}
+
+interface IState {
+    open: boolean
+}
+
+interface IListItem {
+    inset: boolean
+}
 
 const styles = {
     icon: {
@@ -15,12 +31,12 @@ const Ul = styled.ul`
     width: 350px;
 `
 
-const Li = styled.li`
+const Li = styled.li<IListItem>`
     font-size: 16px;
     margin: 12px;
     background: ${transparent};
     padding: 12px;
-    padding-left: ${props =>  props.inset ? '12px' : '48px'};
+    padding-left: ${(props) =>  props.inset ? '12px' : '48px'};
     list-style: none;
     border-radius: 6px;
     border: 1px solid ${background.dark};
@@ -34,33 +50,23 @@ const Li = styled.li`
     }
 `
 
-interface IProps {
-    id: number,
-    name: string,
-    style: object,
-    children: React.ReactNode
-}
-interface IState {
-    open: boolean
-}
-
 class Node extends React.Component<IProps, IState> {
     constructor(props) {
         super(props)
         this.state = { open: false }
     }
 
-    handleToggleOpen() {
+    public handleToggleOpen() {
         this.setState(evolve({ open: not }))
     }
 
-    renderDropdownIcon() {
+    public renderDropdownIcon() {
         return this.state.open
             ? <MdKeyboardArrowUp style={ styles.icon } />
             : <MdKeyboardArrowDown style={ styles.icon } />
     }
 
-    render() {
+    public render() {
         const { open } = this.state
         const { id, name, children, style } = this.props
 
@@ -69,7 +75,7 @@ class Node extends React.Component<IProps, IState> {
                 key={ id || name }
                 style={ style }>
                 <Li
-                    inset={ children }
+                    inset={ Boolean(children) }
                     onClick={ this.handleToggleOpen.bind(this) }>
                     { children && this.renderDropdownIcon() }
                     { name }

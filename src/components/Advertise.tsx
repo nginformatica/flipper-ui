@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { white, black, silver } from '../colors'
+import { black, silver, white } from '../colors'
 
 interface IProps {
-    comment: string,
-    author: string,
-    style?: object,
-    commentStyle?: object,
+    comment: string
+    author: string
+    style?: object
+    commentStyle?: object
     authorStyle?: object
 }
 

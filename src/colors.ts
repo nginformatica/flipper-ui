@@ -1,13 +1,13 @@
 export const primary = {
+    dark: '#00695C',
     light: '#B2DFDB',
-    normal: '#009688',
-    dark: '#00695C'
+    normal: '#009688'
 }
 
 export const background = {
+    dark: '#BDBDBD',
     light: '#EEEEEE',
-    normal: '#E0E0E0',
-    dark: '#BDBDBD'
+    normal: '#E0E0E0'
 }
 
 export const silver = {

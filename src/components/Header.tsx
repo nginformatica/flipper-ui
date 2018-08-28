@@ -1,16 +1,16 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
 import { background } from '../colors'
+import { TChildren } from './Avatar'
 
 interface IProps {
-    children?: React.ReactNode,
-    position?: string,
+    children?: TChildren
+    position?: string
     style?: object
 }
 
 const StyledHeader = styled.header<IProps>`
-    position: ${props => props.position || 'sticky'};
+    position: ${(props) => props.position || 'sticky'};
     top: 0;
     left: 0;
     z-index: 1;
@@ -37,6 +37,5 @@ export const HeaderTitle = ({ children, style }: IProps) =>
     <StyledHeaderTitle style={ style }>
         { children }
     </StyledHeaderTitle>
-
 
 export default Header

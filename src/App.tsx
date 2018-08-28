@@ -1,5 +1,7 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import Avatar from './components/Avatar'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Button from './components/Button'
 
-ReactDOM.render(<Avatar>A</Avatar>, document.getElementById('root'))
+const App = <Button outline>Click me</Button>
+
+ReactDOM.render(App, document.getElementById('root'))

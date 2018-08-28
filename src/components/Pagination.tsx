@@ -1,9 +1,18 @@
-import React, { Component } from 'react'
-import { times, inc } from 'ramda'
 import _ from 'prop-types'
+import { inc, times } from 'ramda'
+import React, { Component } from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
 import Button from './Button'
+
+interface IProps {
+    pages?: number
+    active: number
+    style?: object
+    onNext: () => {}
+    onPrevious: () => {}
+    onNavigate: (page) => {}
+}
 
 const Content = styled.div`
     display: flex;
@@ -13,8 +22,10 @@ const Content = styled.div`
     margin: 0.75em;
 `
 
-class Pagination extends Component {
-    render() {
+class Pagination extends Component<IProps> {
+    public static defaultProps = { pages: 1 }
+
+    public render() {
         const pages = times(inc, this.props.pages)
 
         return (
@@ -25,7 +36,7 @@ class Pagination extends Component {
                     <MdKeyboardArrowLeft />
                 </Button>
                 {
-                    pages.map(page =>
+                    pages.map((page) =>
                         <Button
                             mini
                             key={ page }
@@ -43,20 +54,6 @@ class Pagination extends Component {
             </Content>
         )
     }
-}
-
-Pagination.defaultProps = {
-    active: 1,
-    onNavigate: () => {}
-}
-
-Pagination.propTypes = {
-    pages: _.number.isRequired,
-    active: _.number,
-    style: _.object,
-    onNext: _.func,
-    onPrevious: _.func,
-    onNavigate: _.func
 }
 
 export default Pagination

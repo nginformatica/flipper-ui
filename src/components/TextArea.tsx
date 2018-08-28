@@ -1,7 +1,15 @@
-import React from 'react'
 import _ from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 import { background, primary, text } from '../colors'
+
+interface IProps {
+    placeholder?: string,
+    rows?: number,
+    value?: string,
+    style?: object,
+    onChange?: (value) => {}
+}
 
 const StyledTextArea = styled.textarea`
     outline: none;
@@ -21,14 +29,6 @@ const StyledTextArea = styled.textarea`
     }
 `
 
-const TextArea = props => <StyledTextArea { ...props } />
-
-TextArea.propTypes = {
-    placeholder: _.string,
-    rows: _.number,
-    value: _.string,
-    style: _.object,
-    onChange: _.func
-}
+const TextArea = (props: IProps) => <StyledTextArea { ...props } />
 
 export default TextArea

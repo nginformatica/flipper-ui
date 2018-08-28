@@ -1,7 +1,14 @@
-import React from 'react'
 import _ from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 import { background, primary, text } from '../colors'
+
+interface IProps {
+    placeholder?: string,
+    value?: string,
+    style?: object,
+    onChange?: (value) => {}
+}
 
 const StyledTextField = styled.input`
     outline: none;
@@ -21,13 +28,6 @@ const StyledTextField = styled.input`
     }
 `
 
-const TextField = props => <StyledTextField { ...props } />
-
-TextField.propTypes = {
-    placeholder: _.string,
-    value: _.string,
-    style: _.object,
-    onChange: _.func
-}
+const TextField = (props: IProps) => <StyledTextField { ...props } />
 
 export default TextField

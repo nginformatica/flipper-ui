@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { white } from '../colors'
+import { TChildren } from './Avatar'
+
+interface IProps {
+    style?: object
+    primary?: boolean
+    children: TChildren
+}
 
 const StyledBox = styled.div`
     background-color: ${white};
@@ -12,12 +19,6 @@ const StyledBox = styled.div`
     margin-bottom: 10px;
     padding: 28px;
 `
-
-interface IProps {
-    style?: object,
-    primary?: boolean,
-    children: React.ReactNode | string | null
-}
 
 const Box = ({ children, ...otherProps }: IProps) =>
     <StyledBox { ...otherProps }>

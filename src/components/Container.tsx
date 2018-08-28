@@ -1,9 +1,10 @@
-import React from 'react'
 import _ from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
+import { TChildren } from './Avatar'
 
 interface IProps {
-    children?: React.ReactNode,
+    children?: TChildren
     style?: object
 }
 
