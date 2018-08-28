@@ -39,7 +39,7 @@ class Pagination extends Component<IProps> {
                         <Button
                             mini
                             key={ page }
-                            active={ page === this.props.active }
+                            color={ page === this.props.active ? 'primary' : 'default' }
                             onClick={ () => this.props.onNavigate(page) }>
                             { page }
                         </Button>
