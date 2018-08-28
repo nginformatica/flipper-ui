@@ -14,14 +14,14 @@ interface IProps {
 }
 
 interface IWrapper {
-    width: string | number
+    width: number
     place: string
 }
 
 interface ISidebar {
     position: string
-    width: string | number
-    top?: string | number
+    width: number
+    top?: number
     place: string
 }
 

@@ -5,7 +5,7 @@ import { white } from '../colors'
 interface IProps {
     style?: object
     primary?: boolean
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const StyledBox = styled.div`

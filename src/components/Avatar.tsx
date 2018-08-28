@@ -1,4 +1,4 @@
-import { Avatar } from '@material-ui/core'
+import { Avatar as MuiAvatar } from '@material-ui/core'
 import React from 'react'
 
 interface IProps {
@@ -7,9 +7,9 @@ interface IProps {
     children: React.ReactNode
 }
 
-const FAvatar = ({ children, ...otherProps }: IProps) =>
-    <Avatar { ...otherProps }>
+const Avatar = ({ children, ...otherProps }: IProps) =>
+    <MuiAvatar { ...otherProps }>
         { children }
-    </Avatar>
+    </MuiAvatar>
 
-export default FAvatar
+export default Avatar
