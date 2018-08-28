@@ -4,7 +4,7 @@ import { background, primary, text, white } from '../colors'
 
 interface IProps {
     placeholder?: string,
-    options: Array<{ label }>,
+    options: Array<{ label: string }>,
     value?: string | number,
     style?: object,
     disabled?: boolean,
