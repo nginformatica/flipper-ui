@@ -1,7 +1,12 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
 import { white } from '../colors'
+
+interface IProps {
+    style?: object
+    primary?: boolean
+    children?: React.ReactNode
+}
 
 const StyledBox = styled.div`
     background-color: ${white};
@@ -14,15 +19,9 @@ const StyledBox = styled.div`
     padding: 28px;
 `
 
-const Box = ({ children, ...otherProps }) =>
+const Box = ({ children, ...otherProps }: IProps) =>
     <StyledBox { ...otherProps }>
         { children }
     </StyledBox>
-
-Box.propTypes = {
-    style: _.object,
-    primary: _.bool,
-    children: _.node
-}
 
 export default Box

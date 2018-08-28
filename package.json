@@ -1,27 +1,50 @@
 {
   "name": "flipper-ui",
   "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
   "private": true,
   "homepage": "https://nginformatica.github.io/flipper-ui/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production && docz build",
+    "start": "webpack-dev-server --open --mode development",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d docs"
+  },
+  "author": "William Rozin Gaspar",
+  "license": "MIT",
   "dependencies": {
-    "prop-types": "15.6.2",
+    "@material-ui/core": "3.0.0",
+    "@material-ui/icons": "3.0.0",
+    "@types/ramda": "0.25.36",
+    "@types/react": "16.4.11",
+    "@types/react-dom": "16.0.7",
+    "@types/webpack-env": "1.13.6",
+    "awesome-typescript-loader": "5.2.0",
+    "csstype": "2.5.6",
     "ramda": "0.25.0",
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-icons": "3.0.5",
-    "react-scripts": "1.1.4",
-    "styled-components": "3.4.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && docz build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d docs"
+    "source-map-loader": "0.2.4",
+    "styled-components": "3.4.5",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
   },
   "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.5",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-react": "6.24.1",
     "docz": "0.10.3",
-    "gh-pages": "1.2.0"
+    "gh-pages": "1.2.0",
+    "html-loader": "0.5.5",
+    "html-webpack-plugin": "3.2.0",
+    "webpack": "4.16.5",
+    "webpack-cli": "3.1.0",
+    "webpack-dev-server": "3.1.5"
   }
 }

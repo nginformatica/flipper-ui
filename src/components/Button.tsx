@@ -1,8 +1,18 @@
+import { cond, prop, T } from 'ramda'
 import React from 'react'
-import _ from 'prop-types'
-import { T, cond, prop } from 'ramda'
 import styled from 'styled-components'
-import { background, transparent, text, primary, white } from '../colors'
+import { background, primary, text, transparent, white } from '../colors'
+
+interface IProps {
+    mini?: boolean
+    outline?: boolean
+    active?: boolean
+    raised?: boolean
+    transparent?: boolean
+    style?: object
+    children?: React.ReactNode
+    onClick?: () => void
+}
 
 const getBackgroundColor = cond([
     [prop('outline'), () => white],
@@ -36,7 +46,7 @@ const getHoverColor = cond([
     [T, () => text]
 ])
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<IProps>`
     outline: none;
     margin: ${props => props.mini
         ? '0.25em'
@@ -86,18 +96,9 @@ const StyledButton = styled.button`
     }
 `
 
-const Button = ({ children, ...otherProps }) =>
+const Button = ({ children, ...otherProps }: IProps)  =>
     <StyledButton { ...otherProps }>
         { children }
     </StyledButton>
-
-Button.propTypes = {
-    mini: _.bool,
-    outline: _.bool,
-    active: _.bool,
-    transparent: _.bool,
-    style: _.object,
-    onClick: _.func
-}
 
 export default Button

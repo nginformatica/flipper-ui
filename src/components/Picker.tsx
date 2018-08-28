@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
 import { background, primary, text, white } from '../colors'
+
+interface IProps {
+    placeholder?: string,
+    options: Array<{ label }>,
+    value?: string | number,
+    style?: object,
+    disabled?: boolean,
+    onChange?: () => {}
+}
 
 const Select = styled.select`
     outline: none;
@@ -26,8 +34,8 @@ const Option = styled.option`
     font-size: 14px;
 `
 
-class Picker extends Component {
-    render() {
+class Picker extends Component<IProps> {
+    public render() {
         return (
             <Select
                 placeholder={ this.props.placeholder }
@@ -47,15 +55,6 @@ class Picker extends Component {
             </Select>
         )
     }
-}
-
-Picker.propTypes = {
-    placeholder: _.string,
-    options: _.array.isRequired,
-    value: _.string,
-    style: _.object,
-    disabled: _.bool,
-    onChange: _.func
 }
 
 export default Picker

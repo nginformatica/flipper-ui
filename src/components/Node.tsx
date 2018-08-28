@@ -1,9 +1,23 @@
-import React, { Component } from 'react'
 import { evolve, not } from 'ramda'
-import styled from 'styled-components'
-import _ from 'prop-types'
+import React from 'react'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
-import { background, transparent, primary } from '../colors'
+import styled from 'styled-components'
+import { background, primary, transparent } from '../colors'
+
+interface IProps {
+    id: number
+    name: string
+    style: object
+    children: React.ReactNode
+}
+
+interface IState {
+    open: boolean
+}
+
+interface IListItem {
+    inset: boolean
+}
 
 const styles = {
     icon: {
@@ -16,7 +30,7 @@ const Ul = styled.ul`
     width: 350px;
 `
 
-const Li = styled.li`
+const Li = styled.li<IListItem>`
     font-size: 16px;
     margin: 12px;
     background: ${transparent};
@@ -35,23 +49,23 @@ const Li = styled.li`
     }
 `
 
-class Node extends Component {
+class Node extends React.Component<IProps, IState> {
     constructor(props) {
         super(props)
         this.state = { open: false }
     }
 
-    handleToggleOpen() {
+    public handleToggleOpen() {
         this.setState(evolve({ open: not }))
     }
 
-    renderDropdownIcon() {
+    public renderDropdownIcon() {
         return this.state.open
             ? <MdKeyboardArrowUp style={ styles.icon } />
             : <MdKeyboardArrowDown style={ styles.icon } />
     }
 
-    render() {
+    public render() {
         const { open } = this.state
         const { id, name, children, style } = this.props
 
@@ -60,7 +74,7 @@ class Node extends Component {
                 key={ id || name }
                 style={ style }>
                 <Li
-                    inset={ children }
+                    inset={ Boolean(children) }
                     onClick={ this.handleToggleOpen.bind(this) }>
                     { children && this.renderDropdownIcon() }
                     { name }
@@ -69,13 +83,6 @@ class Node extends Component {
             </Ul>
         )
     }
-}
-
-Node.propTypes = {
-    id: _.number.isRequired,
-    name: _.string.isRequired,
-    style: _.object,
-    children: _.node
 }
 
 export default Node

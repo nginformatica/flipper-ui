@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
-import _ from 'prop-types'
 import Node from './Node'
 
-class Tree extends Component {
-    renderNode(node, index, root = false) {
+interface INode {
+    id: string | number
+    name: string
+    nodes?: INode[]
+}
+
+interface IProps {
+    nodes?: INode[]
+}
+
+class Tree extends Component<IProps> {
+    public renderNode(node, index, root = false) {
         const { id, name, nodes } = node
 
         return (
@@ -12,20 +21,16 @@ class Tree extends Component {
                 name={ name }
                 key={ id || index }
                 style={ root ? { padding: 0 } :  {} }>
-                { nodes && nodes.map((node, index) => this.renderNode(node, index)) }
+                { nodes && nodes.map(this.renderNode.bind(this)) }
             </Node>
         )
     }
 
-    render() {
+    public render() {
         return this.props.nodes.map((node, index) =>
             this.renderNode(node, index, true)
         )
     }
-}
-
-Tree.propTypes = {
-    nodes: _.array
 }
 
 export default Tree

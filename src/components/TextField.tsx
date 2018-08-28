@@ -1,34 +1,32 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
 import { background, primary, text } from '../colors'
 
-const StyledTextArea = styled.textarea`
+interface IProps {
+    placeholder?: string,
+    value?: string,
+    style?: object,
+    onChange?: (value) => {}
+}
+
+const StyledTextField = styled.input`
     outline: none;
-    padding: 0.5em;
+    padding: 8px;
     border-radius: 6px;
+    line-height: 1.5em;
     margin: 1em;
     border: 1px solid ${background.dark};
-    font-size: 14px;
-    line-height: 1.5em;
     color: ${text};
+    font-size: 14px;
     font-family: 'Roboto', sans-serif;
     transition: all 500ms ease;
-    resize: none;
+    height: 24px;
     &:focus {
         border: 1px solid ${primary.normal};
         border-radius: 6px;
     }
 `
 
-const TextArea = props => <StyledTextArea { ...props } />
+const TextField = (props: IProps) => <StyledTextField { ...props } />
 
-TextArea.propTypes = {
-    placeholder: _.string,
-    rows: _.number,
-    value: _.string,
-    style: _.object,
-    onChange: _.func
-}
-
-export default TextArea
+export default TextField

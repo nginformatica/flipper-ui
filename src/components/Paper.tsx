@@ -1,7 +1,11 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
 import { text, white } from '../colors'
+
+interface IProps {
+    children?: React.ReactNode
+    style?: object
+}
 
 const StyledPaper = styled.div`
     padding: 2em;
@@ -15,14 +19,9 @@ const StyledPaper = styled.div`
     box-shadow: 0px 0px 12px 2px rgba(66,66,66,0.5);
 `
 
-const Paper = ({ children, style }) =>
+const Paper = ({ children, style }: IProps) =>
     <StyledPaper style={ style }>
         { children }
     </StyledPaper>
-
-Paper.propTypes = {
-    children: _.node,
-    style: _.object
-}
 
 export default Paper

@@ -1,31 +1,55 @@
 import React, { Component } from 'react'
-import _ from 'prop-types'
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
 import { background } from '../colors'
 import Button from './Button'
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
+
+interface IProps {
+    top: number
+    open: boolean
+    place?: string
+    position?: string
+    onToggle: () => {}
+    children: React.ReactNode
+}
+
+interface IWrapper {
+    width: number
+    place: string
+}
+
+interface ISidebar {
+    position: string
+    width: number
+    top?: number
+    place: string
+}
+
+interface IAction {
+    place?: string
+}
 
 const styles = {
     button: {
+        alignSelf: 'right',
         margin: 12,
-        padding: '0 0.25em',
-        alignSelf: 'right'
+        padding: '0 0.25em'
     },
     icon: {
         fontSize: '24px'
     }
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<IWrapper>`
     display: block;
     position: relative;
     width: ${props => props.width}px;
     ${props => props.place}: 0;
 `
 
-const StyledSidebar = styled.div`
+const StyledSidebar = styled.div<ISidebar>`
     position: ${props => props.position};
-    width: ${props => props.width }px;
+    width: ${props => props.width}px;
     height: 100%;
     top: ${props => props.top || 0}px;
     text-align: center;
@@ -34,7 +58,7 @@ const StyledSidebar = styled.div`
     ${props => props.place}: 0;
 `
 
-const Action = styled.div`
+const Action = styled.div<IAction>`
     flex-direction: ${props => props.place === 'left'
         ? 'row-reverse'
         : 'row'
@@ -42,8 +66,13 @@ const Action = styled.div`
     display: flex;
 `
 
-class Sidebar extends Component {
-    render() {
+class Sidebar extends Component<IProps> {
+    public static defaultProps = {
+        place: 'left',
+        position: 'relative'
+    }
+
+    public render() {
         const { open, place, position, top } = this.props
         const width = open
             ? 200
@@ -53,7 +82,9 @@ class Sidebar extends Component {
             || (place === 'right' && !open)
 
         return (
-            <Wrapper width={ width }>
+            <Wrapper
+                place={ place }
+                width={ width }>
                 <StyledSidebar
                     top={ top }
                     place={ place }
@@ -75,20 +106,6 @@ class Sidebar extends Component {
             </Wrapper>
         )
     }
-}
-
-Sidebar.defaultProps = {
-    place: 'left',
-    position: 'relative'
-}
-
-Sidebar.propTypes = {
-    top: _.number,
-    open: _.bool,
-    place: _.string,
-    position: _.string,
-    onToggle: _.func,
-    children: _.node
 }
 
 export default Sidebar

@@ -1,7 +1,18 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
-import { primary, background } from '../colors'
+import { background, primary } from '../colors'
+
+interface IProps {
+    label?: string
+    style?: object
+    onChange?: () => void
+}
+
+interface IInput {
+    label?: string
+    type: string
+    onChange?: () => void
+}
 
 const Label = styled.label`
     padding: 12px;
@@ -16,23 +27,18 @@ const Label = styled.label`
     }
 `
 
-const Input = styled.input`
-    margin-right: ${props => props.label ? '0px' : '12px' };
+const Input = styled.input<IInput>`
+    margin-right: ${props => props.label ? '12px' : '0px' };
 `
 
-const Checkbox = ({ label, style, onChange }) =>
+const Checkbox = ({ label, style, onChange }: IProps) =>
     <Label style={ style }>
         <Input
-            type="checkbox"
+            label={ label }
+            type='checkbox'
             onChange={ onChange }
         />
         { label }
     </Label>
-
-Checkbox.propTypes = {
-    label: _.string,
-    style: _.object,
-    onChange: _.func
-}
 
 export default Checkbox

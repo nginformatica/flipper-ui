@@ -1,14 +1,20 @@
 import React from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
-import ListItem from './ListItem';
+import ListItem from './ListItem'
+
+interface IProps {
+    onlyIcons?: boolean
+    options?: Array<{ name: string, icon: React.ReactNode, label: string }>
+    style?: object
+    onClick?: (name) => {}
+}
 
 const StyledList = styled.div`
     flex: 1;
     margin: 6px 0;
 `
 
-const List = ({ options, style, onlyIcons, onClick }) =>
+const List = ({ options = [], style, onlyIcons, onClick }: IProps) =>
     <StyledList style={ style }>
         {
             options.map(option =>
@@ -23,16 +29,5 @@ const List = ({ options, style, onlyIcons, onClick }) =>
             )
         }
     </StyledList>
-
-List.defaultProps = {
-    options: []
-}
-
-List.propTypes = {
-    onlyIcons: _.bool,
-    options: _.array,
-    style: _.object,
-    onClick: _.func
-}
 
 export default List

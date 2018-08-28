@@ -1,8 +1,13 @@
 import React, { Component, Fragment } from 'react'
-import _ from 'prop-types'
 import styled from 'styled-components'
 import Avatar from './Avatar'
 import Line from './Line'
+
+interface IProps {
+    active?: number
+    steps: string[],
+    style?: object
+}
 
 const Div = styled.div`
     width: 100%;
@@ -10,8 +15,11 @@ const Div = styled.div`
     align-items: center;
     justify-content: center;
 `
-class Stepper extends Component {
-    render() {
+
+class Stepper extends Component<IProps> {
+    public static defaultProps = { active: 0 }
+
+    public render() {
         const { steps, active, style } = this.props
 
         return (
@@ -19,7 +27,7 @@ class Stepper extends Component {
                 {
                     steps.map((step, index) =>
                         <Fragment key={ index }>
-                            { index > 0 ? <Line primary={ index <= active } /> : null }
+                            { index > 0 && <Line primary={ index <= active } /> }
                             <Avatar primary={ index <= active }>{ step }</Avatar>
                         </Fragment>
                     )
@@ -27,16 +35,6 @@ class Stepper extends Component {
             </Div>
         )
     }
-}
-
-Stepper.defaultProps = {
-    active: 0
-}
-
-Stepper.propTypes = {
-    active: _.number,
-    steps: _.array.isRequired,
-    style: _.object
 }
 
 export default Stepper
