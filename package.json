@@ -14,7 +14,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d docs"
   },
-  "author": "William Rozin Gaspar",
+  "author": "NG Informática",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "3.0.0",
