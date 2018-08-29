@@ -25,7 +25,7 @@ interface IProps extends WithStyles<typeof styles> {
     required?: boolean
     select?: boolean
     type?: string
-    value?: string | number | boolean | []
+    value?: string | number | boolean | string[]
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
