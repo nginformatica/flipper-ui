@@ -1,10 +1,14 @@
-import { withStyles } from '@material-ui/core'
+import {
+    createStyles,
+    WithStyles,
+    withStyles
+} from '@material-ui/core'
 import { TextField as MuiTextField } from '@material-ui/core'
 import { merge } from 'ramda'
 import React from 'react'
 import { background, primary } from '../colors'
 
-interface IProps {
+interface IProps extends WithStyles<typeof styles> {
     autoComplete?: string
     autoFocus?: boolean
     defaultValue?: string | number
@@ -25,15 +29,10 @@ interface IProps {
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
-    classes: {
-        root: string
-        input: string
-        label: string
-    }
     onChange?: (event) => {}
 }
 
-const styles = theme => ({
+const styles = theme => createStyles({
     input: {
         '&:focus': {
             borderColor: primary.light,
