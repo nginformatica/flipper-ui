@@ -1,5 +1,5 @@
-import React from 'react'
 import { Paper as MuiPaper } from '@material-ui/core'
+import React from 'react'
 
 interface IProps {
     children?: React.ReactNode
