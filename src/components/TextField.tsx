@@ -22,7 +22,6 @@ interface IProps {
     select?: boolean
     type?: string
     value?: string | number | boolean | []
-    children?: React.ReactNode
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
