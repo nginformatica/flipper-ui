@@ -15,7 +15,7 @@ Migration status
 - [x] Button
 - [ ] Icon Button
 - [ ] Carousel/Gallery
-- [ ] Checkbox
+- [X] Checkbox
 - [ ] Chip
 - [ ] DatePicker
 - [ ] Dialog
@@ -29,6 +29,7 @@ Migration status
 - [x] Paper
 - [ ] Progress
 - [ ] Sidebar/Drawer
+- [x] Switcher
 - [ ] Tabs
 - [x] TextArea
 - [x] TextField/Input
