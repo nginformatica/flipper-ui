@@ -13,7 +13,19 @@ import { Playground, PropsTable } from 'docz'
 
 ## Demo
 <Playground>
-    <Paper>
-        I am a beautiful Paper.
+    <Paper padding={ 24 } margin={ 24 }>
+        I am a Paper.
+    </Paper>
+    <Paper square padding={ 24 } margin={ 24 }>
+        I am a square Paper.
+    </Paper>
+    <Paper elevation={ 0 } padding={ 24 } margin={ 24 }>
+        I am a Paper with no elevation.
+    </Paper>
+    <Paper elevation={ 12 } padding={ 24 } margin={ 24 }>
+        I am a Paper with 12 elevation.
+    </Paper>
+    <Paper elevation={ 24 } padding={ 24 } margin={ 24 }>
+        I am a Paper with 24 elevation (and it is my highest).
     </Paper>
 </Playground>

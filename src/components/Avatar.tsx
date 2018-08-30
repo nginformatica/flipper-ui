@@ -1,4 +1,7 @@
-import { Avatar as MuiAvatar } from '@material-ui/core'
+import {
+    Avatar as MuiAvatar,
+    withStyles
+} from '@material-ui/core'
 import React from 'react'
 
 interface IProps {
@@ -7,12 +10,23 @@ interface IProps {
     src?: string
     imgProps?: object
     primary?: boolean
+    classes: {
+        primary: string
+    }
     children: React.ReactNode
 }
 
-const Avatar = ({ children, ...otherProps }: IProps) =>
-    <MuiAvatar { ...otherProps }>
+const styles = theme => ({
+    primary: {
+        backgroundColor: theme.palette.primary.main
+    }
+})
+
+const Avatar = ({ children, primary, classes, ...otherProps }: IProps) =>
+    <MuiAvatar
+        { ...otherProps }
+        className={ primary ? classes.primary : '' }>
         { children }
     </MuiAvatar>
 
-export default Avatar
+export default withStyles(styles)(Avatar)

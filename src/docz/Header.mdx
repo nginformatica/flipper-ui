@@ -3,7 +3,7 @@ name: Header
 route: /header
 ---
 
-import Header, { HeaderTitle } from '../components/Header'
+import Header from '../components/Header'
 import { Playground, PropsTable } from 'docz'
 
 # Header
@@ -13,7 +13,10 @@ import { Playground, PropsTable } from 'docz'
 
 ## Demo
 <Playground>
-    <Header>
-        <HeaderTitle>X Project</HeaderTitle>
+    <Header style={ { marginBottom: '12px' } } position="relative">
+        Flipper UI
+    </Header>
+    <Header position="relative" color="secondary">
+        Flipper UI
     </Header>
 </Playground>
