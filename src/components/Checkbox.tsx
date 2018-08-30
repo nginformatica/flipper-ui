@@ -4,22 +4,32 @@ import React from 'react'
 interface IProps {
     label?: string
     style?: object
-    value: string
+    name: string
     checked?: boolean
     onChange?: (event) => void
 }
 
-const Checkbox = ({ label, style, onChange, value, checked }: IProps) =>
-    <FormControlLabel
-        style={ style }
-        control={
-            <Checkbox
+const Checkbox = ({ label, style, onChange, name, checked }: IProps) =>
+    label
+        ? (
+            <FormControlLabel
+                style={ style }
+                control={
+                    <MuiCheckbox
+                        checked={ checked }
+                        value={ name }
+                        onChange={ onChange }
+                    />
+                }
+                label={ label }
+            />
+        )
+        : (
+            <MuiCheckbox
                 checked={ checked }
-                value={ value }
+                value={ name }
                 onChange={ onChange }
             />
-        }
-        label={ label }
-    />
+        )
 
 export default Checkbox

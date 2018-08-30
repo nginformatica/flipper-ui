@@ -15,11 +15,15 @@ import { Playground, PropsTable } from 'docz'
 <Playground>
     <Checkbox
         label="I agree with the terms"
-        onClick={ () => alert('You clicked on the checkbox!') }
+        name="terms"
+        onChange={ () => alert('You clicked on the checkbox!') }
     />
 </Playground>
 
 ## Without label
 <Playground>
-    <Checkbox onClick={ () => alert('You clicked on the checkbox!') } />
+    <Checkbox
+        name="terms"
+        onChange={ () => alert('You clicked on the checkbox!') }
+    />
 </Playground>

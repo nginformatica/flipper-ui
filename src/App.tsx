@@ -18,7 +18,8 @@ const App = (
             <div>
                 <TextField />
             </div>
-            <Checkbox value='terms' label='I agree with the terms above' />
+            <Checkbox name='terms' label='I agree with the terms above' />
+            <Checkbox name='terms' />
         </Paper>
     </div>
 )
