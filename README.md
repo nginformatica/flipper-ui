@@ -17,6 +17,8 @@ Migration status
 - [ ] Carousel/Gallery
 - [ ] Checkbox
 - [x] Chip
+- [X] Checkbox
+- [ ] Chip
 - [ ] DatePicker
 - [ ] Dialog
 - [ ] Divider
@@ -29,6 +31,9 @@ Migration status
 - [x] Paper
 - [ ] Progress
 - [ ] Sidebar/Drawer
+- [x] Switcher
+- [x] Radio
+- [x] RadioGroup
 - [ ] Tabs
 - [x] TextArea
 - [x] TextField/Input
