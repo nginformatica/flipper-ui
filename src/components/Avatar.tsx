@@ -1,8 +1,6 @@
 import {
     Avatar as MuiAvatar,
-    createStyles,
-    withStyles,
-    WithStyles
+    withStyles
 } from '@material-ui/core'
 import React from 'react'
 
@@ -18,7 +16,7 @@ interface IProps {
     children: React.ReactNode
 }
 
-const styles = theme => createStyles({
+const styles = theme => ({
     primary: {
         backgroundColor: theme.palette.primary.main
     }

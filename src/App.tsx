@@ -12,7 +12,7 @@ const App = (
         <Header position='sticky'>Flipper-UI</Header>
         <Paper padding={ 24 }>
             <Stepper active={ 1 } steps={ ['Para', 'bens', 'Lorena'] } />
-            <Avatar>A</Avatar>
+            <Avatar primary>A</Avatar>
             <Button variant='outlined'>Click me</Button>
             <div>
                 <TextField />
