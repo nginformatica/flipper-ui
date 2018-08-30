@@ -30,6 +30,8 @@ Migration status
 - [ ] Progress
 - [ ] Sidebar/Drawer
 - [x] Switcher
+- [x] Radio
+- [x] RadioGroup
 - [ ] Tabs
 - [x] TextArea
 - [x] TextField/Input
