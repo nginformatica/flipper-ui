@@ -10,7 +10,7 @@ interface IProps {
     margin?: number
 }
 
-const Paper = ({ children, style, padding, margin, ...otherProps }: IProps) =>
+const Paper = ({ children, style = {}, padding, margin, ...otherProps }: IProps) =>
     <MuiPaper
         { ...otherProps }
         style={ { padding, margin, ...style } }>
