@@ -11,7 +11,7 @@
     "start": "webpack-dev-server --open --mode development",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d docs"
   },
   "author": "NG Informática",

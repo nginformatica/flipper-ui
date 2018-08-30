@@ -6,6 +6,7 @@ route: /button
 import Button from '../components/Button'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import { Playground, PropsTable } from 'docz'
+import IconAdd from '@material-ui/icons/add'
 
 # Button
 
@@ -14,28 +15,43 @@ import { Playground, PropsTable } from 'docz'
 
 ## Demo
 <Playground>
-    <Button>Default</Button>
-    <Button active>Active</Button>
-    <Button raised>Raised</Button>
-    <Button raised outline>Raised Outline</Button>
-    <Button outline>Outline</Button>
-    <Button transparent>Transparent</Button>
-    <Button mini>
-        One
+    <Button margin={ 12 }>
+        Default
     </Button>
-    <Button mini active>
-        Two
+    <Button color="primary" margin={ 12 }>
+        Primary
     </Button>
-    <Button mini raised>
-        Tree
+    <Button color="secondary" margin={ 12 }>
+        Secondary
     </Button>
-    <Button mini raised outline>
-        Four
+    <Button variant="raised" color="primary" margin={ 12 }>
+        Raised primary
     </Button>
-    <Button mini outline>
-        Five
+    <Button variant="raised" color="secondary" margin={ 12 }>
+        Raised secondary
     </Button>
-    <Button mini transparent>
-        Six
+    <Button variant="outlined" color="primary" margin={ 12 }>
+        Outlined primary
+    </Button>    
+    <Button variant="outlined" color="secondary" margin={ 12 }>
+        Outlined secondary
+    </Button>
+    <Button variant="fab" color="primary" margin={ 12 }>
+        <IconAdd />
+    </Button>
+    <Button mini variant="fab" color="primary" margin={ 12 }>
+        <IconAdd />
+    </Button>
+    <Button size="small" color="primary" variant="raised" margin={ 12 }>
+        Small
+    </Button>
+    <Button size="medium" color="primary" variant="raised" margin={ 12 }>
+        Medium
+    </Button>
+    <Button size="large" color="primary" variant="raised" margin={ 12 }>
+        Large
+    </Button>
+    <Button disabled variant="raised" color="primary" margin={ 12 }>
+        Disabled
     </Button>
 </Playground>

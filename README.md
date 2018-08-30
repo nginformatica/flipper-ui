@@ -7,12 +7,12 @@ Components and doc about the UI framework made by *NG Informática* to use in th
 Migration status
 
 - [x] Advertise
-- [ ] AppBar/Header
+- [x] AppBar/Header
 - [ ] AutoComplete
-- [ ] Avatar
+- [x] Avatar
 - [ ] Badge
 - [x] Box
-- [ ] Button
+- [x] Button
 - [ ] Icon Button
 - [ ] Carousel/Gallery
 - [ ] Checkbox
@@ -22,16 +22,16 @@ Migration status
 - [ ] Divider
 - [ ] Dropdown/Select
 - [ ] Dropdown Menu
-- [ ] Floating Action Button
+- [x] Floating Action Button
 - [ ] Icon
 - [ ] List
 - [ ] ListItem
-- [ ] Paper
+- [x] Paper
 - [ ] Progress
 - [ ] Sidebar/Drawer
 - [ ] Tabs
-- [ ] TextArea
-- [ ] TextField/Input
+- [x] TextArea
+- [x] TextField/Input
 - [ ] Tooltip
 - [ ] Tree
 - [ ] Typography

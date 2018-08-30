@@ -7,12 +7,13 @@ interface IProps {
     square?: boolean
     elevation?: number
     padding?: number
+    margin?: number
 }
 
-const Paper = ({ children, style, padding, ...otherProps }: IProps) =>
+const Paper = ({ children, style, padding, margin, ...otherProps }: IProps) =>
     <MuiPaper
         { ...otherProps }
-        style={ { ...style, padding } }>
+        style={ { padding, margin, ...style } }>
         { children }
     </MuiPaper>
 
