@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Avatar from './components/Avatar'
 import Button from './components/Button'
+import Checkbox from './components/Checkbox'
 import Header from './components/Header'
 import Paper from './components/Paper'
 import Stepper from './components/Stepper'
@@ -17,6 +18,7 @@ const App = (
             <div>
                 <TextField />
             </div>
+            <Checkbox value='terms' label='I agree with the terms above' />
         </Paper>
     </div>
 )
