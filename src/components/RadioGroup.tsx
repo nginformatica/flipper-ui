@@ -26,6 +26,7 @@ const RadioGroup = ({ options = [], style = {}, title, value, onChange }: IProps
             {
                 options.map(option =>
                     <FormControlLabel
+                        key={ option.value }
                         label={ option.label }
                         value={ option.value }
                         control={ <Radio /> }
