@@ -1,9 +1,9 @@
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Avatar from './components/Avatar'
 import Badge from './components/Badge'
 import Button from './components/Button'
+import Chip from './components/Chip'
 import Header from './components/Header'
 import Paper from './components/Paper'
 import Stepper from './components/Stepper'
@@ -18,18 +18,12 @@ const App = (
             <Button variant='outlined'>Click me</Button>
             <br />
             <br />
-            <Badge counter={ 12 }>
-                <ShoppingCartIcon />
-            </Badge>
-            <br />
-            <br />
             <Badge counter={ 150 } color='secondary'>
                 <Button variant='outlined'>Click me</Button>
             </Badge>
             <br />
-            <Badge counter={ 0 }>
-                <ShoppingCartIcon />
-            </Badge>
+            <Chip label='Hello darkness my old friend' />
+            <Chip label='Hello darkness my old friend' avatar={ <Avatar>HD</Avatar> } />
             <div>
                 <TextField />
             </div>
