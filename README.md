@@ -15,9 +15,8 @@ Migration status
 - [x] Button
 - [ ] Icon Button
 - [ ] Carousel/Gallery
-- [ ] Checkbox
+- [x] Checkbox
 - [x] Chip
-- [X] Checkbox
 - [ ] Chip
 - [ ] DatePicker
 - [ ] Dialog
