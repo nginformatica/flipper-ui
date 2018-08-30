@@ -35,8 +35,8 @@ interface IProps extends WithStyles<typeof styles> {
 const styles = theme => createStyles({
     input: {
         '&:focus': {
-            borderColor: primary.light,
-            boxShadow: `0 0 0 0.2rem ${primary.light}D9`,
+            borderColor: theme.palette.primary.light,
+            boxShadow: `0 0 0 0.2rem ${theme.palette.primary.light}D9`,
         },
         'backgroundColor': theme.palette.common.white,
         'border': `1px solid ${background.dark}`,
