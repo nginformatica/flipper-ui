@@ -10,13 +10,13 @@ Migration status
 - [x] AppBar/Header
 - [ ] AutoComplete
 - [x] Avatar
-- [ ] Badge
+- [x] Badge
 - [x] Box
 - [x] Button
 - [ ] Icon Button
 - [ ] Carousel/Gallery
 - [ ] Checkbox
-- [ ] Chip
+- [x] Chip
 - [ ] DatePicker
 - [ ] Dialog
 - [ ] Divider
