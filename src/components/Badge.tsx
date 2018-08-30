@@ -6,21 +6,25 @@ interface IProps {
     color?: 'default' | 'primary' | 'secondary' | 'error'
     counter: number | string
     children: React.ReactNode
+    limit?: number
 }
 
 class Badge extends Component<IProps> {
     public static defaultProps = {
-        color: 'primary',
-        counter: 1
+        color: 'primary'
     }
 
     public render() {
-        const { children, counter, color, ...otherProps } = this.props
+        const { children, counter, color, limit = 99, ...otherProps } = this.props
 
         return Boolean(counter)
             ? (
                 <MuiBadge
-                    badgeContent={ counter > 99 ? '+99' : counter }
+                    badgeContent={
+                        counter > limit
+                            ? `+${limit}`
+                            : counter
+                    }
                     color={ color }
                     { ...otherProps }>
                     { children }

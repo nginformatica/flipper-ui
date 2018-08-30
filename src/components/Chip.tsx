@@ -6,7 +6,6 @@ interface IProps {
     label: string
     clickable?: boolean
     color?: 'default' | 'primary' | 'secondary'
-    variant?: 'default' | 'outlined'
     avatar?: React.ReactElement<any>
     deleteIcon?: React.ReactElement<any>
     onDelete?: (value) => void
