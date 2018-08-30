@@ -6,7 +6,7 @@
   "private": true,
   "homepage": "https://nginformatica.github.io/flipper-ui/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "build": "webpack --mode production && docz build",
     "start": "webpack-dev-server --open --mode development",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
