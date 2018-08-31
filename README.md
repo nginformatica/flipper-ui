@@ -17,26 +17,25 @@ Migration status
 - [ ] Carousel/Gallery
 - [x] Checkbox
 - [x] Chip
-- [ ] Chip
-- [ ] DatePicker
+- [x] DatePicker
 - [ ] Dialog
 - [ ] Divider
-- [ ] Dropdown/Select
-- [ ] Dropdown Menu
+- [x] Menu
 - [x] Floating Action Button
 - [ ] Icon
-- [ ] List
-- [ ] ListItem
+- [x] List
+- [x] ListItem
 - [x] Paper
-- [ ] Progress
+- [x] Progress
 - [ ] Sidebar/Drawer
 - [x] Switcher
 - [x] Radio
 - [x] RadioGroup
+- [x] Select
 - [x] Snackbar
 - [ ] Tabs
 - [x] TextArea
-- [x] TextField/Input
+- [x] TextField
 - [ ] Tooltip
 - [ ] Tree
 - [ ] Typography

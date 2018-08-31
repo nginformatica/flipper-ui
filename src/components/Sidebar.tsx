@@ -32,7 +32,7 @@ interface IAction {
 const styles = {
     button: {
         alignSelf: 'right',
-        margin: 12,
+        margin: 4,
         padding: '0 0.25em'
     },
     icon: {
@@ -76,7 +76,7 @@ class Sidebar extends Component<IProps> {
         const { open, place, position, top } = this.props
         const width = open
             ? 200
-            : 60
+            : 72
 
         const iconToLeft = (place === 'left' && open)
             || (place === 'right' && !open)

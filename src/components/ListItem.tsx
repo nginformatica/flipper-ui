@@ -1,49 +1,69 @@
-import React from 'react'
-import styled from 'styled-components'
-import { background, text } from '../colors'
+import {
+    ListItem as MuiListItem,
+    ListItemIcon as MuiListItemIcon,
+    ListItemSecondaryAction as MuiListItemSecondaryAction,
+    ListItemText as MuiListItemText
+} from '@material-ui/core'
+import React, { Component, Fragment } from 'react'
 
-interface IProps {
-    key: string | number
+export interface IProps {
     style?: object
-    icon?: React.ReactNode
+    icon?: React.ReactElement<any>
+    action?: React.ReactElement<any>
     name?: string
-    label?: string
-    onlyIcon?: boolean
+    title?: string
+    subtitle?: string
+    iconOnly?: boolean
+    value?: string | number
+    children?: React.ReactNode
     onClick?: (name) => {}
 }
 
-const StyledListItem = styled.div`
-    padding: 0.5em 1em;
-    font-size: 1em;
-    background: ${background.normal};
-    color: ${text};
-    cursor: pointer;
-    height: 36px;
-    transition: all 500ms ease;
-    display: flex;
-    align-items: center;
-    &:hover {
-        background: ${background.dark};
+class ListItem extends Component<IProps> {
+    public renderCustomItem() {
+        const { action, icon, title, subtitle, iconOnly } = this.props
+
+        return (
+            <Fragment>
+                {
+                    icon && (
+                        <MuiListItemIcon>
+                            { icon }
+                        </MuiListItemIcon>
+                    )
+                }
+                {
+                    !iconOnly && (
+                        <MuiListItemText
+                            primary={ title }
+                            secondary={ subtitle }
+                        />
+                    )
+                }
+                {
+                    !iconOnly && action && (
+                        <MuiListItemSecondaryAction>
+                            { action }
+                        </MuiListItemSecondaryAction>
+                    )
+                }
+            </Fragment>
+        )
     }
-`
 
-const Label = styled.span`
-    margin-left: 24px
-`
+    public render() {
+        const { children, value, style, onClick } = this.props
 
-const IconWrapper = styled.div`
-    margin-left: 2px;
-`
-
-const ListItem = ({ icon, label, name, onClick, onlyIcon, style }: IProps) =>
-    <StyledListItem
-        style={ style }
-        title={ label }
-        onClick={ onClick ? () => onClick(name) : null }>
-        <IconWrapper>
-            { icon }
-        </IconWrapper>
-        { !onlyIcon && <Label>{ label }</Label> }
-    </StyledListItem>
+        return (
+            <MuiListItem
+                button
+                value={ value }
+                style={ style }
+                onClick={ () => onClick!(name) }>
+                { children ? children : this.renderCustomItem() }
+            </MuiListItem>
+        )
+    }
+}
 
 export default ListItem

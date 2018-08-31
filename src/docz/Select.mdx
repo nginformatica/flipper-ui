@@ -1,0 +1,28 @@
+---
+name: Select
+route: /select
+---
+
+import Select from '../components/Select'
+import ListItem from '../components/ListItem'
+import { Playground, PropsTable } from 'docz'
+
+# Select
+
+## Properties
+<PropsTable of={ Select } />
+
+## Demo
+<Playground>
+    <Select value={ 3 }>
+        <ListItem value={ 0 }>Option 0</ListItem>
+        <ListItem value={ 1 }>Option 1</ListItem>
+        <ListItem value={ 2 }>Option 2</ListItem>
+        <ListItem value={ 3 }>Option 3</ListItem>
+        <ListItem value={ 4 }>Option 4</ListItem>
+        <ListItem value={ 5 }>Option 5</ListItem>
+        <ListItem value={ 6 }>Option 6</ListItem>
+        <ListItem value={ 7 }>Option 7</ListItem>
+    </Select>
+</Playground>
+
