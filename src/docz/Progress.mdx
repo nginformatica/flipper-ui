@@ -1,0 +1,24 @@
+---
+name: Progress
+route: /progress
+---
+
+import Progress from '../components/Progress'
+import { Playground, PropsTable } from 'docz'
+
+# Paper
+
+## Properties
+<PropsTable of={ Progress } />
+
+## Demo
+<Playground>
+    <Progress margin={ 24 } />
+    <Progress size={ 48 } color="secondary" margin={ 24 } />
+    <Progress size={ 96 } color="inherit" margin={ 24 } />
+    <Progress linear margin={ 24 }  />
+    <Progress linear color="secondary" margin={ 24 } />
+    <Progress linear variant="buffer" value={ 50 } valueBuffer={ 75 } margin={ 24 } />
+    <Progress linear variant="query" margin={ 24 } />
+    <Progress linear color="secondary" variant="query" margin={ 24 } />
+</Playground>
