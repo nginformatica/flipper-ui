@@ -6,6 +6,8 @@ route: /sidebar
 import Sidebar from '../components/Sidebar'
 import Container from '../components/Container'
 import List from '../components/List'
+import ListItem from '../components/ListItem'
+import IconBackup from '@material-ui/icons/Backup'
 import { MdBackup } from 'react-icons/md'
 import { Playground, PropsTable } from 'docz'
 
@@ -19,23 +21,10 @@ import { Playground, PropsTable } from 'docz'
     <Container
         style={ { height: 256 } }>
         <Sidebar onToggle={ () => alert('Toogle sidebar') }>
-            <List
-                onlyIcons
-                options={
-                    [
-                        {
-                            name: 'menu1',
-                            icon: <MdBackup size="24" />,
-                            label: 'Menu 1'
-                        },
-                        {
-                            name: 'menu2',
-                            icon: <MdBackup size="24" />,
-                            label: 'Menu 2'
-                        }
-                    ]
-                }
-            />
+            <List>
+                <ListItem iconOnly icon={ <IconBackup /> } />
+                <ListItem iconOnly icon={ <IconBackup /> } />
+            </List>
         </Sidebar>
     </Container>
 </Playground>
@@ -49,26 +38,14 @@ import { Playground, PropsTable } from 'docz'
             height: 256
         } }>
         <Sidebar
+            open
             place="right"
             position="relative"
             onToggle={ () => alert('Toogle sidebar') }>
-            <List
-                onlyIcons
-                options={
-                    [
-                        {
-                            name: 'menu1',
-                            icon: <MdBackup size="24" />,
-                            label: 'Menu 1'
-                        },
-                        {
-                            name: 'menu2',
-                            icon: <MdBackup size="24" />,
-                            label: 'Menu 2'
-                        }
-                    ]
-                }
-            />
+            <List>
+                <ListItem icon={ <IconBackup /> } title="Item 1" />
+                <ListItem icon={ <IconBackup /> } title="Item 2" />
+            </List>
         </Sidebar>
     </Container>
 </Playground>
@@ -79,22 +56,10 @@ import { Playground, PropsTable } from 'docz'
         <Sidebar
             open
             onToggle={ () => alert('Toogle sidebar') }>
-            <List
-                options={
-                    [
-                        {
-                            name: 'menu1',
-                            icon: <MdBackup size="24" />,
-                            label: 'Menu 1'
-                        },
-                        {
-                            name: 'menu2',
-                            icon: <MdBackup size="24" />,
-                            label: 'Menu 2'
-                        }
-                    ]
-                }
-            />
+            <List>
+                <ListItem icon={ <IconBackup /> } title="Item 1" />
+                <ListItem icon={ <IconBackup /> } title="Item 2" />
+            </List>
         </Sidebar>
     </Container>
 </Playground>

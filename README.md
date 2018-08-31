@@ -21,18 +21,18 @@ Migration status
 - [ ] DatePicker
 - [ ] Dialog
 - [ ] Divider
-- [ ] Dropdown/Select
-- [ ] Dropdown Menu
+- [x] Menu
 - [x] Floating Action Button
 - [ ] Icon
-- [ ] List
-- [ ] ListItem
+- [x] List
+- [x] ListItem
 - [x] Paper
 - [ ] Progress
 - [ ] Sidebar/Drawer
 - [x] Switcher
 - [x] Radio
 - [x] RadioGroup
+- [x] Select
 - [ ] Tabs
 - [x] TextArea
 - [x] TextField/Input
