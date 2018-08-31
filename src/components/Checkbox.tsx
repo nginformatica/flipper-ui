@@ -1,5 +1,5 @@
 import { Checkbox as MuiCheckbox, FormControlLabel, Switch } from '@material-ui/core'
-import React, { Component } from 'react'
+import React, { ChangeEvent, Component } from 'react'
 
 interface IProps {
     name: string
@@ -9,7 +9,7 @@ interface IProps {
     disabled?: boolean
     checked?: boolean
     type?: 'switch' | 'checkbox'
-    onChange?: (event) => void
+    onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
 class Checkbox extends Component<IProps> {

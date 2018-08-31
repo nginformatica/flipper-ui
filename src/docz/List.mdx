@@ -4,7 +4,8 @@ route: /list
 ---
 
 import List from '../components/List'
-import { MdBackup } from 'react-icons/md'
+import ListItem from '../components/ListItem'
+import IconBackup from '@material-ui/icons/Backup'
 import { Playground, PropsTable } from 'docz'
 
 # List
@@ -12,56 +13,16 @@ import { Playground, PropsTable } from 'docz'
 ## Properties
 <PropsTable of={ List } />
 
-## Full list
+## Demo
 <Playground>
-    <List
-        title="My beautiful list"
-        options={
-            [
-                {
-                    icon: <MdBackup size="24" />,
-                    title: 'Menu 1'
-                },
-                {
-                    icon: <MdBackup size="24" />,
-                    title: 'Menu 2'
-                },
-                {
-                    icon: <MdBackup size="24" />,
-                    title: 'Menu 3'
-                },
-                {
-                    icon: <MdBackup size="24" />,
-                    title: 'Menu 4'
-                }
-            ]
-        }
-    />
-</Playground>
-
-## Only icons
-<Playground>
-    <List
-        onlyIcons
-        options={
-            [
-                {
-                    icon: <MdBackup size="24" />,
-                    label: 'Menu 1'
-                },
-                {
-                    icon: <MdBackup size="24" />,
-                    label: 'Menu 2'
-                },
-                {
-                    icon: <MdBackup size="24" />,
-                    label: 'Menu 3'
-                },
-                {
-                    icon: <MdBackup size="24" />,
-                    label: 'Menu 4'
-                }
-            ]
-        }
-    />
+    <List title="My beautiful list">
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 1" />
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 2" />
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 3" />
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 4" />
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 5" />
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 6" />
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 7" />
+        <ListItem icon={ <IconBackup size="24" /> } title="Item 8" />
+    </List>
 </Playground>

@@ -4,7 +4,7 @@ import {
     ListItemSecondaryAction as MuiListItemSecondaryAction,
     ListItemText as MuiListItemText
 } from '@material-ui/core'
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 
 export interface IProps {
     style?: object
@@ -13,37 +13,57 @@ export interface IProps {
     name?: string
     title?: string
     subtitle?: string
-    onlyIcon?: boolean
+    iconOnly?: boolean
+    value?: string | number
+    children?: React.ReactNode
     onClick?: (name) => {}
 }
 
-const ListItem = ({ action, icon, title, subtitle, name, onClick, onlyIcon, style }: IProps) =>
-    <MuiListItem
-        button
-        style={ style }
-        onClick={ () => onClick!(name) }>
-        {
-            icon && (
-                <MuiListItemIcon>
-                    { icon }
-                </MuiListItemIcon>
-            )
-        }
-        {
-            !onlyIcon && (
-                <MuiListItemText
-                    primary={ title }
-                    secondary={ subtitle }
-                />
-            )
-        }
-        {
-            !onlyIcon && action && (
-                <MuiListItemSecondaryAction>
-                    { action }
-                </MuiListItemSecondaryAction>
-            )
-        }
-    </MuiListItem>
+class ListItem extends Component<IProps> {
+    public renderCustomItem() {
+        const { action, icon, title, subtitle, iconOnly } = this.props
+
+        return (
+            <Fragment>
+                {
+                    icon && (
+                        <MuiListItemIcon>
+                            { icon }
+                        </MuiListItemIcon>
+                    )
+                }
+                {
+                    !iconOnly && (
+                        <MuiListItemText
+                            primary={ title }
+                            secondary={ subtitle }
+                        />
+                    )
+                }
+                {
+                    !iconOnly && action && (
+                        <MuiListItemSecondaryAction>
+                            { action }
+                        </MuiListItemSecondaryAction>
+                    )
+                }
+            </Fragment>
+        )
+    }
+
+    public render() {
+        const { children, value, style, onClick } = this.props
+
+        return (
+            <MuiListItem
+                button
+                value={ value }
+                style={ style }
+                onClick={ () => onClick!(name) }>
+                { children ? children : this.renderCustomItem() }
+            </MuiListItem>
+        )
+    }
+}
 
 export default ListItem

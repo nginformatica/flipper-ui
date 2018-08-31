@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core'
 import { TextField as MuiTextField } from '@material-ui/core'
 import { merge } from 'ramda'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { background } from '../colors'
 
 interface IProps extends WithStyles<typeof styles> {
@@ -29,7 +29,7 @@ interface IProps extends WithStyles<typeof styles> {
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
-    onChange?: (event) => {}
+    onChange?: (event: ChangeEvent<HTMLElement>) => {}
 }
 
 const styles = theme => createStyles({
