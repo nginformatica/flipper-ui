@@ -1,0 +1,27 @@
+---
+name: Badge
+route: /badge
+---
+
+import Badge from '../components/Badge'
+import Button from '../components/Button'
+import { Playground, PropsTable } from 'docz'
+
+# Badge
+
+## Properties
+<PropsTable of={ Badge } />
+
+## Normal
+<Playground>
+    <Badge  color='secondary'>Secondary color</Badge>
+</Playground>
+
+## Secondary color with +99 items
+<Playground>
+    <Badge counter={ 150 }>
+        <Button variant='outlined'>
+            Try changing the counter to Zero
+        </Button>
+    </Badge>
+</Playground>
