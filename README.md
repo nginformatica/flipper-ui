@@ -33,6 +33,7 @@ Migration status
 - [x] Switcher
 - [x] Radio
 - [x] RadioGroup
+- [x] Snackbar
 - [ ] Tabs
 - [x] TextArea
 - [x] TextField/Input
