@@ -1,0 +1,19 @@
+---
+name: DateTime
+route: /date-time
+---
+
+import DateTime from '../components/DateTime'
+import { Playground, PropsTable } from 'docz'
+
+# Content
+
+## Properties
+<PropsTable of={ DateTime } />
+
+## Demo
+<Playground>
+    <DateTime label="Birth date" type="date" margin={ 24 } />
+    <DateTime label="Scrum" type="time" margin={ 24 } />
+    <DateTime label="Schedule meeting" type="datetime-local" margin={ 24 } />
+</Playground>
