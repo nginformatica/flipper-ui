@@ -1,6 +1,6 @@
 import {
     Checkbox as MuiCheckbox,
-    FormControlLabel as MuiControlLabel,
+    FormControlLabel as MuiFormControlLabel,
     Switch as MuiSwitch
 } from '@material-ui/core'
 import React, { ChangeEvent, Component } from 'react'
@@ -56,7 +56,7 @@ class Checkbox extends Component<IProps> {
 
         return label
             ? (
-                <MuiControlLabel
+                <MuiFormControlLabel
                     style={ style }
                     label={ label }
                     control={ this.renderControl() }
