@@ -8,7 +8,7 @@ import { merge } from 'ramda'
 import React, { ChangeEvent } from 'react'
 import { background } from '../colors'
 
-interface IProps extends WithStyles<typeof styles> {
+export interface IProps extends WithStyles<typeof styles> {
     autoComplete?: string
     autoFocus?: boolean
     defaultValue?: string | number
@@ -19,7 +19,7 @@ interface IProps extends WithStyles<typeof styles> {
     label?: string
     placeholder?: string
     style?: object
-    margin?: 'none' | 'dense' | 'normal'
+    margin?: number
     multiline?: boolean
     name?: string
     required?: boolean
@@ -57,8 +57,9 @@ const styles = theme => createStyles({
     }
 })
 
-const TextField = ({ classes, InputProps, InputLabelProps, ...otherProps }: IProps) =>
+const TextField = ({ classes, margin, style, InputProps, InputLabelProps, ...otherProps }: IProps) =>
     <MuiTextField
+        style={ { margin, ...style } }
         { ...otherProps }
         InputProps={
             merge(
