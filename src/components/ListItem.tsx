@@ -40,7 +40,7 @@ const ListItem = ({ action, icon, title, subtitle, name, onClick, onlyIcon, styl
         {
             !onlyIcon && action && (
                 <MuiListItemSecondaryAction>
-                    { icon }
+                    { action }
                 </MuiListItemSecondaryAction>
             )
         }
