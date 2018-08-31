@@ -6,7 +6,7 @@ import {
 import { TextField as MuiTextField } from '@material-ui/core'
 import { merge } from 'ramda'
 import React from 'react'
-import { background, primary } from '../colors'
+import { background } from '../colors'
 
 interface IProps extends WithStyles<typeof styles> {
     autoComplete?: string

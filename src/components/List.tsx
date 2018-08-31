@@ -6,7 +6,7 @@ interface IProps {
     onlyIcons?: boolean
     options?: Array<{ name: string, icon: React.ReactNode, label: string }>
     style?: object
-    onClick?: (name) => {}
+    onClick?: (name: string) => {}
 }
 
 const StyledList = styled.div`

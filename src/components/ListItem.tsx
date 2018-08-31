@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { background, text } from '../colors'
 
 interface IProps {
-    key: string | number
     style?: object
     icon?: React.ReactNode
     name?: string
@@ -39,7 +38,7 @@ const ListItem = ({ icon, label, name, onClick, onlyIcon, style }: IProps) =>
     <StyledListItem
         style={ style }
         title={ label }
-        onClick={ onClick ? () => onClick(name) : null }>
+        onClick={ () => onClick!(name) }>
         <IconWrapper>
             { icon }
         </IconWrapper>
