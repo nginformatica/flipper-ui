@@ -1,4 +1,7 @@
-import { List as MuiList, ListSubheader } from '@material-ui/core'
+import {
+    List as MuiList,
+    ListSubheader as MuiListHeader
+} from '@material-ui/core'
 import React from 'react'
 
 interface IProps {
@@ -9,7 +12,7 @@ interface IProps {
 
 const List = ({ title, style, children }: IProps) =>
     <MuiList
-        subheader={ title && <ListSubheader>{ title }</ListSubheader> }
+        subheader={ title && <MuiListHeader>{ title }</MuiListHeader> }
         style={ style }>
         { children }
     </MuiList>
