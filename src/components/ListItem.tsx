@@ -1,48 +1,49 @@
+import {
+    ListItem as MuiListItem,
+    ListItemIcon as MuiListItemIcon,
+    ListItemSecondaryAction as MuiListItemSecondaryAction,
+    ListItemText as MuiListItemText
+} from '@material-ui/core'
 import React from 'react'
-import styled from 'styled-components'
-import { background, text } from '../colors'
 
-interface IProps {
+export interface IProps {
     style?: object
-    icon?: React.ReactNode
+    icon?: React.ReactElement<any>
+    action?: React.ReactElement<any>
     name?: string
-    label?: string
+    title?: string
+    subtitle?: string
     onlyIcon?: boolean
     onClick?: (name) => {}
 }
 
-const StyledListItem = styled.div`
-    padding: 0.5em 1em;
-    font-size: 1em;
-    background: ${background.normal};
-    color: ${text};
-    cursor: pointer;
-    height: 36px;
-    transition: all 500ms ease;
-    display: flex;
-    align-items: center;
-    &:hover {
-        background: ${background.dark};
-    }
-`
-
-const Label = styled.span`
-    margin-left: 24px
-`
-
-const IconWrapper = styled.div`
-    margin-left: 2px;
-`
-
-const ListItem = ({ icon, label, name, onClick, onlyIcon, style }: IProps) =>
-    <StyledListItem
+const ListItem = ({ action, icon, title, subtitle, name, onClick, onlyIcon, style }: IProps) =>
+    <MuiListItem
+        button
         style={ style }
-        title={ label }
         onClick={ () => onClick!(name) }>
-        <IconWrapper>
-            { icon }
-        </IconWrapper>
-        { !onlyIcon && <Label>{ label }</Label> }
-    </StyledListItem>
+        {
+            icon && (
+                <MuiListItemIcon>
+                    { icon }
+                </MuiListItemIcon>
+            )
+        }
+        {
+            !onlyIcon && (
+                <MuiListItemText
+                    primary={ title }
+                    secondary={ subtitle }
+                />
+            )
+        }
+        {
+            !onlyIcon && action && (
+                <MuiListItemSecondaryAction>
+                    { icon }
+                </MuiListItemSecondaryAction>
+            )
+        }
+    </MuiListItem>
 
 export default ListItem

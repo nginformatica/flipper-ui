@@ -1,33 +1,29 @@
+import { List as MuiList, ListSubheader } from '@material-ui/core'
 import React from 'react'
-import styled from 'styled-components'
-import ListItem from './ListItem'
+import ListItem, { IProps as IListItem } from './ListItem'
 
 interface IProps {
+    title?: string
     onlyIcons?: boolean
-    options?: Array<{ name: string, icon: React.ReactNode, label: string }>
+    options?: IListItem[]
     style?: object
     onClick?: (name: string) => {}
 }
 
-const StyledList = styled.div`
-    flex: 1;
-    margin: 6px 0;
-`
-
-const List = ({ options = [], style, onlyIcons, onClick }: IProps) =>
-    <StyledList style={ style }>
+const List = ({ title, options = [], style, onlyIcons, onClick }: IProps) =>
+    <MuiList
+        subheader={ title && <ListSubheader>{ title }</ListSubheader> }
+        style={ style }>
         {
-            options.map(option =>
+            options.map((option, index) =>
                 <ListItem
-                    key={ option.name }
-                    icon={ option.icon }
-                    label={ option.label }
-                    name={ option.name }
+                    { ...option }
+                    key={ index }
                     onlyIcon={ onlyIcons }
                     onClick={ onClick }
                 />
             )
         }
-    </StyledList>
+    </MuiList>
 
 export default List

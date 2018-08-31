@@ -4,10 +4,10 @@ import Avatar from './components/Avatar'
 import Button from './components/Button'
 import Checkbox from './components/Checkbox'
 import Header from './components/Header'
+import ListItem from './components/ListItem'
 import Paper from './components/Paper'
 import Stepper from './components/Stepper'
 import TextField from './components/TextField'
-import ListItem from './components/ListItem'
 
 const App = (
     <div>
@@ -21,7 +21,7 @@ const App = (
             </div>
             <Checkbox name='terms' label='I agree with the terms above' />
             <Checkbox name='terms' />
-            <ListItem label={ 'My list item' } />
+            <ListItem title={ 'My list item' } />
         </Paper>
     </div>
 )
