@@ -22,10 +22,8 @@ const Content = styled.div`
 `
 
 class Pagination extends Component<IProps> {
-    public static defaultProps = { pages: 1 }
-
     public render() {
-        const pages = times(inc, this.props.pages)
+        const pages = times(inc, this.props.pages || 1)
 
         return (
             <Content style={ this.props.style }>

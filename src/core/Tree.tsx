@@ -27,7 +27,7 @@ class Tree extends Component<IProps> {
     }
 
     public render() {
-        return this.props.nodes.map((node, index) =>
+        return (this.props.nodes || []).map((node, index) =>
             this.renderNode(node, index, true)
         )
     }

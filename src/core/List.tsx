@@ -12,7 +12,11 @@ interface IProps {
 
 const List = ({ title, style, children }: IProps) =>
     <MuiList
-        subheader={ title && <MuiListHeader>{ title }</MuiListHeader> }
+        subheader={
+            title
+                ? <MuiListHeader>{ title }</MuiListHeader>
+                : undefined
+        }
         style={ style }>
         { children }
     </MuiList>

@@ -6,9 +6,12 @@
         "module": "commonjs", // specify module code generation
         "jsx": "react", // use typescript to transpile jsx to js
         "target": "es6", // specify ECMAScript target version
-        "allowJs": true, // allow a partial TypeScript and JavaScript codebase,
         "esModuleInterop": true,
-        "moduleResolution": "node"
+        "declaration": true,
+        "moduleResolution": "node",
+        "types": [
+            "node"
+        ]
     },
     "include": [
         "./src/*"

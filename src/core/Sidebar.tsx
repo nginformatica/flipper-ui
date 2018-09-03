@@ -67,13 +67,8 @@ const Action = styled.div<IAction>`
 `
 
 class Sidebar extends Component<IProps> {
-    public static defaultProps = {
-        place: 'left',
-        position: 'relative'
-    }
-
     public render() {
-        const { open, place, position, top } = this.props
+        const { open, place = 'left', position = 'relative', top } = this.props
         const width = open
             ? 200
             : 72

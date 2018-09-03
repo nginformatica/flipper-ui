@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core'
 import React, { Component, Fragment } from 'react'
 
-export interface IProps {
+interface IProps {
     style?: object
     icon?: React.ReactElement<any>
     action?: React.ReactElement<any>
