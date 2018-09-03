@@ -17,6 +17,7 @@
   "dependencies": {
     "@material-ui/core": "3.0.0",
     "@material-ui/icons": "3.0.0",
+    "@types/node": "10.9.4",
     "@types/ramda": "0.25.36",
     "@types/react": "16.4.11",
     "ramda": "0.25.0",
