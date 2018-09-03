@@ -6,7 +6,7 @@ interface IProps {
     color?: 'primary' | 'secondary' | 'default'
     value?: string
     style?: object
-    onChange?: (event: ChangeEvent<HTMLElement>) => void
+    onChange?: (event: ChangeEvent<HTMLElement>) => {}
 }
 
 const Radio = (props: IProps) => <MuiRadio { ...props } />

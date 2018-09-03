@@ -8,7 +8,7 @@ interface IProps {
     color?: 'default' | 'primary' | 'secondary'
     avatar?: React.ReactElement<any>
     deleteIcon?: React.ReactElement<any>
-    onDelete?: (value) => void
+    onDelete?: (value) => {}
 }
 
 const styles = theme => ({

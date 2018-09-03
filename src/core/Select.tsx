@@ -6,8 +6,8 @@ interface IProps {
     children?: React.ReactNode
     value?: string | number
     multiple?: boolean
-    onClose?: () => void
-    onChange?: (event: ChangeEvent<HTMLElement>) => void
+    onClose?: () => {}
+    onChange?: (event: ChangeEvent<HTMLElement>) => {}
 }
 
 const Select = ({ children, ...otherProps }: IProps) =>

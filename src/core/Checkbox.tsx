@@ -13,7 +13,7 @@ interface IProps {
     disabled?: boolean
     checked?: boolean
     type?: 'switch' | 'checkbox'
-    onChange?: (event: ChangeEvent<HTMLElement>) => void
+    onChange?: (event: ChangeEvent<HTMLElement>) => {}
 }
 
 class Checkbox extends Component<IProps> {

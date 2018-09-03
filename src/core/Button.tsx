@@ -12,7 +12,7 @@ interface IProps {
     fullWidth?: boolean
     variant?: 'text' | 'flat' | 'outlined' | 'contained' | 'raised' | 'fab' | 'extendedFab'
     children?: React.ReactNode
-    onClick?: () => void
+    onClick?: () => {}
 }
 
 const Button = ({ children, margin, style = {}, ...otherProps }: IProps)  =>
