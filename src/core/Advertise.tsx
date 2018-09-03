@@ -2,7 +2,7 @@ import React from 'react'
 import Paper from './Paper'
 import Typography from './Typography'
 
-interface IDefault {
+export interface IDefault {
     style?: object
     className?: string
 }
@@ -26,7 +26,7 @@ const Advertise = ({ comment, author, commentStyle, authorStyle, ...otherProps }
         </Typography>
         <Typography
             margin={ 12 }
-            variant='caption'
+            variant="caption"
             style={ authorStyle }>
             { `- ${author}` }
         </Typography>
