@@ -17,7 +17,7 @@ const Paper_1 = __importDefault(require("./Paper"));
 const Typography_1 = __importDefault(require("./Typography"));
 const Advertise = (_a) => {
     var { comment, author, commentStyle, authorStyle } = _a, otherProps = __rest(_a, ["comment", "author", "commentStyle", "authorStyle"]);
-    return react_1.default.createElement(Paper_1.default, Object.assign({ padding: 16, margin: 12 }, otherProps),
+    return react_1.default.createElement(Paper_1.default, Object.assign({ padding: 16 }, otherProps),
         react_1.default.createElement(Typography_1.default, { margin: 12, style: commentStyle }, comment),
         react_1.default.createElement(Typography_1.default, { margin: 12, variant: "caption", style: authorStyle }, `- ${author}`));
 };

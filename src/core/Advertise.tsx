@@ -17,7 +17,6 @@ interface IProps extends IDefault {
 const Advertise = ({ comment, author, commentStyle, authorStyle, ...otherProps }: IProps) =>
     <Paper
         padding={ 16 }
-        margin={ 12 }
         { ...otherProps }>
         <Typography
             margin={ 12 }
