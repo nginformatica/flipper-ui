@@ -6,7 +6,7 @@ interface IProps {
     anchorEl?: HTMLElement
     children?: React.ReactNode
     menuProps?: object
-    onClose?: () => {}
+    onClose?: () => void
 }
 
 const Menu = ({ children, menuProps, ...otherProps }: IProps) =>

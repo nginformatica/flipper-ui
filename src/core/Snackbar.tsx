@@ -24,7 +24,7 @@ interface IProps extends WithStyles<typeof styles> {
         horizontal: 'left' | 'center' | 'right',
         vertical: 'top' | 'center' | 'bottom'
    }
-    onClose?: (value) => {}
+    onClose?: (value) => void
 }
 
 const variants = {

@@ -6,7 +6,7 @@ interface IProps {
     children?: React.ReactNode
     value?: string | number
     multiple?: boolean
-    onClose?: () => {}
+    onClose?: () => void
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
