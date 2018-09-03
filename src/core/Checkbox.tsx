@@ -4,12 +4,13 @@ import {
     Switch as MuiSwitch
 } from '@material-ui/core'
 import React, { ChangeEvent, Component } from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     name: string
     label?: string
-    style?: object
     color?: 'primary' | 'secondary' | 'default'
+    className?: string
     disabled?: boolean
     checked?: boolean
     type?: 'switch' | 'checkbox'
@@ -52,12 +53,13 @@ class Checkbox extends Component<IProps> {
     }
 
     public render() {
-        const { label, style } = this.props
+        const { label, style, className } = this.props
 
         return label
             ? (
                 <MuiFormControlLabel
                     style={ style }
+                    className={ className }
                     label={ label }
                     control={ this.renderControl() }
                 />

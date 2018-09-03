@@ -1,7 +1,8 @@
 import React from 'react'
+import { IDefault } from './Advertise'
 import TextField, { IProps as ITextField } from './TextField'
 
-interface IProps {
+interface IProps extends IDefault {
     type: 'date' | 'time' | 'datetime-local'
 }
 

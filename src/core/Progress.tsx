@@ -3,6 +3,7 @@ import {
     LinearProgress as MuiLinearProgress
 } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
 interface ILinear {
     color?: 'primary' | 'secondary'
@@ -16,10 +17,9 @@ interface ICircular {
     variant?: 'determinate' | 'indeterminate' | 'static'
 }
 
-interface IProps {
+interface IProps extends IDefault {
     value?: number
     linear?: boolean
-    style?: object
     margin?: number | string
 }
 

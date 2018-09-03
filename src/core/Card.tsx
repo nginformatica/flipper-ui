@@ -2,17 +2,17 @@ import { divide, multiply, pipe, prop } from 'ramda'
 import React from 'react'
 import styled from 'styled-components'
 import { primary, white } from '../colors'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     xs?: number
     title?: string
     children?: React.ReactNode
-    style: object
 }
 
 interface IContainer {
     xs: number
-    style: object
+    style?: object
 }
 
 // __ from ramda was not recognized by TS
@@ -41,10 +41,11 @@ const Content = styled.div`
     border: 1px solid ${primary.normal};
 `
 
-const Card = ({ children, style, title, xs = 12 }: IProps) =>
+const Card = ({ children, style, title, xs = 12, className }: IProps) =>
     <Container
         xs={ xs }
-        style={ style }>
+        style={ style }
+        className={ className }>
         <Header>{ title }</Header>
         <Content>{ children }</Content>
     </Container>

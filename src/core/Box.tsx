@@ -1,27 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
-import { white } from '../colors'
+import { IDefault } from './Advertise'
+import Paper from './Paper'
 
-interface IProps {
-    style?: object
+interface IProps extends IDefault {
     primary?: boolean
     children?: React.ReactNode
 }
 
-const StyledBox = styled.div`
-    background-color: ${white};
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.2em;
-    opacity: 0.95;
-    border-radius: 6px;
-    min-height: 400px;
-    margin-bottom: 10px;
-    padding: 28px;
-`
+const styles = {
+    box: {
+        minHeight: '400px',
+        padding: '28px'
+    }
+}
 
-const Box = ({ children, ...otherProps }: IProps) =>
-    <StyledBox { ...otherProps }>
+const Box = ({ children, style, ...otherProps }: IProps) =>
+    <Paper
+        style={ { ...styles.box, ...style } }
+        { ...otherProps }>
         { children }
-    </StyledBox>
+    </Paper>
 
 export default Box

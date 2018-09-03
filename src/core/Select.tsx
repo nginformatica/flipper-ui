@@ -1,7 +1,8 @@
 import { Select as MuiSelect } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     autoWidth?: boolean
     children?: React.ReactNode
     value?: string | number

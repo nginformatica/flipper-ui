@@ -3,9 +3,9 @@ import {
     withStyles
 } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
-    style?: object
+interface IProps extends IDefault {
     sizes?: string
     src?: string
     imgProps?: object

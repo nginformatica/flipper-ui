@@ -3,14 +3,12 @@ import {
     StepLabel,
     Stepper as MuiStepper
 } from '@material-ui/core'
-import React, { Component, Fragment } from 'react'
-import Avatar from './Avatar'
-import Line from './Line'
+import React, { Component } from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     active?: number
     steps: string[]
-    style?: object
     bottomLabel?: boolean
 }
 
@@ -18,13 +16,14 @@ class Stepper extends Component<IProps> {
     public static defaultProps = { active: 0 }
 
     public render() {
-        const { active, bottomLabel, steps, style } = this.props
+        const { active, bottomLabel, steps, style, className } = this.props
 
         return (
             <MuiStepper
                 alternativeLabel={ bottomLabel }
                 activeStep={ active }
-                style={ style }>
+                style={ style }
+                className={ className }>
                 {
                     steps.map((step, index) =>
                         <Step key={ index }>

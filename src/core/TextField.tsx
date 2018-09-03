@@ -7,8 +7,9 @@ import { TextField as MuiTextField } from '@material-ui/core'
 import { merge } from 'ramda'
 import React, { ChangeEvent } from 'react'
 import { background } from '../colors'
+import { IDefault } from './Advertise'
 
-export interface IProps extends WithStyles<typeof styles> {
+export interface IProps extends IDefault {
     autoComplete?: string
     autoFocus?: boolean
     defaultValue?: string | number
@@ -18,7 +19,6 @@ export interface IProps extends WithStyles<typeof styles> {
     id?: string
     label?: string
     placeholder?: string
-    style?: object
     margin?: number
     multiline?: boolean
     name?: string
@@ -26,6 +26,11 @@ export interface IProps extends WithStyles<typeof styles> {
     select?: boolean
     type?: string
     value?: string | number | boolean | string[]
+    classes: {
+        input: string
+        root: string
+        label: string
+    }
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object

@@ -1,7 +1,8 @@
 import { Menu as MuiMenu } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     open: boolean
     anchorEl?: HTMLElement
     children?: React.ReactNode

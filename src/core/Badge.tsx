@@ -1,8 +1,8 @@
 import { Badge as MuiBadge } from '@material-ui/core'
 import React, { Component } from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
-    style?: object
+interface IProps extends IDefault {
     color?: 'default' | 'primary' | 'secondary' | 'error'
     counter: number | string
     children: React.ReactNode
@@ -11,7 +11,8 @@ interface IProps {
 
 class Badge extends Component<IProps> {
     public static defaultProps = {
-        color: 'primary'
+        color: 'primary',
+        limit: 99
     }
 
     public render() {

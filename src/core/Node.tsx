@@ -3,11 +3,11 @@ import React from 'react'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import styled from 'styled-components'
 import { background, primary, transparent } from '../colors'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     id: number
     name: string
-    style: object
     children: React.ReactNode
 }
 
@@ -67,12 +67,13 @@ class Node extends React.Component<IProps, IState> {
 
     public render() {
         const { open } = this.state
-        const { id, name, children, style } = this.props
+        const { id, name, children, style, className } = this.props
 
         return (
             <Ul
                 key={ id || name }
-                style={ style }>
+                style={ style }
+                className={ className }>
                 <Li
                     inset={ Boolean(children) }
                     onClick={ this.handleToggleOpen.bind(this) }>

@@ -1,9 +1,9 @@
 import { Paper as MuiPaper } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     children?: React.ReactNode
-    style?: object
     square?: boolean
     elevation?: number
     padding?: number

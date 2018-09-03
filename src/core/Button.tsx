@@ -1,9 +1,9 @@
 import { Button as MuiButton } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     mini?: boolean
-    style?: object
     disabled?: boolean
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'

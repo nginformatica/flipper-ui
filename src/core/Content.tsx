@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     children?: React.ReactNode
-    style?: object
 }
 
 const StyledContent = styled.main`
@@ -11,8 +11,8 @@ const StyledContent = styled.main`
     transition: all 500ms ease;
 `
 
-const Content = ({ children, style }: IProps) =>
-    <StyledContent style={ style }>
+const Content = ({ children, ...otherProps }: IProps) =>
+    <StyledContent { ...otherProps }>
         { children }
     </StyledContent>
 
