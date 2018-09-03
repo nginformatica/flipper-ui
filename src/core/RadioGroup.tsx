@@ -13,7 +13,7 @@ interface IProps {
     value?: string
     options?: Array<{ value: string, label?: string }>
     style?: object
-    onChange?: (event: ChangeEvent<HTMLElement>) => {}
+    onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
 const RadioGroup = ({ options = [], style = {}, title, value, onChange }: IProps) =>

@@ -7,7 +7,7 @@ interface IProps {
     value?: string | number
     multiple?: boolean
     onClose?: () => {}
-    onChange?: (event: ChangeEvent<HTMLElement>) => {}
+    onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
 const Select = ({ children, ...otherProps }: IProps) =>
