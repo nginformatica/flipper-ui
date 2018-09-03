@@ -20,12 +20,11 @@ interface ICircular {
 interface IProps extends IDefault {
     value?: number
     linear?: boolean
-    margin?: number | string
 }
 
-const Progress = ({ linear, style, margin, ...otherProps }: IProps & ICircular & ILinear) =>
+const Progress = ({ linear, style, margin, padding, ...otherProps }: IProps & ICircular & ILinear) =>
     linear
-        ? <MuiLinearProgress style={ { margin, ...style } } { ...otherProps } />
-        : <MuiCircularProgress style={ { margin, ...style } }  { ...otherProps } />
+        ? <MuiLinearProgress style={ { margin, padding, ...style } } { ...otherProps } />
+        : <MuiCircularProgress style={ { margin, padding, ...style } }  { ...otherProps } />
 
 export default Progress

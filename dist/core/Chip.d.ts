@@ -8,5 +8,5 @@ interface IProps extends IDefault {
     deleteIcon?: React.ReactElement<any>;
     onDelete?: (value: any) => void;
 }
-declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "color" | "label" | "style" | "className" | "avatar" | "clickable" | "deleteIcon" | "onDelete">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"root">>>;
+declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "color" | "margin" | "padding" | "label" | "style" | "className" | "avatar" | "clickable" | "deleteIcon" | "onDelete">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"root">>>;
 export default _default;

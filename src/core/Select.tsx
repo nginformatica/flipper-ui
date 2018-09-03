@@ -11,8 +11,10 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Select = ({ children, ...otherProps }: IProps) =>
-    <MuiSelect {...otherProps }>
+const Select = ({ children, style, margin, padding, ...otherProps }: IProps) =>
+    <MuiSelect
+        style={ { margin, padding, ...style } }
+        {...otherProps }>
         { children }
     </MuiSelect>
 

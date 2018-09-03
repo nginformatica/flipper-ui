@@ -10,5 +10,5 @@ interface IProps extends IDefault {
     };
     children: React.ReactNode;
 }
-declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "style" | "children" | "classes" | "className" | "primary" | "sizes" | "src" | "imgProps">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"primary">>>;
+declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "margin" | "padding" | "style" | "children" | "classes" | "className" | "primary" | "sizes" | "src" | "imgProps">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"primary">>>;
 export default _default;

@@ -6,8 +6,6 @@ interface IProps extends IDefault {
     children?: React.ReactNode
     square?: boolean
     elevation?: number
-    padding?: number
-    margin?: number
 }
 
 const Paper = ({ children, style = {}, padding, margin, ...otherProps }: IProps) =>

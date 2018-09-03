@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@material-ui/core");
 const react_1 = __importDefault(require("react"));
 const Progress = (_a) => {
-    var { linear, style, margin } = _a, otherProps = __rest(_a, ["linear", "style", "margin"]);
+    var { linear, style, margin, padding } = _a, otherProps = __rest(_a, ["linear", "style", "margin", "padding"]);
     return linear
-        ? react_1.default.createElement(core_1.LinearProgress, Object.assign({ style: Object.assign({ margin }, style) }, otherProps))
-        : react_1.default.createElement(core_1.CircularProgress, Object.assign({ style: Object.assign({ margin }, style) }, otherProps));
+        ? react_1.default.createElement(core_1.LinearProgress, Object.assign({ style: Object.assign({ margin, padding }, style) }, otherProps))
+        : react_1.default.createElement(core_1.CircularProgress, Object.assign({ style: Object.assign({ margin, padding }, style) }, otherProps));
 };
 exports.default = Progress;
 //# sourceMappingURL=Progress.js.map

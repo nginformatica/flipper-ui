@@ -10,7 +10,6 @@ export interface IProps extends IDefault {
     id?: string;
     label?: string;
     placeholder?: string;
-    margin?: number;
     multiline?: boolean;
     name?: string;
     required?: boolean;
@@ -27,5 +26,5 @@ export interface IProps extends IDefault {
     SelectProps?: object;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
-declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "margin" | "required" | "disabled" | "error" | "label" | "select" | "style" | "classes" | "name" | "defaultValue" | "className" | "id" | "placeholder" | "onChange" | "type" | "autoFocus" | "value" | "fullWidth" | "multiline" | "autoComplete" | "InputProps" | "InputLabelProps" | "SelectProps">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"input" | "label" | "root">>>;
+declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "margin" | "padding" | "required" | "disabled" | "error" | "label" | "select" | "style" | "classes" | "name" | "defaultValue" | "className" | "id" | "placeholder" | "onChange" | "type" | "autoFocus" | "value" | "fullWidth" | "multiline" | "autoComplete" | "InputProps" | "InputLabelProps" | "SelectProps">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"input" | "label" | "root">>>;
 export default _default;

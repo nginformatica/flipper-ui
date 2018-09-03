@@ -15,5 +15,5 @@ interface IProps extends IDefault {
     };
     onClose?: (value: any) => void;
 }
-declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "message" | "style" | "open" | "classes" | "className" | "onClose" | "variant" | "anchorOrigin" | "autoHide">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"message" | "icon">>>;
+declare const _default: React.ComponentType<import("@material-ui/core").Overwrite<Pick<IProps, "margin" | "padding" | "message" | "style" | "open" | "classes" | "className" | "onClose" | "variant" | "anchorOrigin" | "autoHide">, import("@material-ui/core/styles/withStyles").StyledComponentProps<"message" | "icon">>>;
 export default _default;

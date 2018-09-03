@@ -19,7 +19,6 @@ export interface IProps extends IDefault {
     id?: string
     label?: string
     placeholder?: string
-    margin?: number
     multiline?: boolean
     name?: string
     required?: boolean
@@ -62,9 +61,9 @@ const styles = theme => createStyles({
     }
 })
 
-const TextField = ({ classes, margin, style, InputProps, InputLabelProps, ...otherProps }: IProps) =>
+const TextField = ({ classes, margin, padding, style, InputProps, InputLabelProps, ...otherProps }: IProps) =>
     <MuiTextField
-        style={ { margin, ...style } }
+        style={ { margin, padding, ...style } }
         { ...otherProps }
         InputProps={
             merge(

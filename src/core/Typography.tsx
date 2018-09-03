@@ -3,8 +3,6 @@ import React from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    margin?: number
-    padding?: number
     noWrap?: boolean
     children?: React.ReactNode
     variant?:

@@ -1,6 +1,8 @@
 export interface IDefault {
     style?: object;
     className?: string;
+    margin?: number | string;
+    padding?: number | string;
 }
 interface IProps extends IDefault {
     comment: string;

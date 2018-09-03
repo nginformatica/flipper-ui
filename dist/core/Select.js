@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@material-ui/core");
 const react_1 = __importDefault(require("react"));
 const Select = (_a) => {
-    var { children } = _a, otherProps = __rest(_a, ["children"]);
-    return react_1.default.createElement(core_1.Select, Object.assign({}, otherProps), children);
+    var { children, style, margin, padding } = _a, otherProps = __rest(_a, ["children", "style", "margin", "padding"]);
+    return react_1.default.createElement(core_1.Select, Object.assign({ style: Object.assign({ margin, padding }, style) }, otherProps), children);
 };
 exports.default = Select;
 //# sourceMappingURL=Select.js.map

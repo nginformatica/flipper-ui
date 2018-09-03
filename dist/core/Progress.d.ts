@@ -12,7 +12,6 @@ interface ICircular {
 interface IProps extends IDefault {
     value?: number;
     linear?: boolean;
-    margin?: number | string;
 }
-declare const Progress: ({ linear, style, margin, ...otherProps }: IProps & ICircular & ILinear) => JSX.Element;
+declare const Progress: ({ linear, style, margin, padding, ...otherProps }: IProps & ICircular & ILinear) => JSX.Element;
 export default Progress;

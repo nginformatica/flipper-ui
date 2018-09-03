@@ -8,5 +8,5 @@ interface IProps extends IDefault {
     onClose?: () => void;
     onChange?: (event: ChangeEvent<HTMLElement>) => void;
 }
-declare const Select: ({ children, ...otherProps }: IProps) => JSX.Element;
+declare const Select: ({ children, style, margin, padding, ...otherProps }: IProps) => JSX.Element;
 export default Select;

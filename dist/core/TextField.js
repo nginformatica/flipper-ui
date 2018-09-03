@@ -42,8 +42,8 @@ const styles = theme => core_1.createStyles({
     }
 });
 const TextField = (_a) => {
-    var { classes, margin, style, InputProps, InputLabelProps } = _a, otherProps = __rest(_a, ["classes", "margin", "style", "InputProps", "InputLabelProps"]);
-    return react_1.default.createElement(core_2.TextField, Object.assign({ style: Object.assign({ margin }, style) }, otherProps, { InputProps: ramda_1.merge({
+    var { classes, margin, padding, style, InputProps, InputLabelProps } = _a, otherProps = __rest(_a, ["classes", "margin", "padding", "style", "InputProps", "InputLabelProps"]);
+    return react_1.default.createElement(core_2.TextField, Object.assign({ style: Object.assign({ margin, padding }, style) }, otherProps, { InputProps: ramda_1.merge({
             classes: {
                 input: classes.input,
                 root: classes.root
