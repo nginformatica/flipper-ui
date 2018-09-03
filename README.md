@@ -37,4 +37,4 @@ Migration status
 - [x] TextField
 - [ ] Tooltip
 - [ ] Tree
-- [ ] Typography
+- [x] Typography
