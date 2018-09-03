@@ -14,15 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const Paper_1 = __importDefault(require("./Paper"));
-const styles = {
-    box: {
-        minHeight: '400px',
-        padding: '28px'
-    }
-};
 const Box = (_a) => {
-    var { children, style } = _a, otherProps = __rest(_a, ["children", "style"]);
-    return react_1.default.createElement(Paper_1.default, Object.assign({ style: Object.assign({}, styles.box, style) }, otherProps), children);
+    var { children, style, minHeight = 400 } = _a, otherProps = __rest(_a, ["children", "style", "minHeight"]);
+    return react_1.default.createElement(Paper_1.default, Object.assign({ padding: 24, style: Object.assign({ minHeight }, style) }, otherProps), children);
 };
 exports.default = Box;
 //# sourceMappingURL=Box.js.map
