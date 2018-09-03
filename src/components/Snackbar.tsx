@@ -3,20 +3,22 @@ import {
     Snackbar as MuiSnackbar,
     SnackbarContent as MuiSnackbarContent
 } from '@material-ui/core'
-import { amber, green } from '@material-ui/core/colors'
+import { amber, blue, green, red } from '@material-ui/core/colors'
 import { withStyles, WithStyles } from '@material-ui/core/styles'
 import {
-    CheckCircle as CheckCircleIcon,
-    Close as CloseIcon,
-    Error as ErrorIcon,
-    Info as InfoIcon,
-    Warning as WarningIcon
+    CheckCircle as IconCheck,
+    Close as IconClose,
+    Error as IconError,
+    Info as IconInfo,
+    Warning as IconWarning
 } from '@material-ui/icons'
 import React from 'react'
 
 interface IProps extends WithStyles<typeof styles> {
-    open: boolean
+    autoHide?: number,
     message: React.ReactNode
+    open: boolean
+    style?: object
     variant?: 'success' | 'warning' | 'error' | 'info'
     anchorOrigin?: {
         horizontal: 'left' | 'center' | 'right',
@@ -25,67 +27,64 @@ interface IProps extends WithStyles<typeof styles> {
     onClose?: (value) => void
 }
 
-const variantIcon = {
-    error: ErrorIcon,
-    info: InfoIcon,
-    success: CheckCircleIcon,
-    warning: WarningIcon,
+const variants = {
+    error: {
+        color: red[700],
+        icon: IconError
+    },
+    info: {
+        color: blue[500],
+        icon: IconInfo
+    },
+    success: {
+        color: green[700],
+        icon: IconCheck
+    },
+    warning: {
+        color: amber[700],
+        icon: IconWarning
+    }
 }
 
 const styles = theme => ({
-    error: {
-        backgroundColor: theme.palette.error.dark
-    },
     icon: {
         fontSize: 20,
-    },
-    iconVariant: {
         marginRight: theme.spacing.unit,
         opacity: 0.9
-    },
-    info: {
-        backgroundColor: theme.palette.primary.dark
     },
     message: {
         alignItems: 'center',
         display: 'flex'
-    },
-    success: {
-        backgroundColor: green[600]
-    },
-    warning: {
-        backgroundColor: amber[700]
     }
 })
 
 const SnackBar = (props: IProps) => {
     const {
+        anchorOrigin,
+        autoHide = 6000,
         classes,
         message,
         onClose,
-        variant = 'success',
         open,
-        anchorOrigin,
+        style,
+        variant = 'info',
         ...other
     } = props
-    const Icon = variantIcon[variant]
+    const Icon = variants[variant].icon
 
     return (
         <MuiSnackbar
             anchorOrigin={ anchorOrigin }
             open={ open }
             autoHideDuration={ 6000 }
+            style={ style }
             onClose={ onClose }>
             <MuiSnackbarContent
-                className={ classes[variant] }
+                style={ { backgroundColor: variants[variant].color } }
                 aria-describedby='client-snackbar'
                 message={
                     <span id='client-snackbar' className={ classes.message }>
-                        <Icon className={
-                            classes.iconVariant
-                                ? classes.iconVariant
-                                : classes.icon
-                            } />
+                        <Icon className={ classes.icon } />
                         { message }
                     </span>
                 }
@@ -95,7 +94,7 @@ const SnackBar = (props: IProps) => {
                         aria-label='Close'
                         color='inherit'
                         onClick={ onClose }>
-                        <CloseIcon className={ classes.icon } />
+                        <IconClose />
                     </MuiIconButton>,
                 ] }
                 { ...other }
