@@ -1,0 +1,51 @@
+---
+name: Snackbar
+route: /snackbar
+---
+
+import Snackbar from '../components/Snackbar'
+import { Playground, PropsTable } from 'docz'
+
+# Snackbar
+
+## Properties
+<PropsTable of={ Snackbar } />
+
+## Success
+<Playground>
+    <Snackbar
+        open={ false }
+        anchorOrigin={ {
+            horizontal: 'right',
+            vertical: 'bottom'
+        } }
+        message='In the town where I was born, Lived a man who sailed to sea'
+    />
+</Playground>
+
+## Info
+<Playground>
+    <Snackbar
+        open={ false }
+        variant='info'
+        message='In the town where I was born, Lived a man who sailed to sea'
+    />
+</Playground>
+
+## Warning
+<Playground>
+    <Snackbar
+        open={ false }
+        variant='warning'
+        message='In the town where I was born, Lived a man who sailed to sea'
+    />
+</Playground>
+
+## Error
+<Playground>
+    <Snackbar
+        open={ false }
+        variant='error'
+        message='In the town where I was born, Lived a man who sailed to sea'
+    />
+</Playground>
