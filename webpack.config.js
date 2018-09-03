@@ -1,8 +1,7 @@
 const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    entry: ['./src/App.tsx'],
+    entry: ['./src/index.ts'],
     resolve: {
         extensions: ['.js', '.ts', '.jsx', '.tsx'],
         alias: { react: path.resolve(__dirname, 'node_modules', 'react') }
@@ -20,21 +19,7 @@ module.exports = {
                 enforce: 'pre',
                 test: /\.js$/,
                 loader: 'source-map-loader'
-            },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader'
-                    }
-                ]
             }
         ]
-    },
-    plugins: [
-        new HtmlWebPackPlugin({
-            template: './src/assets/index.html',
-            filename: './index.html'
-        })
-    ]
+    }
 }
