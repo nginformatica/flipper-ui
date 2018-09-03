@@ -29,7 +29,7 @@ export interface IProps extends WithStyles<typeof styles> {
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
-    onChange?: (event: ChangeEvent<HTMLElement>) => {}
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 const styles = theme => createStyles({
