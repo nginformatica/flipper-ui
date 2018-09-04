@@ -5,9 +5,9 @@ import {
     ListItemText as MuiListItemText
 } from '@material-ui/core'
 import React, { Component, Fragment } from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
-    style?: object
+interface IProps extends IDefault {
     icon?: React.ReactElement<any>
     action?: React.ReactElement<any>
     name?: string
@@ -52,13 +52,14 @@ class ListItem extends Component<IProps> {
     }
 
     public render() {
-        const { children, value, style, onClick } = this.props
+        const { className, children, value, style = {}, padding, margin, onClick } = this.props
 
         return (
             <MuiListItem
                 button
                 value={ value }
-                style={ style }
+                style={ { padding, margin, ...style } }
+                className={ className }
                 onClick={ () => onClick!(name) }>
                 { children ? children : this.renderCustomItem() }
             </MuiListItem>

@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { background, primary as primaryColor } from '../colors'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     primary?: boolean
-    style?: object
 }
 
 const StyledLine = styled.hr<IProps>`
@@ -15,9 +15,9 @@ const StyledLine = styled.hr<IProps>`
     };
 `
 
-const Line = ({ primary, style }: IProps) =>
+const Line = ({ primary, padding, margin, style }: IProps) =>
     <StyledLine
-        style={ style }
+        style={ { padding, margin, ...style } }
         primary={ primary }
     />
 

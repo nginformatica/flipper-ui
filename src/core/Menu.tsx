@@ -1,7 +1,8 @@
 import { Menu as MuiMenu } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     open: boolean
     anchorEl?: HTMLElement
     children?: React.ReactNode
@@ -9,8 +10,11 @@ interface IProps {
     onClose?: () => void
 }
 
-const Menu = ({ children, menuProps, ...otherProps }: IProps) =>
-    <MuiMenu MenuListProps={ menuProps } { ...otherProps }>
+const Menu = ({ children, menuProps, padding, margin, style = {}, ...otherProps }: IProps) =>
+    <MuiMenu
+        MenuListProps={ menuProps }
+        style={ { padding, margin, ...style } }
+        { ...otherProps }>
         { children }
     </MuiMenu>
 

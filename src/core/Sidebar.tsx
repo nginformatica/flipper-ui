@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
 import { background } from '../colors'
+import { IDefault } from './Advertise'
 import Button from './Button'
 
-interface IProps {
+interface IProps extends IDefault {
     top: number
     open: boolean
     place?: string
     position?: string
-    onToggle: () => {}
+    onToggle: () => void
     children: React.ReactNode
 }
 
@@ -68,7 +69,13 @@ const Action = styled.div<IAction>`
 
 class Sidebar extends Component<IProps> {
     public render() {
-        const { open, place = 'left', position = 'relative', top } = this.props
+        const {
+            open,
+            place = 'left',
+            position = 'relative',
+            top,
+            className
+        } = this.props
         const width = open
             ? 200
             : 72
@@ -79,6 +86,7 @@ class Sidebar extends Component<IProps> {
         return (
             <Wrapper
                 place={ place }
+                className={ className }
                 width={ width }>
                 <StyledSidebar
                     top={ top }

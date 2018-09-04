@@ -1,14 +1,18 @@
 import { Radio as MuiRadio } from '@material-ui/core'
 import React,  { ChangeEvent } from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     checked?: boolean
     color?: 'primary' | 'secondary' | 'default'
     value?: string
-    style?: object
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Radio = (props: IProps) => <MuiRadio { ...props } />
+const Radio = ({ padding, margin, style, ...otherProps }: IProps) =>
+    <MuiRadio
+        { ...otherProps }
+        style={ { padding, margin, ...style } }
+    />
 
 export default Radio

@@ -4,7 +4,7 @@ import {
     SnackbarContent as MuiSnackbarContent
 } from '@material-ui/core'
 import { amber, blue, green, red } from '@material-ui/core/colors'
-import { withStyles, WithStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles'
 import {
     CheckCircle as IconCheck,
     Close as IconClose,
@@ -13,13 +13,17 @@ import {
     Warning as IconWarning
 } from '@material-ui/icons'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps extends WithStyles<typeof styles> {
+interface IProps extends IDefault {
     autoHide?: number,
     message: React.ReactNode
     open: boolean
-    style?: object
     variant?: 'success' | 'warning' | 'error' | 'info'
+    classes: {
+        icon: string
+        message: string
+    }
     anchorOrigin?: {
         horizontal: 'left' | 'center' | 'right',
         vertical: 'top' | 'center' | 'bottom'
@@ -66,8 +70,11 @@ const SnackBar = (props: IProps) => {
         message,
         onClose,
         open,
+        padding,
+        margin,
         style,
         variant = 'info',
+        className,
         ...other
     } = props
     const Icon = variants[variant].icon
@@ -77,7 +84,8 @@ const SnackBar = (props: IProps) => {
             anchorOrigin={ anchorOrigin }
             open={ open }
             autoHideDuration={ 6000 }
-            style={ style }
+            style={ { padding, margin, ...style } }
+            className={ className }
             onClose={ onClose }>
             <MuiSnackbarContent
                 style={ { backgroundColor: variants[variant].color } }

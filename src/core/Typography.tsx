@@ -1,10 +1,10 @@
 import { Typography as MuiTypography } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
-    style?: object
-    margin?: number
+interface IProps extends IDefault {
     noWrap?: boolean
+    children?: React.ReactNode
     variant?:
         | 'display4'
         | 'display3'
@@ -34,10 +34,10 @@ interface IProps {
 
 }
 
-const Typography = ({ style, margin, ...otherProps }: IProps) =>
-    <MuiTypography
-        style={ { margin, ...style } }
-        { ...otherProps }
-    />
+const Typography = ({ children, margin, padding, style = {}, ...otherProps }: IProps) =>
+    <MuiTypography style={ { margin, padding, ...style } }
+        { ...otherProps }>
+        { children }
+    </MuiTypography>
 
 export default Typography

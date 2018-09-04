@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     children?: React.ReactNode
-    style?: object
 }
 
 const StyledContainer = styled.div`
@@ -11,8 +11,10 @@ const StyledContainer = styled.div`
     flex: 1;
 `
 
-const Container = ({ children, style }: IProps) =>
-    <StyledContainer style={ style }>
+const Container = ({ children, padding, margin, style = {}, ...otherProps }: IProps) =>
+    <StyledContainer
+        style={ { padding, margin, ...style } }
+        { ...otherProps }>
         { children }
     </StyledContainer>
 

@@ -3,21 +3,22 @@ import {
     ListSubheader as MuiListHeader
 } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     title?: string
     children?: React.ReactNode
-    style?: object
 }
 
-const List = ({ title, style, children }: IProps) =>
+const List = ({ title, padding, margin, style = {}, children, className }: IProps) =>
     <MuiList
         subheader={
             title
                 ? <MuiListHeader>{ title }</MuiListHeader>
                 : undefined
         }
-        style={ style }>
+        className={ className }
+        style={ { padding, margin, ...style } }>
         { children }
     </MuiList>
 

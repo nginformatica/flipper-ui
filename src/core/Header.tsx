@@ -1,19 +1,17 @@
 import { AppBar, Toolbar } from '@material-ui/core'
 import React from 'react'
-import { background } from '../colors'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     children: React.ReactNode
     position?: 'absolute' | 'fixed' | 'static' | 'sticky'
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
-    style?: object
 }
 
-export const Header = ({ children, color, position, style }: IProps) =>
+export const Header = ({ children, padding, margin, style = {}, ...otherProps }: IProps) =>
     <AppBar
-        color={ color }
-        position={ position }
-        style={ style }>
+        { ...otherProps }
+        style={ { padding, margin, ...style } }>
         <Toolbar>
             { children }
         </Toolbar>

@@ -1,8 +1,8 @@
 import { Chip as MuiChip, withStyles } from '@material-ui/core'
 import React from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
-    style?: object
+interface IProps extends IDefault {
     label: string
     clickable?: boolean
     color?: 'default' | 'primary' | 'secondary'
@@ -11,14 +11,18 @@ interface IProps {
     onDelete?: (value) => void
 }
 
-const styles = theme => ({
+const styles = () => ({
     root: {
         borderRadius: '20px',
         height: '40px'
     }
 })
 
-const Chip = ({ color = 'primary', ...otherProps }: IProps) =>
-    <MuiChip color={ color } { ...otherProps } />
+const Chip = ({ color = 'primary', padding, margin, style = {}, ...otherProps }: IProps) =>
+    <MuiChip
+        color={ color }
+        style={ { padding, margin, ...style } }
+        { ...otherProps }
+    />
 
 export default withStyles(styles)(Chip)

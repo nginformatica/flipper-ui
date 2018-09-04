@@ -2,12 +2,12 @@ import { inc, times } from 'ramda'
 import React, { Component } from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
+import { IDefault } from './Advertise'
 import Button from './Button'
 
-interface IProps {
+interface IProps extends IDefault {
     pages?: number
     active: number
-    style?: object
     onNext: () => {}
     onPrevious: () => {}
     onNavigate: (page) => {}
@@ -23,21 +23,31 @@ const Content = styled.div`
 
 class Pagination extends Component<IProps> {
     public render() {
-        const pages = times(inc, this.props.pages || 1)
+        const {
+            active,
+            style,
+            padding,
+            margin,
+            pages = 1,
+            className
+        } = this.props
+        const allPages = times(inc, pages || 1)
 
         return (
-            <Content style={ this.props.style }>
+            <Content
+                className={ className }
+                style={ { padding, margin, ...style } }>
                 <Button
                     mini
                     onClick={ this.props.onPrevious }>
                     <MdKeyboardArrowLeft />
                 </Button>
                 {
-                    pages.map(page =>
+                    allPages.map(page =>
                         <Button
                             mini
                             key={ page }
-                            color={ page === this.props.active ? 'primary' : 'default' }
+                            color={ page === active ? 'primary' : 'default' }
                             onClick={ () => this.props.onNavigate(page) }>
                             { page }
                         </Button>

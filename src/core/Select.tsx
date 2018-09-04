@@ -1,7 +1,8 @@
 import { Select as MuiSelect } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
+import { IDefault } from './Advertise'
 
-interface IProps {
+interface IProps extends IDefault {
     autoWidth?: boolean
     children?: React.ReactNode
     value?: string | number
@@ -10,8 +11,10 @@ interface IProps {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Select = ({ children, ...otherProps }: IProps) =>
-    <MuiSelect {...otherProps }>
+const Select = ({ children, style = {}, margin, padding, ...otherProps }: IProps) =>
+    <MuiSelect
+        style={ { margin, padding, ...style } }
+        {...otherProps }>
         { children }
     </MuiSelect>
 
