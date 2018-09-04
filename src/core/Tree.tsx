@@ -11,7 +11,7 @@ interface IProps {
     nodes?: INode[]
 }
 
-class Tree extends Component<IProps> {
+class Tree extends Component<IProps, {}> {
     public renderNode(node, index, root = false) {
         const { id, name, nodes } = node
 

@@ -3,3 +3,4 @@ docs
 .docz
 doczrc.js
 .gitignore
+.package-lock.json

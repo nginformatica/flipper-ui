@@ -16,7 +16,14 @@ interface IProps extends IDefault {
     authorStyle?: object
 }
 
-const Advertise = ({ comment, author, padding = 16, commentStyle, authorStyle, ...otherProps }: IProps) =>
+const Advertise: React.SFC<IProps> = ({
+    comment,
+    author,
+    padding = 16,
+    commentStyle,
+    authorStyle,
+    ...otherProps
+}) =>
     <Paper
         padding={ padding }
         { ...otherProps }>

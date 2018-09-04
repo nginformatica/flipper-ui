@@ -10,7 +10,7 @@ interface IProps extends IDefault {
     children?: React.ReactNode
 }
 
-const List = ({ title, padding, margin, style = {}, children, className }: IProps) =>
+const List: React.SFC<IProps> = ({ title, padding, margin, style = {}, children, className }) =>
     <MuiList
         subheader={
             title

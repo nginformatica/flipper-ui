@@ -21,7 +21,7 @@ const Content = styled.div`
     margin: 0.75em;
 `
 
-class Pagination extends Component<IProps> {
+class Pagination extends Component<IProps, {}> {
     public render() {
         const {
             active,

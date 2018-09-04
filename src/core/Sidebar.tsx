@@ -67,7 +67,7 @@ const Action = styled.div<IAction>`
     display: flex;
 `
 
-class Sidebar extends Component<IProps> {
+class Sidebar extends Component<IProps, {}> {
     public render() {
         const {
             open,

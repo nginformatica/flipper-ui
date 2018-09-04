@@ -9,7 +9,7 @@ interface IProps extends IDefault {
     limit?: number
 }
 
-class Badge extends Component<IProps> {
+class Badge extends Component<IProps, {}> {
     public static defaultProps = {
         color: 'primary',
         limit: 99

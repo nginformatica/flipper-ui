@@ -7,7 +7,14 @@ interface IProps extends IDefault {
     children?: React.ReactNode
 }
 
-const Box = ({ children, margin, padding = 24, style = {}, minHeight = 400, ...otherProps }: IProps) =>
+const Box: React.SFC<IProps> = ({
+    children,
+    margin,
+    padding = 24,
+    style = {},
+    minHeight = 400,
+    ...otherProps
+}) =>
     <Paper
         padding={ padding }
         margin={ margin }

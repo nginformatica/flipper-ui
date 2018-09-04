@@ -6,7 +6,7 @@ interface IProps extends IDefault {
     type: 'date' | 'time' | 'datetime-local'
 }
 
-const DateTime = ({ type, ...otherProps }: IProps & ITextField) =>
+const DateTime: React.SFC<IProps & ITextField> = ({ type, ...otherProps }) =>
     <TextField type={ type } { ...otherProps } />
 
 export default DateTime

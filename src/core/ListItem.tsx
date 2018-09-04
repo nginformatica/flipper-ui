@@ -19,7 +19,7 @@ interface IProps extends IDefault {
     onClick?: (name) => {}
 }
 
-class ListItem extends Component<IProps> {
+class ListItem extends Component<IProps, {}> {
     public renderCustomItem() {
         const { action, icon, title, subtitle, iconOnly } = this.props
 

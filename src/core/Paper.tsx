@@ -8,7 +8,7 @@ interface IProps extends IDefault {
     elevation?: number
 }
 
-const Paper = ({ children, style = {}, padding, margin, ...otherProps }: IProps) =>
+const Paper: React.SFC<IProps> = ({ children, style = {}, padding, margin, ...otherProps }) =>
     <MuiPaper
         { ...otherProps }
         style={ { padding, margin, ...style } }>

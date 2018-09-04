@@ -22,7 +22,7 @@ const styles = theme => ({
     }
 })
 
-const Avatar = ({ children, primary, classes, ...otherProps }: IProps) =>
+const Avatar: React.SFC<IProps> = ({ children, primary, classes, ...otherProps }) =>
     <MuiAvatar
         { ...otherProps }
         className={ primary ? classes.primary : '' }>

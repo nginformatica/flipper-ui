@@ -8,7 +8,7 @@ interface IProps extends IDefault {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }
 
-export const Header = ({ children, padding, margin, style = {}, ...otherProps }: IProps) =>
+const Header: React.SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
     <AppBar
         { ...otherProps }
         style={ { padding, margin, ...style } }>
