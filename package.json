@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
+    "start": "yarn docz dev",
     "build": "tsc && docz build",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
