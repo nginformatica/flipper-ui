@@ -11,7 +11,7 @@ const StyledContent = styled.main`
     transition: all 500ms ease;
 `
 
-const Content = ({ children, padding, margin, style = {}, ...otherProps }: IProps) =>
+const Content: React.SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
     <StyledContent
         { ...otherProps }
         style={ { padding, margin, ...style } }>

@@ -1,8 +1,4 @@
-import {
-    createStyles,
-    WithStyles,
-    withStyles
-} from '@material-ui/core'
+import { createStyles, withStyles } from '@material-ui/core'
 import { TextField as MuiTextField } from '@material-ui/core'
 import { merge } from 'ramda'
 import React, { ChangeEvent } from 'react'
@@ -61,16 +57,15 @@ const styles = theme => createStyles({
     }
 })
 
-const TextField =
-    ({
-        classes,
-        margin,
-        padding,
-        style = {},
-        InputProps,
-        InputLabelProps,
-        ...otherProps
-    }: IProps) =>
+const TextField: React.SFC<IProps> = ({
+    classes,
+    margin,
+    padding,
+    style = {},
+    InputProps,
+    InputLabelProps,
+    ...otherProps
+}) =>
     <MuiTextField
         style={ { margin, padding, ...style } }
         { ...otherProps }

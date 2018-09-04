@@ -12,7 +12,7 @@ interface IProps extends IDefault {
     bottomLabel?: boolean
 }
 
-class Stepper extends Component<IProps> {
+class Stepper extends Component<IProps, {}> {
     public static defaultProps = { active: 0 }
 
     public render() {

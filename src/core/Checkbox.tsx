@@ -17,7 +17,7 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-class Checkbox extends Component<IProps> {
+class Checkbox extends Component<IProps, {}> {
     public static defaultProps = {
         type: 'checkbox'
     }

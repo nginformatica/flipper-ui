@@ -16,17 +16,16 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const RadioGroup =
-    ({
-        options = [],
-        className,
-        padding,
-        margin,
-        style = {},
-        title,
-        value,
-        onChange
-    }: IProps) =>
+const RadioGroup: React.SFC<IProps> = ({
+    options = [],
+    className,
+    padding,
+    margin,
+    style = {},
+    title,
+    value,
+    onChange
+}) =>
     <FormControl
         className={ className }
         style={ { padding, margin, ...style } }>

@@ -18,7 +18,7 @@ const styles = () => ({
     }
 })
 
-const Chip = ({ color = 'primary', padding, margin, style = {}, ...otherProps }: IProps) =>
+const Chip: React.SFC<IProps> = ({ color = 'primary', padding, margin, style = {}, ...otherProps }) =>
     <MuiChip
         color={ color }
         style={ { padding, margin, ...style } }

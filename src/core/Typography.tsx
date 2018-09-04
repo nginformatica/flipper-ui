@@ -34,7 +34,7 @@ interface IProps extends IDefault {
 
 }
 
-const Typography = ({ children, margin, padding, style = {}, ...otherProps }: IProps) =>
+const Typography: React.SFC<IProps> = ({ children, margin, padding, style = {}, ...otherProps }) =>
     <MuiTypography style={ { margin, padding, ...style } }
         { ...otherProps }>
         { children }

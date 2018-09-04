@@ -41,7 +41,7 @@ const Content = styled.div`
     border: 1px solid ${primary.normal};
 `
 
-const Card = ({ children, padding, margin, style = {}, title, xs = 12, className }: IProps) =>
+const Card: React.SFC<IProps> = ({ children, padding, margin, style = {}, title, xs = 12, className }) =>
     <Container
         xs={ xs }
         style={ { padding, margin, ...style } }

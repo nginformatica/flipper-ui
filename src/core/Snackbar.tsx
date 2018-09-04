@@ -62,7 +62,7 @@ const styles = theme => ({
     }
 })
 
-const SnackBar = (props: IProps) => {
+const SnackBar: React.SFC<IProps> = props => {
     const {
         anchorOrigin,
         autoHide = 6000,

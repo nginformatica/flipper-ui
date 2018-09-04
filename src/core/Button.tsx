@@ -14,7 +14,7 @@ interface IProps extends IDefault {
     onClick?: () => void
 }
 
-const Button = ({ children, margin, padding, style = {}, ...otherProps }: IProps)  =>
+const Button: React.SFC<IProps> = ({ children, margin, padding, style = {}, ...otherProps })  =>
     <MuiButton
         { ...otherProps }
         style={ { margin, padding, ...style } }>

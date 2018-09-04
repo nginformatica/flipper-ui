@@ -9,7 +9,7 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Radio = ({ padding, margin, style, ...otherProps }: IProps) =>
+const Radio: React.SFC<IProps> = ({ padding, margin, style, ...otherProps }) =>
     <MuiRadio
         { ...otherProps }
         style={ { padding, margin, ...style } }
