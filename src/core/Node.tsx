@@ -67,7 +67,7 @@ class Node extends React.Component<IProps, IState> {
 
     public render() {
         const { open } = this.state
-        const { id, name, children, style, className } = this.props
+        const { id, name, children, style = {}, className } = this.props
 
         return (
             <Ul

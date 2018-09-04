@@ -8,8 +8,10 @@ interface IProps extends IDefault {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }
 
-export const Header = ({ children, ...otherProps }: IProps) =>
-    <AppBar { ...otherProps }>
+export const Header = ({ children, padding, margin, style = {}, ...otherProps }: IProps) =>
+    <AppBar
+        { ...otherProps }
+        style={ { padding, margin, ...style } }>
         <Toolbar>
             { children }
         </Toolbar>

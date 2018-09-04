@@ -10,7 +10,7 @@ interface IProps extends IDefault {
     children?: React.ReactNode
 }
 
-const List = ({ title, style, children, className }: IProps) =>
+const List = ({ title, padding, margin, style = {}, children, className }: IProps) =>
     <MuiList
         subheader={
             title
@@ -18,7 +18,7 @@ const List = ({ title, style, children, className }: IProps) =>
                 : undefined
         }
         className={ className }
-        style={ style }>
+        style={ { padding, margin, ...style } }>
         { children }
     </MuiList>
 

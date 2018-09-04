@@ -20,11 +20,11 @@ const core_1 = require("@material-ui/core");
 const react_1 = __importStar(require("react"));
 class Badge extends react_1.Component {
     render() {
-        const _a = this.props, { children, counter, color, limit = 99 } = _a, otherProps = __rest(_a, ["children", "counter", "color", "limit"]);
+        const _a = this.props, { children, counter, color, limit = 99, padding, margin, style = {} } = _a, otherProps = __rest(_a, ["children", "counter", "color", "limit", "padding", "margin", "style"]);
         return Boolean(counter)
             ? (react_1.default.createElement(core_1.Badge, Object.assign({ badgeContent: counter > limit
                     ? `+${limit}`
-                    : counter, color: color }, otherProps), children))
+                    : counter, color: color, style: Object.assign({ padding, margin }, style) }, otherProps), children))
             : children;
     }
 }

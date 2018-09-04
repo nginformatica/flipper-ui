@@ -61,7 +61,16 @@ const styles = theme => createStyles({
     }
 })
 
-const TextField = ({ classes, margin, padding, style, InputProps, InputLabelProps, ...otherProps }: IProps) =>
+const TextField =
+    ({
+        classes,
+        margin,
+        padding,
+        style = {},
+        InputProps,
+        InputLabelProps,
+        ...otherProps
+    }: IProps) =>
     <MuiTextField
         style={ { margin, padding, ...style } }
         { ...otherProps }

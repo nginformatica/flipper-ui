@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const Paper_1 = __importDefault(require("./Paper"));
 const Box = (_a) => {
-    var { children, margin, padding, style, minHeight = 400 } = _a, otherProps = __rest(_a, ["children", "margin", "padding", "style", "minHeight"]);
-    return react_1.default.createElement(Paper_1.default, Object.assign({ padding: 24, style: Object.assign({ minHeight, margin, padding }, style) }, otherProps), children);
+    var { children, margin, padding = 24, style = {}, minHeight = 400 } = _a, otherProps = __rest(_a, ["children", "margin", "padding", "style", "minHeight"]);
+    return react_1.default.createElement(Paper_1.default, Object.assign({ padding: padding, margin: margin, style: Object.assign({ minHeight }, style) }, otherProps), children);
 };
 exports.default = Box;
 //# sourceMappingURL=Box.js.map

@@ -19,8 +19,8 @@ const StyledContent = styled_components_1.default.main `
     transition: all 500ms ease;
 `;
 const Content = (_a) => {
-    var { children } = _a, otherProps = __rest(_a, ["children"]);
-    return react_1.default.createElement(StyledContent, Object.assign({}, otherProps), children);
+    var { children, padding, margin, style = {} } = _a, otherProps = __rest(_a, ["children", "padding", "margin", "style"]);
+    return react_1.default.createElement(StyledContent, Object.assign({}, otherProps, { style: Object.assign({ padding, margin }, style) }), children);
 };
 exports.default = Content;
 //# sourceMappingURL=Content.js.map

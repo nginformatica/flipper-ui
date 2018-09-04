@@ -7,10 +7,11 @@ interface IProps extends IDefault {
     children?: React.ReactNode
 }
 
-const Box = ({ children, margin, padding, style, minHeight = 400, ...otherProps }: IProps) =>
+const Box = ({ children, margin, padding = 24, style = {}, minHeight = 400, ...otherProps }: IProps) =>
     <Paper
-        padding={ 24 }
-        style={ { minHeight, margin, padding, ...style } }
+        padding={ padding }
+        margin={ margin }
+        style={ { minHeight, ...style } }
         { ...otherProps }>
         { children }
     </Paper>

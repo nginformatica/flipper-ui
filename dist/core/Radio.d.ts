@@ -6,5 +6,5 @@ interface IProps extends IDefault {
     value?: string;
     onChange?: (event: ChangeEvent<HTMLElement>) => void;
 }
-declare const Radio: (props: IProps) => JSX.Element;
+declare const Radio: ({ padding, margin, style, ...otherProps }: IProps) => JSX.Element;
 export default Radio;

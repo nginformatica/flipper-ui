@@ -11,8 +11,10 @@ const StyledContainer = styled.div`
     flex: 1;
 `
 
-const Container = ({ children, ...otherProps }: IProps) =>
-    <StyledContainer { ...otherProps }>
+const Container = ({ children, padding, margin, style = {}, ...otherProps }: IProps) =>
+    <StyledContainer
+        style={ { padding, margin, ...style } }
+        { ...otherProps }>
         { children }
     </StyledContainer>
 

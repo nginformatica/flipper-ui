@@ -22,9 +22,9 @@ class Checkbox extends react_1.Component {
             : this.renderSwitch();
     }
     render() {
-        const { label, style, className } = this.props;
+        const { label, style = {}, padding, margin, className } = this.props;
         return label
-            ? (react_1.default.createElement(core_1.FormControlLabel, { style: style, className: className, label: label, control: this.renderControl() }))
+            ? (react_1.default.createElement(core_1.FormControlLabel, { style: Object.assign({ padding, margin }, style), className: className, label: label, control: this.renderControl() }))
             : this.renderControl();
     }
 }

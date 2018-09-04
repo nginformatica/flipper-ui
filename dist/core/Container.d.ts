@@ -3,5 +3,5 @@ import { IDefault } from './Advertise';
 interface IProps extends IDefault {
     children?: React.ReactNode;
 }
-declare const Container: ({ children, ...otherProps }: IProps) => JSX.Element;
+declare const Container: ({ children, padding, margin, style, ...otherProps }: IProps) => JSX.Element;
 export default Container;

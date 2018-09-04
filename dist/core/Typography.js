@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@material-ui/core");
 const react_1 = __importDefault(require("react"));
 const Typography = (_a) => {
-    var { style, children, margin, padding } = _a, otherProps = __rest(_a, ["style", "children", "margin", "padding"]);
+    var { children, margin, padding, style = {} } = _a, otherProps = __rest(_a, ["children", "margin", "padding", "style"]);
     return react_1.default.createElement(core_1.Typography, Object.assign({ style: Object.assign({ margin, padding }, style) }, otherProps), children);
 };
 exports.default = Typography;

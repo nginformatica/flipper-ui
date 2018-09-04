@@ -9,6 +9,10 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Radio = (props: IProps) => <MuiRadio { ...props } />
+const Radio = ({ padding, margin, style, ...otherProps }: IProps) =>
+    <MuiRadio
+        { ...otherProps }
+        style={ { padding, margin, ...style } }
+    />
 
 export default Radio

@@ -7,5 +7,5 @@ interface IProps extends IDefault {
     color?: 'default' | 'error' | 'inherit' | 'primary' | 'secondary' | 'textPrimary' | 'textSecondary';
     align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 }
-declare const Typography: ({ style, children, margin, padding, ...otherProps }: IProps) => JSX.Element;
+declare const Typography: ({ children, margin, padding, style, ...otherProps }: IProps) => JSX.Element;
 export default Typography;

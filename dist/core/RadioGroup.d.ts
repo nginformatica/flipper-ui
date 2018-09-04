@@ -10,5 +10,5 @@ interface IProps extends IDefault {
     }>;
     onChange?: (event: ChangeEvent<HTMLElement>) => void;
 }
-declare const RadioGroup: ({ options, className, style, title, value, onChange }: IProps) => JSX.Element;
+declare const RadioGroup: ({ options, className, padding, margin, style, title, value, onChange }: IProps) => JSX.Element;
 export default RadioGroup;

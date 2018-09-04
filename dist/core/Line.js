@@ -12,6 +12,6 @@ const StyledLine = styled_components_1.default.hr `
     ? colors_1.primary.normal
     : colors_1.background.normal};
 `;
-const Line = ({ primary, style }) => react_1.default.createElement(StyledLine, { style: style, primary: primary });
+const Line = ({ primary, padding, margin, style }) => react_1.default.createElement(StyledLine, { style: Object.assign({ padding, margin }, style), primary: primary });
 exports.default = Line;
 //# sourceMappingURL=Line.js.map

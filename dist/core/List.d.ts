@@ -4,5 +4,5 @@ interface IProps extends IDefault {
     title?: string;
     children?: React.ReactNode;
 }
-declare const List: ({ title, style, children, className }: IProps) => JSX.Element;
+declare const List: ({ title, padding, margin, style, children, className }: IProps) => JSX.Element;
 export default List;

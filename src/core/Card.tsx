@@ -41,10 +41,10 @@ const Content = styled.div`
     border: 1px solid ${primary.normal};
 `
 
-const Card = ({ children, style, title, xs = 12, className }: IProps) =>
+const Card = ({ children, padding, margin, style = {}, title, xs = 12, className }: IProps) =>
     <Container
         xs={ xs }
-        style={ style }
+        style={ { padding, margin, ...style } }
         className={ className }>
         <Header>{ title }</Header>
         <Content>{ children }</Content>

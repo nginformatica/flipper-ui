@@ -16,8 +16,20 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const RadioGroup = ({ options = [], className, style, title, value, onChange }: IProps) =>
-    <FormControl className={ className } style={ style }>
+const RadioGroup =
+    ({
+        options = [],
+        className,
+        padding,
+        margin,
+        style = {},
+        title,
+        value,
+        onChange
+    }: IProps) =>
+    <FormControl
+        className={ className }
+        style={ { padding, margin, ...style } }>
         <FormLabel component='legend'>{ title }</FormLabel>
         <MuiRadioGroup
             name={ name }

@@ -50,7 +50,7 @@ class Node extends react_1.default.Component {
     }
     render() {
         const { open } = this.state;
-        const { id, name, children, style, className } = this.props;
+        const { id, name, children, style = {}, className } = this.props;
         return (react_1.default.createElement(Ul, { key: id || name, style: style, className: className },
             react_1.default.createElement(Li, { inset: Boolean(children), onClick: this.handleToggleOpen.bind(this) },
                 children && this.renderDropdownIcon(),

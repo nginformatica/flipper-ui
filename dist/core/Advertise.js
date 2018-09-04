@@ -16,10 +16,10 @@ const react_1 = __importDefault(require("react"));
 const Paper_1 = __importDefault(require("./Paper"));
 const Typography_1 = __importDefault(require("./Typography"));
 const Advertise = (_a) => {
-    var { comment, author, commentStyle, authorStyle } = _a, otherProps = __rest(_a, ["comment", "author", "commentStyle", "authorStyle"]);
-    return react_1.default.createElement(Paper_1.default, Object.assign({ padding: 16 }, otherProps),
+    var { comment, author, padding = 16, commentStyle, authorStyle } = _a, otherProps = __rest(_a, ["comment", "author", "padding", "commentStyle", "authorStyle"]);
+    return react_1.default.createElement(Paper_1.default, Object.assign({ padding: padding }, otherProps),
         react_1.default.createElement(Typography_1.default, { margin: 12, style: commentStyle }, comment),
-        react_1.default.createElement(Typography_1.default, { margin: 12, variant: "caption", style: authorStyle }, `- ${author}`));
+        react_1.default.createElement(Typography_1.default, { margin: 12, variant: 'caption', style: authorStyle }, `- ${author}`));
 };
 exports.default = Advertise;
 //# sourceMappingURL=Advertise.js.map

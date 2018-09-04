@@ -34,9 +34,8 @@ interface IProps extends IDefault {
 
 }
 
-const Typography = ({ style, children, margin, padding, ...otherProps }: IProps) =>
-    <MuiTypography
-        style={ { margin, padding, ...style } }
+const Typography = ({ children, margin, padding, style = {}, ...otherProps }: IProps) =>
+    <MuiTypography style={ { margin, padding, ...style } }
         { ...otherProps }>
         { children }
     </MuiTypography>

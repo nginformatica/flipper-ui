@@ -21,8 +21,8 @@ const styles = () => ({
     }
 });
 const Chip = (_a) => {
-    var { color = 'primary' } = _a, otherProps = __rest(_a, ["color"]);
-    return react_1.default.createElement(core_1.Chip, Object.assign({ color: color }, otherProps));
+    var { color = 'primary', padding, margin, style = {} } = _a, otherProps = __rest(_a, ["color", "padding", "margin", "style"]);
+    return react_1.default.createElement(core_1.Chip, Object.assign({ color: color, style: Object.assign({ padding, margin }, style) }, otherProps));
 };
 exports.default = core_1.withStyles(styles)(Chip);
 //# sourceMappingURL=Chip.js.map

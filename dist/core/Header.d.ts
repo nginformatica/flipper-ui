@@ -5,5 +5,5 @@ interface IProps extends IDefault {
     position?: 'absolute' | 'fixed' | 'static' | 'sticky';
     color?: 'default' | 'inherit' | 'primary' | 'secondary';
 }
-export declare const Header: ({ children, ...otherProps }: IProps) => JSX.Element;
+export declare const Header: ({ children, padding, margin, style, ...otherProps }: IProps) => JSX.Element;
 export default Header;

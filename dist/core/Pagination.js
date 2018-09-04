@@ -24,11 +24,12 @@ const Content = styled_components_1.default.div `
 `;
 class Pagination extends react_1.Component {
     render() {
-        const pages = ramda_1.times(ramda_1.inc, this.props.pages || 1);
-        return (react_1.default.createElement(Content, { className: this.props.className, style: this.props.style },
+        const { active, style, padding, margin, pages = 1, className } = this.props;
+        const allPages = ramda_1.times(ramda_1.inc, pages || 1);
+        return (react_1.default.createElement(Content, { className: className, style: Object.assign({ padding, margin }, style) },
             react_1.default.createElement(Button_1.default, { mini: true, onClick: this.props.onPrevious },
                 react_1.default.createElement(md_1.MdKeyboardArrowLeft, null)),
-            pages.map(page => react_1.default.createElement(Button_1.default, { mini: true, key: page, color: page === this.props.active ? 'primary' : 'default', onClick: () => this.props.onNavigate(page) }, page)),
+            allPages.map(page => react_1.default.createElement(Button_1.default, { mini: true, key: page, color: page === active ? 'primary' : 'default', onClick: () => this.props.onNavigate(page) }, page)),
             react_1.default.createElement(Button_1.default, { mini: true, onClick: this.props.onNext },
                 react_1.default.createElement(md_1.MdKeyboardArrowRight, null))));
     }

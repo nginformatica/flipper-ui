@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@material-ui/core");
 const react_1 = __importDefault(require("react"));
 const Menu = (_a) => {
-    var { children, menuProps } = _a, otherProps = __rest(_a, ["children", "menuProps"]);
-    return react_1.default.createElement(core_1.Menu, Object.assign({ MenuListProps: menuProps }, otherProps), children);
+    var { children, menuProps, padding, margin, style = {} } = _a, otherProps = __rest(_a, ["children", "menuProps", "padding", "margin", "style"]);
+    return react_1.default.createElement(core_1.Menu, Object.assign({ MenuListProps: menuProps, style: Object.assign({ padding, margin }, style) }, otherProps), children);
 };
 exports.default = Menu;
 //# sourceMappingURL=Menu.js.map

@@ -29,7 +29,7 @@ const Content = styled_components_1.default.div `
     padding: 12px;
     border: 1px solid ${colors_1.primary.normal};
 `;
-const Card = ({ children, style, title, xs = 12, className }) => react_1.default.createElement(Container, { xs: xs, style: style, className: className },
+const Card = ({ children, padding, margin, style = {}, title, xs = 12, className }) => react_1.default.createElement(Container, { xs: xs, style: Object.assign({ padding, margin }, style), className: className },
     react_1.default.createElement(Header, null, title),
     react_1.default.createElement(Content, null, children));
 exports.default = Card;

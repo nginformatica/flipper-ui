@@ -11,8 +11,8 @@ const core_1 = require("@material-ui/core");
 const react_1 = __importStar(require("react"));
 class Stepper extends react_1.Component {
     render() {
-        const { active, bottomLabel, steps, style, className } = this.props;
-        return (react_1.default.createElement(core_1.Stepper, { alternativeLabel: bottomLabel, activeStep: active, style: style, className: className }, steps.map((step, index) => react_1.default.createElement(core_1.Step, { key: index },
+        const { active, bottomLabel, steps, padding, margin, style = {}, className } = this.props;
+        return (react_1.default.createElement(core_1.Stepper, { alternativeLabel: bottomLabel, activeStep: active, style: Object.assign({ padding, margin }, style), className: className }, steps.map((step, index) => react_1.default.createElement(core_1.Step, { key: index },
             react_1.default.createElement(core_1.StepLabel, null, step)))));
     }
 }

@@ -16,13 +16,21 @@ class Stepper extends Component<IProps> {
     public static defaultProps = { active: 0 }
 
     public render() {
-        const { active, bottomLabel, steps, style, className } = this.props
+        const {
+            active,
+            bottomLabel,
+            steps,
+            padding,
+            margin,
+            style = {},
+            className
+        } = this.props
 
         return (
             <MuiStepper
                 alternativeLabel={ bottomLabel }
                 activeStep={ active }
-                style={ style }
+                style={ { padding, margin, ...style } }
                 className={ className }>
                 {
                     steps.map((step, index) =>

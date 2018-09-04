@@ -10,5 +10,5 @@ interface IProps extends IDefault {
     commentStyle?: object;
     authorStyle?: object;
 }
-declare const Advertise: ({ comment, author, commentStyle, authorStyle, ...otherProps }: IProps) => JSX.Element;
+declare const Advertise: ({ comment, author, padding, commentStyle, authorStyle, ...otherProps }: IProps) => JSX.Element;
 export default Advertise;

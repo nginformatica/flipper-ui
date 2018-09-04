@@ -19,8 +19,8 @@ const StyledContainer = styled_components_1.default.div `
     flex: 1;
 `;
 const Container = (_a) => {
-    var { children } = _a, otherProps = __rest(_a, ["children"]);
-    return react_1.default.createElement(StyledContainer, Object.assign({}, otherProps), children);
+    var { children, padding, margin, style = {} } = _a, otherProps = __rest(_a, ["children", "padding", "margin", "style"]);
+    return react_1.default.createElement(StyledContainer, Object.assign({ style: Object.assign({ padding, margin }, style) }, otherProps), children);
 };
 exports.default = Container;
 //# sourceMappingURL=Container.js.map

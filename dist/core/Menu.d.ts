@@ -7,5 +7,5 @@ interface IProps extends IDefault {
     menuProps?: object;
     onClose?: () => void;
 }
-declare const Menu: ({ children, menuProps, ...otherProps }: IProps) => JSX.Element;
+declare const Menu: ({ children, menuProps, padding, margin, style, ...otherProps }: IProps) => JSX.Element;
 export default Menu;

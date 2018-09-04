@@ -47,9 +47,9 @@ const styles = theme => ({
     }
 });
 const SnackBar = (props) => {
-    const { anchorOrigin, autoHide = 6000, classes, message, onClose, open, style, variant = 'info', className } = props, other = __rest(props, ["anchorOrigin", "autoHide", "classes", "message", "onClose", "open", "style", "variant", "className"]);
+    const { anchorOrigin, autoHide = 6000, classes, message, onClose, open, padding, margin, style, variant = 'info', className } = props, other = __rest(props, ["anchorOrigin", "autoHide", "classes", "message", "onClose", "open", "padding", "margin", "style", "variant", "className"]);
     const Icon = variants[variant].icon;
-    return (react_1.default.createElement(core_1.Snackbar, { anchorOrigin: anchorOrigin, open: open, autoHideDuration: 6000, style: style, className: className, onClose: onClose },
+    return (react_1.default.createElement(core_1.Snackbar, { anchorOrigin: anchorOrigin, open: open, autoHideDuration: 6000, style: Object.assign({ padding, margin }, style), className: className, onClose: onClose },
         react_1.default.createElement(core_1.SnackbarContent, Object.assign({ style: { backgroundColor: variants[variant].color }, "aria-describedby": 'client-snackbar', message: react_1.default.createElement("span", { id: 'client-snackbar', className: classes.message },
                 react_1.default.createElement(Icon, { className: classes.icon }),
                 message), action: [

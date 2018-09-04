@@ -22,7 +22,7 @@ interface IProps extends IDefault {
     linear?: boolean
 }
 
-const Progress = ({ linear, style, margin, padding, ...otherProps }: IProps & ICircular & ILinear) =>
+const Progress = ({ linear, style = {}, margin, padding, ...otherProps }: IProps & ICircular & ILinear) =>
     linear
         ? <MuiLinearProgress style={ { margin, padding, ...style } } { ...otherProps } />
         : <MuiCircularProgress style={ { margin, padding, ...style } }  { ...otherProps } />

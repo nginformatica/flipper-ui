@@ -10,8 +10,11 @@ interface IProps extends IDefault {
     onClose?: () => void
 }
 
-const Menu = ({ children, menuProps, ...otherProps }: IProps) =>
-    <MuiMenu MenuListProps={ menuProps } { ...otherProps }>
+const Menu = ({ children, menuProps, padding, margin, style = {}, ...otherProps }: IProps) =>
+    <MuiMenu
+        MenuListProps={ menuProps }
+        style={ { padding, margin, ...style } }
+        { ...otherProps }>
         { children }
     </MuiMenu>
 

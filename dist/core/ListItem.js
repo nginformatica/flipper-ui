@@ -18,8 +18,8 @@ class ListItem extends react_1.Component {
             !iconOnly && action && (react_1.default.createElement(core_1.ListItemSecondaryAction, null, action))));
     }
     render() {
-        const { className, children, value, style, onClick } = this.props;
-        return (react_1.default.createElement(core_1.ListItem, { button: true, value: value, style: style, className: className, onClick: () => onClick(name) }, children ? children : this.renderCustomItem()));
+        const { className, children, value, style = {}, padding, margin, onClick } = this.props;
+        return (react_1.default.createElement(core_1.ListItem, { button: true, value: value, style: Object.assign({ padding, margin }, style), className: className, onClick: () => onClick(name) }, children ? children : this.renderCustomItem()));
     }
 }
 exports.default = ListItem;

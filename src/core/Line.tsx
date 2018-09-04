@@ -15,9 +15,9 @@ const StyledLine = styled.hr<IProps>`
     };
 `
 
-const Line = ({ primary, style }: IProps) =>
+const Line = ({ primary, padding, margin, style }: IProps) =>
     <StyledLine
-        style={ style }
+        style={ { padding, margin, ...style } }
         primary={ primary }
     />
 

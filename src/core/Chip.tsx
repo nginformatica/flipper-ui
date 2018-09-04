@@ -18,7 +18,11 @@ const styles = () => ({
     }
 })
 
-const Chip = ({ color = 'primary', ...otherProps }: IProps) =>
-    <MuiChip color={ color } { ...otherProps } />
+const Chip = ({ color = 'primary', padding, margin, style = {}, ...otherProps }: IProps) =>
+    <MuiChip
+        color={ color }
+        style={ { padding, margin, ...style } }
+        { ...otherProps }
+    />
 
 export default withStyles(styles)(Chip)

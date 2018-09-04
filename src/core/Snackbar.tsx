@@ -70,6 +70,8 @@ const SnackBar = (props: IProps) => {
         message,
         onClose,
         open,
+        padding,
+        margin,
         style,
         variant = 'info',
         className,
@@ -82,7 +84,7 @@ const SnackBar = (props: IProps) => {
             anchorOrigin={ anchorOrigin }
             open={ open }
             autoHideDuration={ 6000 }
-            style={ style }
+            style={ { padding, margin, ...style } }
             className={ className }
             onClose={ onClose }>
             <MuiSnackbarContent

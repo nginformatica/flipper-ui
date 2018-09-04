@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@material-ui/core");
 const react_1 = __importDefault(require("react"));
 exports.Header = (_a) => {
-    var { children } = _a, otherProps = __rest(_a, ["children"]);
-    return react_1.default.createElement(core_1.AppBar, Object.assign({}, otherProps),
+    var { children, padding, margin, style = {} } = _a, otherProps = __rest(_a, ["children", "padding", "margin", "style"]);
+    return react_1.default.createElement(core_1.AppBar, Object.assign({}, otherProps, { style: Object.assign({ padding, margin }, style) }),
         react_1.default.createElement(core_1.Toolbar, null, children));
 };
 exports.default = exports.Header;

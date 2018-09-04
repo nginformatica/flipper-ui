@@ -53,12 +53,12 @@ class Checkbox extends Component<IProps> {
     }
 
     public render() {
-        const { label, style, className } = this.props
+        const { label, style = {}, padding, margin, className } = this.props
 
         return label
             ? (
                 <MuiFormControlLabel
-                    style={ style }
+                    style={ { padding, margin, ...style } }
                     className={ className }
                     label={ label }
                     control={ this.renderControl() }

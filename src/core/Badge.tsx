@@ -16,7 +16,16 @@ class Badge extends Component<IProps> {
     }
 
     public render() {
-        const { children, counter, color, limit = 99, ...otherProps } = this.props
+        const {
+            children,
+            counter,
+            color,
+            limit = 99,
+            padding,
+            margin,
+            style = {},
+            ...otherProps
+        } = this.props
 
         return Boolean(counter)
             ? (
@@ -27,6 +36,7 @@ class Badge extends Component<IProps> {
                             : counter
                     }
                     color={ color }
+                    style={ { padding, margin, ...style } }
                     { ...otherProps }>
                     { children }
                 </MuiBadge>

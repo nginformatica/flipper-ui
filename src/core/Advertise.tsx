@@ -16,9 +16,9 @@ interface IProps extends IDefault {
     authorStyle?: object
 }
 
-const Advertise = ({ comment, author, commentStyle, authorStyle, ...otherProps }: IProps) =>
+const Advertise = ({ comment, author, padding = 16, commentStyle, authorStyle, ...otherProps }: IProps) =>
     <Paper
-        padding={ 16 }
+        padding={ padding }
         { ...otherProps }>
         <Typography
             margin={ 12 }
@@ -27,7 +27,7 @@ const Advertise = ({ comment, author, commentStyle, authorStyle, ...otherProps }
         </Typography>
         <Typography
             margin={ 12 }
-            variant="caption"
+            variant='caption'
             style={ authorStyle }>
             { `- ${author}` }
         </Typography>

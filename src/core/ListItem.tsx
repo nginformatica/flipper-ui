@@ -52,13 +52,13 @@ class ListItem extends Component<IProps> {
     }
 
     public render() {
-        const { className, children, value, style, onClick } = this.props
+        const { className, children, value, style = {}, padding, margin, onClick } = this.props
 
         return (
             <MuiListItem
                 button
                 value={ value }
-                style={ style }
+                style={ { padding, margin, ...style } }
                 className={ className }
                 onClick={ () => onClick!(name) }>
                 { children ? children : this.renderCustomItem() }

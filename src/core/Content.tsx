@@ -11,8 +11,10 @@ const StyledContent = styled.main`
     transition: all 500ms ease;
 `
 
-const Content = ({ children, ...otherProps }: IProps) =>
-    <StyledContent { ...otherProps }>
+const Content = ({ children, padding, margin, style = {}, ...otherProps }: IProps) =>
+    <StyledContent
+        { ...otherProps }
+        style={ { padding, margin, ...style } }>
         { children }
     </StyledContent>
 

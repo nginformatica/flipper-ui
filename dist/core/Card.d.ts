@@ -5,5 +5,5 @@ interface IProps extends IDefault {
     title?: string;
     children?: React.ReactNode;
 }
-declare const Card: ({ children, style, title, xs, className }: IProps) => JSX.Element;
+declare const Card: ({ children, padding, margin, style, title, xs, className }: IProps) => JSX.Element;
 export default Card;
