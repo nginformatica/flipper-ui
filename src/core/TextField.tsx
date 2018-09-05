@@ -6,6 +6,7 @@ import { background, error as errorColors } from '../colors'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
+    noBorder?: boolean
     autoComplete?: string
     autoFocus?: boolean
     defaultValue?: string | number
@@ -79,6 +80,7 @@ const TextField: React.SFC<IProps> = ({
     InputProps,
     InputLabelProps,
     error,
+    noBorder = false,
     ...otherProps
 }) =>
     <MuiTextField
@@ -87,13 +89,15 @@ const TextField: React.SFC<IProps> = ({
         { ...otherProps }
         InputProps={
             merge(
-                {
-                    classes: {
-                        input: error ? classes.inputError : classes.input,
-                        root: classes.root
+                noBorder
+                    ? {}
+                    : {
+                        classes: {
+                            input: error ? classes.inputError : classes.input,
+                            root: classes.root
+                        },
+                        disableUnderline: true
                     },
-                    disableUnderline: true
-                },
                 InputProps
             )
         }
