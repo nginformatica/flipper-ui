@@ -1,4 +1,5 @@
 import React from 'react'
+import { background } from '../colors'
 import Paper from './Paper'
 import Typography from './Typography'
 
@@ -16,27 +17,35 @@ interface IProps extends IDefault {
     authorStyle?: object
 }
 
+const styles = {
+    border: {
+        borderLeft: `1px solid ${background.dark}`
+    }
+}
+
 const Advertise: React.SFC<IProps> = ({
     comment,
     author,
-    padding = 16,
-    commentStyle,
-    authorStyle,
+    padding = 12,
+    commentStyle = {},
+    authorStyle = {},
     ...otherProps
 }) =>
     <Paper
         padding={ padding }
         { ...otherProps }>
         <Typography
-            margin={ 12 }
-            style={ commentStyle }>
+            margin='12px 12px 0px'
+            padding='6px 24px'
+            style={ { ...styles.border, ...commentStyle } }>
             { comment }
         </Typography>
         <Typography
-            margin={ 12 }
+            margin='0px 12px 12px'
+            padding='6px 24px'
             variant='caption'
-            style={ authorStyle }>
-            { `- ${author}` }
+            style={ { ...styles.border, ...authorStyle } }>
+            { author }
         </Typography>
     </Paper>
 

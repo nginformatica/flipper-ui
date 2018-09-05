@@ -20,6 +20,6 @@ export const transparent = '#FFFFFF00'
 export const text = '#424242'
 export const error = {
     dark: '#B71C1C',
-    normal: '#D32F2F',
-    light: '#F44336'
+    light: '#F44336',
+    normal: '#D32F2F'
 }
