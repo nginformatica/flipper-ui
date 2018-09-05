@@ -18,3 +18,8 @@ export const white = '#FFFFFF'
 export const black = '#000000'
 export const transparent = '#FFFFFF00'
 export const text = '#424242'
+export const error = {
+    dark: '#B71C1C',
+    light: '#F44336',
+    normal: '#D32F2F'
+}

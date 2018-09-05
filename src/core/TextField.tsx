@@ -2,7 +2,7 @@ import { createStyles, withStyles } from '@material-ui/core'
 import { TextField as MuiTextField } from '@material-ui/core'
 import { merge } from 'ramda'
 import React, { ChangeEvent } from 'react'
-import { background } from '../colors'
+import { background, error as errorColors } from '../colors'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -23,6 +23,7 @@ export interface IProps extends IDefault {
     value?: string | number | boolean | string[]
     classes: {
         input: string
+        inputError: string
         root: string
         label: string
     }
@@ -40,6 +41,19 @@ const styles = theme => createStyles({
         },
         'backgroundColor': theme.palette.common.white,
         'border': `1px solid ${background.dark}`,
+        'borderRadius': 4,
+        'fontSize': 16,
+        'padding': '10px 12px',
+        'transition': theme.transitions.create(['border-color', 'box-shadow']),
+        'width': 'calc(100% - 24px)'
+    },
+    inputError: {
+        '&:focus': {
+            borderColor: errorColors.normal,
+            boxShadow: `0 0 0 0.2rem ${errorColors.light}D9`,
+        },
+        'backgroundColor': theme.palette.common.white,
+        'border': `1px solid ${errorColors.dark}`,
         'borderRadius': 4,
         'fontSize': 16,
         'padding': '10px 12px',
@@ -64,16 +78,18 @@ const TextField: React.SFC<IProps> = ({
     style = {},
     InputProps,
     InputLabelProps,
+    error,
     ...otherProps
 }) =>
     <MuiTextField
+        error={ error }
         style={ { margin, padding, ...style } }
         { ...otherProps }
         InputProps={
             merge(
                 {
                     classes: {
-                        input: classes.input,
+                        input: error ? classes.inputError : classes.input,
                         root: classes.root
                     },
                     disableUnderline: true
