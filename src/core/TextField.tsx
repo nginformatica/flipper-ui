@@ -102,7 +102,8 @@ const TextField: React.SFC<IProps> = ({
             )
         }
         InputLabelProps={
-            merge({
+            merge(noBorder
+                ? {} : {
                     className: classes.label,
                     shrink: true
                 },

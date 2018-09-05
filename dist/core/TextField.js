@@ -64,7 +64,8 @@ const TextField = (_a) => {
                     root: classes.root
                 },
                 disableUnderline: true
-            }, InputProps), InputLabelProps: ramda_1.merge({
+            }, InputProps), InputLabelProps: ramda_1.merge(noBorder
+            ? {} : {
             className: classes.label,
             shrink: true
         }, InputLabelProps) }));
