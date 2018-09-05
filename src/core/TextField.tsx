@@ -82,6 +82,7 @@ const TextField: React.SFC<IProps> = ({
     ...otherProps
 }) =>
     <MuiTextField
+        error={ error }
         style={ { margin, padding, ...style } }
         { ...otherProps }
         InputProps={
