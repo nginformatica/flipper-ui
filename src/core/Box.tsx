@@ -10,7 +10,7 @@ interface IProps extends IDefault {
 const Box: React.SFC<IProps> = ({
     children,
     margin,
-    padding = 24,
+    padding = 18,
     style = {},
     minHeight = 400,
     ...otherProps

@@ -26,7 +26,7 @@ const styles = {
 const Advertise: React.SFC<IProps> = ({
     comment,
     author,
-    padding = 12,
+    padding = 4,
     commentStyle = {},
     authorStyle = {},
     ...otherProps
@@ -36,13 +36,13 @@ const Advertise: React.SFC<IProps> = ({
         { ...otherProps }>
         <Typography
             margin='12px 12px 0px'
-            padding='6px 24px'
+            padding='6px 18px'
             style={ { ...styles.border, ...commentStyle } }>
             { comment }
         </Typography>
         <Typography
             margin='0px 12px 12px'
-            padding='6px 24px'
+            padding='6px 18px'
             variant='caption'
             style={ { ...styles.border, ...authorStyle } }>
             { author }
