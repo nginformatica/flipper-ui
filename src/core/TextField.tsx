@@ -44,7 +44,7 @@ const styles = theme => createStyles({
         'border': `1px solid ${background.dark}`,
         'borderRadius': 4,
         'fontSize': 16,
-        'padding': '10px 12px',
+        'padding': '8px 10px',
         'transition': theme.transitions.create(['border-color', 'box-shadow']),
         'width': 'calc(100% - 24px)'
     },
@@ -57,7 +57,7 @@ const styles = theme => createStyles({
         'border': `1px solid ${errorColors.dark}`,
         'borderRadius': 4,
         'fontSize': 16,
-        'padding': '10px 12px',
+        'padding': '8px 10px',
         'transition': theme.transitions.create(['border-color', 'box-shadow']),
         'width': 'calc(100% - 24px)'
     },
