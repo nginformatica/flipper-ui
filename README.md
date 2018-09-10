@@ -2,6 +2,16 @@
 
 Components and doc about the UI framework made by *NG Informática* to use in the Project X.
 
+## Usage
+
+Example:
+
+`import Button from 'flipper-ui/core/Button'`
+
+or
+
+`import { Button } from 'flipper-ui/Button'`
+
 ## Components
 
 Migration status
@@ -39,3 +49,4 @@ Migration status
 - [ ] Tooltip
 - [ ] Tree
 - [x] Typography
+
