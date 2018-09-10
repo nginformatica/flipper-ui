@@ -1,8 +1,11 @@
 import { evolve, not } from 'ramda'
 import React from 'react'
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import styled from 'styled-components'
 import { background, primary, transparent } from '../colors'
+import {
+    KeyboardArrowDown as IconArrowDown,
+    KeyboardArrowUp as IconArrowUp
+} from '../icons'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -61,8 +64,8 @@ class Node extends React.Component<IProps, IState> {
 
     public renderDropdownIcon() {
         return this.state.open
-            ? <MdKeyboardArrowUp style={ styles.icon } />
-            : <MdKeyboardArrowDown style={ styles.icon } />
+            ? <IconArrowUp style={ styles.icon } />
+            : <IconArrowDown style={ styles.icon } />
     }
 
     public render() {

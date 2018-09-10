@@ -1,7 +1,10 @@
 import { inc, times } from 'ramda'
 import React, { Component } from 'react'
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
+import {
+    KeyboardArrowLeft as IconArrowLeft,
+    KeyboardArrowRight as IconArrowRight
+} from '../icons'
 import { IDefault } from './Advertise'
 import Button from './Button'
 
@@ -40,7 +43,7 @@ class Pagination extends Component<IProps, {}> {
                 <Button
                     mini
                     onClick={ this.props.onPrevious }>
-                    <MdKeyboardArrowLeft />
+                    <IconArrowLeft />
                 </Button>
                 {
                     allPages.map(page =>
@@ -56,7 +59,7 @@ class Pagination extends Component<IProps, {}> {
                 <Button
                     mini
                     onClick={ this.props.onNext }>
-                    <MdKeyboardArrowRight />
+                    <IconArrowRight />
                 </Button>
             </Content>
         )

@@ -1,0 +1,29 @@
+---
+name: Icon Button
+route: /icon-button
+---
+
+import IconButton from '../core/IconButton'
+import { Add as IconAdd } from '../icons'
+import { Playground, PropsTable } from 'docz'
+
+# Header
+
+## Properties
+<PropsTable of={ IconButton } />
+
+## Demo
+<Playground>
+    <IconButton>
+        <IconAdd />
+    </IconButton>
+    <IconButton color='primary'>
+        <IconAdd />
+    </IconButton>
+    <IconButton color='secondary'>
+        <IconAdd />
+    </IconButton>
+    <IconButton disabled>
+        <IconAdd />
+    </IconButton>
+</Playground>
