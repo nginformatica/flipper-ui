@@ -1,6 +1,6 @@
 {
   "name": "flipper-ui",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "",
   "main": "dist/index.js",
   "homepage": "https://nginformatica.github.io/flipper-ui/",
@@ -15,7 +15,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d docs"
+    "deploy": "gh-pages -d docs",
+    "release": "yarn build && npm publish build"
   },
   "author": "NG Informática",
   "license": "MIT",
