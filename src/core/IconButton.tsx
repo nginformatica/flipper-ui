@@ -9,8 +9,10 @@ interface IProps extends IDefault {
     onClick?: () => void
 }
 
-const IconButton: React.SFC<IProps> = ({ children, ...otherProps }) =>
-    <MuiIconButton { ...otherProps }>
+const IconButton: React.SFC<IProps> = ({ children, padding, margin, style, ...otherProps }) =>
+    <MuiIconButton
+        { ...otherProps }
+        style={ { margin, padding, ...style } }>
         { children }
     </MuiIconButton>
 
