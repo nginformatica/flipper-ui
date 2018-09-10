@@ -1,29 +1,29 @@
-export * from './core/Advertise'
-export * from './core/Avatar'
-export * from './core/Badge'
-export * from './core/Box'
-export * from './core/Button'
-export * from './core/Card'
-export * from './core/Checkbox'
-export * from './core/Chip'
-export * from './core/Container'
-export * from './core/Content'
-export * from './core/DateTime'
-export * from './core/Header'
-export * from './core/Line'
-export * from './core/List'
-export * from './core/ListItem'
-export * from './core/Menu'
-export * from './core/Node'
-export * from './core/Pagination'
-export * from './core/Paper'
-export * from './core/Progress'
-export * from './core/Radio'
-export * from './core/RadioGroup'
-export * from './core/Select'
-export * from './core/Sidebar'
-export * from './core/Snackbar'
-export * from './core/Stepper'
-export * from './core/TextField'
-export * from './core/Tree'
-export * from './core/Typography'
+export const Advertise = import('./core/Advertise')
+export const Avatar = import('./core/Avatar')
+export const Badge = import('./core/Badge')
+export const Box = import('./core/Box')
+export const Button = import('./core/Button')
+export const Card = import('./core/Card')
+export const Checkbox = import('./core/Checkbox')
+export const Chip = import('./core/Chip')
+export const Container = import('./core/Container')
+export const Content = import('./core/Content')
+export const DateTime = import('./core/DateTime')
+export const Header = import('./core/Header')
+export const Line = import('./core/Line')
+export const List = import('./core/List')
+export const ListItem = import('./core/ListItem')
+export const Menu = import('./core/Menu')
+export const Node = import('./core/Node')
+export const Pagination = import('./core/Pagination')
+export const Paper = import('./core/Paper')
+export const Progress = import('./core/Progress')
+export const Radio = import('./core/Radio')
+export const RadioGroup = import('./core/RadioGroup')
+export const Select = import('./core/Select')
+export const Sidebar = import('./core/Sidebar')
+export const Snackbar = import('./core/Snackbar')
+export const Stepper = import('./core/Stepper')
+export const TextField = import('./core/TextField')
+export const Tree = import('./core/Tree')
+export const Typography = import('./core/Typography')
