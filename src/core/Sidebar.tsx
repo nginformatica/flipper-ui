@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import styled from 'styled-components'
 import { background } from '../colors'
+import {
+    KeyboardArrowLeft as IconArrowLeft,
+    KeyboardArrowRight as IconArrowRight
+} from '../icons'
 import { IDefault } from './Advertise'
 import Button from './Button'
 
@@ -99,8 +102,8 @@ class Sidebar extends Component<IProps, {}> {
                             onClick={ this.props.onToggle }>
                             {
                                iconToLeft
-                                    ? <MdKeyboardArrowLeft style={ styles.icon }/>
-                                    : <MdKeyboardArrowRight style={ styles.icon }/>
+                                    ? <IconArrowLeft style={ styles.icon }/>
+                                    : <IconArrowRight style={ styles.icon }/>
                             }
                         </Button>
                     </Action>
