@@ -16,7 +16,7 @@
     "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d docs",
-    "release": "yarn build && npm publish build"
+    "release": "yarn build && npm publish dist"
   },
   "author": "NG Informática",
   "license": "MIT",
