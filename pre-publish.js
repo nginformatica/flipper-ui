@@ -6,7 +6,8 @@ async function copyFiles() {
         await fse.copy('./LICENSE', './dist/LICENSE')
         await fse.copy('./README.md', './dist/README.md')
     } catch (err) {
-      console.error(err)
+        console.error(err)
+        process.exit(1)
     }
 }
 
