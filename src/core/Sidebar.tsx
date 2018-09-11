@@ -18,6 +18,7 @@ interface IProps extends IDefault {
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
     docked?: boolean
     maxWidth?: number | string
+    paperClasses?: object
     classes: {
         button: string
         default: string
@@ -127,6 +128,7 @@ class Sidebar extends Component<IProps, {}> {
             maxWidth,
             open,
             padding,
+            paperClasses,
             showButton,
             style,
             variant
@@ -141,7 +143,8 @@ class Sidebar extends Component<IProps, {}> {
                 className={ className }
                 style={ { width, padding, margin, ...style  } }
                 PaperProps={ {
-                    className: `${docked ? classes.sidebar : '' } ${classes[color]}`
+                    className: `${docked ? classes.sidebar : '' } ${classes[color]}`,
+                    classes: paperClasses
                 } }>
                 { showButton && this.renderAction() }
                 { this.props.children }
