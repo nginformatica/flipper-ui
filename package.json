@@ -12,10 +12,9 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "start": "yarn docz dev",
     "build": "tsc",
-    "build:docs": "tsc && docz build",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
-    "predeploy": "yarn build --docs",
+    "predeploy": "tsc && docz build",
     "deploy": "gh-pages -d docs",
     "release": "yarn build && node pre-publish.js && npm publish dist"
   },
