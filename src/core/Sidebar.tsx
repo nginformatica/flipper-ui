@@ -16,13 +16,17 @@ interface IProps extends IDefault {
     anchor?: 'top' | 'left' | 'bottom' | 'right'
     variant?: 'persistent' | 'temporary' | 'permanent'
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
+    docked?: boolean
+    maxWidth?: number | string
+    paperClasses?: object
     classes: {
+        button: string
+        default: string
+        icon: string
+        inherit: string
         primary: string
         secondary: string
-        inherit: string
-        default: string
-        button: string
-        icon: string
+        sidebar: string
     }
     children: React.ReactNode
     onToggle: () => void
@@ -61,6 +65,13 @@ const styles = theme => ({
     secondary: {
         backgroundColor: theme.palette.secondary.main,
         color: theme.palette.secondary.contrastText
+    },
+    sidebar: {
+        bottom: '0px',
+        left: '0px',
+        position: 'fixed' as 'fixed',
+        top: '64px',
+        width: 'inherit'
     }
 })
 
@@ -76,7 +87,9 @@ class Sidebar extends Component<IProps, {}> {
     public static defaultProps = {
         anchor: 'left',
         color: 'default',
+        docked: false,
         expanded: true,
+        maxWidth: 220,
         onToggle: () => null,
         showButton: true,
         variant: 'permanent'
@@ -109,10 +122,18 @@ class Sidebar extends Component<IProps, {}> {
             className,
             classes,
             color = 'default',
+            docked,
+            expanded,
+            margin,
+            maxWidth,
             open,
+            padding,
+            paperClasses,
             showButton,
+            style,
             variant
         } = this.props
+        const width = expanded ? maxWidth : 72
 
         return (
             <Drawer
@@ -120,7 +141,11 @@ class Sidebar extends Component<IProps, {}> {
                 anchor={ anchor }
                 variant={ variant }
                 className={ className }
-                PaperProps={ { className: classes[color] } }>
+                style={ { width, padding, margin, ...style  } }
+                PaperProps={ {
+                    className: `${docked ? classes.sidebar : '' } ${classes[color]}`,
+                    classes: paperClasses
+                } }>
                 { showButton && this.renderAction() }
                 { this.props.children }
             </Drawer>
