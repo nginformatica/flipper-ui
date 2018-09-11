@@ -14,7 +14,7 @@
     "build": "tsc",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
-    "predeploy": "tsc && docz build",
+    "predeploy": "yarn build && docz build",
     "deploy": "gh-pages -d docs",
     "release": "yarn build && node pre-publish.js && npm publish dist"
   },
