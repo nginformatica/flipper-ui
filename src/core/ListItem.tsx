@@ -1,5 +1,6 @@
 import {
     ListItem as MuiListItem,
+    ListItemAvatar as MuiListItemAvatar,
     ListItemIcon as MuiListItemIcon,
     ListItemSecondaryAction as MuiListItemSecondaryAction,
     ListItemText as MuiListItemText
@@ -9,12 +10,12 @@ import React, { Component, Fragment } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
+    avatar?: React.ReactElement<any>
     icon?: React.ReactElement<any>
     action?: React.ReactElement<any>
     name?: string
     title?: string
     subtitle?: string
-    iconOnly?: boolean
     value?: string | number
     children?: React.ReactNode
     classes: { default: string }
@@ -28,20 +29,31 @@ const styles = () => ({
 })
 
 class ListItem extends Component<IProps, {}> {
+    public static defaultProps = {
+        onClick: () => null
+    }
+
     public renderCustomItem() {
         const {
             action,
+            avatar,
             icon,
             title,
             subtitle,
-            iconOnly,
             classes
         } = this.props
-        const iconMargin = iconOnly || !(title || subtitle) ? '0px' : '24px'
+        const iconMargin = title || subtitle ? '16px' : '0px'
         const className = classes.default
 
         return (
             <Fragment>
+                {
+                    avatar && (
+                        <MuiListItemAvatar>
+                            { avatar }
+                        </MuiListItemAvatar>
+                    )
+                }
                 {
                     icon && (
                         <MuiListItemIcon
@@ -52,7 +64,7 @@ class ListItem extends Component<IProps, {}> {
                     )
                 }
                 {
-                    !iconOnly && (title || subtitle) && (
+                    (title || subtitle) && (
                         <MuiListItemText
                             primaryTypographyProps={ { className } }
                             secondaryTypographyProps={ { className } }
@@ -62,7 +74,7 @@ class ListItem extends Component<IProps, {}> {
                     )
                 }
                 {
-                    !iconOnly && action && (
+                    action && (
                         <MuiListItemSecondaryAction className={ className }>
                             { action }
                         </MuiListItemSecondaryAction>
