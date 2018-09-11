@@ -4,6 +4,7 @@ import {
     ListItemSecondaryAction as MuiListItemSecondaryAction,
     ListItemText as MuiListItemText
 } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 import React, { Component, Fragment } from 'react'
 import { IDefault } from './Advertise'
 
@@ -16,25 +17,45 @@ interface IProps extends IDefault {
     iconOnly?: boolean
     value?: string | number
     children?: React.ReactNode
+    classes: { default: string }
     onClick?: (name) => {}
 }
 
+const styles = () => ({
+    default: {
+        color: 'inherit'
+    }
+})
+
 class ListItem extends Component<IProps, {}> {
     public renderCustomItem() {
-        const { action, icon, title, subtitle, iconOnly } = this.props
+        const {
+            action,
+            icon,
+            title,
+            subtitle,
+            iconOnly,
+            classes
+        } = this.props
+        const iconMargin = iconOnly || !(title || subtitle) ? '0px' : '24px'
+        const className = classes.default
 
         return (
             <Fragment>
                 {
                     icon && (
-                        <MuiListItemIcon>
+                        <MuiListItemIcon
+                            className={ className }
+                            style={ { marginRight: iconMargin } }>
                             { icon }
                         </MuiListItemIcon>
                     )
                 }
                 {
-                    !iconOnly && (
+                    !iconOnly && (title || subtitle) && (
                         <MuiListItemText
+                            primaryTypographyProps={ { className } }
+                            secondaryTypographyProps={ { className } }
                             primary={ title }
                             secondary={ subtitle }
                         />
@@ -42,7 +63,7 @@ class ListItem extends Component<IProps, {}> {
                 }
                 {
                     !iconOnly && action && (
-                        <MuiListItemSecondaryAction>
+                        <MuiListItemSecondaryAction className={ className }>
                             { action }
                         </MuiListItemSecondaryAction>
                     )
@@ -67,4 +88,4 @@ class ListItem extends Component<IProps, {}> {
     }
 }
 
-export default ListItem
+export default withStyles(styles)(ListItem)

@@ -19,7 +19,7 @@ import { Playground, PropsTable } from 'docz'
 <Playground>
     <Container
         style={ { height: 256 } }>
-        <Sidebar onToggle={ () => alert('Toogle sidebar') }>
+        <Sidebar>
             <List>
                 <ListItem iconOnly icon={ <IconBackup /> } />
                 <ListItem iconOnly icon={ <IconBackup /> } />
@@ -36,11 +36,7 @@ import { Playground, PropsTable } from 'docz'
             flexDirection: 'row-reverse',
             height: 256
         } }>
-        <Sidebar
-            open
-            place="right"
-            position="relative"
-            onToggle={ () => alert('Toogle sidebar') }>
+        <Sidebar open anchor="right">
             <List>
                 <ListItem icon={ <IconBackup /> } title="Item 1" />
                 <ListItem icon={ <IconBackup /> } title="Item 2" />
@@ -52,9 +48,7 @@ import { Playground, PropsTable } from 'docz'
 ## Opened Sidebar
 <Playground>
     <Container style={ { height: 256 } }>
-        <Sidebar
-            open
-            onToggle={ () => alert('Toogle sidebar') }>
+        <Sidebar open>
             <List>
                 <ListItem icon={ <IconBackup /> } title="Item 1" />
                 <ListItem icon={ <IconBackup /> } title="Item 2" />
