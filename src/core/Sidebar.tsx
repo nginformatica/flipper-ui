@@ -1,6 +1,7 @@
+import Drawer from '@material-ui/core/Drawer'
+import { withStyles } from '@material-ui/core/styles'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { background } from '../colors'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
@@ -9,61 +10,62 @@ import { IDefault } from './Advertise'
 import Button from './Button'
 
 interface IProps extends IDefault {
-    top: number
     open: boolean
-    place?: string
-    position?: string
-    onToggle: () => void
+    expanded?: boolean
+    showButton?: boolean
+    anchor?: 'top' | 'left' | 'bottom' | 'right'
+    variant?: 'persistent' | 'temporary' | 'permanent'
+    color?: 'primary' | 'secondary' | 'default' | 'inherit'
+    classes: {
+        primary: string
+        secondary: string
+        inherit: string
+        default: string
+        button: string
+        icon: string
+    }
     children: React.ReactNode
-}
-
-interface IWrapper {
-    width: number
-    place: string
-}
-
-interface ISidebar {
-    position: string
-    width: number
-    top?: number
-    place: string
+    onToggle: () => void
 }
 
 interface IAction {
-    place?: string
+    anchor?: string
 }
 
-const styles = {
+const styles = theme => ({
     button: {
-        alignSelf: 'right',
-        margin: 4,
-        padding: '0 0.25em'
+        '&:active': {
+            boxShadow: 'none'
+        },
+        'alignSelf': 'right',
+        'backgroundColor': 'transparent',
+        'boxShadow': 'none',
+        'margin': 4,
+        'padding': '0 0.25em',
+    },
+    default: {
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.background.contrastText
     },
     icon: {
         fontSize: '24px'
+    },
+    inherit: {
+        backgroundColor: 'inherit',
+        color: 'inherit'
+    },
+    primary: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText
+    },
+    secondary: {
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.secondary.contrastText
     }
-}
-
-const Wrapper = styled.div<IWrapper>`
-    display: block;
-    position: relative;
-    width: ${props => props.width}px;
-    ${props => props.place}: 0;
-`
-
-const StyledSidebar = styled.div<ISidebar>`
-    position: ${props => props.position};
-    width: ${props => props.width}px;
-    height: 100%;
-    top: ${props => props.top || 0}px;
-    text-align: center;
-    bottom: 0;
-    background: ${background.normal};
-    ${props => props.place}: 0;
-`
+})
 
 const Action = styled.div<IAction>`
-    flex-direction: ${props => props.place === 'left'
+    flex-direction: ${props => props.anchor === 'left'
         ? 'row-reverse'
         : 'row'
     };
@@ -71,47 +73,59 @@ const Action = styled.div<IAction>`
 `
 
 class Sidebar extends Component<IProps, {}> {
-    public render() {
-        const {
-            open,
-            place = 'left',
-            position = 'relative',
-            top,
-            className
-        } = this.props
-        const width = open
-            ? 200
-            : 72
+    public static defaultProps = {
+        anchor: 'left',
+        color: 'default',
+        expanded: true,
+        onToggle: () => null,
+        showButton: true,
+        variant: 'permanent'
+    }
 
-        const iconToLeft = (place === 'left' && open)
-            || (place === 'right' && !open)
+    public renderAction() {
+        const { expanded, anchor, color, classes } = this.props
+        const iconToLeft = (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
 
         return (
-            <Wrapper
-                place={ place }
+            <Action anchor={ anchor }>
+                <Button
+                    color={ color }
+                    variant='contained'
+                    className={ classes.button }
+                    onClick={ this.props.onToggle }>
+                    {
+                        iconToLeft
+                            ? <IconArrowLeft className={ classes.icon } />
+                            : <IconArrowRight className={ classes.icon } />
+                    }
+                </Button>
+            </Action>
+        )
+    }
+
+    public render() {
+        const {
+            anchor,
+            className,
+            classes,
+            color = 'default',
+            open,
+            showButton,
+            variant
+        } = this.props
+
+        return (
+            <Drawer
+                open={ open }
+                anchor={ anchor }
+                variant={ variant }
                 className={ className }
-                width={ width }>
-                <StyledSidebar
-                    top={ top }
-                    place={ place }
-                    width={ width }
-                    position={ position }>
-                    <Action place={ place }>
-                        <Button
-                            style={ styles.button }
-                            onClick={ this.props.onToggle }>
-                            {
-                               iconToLeft
-                                    ? <IconArrowLeft style={ styles.icon }/>
-                                    : <IconArrowRight style={ styles.icon }/>
-                            }
-                        </Button>
-                    </Action>
-                    { this.props.children }
-                </StyledSidebar>
-            </Wrapper>
+                PaperProps={ { className: classes[color] } }>
+                { showButton && this.renderAction() }
+                { this.props.children }
+            </Drawer>
         )
     }
 }
 
-export default Sidebar
+export default withStyles(styles)(Sidebar)

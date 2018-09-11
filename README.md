@@ -23,7 +23,7 @@ Migration status
 - [x] Badge
 - [x] Box
 - [x] Button
-- [ ] Icon Button
+- [x] Icon Button
 - [ ] Carousel/Gallery
 - [x] Checkbox
 - [x] Chip
@@ -32,12 +32,12 @@ Migration status
 - [ ] Divider
 - [x] Menu
 - [x] Floating Action Button
-- [ ] Icon
+- [x] Icon
 - [x] List
 - [x] ListItem
 - [x] Paper
 - [x] Progress
-- [ ] Sidebar/Drawer
+- [x] Sidebar/Drawer
 - [x] Switcher
 - [x] Radio
 - [x] RadioGroup
@@ -49,4 +49,3 @@ Migration status
 - [ ] Tooltip
 - [ ] Tree
 - [x] Typography
-
