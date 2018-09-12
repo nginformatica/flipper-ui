@@ -1,10 +1,10 @@
 import { createStyles, withStyles } from '@material-ui/core'
 import { TextField as MuiTextField } from '@material-ui/core'
+import Color from 'color'
 import { merge } from 'ramda'
 import React, { ChangeEvent } from 'react'
 import { background, error as errorColors } from '../colors'
 import { IDefault } from './Advertise'
-import Color from 'color'
 
 export interface IProps extends IDefault {
     noBorder?: boolean
