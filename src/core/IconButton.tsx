@@ -5,7 +5,7 @@ import { IDefault } from './Advertise'
 interface IProps extends IDefault {
     children?: React.ReactNode
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
-    disabled: boolean
+    disabled?: boolean
     onClick?: () => void
 }
 
