@@ -4,6 +4,7 @@ route: /text-field
 ---
 
 import TextField from '../core/TextField'
+import ThemeProvider from '../core/ThemeProvider'
 import { Playground, PropsTable } from 'docz'
 
 # TextField
@@ -13,5 +14,7 @@ import { Playground, PropsTable } from 'docz'
 
 ## Demo
 <Playground>
-    <TextField placeholder="Description" />
+    <ThemeProvider options={ { palette: { primary: { main: '#004A7C' } } } }>
+        <TextField placeholder="Description" />
+    </ThemeProvider>
 </Playground>
