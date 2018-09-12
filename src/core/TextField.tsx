@@ -1,5 +1,6 @@
 import { createStyles, withStyles } from '@material-ui/core'
 import { TextField as MuiTextField } from '@material-ui/core'
+import Color from 'color'
 import { merge } from 'ramda'
 import React, { ChangeEvent } from 'react'
 import { background, error as errorColors } from '../colors'
@@ -38,7 +39,7 @@ const styles = theme => createStyles({
     input: {
         '&:focus': {
             borderColor: theme.palette.primary.light,
-            boxShadow: `0 0 0 0.2rem ${theme.palette.primary.light}D9`,
+            boxShadow: `0 0 0 0.2rem ${Color(theme.palette.primary.light).lighten(0.85)}`,
         },
         'backgroundColor': theme.palette.common.white,
         'border': `1px solid ${background.dark}`,
@@ -51,7 +52,7 @@ const styles = theme => createStyles({
     inputError: {
         '&:focus': {
             borderColor: errorColors.normal,
-            boxShadow: `0 0 0 0.2rem ${errorColors.light}D9`,
+            boxShadow: `0 0 0 0.2rem ${Color(errorColors.light).lighten(0.85)}`,
         },
         'backgroundColor': theme.palette.common.white,
         'border': `1px solid ${errorColors.dark}`,
