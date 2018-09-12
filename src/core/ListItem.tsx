@@ -19,7 +19,7 @@ interface IProps extends IDefault {
     value?: string | number
     children?: React.ReactNode
     classes: { default: string }
-    onClick?: (name) => {}
+    onClick?: (name?: string) => {}
 }
 
 const styles = () => ({
