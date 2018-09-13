@@ -47,7 +47,6 @@ const styles = theme => ({
 class Tabs extends Component<IProps> {
     public static defaultProps = {
         centered: true,
-        color: 'primary',
         fullWidth: false,
         padding: '6px 0 0',
         scrollable: false
@@ -56,7 +55,7 @@ class Tabs extends Component<IProps> {
     public render() {
         const {
             children,
-            color,
+            color = 'primary',
             className,
             classes,
             style,
