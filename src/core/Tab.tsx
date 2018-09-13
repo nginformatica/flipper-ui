@@ -18,8 +18,7 @@ const styles = theme => ({
     root: {
         backgroundColor: theme.palette.primary.main,
         boxShadow: theme.shadows[4],
-        color: theme.palette.primary.contrastText,
-        margin: '0 4px'
+        color: theme.palette.primary.contrastText
     },
     selected: {
         background: theme.palette.background.default,
@@ -28,9 +27,9 @@ const styles = theme => ({
 })
 
 class Tab extends Component<IProps> {
-    public static defaultProsp = {
+    public static defaultProps = {
         disabled: false,
-        margin: '2px 0'
+        margin: '0 4px'
     }
 
     public render() {
