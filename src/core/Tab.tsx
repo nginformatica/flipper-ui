@@ -1,6 +1,7 @@
 import { Tab as MuiTab } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import React, { Component } from 'react'
+import { background } from '../colors'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -21,7 +22,7 @@ const styles = theme => ({
         color: theme.palette.primary.contrastText
     },
     selected: {
-        background: theme.palette.background.default,
+        background: background.normal,
         color: theme.palette.text.primary
     }
 })

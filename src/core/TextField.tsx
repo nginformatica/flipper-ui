@@ -29,6 +29,7 @@ export interface IProps extends IDefault {
         root: string
         label: string
     }
+    inputProps?: object
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object

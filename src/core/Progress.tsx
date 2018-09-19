@@ -9,6 +9,11 @@ interface ILinear {
     color?: 'primary' | 'secondary'
     valueBuffer?: number
     variant?: 'determinate' | 'indeterminate' | 'buffer' | 'query'
+    classes?: {
+        root?: string
+        barColorPrimary?: string
+        barColorSecondary?: string
+    }
 }
 
 interface ICircular {

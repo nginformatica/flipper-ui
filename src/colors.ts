@@ -7,7 +7,7 @@ export const primary = {
 export const background = {
     dark: '#BDBDBD',
     light: '#EEEEEE',
-    normal: '#E0E0E0'
+    normal: '#E5E5E5'
 }
 
 export const silver = {
@@ -23,3 +23,6 @@ export const error = {
     light: '#F44336',
     normal: '#D32F2F'
 }
+
+export const warning = '#FFC107'
+export const success = '#4CAF50'
