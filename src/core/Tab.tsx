@@ -22,7 +22,7 @@ const styles = theme => ({
         color: theme.palette.primary.contrastText
     },
     selected: {
-        background: theme.palette.background.default,
+        backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary
     }
 })
