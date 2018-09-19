@@ -1,7 +1,6 @@
 import { Tab as MuiTab } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import React, { Component } from 'react'
-import { background } from '../colors'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -9,6 +8,7 @@ interface IProps extends IDefault {
     icon?: string | React.ReactElement<any>
     label?: string
     value?: any
+    selectedClass: string
     classes: {
         root: string
         selected: string
@@ -22,7 +22,7 @@ const styles = theme => ({
         color: theme.palette.primary.contrastText
     },
     selected: {
-        background: background.normal,
+        background: theme.palette.background.default,
         color: theme.palette.text.primary
     }
 })
@@ -39,6 +39,7 @@ class Tab extends Component<IProps> {
             style,
             margin,
             padding,
+            selectedClass,
             ...otherProps
         } = this.props
 
@@ -46,7 +47,7 @@ class Tab extends Component<IProps> {
             <MuiTab
                 classes={ {
                     root: classes.root,
-                    selected: classes.selected
+                    selected: `${classes.selected} ${selectedClass}`
                 } }
                 style={ { margin, padding, ...style } }
                 { ...otherProps }
