@@ -8,7 +8,7 @@ interface IProps extends IDefault {
     icon?: string | React.ReactElement<any>
     label?: string
     value?: any
-    selectedClass: string
+    selectedClass?: string
     classes: {
         root: string
         selected: string
