@@ -8,6 +8,7 @@ interface IProps extends IDefault {
     icon?: string | React.ReactElement<any>
     label?: string
     value?: any
+    selectedClass: string
     classes: {
         root: string
         selected: string
@@ -21,7 +22,7 @@ const styles = theme => ({
         color: theme.palette.primary.contrastText
     },
     selected: {
-        background: theme.palette.background.default,
+        backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary
     }
 })
@@ -38,6 +39,7 @@ class Tab extends Component<IProps> {
             style,
             margin,
             padding,
+            selectedClass,
             ...otherProps
         } = this.props
 
@@ -45,7 +47,7 @@ class Tab extends Component<IProps> {
             <MuiTab
                 classes={ {
                     root: classes.root,
-                    selected: classes.selected
+                    selected: `${classes.selected} ${selectedClass}`
                 } }
                 style={ { margin, padding, ...style } }
                 { ...otherProps }
