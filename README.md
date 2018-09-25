@@ -43,6 +43,7 @@ Migration status
 - [x] RadioGroup
 - [x] Select
 - [x] Snackbar
+- [x] Table
 - [x] Tabs
 - [x] TextArea
 - [x] TextField
