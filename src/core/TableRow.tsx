@@ -8,6 +8,7 @@ interface IProps extends IDefault {
     selected?: boolean
     hover?: boolean
     border?: boolean
+    onClick?: () => void
 }
 
 interface IRow {
