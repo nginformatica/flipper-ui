@@ -1,6 +1,7 @@
 import MuiTableRow from '@material-ui/core/TableRow'
 import React from 'react'
 import styled from 'styled-components'
+import { background } from '../colors'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -16,7 +17,7 @@ interface IRow {
 }
 
 const StyledRow = styled(MuiTableRow)<IRow>`
-    border-color: ${props => props.border ? '#E0E0E0' : 'transparent' } !important;
+    border-color: ${props => props.border ? background.light : 'transparent' } !important;
 `
 
 const TableRow: React.SFC<IProps> = ({
