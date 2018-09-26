@@ -33,7 +33,7 @@ interface IProps extends IDefault {
 }
 
 interface IAction {
-    anchor?: string
+    anchor?: 'top' | 'left' | 'bottom' | 'right'
 }
 
 const styles = theme => ({
@@ -84,19 +84,13 @@ const Action = styled.div<IAction>`
 `
 
 class Sidebar extends Component<IProps, {}> {
-    public static defaultProps = {
-        anchor: 'left',
-        color: 'default',
-        docked: false,
-        expanded: true,
-        maxWidth: 220,
-        onToggle: () => null,
-        showButton: true,
-        variant: 'permanent'
-    }
-
     public renderAction() {
-        const { expanded, anchor, color, classes } = this.props
+        const {
+            expanded = true,
+            anchor = 'left',
+            color = 'default',
+            classes
+        } = this.props
         const iconToLeft = (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
 
         return (
@@ -118,20 +112,20 @@ class Sidebar extends Component<IProps, {}> {
 
     public render() {
         const {
-            anchor,
+            anchor = 'left',
             className,
             classes,
             color = 'default',
-            docked,
-            expanded,
+            docked = false,
+            expanded = true,
             margin,
-            maxWidth,
+            maxWidth = 220,
             open,
             padding,
             paperClasses,
-            showButton,
+            showButton = true,
             style,
-            variant
+            variant = 'permanent'
         } = this.props
         const width = expanded ? maxWidth : 72
 

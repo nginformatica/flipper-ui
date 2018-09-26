@@ -29,10 +29,6 @@ const styles = () => ({
 })
 
 class ListItem extends Component<IProps, {}> {
-    public static defaultProps = {
-        onClick: () => null
-    }
-
     public renderCustomItem() {
         const {
             action,
@@ -93,7 +89,7 @@ class ListItem extends Component<IProps, {}> {
                 value={ value }
                 style={ { padding, margin, ...style } }
                 className={ className }
-                onClick={ () => onClick!(name) }>
+                onClick={ () => onClick ? onClick(name) : null }>
                 { children ? children : this.renderCustomItem() }
             </MuiListItem>
         )
