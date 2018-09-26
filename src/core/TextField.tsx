@@ -29,7 +29,7 @@ export interface IProps extends IDefault {
         root: string
         label: string
     }
-    variant: 'bootstrap' | 'standard' | 'outlined' | 'filled'
+    variant?: 'bootstrap' | 'standard' | 'outlined' | 'filled'
     inputProps?: object
     InputProps?: object
     InputLabelProps?: object
