@@ -29,6 +29,7 @@ export interface IProps extends IDefault {
         root: string
         label: string
     }
+    variant: 'bootstrap' | 'standard' | 'outlined' | 'filled'
     inputProps?: object
     InputProps?: object
     InputLabelProps?: object
@@ -82,35 +83,36 @@ const TextField: React.SFC<IProps> = ({
     InputProps,
     InputLabelProps,
     error,
-    noBorder = false,
+    variant = 'bootstrap',
     ...otherProps
 }) =>
     <MuiTextField
         error={ error }
         style={ { margin, padding, ...style } }
+        variant={ variant === 'bootstrap' ? 'standard' : variant }
         { ...otherProps }
         InputProps={
             merge(
-                noBorder
-                    ? {}
-                    : {
+                variant === 'bootstrap'
+                    ? {
                         classes: {
                             input: error ? classes.inputError : classes.input,
                             root: classes.root
                         },
                         disableUnderline: true
-                    },
+                    }
+                    : {},
                 InputProps
             )
         }
         InputLabelProps={
             merge(
-                noBorder
-                    ? {}
-                    : {
+                variant === 'bootstrap'
+                    ? {
                         className: classes.label,
                         shrink: true
-                    },
+                    }
+                    : {},
                 InputLabelProps
             )
         }
