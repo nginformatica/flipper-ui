@@ -1,9 +1,5 @@
-import { createStyles, withStyles } from '@material-ui/core'
 import { TextField as MuiTextField } from '@material-ui/core'
-import Color from 'color'
-import { merge } from 'ramda'
 import React, { ChangeEvent } from 'react'
-import { background, error as errorColors } from '../colors'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -23,13 +19,7 @@ export interface IProps extends IDefault {
     select?: boolean
     type?: string
     value?: string | number | boolean | string[]
-    classes: {
-        input: string
-        inputError: string
-        root: string
-        label: string
-    }
-    variant?: 'bootstrap' | 'standard' | 'outlined' | 'filled'
+    variant?: 'standard' | 'outlined' | 'filled'
     inputProps?: object
     InputProps?: object
     InputLabelProps?: object
@@ -37,85 +27,19 @@ export interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-const styles = theme => createStyles({
-    input: {
-        '&:focus': {
-            borderColor: theme.palette.primary.light,
-            boxShadow: `0 0 0 0.2rem ${Color(theme.palette.primary.light).lighten(0.85)}`,
-        },
-        'backgroundColor': theme.palette.common.white,
-        'border': `1px solid ${background.dark}`,
-        'borderRadius': 4,
-        'fontSize': 16,
-        'padding': '10px 12px',
-        'transition': theme.transitions.create(['border-color', 'box-shadow']),
-        'width': 'calc(100% - 24px)'
-    },
-    inputError: {
-        '&:focus': {
-            borderColor: errorColors.normal,
-            boxShadow: `0 0 0 0.2rem ${Color(errorColors.light).lighten(0.85)}`,
-        },
-        'backgroundColor': theme.palette.common.white,
-        'border': `1px solid ${errorColors.dark}`,
-        'borderRadius': 4,
-        'fontSize': 16,
-        'padding': '10px 12px',
-        'transition': theme.transitions.create(['border-color', 'box-shadow']),
-        'width': 'calc(100% - 24px)'
-    },
-    label: {
-        fontSize: 18
-    },
-    root: {
-        'label + &': {
-            marginTop: theme.spacing.unit * 3,
-        },
-        'padding': 0
-    }
-})
-
 const TextField: React.SFC<IProps> = ({
-    classes,
     margin,
     padding,
     style = {},
-    InputProps,
-    InputLabelProps,
     error,
-    variant = 'bootstrap',
+    variant = 'outlined',
     ...otherProps
 }) =>
     <MuiTextField
         error={ error }
+        variant={ variant }
         style={ { margin, padding, ...style } }
-        variant={ variant === 'bootstrap' ? 'standard' : variant }
         { ...otherProps }
-        InputProps={
-            merge(
-                variant === 'bootstrap'
-                    ? {
-                        classes: {
-                            input: error ? classes.inputError : classes.input,
-                            root: classes.root
-                        },
-                        disableUnderline: true
-                    }
-                    : {},
-                InputProps
-            )
-        }
-        InputLabelProps={
-            merge(
-                variant === 'bootstrap'
-                    ? {
-                        className: classes.label,
-                        shrink: true
-                    }
-                    : {},
-                InputLabelProps
-            )
-        }
     />
 
-export default withStyles(styles)(TextField)
+export default TextField
