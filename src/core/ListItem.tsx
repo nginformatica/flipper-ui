@@ -3,10 +3,11 @@ import {
     ListItemAvatar as MuiListItemAvatar,
     ListItemIcon as MuiListItemIcon,
     ListItemSecondaryAction as MuiListItemSecondaryAction,
-    ListItemText as MuiListItemText
+    ListItemText as MuiListItemText,
+    MenuItem as MuiMenuItem
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, MouseEvent } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -19,7 +20,7 @@ interface IProps extends IDefault {
     value?: string | number
     children?: React.ReactNode
     classes: { default: string }
-    onClick?: (name?: string) => {}
+    onClick?: (event?: MouseEvent) => {}
 }
 
 const styles = () => ({
@@ -89,7 +90,7 @@ class ListItem extends Component<IProps, {}> {
                 value={ value }
                 style={ { padding, margin, ...style } }
                 className={ className }
-                onClick={ () => onClick ? onClick(name) : null }>
+                onClick={ this.props.onClick }>
                 { children ? children : this.renderCustomItem() }
             </MuiListItem>
         )
