@@ -7,11 +7,19 @@ interface IProps extends IDefault {
     children?: React.ReactNode
     value?: string | number
     multiple?: boolean
+    variant?: 'standard' | 'outlined' | 'filled'
     onClose?: () => void
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Select: React.SFC<IProps> = ({ children, style = {}, margin, padding, ...otherProps }) =>
+const Select: React.SFC<IProps> = ({
+    children,
+    style = {},
+    margin,
+    padding,
+    variant = 'outlined',
+    ...otherProps
+}) =>
     <MuiSelect
         style={ { margin, padding, ...style } }
         {...otherProps }>
