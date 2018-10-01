@@ -28,7 +28,7 @@ Migration status
 - [x] Checkbox
 - [x] Chip
 - [x] DatePicker
-- [ ] Dialog
+- [x] Dialog
 - [ ] Divider
 - [x] Menu
 - [x] Floating Action Button
