@@ -1,0 +1,21 @@
+---
+name: Dialog
+route: /dialog
+---
+
+import Dialog from '../core/Dialog'
+import { Playground, PropsTable } from 'docz'
+
+# Dialog
+
+## Properties
+<PropsTable of={ Dialog } />
+
+## Dialog
+<Playground>
+    <Dialog
+        open={ false }
+        title='My beautiful Dialog'
+        text="Isn't it?"
+    />
+</Playground>
