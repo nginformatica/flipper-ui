@@ -10,7 +10,7 @@ Example:
 
 or
 
-`import { Button } from 'flipper-ui/Button'`
+`import { Button } from 'flipper-ui'`
 
 ## Components
 
