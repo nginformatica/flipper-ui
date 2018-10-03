@@ -3,7 +3,6 @@ import React, { ChangeEvent } from 'react'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
-    noBorder?: boolean
     autoComplete?: string
     autoFocus?: boolean
     defaultValue?: string | number
