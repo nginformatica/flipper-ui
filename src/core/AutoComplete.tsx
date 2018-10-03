@@ -23,7 +23,7 @@ interface IProps {
 }
 
 class AutoComplete extends Component<IProps> {
-    public autocomplete = { offsetWidth: 218 }
+    public autocomplete = { offsetWidth: 256 }
     public getSuggestions(inputValue) {
         const items = inputValue
             ? this.props.data
