@@ -18,7 +18,7 @@ Migration status
 
 - [x] Advertise
 - [x] AppBar/Header
-- [ ] AutoComplete
+- [x] AutoComplete
 - [x] Avatar
 - [x] Badge
 - [x] Box
