@@ -75,7 +75,7 @@ class AutoComplete extends Component<IProps> {
         return (
             <Downshift
                 defaultIsOpen={ false }
-                itemToString={ item => item && is(Object) ? item.label : item }
+                itemToString={ item => is(Object, item) ? item.label : item }
                 onSelect={ this.handleSelect.bind(this) }
                 onInputValueChange={ this.handleChange.bind(this) }>
                 {

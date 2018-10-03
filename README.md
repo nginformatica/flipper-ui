@@ -10,7 +10,7 @@ Example:
 
 or
 
-`import { Button } from 'flipper-ui'`
+`import { Button } from 'flipper-ui/Button'`
 
 ## Components
 
@@ -18,7 +18,7 @@ Migration status
 
 - [x] Advertise
 - [x] AppBar/Header
-- [ ] AutoComplete
+- [x] AutoComplete
 - [x] Avatar
 - [x] Badge
 - [x] Box
