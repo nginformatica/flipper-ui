@@ -1,0 +1,31 @@
+---
+name: AutoComplete
+route: /autocomplete
+---
+
+import AutoComplete from '../core/AutoComplete'
+import ListItem from '../core/ListItem'
+import TextField from '../core/TextField'
+import { Playground, PropsTable } from 'docz'
+
+# AutoComplete
+
+## Properties
+<PropsTable of={ AutoComplete } />
+
+## Demo
+<Playground style={ { minHeight: '200px' } }>
+    <AutoComplete
+        data={ ['Rock', 'Pop', 'Classic'] }
+        inputElement={
+            <TextField
+                fullWidth
+                placeholder='Music genres'
+            />
+        }
+        value=''
+        renderSuggestion={ item => <ListItem key={ item }>{ item }</ListItem> }
+        onChange={ () => {} }
+        onSelect={ () => {} }
+    />
+</Playground>
