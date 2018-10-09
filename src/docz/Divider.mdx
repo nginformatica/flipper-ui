@@ -5,6 +5,8 @@ route: /divider
 
 import Divider from '../core/Divider'
 import List from '../core/List'
+import Avatar from '../core/Avatar'
+import Typography from '../core/Typography'
 import ListItem from '../core/ListItem'
 import { Playground, PropsTable } from 'docz'
 import { Add as IconAdd } from '../icons'
@@ -14,24 +16,52 @@ import { Add as IconAdd } from '../icons'
 ## Properties
 <PropsTable of={ Divider } />
 
-## Demo
+## Simple divider
 <Playground>
     <List>
         <ListItem button>
-            <p>Pinguin-africano</p>
+            <p>Banded penguin</p>
         </ListItem>
         <Divider/>
         <ListItem button>
-            <p>Pinguin-de-adélia</p>
+            <p>Chinstrap penguin</p>
         </ListItem>
         <Divider/>
         <ListItem button>
-            <p>Pinguin-saltador-de-rocha</p>
+            <p>Crested penguins</p>
         </ListItem>
         <Divider/>
         <ListItem button>
-            <p>Pinguin-gentoo</p>
+            <p>Little penguin</p>
         </ListItem>
         <Divider/>
+    </List>
+</Playground>
+
+## Divider with inset
+<Playground>
+    <List>
+    <ListItem avatar={<Avatar>B</Avatar>} button title='Banded penguin'>
+    </ListItem>
+    <Divider inset='true'/>
+    <ListItem avatar={<Avatar>C</Avatar>} button title='Chinstrap penguin'>
+    </ListItem>
+    <Divider inset='true'/>
+    <ListItem avatar={<Avatar>L</Avatar>} button title='Little penguin'>
+    </ListItem>
+    <Divider inset='true'/>
+    </List>
+</Playground>
+
+## Light divider
+<Playground>
+    <List>
+        <ListItem avatar={<Avatar>A</Avatar>} button title='Adélie penguin'>
+        </ListItem>
+        <ListItem avatar={<Avatar>M</Avatar>} button title='Megadyptes'>
+        </ListItem>
+        <Divider light='true'/>
+        <ListItem button title='Emperor penguin' subtitle='20 years'>
+        </ListItem>
     </List>
 </Playground>

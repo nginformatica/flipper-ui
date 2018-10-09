@@ -3,7 +3,6 @@ import React from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-  absolute?: boolean
   inset?: boolean
   light?: boolean
 }
