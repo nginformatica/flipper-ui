@@ -4,6 +4,8 @@ route: /divider
 ---
 
 import Divider from '../core/Divider'
+import List from '../core/List'
+import ListItem from '../core/ListItem'
 import { Playground, PropsTable } from 'docz'
 import { Add as IconAdd } from '../icons'
 
@@ -14,5 +16,22 @@ import { Add as IconAdd } from '../icons'
 
 ## Demo
 <Playground>
-    <Divider/>
+    <List>
+        <ListItem button>
+            <p>Pinguin-africano</p>
+        </ListItem>
+        <Divider/>
+        <ListItem button>
+            <p>Pinguin-de-adélia</p>
+        </ListItem>
+        <Divider/>
+        <ListItem button>
+            <p>Pinguin-saltador-de-rocha</p>
+        </ListItem>
+        <Divider/>
+        <ListItem button>
+            <p>Pinguin-gentoo</p>
+        </ListItem>
+        <Divider/>
+    </List>
 </Playground>
