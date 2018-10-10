@@ -1,0 +1,61 @@
+---
+name: Divider
+route: /divider
+---
+
+import Avatar from '../core/Avatar'
+import Divider from '../core/Divider'
+import List from '../core/List'
+import ListItem from '../core/ListItem'
+import Typography from '../core/Typography'
+import { Playground, PropsTable } from 'docz'
+import { Add as IconAdd } from '../icons'
+
+# Divider
+
+## Properties
+<PropsTable of={ Divider } />
+
+## Simple divider
+<Playground>
+    <List>
+        <ListItem>
+            <p>Banded penguin</p>
+        </ListItem>
+        <Divider/>
+        <ListItem>
+            <p>Chinstrap penguin</p>
+        </ListItem>
+        <Divider/>
+        <ListItem>
+            <p>Crested penguins</p>
+        </ListItem>
+        <Divider/>
+        <ListItem>
+            <p>Little penguin</p>
+        </ListItem>
+        <Divider/>
+    </List>
+</Playground>
+
+## Divider with inset
+<Playground>
+    <List>
+        <ListItem avatar={ <Avatar>B</Avatar> } title='Banded penguin' />
+        <Divider inset='true'/>
+        <ListItem avatar={ <Avatar>C</Avatar> } title='Chinstrap penguin'/>
+        <Divider inset='true'/>
+        <ListItem avatar={ <Avatar>L</Avatar> } title='Little penguin'/>
+        <Divider inset='true'/>
+    </List>
+</Playground>
+
+## Light divider
+<Playground>
+    <List>
+        <ListItem avatar={ <Avatar>A</Avatar> } title='Adélie penguin'/>
+        <ListItem avatar={ <Avatar>M</Avatar> } title='Megadyptes'/>
+        <Divider light='true'/>
+        <ListItem title='Emperor penguin' subtitle='20 years'/>
+    </List>
+</Playground>
