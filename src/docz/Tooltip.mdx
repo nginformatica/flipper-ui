@@ -4,6 +4,7 @@ route: /tooltip
 ---
 
 import Tooltip from '../core/Tooltip'
+import Button from '../core/Button'
 import { Playground, PropsTable } from 'docz'
 import { Add as IconAdd } from '../icons'
 
@@ -12,7 +13,49 @@ import { Add as IconAdd } from '../icons'
 ## Properties
 <PropsTable of={ Tooltip } />
 
-## Demo
+## Simple tooltip
 <Playground>
-    <Tooltip />
+    <Tooltip title={'title'}>
+        <Button>Simple tooltip</Button>
+    </Tooltip>
+</Playground>
+
+## Positioned tooltip
+<Playground>
+    <Tooltip title="Add" placement="left-start">
+        <Button>left-start</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="left">
+        <Button>left</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="left-end">
+        <Button>left-end</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="bottom-start">
+        <Button>bottom-start</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="bottom">
+        <Button>bottom</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="bottom-end">
+        <Button>bottom-end</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="right-start">
+        <Button>right-start</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="right">
+        <Button>right</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="right-end">
+        <Button>right-end</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="top-start">
+        <Button>top-start</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="top">
+        <Button>top</Button>
+    </Tooltip>
+    <Tooltip title="Add" placement="top-end">
+        <Button>top-end</Button>
+    </Tooltip>
 </Playground>

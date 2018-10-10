@@ -1,14 +1,27 @@
-import { Tooltip as  MuiTooltip } from '@material-ui/core'
-import React from 'react'
+import { Tooltip as MuiTooltip } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    leaveDelay?: number
+    placement?: 'bottom-end',
+                'bottom-start',
+                'bottom',
+                'left-end',
+                'left-start',
+                'left',
+                'right-end',
+                'right-start',
+                'right',
+                'top-end',
+                'top-start',
+                'top',
+    title: string,
+    children: ReactElement<any>
 }
 
-const Tooltip: React.SFC<IProps> = ({ children, margin, padding, style = {}, ...otherProps })  =>
-    <MuiTooltip title='hello'>
-        <h1>context, aqui é neto</h1>
+const Tooltip: React.SFC<IProps> = ({ children, margin, padding, placement, title, style = {}, ...otherProps }) =>
+    <MuiTooltip title={title} placement={placement}>
+        {children}
     </MuiTooltip>
 
 export default Tooltip
