@@ -23,40 +23,40 @@ import { Add as IconAdd } from '../icons'
 ## Positioned tooltip
 <Playground>
     <Tooltip title='Tooltip' placement='left-start'>
-        <Button variant='outlined' color='secondary' margin={12}>left-start</Button>
+        <Button variant='outlined' color='secondary' margin={ 12 }>left-start</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='left'>
-        <Button variant='outlined' color='primary' margin={12}>left</Button>
+        <Button variant='outlined' color='primary' margin={ 12 }>left</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='left-end'>
-        <Button variant='outlined' margin={12}>left-end</Button>
+        <Button variant='outlined' margin={ 12 }>left-end</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='bottom-start'>
-        <Button variant='outlined' color='primary' margin={12}>bottom-start</Button>
+        <Button variant='outlined' color='primary' margin={ 12 }>bottom-start</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='bottom'>
-        <Button variant='outlined' color='secondary' margin={12}>bottom</Button>
+        <Button variant='outlined' color='secondary' margin={ 12 }>bottom</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='bottom-end'>
-        <Button variant='outlined' color='primary' margin={12}>bottom-end</Button>
+        <Button variant='outlined' color='primary' margin={ 12 }>bottom-end</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='right-start'>
-        <Button variant='outlined' margin={12}>right-start</Button>
+        <Button variant='outlined' margin={ 12 }>right-start</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='right'>
-        <Button variant='outlined' color='primary' margin={12}>right</Button>
+        <Button variant='outlined' color='primary' margin={ 12 }>right</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='right-end'>
-        <Button variant='outlined' color='secondary' margin={12}>right-end</Button>
+        <Button variant='outlined' color='secondary' margin={ 12 }>right-end</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='top-start'>
-        <Button variant='outlined' margin={12}>top-start</Button>
+        <Button variant='outlined' margin={ 12 }>top-start</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='top'>
-        <Button variant='outlined' color='secondary' margin={12}>top</Button>
+        <Button variant='outlined' color='secondary' margin={ 12 }>top</Button>
     </Tooltip>
     <Tooltip title='Tooltip' placement='top-end'>
-        <Button variant='outlined' color='primary' margin={12}>top-end</Button>
+        <Button variant='outlined' color='primary' margin={ 12 }>top-end</Button>
     </Tooltip>
 </Playground>
 
@@ -64,10 +64,9 @@ import { Add as IconAdd } from '../icons'
 <Playground>
     <Tooltip
         title='Tooltip'
-        onClose={()=> console.log('onClose()')}
-        onOpen={()=> console.log('onOpen()')}
-        open={true}
-    >
+        onClose={ ()=> console.log('onClose()') }
+        onOpen={ ()=> console.log('onOpen()') }
+        open={ true }>
         <Button variant='outlined'>Controlled tooltip</Button>
     </Tooltip>
 </Playground>
@@ -75,9 +74,7 @@ import { Add as IconAdd } from '../icons'
 
 ## Disabled element
 <Playground>
-    <Tooltip
-        title='Tooltip'
-    >
+    <Tooltip title='Tooltip'>
         <span>
             <Button disabled variant='outlined'>I'm a disabled element</Button>
         </span>
