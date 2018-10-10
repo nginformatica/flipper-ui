@@ -10,7 +10,7 @@ interface IProps extends IDefault {
 const Divider: React.SFC<IProps> = ({ margin, padding, style = {}, ...otherProps })  =>
     <MuiDivider
         { ...otherProps }
-        style={ { margin, padding, ...style } }>
-    </MuiDivider>
+        style={ { margin, padding, ...style } }
+    />
 
 export default Divider
