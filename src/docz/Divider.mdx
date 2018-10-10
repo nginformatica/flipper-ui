@@ -3,11 +3,11 @@ name: Divider
 route: /divider
 ---
 
+import Avatar from '../core/Avatar'
 import Divider from '../core/Divider'
 import List from '../core/List'
-import Avatar from '../core/Avatar'
-import Typography from '../core/Typography'
 import ListItem from '../core/ListItem'
+import Typography from '../core/Typography'
 import { Playground, PropsTable } from 'docz'
 import { Add as IconAdd } from '../icons'
 
@@ -41,27 +41,21 @@ import { Add as IconAdd } from '../icons'
 ## Divider with inset
 <Playground>
     <List>
-    <ListItem avatar={<Avatar>B</Avatar>} title='Banded penguin'>
-    </ListItem>
-    <Divider inset='true'/>
-    <ListItem avatar={<Avatar>C</Avatar>} title='Chinstrap penguin'>
-    </ListItem>
-    <Divider inset='true'/>
-    <ListItem avatar={<Avatar>L</Avatar>} title='Little penguin'>
-    </ListItem>
-    <Divider inset='true'/>
+        <ListItem avatar={ <Avatar>B</Avatar> } title='Banded penguin' />
+        <Divider inset='true'/>
+        <ListItem avatar={ <Avatar>C</Avatar> } title='Chinstrap penguin'/>
+        <Divider inset='true'/>
+        <ListItem avatar={ <Avatar>L</Avatar> } title='Little penguin'/>
+        <Divider inset='true'/>
     </List>
 </Playground>
 
 ## Light divider
 <Playground>
     <List>
-        <ListItem avatar={<Avatar>A</Avatar>} title='Adélie penguin'>
-        </ListItem>
-        <ListItem avatar={<Avatar>M</Avatar>} title='Megadyptes'>
-        </ListItem>
+        <ListItem avatar={ <Avatar>A</Avatar> } title='Adélie penguin'/>
+        <ListItem avatar={ <Avatar>M</Avatar> } title='Megadyptes'/>
         <Divider light='true'/>
-        <ListItem title='Emperor penguin' subtitle='20 years'>
-        </ListItem>
+        <ListItem title='Emperor penguin' subtitle='20 years'/>
     </List>
 </Playground>
