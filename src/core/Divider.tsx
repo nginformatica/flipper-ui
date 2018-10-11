@@ -3,8 +3,8 @@ import React from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-  inset?: boolean
-  light?: boolean
+    inset?: boolean
+    light?: boolean
 }
 
 const Divider: React.SFC<IProps> = ({ margin, padding, style = {}, ...otherProps })  =>
