@@ -16,16 +16,20 @@ interface IProps extends IDefault {
                | 'top-end'
                | 'top-start'
                | 'top'
-    title: string,
-    onClose?: () => void,
-    onOpen?: () => void,
-    open?: boolean,
+    title: string
+    onClose?: () => void
+    onOpen?: () => void
+    open?: boolean
     children: ReactElement<any>
 }
 
 const Tooltip: React.SFC<IProps> = ({ children, placement, title, open, ...otherProps }) =>
-    <MuiTooltip  {...otherProps} title={title} placement={placement} open={open}>
-        {children}
+    <MuiTooltip
+        { ...otherProps }
+        title={ title }
+        placement={ placement }
+        open={ open }>
+        { children }
     </MuiTooltip>
 
 export default Tooltip
