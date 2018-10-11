@@ -63,10 +63,10 @@ import { Add as IconAdd } from '../icons'
 ## Controlled tooltip
 <Playground>
     <Tooltip
+        open
         title='Tooltip'
-        onClose={ ()=> console.log('onClose()') }
-        onOpen={ ()=> console.log('onOpen()') }
-        open={ true }>
+        onClose={ () => console.log('onClose()') }
+        onOpen={ () => console.log('onOpen()') }>
         <Button variant='outlined'>Controlled tooltip</Button>
     </Tooltip>
 </Playground>
