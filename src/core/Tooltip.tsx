@@ -23,12 +23,9 @@ interface IProps extends IDefault {
     children: ReactElement<any>
 }
 
-const Tooltip: React.SFC<IProps> = ({ children, placement, title, open, ...otherProps }) =>
+const Tooltip: React.SFC<IProps> = ({ children, ...otherProps }) =>
     <MuiTooltip
-        { ...otherProps }
-        title={ title }
-        placement={ placement }
-        open={ open }>
+        { ...otherProps }>
         { children }
     </MuiTooltip>
 
