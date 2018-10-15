@@ -29,7 +29,7 @@ Migration status
 - [x] Chip
 - [x] DatePicker
 - [x] Dialog
-- [ ] Divider
+- [x] Divider
 - [x] Menu
 - [x] Floating Action Button
 - [x] Icon
@@ -47,6 +47,6 @@ Migration status
 - [x] Tabs
 - [x] TextArea
 - [x] TextField
-- [ ] Tooltip
+- [x] Tooltip
 - [ ] Tree
 - [x] Typography
