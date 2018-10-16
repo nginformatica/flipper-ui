@@ -1,3 +1,6 @@
+export { default as Accordion } from './core/Accordion'
+export { default as AccordionDetails } from './core/AccordionDetails'
+export { default as AccordionSummary } from './core/AccordionSummary'
 export { default as Advertise } from './core/Advertise'
 export { default as AutoComplete } from './core/AutoComplete'
 export { default as Avatar } from './core/Avatar'
