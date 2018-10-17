@@ -1,0 +1,49 @@
+---
+name: Expansion Panel
+route: /expansion-panel
+---
+
+import Button from '../core/Button'
+import ExpansionPanel from '../core/ExpansionPanel'
+import Typography from '../core/Typography'
+import ExpandMore from '@material-ui/icons/ExpandMore'
+import { Playground, PropsTable } from 'docz'
+
+# ExpansionPanel
+
+## Properties
+<PropsTable of={ ExpansionPanel } />
+
+## Demo
+<Playground>
+    <ExpansionPanel
+        summary='pulp fiction'
+        details={
+            <div>
+                <Typography gutterBottom>
+                    books about imaginary characters and events, produced in large quantities and intended to be read by many people but not considered to be of very good quality:
+                </Typography>
+                <Typography variant='caption'>            
+                    She was reading a pulp fiction thriller with a lurid cover.
+                </Typography>
+            </div>            
+        }
+        expandIcon={ <ExpandMore /> }
+        actions={
+            <Button color='primary'>
+                Confirm
+            </Button>
+        }
+    />
+    <ExpansionPanel
+        summary='Mentalist'
+        details='Someone who uses mental acuity, hypnosis and/or suggestion.'
+        expandIcon={ <ExpandMore /> }
+    />
+    <ExpansionPanel
+        disabled
+        summary='Dormammu'
+        details='I have come to bargain'
+        expandIcon={ <ExpandMore /> }
+    />
+</Playground>
