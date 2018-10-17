@@ -23,17 +23,17 @@ Migration status
 - [x] Badge
 - [x] Box
 - [x] Button
-- [x] Expansion Panel
-- [x] Icon Button
 - [ ] Carousel/Gallery
 - [x] Checkbox
 - [x] Chip
 - [x] DatePicker
 - [x] Dialog
 - [x] Divider
+- [x] Expansion Panel
 - [x] Menu
 - [x] Floating Action Button
 - [x] Icon
+- [x] Icon Button
 - [x] List
 - [x] ListItem
 - [x] Paper
