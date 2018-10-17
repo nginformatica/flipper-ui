@@ -23,6 +23,7 @@ Migration status
 - [x] Badge
 - [x] Box
 - [x] Button
+- [x] Expansion Panel
 - [x] Icon Button
 - [ ] Carousel/Gallery
 - [x] Checkbox
