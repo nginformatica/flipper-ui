@@ -3,7 +3,7 @@ import React, { SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    collapseHeight: string
+    collapsedHeight: string
     in: boolean
     timeout: number | { ender?: number, exit?: number } | 'auto'
 }
