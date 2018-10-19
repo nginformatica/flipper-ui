@@ -5,7 +5,7 @@ import { IDefault } from './Advertise'
 interface IProps extends IDefault {
     collapseHeight: string
     in: boolean
-    timout: number | { ender?: number, exit?: number } | 'auto'
+    timeout: number | { ender?: number, exit?: number } | 'auto'
 }
 
 const Collapse: SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
