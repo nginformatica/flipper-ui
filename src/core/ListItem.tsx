@@ -20,6 +20,7 @@ interface IProps extends IDefault {
     value?: string | number
     children?: React.ReactNode
     classes: { default: string }
+    selected?: boolean
     onClick?: (event?: MouseEvent) => {}
 }
 
@@ -82,7 +83,16 @@ class ListItem extends Component<IProps, {}> {
     }
 
     public render() {
-        const { className, children, value, style = {}, padding, margin, onClick } = this.props
+        const {
+            className,
+            children,
+            value,
+            style = {},
+            padding,
+            margin,
+            selected,
+            onClick
+        } = this.props
 
         return (
             <MuiListItem
@@ -90,7 +100,8 @@ class ListItem extends Component<IProps, {}> {
                 value={ value }
                 style={ { padding, margin, ...style } }
                 className={ className }
-                onClick={ this.props.onClick }>
+                selected={ selected }
+                onClick={ onClick }>
                 { children ? children : this.renderCustomItem() }
             </MuiListItem>
         )
