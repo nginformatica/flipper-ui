@@ -1,0 +1,27 @@
+---
+name: Collapse
+route: /collapse
+---
+
+import Collapse from '../core/Collapse'
+import { Playground, PropsTable } from 'docz'
+
+# Collapse
+
+## Properties
+<PropsTable of={ Collapse } />
+
+## Open
+<Playground>
+    <Collapse in>
+        I am open for discussions
+    </Collapse>
+</Playground>
+
+## Closed
+<Playground>
+    <Collapse in={ false }>
+        { /* Don't try to change `in` to `true` */ }
+        I'm not. Please don't insist.
+    </Collapse>
+</Playground>
