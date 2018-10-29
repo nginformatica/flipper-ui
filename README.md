@@ -26,6 +26,7 @@ Migration status
 - [ ] Carousel/Gallery
 - [x] Checkbox
 - [x] Chip
+- [x] Collapse
 - [x] DatePicker
 - [x] Dialog
 - [x] Divider
