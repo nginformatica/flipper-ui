@@ -3,8 +3,7 @@ import {
     ListItemAvatar as MuiListItemAvatar,
     ListItemIcon as MuiListItemIcon,
     ListItemSecondaryAction as MuiListItemSecondaryAction,
-    ListItemText as MuiListItemText,
-    MenuItem as MuiMenuItem
+    ListItemText as MuiListItemText
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import React, { Component, Fragment, MouseEvent } from 'react'
@@ -21,7 +20,7 @@ interface IProps extends IDefault {
     children?: React.ReactNode
     classes: { default: string }
     selected?: boolean
-    onClick?: (event?: MouseEvent) => {}
+    onClick?: (event?: MouseEvent) => void
 }
 
 const styles = () => ({
