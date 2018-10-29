@@ -14,7 +14,7 @@ import { Playground, PropsTable } from 'docz'
 ## Properties
 <PropsTable of={ ExpansionPanel } />
 
-## Demo
+## With left expansion icon
 <Playground>
     <ExpansionPanel
         summary='Pulp Fiction'
@@ -43,6 +43,44 @@ import { Playground, PropsTable } from 'docz'
     />
     <ExpansionPanel
         disabled
+        summary='Dormammu'
+        details='I have come to bargain'
+        expandIcon={ <ExpandMore /> }
+    />
+</Playground>
+
+## With right expansion icon
+<Playground>
+    <ExpansionPanel
+        summary='Pulp Fiction'
+        iconPlacement='right'
+        details={
+            <div>
+                <Typography gutterBottom>
+                    books about imaginary characters and events, produced in large quantities
+                    and intended to be read by many people but not considered to be of very good quality:
+                </Typography>
+                <Typography variant='caption'>
+                    She was reading a pulp fiction thriller with a lurid cover.
+                </Typography>
+            </div>
+        }
+        expandIcon={ <ExpandMore /> }
+        actions={
+            <Button color='primary'>
+                Confirm
+            </Button>
+        }
+    />
+    <ExpansionPanel
+        summary='Mentalist'
+        iconPlacement='right'
+        details='Someone who uses mental acuity, hypnosis and/or suggestion.'
+        expandIcon={ <ExpandMore /> }
+    />
+    <ExpansionPanel
+        disabled
+        iconPlacement='right'
         summary='Dormammu'
         details='I have come to bargain'
         expandIcon={ <ExpandMore /> }

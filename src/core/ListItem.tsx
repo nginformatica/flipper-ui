@@ -21,7 +21,7 @@ interface IProps extends IDefault {
     children?: React.ReactNode
     classes: { default: string }
     selected?: boolean
-    onClick?: (event?: MouseEvent) => {}
+    onClick?: (event?: MouseEvent) => any
 }
 
 const styles = () => ({
