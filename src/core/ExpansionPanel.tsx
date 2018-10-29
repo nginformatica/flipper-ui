@@ -17,7 +17,7 @@ interface IProps extends IPaper {
     disabled?: boolean
     expandIcon?: React.ReactNode
     expanded?: boolean
-    iconPlacement?: 'left' | 'right'
+    iconPosition?: 'left' | 'right'
     summary?: React.ReactNode
     summaryStyle?: object
     detailsStyle?: object
@@ -40,7 +40,7 @@ const ExpansionPanel: React.SFC<IProps> = ({
     classes,
     details,
     expandIcon,
-    iconPlacement = 'left',
+    iconPosition = 'left',
     margin,
     padding,
     style,
@@ -56,10 +56,10 @@ const ExpansionPanel: React.SFC<IProps> = ({
                 <MuiExpansionPanelSummary
                     expandIcon={ expandIcon }
                     classes={ {
-                        content: iconPlacement === 'left'
+                        content: iconPosition === 'left'
                             ? classes.content
                             : '',
-                        expandIcon: iconPlacement === 'left'
+                        expandIcon: iconPosition === 'left'
                             ? classes.expandIcon
                             : ''
                     } }
