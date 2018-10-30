@@ -50,7 +50,9 @@ const ExpansionPanel: React.SFC<IProps> = ({
     actionsStyle,
     ...otherProps
 }) =>
-    <MuiExpansionPanel { ...otherProps }>
+    <MuiExpansionPanel
+        { ...otherProps }
+        style={ { margin, padding, ...style } }>
         {
             summary && (
                 <MuiExpansionPanelSummary
