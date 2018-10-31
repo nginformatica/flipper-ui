@@ -4,6 +4,7 @@ route: /dialog
 ---
 
 import Dialog from '../core/Dialog'
+import Typography from '../core/Typography'
 import { Playground, PropsTable } from 'docz'
 
 # Dialog
@@ -17,5 +18,14 @@ import { Playground, PropsTable } from 'docz'
         open={ false }
         title='My beautiful Dialog'
         text="Isn't it?"
+    />
+</Playground>
+
+## Dialog with Typography
+<Playground>
+    <Dialog
+        open={ false }
+        title={ <Typography color="primary">Title with Typography</Typography> }
+        text="Simple Text"
     />
 </Playground>

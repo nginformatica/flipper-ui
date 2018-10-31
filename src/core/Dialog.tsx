@@ -10,7 +10,7 @@ interface IProps extends IDefault {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
-    title?: string
+    title?: string | React.ReactNode
     actions?: ReactNode
     content?: ReactNode
     text?: string
@@ -20,7 +20,7 @@ interface IProps extends IDefault {
 }
 
 class Dialog extends Component<IProps> {
-    public renderTitle(title: string) {
+    public renderTitle(title: IProps['title']) {
         return (
             <MuiDialogTitle>
                 { title }
