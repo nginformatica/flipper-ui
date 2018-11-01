@@ -59,4 +59,16 @@ import { Add as IconAdd } from '../icons'
     <Button disabled variant="raised" color="primary" margin={ 12 }>
         Disabled
     </Button>
+    <input
+        accept="image/*"
+        style={ { display: 'none' } }
+        id="flat-button-file"
+        multiple
+        type="file"
+    />
+    <label htmlFor="flat-button-file">
+        <Button variant='outlined' component="span">
+            Upload
+        </Button>
+    </label>
 </Playground>

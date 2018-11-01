@@ -6,6 +6,7 @@ import { IDefault } from './Advertise'
 interface IProps extends IDefault {
     mini?: boolean
     disabled?: boolean
+    component?: 'string'
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'
     href?: string
