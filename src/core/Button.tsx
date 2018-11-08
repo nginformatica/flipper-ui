@@ -13,7 +13,7 @@ interface IProps extends IDefault {
     fullWidth?: boolean
     variant?: 'text' | 'flat' | 'outlined' | 'contained' | 'raised' | 'fab' | 'extendedFab' | 'dashed'
     children?: React.ReactNode
-    onClick?: (event?) => any
+    onClick?: (event?) => void
 }
 
 const Button: SFC<IProps> = ({ children, margin, padding, style = {}, variant, ...otherProps }) =>
