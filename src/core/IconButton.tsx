@@ -6,7 +6,7 @@ interface IProps extends IDefault {
     children?: React.ReactNode
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
     disabled?: boolean
-    onClick?: () => void
+    onClick?: (event?) => void
 }
 
 const IconButton: React.SFC<IProps> = ({ children, padding, margin, style, ...otherProps }) =>
