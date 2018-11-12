@@ -8,6 +8,7 @@ export interface IDefault {
     className?: string
     margin?: number | string
     padding?: number | string
+    ref?: React.Ref<any>
 }
 
 interface IProps extends IDefault {
