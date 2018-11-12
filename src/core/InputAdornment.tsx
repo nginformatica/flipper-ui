@@ -7,10 +7,9 @@ export interface IProps extends IDefault {
     children: React.ReactNode
 }
 
-const InputAdornment: SFC<IProps> = ({ children, ...otherProps }) => (
-    <MuiInputAdornment {...otherProps}>
+const InputAdornment: SFC<IProps> = ({ children, ...otherProps }) =>
+    <MuiInputAdornment { ...otherProps }>
         { children }
     </MuiInputAdornment>
-)
 
 export default InputAdornment
