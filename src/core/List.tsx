@@ -45,7 +45,8 @@ const List: React.SFC<IProps> = ({
     children,
     className,
     classes,
-    color = 'default'
+    color = 'default',
+    ...otherProps
 }) =>
     <MuiList
         subheader={
@@ -54,7 +55,8 @@ const List: React.SFC<IProps> = ({
                 : undefined
         }
         className={ `${classes[color]} ${className}` }
-        style={ { padding, margin, ...style } }>
+        style={ { padding, margin, ...style } }
+        { ...otherProps }>
         { children }
     </MuiList>
 

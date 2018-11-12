@@ -24,11 +24,13 @@ const RadioGroup: React.SFC<IProps> = ({
     style = {},
     title,
     value,
-    onChange
+    onChange,
+    ...otherProps
 }) =>
     <FormControl
         className={ className }
-        style={ { padding, margin, ...style } }>
+        style={ { padding, margin, ...style } }
+        { ...otherProps }>
         <FormLabel component='legend'>{ title }</FormLabel>
         <MuiRadioGroup
             name={ name }

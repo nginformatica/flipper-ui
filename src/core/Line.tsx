@@ -15,10 +15,11 @@ const StyledLine = styled.hr<IProps>`
     };
 `
 
-const Line: React.SFC<IProps> = ({ primary, padding, margin, style }) =>
+const Line: React.SFC<IProps> = ({ primary, padding, margin, style, ref }) =>
     <StyledLine
-        style={ { padding, margin, ...style } }
+        ref={ ref }
         primary={ primary }
+        style={ { padding, margin, ...style } }
     />
 
 export default Line

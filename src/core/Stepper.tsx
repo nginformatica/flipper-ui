@@ -23,7 +23,7 @@ class Stepper extends Component<IProps, {}> {
             padding,
             margin,
             style = {},
-            className
+            ...otherProps
         } = this.props
 
         return (
@@ -31,7 +31,7 @@ class Stepper extends Component<IProps, {}> {
                 alternativeLabel={ bottomLabel }
                 activeStep={ active }
                 style={ { padding, margin, ...style } }
-                className={ className }>
+                { ...otherProps }>
                 {
                     steps.map((step, index) =>
                         <Step key={ index }>
