@@ -3,6 +3,7 @@ name: TextField
 route: /text-field
 ---
 
+import InputAdornment from '../core/InputAdornment'
 import TextField from '../core/TextField'
 import { Playground, PropsTable } from 'docz'
 
@@ -11,7 +12,19 @@ import { Playground, PropsTable } from 'docz'
 ## Properties
 <PropsTable of={ TextField } />
 
-## Demo
+## Simple TextField
 <Playground>
-    <TextField placeholder="Description" />
+    <TextField placeholder='Description' />
+</Playground>
+
+## TextField with InputAdornment
+<Playground>
+    <TextField
+        type='number'
+        label='Price'
+        InputProps={ {
+            startAdornment: <InputAdornment position='start'>$</InputAdornment>
+        } }
+        InputLabelProps={ { shrink: true } }
+    />
 </Playground>
