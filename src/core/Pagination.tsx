@@ -32,12 +32,14 @@ class Pagination extends Component<IProps, {}> {
             padding,
             margin,
             pages = 1,
-            className
+            className,
+            ref
         } = this.props
         const allPages = times(inc, pages || 1)
 
         return (
             <Content
+                ref={ ref }
                 className={ className }
                 style={ { padding, margin, ...style } }>
                 <Button
