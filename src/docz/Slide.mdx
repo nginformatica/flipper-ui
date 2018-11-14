@@ -1,0 +1,26 @@
+---
+name: Slide
+route: /slide
+---
+
+import Slide from '../core/Slide'
+import { Playground, PropsTable } from 'docz'
+
+# Slide
+
+## Properties
+<PropsTable of={ Slide } />
+
+## Open
+<Playground>
+    <Slide in>
+        <span>I am open for discussions</span>
+    </Slide>
+</Playground>
+
+## Closed
+<Playground>
+    <Slide in={ false }>
+        <span>I'm not. Please don't insist.</span>
+    </Slide>
+</Playground>

@@ -32,7 +32,9 @@ Migration status
 - [x] Divider
 - [x] Expansion Panel
 - [x] Menu
+- [x] Fade
 - [x] Floating Action Button
+- [x] Grow
 - [x] Icon
 - [x] Icon Button
 - [x] List
@@ -44,6 +46,7 @@ Migration status
 - [x] Radio
 - [x] RadioGroup
 - [x] Select
+- [x] Slide
 - [x] Snackbar
 - [x] Table
 - [x] Tabs
@@ -52,3 +55,4 @@ Migration status
 - [x] Tooltip
 - [ ] Tree
 - [x] Typography
+- [x] Zoom

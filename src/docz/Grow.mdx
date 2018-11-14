@@ -1,0 +1,26 @@
+---
+name: Grow
+route: /grow
+---
+
+import Grow from '../core/Grow'
+import { Playground, PropsTable } from 'docz'
+
+# Grow
+
+## Properties
+<PropsTable of={ Grow } />
+
+## Open
+<Playground>
+    <Grow in>
+        <span>I am open for discussions</span>
+    </Grow>
+</Playground>
+
+## Closed
+<Playground>
+    <Grow in={ false }>
+        <span>I'm not. Please don't insist.</span>
+    </Grow>
+</Playground>

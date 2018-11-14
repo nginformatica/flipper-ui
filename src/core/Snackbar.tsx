@@ -26,7 +26,7 @@ interface IProps extends IDefault {
     }
     anchorOrigin?: {
         horizontal: 'left' | 'center' | 'right',
-        vertical: 'top' | 'center' | 'bottom'
+        vertical: 'top' | 'bottom'
    }
     onClose?: (value) => void
 }

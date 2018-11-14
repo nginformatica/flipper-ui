@@ -1,0 +1,26 @@
+---
+name: Fade
+route: /fade
+---
+
+import Fade from '../core/Fade'
+import { Playground, PropsTable } from 'docz'
+
+# Fade
+
+## Properties
+<PropsTable of={ Fade } />
+
+## Open
+<Playground>
+    <Fade in>
+        <span>I am open for discussions</span>
+    </Fade>
+</Playground>
+
+## Closed
+<Playground>
+    <Fade in={ false }>
+        <span>I'm not. Please don't insist.</span>
+    </Fade>
+</Playground>
