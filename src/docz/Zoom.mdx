@@ -1,0 +1,26 @@
+---
+name: Zoom
+route: /zoom
+---
+
+import Zoom from '../core/Zoom'
+import { Playground, PropsTable } from 'docz'
+
+# Zoom
+
+## Properties
+<PropsTable of={ Zoom } />
+
+## Open
+<Playground>
+    <Zoom in>
+        <span>I am open for discussions</span>
+    </Zoom>
+</Playground>
+
+## Closed
+<Playground>
+    <Zoom in={ false }>
+        <span>I'm not. Please don't insist.</span>
+    </Zoom>
+</Playground>

@@ -55,3 +55,4 @@ Migration status
 - [x] Tooltip
 - [ ] Tree
 - [x] Typography
+- [x] Zoom
