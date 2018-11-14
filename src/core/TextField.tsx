@@ -36,7 +36,7 @@ const TextField: React.SFC<IProps> = ({
 }) =>
     <MuiTextField
         error={ error }
-        variant={ variant }
+        variant={ variant as 'outlined' }
         style={ { margin, padding, ...style } }
         { ...otherProps }
     />
