@@ -11,7 +11,7 @@ interface IProps extends IDefault {
     size?: 'small' | 'medium' | 'large'
     href?: string
     fullWidth?: boolean
-    variant?: 'text' | 'flat' | 'outlined' | 'contained' | 'raised' | 'fab' | 'extendedFab' | 'dashed'
+    variant?: 'text' | 'flat' | 'outlined' | 'contained' | 'fab' | 'extendedFab' | 'dashed'
     children?: React.ReactNode
     onClick?: (event?) => void
 }
@@ -28,6 +28,7 @@ const ButtonStyled = styled(Button)`
     border-style: ${props => props.variant === 'dashed'
         ? 'dashed !important'
         : 'initial'
-    }
+    };
 `
+
 export default ButtonStyled
