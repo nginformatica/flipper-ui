@@ -6,15 +6,16 @@ interface IProps extends IDefault {
     noWrap?: boolean
     children?: React.ReactNode
     variant?:
-        | 'display4'
-        | 'display3'
-        | 'display2'
-        | 'display1'
-        | 'headline'
-        | 'title'
-        | 'subheading'
-        | 'body2'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6'
+        | 'subtitle1'
+        | 'subtitle2'
         | 'body1'
+        | 'body2'
         | 'caption'
         | 'button'
     color?:
