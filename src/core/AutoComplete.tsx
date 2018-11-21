@@ -69,7 +69,8 @@ class AutoComplete extends Component<IProps> {
     public render() {
         const paperStyle = {
             position: 'absolute',
-            width: this.autocomplete.offsetWidth
+            width: this.autocomplete.offsetWidth,
+            zIndex: 1099
         }
 
         return (
