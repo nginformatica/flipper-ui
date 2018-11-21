@@ -24,7 +24,11 @@ import { Playground, PropsTable } from 'docz'
             />
         }
         value=''
-        renderSuggestion={ item => <ListItem key={ item }>{ item }</ListItem> }
+        renderSuggestion={ (item, props) =>
+            <ListItem key={ item } { ...props }>
+                { item }
+            </ListItem>
+        }
         onChange={ () => {} }
         onSelect={ () => {} }
     />
