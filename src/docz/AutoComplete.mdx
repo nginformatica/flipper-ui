@@ -6,6 +6,7 @@ route: /autocomplete
 import AutoComplete from '../core/AutoComplete'
 import ListItem from '../core/ListItem'
 import TextField from '../core/TextField'
+import Typography from '../core/Typography'
 import { Playground, PropsTable } from 'docz'
 
 # AutoComplete
@@ -13,7 +14,7 @@ import { Playground, PropsTable } from 'docz'
 ## Properties
 <PropsTable of={ AutoComplete } />
 
-## Demo
+## Simple
 <Playground style={ { minHeight: '200px' } }>
     <AutoComplete
         data={ ['Rock', 'Pop', 'Classic'] }
@@ -30,6 +31,34 @@ import { Playground, PropsTable } from 'docz'
             </ListItem>
         }
         onChange={ () => {} }
-        onSelect={ () => {} }
+    />
+</Playground>
+
+## With subheader
+<Playground style={ { minHeight: '200px' } }>
+    <AutoComplete
+        data={ [{ label: 'Genres', subheader: true }, 'Rock', 'Pop', 'Classic'] }
+        inputElement={
+            <TextField
+                fullWidth
+                placeholder='Music genres'
+            />
+        }
+        value=''
+        renderSuggestion={ (item, props) => item.subheader
+            ? (
+                <ListItem key={ item }>
+                    <Typography variant='caption'>
+                        { item.label }
+                    </Typography>
+                </ListItem>
+            )
+            : (
+                <ListItem key={ item } { ...props }>
+                    { item.label || item }
+                </ListItem>
+            )
+        }
+        onChange={ () => {} }
     />
 </Playground>
