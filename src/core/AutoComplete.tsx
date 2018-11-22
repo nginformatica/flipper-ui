@@ -5,9 +5,11 @@ import {
     is,
     isNil,
     pipe,
-    prop,
+    propEq,
+    propOr,
     toLower,
     uniq,
+    unless,
     when
 } from 'ramda'
 import React, { Component } from 'react'
@@ -31,10 +33,13 @@ class AutoComplete extends Component<IProps> {
 
         return uniq(
             filter(
-                pipe(
-                    when(is(Object), prop('label')),
-                    toLower,
-                    contains(toLower(inputValue))
+                unless(
+                    propEq('subheader', true),
+                    pipe(
+                        when(is(Object), propOr('', 'label')),
+                        toLower,
+                        contains(toLower(inputValue))
+                    )
                 ),
                 items
             )
