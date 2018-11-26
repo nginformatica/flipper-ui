@@ -6,6 +6,7 @@ import { IDefault } from './Advertise'
 interface IProps extends IDefault {
     mini?: boolean
     disabled?: boolean
+    selected?: boolean
     component?: string
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'
@@ -29,6 +30,7 @@ const ButtonStyled = styled(Button)`
         ? 'dashed !important'
         : 'initial'
     };
+    opacity: ${props => props.selected ? 0.5 : 1 };
 `
 
 export default ButtonStyled
