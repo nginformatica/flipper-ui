@@ -23,6 +23,8 @@ export interface IProps extends IDefault {
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
+    rows?: string | number
+    rowsMax?: string | number
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
