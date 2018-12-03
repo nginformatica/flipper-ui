@@ -1,4 +1,4 @@
-import { TextField as MuiTextField } from '@material-ui/core'
+import { TextField as MuiTextField, withStyles } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
 import { IDefault } from './Advertise'
 
@@ -25,8 +25,25 @@ export interface IProps extends IDefault {
     SelectProps?: object
     rows?: string | number
     rowsMax?: string | number
+    classes: {
+        outlinedInput: string
+        outlinedLabel: string
+        outlinedMultiline: string
+    }
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
+
+const styles = () => ({
+    outlinedInput: {
+        padding: '14px'
+    },
+    outlinedLabel: {
+        transform: 'translate(14px, 16px) scale(1)'
+    },
+    outlinedMultiline: {
+        padding: '0px'
+    }
+})
 
 const TextField: React.SFC<IProps> = ({
     margin,
@@ -34,13 +51,29 @@ const TextField: React.SFC<IProps> = ({
     style = {},
     error,
     variant = 'outlined',
+    InputLabelProps = {},
+    InputProps = {},
+    classes,
     ...otherProps
 }) =>
     <MuiTextField
         error={ error }
         variant={ variant as 'outlined' }
         style={ { margin, padding, ...style } }
+        InputLabelProps={ {
+            classes: {
+                outlined: variant === 'outlined' ? classes.outlinedLabel : ''
+            },
+            ...InputLabelProps
+        } }
+        InputProps={ {
+            classes: {
+                input: variant === 'outlined' ? classes.outlinedInput : '',
+                multiline: variant === 'outlined' ? classes.outlinedMultiline : ''
+            },
+            ...InputProps
+        } }
         { ...otherProps }
     />
 
-export default TextField
+export default withStyles(styles)(TextField)
