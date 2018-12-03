@@ -9,6 +9,7 @@ import { IDefault } from './Advertise'
 interface IProps extends IDefault {
     title?: string
     children?: React.ReactNode
+    dense?: boolean
     classes: {
         default: string
         inherit: string
