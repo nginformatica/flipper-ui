@@ -12,7 +12,7 @@ import {
     unless,
     when
 } from 'ramda'
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Paper from './Paper'
 
 interface IProps {
@@ -55,7 +55,7 @@ class AutoComplete extends Component<IProps> {
     }
 
     public handleChange(value) {
-        if (!isNil(value)) {
+        if (!isNil(value) && this.props.onChange) {
             this.props.onChange!(value)
         }
     }
@@ -81,9 +81,10 @@ class AutoComplete extends Component<IProps> {
         return (
             <Downshift
                 defaultIsOpen={ false }
+                inputValue={ this.props.value }
                 itemToString={ item => is(Object, item) ? item.label : item }
                 onSelect={ this.handleSelect.bind(this) }
-                onInputValueChange={ this.handleChange.bind(this) }>
+                onInputValueChange={ this.props.onChange }>
                 {
                     ({ isOpen, getInputProps, inputValue, getItemProps }) =>
                         <div>
@@ -92,11 +93,15 @@ class AutoComplete extends Component<IProps> {
                                 isOpen && (
                                     <Paper square style={ paperStyle }>
                                         {
-                                            this.getSuggestions(inputValue).map(suggestion =>
-                                                this.props.renderSuggestion(
-                                                    suggestion,
-                                                    getItemProps({ item: suggestion })
-                                                )
+                                            this.getSuggestions(inputValue).map((suggestion, index) =>
+                                                <Fragment key={ index }>
+                                                    {
+                                                        this.props.renderSuggestion(
+                                                            suggestion,
+                                                            getItemProps({ item: suggestion })
+                                                        )
+                                                    }
+                                                </Fragment>
                                             )
                                         }
                                     </Paper>

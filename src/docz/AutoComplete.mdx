@@ -24,13 +24,11 @@ import { Playground, PropsTable } from 'docz'
                 placeholder='Music genres'
             />
         }
-        value=''
         renderSuggestion={ (item, props) =>
             <ListItem key={ item } { ...props }>
                 { item }
             </ListItem>
         }
-        onChange={ () => {} }
     />
 </Playground>
 
@@ -44,7 +42,6 @@ import { Playground, PropsTable } from 'docz'
                 placeholder='Music genres'
             />
         }
-        value=''
         renderSuggestion={ (item, props) => item.subheader
             ? (
                 <ListItem key={ item }>
@@ -59,6 +56,5 @@ import { Playground, PropsTable } from 'docz'
                 </ListItem>
             )
         }
-        onChange={ () => {} }
     />
 </Playground>
