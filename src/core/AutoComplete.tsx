@@ -56,7 +56,7 @@ class AutoComplete extends Component<IProps> {
 
     public handleChange(value) {
         if (!isNil(value) && this.props.onChange) {
-            this.props.onChange!(value)
+            this.props.onChange(value)
         }
     }
 
