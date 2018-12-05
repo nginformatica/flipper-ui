@@ -18,6 +18,7 @@ import Paper from './Paper'
 interface IProps {
     data: object[] | string[]
     value: string
+    defaultValue?: string
     inputElement: React.ReactElement<any>
     renderSuggestion: (suggestion: string | object, itemProps: object) => React.ReactNode
     onChange?: (value: string) => void
@@ -82,6 +83,7 @@ class AutoComplete extends Component<IProps> {
             <Downshift
                 defaultIsOpen={ false }
                 inputValue={ this.props.value }
+                defaultInputValue={ this.props.defaultValue }
                 itemToString={ item => is(Object, item) ? item.label : item }
                 onSelect={ this.handleSelect.bind(this) }
                 onInputValueChange={ this.props.onChange }>
