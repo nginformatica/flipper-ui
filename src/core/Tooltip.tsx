@@ -21,6 +21,7 @@ interface IProps extends IDefault {
     onOpen?: () => void
     open?: boolean
     children: ReactElement<any>
+    enterDelay?: number
 }
 
 const Tooltip: React.SFC<IProps> = ({ children, ...otherProps }) =>
