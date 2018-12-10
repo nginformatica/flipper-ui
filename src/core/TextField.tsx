@@ -31,6 +31,7 @@ export interface IProps extends IDefault {
         outlinedMultiline: string
     }
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    onBlur?: (event: FocusEvent) => void
 }
 
 const styles = () => ({
