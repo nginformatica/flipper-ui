@@ -1,25 +1,26 @@
 <!-- Logo -->
 <p align="center">
-  <a href="https://nginformatica.github.io/flipper-ui/" rel="noopener" target="_blank"><img width="150" src="[Imgur](https://i.imgur.com/blNtXzI.png)" alt="Flipper UI logo"></a></p>
+  <a href="https://nginformatica.github.io/flipper-ui/" rel="noopener" target="_blank"><img width="150" src="https://i.imgur.com/blNtXzI.png" alt="Flipper-UI logo"></a></p>
 </p>
 
 <!-- Name -->
-<h1 align="center">
-  <a href="https://nginformatica.github.io/flipper-ui/">Flipper UI</a>
-</h1>
+<h1 align="center">Flipper-UI</h1>
 
 <!-- Badges -->
 <div align="center">
-[React](http://facebook.github.io/react/) components.
+
+[React](http://facebook.github.io/react/) UI toolkit for the web.
 
 [![npm package](https://img.shields.io/npm/v/flipper-ui/latest.svg)](https://www.npmjs.com/package/flipper-ui)
 [![npm downloads](https://img.shields.io/npm/dm/flipper-ui.svg)](https://www.npmjs.com/package/flipper-ui)
+[![Dependencies](https://img.shields.io/david/nginformatica/flipper-ui.svg?style=flat-square)](https://david-dm.org/nginformatica/flipper-ui)
 [![DevDependencies](https://img.shields.io/david/dev/nginformatica/flipper-ui.svg)](https://david-dm.org/nginformatica/flipper-ui?type=dev)
+
 </div>
 
 ## Installation
 
-Flipper UI is available as an [npm package](https://www.npmjs.com/package/flipper-ui).
+Flipper-UI is available as an [npm package](https://www.npmjs.com/package/flipper-ui).
 
 ```sh
 // with npm
