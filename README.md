@@ -1,20 +1,55 @@
-# Flipper-UI
+<!-- Logo -->
+<p align="center">
+  <a href="https://nginformatica.github.io/flipper-ui/" rel="noopener" target="_blank"><img width="150" src="[Imgur](https://i.imgur.com/blNtXzI.png)" alt="Flipper UI logo"></a></p>
+</p>
 
-Components and doc about the UI framework made by *NG Informática* to use in the Project X.
+<!-- Name -->
+<h1 align="center">
+  <a href="https://nginformatica.github.io/flipper-ui/">Flipper UI</a>
+</h1>
+
+<!-- Badges -->
+<div align="center">
+[React](http://facebook.github.io/react/) components.
+
+[![npm package](https://img.shields.io/npm/v/flipper-ui/latest.svg)](https://www.npmjs.com/package/flipper-ui)
+[![npm downloads](https://img.shields.io/npm/dm/flipper-ui.svg)](https://www.npmjs.com/package/flipper-ui)
+[![DevDependencies](https://img.shields.io/david/dev/nginformatica/flipper-ui.svg)](https://david-dm.org/nginformatica/flipper-ui?type=dev)
+</div>
+
+## Installation
+
+Flipper UI is available as an [npm package](https://www.npmjs.com/package/flipper-ui).
+
+```sh
+// with npm
+npm install flipper-ui
+
+// with yarn
+yarn add flipper-ui
+```
 
 ## Usage
 
-Example:
+Here is a quick example to get you started, **it's all you need**:
 
-`import Button from 'flipper-ui/core/Button'`
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Button } from 'flipper-ui'
 
-or
+function App() {
+  return (
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
+  );
+}
 
-`import { Button } from 'flipper-ui'`
+ReactDOM.render(<App />, document.querySelector('#app'));
+```
 
 ## Components
-
-Migration status
 
 - [x] Advertise
 - [x] AppBar/Header
@@ -23,7 +58,6 @@ Migration status
 - [x] Badge
 - [x] Box
 - [x] Button
-- [ ] Carousel/Gallery
 - [x] Checkbox
 - [x] Chip
 - [x] Collapse
@@ -53,6 +87,27 @@ Migration status
 - [x] TextArea
 - [x] TextField
 - [x] Tooltip
-- [ ] Tree
 - [x] Typography
 - [x] Zoom
+
+## Next Components
+
+- [ ] Carousel/Gallery
+- [ ] Tree
+
+## Documentation
+
+Check out our [documentation website](https://nginformatica.github.io/flipper-ui/).
+
+## Contributing
+
+Bug reports, feature requests and other contributions are more than welcome! <br/>
+Whenever possible, please make a pull request with the implementation instead of just requesting it.
+
+> If the feature is big, open an issue first for discussion.
+
+
+## License
+
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
