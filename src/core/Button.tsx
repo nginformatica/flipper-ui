@@ -11,6 +11,7 @@ interface IProps extends IDefault {
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'
     href?: string
+    name?: string
     fullWidth?: boolean
     variant?: 'text' | 'flat' | 'outlined' | 'contained' | 'fab' | 'extendedFab' | 'dashed'
     children?: React.ReactNode
