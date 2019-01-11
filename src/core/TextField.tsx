@@ -1,5 +1,5 @@
 import { TextField as MuiTextField, withStyles } from '@material-ui/core'
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, KeyboardEvent } from 'react'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -32,6 +32,8 @@ export interface IProps extends IDefault {
     }
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent) => void
+    onKeyUp?: (event: KeyboardEvent) => void
+    onKeyDown?: (event: KeyboardEvent) => void
 }
 
 const styles = () => ({
