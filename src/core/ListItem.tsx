@@ -13,7 +13,6 @@ interface IProps extends IDefault {
     avatar?: React.ReactElement<any>
     icon?: React.ReactElement<any>
     action?: React.ReactElement<any>
-    name?: string
     title?: string
     subtitle?: string
     value?: string | number
@@ -83,12 +82,14 @@ class ListItem extends Component<IProps, {}> {
 
     public render() {
         const {
+            id,
             className,
             children,
             value,
             style = {},
             padding,
             margin,
+            name,
             selected,
             onClick
         } = this.props
@@ -97,6 +98,8 @@ class ListItem extends Component<IProps, {}> {
             <MuiListItem
                 button
                 value={ value }
+                name={ name }
+                id={ id }
                 style={ { padding, margin, ...style } }
                 className={ className }
                 selected={ selected }
