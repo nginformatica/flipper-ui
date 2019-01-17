@@ -5,7 +5,9 @@ import { primary, white } from '../colors'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    xs?: number
+    xs?: number 
+    name?: string
+    id?: string
     title?: string
     children?: React.ReactNode
 }
