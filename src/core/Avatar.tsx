@@ -6,6 +6,8 @@ import React from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
+    name?: string
+    id?: string
     sizes?: string
     src?: string
     imgProps?: object

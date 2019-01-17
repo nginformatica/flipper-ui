@@ -112,6 +112,7 @@ class Sidebar extends Component<IProps, {}> {
 
     public render() {
         const {
+            id,
             anchor = 'left',
             className,
             classes,
@@ -131,6 +132,7 @@ class Sidebar extends Component<IProps, {}> {
 
         return (
             <Drawer
+                id={ id }
                 open={ open }
                 anchor={ anchor }
                 variant={ variant }

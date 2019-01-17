@@ -8,6 +8,8 @@ export interface IDefault {
     className?: string
     margin?: number | string
     padding?: number | string
+    name?: string
+    id?: string
     ref?: React.Ref<any> // TODO: specify ref type
 }
 

@@ -6,6 +6,8 @@ import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     xs?: number
+    name?: string
+    id?: string
     title?: string
     children?: React.ReactNode
 }

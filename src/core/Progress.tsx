@@ -28,9 +28,25 @@ interface IProps extends IDefault {
     linear?: boolean
 }
 
-const Progress: React.SFC<IProps & ICircular & ILinear> = ({ linear, style = {}, margin, padding, ...otherProps }) =>
+const Progress: React.SFC<IProps & ICircular & ILinear> = ({
+    linear,
+    style = {},
+    margin,
+    padding,
+    ...otherProps
+}) =>
     linear
-        ? <MuiLinearProgress style={ { margin, padding, ...style } } { ...otherProps } />
-        : <MuiCircularProgress style={ { margin, padding, ...style } }  { ...otherProps } />
+        ? (
+            <MuiLinearProgress
+                style={ { margin, padding, ...style } }
+                { ...otherProps }
+            />
+        )
+        : (
+            <MuiCircularProgress
+                style={ { margin, padding, ...style } }
+                { ...otherProps }
+            />
+        )
 
 export default Progress

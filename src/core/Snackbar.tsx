@@ -64,6 +64,7 @@ const styles = theme => ({
 
 const SnackBar: React.SFC<IProps> = props => {
     const {
+        id,
         anchorOrigin,
         autoHide = 6000,
         classes,
@@ -83,6 +84,7 @@ const SnackBar: React.SFC<IProps> = props => {
         <MuiSnackbar
             anchorOrigin={ anchorOrigin }
             open={ open }
+            id={ id }
             autoHideDuration={ 6000 }
             style={ { padding, margin, ...style } }
             className={ className }
