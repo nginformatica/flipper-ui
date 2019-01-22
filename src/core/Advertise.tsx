@@ -1,4 +1,4 @@
-import React, { Ref } from 'react'
+import React, { Ref, SFC } from 'react'
 import { background } from '../colors'
 import Paper from './Paper'
 import Typography from './Typography'
@@ -26,7 +26,7 @@ const styles = {
     }
 }
 
-const Advertise: React.SFC<IProps> = ({
+const Advertise: SFC<IProps> = ({
     comment,
     author,
     padding = 4,

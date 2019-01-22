@@ -12,7 +12,7 @@ import {
     Info as IconInfo,
     Warning as IconWarning
 } from '@material-ui/icons'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -62,7 +62,7 @@ const styles = theme => ({
     }
 })
 
-const SnackBar: React.SFC<IProps> = props => {
+const SnackBar: SFC<IProps> = props => {
     const {
         id,
         anchorOrigin,

@@ -3,7 +3,7 @@ import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import { withStyles } from '@material-ui/core/styles'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IProps as IPaper } from './Paper'
 
 interface IProps extends IPaper {
@@ -35,7 +35,7 @@ const styles = () => ({
     }
 })
 
-const ExpansionPanel: React.SFC<IProps> = ({
+const ExpansionPanel: SFC<IProps> = ({
     actions,
     classes,
     details,

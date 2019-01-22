@@ -1,5 +1,5 @@
 import { Menu as MuiMenu } from '@material-ui/core'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -18,7 +18,7 @@ interface IProps extends IDefault {
     onClose?: () => void
 }
 
-const Menu: React.SFC<IProps> = ({ children, menuProps, padding, margin, style = {}, ...otherProps }) =>
+const Menu: SFC<IProps> = ({ children, menuProps, padding, margin, style = {}, ...otherProps }) =>
     <MuiMenu
         MenuListProps={ menuProps }
         style={ { padding, margin, ...style } }

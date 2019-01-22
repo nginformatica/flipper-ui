@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, SFC } from 'react'
 import styled from 'styled-components'
 import { IDefault } from './Advertise'
 
@@ -11,7 +11,7 @@ const StyledContainer = styled.div`
     flex: 1;
 `
 
-const Container: React.SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
+const Container: SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
     <StyledContainer
         style={ { padding, margin, ...style } }
         { ...otherProps }>

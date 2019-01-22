@@ -1,5 +1,5 @@
 import { Tooltip as MuiTooltip } from '@material-ui/core'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -24,7 +24,7 @@ interface IProps extends IDefault {
     enterDelay?: number
 }
 
-const Tooltip: React.SFC<IProps> = ({ children, ...otherProps }) =>
+const Tooltip: SFC<IProps> = ({ children, ...otherProps }) =>
     <MuiTooltip
         { ...otherProps }>
         { children }
