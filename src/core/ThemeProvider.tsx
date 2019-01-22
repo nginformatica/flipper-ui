@@ -1,5 +1,5 @@
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 interface IProps {
     options?: {
@@ -12,7 +12,7 @@ interface IProps {
             }
         }
     },
-    children?: React.ReactNode
+    children?: ReactNode
 }
 
 const ThemeProvider: React.SFC<IProps> = ({ options = {}, children }) =>

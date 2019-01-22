@@ -1,9 +1,9 @@
 import MuiTableBody from '@material-ui/core/TableBody'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    children: React.ReactNode
+    children: ReactNode
 }
 
 const TableBody: React.SFC<IProps> = ({ style, margin, padding, children, ...otherProps }) =>

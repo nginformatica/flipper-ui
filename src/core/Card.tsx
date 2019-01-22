@@ -1,5 +1,5 @@
 import { divide, multiply, pipe, prop } from 'ramda'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { primary, white } from '../colors'
 import { IDefault } from './Advertise'
@@ -9,7 +9,7 @@ interface IProps extends IDefault {
     name?: string
     id?: string
     title?: string
-    children?: React.ReactNode
+    children?: ReactNode
 }
 
 interface IContainer {

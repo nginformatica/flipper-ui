@@ -12,7 +12,7 @@ import {
     unless,
     when
 } from 'ramda'
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, ReactNode } from 'react'
 import Paper from './Paper'
 
 interface IProps {
@@ -20,7 +20,7 @@ interface IProps {
     value: string
     defaultValue?: string
     inputElement: React.ReactElement<any>
-    renderSuggestion: (suggestion: string | object, itemProps: object) => React.ReactNode
+    renderSuggestion: (suggestion: string | object, itemProps: object) => ReactNode
     onChange?: (value: string) => void
     onSelect?: (value: string) => void
 }

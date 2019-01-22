@@ -3,22 +3,22 @@ import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import { withStyles } from '@material-ui/core/styles'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { IProps as IPaper } from './Paper'
 
 interface IProps extends IPaper {
-    actions?: React.ReactNode
+    actions?: ReactNode
     classes: {
         content: string
         expandIcon: string
     }
     defaultExpanded?: boolean
-    details?: React.ReactNode
+    details?: ReactNode
     disabled?: boolean
-    expandIcon?: React.ReactNode
+    expandIcon?: ReactNode
     expanded?: boolean
     iconPosition?: 'left' | 'right'
-    summary?: React.ReactNode
+    summary?: ReactNode
     summaryStyle?: object
     detailsStyle?: object
     actionsStyle?: object

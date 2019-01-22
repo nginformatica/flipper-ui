@@ -6,7 +6,7 @@ import {
     ListItemText as MuiListItemText
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import React, { Component, Fragment, MouseEvent } from 'react'
+import React, { Component, Fragment, MouseEvent, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -16,7 +16,7 @@ interface IProps extends IDefault {
     title?: string
     subtitle?: string
     value?: string | number
-    children?: React.ReactNode
+    children?: ReactNode
     classes: { default: string }
     selected?: boolean
     onClick?: (event?: MouseEvent) => void

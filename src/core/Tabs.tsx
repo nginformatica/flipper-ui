@@ -1,6 +1,6 @@
 import { Tabs as MuiTabs } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import React, { Component } from 'react'
+import React, { Component, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -16,7 +16,7 @@ interface IProps extends IDefault {
         secondary: string
         indicator: string
     }
-    children?: React.ReactNode
+    children?: ReactNode
     onChange?: (event: object, value: number) => void
 }
 

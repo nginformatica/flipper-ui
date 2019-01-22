@@ -1,10 +1,10 @@
 import { Typography as MuiTypography } from '@material-ui/core'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     noWrap?: boolean
-    children?: React.ReactNode
+    children?: ReactNode
     variant?:
         | 'h1'
         | 'h2'

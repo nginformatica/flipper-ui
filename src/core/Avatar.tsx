@@ -2,7 +2,7 @@ import {
     Avatar as MuiAvatar,
     withStyles
 } from '@material-ui/core'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -15,7 +15,7 @@ interface IProps extends IDefault {
     classes: {
         primary: string
     }
-    children: React.ReactNode
+    children: ReactNode
 }
 
 const styles = theme => ({

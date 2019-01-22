@@ -1,10 +1,10 @@
 import { withStyles } from '@material-ui/core/styles'
 import MuiTableCell from '@material-ui/core/TableCell'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    children: React.ReactNode
+    children: ReactNode
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
     classes: {
