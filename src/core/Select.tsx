@@ -21,7 +21,7 @@ const Select: React.SFC<IProps> = ({
     ...otherProps
 }) =>
     <MuiSelect
-        variant={ variant }
+        variant={ variant as 'outlined' }
         style={ { margin, padding, ...style } }
         {...otherProps }>
         { children }
