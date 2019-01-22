@@ -21,14 +21,14 @@
   "author": "NG Informática",
   "license": "MIT",
   "dependencies": {
-    "@material-ui/core": "3.5.1",
-    "@material-ui/icons": "3.0.1",
     "color": "3.0.0",
     "downshift": "2.2.3",
     "fs-extra": "7.0.0",
     "ramda": "0.25.0"
   },
   "devDependencies": {
+    "@material-ui/core": "3.5.1",
+    "@material-ui/icons": "3.0.1",
     "@types/node": "10.9.4",
     "@types/ramda": "0.25.36",
     "@types/react": "16.4.14",
