@@ -1,16 +1,16 @@
 import MuiTableRow from '@material-ui/core/TableRow'
-import React from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { background } from '../colors'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    children: React.ReactNode
+    children: ReactNode
     selected?: boolean
     hover?: boolean
     onClick?: () => void
 }
 
-const TableRow: React.SFC<IProps> = ({
+const TableRow: SFC<IProps> = ({
     style,
     margin,
     padding,

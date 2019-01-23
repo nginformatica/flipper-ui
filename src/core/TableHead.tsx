@@ -1,10 +1,10 @@
 import { withStyles } from '@material-ui/core/styles'
 import MuiTableHead from '@material-ui/core/TableHead'
-import React from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    children: React.ReactNode
+    children: ReactNode
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
     classes: {
         default: string
@@ -29,7 +29,7 @@ const styles = theme => ({
     }
 })
 
-const TableHead: React.SFC<IProps> = ({
+const TableHead: SFC<IProps> = ({
     style,
     margin,
     padding,

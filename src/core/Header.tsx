@@ -1,14 +1,14 @@
 import { AppBar, Toolbar } from '@material-ui/core'
-import React from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IProps as IPaper } from './Paper'
 
 interface IProps extends IPaper {
-    children: React.ReactNode
+    children: ReactNode
     position?: 'absolute' | 'fixed' | 'static' | 'sticky'
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }
 
-const Header: React.SFC<IProps> = ({
+const Header: SFC<IProps> = ({
     children,
     padding,
     margin,

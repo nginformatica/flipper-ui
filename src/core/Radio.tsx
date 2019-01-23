@@ -1,5 +1,5 @@
 import { Radio as MuiRadio } from '@material-ui/core'
-import React,  { ChangeEvent } from 'react'
+import React,  { ChangeEvent, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -9,7 +9,7 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Radio: React.SFC<IProps> = ({ padding, margin, style, ...otherProps }) =>
+const Radio: SFC<IProps> = ({ padding, margin, style, ...otherProps }) =>
     <MuiRadio
         { ...otherProps }
         style={ { padding, margin, ...style } }

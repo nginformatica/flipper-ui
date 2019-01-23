@@ -1,6 +1,6 @@
 import Drawer from '@material-ui/core/Drawer'
 import { withStyles } from '@material-ui/core/styles'
-import React, { Component } from 'react'
+import React, { Component, ReactNode } from 'react'
 import styled from 'styled-components'
 import {
     KeyboardArrowLeft as IconArrowLeft,
@@ -28,7 +28,7 @@ interface IProps extends IDefault {
         secondary: string
         sidebar: string
     }
-    children: React.ReactNode
+    children: ReactNode
     onToggle: () => void
 }
 

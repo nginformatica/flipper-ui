@@ -1,10 +1,10 @@
 import { Typography as MuiTypography } from '@material-ui/core'
-import React from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     noWrap?: boolean
-    children?: React.ReactNode
+    children?: ReactNode
     variant?:
         | 'h1'
         | 'h2'
@@ -35,7 +35,7 @@ interface IProps extends IDefault {
 
 }
 
-const Typography: React.SFC<IProps> = ({ children, margin, padding, style = {}, ...otherProps }) =>
+const Typography: SFC<IProps> = ({ children, margin, padding, style = {}, ...otherProps }) =>
     <MuiTypography style={ { margin, padding, ...style } }
         { ...otherProps }>
         { children }

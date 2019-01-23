@@ -12,15 +12,21 @@ import {
     unless,
     when
 } from 'ramda'
-import React, { Component, Fragment } from 'react'
+import React, {
+    cloneElement,
+    Component,
+    Fragment,
+    ReactElement,
+    ReactNode
+} from 'react'
 import Paper from './Paper'
 
 interface IProps {
     data: object[] | string[]
     value: string
     defaultValue?: string
-    inputElement: React.ReactElement<any>
-    renderSuggestion: (suggestion: string | object, itemProps: object) => React.ReactNode
+    inputElement: ReactElement<any>
+    renderSuggestion: (suggestion: string | object, itemProps: object) => ReactNode
     onChange?: (value: string) => void
     onSelect?: (value: string) => void
 }
@@ -62,7 +68,7 @@ class AutoComplete extends Component<IProps> {
     }
 
     public renderInput(props: { inputProps: object }) {
-        return React.cloneElement(this.props.inputElement, {
+        return cloneElement(this.props.inputElement, {
             InputProps: { ...props },
             inputProps: {
                 ref: self => {

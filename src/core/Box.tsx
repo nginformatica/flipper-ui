@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IDefault } from './Advertise'
 import Paper from './Paper'
 
 interface IProps extends IDefault {
     minHeight?: number
-    children?: React.ReactNode
+    children?: ReactNode
 }
 
-const Box: React.SFC<IProps> = ({
+const Box: SFC<IProps> = ({
     children,
     margin,
     padding = 18,

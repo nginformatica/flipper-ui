@@ -10,7 +10,7 @@ interface IProps extends IDefault {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
-    title?: string | React.ReactNode
+    title?: string | ReactNode
     actions?: ReactNode
     content?: ReactNode
     text?: string

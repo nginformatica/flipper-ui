@@ -1,5 +1,5 @@
 import { evolve, not } from 'ramda'
-import React from 'react'
+import React, { Component, ReactNode } from 'react'
 import styled from 'styled-components'
 import { background, primary, transparent } from '../colors'
 import {
@@ -10,7 +10,7 @@ import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     name: string
-    children: React.ReactNode
+    children: ReactNode
 }
 
 interface IState {
@@ -51,7 +51,7 @@ const Li = styled.li<IListItem>`
     }
 `
 
-class Node extends React.Component<IProps, IState> {
+class Node extends Component<IProps, IState> {
     constructor(props) {
         super(props)
         this.state = { open: false }

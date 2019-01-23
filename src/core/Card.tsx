@@ -1,5 +1,5 @@
 import { divide, multiply, pipe, prop } from 'ramda'
-import React from 'react'
+import React, { ReactNode, SFC } from 'react'
 import styled from 'styled-components'
 import { primary, white } from '../colors'
 import { IDefault } from './Advertise'
@@ -9,7 +9,7 @@ interface IProps extends IDefault {
     name?: string
     id?: string
     title?: string
-    children?: React.ReactNode
+    children?: ReactNode
 }
 
 interface IContainer {
@@ -43,7 +43,7 @@ const Content = styled.div`
     border: 1px solid ${primary.normal};
 `
 
-const Card: React.SFC<IProps> = ({ children, padding, margin, style = {}, title, xs = 12, ...otherProps }) =>
+const Card: SFC<IProps> = ({ children, padding, margin, style = {}, title, xs = 12, ...otherProps }) =>
     <Container
         xs={ xs }
         style={ { padding, margin, ...style } }

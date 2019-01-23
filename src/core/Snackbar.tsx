@@ -12,12 +12,12 @@ import {
     Info as IconInfo,
     Warning as IconWarning
 } from '@material-ui/icons'
-import React from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     autoHide?: number,
-    message: React.ReactNode
+    message: ReactNode
     open: boolean
     variant?: 'success' | 'warning' | 'error' | 'info'
     classes: {
@@ -62,7 +62,7 @@ const styles = theme => ({
     }
 })
 
-const SnackBar: React.SFC<IProps> = props => {
+const SnackBar: SFC<IProps> = props => {
     const {
         id,
         anchorOrigin,
