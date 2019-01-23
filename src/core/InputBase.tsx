@@ -3,7 +3,6 @@ import React, { ChangeEvent, ReactNode, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
-    children: ReactNode
     autoComplete?: string
     autoFocus?: boolean
     classes?: object
@@ -27,11 +26,10 @@ export interface IProps extends IDefault {
     value?: string | number | boolean
 }
 
-const InputAdornment: SFC<IProps> = ({ children, margin, padding, style = {}, ...otherProps }) =>
+const InputAdornment: SFC<IProps> = ({ margin, padding, style = {}, ...otherProps }) =>
     <MuiInputBase
         { ...otherProps }
-        style={ { padding, margin, ...style } }>
-        { children }
-    </MuiInputBase>
+        style={ { padding, margin, ...style } }
+    />
 
 export default InputAdornment
