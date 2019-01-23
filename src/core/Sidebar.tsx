@@ -18,6 +18,8 @@ interface IProps extends IDefault {
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
     docked?: boolean
     maxWidth?: number | string
+    minWidth?: number | string
+    top?: number | string
     paperClasses?: object
     classes: {
         button: string
@@ -70,7 +72,7 @@ const styles = theme => ({
         bottom: '0px',
         left: '0px',
         position: 'fixed' as 'fixed',
-        top: '64px',
+        top: 'inherit',
         width: 'inherit'
     }
 })
@@ -121,6 +123,8 @@ class Sidebar extends Component<IProps, {}> {
             expanded = true,
             margin,
             maxWidth = 220,
+            minWidth = 72,
+            top = 64,
             open,
             padding,
             paperClasses,
@@ -128,7 +132,7 @@ class Sidebar extends Component<IProps, {}> {
             style,
             variant = 'permanent'
         } = this.props
-        const width = expanded ? maxWidth : 72
+        const width = expanded ? maxWidth : minWidth
 
         return (
             <Drawer
@@ -137,7 +141,7 @@ class Sidebar extends Component<IProps, {}> {
                 anchor={ anchor }
                 variant={ variant }
                 className={ className }
-                style={ { width, padding, margin, ...style  } }
+                style={ { width, padding, margin, top, ...style  } }
                 PaperProps={ {
                     className: `${docked ? classes.sidebar : '' } ${classes[color]}`,
                     classes: paperClasses
