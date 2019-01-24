@@ -24,8 +24,11 @@ import { Playground, PropsTable } from 'docz'
                 placeholder='Music genres'
             />
         }
-        renderSuggestion={ (item, props) =>
-            <ListItem key={ item } { ...props }>
+        renderSuggestion={ (item, props, selected) =>
+            <ListItem
+                key={ item }
+                selected={ selected }
+                { ...props }>
                 { item }
             </ListItem>
         }
@@ -43,7 +46,7 @@ import { Playground, PropsTable } from 'docz'
                 placeholder='Music genres'
             />
         }
-        renderSuggestion={ (item, props) => item.subheader
+        renderSuggestion={ (item, props, selected) => item.subheader
             ? (
                 <ListItem key={ item }>
                     <Typography variant='caption'>
@@ -52,7 +55,10 @@ import { Playground, PropsTable } from 'docz'
                 </ListItem>
             )
             : (
-                <ListItem key={ item } { ...props }>
+                <ListItem
+                    key={ item }
+                    { ...props }
+                    selected={ selected }>
                     { item.label || item }
                 </ListItem>
             )
