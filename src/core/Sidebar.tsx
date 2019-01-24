@@ -18,6 +18,8 @@ interface IProps extends IDefault {
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
     docked?: boolean
     maxWidth?: number | string
+    minWidth?: number | string
+    top?: number | string
     paperClasses?: object
     classes: {
         button: string
@@ -34,6 +36,7 @@ interface IProps extends IDefault {
 
 interface IAction {
     anchor?: 'top' | 'left' | 'bottom' | 'right'
+    minWidth?: IProps['minWidth']
 }
 
 const styles = theme => ({
@@ -44,8 +47,9 @@ const styles = theme => ({
         'alignSelf': 'right',
         'backgroundColor': 'transparent',
         'boxShadow': 'none',
-        'margin': 4,
-        'padding': '0 0.25em',
+        'maxWidth': 'inherit',
+        'minWidth': 'auto',
+        'width': '100%'
     },
     default: {
         backgroundColor: theme.palette.background.default,
@@ -70,7 +74,7 @@ const styles = theme => ({
         bottom: '0px',
         left: '0px',
         position: 'fixed' as 'fixed',
-        top: '64px',
+        top: 'inherit',
         width: 'inherit'
     }
 })
@@ -81,6 +85,7 @@ const Action = styled.div<IAction>`
         : 'row'
     };
     display: flex;
+    padding: 4px;
 `
 
 class Sidebar extends Component<IProps, {}> {
@@ -89,6 +94,7 @@ class Sidebar extends Component<IProps, {}> {
             expanded = true,
             anchor = 'left',
             color = 'default',
+            minWidth = 72,
             classes
         } = this.props
         const iconToLeft = (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
@@ -99,6 +105,7 @@ class Sidebar extends Component<IProps, {}> {
                     color={ color }
                     variant='contained'
                     className={ classes.button }
+                    style={ { maxWidth: minWidth } }
                     onClick={ this.props.onToggle }>
                     {
                         iconToLeft
@@ -121,6 +128,8 @@ class Sidebar extends Component<IProps, {}> {
             expanded = true,
             margin,
             maxWidth = 220,
+            minWidth = 72,
+            top = 64,
             open,
             padding,
             paperClasses,
@@ -128,7 +137,7 @@ class Sidebar extends Component<IProps, {}> {
             style,
             variant = 'permanent'
         } = this.props
-        const width = expanded ? maxWidth : 72
+        const width = expanded ? maxWidth : minWidth
 
         return (
             <Drawer
@@ -137,7 +146,7 @@ class Sidebar extends Component<IProps, {}> {
                 anchor={ anchor }
                 variant={ variant }
                 className={ className }
-                style={ { width, padding, margin, ...style  } }
+                style={ { width, padding, margin, top, ...style  } }
                 PaperProps={ {
                     className: `${docked ? classes.sidebar : '' } ${classes[color]}`,
                     classes: paperClasses
