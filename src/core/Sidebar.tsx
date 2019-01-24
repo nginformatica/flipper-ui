@@ -36,6 +36,7 @@ interface IProps extends IDefault {
 
 interface IAction {
     anchor?: 'top' | 'left' | 'bottom' | 'right'
+    minWidth?: IProps['minWidth']
 }
 
 const styles = theme => ({
@@ -46,8 +47,9 @@ const styles = theme => ({
         'alignSelf': 'right',
         'backgroundColor': 'transparent',
         'boxShadow': 'none',
-        'margin': 4,
-        'padding': '0 0.25em',
+        'maxWidth': 'inherit',
+        'minWidth': 'auto',
+        'width': '100%'
     },
     default: {
         backgroundColor: theme.palette.background.default,
@@ -83,6 +85,7 @@ const Action = styled.div<IAction>`
         : 'row'
     };
     display: flex;
+    padding: 4px;
 `
 
 class Sidebar extends Component<IProps, {}> {
@@ -91,6 +94,7 @@ class Sidebar extends Component<IProps, {}> {
             expanded = true,
             anchor = 'left',
             color = 'default',
+            minWidth = 72,
             classes
         } = this.props
         const iconToLeft = (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
@@ -101,6 +105,7 @@ class Sidebar extends Component<IProps, {}> {
                     color={ color }
                     variant='contained'
                     className={ classes.button }
+                    style={ { maxWidth: minWidth } }
                     onClick={ this.props.onToggle }>
                     {
                         iconToLeft
