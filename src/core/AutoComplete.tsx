@@ -26,7 +26,12 @@ interface IProps {
     value: string
     defaultValue?: string
     inputElement: ReactElement<any>
-    renderSuggestion: (suggestion: string | object, itemProps: object) => ReactNode
+    InputProps?: object
+    renderSuggestion: (
+        suggestion: string | object,
+        itemProps: object,
+        selected: boolean
+    ) => ReactNode
     onChange?: (value: string) => void
     onSelect?: (value: string) => void
 }
@@ -69,7 +74,10 @@ class AutoComplete extends Component<IProps> {
 
     public renderInput(props: { inputProps: object }) {
         return cloneElement(this.props.inputElement, {
-            InputProps: { ...props },
+            InputProps: {
+                ...props,
+                ...this.props.InputProps
+            },
             inputProps: {
                 ref: self => {
                     this.autocomplete = self
@@ -94,7 +102,7 @@ class AutoComplete extends Component<IProps> {
                 onSelect={ this.handleSelect.bind(this) }
                 onInputValueChange={ this.props.onChange }>
                 {
-                    ({ isOpen, getInputProps, inputValue, getItemProps }) =>
+                    ({ isOpen, getInputProps, inputValue, getItemProps, highlightedIndex }) =>
                         <div>
                             { this.renderInput(getInputProps()) }
                             {
@@ -106,7 +114,8 @@ class AutoComplete extends Component<IProps> {
                                                     {
                                                         this.props.renderSuggestion(
                                                             suggestion,
-                                                            getItemProps({ item: suggestion })
+                                                            getItemProps({ item: suggestion }),
+                                                            highlightedIndex === index
                                                         )
                                                     }
                                                 </Fragment>
