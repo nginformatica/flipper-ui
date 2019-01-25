@@ -27,6 +27,8 @@ interface IProps {
     defaultValue?: string
     inputElement: ReactElement<any>
     InputProps?: object
+    defaultIsOpen?: boolean
+    openOnFocus?: boolean
     renderSuggestion: (
         suggestion: string | object,
         itemProps: object,
@@ -34,11 +36,16 @@ interface IProps {
     ) => ReactNode
     onChange?: (value: string) => void
     onSelect?: (value: string) => void
+    onFocus?: (event: FocusEvent) => void
 }
 
 class AutoComplete extends Component<IProps> {
     public autocomplete = { offsetWidth: 256 }
     public getSuggestions(inputValue) {
+        if (this.props.openOnFocus && !inputValue) {
+            return this.props.data
+        }
+
         const items = inputValue
             ? this.props.data
             : []
@@ -50,7 +57,7 @@ class AutoComplete extends Component<IProps> {
                     pipe(
                         when(is(Object), propOr('', 'label')),
                         toLower,
-                        contains(toLower(inputValue))
+                        contains(toLower(inputValue || ''))
                     )
                 ),
                 items
@@ -72,7 +79,7 @@ class AutoComplete extends Component<IProps> {
         }
     }
 
-    public renderInput(props: { inputProps: object }) {
+    public renderInput(props: { inputProps: object, onFocus: (event: FocusEvent) => void }) {
         return cloneElement(this.props.inputElement, {
             InputProps: {
                 ...props,
@@ -95,16 +102,23 @@ class AutoComplete extends Component<IProps> {
 
         return (
             <Downshift
-                defaultIsOpen={ false }
                 inputValue={ this.props.value }
                 defaultInputValue={ this.props.defaultValue }
+                defaultIsOpen={ this.props.defaultIsOpen }
                 itemToString={ item => is(Object, item) ? item.label : item }
                 onSelect={ this.handleSelect.bind(this) }
                 onInputValueChange={ this.props.onChange }>
                 {
-                    ({ isOpen, getInputProps, inputValue, getItemProps, highlightedIndex }) =>
+                    ({ isOpen, getInputProps, inputValue, getItemProps, highlightedIndex, openMenu }) =>
                         <div>
-                            { this.renderInput(getInputProps()) }
+                            {
+                                this.renderInput(getInputProps({
+                                    onFocus: () => this.props.openOnFocus
+                                        ? openMenu()
+                                        : this.props.onFocus,
+                                    value: inputValue || ''
+                                }))
+                            }
                             {
                                 isOpen && (
                                     <Paper square style={ paperStyle }>
