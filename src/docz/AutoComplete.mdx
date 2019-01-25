@@ -65,3 +65,25 @@ import { Playground, PropsTable } from 'docz'
         }
     />
 </Playground>
+
+## Opening when focused
+<Playground style={ { minHeight: '200px' } }>
+    <AutoComplete
+        openOnFocus
+        data={ ['Rock', 'Pop', 'Classic'] }
+        inputElement={
+            <TextField
+                fullWidth
+                placeholder='Music genres'
+            />
+        }
+        renderSuggestion={ (item, props, selected) =>
+            <ListItem
+                key={ item }
+                selected={ selected }
+                { ...props }>
+                { item }
+            </ListItem>
+        }
+    />
+</Playground>
