@@ -15,6 +15,7 @@ import {
 import React, {
     cloneElement,
     Component,
+    FocusEvent,
     Fragment,
     ReactElement,
     ReactNode
@@ -36,7 +37,7 @@ interface IProps {
     ) => ReactNode
     onChange?: (value: string) => void
     onSelect?: (value: string) => void
-    onFocus?: (event: FocusEvent) => void
+    onFocus?: (event: FocusEvent<HTMLInputElement>) => void
 }
 
 class AutoComplete extends Component<IProps> {
@@ -113,9 +114,11 @@ class AutoComplete extends Component<IProps> {
                         <div>
                             {
                                 this.renderInput(getInputProps({
-                                    onFocus: () => this.props.openOnFocus
-                                        ? openMenu()
-                                        : this.props.onFocus,
+                                    onFocus: (event: FocusEvent<HTMLInputElement>) => this.props.onFocus
+                                        ? this.props.onFocus(event)
+                                        : this.props.openOnFocus
+                                            ? openMenu()
+                                            : null,
                                     value: inputValue || ''
                                 }))
                             }
