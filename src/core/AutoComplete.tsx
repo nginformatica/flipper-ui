@@ -80,7 +80,10 @@ class AutoComplete extends Component<IProps> {
         }
     }
 
-    public renderInput(props: { inputProps: object, onFocus: (event: FocusEvent) => void }) {
+    public renderInput(props: {
+        inputProps: object,
+        onFocus: (event: FocusEvent<HTMLInputElement>) => void
+    }) {
         return cloneElement(this.props.inputElement, {
             InputProps: {
                 ...props,
