@@ -117,10 +117,10 @@ class AutoComplete extends Component<IProps> {
                         <div>
                             {
                                 this.renderInput(getInputProps({
-                                    onFocus: (event: FocusEvent<HTMLInputElement>) => this.props.openOnFocus
-                                        ? openMenu()
-                                        : this.props.onFocus
-                                            ? this.props.onFocus(event)
+                                    onFocus: (event: FocusEvent<HTMLInputElement>) => this.props.onFocus
+                                        ? this.props.onFocus(event)
+                                        : this.props.openOnFocus
+                                            ? openMenu()
                                             : null,
                                     value: inputValue || ''
                                 }))
