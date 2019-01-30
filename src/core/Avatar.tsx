@@ -24,10 +24,16 @@ const styles = theme => ({
     }
 })
 
-const Avatar: SFC<IProps> = ({ children, primary, classes, ...otherProps }) =>
+const Avatar: SFC<IProps> = ({
+    children,
+    primary,
+    className,
+    classes,
+    ...otherProps
+}) =>
     <MuiAvatar
         { ...otherProps }
-        className={ primary ? classes.primary : '' }>
+        className={ `${className} ${primary ? classes.primary : ''}` }>
         { children }
     </MuiAvatar>
 
