@@ -3,12 +3,12 @@ import {
     FormControlLabel as MuiFormControlLabel,
     Switch as MuiSwitch
 } from '@material-ui/core'
-import React, { ChangeEvent, Component } from 'react'
+import React, { ChangeEvent, Component, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     name: string
-    label?: string
+    label?: ReactNode
     color?: 'primary' | 'secondary' | 'default'
     className?: string
     disabled?: boolean
