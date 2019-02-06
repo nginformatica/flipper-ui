@@ -13,6 +13,7 @@ interface IProps extends IDefault {
     href?: string
     fullWidth?: boolean
     variant?: 'text' | 'flat' | 'outlined' | 'contained' | 'fab' | 'extendedFab' | 'dashed'
+    target?: string
     children?: ReactNode
     onClick?: (event?) => void
 }
