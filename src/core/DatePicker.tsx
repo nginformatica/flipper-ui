@@ -3,14 +3,14 @@ import { DatePicker as MuiDatePicker } from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 interface IDateField {
-    showTimeSelect: boolean
+    showTimeSelect?: boolean
     timeFormat: string
     timeIntervals: number
     value: string
     openToDate: string
-    customInput: ReactNode
-    onChange: ReactNode
-    locale: string
+    customInput?: ReactNode
+    onChange?: ReactNode
+    locale?: string
     placeholderText: string
 }
 
