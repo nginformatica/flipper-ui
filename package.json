@@ -27,7 +27,7 @@
     "downshift": "2.2.3",
     "fs-extra": "7.0.0",
     "ramda": "0.25.0",
-    "react-datepicker": "2.0.0"
+    "react-datepicker": "2.1.0"
   },
   "devDependencies": {
     "@types/node": "10.9.4",
