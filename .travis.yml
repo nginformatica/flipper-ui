@@ -5,7 +5,7 @@ node_js:
   - "10"
 
 install:
-  - unset http_proxy && unset https_proxy && yarn install
+  - yarn install
 
 script:
   - yarn lint
