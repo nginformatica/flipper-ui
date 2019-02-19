@@ -1,4 +1,4 @@
-import React, { ReactNode, SFC } from 'react'
+import React, { SFC } from 'react'
 import { DatePicker as MuiDatePicker } from 'react-datepicker'
 
 /* tslint:disable:no-var-requires */
@@ -11,12 +11,12 @@ interface IDateField {
     timeIntervals?: number
     value?: string
     openToDate?: string
-    customInput?: ReactNode
-    onChange?: ReactNode
-    onSelect?: ReactNode
+    customInput?: JSX.Element
     placeholderText?: string
     locale?: string
-    selected?: ReactNode
+    selected?: JSX.Element
+    onChange?(event): void
+    onSelect?(event): void
 }
 
 const DatePicker: SFC<IDateField> = props =>
