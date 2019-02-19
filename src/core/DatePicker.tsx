@@ -1,4 +1,4 @@
-import { ReactNode, SFC } from 'react'
+import React, { ReactNode, SFC } from 'react'
 import { DatePicker as MuiDatePicker } from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
