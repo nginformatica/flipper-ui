@@ -7257,7 +7257,7 @@ react-copy-write@^0.8.0:
 
 react-datepicker@2.1.0:
   version "2.1.0"
-  resolved "http://192.168.0.227/react-datepicker/-/react-datepicker-2.1.0.tgz#d9b9dfe78eaf4214e93a77d150cdafbc49ef522c"
+  resolved "https://github.com/Hacker0x01/react-datepicker"
   integrity sha512-zsPqierShVc0NN+JCyJO18jMFDTbGNSgmekQm+Zr5JYH/aZShsjOBGQmjNiQmIw7nJNQDRzh1oQUND3TY/9Swg==
   dependencies:
     classnames "^2.2.5"
