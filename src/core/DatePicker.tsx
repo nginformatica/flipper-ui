@@ -10,8 +10,10 @@ interface IDateField {
     openToDate: string
     customInput?: ReactNode
     onChange?: ReactNode
-    locale?: string
+    onSelect?: ReactNode
     placeholderText: string
+    locale?: string
+    selected?: ReactNode
 }
 
 const DatePicker: SFC<IDateField> = props =>
