@@ -4,14 +4,14 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 interface IDateField {
     showTimeSelect?: boolean
-    timeFormat: string
-    timeIntervals: number
-    value: string
-    openToDate: string
+    timeFormat?: string
+    timeIntervals?: number
+    value?: string
+    openToDate?: string
     customInput?: ReactNode
     onChange?: ReactNode
     onSelect?: ReactNode
-    placeholderText: string
+    placeholderText?: string
     locale?: string
     selected?: ReactNode
 }
