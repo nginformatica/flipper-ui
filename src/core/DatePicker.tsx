@@ -1,6 +1,9 @@
 import React, { ReactNode, SFC } from 'react'
 import { DatePicker as MuiDatePicker } from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+
+/* tslint:disable:no-var-requires */
+require('react-datepicker/dist/react-datepicker.css')
+/* tslint:enble:no-var-requires */
 
 interface IDateField {
     showTimeSelect?: boolean
