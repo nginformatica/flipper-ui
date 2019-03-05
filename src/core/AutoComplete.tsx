@@ -39,6 +39,7 @@ interface IProps {
     onChange?: (value: string | ISelected) => void
     onSelect?: (value: ISelected) => void
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
 }
 
 interface ISelected {
@@ -125,6 +126,7 @@ class AutoComplete extends Component<IProps> {
                         <div>
                             {
                                 this.renderInput(getInputProps({
+                                    onBlur: this.props.onBlur,
                                     onFocus: (event: FocusEvent<HTMLInputElement>) => this.props.onFocus
                                         ? this.props.onFocus(event)
                                         : this.props.openOnFocus
