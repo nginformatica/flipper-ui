@@ -30,19 +30,26 @@ interface IProps {
     InputProps?: object
     defaultIsOpen?: boolean
     openOnFocus?: boolean
+    selected?: ISelected | ISelected[]
     renderSuggestion: (
         suggestion: string | object,
         itemProps: object,
         selected: boolean
     ) => ReactNode
-    onChange?: (value: string) => void
-    onSelect?: (value: string) => void
+    onChange?: (value: string | ISelected) => void
+    onSelect?: (value: ISelected) => void
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+}
+
+interface ISelected {
+    label: string
+    value: string
+    type?: string
 }
 
 class AutoComplete extends Component<IProps> {
     public autocomplete = { offsetWidth: 256 }
-    public getSuggestions(inputValue) {
+    public getSuggestions(inputValue: string | null) {
         if (this.props.openOnFocus && !inputValue) {
             return this.props.data
         }
@@ -66,7 +73,7 @@ class AutoComplete extends Component<IProps> {
         )
     }
 
-    public handleSelect(value) {
+    public handleSelect(value: ISelected) {
         if (this.props.onSelect) {
             this.props.onSelect(value)
         } else {
@@ -74,7 +81,7 @@ class AutoComplete extends Component<IProps> {
         }
     }
 
-    public handleChange(value) {
+    public handleChange(value: string | ISelected) {
         if (!isNil(value) && this.props.onChange) {
             this.props.onChange(value)
         }
@@ -108,6 +115,7 @@ class AutoComplete extends Component<IProps> {
             <Downshift
                 inputValue={ this.props.value }
                 defaultInputValue={ this.props.defaultValue }
+                selectedItem={ this.props.selected }
                 defaultIsOpen={ this.props.defaultIsOpen }
                 itemToString={ item => is(Object, item) ? item.label : item }
                 onSelect={ this.handleSelect.bind(this) }
