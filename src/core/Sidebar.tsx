@@ -21,6 +21,7 @@ interface IProps extends IDefault {
     minWidth?: number | string
     top?: number | string
     paperClasses?: object
+    name?: string
     classes: {
         button: string
         default: string
@@ -102,6 +103,7 @@ class Sidebar extends Component<IProps, {}> {
         return (
             <Action anchor={ anchor }>
                 <Button
+                    name={ `button-${name || 'sidebar'}` }
                     color={ color }
                     variant='contained'
                     className={ classes.button }
