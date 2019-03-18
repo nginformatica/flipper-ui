@@ -103,7 +103,7 @@ class Sidebar extends Component<IProps, {}> {
         return (
             <Action anchor={ anchor }>
                 <Button
-                    name= { `button-${name}` }
+                    name={ `button-${name}` }
                     color={ color }
                     variant='contained'
                     className={ classes.button }
