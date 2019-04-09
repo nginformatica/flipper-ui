@@ -1,6 +1,7 @@
 import { TextField as MuiTextField, withStyles } from '@material-ui/core'
 import React, { ChangeEvent, KeyboardEvent, SFC } from 'react'
 import { IDefault } from './Advertise'
+import styled from 'styled-components'
 
 export interface IProps extends IDefault {
     autoComplete?: string
@@ -48,6 +49,13 @@ const styles = () => ({
     }
 })
 
+const StyledMuiTextField = styled(MuiTextField)`
+    & > div {
+        font-size: 14px !important;
+        height: 38px !important;
+    }
+`
+
 const TextField: SFC<IProps> = ({
     margin,
     padding,
@@ -59,10 +67,14 @@ const TextField: SFC<IProps> = ({
     classes,
     ...otherProps
 }) =>
-    <MuiTextField
+    <StyledMuiTextField
         error={ error }
         variant={ variant as 'outlined' }
-        style={ { margin, padding, ...style } }
+        style={ {
+            margin,
+            padding,
+            ...style
+        } }
         InputLabelProps={ {
             classes: {
                 outlined: variant === 'outlined' ? classes.outlinedLabel : ''
