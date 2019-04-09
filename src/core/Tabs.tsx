@@ -68,7 +68,7 @@ class Tabs extends Component<IProps> {
             <MuiTabs
                 { ...otherProps }
                 style={ { padding, margin, ...style } }
-                className={ `${classes[color]} ${className}`}
+                className={ `${classes[color]} ${className}` }
                 classes={ { indicator: classes.indicator } }>
                 { children }
             </MuiTabs>

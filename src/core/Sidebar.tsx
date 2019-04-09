@@ -84,7 +84,7 @@ const Action = styled.div<IAction>`
     flex-direction: ${props => props.anchor === 'left'
         ? 'row-reverse'
         : 'row'
-    };
+};
     display: flex;
     padding: 4px;
 `
@@ -98,7 +98,9 @@ class Sidebar extends Component<IProps, {}> {
             minWidth = 72,
             classes
         } = this.props
-        const iconToLeft = (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
+        const iconToLeft =
+            (anchor === 'left' && expanded)
+            || (anchor === 'right' && !expanded)
 
         return (
             <Action anchor={ anchor }>
@@ -148,7 +150,7 @@ class Sidebar extends Component<IProps, {}> {
                 anchor={ anchor }
                 variant={ variant }
                 className={ className }
-                style={ { width, padding, margin, top, ...style  } }
+                style={ { width, padding, margin, top, ...style } }
                 PaperProps={ {
                     className: `${docked ? classes.sidebar : '' } ${classes[color]}`,
                     classes: paperClasses

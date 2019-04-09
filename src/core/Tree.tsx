@@ -20,7 +20,7 @@ class Tree extends Component<IProps, {}> {
                 id={ index }
                 name={ name }
                 key={ id || index }
-                style={ root ? { padding: 0 } :  {} }>
+                style={ root ? { padding: 0 } : {} }>
                 { nodes && nodes.map(this.renderNode.bind(this)) }
             </Node>
         )

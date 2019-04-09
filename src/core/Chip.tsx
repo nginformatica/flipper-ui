@@ -6,8 +6,8 @@ interface IProps extends IDefault {
     label: string
     clickable?: boolean
     color?: 'default' | 'primary' | 'secondary'
-    avatar?: ReactElement<any>
-    deleteIcon?: ReactElement<any>
+    avatar?: ReactElement<unknown>
+    deleteIcon?: ReactElement<unknown>
     onDelete?: (value) => void
 }
 
@@ -18,7 +18,13 @@ const styles = () => ({
     }
 })
 
-const Chip: SFC<IProps> = ({ color = 'primary', padding, margin, style = {}, ...otherProps }) =>
+const Chip: SFC<IProps> = ({
+    color = 'primary',
+    padding,
+    margin,
+    style = {},
+    ...otherProps
+}) =>
     <MuiChip
         color={ color as 'primary' }
         style={ { padding, margin, ...style } }

@@ -23,7 +23,7 @@ const Select: SFC<IProps> = ({
     <MuiSelect
         variant={ variant as 'outlined' }
         style={ { margin, padding, ...style } }
-        {...otherProps }>
+        { ...otherProps }>
         { children }
     </MuiSelect>
 

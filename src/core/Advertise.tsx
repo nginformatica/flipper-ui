@@ -10,7 +10,7 @@ export interface IDefault {
     padding?: number | string
     name?: string
     id?: string
-    ref?: Ref<any> // TODO: specify ref type
+    ref?: Ref<unknown>
 }
 
 interface IProps extends IDefault {

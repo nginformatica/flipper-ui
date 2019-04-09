@@ -1,5 +1,5 @@
 import { Radio as MuiRadio } from '@material-ui/core'
-import React,  { ChangeEvent, SFC } from 'react'
+import React, { ChangeEvent, SFC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {

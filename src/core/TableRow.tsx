@@ -24,7 +24,7 @@ const TableRow: SFC<IProps> = ({
             margin,
             padding,
             ...style
-            } }>
+        } }>
         { children }
     </MuiTableRow>
 

@@ -8,7 +8,13 @@ interface IProps extends IDefault {
     timeout?: number | { enter?: number, exit?: number } | 'auto'
 }
 
-const Grow: SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
+const Grow: SFC<IProps> = ({
+    children,
+    padding,
+    margin,
+    style = {},
+    ...otherProps
+}) =>
     <MuiGrow
         style={ { padding, margin, ...style } }
         { ...otherProps }>

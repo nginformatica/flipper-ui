@@ -85,7 +85,7 @@ const SnackBar: SFC<IProps> = props => {
             anchorOrigin={ anchorOrigin }
             open={ open }
             id={ id }
-            autoHideDuration={ 6000 }
+            autoHideDuration={ autoHide }
             style={ { padding, margin, ...style } }
             className={ className }
             onClose={ onClose }>
@@ -105,7 +105,7 @@ const SnackBar: SFC<IProps> = props => {
                         color='inherit'
                         onClick={ onClose }>
                         <IconClose />
-                    </MuiIconButton>,
+                    </MuiIconButton>
                 ] }
                 { ...other }
             />

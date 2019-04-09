@@ -20,7 +20,7 @@ interface IProps extends IDefault {
     onClose?: () => void
     onOpen?: () => void
     open?: boolean
-    children: ReactElement<any>
+    children: ReactElement<unknown>
     enterDelay?: number
 }
 

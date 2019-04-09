@@ -16,9 +16,9 @@ import React, {
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    avatar?: ReactElement<any>
-    icon?: ReactElement<any>
-    action?: ReactElement<any>
+    avatar?: ReactElement<unknown>
+    icon?: ReactElement<unknown>
+    action?: ReactElement<unknown>
     title?: string
     subtitle?: string
     value?: string | number
