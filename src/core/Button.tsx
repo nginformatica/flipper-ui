@@ -13,7 +13,7 @@ interface IProps extends IDefault {
     href?: string
     fullWidth?: boolean
     variant?:
-    'text'
+    | 'text'
     | 'flat'
     | 'outlined'
     | 'contained'

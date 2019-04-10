@@ -5,7 +5,7 @@ import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     disabled?: boolean
-    icon?: string | ReactElement<unknown>
+    icon?: string | JSX.Element
     label?: string
     value?: unknown
     selectedClass?: string

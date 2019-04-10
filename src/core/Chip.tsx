@@ -6,8 +6,8 @@ interface IProps extends IDefault {
     label: string
     clickable?: boolean
     color?: 'default' | 'primary' | 'secondary'
-    avatar?: ReactElement<unknown>
-    deleteIcon?: ReactElement<unknown>
+    avatar?: JSX.Element
+    deleteIcon?: JSX.Element
     onDelete?: (value) => void
 }
 
