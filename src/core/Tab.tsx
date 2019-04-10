@@ -1,6 +1,6 @@
 import { Tab as MuiTab } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import React, { Component, ReactElement } from 'react'
+import React, { Component } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {

@@ -15,7 +15,7 @@ const StyledLine = styled.hr<IProps>`
 };
 `
 
-const Line: SFC<IProps> = ({ padding, margin, style, ...otherProps }) =>
+const Line: SFC<IProps> = ({ padding, margin, style, ref, ...otherProps }) =>
     <StyledLine
         style={ { padding, margin, ...style } }
         { ...otherProps }

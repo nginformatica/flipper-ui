@@ -10,7 +10,6 @@ import React, {
     Component,
     Fragment,
     MouseEvent,
-    ReactElement,
     ReactNode
 } from 'react'
 import { IDefault } from './Advertise'

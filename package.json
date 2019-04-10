@@ -15,6 +15,7 @@
     "lint": "eslint -c .eslintrc.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint -c .eslintrc.json --fix 'src/**/*.{ts,tsx}'",
     "predeploy": "yarn build && docz build",
+    "type-check": "tsc --noEmit",
     "deploy": "gh-pages -d docs",
     "release": "yarn build && node pre-publish.js && yarn publish dist"
   },
