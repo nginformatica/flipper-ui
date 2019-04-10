@@ -5,6 +5,7 @@ route: /text-field
 
 import InputAdornment from '../core/InputAdornment'
 import TextField from '../core/TextField'
+import ListItem from '../core/ListItem'
 import { Playground, PropsTable } from 'docz'
 
 # TextField
@@ -26,5 +27,36 @@ import { Playground, PropsTable } from 'docz'
             startAdornment: <InputAdornment position='start'>$</InputAdornment>
         } }
         InputLabelProps={ { shrink: true } }
+    />
+</Playground>
+
+## TextField with Select
+<Playground>
+    <TextField
+        id='gender'
+        label='Gender'
+        name='gender'
+        margin='6px 0'
+        InputProps={ {
+            endAdornment: (
+                <InputAdornment position='end'>
+                    <TextField
+                        select
+                        fullWidth
+                        value={ 0 }>
+                        {
+                            [{label: 'Male', value: 0  }]
+                                .map(({ label, value }) =>
+                                    <ListItem
+                                        key={ value }
+                                        value={ value }>
+                                        { label }
+                                    </ListItem>
+                                )
+                        }
+                    </TextField>
+                </InputAdornment>
+            )
+        } }
     />
 </Playground>

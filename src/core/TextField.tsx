@@ -54,6 +54,10 @@ const StyledMuiTextField = styled(MuiTextField)`
         font-size: 14px !important;
         height: 38px !important;
     }
+    & > label {
+        font-size: 14px;
+        transform: translate(14px, 13px) scale(1);
+    }
 `
 
 const TextField: SFC<IProps> = ({
