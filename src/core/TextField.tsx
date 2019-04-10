@@ -1,6 +1,5 @@
 import { TextField as MuiTextField, withStyles } from '@material-ui/core'
 import React, { ChangeEvent, KeyboardEvent, SFC } from 'react'
-import styled from 'styled-components'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -39,26 +38,17 @@ export interface IProps extends IDefault {
 
 const styles = () => ({
     outlinedInput: {
-        padding: '14px'
+        fontSize: '14px',
+        padding: '10px'
     },
     outlinedLabel: {
-        transform: 'translate(14px, 16px) scale(1)'
+        fontSize: '14px',
+        transform: 'translate(14px, 13px) scale(1)'
     },
     outlinedMultiline: {
         padding: '0px'
     }
 })
-
-const StyledMuiTextField = styled(MuiTextField)`
-    & > div {
-        font-size: 14px !important;
-        height: 38px !important;
-    }
-    & > label {
-        font-size: 14px;
-        transform: translate(14px, 13px) scale(1);
-    }
-`
 
 const TextField: SFC<IProps> = ({
     margin,
@@ -71,7 +61,7 @@ const TextField: SFC<IProps> = ({
     classes,
     ...otherProps
 }) =>
-    <StyledMuiTextField
+    <MuiTextField
         error={ error }
         variant={ variant as 'outlined' }
         style={ {
