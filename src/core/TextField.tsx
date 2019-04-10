@@ -38,10 +38,12 @@ export interface IProps extends IDefault {
 
 const styles = () => ({
     outlinedInput: {
-        padding: '14px'
+        fontSize: '14px',
+        padding: '10px'
     },
     outlinedLabel: {
-        transform: 'translate(14px, 16px) scale(1)'
+        fontSize: '14px',
+        transform: 'translate(14px, 13px) scale(1)'
     },
     outlinedMultiline: {
         padding: '0px'
@@ -62,7 +64,11 @@ const TextField: SFC<IProps> = ({
     <MuiTextField
         error={ error }
         variant={ variant as 'outlined' }
-        style={ { margin, padding, ...style } }
+        style={ {
+            margin,
+            padding,
+            ...style
+        } }
         InputLabelProps={ {
             classes: {
                 outlined: variant === 'outlined' ? classes.outlinedLabel : ''
