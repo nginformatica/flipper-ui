@@ -1,13 +1,13 @@
 import { Tab as MuiTab } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import React, { Component, ReactElement } from 'react'
+import React, { Component } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     disabled?: boolean
-    icon?: string | ReactElement<any>
+    icon?: string | JSX.Element
     label?: string
-    value?: any
+    value?: unknown
     selectedClass?: string
     classes: {
         root: string

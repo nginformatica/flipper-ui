@@ -1,0 +1,89 @@
+{
+    "React class": {
+        "prefix": "react class",
+        "body": [
+            "import React, { Component } from 'react'",
+            "",
+            "class ${TM_FILENAME_BASE} extends Component {",
+            "    public render() {",
+            "        return ${1:null}",
+            "    }",
+            "}",
+            "",
+            "export default ${TM_FILENAME_BASE}",
+            ""
+        ],
+        "description": "Creates a React Class with TypeScript"
+    },
+    "React class with props": {
+        "prefix": "react class with props",
+        "body": [
+            "import React, { Component } from 'react'",
+            "",
+            "interface IProps {",
+            "    ${1:definitions}",
+            "}",
+            "",
+            "class ${TM_FILENAME_BASE} extends Component<IProps> {",
+            "    public render() {",
+            "        return ${2:null}",
+            "    }",
+            "}",
+            "",
+            "export default ${TM_FILENAME_BASE}",
+            ""
+        ],
+        "description": "Creates a React Class with TypeScript"
+    },
+    "React SFC": {
+        "prefix": "react sfc",
+        "body": [
+            "import React, { SFC } from 'react'",
+            "",
+            "const ${TM_FILENAME_BASE}: SFC = () =>",
+            "    <${1:div} />",
+            "",
+            "export default ${TM_FILENAME_BASE}",
+            ""
+        ],
+        "description": "Creates a SFC with no props"
+    },
+    "React SFC with Props": {
+        "prefix": "react sfc with props",
+        "body": [
+            "import React, { SFC } from 'react'",
+            "",
+            "interface IProps {",
+            "    ${1:definitions}",
+            "}",
+            "",
+            "const ${TM_FILENAME_BASE}: SFC<IProps> = props =>",
+            "    <${2:div} { ...props } />",
+            "",
+            "export default ${TM_FILENAME_BASE}",
+            ""
+        ],
+        "description": "Creates a SFC with props"
+    },
+    "React constructor": {
+        "prefix": "react constructor",
+        "body": [
+            "constructor(props) {",
+            "    super(props)",
+            "    this.state = {",
+            "        ${1:definitions}",
+            "    }",
+            "}"
+        ],
+        "description": "Creates a React Constructor"
+    },
+    "React event handler": {
+        "prefix": "react event handler",
+        "body": [
+            "public handle${1:name} = (${2:params}) => {",
+            "    ${3:content}",
+            "}"
+        ],
+        "description": "Creates a React event handler"
+    }
+}

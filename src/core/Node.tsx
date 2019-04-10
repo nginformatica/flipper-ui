@@ -37,7 +37,7 @@ const Li = styled.li<IListItem>`
     margin: 12px;
     background: ${transparent};
     padding: 12px;
-    padding-left: ${props =>  props.inset ? '12px' : '48px'};
+    padding-left: ${props => props.inset ? '12px' : '48px'};
     list-style: none;
     border-radius: 6px;
     border: 1px solid ${background.dark};

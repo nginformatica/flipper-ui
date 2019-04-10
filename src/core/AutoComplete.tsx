@@ -17,7 +17,6 @@ import React, {
     Component,
     FocusEvent,
     Fragment,
-    ReactElement,
     ReactNode
 } from 'react'
 import Paper from './Paper'
@@ -26,7 +25,7 @@ interface IProps {
     data: object[] | string[]
     value: string
     defaultValue?: string
-    inputElement: ReactElement<any>
+    inputElement: JSX.Element
     InputProps?: object
     defaultIsOpen?: boolean
     openOnFocus?: boolean
@@ -50,6 +49,7 @@ interface ISelected {
 
 class AutoComplete extends Component<IProps> {
     public autocomplete = { offsetWidth: 256 }
+
     public getSuggestions(inputValue: string | null) {
         if (this.props.openOnFocus && !inputValue) {
             return this.props.data
@@ -105,12 +105,37 @@ class AutoComplete extends Component<IProps> {
         })
     }
 
-    public render() {
+    public renderSugestionPaper({
+        inputValue,
+        getItemProps,
+        highlightedIndex
+    }) {
         const paperStyle = {
             position: 'absolute',
             width: this.autocomplete.offsetWidth,
             zIndex: 1099
         }
+
+        return (
+            <Paper square style={ paperStyle }>
+                {
+                    this.getSuggestions(inputValue).map((suggestion, index) =>
+                        <Fragment key={ index }>
+                            {
+                                this.props.renderSuggestion(
+                                    suggestion,
+                                    getItemProps({ item: suggestion }),
+                                    highlightedIndex === index
+                                )
+                            }
+                        </Fragment>
+                    )
+                }
+            </Paper>
+        )
+    }
+
+    public render() {
 
         return (
             <Downshift
@@ -122,37 +147,34 @@ class AutoComplete extends Component<IProps> {
                 onSelect={ this.handleSelect.bind(this) }
                 onInputValueChange={ this.props.onChange }>
                 {
-                    ({ isOpen, getInputProps, inputValue, getItemProps, highlightedIndex, openMenu }) =>
+                    ({
+                        isOpen,
+                        getInputProps,
+                        inputValue,
+                        getItemProps,
+                        highlightedIndex,
+                        openMenu
+                    }) =>
                         <div>
                             {
                                 this.renderInput(getInputProps({
                                     onBlur: this.props.onBlur,
-                                    onFocus: (event: FocusEvent<HTMLInputElement>) => this.props.onFocus
-                                        ? this.props.onFocus(event)
-                                        : this.props.openOnFocus
-                                            ? openMenu()
-                                            : null,
+                                    onFocus:
+                                        (event: FocusEvent<HTMLInputElement>) =>
+                                            this.props.onFocus
+                                                ? this.props.onFocus(event)
+                                                : this.props.openOnFocus
+                                                    ? openMenu()
+                                                    : null,
                                     value: inputValue || ''
                                 }))
                             }
                             {
-                                isOpen && (
-                                    <Paper square style={ paperStyle }>
-                                        {
-                                            this.getSuggestions(inputValue).map((suggestion, index) =>
-                                                <Fragment key={ index }>
-                                                    {
-                                                        this.props.renderSuggestion(
-                                                            suggestion,
-                                                            getItemProps({ item: suggestion }),
-                                                            highlightedIndex === index
-                                                        )
-                                                    }
-                                                </Fragment>
-                                            )
-                                        }
-                                    </Paper>
-                                )
+                                isOpen && (this.renderSugestionPaper({
+                                    inputValue,
+                                    getItemProps,
+                                    highlightedIndex
+                                }))
                             }
                         </div>
                 }

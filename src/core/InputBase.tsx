@@ -26,7 +26,12 @@ export interface IProps extends IDefault {
     value?: string | number | boolean
 }
 
-const InputAdornment: SFC<IProps> = ({ margin, padding, style = {}, ...otherProps }) =>
+const InputAdornment: SFC<IProps> = ({
+    margin,
+    padding,
+    style = {},
+    ...otherProps
+}) =>
     <MuiInputBase
         { ...otherProps }
         style={ { padding, margin, ...style } }

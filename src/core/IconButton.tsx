@@ -9,7 +9,13 @@ interface IProps extends IDefault {
     onClick?: (event?) => void
 }
 
-const IconButton: SFC<IProps> = ({ children, padding, margin, style, ...otherProps }) =>
+const IconButton: SFC<IProps> = ({
+    children,
+    padding,
+    margin,
+    style,
+    ...otherProps
+}) =>
     <MuiIconButton
         { ...otherProps }
         style={ { margin, padding, ...style } }>

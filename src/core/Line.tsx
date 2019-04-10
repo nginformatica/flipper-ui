@@ -12,10 +12,10 @@ const StyledLine = styled.hr<IProps>`
     border: 1px solid ${props => props.primary
         ? primaryColor.normal
         : background.normal
-    };
+};
 `
 
-const Line: SFC<IProps> = ({ padding, margin, style, ...otherProps }) =>
+const Line: SFC<IProps> = ({ padding, margin, style, ref, ...otherProps }) =>
     <StyledLine
         style={ { padding, margin, ...style } }
         { ...otherProps }

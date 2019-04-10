@@ -8,7 +8,13 @@ interface IProps extends IDefault {
     timeout?: number | { enter?: number, exit?: number }
 }
 
-const Zoom: SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
+const Zoom: SFC<IProps> = ({
+    children,
+    padding,
+    margin,
+    style = {},
+    ...otherProps
+}) =>
     <MuiZoom
         style={ { padding, margin, ...style } }
         { ...otherProps }>
