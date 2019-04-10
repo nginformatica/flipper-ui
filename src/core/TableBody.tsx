@@ -6,7 +6,13 @@ interface IProps extends IDefault {
     children: ReactNode
 }
 
-const TableBody: SFC<IProps> = ({ style, margin, padding, children, ...otherProps }) =>
+const TableBody: SFC<IProps> = ({
+    style,
+    margin,
+    padding,
+    children,
+    ...otherProps
+}) =>
     <MuiTableBody
         { ...otherProps }
         style={ { padding, margin, ...style } }>

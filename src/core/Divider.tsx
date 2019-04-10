@@ -7,7 +7,7 @@ interface IProps extends IDefault {
     light?: boolean
 }
 
-const Divider: SFC<IProps> = ({ margin, padding, style = {}, ...otherProps })  =>
+const Divider: SFC<IProps> = ({ margin, padding, style = {}, ...otherProps }) =>
     <MuiDivider
         { ...otherProps }
         style={ { margin, padding, ...style } }

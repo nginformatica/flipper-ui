@@ -11,7 +11,14 @@ const StyledContainer = styled.div`
     flex: 1;
 `
 
-const Container: SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
+const Container: SFC<IProps> = ({
+    children,
+    padding,
+    margin,
+    style = {},
+    ref,
+    ...otherProps
+}) =>
     <StyledContainer
         style={ { padding, margin, ...style } }
         { ...otherProps }>

@@ -12,13 +12,27 @@ interface IProps extends IDefault {
     size?: 'small' | 'medium' | 'large'
     href?: string
     fullWidth?: boolean
-    variant?: 'text' | 'flat' | 'outlined' | 'contained' | 'fab' | 'extendedFab' | 'dashed'
+    variant?:
+    | 'text'
+    | 'flat'
+    | 'outlined'
+    | 'contained'
+    | 'fab'
+    | 'extendedFab'
+    | 'dashed'
     target?: string
     children?: ReactNode
     onClick?: (event?) => void
 }
 
-const Button: SFC<IProps> = ({ children, margin, padding, style = {}, variant, ...otherProps }) =>
+const Button: SFC<IProps> = ({
+    children,
+    margin,
+    padding,
+    style = {},
+    variant,
+    ...otherProps
+}) =>
     <MuiButton
         { ...otherProps }
         variant={ variant === 'dashed' ? 'outlined' : variant }
@@ -30,8 +44,8 @@ const ButtonStyled = styled(Button)`
     border-style: ${props => props.variant === 'dashed'
         ? 'dashed !important'
         : 'initial'
-    };
-    opacity: ${props => props.selected ? 0.5 : 1 };
+};
+    opacity: ${props => props.selected ? 0.5 : 1};
 `
 
 export default ButtonStyled

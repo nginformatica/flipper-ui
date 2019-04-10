@@ -10,15 +10,14 @@ import React, {
     Component,
     Fragment,
     MouseEvent,
-    ReactElement,
     ReactNode
 } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    avatar?: ReactElement<any>
-    icon?: ReactElement<any>
-    action?: ReactElement<any>
+    avatar?: JSX.Element
+    icon?: JSX.Element
+    action?: JSX.Element
     title?: string
     subtitle?: string
     value?: string | number

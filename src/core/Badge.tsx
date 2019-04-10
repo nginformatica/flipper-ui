@@ -27,7 +27,7 @@ class Badge extends Component<IProps, {}> {
             ...otherProps
         } = this.props
 
-        return Boolean(counter)
+        return counter
             ? (
                 <MuiBadge
                     badgeContent={

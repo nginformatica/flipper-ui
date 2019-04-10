@@ -52,7 +52,11 @@ const List: SFC<IProps> = ({
     <MuiList
         subheader={
             title
-                ? <MuiListHeader className={ classes[color] }>{ title }</MuiListHeader>
+                ? (
+                    <MuiListHeader className={ classes[color] }>
+                        { title }
+                    </MuiListHeader>
+                )
                 : undefined
         }
         className={ `${classes[color]} ${className}` }

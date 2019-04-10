@@ -8,7 +8,13 @@ interface IProps extends IDefault {
     timeout?: number | { enter?: number, exit?: number } | 'auto'
 }
 
-const Collapse: SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
+const Collapse: SFC<IProps> = ({
+    children,
+    padding,
+    margin,
+    style = {},
+    ...otherProps
+}) =>
     <MuiCollapse
         style={ { padding, margin, ...style } }
         { ...otherProps }>

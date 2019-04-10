@@ -18,7 +18,14 @@ interface IProps extends IDefault {
     onClose?: () => void
 }
 
-const Menu: SFC<IProps> = ({ children, menuProps, padding, margin, style = {}, ...otherProps }) =>
+const Menu: SFC<IProps> = ({
+    children,
+    menuProps,
+    padding,
+    margin,
+    style = {},
+    ...otherProps
+}) =>
     <MuiMenu
         MenuListProps={ menuProps }
         style={ { padding, margin, ...style } }

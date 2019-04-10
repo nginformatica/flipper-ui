@@ -8,7 +8,13 @@ interface IProps extends IDefault {
     timeout?: number | { enter?: number, exit?: number }
 }
 
-const Fade: SFC<IProps> = ({ children, padding, margin, style = {}, ...otherProps }) =>
+const Fade: SFC<IProps> = ({
+    children,
+    padding,
+    margin,
+    style = {},
+    ...otherProps
+}) =>
     <MuiFade
         style={ { padding, margin, ...style } }
         { ...otherProps }>

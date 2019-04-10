@@ -8,7 +8,13 @@ export interface IProps extends IDefault {
     elevation?: number
 }
 
-const Paper: SFC<IProps> = ({ children, style = {}, padding, margin, ...otherProps }) =>
+const Paper: SFC<IProps> = ({
+    children,
+    style = {},
+    padding,
+    margin,
+    ...otherProps
+}) =>
     <MuiPaper
         { ...otherProps }
         style={ { padding, margin, ...style } }>
