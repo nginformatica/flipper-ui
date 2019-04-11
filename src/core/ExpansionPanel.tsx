@@ -27,7 +27,9 @@ interface IProps extends IPaper {
 
 const styles = () => ({
     content: {
-        marginLeft: '42px !important'
+        marginLeft: '42px !important',
+        marginTop: '0 !important',
+        marginBottom: '0 !important'
     },
     expandIcon: {
         left: '8px',
