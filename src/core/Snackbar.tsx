@@ -19,6 +19,7 @@ interface IProps extends IDefault {
     autoHide?: number,
     message: ReactNode
     open: boolean
+    icon: ReactNode
     variant?: 'success' | 'warning' | 'error' | 'info'
     classes: {
         icon: string
@@ -68,6 +69,7 @@ const SnackBar: SFC<IProps> = props => {
         anchorOrigin,
         autoHide = 6000,
         classes,
+        icon,
         message,
         onClose,
         open,
@@ -94,7 +96,7 @@ const SnackBar: SFC<IProps> = props => {
                 aria-describedby='client-snackbar'
                 message={
                     <span id='client-snackbar' className={ classes.message }>
-                        <Icon className={ classes.icon } />
+                        { icon || <Icon className={ classes.icon } /> }
                         { message }
                     </span>
                 }
