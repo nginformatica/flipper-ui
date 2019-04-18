@@ -59,9 +59,11 @@ const TextField: SFC<IProps> = ({
     InputLabelProps = {},
     InputProps = {},
     classes,
+    autoComplete='off',
     ...otherProps
 }) =>
     <MuiTextField
+        autoComplete={ autoComplete }
         error={ error }
         variant={ variant as 'outlined' }
         style={ {
