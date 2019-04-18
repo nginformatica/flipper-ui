@@ -19,7 +19,7 @@ interface IProps extends IDefault {
     autoHide?: number,
     message: ReactNode
     open: boolean
-    icon: ReactNode
+    icon?: ReactNode
     variant?: 'success' | 'warning' | 'error' | 'info'
     classes: {
         icon: string
