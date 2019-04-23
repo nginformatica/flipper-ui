@@ -4,6 +4,7 @@ route: /stepper
 ---
 
 import Stepper from '../core/Stepper'
+import { Delete } from '../icons'
 import { Playground, PropsTable } from 'docz'
 
 # Stepper
@@ -20,6 +21,6 @@ import { Playground, PropsTable } from 'docz'
     <Stepper
         bottomLabel
         active={ 2 }
-        steps={ ['Name', 'Email', 'Password', 'Photo', 'Be happy!'] }
+        steps={ [{ label: 'Name', icon: <Delete /> }] }
     />
 </Playground>
