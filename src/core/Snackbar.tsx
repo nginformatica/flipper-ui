@@ -19,6 +19,8 @@ interface IProps extends IDefault {
     autoHide?: number,
     message: ReactNode
     open: boolean
+    action?: ReactNode
+    icon?: ReactNode
     variant?: 'success' | 'warning' | 'error' | 'info'
     classes: {
         icon: string
@@ -65,9 +67,11 @@ const styles = theme => ({
 const SnackBar: SFC<IProps> = props => {
     const {
         id,
+        action,
         anchorOrigin,
         autoHide = 6000,
         classes,
+        icon,
         message,
         onClose,
         open,
@@ -94,11 +98,12 @@ const SnackBar: SFC<IProps> = props => {
                 aria-describedby='client-snackbar'
                 message={
                     <span id='client-snackbar' className={ classes.message }>
-                        <Icon className={ classes.icon } />
+                        { icon || <Icon className={ classes.icon } /> }
                         { message }
                     </span>
                 }
-                action={ [
+                action={
+                    action ||
                     <MuiIconButton
                         key='close'
                         aria-label='Close'
@@ -106,7 +111,7 @@ const SnackBar: SFC<IProps> = props => {
                         onClick={ onClose }>
                         <IconClose />
                     </MuiIconButton>
-                ] }
+                }
                 { ...other }
             />
         </MuiSnackbar>

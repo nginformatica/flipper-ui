@@ -30,9 +30,11 @@ const InputAdornment: SFC<IProps> = ({
     margin,
     padding,
     style = {},
+    autoComplete = 'off',
     ...otherProps
 }) =>
     <MuiInputBase
+        autoComplete={ autoComplete }
         { ...otherProps }
         style={ { padding, margin, ...style } }
     />
