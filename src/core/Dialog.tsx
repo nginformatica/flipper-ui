@@ -3,7 +3,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
-import React, { Component, ReactNode } from 'react'
+import React, { Component, CSSProperties, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -15,6 +15,10 @@ interface IProps extends IDefault {
     content?: ReactNode
     text?: string
     PaperProps?: object
+    titleStyle?: CSSProperties
+    actionsStyle?: CSSProperties
+    contentStyle?: CSSProperties
+    contentTextStyle?: CSSProperties
     scroll?: 'body' | 'paper'
     onClose?: () => void
 }
@@ -22,7 +26,7 @@ interface IProps extends IDefault {
 class Dialog extends Component<IProps> {
     public renderTitle(title: IProps['title']) {
         return (
-            <MuiDialogTitle>
+            <MuiDialogTitle style={ this.props.titleStyle }>
                 { title }
             </MuiDialogTitle>
         )
@@ -30,7 +34,7 @@ class Dialog extends Component<IProps> {
 
     public renderContent(content: ReactNode) {
         return (
-            <MuiDialogContent>
+            <MuiDialogContent style={ this.props.contentStyle }>
                 { content }
             </MuiDialogContent>
         )
@@ -38,7 +42,8 @@ class Dialog extends Component<IProps> {
 
     public renderText(text: string) {
         const content = (
-            <MuiDialogContentText>
+            <MuiDialogContentText
+                style={ this.props.contentTextStyle }>
                 { text }
             </MuiDialogContentText>
         )
@@ -48,7 +53,7 @@ class Dialog extends Component<IProps> {
 
     public renderActions(actions: ReactNode) {
         return (
-            <MuiDialogActions>
+            <MuiDialogActions style={ this.props.actionsStyle }>
                 { actions }
             </MuiDialogActions>
         )

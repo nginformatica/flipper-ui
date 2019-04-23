@@ -1,10 +1,10 @@
-import React, { Ref, SFC } from 'react'
+import React, { Ref, SFC, CSSProperties } from 'react'
 import { background } from '../colors'
 import Paper from './Paper'
 import Typography from './Typography'
 
 export interface IDefault {
-    style?: object
+    style?: CSSProperties
     className?: string
     margin?: number | string
     padding?: number | string
