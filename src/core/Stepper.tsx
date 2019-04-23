@@ -10,6 +10,7 @@ interface IProps extends IDefault {
     active?: number
     steps: string[]
     bottomLabel?: boolean
+    orientation?: 'horizontal' | 'vertical'
 }
 
 class Stepper extends Component<IProps, {}> {
