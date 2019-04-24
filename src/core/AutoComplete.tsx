@@ -50,7 +50,7 @@ interface ISelected {
 class AutoComplete extends Component<IProps> {
     public autocomplete = { offsetWidth: 256 }
 
-    public getSuggestions(inputValue: string | null) {
+    public getSuggestions(inputValue: string | null): Array<string | object> {
         if (this.props.openOnFocus && !inputValue) {
             return this.props.data
         }
@@ -60,7 +60,7 @@ class AutoComplete extends Component<IProps> {
             : []
 
         return uniq(
-            filter(
+            filter<string | object>(
                 unless(
                     propEq('subheader', true),
                     pipe(
@@ -111,7 +111,7 @@ class AutoComplete extends Component<IProps> {
         highlightedIndex
     }) {
         const paperStyle = {
-            position: 'absolute',
+            position: 'absolute' as 'absolute',
             width: this.autocomplete.offsetWidth,
             zIndex: 1099
         }
