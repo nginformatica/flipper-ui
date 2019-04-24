@@ -14,7 +14,7 @@ interface IProps extends IDefault {
 }
 
 type TStep = {
-    label: string
+    label: JSX.Element | string
     icon: JSX.Element | ((active?: boolean) => JSX.Element)
 }
 
