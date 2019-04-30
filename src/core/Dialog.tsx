@@ -12,7 +12,7 @@ interface IProps extends IDefault {
     fullWidth?: boolean
     title?: string | ReactNode
     actions?: ReactNode
-    maxWidth?: 'xs'| 'sm'| 'md'| 'lg'| 'xl'
+    maxWidth?: 'xs'| 'sm'| 'md'| 'lg'
     content?: ReactNode
     text?: string
     PaperProps?: object
