@@ -48,7 +48,20 @@ interface ISelected {
 }
 
 class AutoComplete extends Component<IProps> {
-    public autocomplete = { offsetWidth: 256 }
+    public autocomplete: HTMLInputElement | null = null
+
+    private getPaperPosition(inputValue: string | null) {
+        if (this.autocomplete !== null) {
+            const height = this.getSuggestions(inputValue).length * 48
+            const { top } = this.autocomplete.getBoundingClientRect()
+
+            if ((top + height) > window.innerHeight) {
+                return 'above'
+            }
+        }
+
+        return 'below'
+    }
 
     public getSuggestions(inputValue: string | null): Array<string | object> {
         if (this.props.openOnFocus && !inputValue) {
@@ -98,7 +111,7 @@ class AutoComplete extends Component<IProps> {
                 ...this.props.InputProps
             },
             inputProps: {
-                ref: self => {
+                ref: (self: HTMLInputElement) => {
                     this.autocomplete = self
                 }
             }
@@ -112,7 +125,11 @@ class AutoComplete extends Component<IProps> {
     }) {
         const paperStyle = {
             position: 'absolute' as 'absolute',
-            width: this.autocomplete.offsetWidth,
+            width: this.autocomplete ? this.autocomplete.offsetWidth : 256,
+            bottom: this.getPaperPosition(inputValue) === 'above'
+                && this.autocomplete
+                ? this.autocomplete.offsetHeight + 1
+                : undefined,
             zIndex: 1099
         }
 
@@ -136,7 +153,6 @@ class AutoComplete extends Component<IProps> {
     }
 
     public render() {
-
         return (
             <Downshift
                 inputValue={ this.props.value }
@@ -155,7 +171,16 @@ class AutoComplete extends Component<IProps> {
                         highlightedIndex,
                         openMenu
                     }) =>
-                        <div>
+                        <div
+                            style={
+                                this.getPaperPosition(inputValue) === 'above'
+                                    ? {
+                                        display: 'flex',
+                                        position: 'relative' as 'relative',
+                                        flexFlow: 'column-reverse'
+                                    }
+                                    : {}
+                            }>
                             {
                                 this.renderInput(getInputProps({
                                     onBlur: this.props.onBlur,
@@ -170,11 +195,11 @@ class AutoComplete extends Component<IProps> {
                                 }))
                             }
                             {
-                                isOpen && (this.renderSugestionPaper({
+                                isOpen && this.renderSugestionPaper({
                                     inputValue,
                                     getItemProps,
                                     highlightedIndex
-                                }))
+                                })
                             }
                         </div>
                 }
