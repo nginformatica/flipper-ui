@@ -37,9 +37,15 @@ export interface IProps extends IDefault {
 }
 
 const styles = () => ({
+    input: {
+        fontSize: '14px',
+        padding: '10px',
+        height: 'auto'
+    },
     outlinedInput: {
         fontSize: '14px',
-        padding: '10px'
+        padding: '10px',
+        height: 'auto'
     },
     outlinedLabel: {
         fontSize: '14px',
