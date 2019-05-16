@@ -13,6 +13,7 @@ import React, {
     ReactNode
 } from 'react'
 import { IDefault } from './Advertise'
+import Typography from './Typography'
 
 interface IProps extends IDefault {
     avatar?: JSX.Element
@@ -35,7 +36,20 @@ const styles = () => ({
 })
 
 class ListItem extends Component<IProps, {}> {
-    public renderCustomItem() {
+
+    private renderChildren () {
+        return (
+            typeof this.props.children === 'string'
+                ? (
+                    <Typography>
+                        { this.props.children }
+                    </Typography>
+                )
+                : this.props.children
+        )
+    }
+
+    private renderCustomItem() {
         const {
             action,
             avatar,
@@ -112,7 +126,7 @@ class ListItem extends Component<IProps, {}> {
                 selected={ selected }
                 disabled={ disabled }
                 onClick={ onClick }>
-                { children ? children : this.renderCustomItem() }
+                { children ? this.renderChildren() : this.renderCustomItem() }
             </MuiListItem>
         )
     }
