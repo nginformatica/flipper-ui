@@ -37,7 +37,7 @@ const styles = () => ({
 class ListItem extends Component<IProps, {}> {
 
     private renderChildren () {
-        return(
+        return (
             typeof this.props.children === 'string'
                 ? (
                     <Typography>
