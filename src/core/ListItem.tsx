@@ -13,7 +13,7 @@ import React, {
     ReactNode
 } from 'react'
 import { IDefault } from './Advertise'
-import { Typography } from '..'
+import Typography from './Typography'
 
 interface IProps extends IDefault {
     avatar?: JSX.Element
