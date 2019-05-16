@@ -25,6 +25,7 @@ interface IProps extends IDefault {
     children?: ReactNode
     classes: { default: string }
     selected?: boolean
+    disabled?: boolean
     onClick?: (event?: MouseEvent) => void
 }
 
@@ -110,6 +111,7 @@ class ListItem extends Component<IProps, {}> {
             margin,
             name,
             selected,
+            disabled,
             onClick
         } = this.props
 
@@ -122,6 +124,7 @@ class ListItem extends Component<IProps, {}> {
                 style={ { padding, margin, ...style } }
                 className={ className }
                 selected={ selected }
+                disabled={ disabled }
                 onClick={ onClick }>
                 { children ? this.renderChildren() : this.renderCustomItem() }
             </MuiListItem>

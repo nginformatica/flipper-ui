@@ -34,6 +34,9 @@ const styles = () => ({
     expandIcon: {
         left: '8px',
         right: 'unset'
+    },
+    expanded: {
+        minHeight: '56px'
     }
 })
 
