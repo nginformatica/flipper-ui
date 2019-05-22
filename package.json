@@ -27,7 +27,8 @@
     "color": "3.0.0",
     "downshift": "2.2.3",
     "fs-extra": "7.0.0",
-    "ramda": "0.25.0"
+    "ramda": "0.25.0",
+    "react-number-format": "4.0.8"
   },
   "devDependencies": {
     "@types/node": "10.9.4",
