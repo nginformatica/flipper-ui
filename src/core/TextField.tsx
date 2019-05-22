@@ -25,15 +25,18 @@ export interface IProps extends IDefault {
     SelectProps?: object
     rows?: string | number
     rowsMax?: string | number
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    onBlur?: (event: FocusEvent) => void
+    onKeyUp?: (event: KeyboardEvent) => void
+    onKeyDown?: (event: KeyboardEvent) => void
+}
+
+interface IClasses {
     classes: {
         outlinedInput: string
         outlinedLabel: string
         outlinedMultiline: string
     }
-    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-    onBlur?: (event: FocusEvent) => void
-    onKeyUp?: (event: KeyboardEvent) => void
-    onKeyDown?: (event: KeyboardEvent) => void
 }
 
 const styles = () => ({
@@ -56,7 +59,7 @@ const styles = () => ({
     }
 })
 
-const TextField: SFC<IProps> = ({
+const TextField: SFC<IProps & IClasses> = ({
     margin,
     padding,
     style = {},
