@@ -1,5 +1,5 @@
 import { Chip as MuiChip, withStyles } from '@material-ui/core'
-import React, { SFC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -18,7 +18,7 @@ const styles = () => ({
     }
 })
 
-const Chip: SFC<IProps> = ({
+const Chip: FC<IProps> = ({
     color = 'primary',
     padding,
     margin,

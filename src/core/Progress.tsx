@@ -2,7 +2,7 @@ import {
     CircularProgress as MuiCircularProgress,
     LinearProgress as MuiLinearProgress
 } from '@material-ui/core'
-import React, { SFC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface ILinear {
@@ -28,7 +28,7 @@ interface IProps extends IDefault {
     linear?: boolean
 }
 
-const Progress: SFC<IProps & ICircular & ILinear> = ({
+const Progress: FC<IProps & ICircular & ILinear> = ({
     linear,
     style = {},
     margin,

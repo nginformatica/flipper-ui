@@ -1,10 +1,9 @@
 import { Select as MuiSelect } from '@material-ui/core'
-import React, { ChangeEvent, ReactNode, SFC } from 'react'
+import React, { ChangeEvent, FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     autoWidth?: boolean
-    children?: ReactNode
     value?: string | number
     multiple?: boolean
     variant?: 'standard' | 'outlined' | 'filled'
@@ -12,7 +11,7 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void
 }
 
-const Select: SFC<IProps> = ({
+const Select: FC<IProps> = ({
     children,
     style = {},
     margin,

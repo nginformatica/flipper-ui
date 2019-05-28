@@ -1,10 +1,9 @@
 import { withStyles } from '@material-ui/core/styles'
 import MuiTableCell from '@material-ui/core/TableCell'
-import React, { ReactNode, SFC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    children: ReactNode
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
     classes: {
@@ -22,7 +21,7 @@ const styles = () => ({
     }
 })
 
-const TableCell: SFC<IProps> = ({
+const TableCell: FC<IProps> = ({
     style,
     margin,
     padding,

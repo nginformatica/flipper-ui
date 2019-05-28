@@ -1,5 +1,5 @@
 import { Divider as MuiDivider } from '@material-ui/core'
-import React, { SFC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -7,7 +7,7 @@ interface IProps extends IDefault {
     light?: boolean
 }
 
-const Divider: SFC<IProps> = ({ margin, padding, style = {}, ...otherProps }) =>
+const Divider: FC<IProps> = ({ margin, padding, style = {}, ...otherProps }) =>
     <MuiDivider
         { ...otherProps }
         style={ { margin, padding, ...style } }

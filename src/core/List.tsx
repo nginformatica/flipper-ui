@@ -3,12 +3,11 @@ import {
     ListSubheader as MuiListHeader
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import React, { ReactNode, SFC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     title?: string
-    children?: ReactNode
     dense?: boolean
     classes: {
         default: string
@@ -38,7 +37,7 @@ const styles = theme => ({
     }
 })
 
-const List: SFC<IProps> = ({
+const List: FC<IProps> = ({
     title,
     padding,
     margin,

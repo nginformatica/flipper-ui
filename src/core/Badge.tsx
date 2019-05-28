@@ -1,11 +1,10 @@
 import { Badge as MuiBadge } from '@material-ui/core'
-import React, { Component, ReactNode } from 'react'
+import React, { Component } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     color?: 'default' | 'primary' | 'secondary' | 'error'
     counter: number | string
-    children: ReactNode
     limit?: number
 }
 
