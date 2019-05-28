@@ -1,0 +1,32 @@
+---
+name: MaskField
+route: /mask-field
+---
+
+import InputAdornment from '../core/InputAdornment'
+import MaskField from '../core/MaskField'
+import ListItem from '../core/ListItem'
+import { Playground, PropsTable } from 'docz'
+
+# MaskField
+
+## Properties
+<PropsTable of={ MaskField } />
+
+## Simple MaskField
+<Playground>
+    <MaskField placeholder='Description' />
+</Playground>
+
+## MaskField with InputAdornment
+<Playground>
+    <MaskField
+        mask='_'
+        format='##.##'
+        label='Price'
+        InputProps={ {
+            startAdornment: <InputAdornment position='start'>$</InputAdornment>
+        } }
+        InputLabelProps={ { shrink: true } }
+    />
+</Playground>
