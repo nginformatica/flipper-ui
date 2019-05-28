@@ -58,7 +58,7 @@ class ListItem extends Component<IProps, {}> {
             subtitle,
             classes
         } = this.props
-        const iconMargin = title || subtitle ? '16px' : '0px'
+        const minWidth = title || subtitle ? '42px' : '0px'
         const className = classes.default
 
         return (
@@ -74,7 +74,7 @@ class ListItem extends Component<IProps, {}> {
                     icon && (
                         <MuiListItemIcon
                             className={ className }
-                            style={ { marginRight: iconMargin } }>
+                            style={ { minWidth } }>
                             { icon }
                         </MuiListItemIcon>
                     )
@@ -86,6 +86,7 @@ class ListItem extends Component<IProps, {}> {
                             secondaryTypographyProps={ { className } }
                             primary={ title }
                             secondary={ subtitle }
+                            style={ action ? { marginRight: '36px' } : {} }
                         />
                     )
                 }

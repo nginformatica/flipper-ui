@@ -37,10 +37,13 @@ const Typography: FC<IProps> = ({
     margin,
     padding,
     style = {},
+    variant = 'body2',
     ...otherProps
 }) =>
-    <MuiTypography style={ { margin, padding, ...style } }
-        { ...otherProps }>
+    <MuiTypography
+        { ...otherProps }
+        variant={ variant }
+        style={ { margin, padding, ...style } }>
         { children }
     </MuiTypography>
 
