@@ -8,16 +8,11 @@ import { IProps as IPaper } from './Paper'
 
 interface IProps extends IPaper {
     actions?: ReactNode
-    classes: {
-        content: string
-        expandIcon: string
-    }
     defaultExpanded?: boolean
     details?: ReactNode
     disabled?: boolean
     expandIcon?: ReactNode
     expanded?: boolean
-    iconPosition?: 'left' | 'right'
     summary?: ReactNode
     summaryStyle?: object
     detailsStyle?: object
@@ -41,10 +36,8 @@ const styles = () => ({
 
 const ExpansionPanel: FC<IProps> = ({
     actions,
-    classes,
     details,
     expandIcon,
-    iconPosition = 'left',
     margin,
     padding,
     style,
@@ -61,14 +54,6 @@ const ExpansionPanel: FC<IProps> = ({
             summary && (
                 <MuiExpansionPanelSummary
                     expandIcon={ expandIcon }
-                    classes={ {
-                        content: iconPosition === 'left'
-                            ? classes.content
-                            : '',
-                        expandIcon: iconPosition === 'left'
-                            ? classes.expandIcon
-                            : ''
-                    } }
                     style={ summaryStyle }>
                     { summary }
                 </MuiExpansionPanelSummary>
