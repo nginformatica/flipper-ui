@@ -41,14 +41,14 @@ class Pagination extends Component<IProps, {}> {
                 className={ className }
                 style={ { padding, margin, ...style } }>
                 <Button
-                    mini
+                    size='small'
                     onClick={ this.props.onPrevious }>
                     <IconArrowLeft />
                 </Button>
                 {
                     allPages.map(page =>
                         <Button
-                            mini
+                            size='small'
                             key={ page }
                             color={ page === active ? 'primary' : 'default' }
                             onClick={ () => this.props.onNavigate(page) }>
@@ -57,7 +57,7 @@ class Pagination extends Component<IProps, {}> {
                     )
                 }
                 <Button
-                    mini
+                    size='small'
                     onClick={ this.props.onNext }>
                     <IconArrowRight />
                 </Button>

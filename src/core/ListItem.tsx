@@ -3,7 +3,8 @@ import {
     ListItemAvatar as MuiListItemAvatar,
     ListItemIcon as MuiListItemIcon,
     ListItemSecondaryAction as MuiListItemSecondaryAction,
-    ListItemText as MuiListItemText
+    ListItemText as MuiListItemText,
+    MenuItem
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import React, {
@@ -14,8 +15,9 @@ import React, {
 } from 'react'
 import { IDefault } from './Advertise'
 import Typography from './Typography'
+import { Omit } from 'ramda'
 
-interface IProps extends IDefault {
+interface IProps extends Omit<IDefault, 'name'> {
     avatar?: JSX.Element
     icon?: JSX.Element
     action?: JSX.Element
@@ -109,26 +111,37 @@ class ListItem extends Component<IProps, {}> {
             style = {},
             padding,
             margin,
-            name,
             selected,
             disabled,
             onClick
         } = this.props
 
-        return (
-            <MuiListItem
-                button
-                value={ value }
-                name={ name }
-                id={ id }
-                style={ { padding, margin, ...style } }
-                className={ className }
-                selected={ selected }
-                disabled={ disabled }
-                onClick={ onClick }>
-                { children ? this.renderChildren() : this.renderCustomItem() }
-            </MuiListItem>
-        )
+        return children
+            ? (
+                <MenuItem
+                    button
+                    id={ id }
+                    style={ { padding, margin, ...style } }
+                    className={ className }
+                    selected={ selected }
+                    disabled={ disabled }
+                    value={ value }
+                    onClick={ onClick }>
+                    { this.renderChildren() }
+                </MenuItem>
+            )
+            : (
+                <MuiListItem
+                    button
+                    id={ id }
+                    style={ { padding, margin, ...style } }
+                    className={ className }
+                    selected={ selected }
+                    disabled={ disabled }
+                    onClick={ onClick }>
+                    { this.renderCustomItem() }
+                </MuiListItem>
+            )
     }
 }
 

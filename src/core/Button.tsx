@@ -1,13 +1,12 @@
 import { Button as MuiButton } from '@material-ui/core'
-import React, { ReactNode, FC } from 'react'
+import React, { ReactNode, FC, ElementType, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    mini?: boolean
     disabled?: boolean
     selected?: boolean
-    component?: string
+    component?: ElementType
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'
     href?: string
@@ -19,7 +18,7 @@ interface IProps extends IDefault {
         | 'dashed'
     target?: string
     children?: ReactNode
-    onClick?: (event?) => void
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
 const Button: FC<IProps> = ({

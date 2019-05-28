@@ -4,7 +4,6 @@ route: /autocomplete
 ---
 
 import AutoComplete from '../core/AutoComplete'
-import AutoCompleteA from '../samples/AutoComplete'
 import ListItem from '../core/ListItem'
 import TextField from '../core/TextField'
 import Typography from '../core/Typography'
@@ -17,7 +16,23 @@ import { Playground, Props } from 'docz'
 
 ## Simple
 <Playground style={ { minHeight: '200px' } }>
-    <AutoCompleteA />
+    <AutoComplete
+        data={ ['Rock', 'Pop', 'Classic'] }
+        inputElement={
+            <TextField
+                fullWidth
+                placeholder='Music genres'
+            />
+        }
+        renderSuggestion={ (item, props, selected) =>
+            <ListItem
+                key={ item }
+                selected={ selected }
+                { ...props }>
+                { item }
+            </ListItem>
+        }
+    />
 </Playground>
 
 ## With subheader
