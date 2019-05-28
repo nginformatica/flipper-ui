@@ -1,9 +1,8 @@
 import { Tooltip as MuiTooltip } from '@material-ui/core'
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { IDefault } from './Advertise'
-import { Omit } from 'ramda'
 
-interface IProps extends Omit<IDefault, 'ref'> {
+interface IProps extends IDefault {
     placement?:
         | 'bottom-end'
         | 'bottom-start'
@@ -21,7 +20,7 @@ interface IProps extends Omit<IDefault, 'ref'> {
     onClose?: () => void
     onOpen?: () => void
     open?: boolean
-    children: JSX.Element
+    children: ReactElement<{}>
     enterDelay?: number
 }
 
