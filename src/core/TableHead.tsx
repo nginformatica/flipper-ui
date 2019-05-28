@@ -1,10 +1,9 @@
 import { withStyles } from '@material-ui/core/styles'
 import MuiTableHead from '@material-ui/core/TableHead'
-import React, { ReactNode, FC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    children: ReactNode
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
     classes: {
         default: string

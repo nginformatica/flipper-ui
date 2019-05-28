@@ -1,10 +1,9 @@
-import React, { ReactNode, FC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 import Paper from './Paper'
 
 interface IProps extends IDefault {
     minHeight?: number
-    children?: ReactNode
 }
 
 const Box: FC<IProps> = ({

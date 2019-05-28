@@ -1,10 +1,9 @@
 import MuiTableRow from '@material-ui/core/TableRow'
-import React, { ReactNode, FC } from 'react'
+import React, { FC } from 'react'
 import { background } from '../colors'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    children: ReactNode
     selected?: boolean
     hover?: boolean
     onClick?: () => void

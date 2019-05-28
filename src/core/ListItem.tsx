@@ -10,8 +10,7 @@ import { withStyles } from '@material-ui/core/styles'
 import React, {
     Component,
     Fragment,
-    MouseEvent,
-    ReactNode
+    MouseEvent
 } from 'react'
 import { IDefault } from './Advertise'
 import Typography from './Typography'
@@ -24,7 +23,6 @@ interface IProps extends Omit<IDefault, 'name'> {
     title?: string
     subtitle?: string
     value?: string | number
-    children?: ReactNode
     classes: { default: string }
     selected?: boolean
     disabled?: boolean

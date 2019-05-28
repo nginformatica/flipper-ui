@@ -1,11 +1,10 @@
 import { Menu as MuiMenu } from '@material-ui/core'
-import React, { ReactNode, FC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     open: boolean
     anchorEl?: HTMLElement
-    children?: ReactNode
     menuProps?: object
     anchorOrigin?: {
         horizontal: number | 'left' | 'center' | 'right',

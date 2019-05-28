@@ -1,9 +1,8 @@
 import { AppBar, Toolbar } from '@material-ui/core'
-import React, { ReactNode, FC } from 'react'
+import React, { FC } from 'react'
 import { IProps as IPaper } from './Paper'
 
 interface IProps extends IPaper {
-    children: ReactNode
     position?: 'absolute' | 'fixed' | 'static' | 'sticky'
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }

@@ -1,5 +1,5 @@
 import { Fab as MuiFab } from '@material-ui/core'
-import React, { ReactNode, FC, MouseEvent } from 'react'
+import React, { FC, MouseEvent } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -11,7 +11,6 @@ interface IProps extends IDefault {
     variant?:
         | 'round'
         | 'extended'
-    children?: ReactNode
     onClick?: (event?: MouseEvent<HTMLElement>) => void
 }
 
