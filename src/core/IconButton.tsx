@@ -1,5 +1,5 @@
 import MuiIconButton from '@material-ui/core/IconButton'
-import React, { ReactNode, SFC } from 'react'
+import React, { ReactNode, FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -9,7 +9,7 @@ interface IProps extends IDefault {
     onClick?: (event?) => void
 }
 
-const IconButton: SFC<IProps> = ({
+const IconButton: FC<IProps> = ({
     children,
     padding,
     margin,

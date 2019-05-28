@@ -1,8 +1,9 @@
 import { Tooltip as MuiTooltip } from '@material-ui/core'
-import React, { SFC } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
+import { Omit } from 'ramda'
 
-interface IProps extends IDefault {
+interface IProps extends Omit<IDefault, 'ref'> {
     placement?:
         | 'bottom-end'
         | 'bottom-start'
@@ -24,7 +25,7 @@ interface IProps extends IDefault {
     enterDelay?: number
 }
 
-const Tooltip: SFC<IProps> = ({ children, ...otherProps }) =>
+const Tooltip: FC<IProps> = ({ children, ...otherProps }) =>
     <MuiTooltip
         { ...otherProps }>
         { children }

@@ -1,4 +1,4 @@
-import React, { Ref, SFC, CSSProperties } from 'react'
+import React, { FC, CSSProperties } from 'react'
 import { background } from '../colors'
 import Paper from './Paper'
 import Typography from './Typography'
@@ -10,7 +10,6 @@ export interface IDefault {
     padding?: number | string
     name?: string
     id?: string
-    ref?: Ref<unknown>
 }
 
 interface IProps extends IDefault {
@@ -26,7 +25,7 @@ const styles = {
     }
 }
 
-const Advertise: SFC<IProps> = ({
+const Advertise: FC<IProps> = ({
     comment,
     author,
     padding = 4,

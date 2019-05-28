@@ -1,4 +1,4 @@
-import React, { SFC } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { background, primary as primaryColor } from '../colors'
 import { IDefault } from './Advertise'
@@ -15,7 +15,7 @@ const StyledLine = styled.hr<IProps>`
 };
 `
 
-const Line: SFC<IProps> = ({ padding, margin, style, ref, ...otherProps }) =>
+const Line: FC<IProps> = ({ padding, margin, style, ...otherProps }) =>
     <StyledLine
         style={ { padding, margin, ...style } }
         { ...otherProps }

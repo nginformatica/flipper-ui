@@ -1,5 +1,5 @@
 import { InputAdornment as MuiInputAdornment } from '@material-ui/core'
-import React, { ReactNode, SFC } from 'react'
+import React, { ReactNode, FC } from 'react'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -7,7 +7,7 @@ export interface IProps extends IDefault {
     children: ReactNode
 }
 
-const InputAdornment: SFC<IProps> = ({ children, ...otherProps }) =>
+const InputAdornment: FC<IProps> = ({ children, ...otherProps }) =>
     <MuiInputAdornment { ...otherProps }>
         { children }
     </MuiInputAdornment>

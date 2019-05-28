@@ -1,5 +1,5 @@
 import { TextField as MuiTextField, withStyles } from '@material-ui/core'
-import React, { ChangeEvent, KeyboardEvent, SFC } from 'react'
+import React, { ChangeEvent, KeyboardEvent, FC } from 'react'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -56,7 +56,7 @@ const styles = () => ({
     }
 })
 
-const TextField: SFC<IProps> = ({
+const TextField: FC<IProps> = ({
     margin,
     padding,
     style = {},

@@ -1,4 +1,4 @@
-import React, { ReactNode, SFC } from 'react'
+import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
 import { IDefault } from './Advertise'
 
@@ -11,14 +11,13 @@ const StyledContent = styled.main`
     transition: all 500ms ease;
 `
 
-const Content: SFC<IProps> = ({
+const Content: FC<IProps> = ({
     children,
     padding,
     margin,
     style = {},
-    ref,
-    ...otherProps }
-) =>
+    ...otherProps
+}) =>
     <StyledContent
         { ...otherProps }
         style={ { padding, margin, ...style } }>

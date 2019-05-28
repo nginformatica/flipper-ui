@@ -1,5 +1,5 @@
 import { InputBase as MuiInputBase } from '@material-ui/core'
-import React, { ChangeEvent, ReactNode, SFC } from 'react'
+import React, { ChangeEvent, ReactNode, FC } from 'react'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -12,7 +12,6 @@ export interface IProps extends IDefault {
     error?: boolean
     fullWidth?: boolean
     id?: string
-    inputComponent?: string
     inputProps?: object
     multiline?: boolean
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -26,7 +25,7 @@ export interface IProps extends IDefault {
     value?: string | number | boolean
 }
 
-const InputAdornment: SFC<IProps> = ({
+const InputAdornment: FC<IProps> = ({
     margin,
     padding,
     style = {},

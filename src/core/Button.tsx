@@ -1,5 +1,5 @@
 import { Button as MuiButton } from '@material-ui/core'
-import React, { ReactNode, SFC } from 'react'
+import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
 import { IDefault } from './Advertise'
 
@@ -13,19 +13,16 @@ interface IProps extends IDefault {
     href?: string
     fullWidth?: boolean
     variant?:
-    | 'text'
-    | 'flat'
-    | 'outlined'
-    | 'contained'
-    | 'fab'
-    | 'extendedFab'
-    | 'dashed'
+        | 'text'
+        | 'outlined'
+        | 'contained'
+        | 'dashed'
     target?: string
     children?: ReactNode
     onClick?: (event?) => void
 }
 
-const Button: SFC<IProps> = ({
+const Button: FC<IProps> = ({
     children,
     margin,
     padding,
@@ -43,8 +40,7 @@ const Button: SFC<IProps> = ({
 const ButtonStyled = styled(Button)`
     border-style: ${props => props.variant === 'dashed'
         ? 'dashed !important'
-        : 'initial'
-};
+        : 'initial'};
     opacity: ${props => props.selected ? 0.5 : 1};
 `
 

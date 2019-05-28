@@ -1,5 +1,5 @@
 import { divide, multiply, pipe, prop } from 'ramda'
-import React, { ReactNode, SFC } from 'react'
+import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
 import { primary, white } from '../colors'
 import { IDefault } from './Advertise'
@@ -43,13 +43,12 @@ const Content = styled.div`
     border: 1px solid ${primary.normal};
 `
 
-const Card: SFC<IProps> = ({
+const Card: FC<IProps> = ({
     children,
     padding,
     margin,
     style = {},
     title,
-    ref,
     xs = 12,
     ...otherProps
 }) =>

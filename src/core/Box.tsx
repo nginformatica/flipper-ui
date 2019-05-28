@@ -1,4 +1,4 @@
-import React, { ReactNode, SFC } from 'react'
+import React, { ReactNode, FC } from 'react'
 import { IDefault } from './Advertise'
 import Paper from './Paper'
 
@@ -7,7 +7,7 @@ interface IProps extends IDefault {
     children?: ReactNode
 }
 
-const Box: SFC<IProps> = ({
+const Box: FC<IProps> = ({
     children,
     margin,
     padding = 18,
