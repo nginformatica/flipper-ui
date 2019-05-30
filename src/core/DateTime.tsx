@@ -17,10 +17,11 @@ import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker
 import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 
 interface IProps extends IDefault {
-    locale: 'en-US' | 'pt-BR' | 'es'
+    locale?: 'en-US' | 'pt-BR' | 'es'
     type?: 'date' | 'time' | 'datetime'
     onAuxClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
     onAuxClickCapture?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
+    onChange(date: Date, value: string): void
 }
 
 const LOCALES = {
