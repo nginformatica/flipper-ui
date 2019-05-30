@@ -26,7 +26,13 @@ interface IProps extends IDefault {
 const LOCALES = {
     'es': esLocale,
     'pt-BR': ptLocale,
-    'en': enLocale
+    'en-US': enLocale
+}
+
+const DEFAULT_FORMATS = {
+    date: 'dd/MM/yyyy',
+    time: 'HH:mm',
+    datetime: 'dd/MM/yyyy HH:mm'
 }
 
 type TProps =
@@ -48,14 +54,8 @@ const DateTime: FC<TProps> = ({
     type = 'date',
     ...otherProps
 }) => {
-    const defaultFormats = {
-        date: 'dd/MM/yyyy',
-        time: 'HH:mm',
-        datetime: 'dd/MM/yyyy HH:mm'
-    }
-
     const fieldProps = {
-        format: format ? format : defaultFormats[type],
+        format: format ? format : DEFAULT_FORMATS[type],
         variant,
         inputVariant,
         style: { margin, padding, ...style },
