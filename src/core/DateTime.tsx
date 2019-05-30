@@ -1,12 +1,88 @@
 import React, { FC } from 'react'
+import {
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+    KeyboardDateTimePicker,
+    MuiPickersUtilsProvider
+} from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 import { IDefault } from './Advertise'
-import TextField, { IProps as ITextField } from './TextField'
+import { IClasses, styles } from './TextField'
+import { withStyles } from '@material-ui/styles'
+import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
+import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
+import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 
 interface IProps extends IDefault {
-    type: 'date' | 'time' | 'datetime-local'
+    type?: 'date' | 'time' | 'datetime'
 }
 
-const DateTime: FC<IProps & ITextField> = ({ type, ...otherProps }) =>
-    <TextField type={ type } { ...otherProps } />
+type TProps =
+    & IProps
+    & IClasses
+    & KeyboardDatePickerProps
+    & KeyboardDateTimePickerProps
+    & KeyboardTimePickerProps
 
-export default DateTime
+const DateTime: FC<TProps> = ({
+    padding,
+    margin,
+    style,
+    format,
+    variant = 'inline',
+    inputVariant = 'outlined',
+    classes,
+    type = 'datetime',
+    ...otherProps
+}) => {
+    const defaultFormats = {
+        date: 'dd/MM/yyyy',
+        time: 'HH:mm',
+        datetime: 'dd/MM/yyyy HH:mm'
+    }
+
+    const fieldProps = {
+        format: format ? format : defaultFormats[type],
+        variant,
+        inputVariant,
+        style: { margin, padding, ...style },
+        InputAdornmentProps: {
+            style: { width: '32px' },
+            ...otherProps.InputAdornmentProps
+        },
+        InputLabelProps: {
+            classes: {
+                outlined: inputVariant === 'outlined'
+                    ? classes.outlinedLabel
+                    : ''
+            },
+            ...otherProps.InputLabelProps
+        },
+        InputProps: {
+            classes: {
+                input: inputVariant === 'outlined'
+                    ? classes.outlinedInput
+                    : '',
+                multiline: inputVariant === 'outlined'
+                    ? classes.outlinedMultiline
+                    : ''
+            },
+            ...otherProps.InputProps
+        },
+        ...otherProps
+    }
+
+    const renderDatePicker = () => <KeyboardDatePicker { ...fieldProps } />
+    const renderTimePicker = () => <KeyboardTimePicker { ...fieldProps } />
+    const renderDateTimePicker = () => <KeyboardDateTimePicker { ...fieldProps } />
+
+    return (
+        <MuiPickersUtilsProvider utils={ DateFnsUtils }>
+            { type === 'date' && renderDatePicker() }
+            { type === 'time' && renderTimePicker() }
+            { type === 'datetime' && renderDateTimePicker() }
+        </MuiPickersUtilsProvider>
+    )
+}
+
+export default withStyles(styles)(DateTime)
