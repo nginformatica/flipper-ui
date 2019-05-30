@@ -35,8 +35,6 @@ const DateTime: FC<TProps> = ({
     inputVariant = 'outlined',
     classes,
     type = 'date',
-    onAuxClick,
-    onAuxClickCapture,
     ...otherProps
 }) => {
     const defaultFormats = {
