@@ -15,14 +15,16 @@ import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 
 interface IProps extends IDefault {
     type?: 'date' | 'time' | 'datetime'
+    onAuxClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
+    onAuxClickCapture?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
 }
 
 type TProps =
-    & IProps
-    & IClasses
     & KeyboardDatePickerProps
     & KeyboardDateTimePickerProps
     & KeyboardTimePickerProps
+    & IProps
+    & IClasses
 
 const DateTime: FC<TProps> = ({
     padding,
@@ -32,7 +34,9 @@ const DateTime: FC<TProps> = ({
     variant = 'inline',
     inputVariant = 'outlined',
     classes,
-    type = 'datetime',
+    type = 'date',
+    onAuxClick,
+    onAuxClickCapture,
     ...otherProps
 }) => {
     const defaultFormats = {
