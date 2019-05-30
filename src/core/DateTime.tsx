@@ -16,13 +16,14 @@ import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 import { Omit } from 'ramda'
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 
 interface IProps {
     locale?: 'en-US' | 'pt-BR' | 'es'
     type?: 'date' | 'time' | 'datetime'
     onAuxClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
     onAuxClickCapture?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
-    onChange(date: Date, value: string): void
+    onChange(date: MaterialUiPickersDate | null, value?: string): void
 }
 
 const LOCALES = {
@@ -38,9 +39,9 @@ const DEFAULT_FORMATS = {
 }
 
 type TProps =
-    & Omit<KeyboardDatePickerProps, 'margin'>
-    & Omit<KeyboardDateTimePickerProps, 'margin'>
-    & Omit<KeyboardTimePickerProps, 'margin'>
+    & Omit<KeyboardDatePickerProps, 'margin' | 'onChange'>
+    & Omit<KeyboardDateTimePickerProps, 'margin' | 'onChange'>
+    & Omit<KeyboardTimePickerProps, 'margin' | 'onChange'>
     & IProps
     & IClasses
     & IDefault
