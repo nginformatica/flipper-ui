@@ -31,7 +31,7 @@ export interface IProps extends IDefault {
     onKeyDown?: (event: KeyboardEvent) => void
 }
 
-interface IClasses {
+export interface IClasses {
     classes: {
         outlinedInput: string
         outlinedLabel: string
@@ -39,7 +39,7 @@ interface IClasses {
     }
 }
 
-const styles = () => ({
+export const styles = () => ({
     input: {
         fontSize: '14px',
         padding: '10px',
