@@ -150,8 +150,7 @@ const AutoComplete: FC<IProps> = props => {
         const paperStyle = {
             position: 'absolute' as 'absolute',
             width: inputRef.current ? inputRef.current.offsetWidth : 256,
-            bottom: getPaperPosition() === 'above'
-                    && inputRef.current
+            bottom: getPaperPosition() === 'above' && inputRef.current
                 ? inputRef.current.getBoundingClientRect().height + 1
                 : undefined,
             zIndex: 1099
