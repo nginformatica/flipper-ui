@@ -27,7 +27,9 @@ interface IProps extends IDefault {
 const Tooltip: FC<IProps> = ({ children, ...otherProps }) =>
     <MuiTooltip
         { ...otherProps }>
-        { children }
+        <div>
+            { children }
+        </div>
     </MuiTooltip>
 
 export default Tooltip
