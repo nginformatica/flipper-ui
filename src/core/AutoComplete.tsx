@@ -7,7 +7,8 @@ import React, {
     useRef,
     ChangeEvent,
     KeyboardEvent,
-    CSSProperties
+    CSSProperties,
+    Ref
 } from 'react'
 import Paper from './Paper'
 
@@ -32,6 +33,9 @@ interface IProps {
 
 interface IInputProps {
     value: string
+    inputProps: {
+        ref: Ref<HTMLInputElement>
+    }
     onChange(event: ChangeEvent<HTMLInputElement>): void
     onFocus(event: FocusEvent): void
     onBlur(event: FocusEvent): void
@@ -193,6 +197,9 @@ const AutoComplete: FC<IProps> = props => {
             {
                 props.renderInput({
                     value: inputValue,
+                    inputProps: {
+                        ref: inputRef
+                    },
                     onChange: handleChange,
                     onFocus: handleFocus,
                     onBlur: handleBlur,
