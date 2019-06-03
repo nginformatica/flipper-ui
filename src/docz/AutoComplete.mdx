@@ -18,10 +18,11 @@ import { Playground, Props } from 'docz'
 <Playground style={ { minHeight: '200px' } }>
     <AutoComplete
         suggestions={ ['Rock', 'Pop', 'Classic'] }
-        inputElement={
+        renderInput={ props =>
             <TextField
                 fullWidth
                 placeholder='Music genres'
+                { ...props }
             />
         }
         renderSuggestion={ (item, props, selected) =>
@@ -32,6 +33,7 @@ import { Playground, Props } from 'docz'
                 { item }
             </ListItem>
         }
+        onChange={ () => null }
     />
 </Playground>
 
@@ -40,10 +42,11 @@ import { Playground, Props } from 'docz'
     <AutoComplete
         suggestions={ [{ label: 'Genres', subheader: true }, 'Rock', 'Pop', 'Classic'] }
         defaultValue='Rock'
-        inputElement={
+        renderInput={ props =>
             <TextField
                 fullWidth
                 placeholder='Music genres'
+                { ...props }
             />
         }
         renderSuggestion={ (item, props, selected) => item.subheader
@@ -63,6 +66,7 @@ import { Playground, Props } from 'docz'
                 </ListItem>
             )
         }
+        onChange={ () => null }
     />
 </Playground>
 
@@ -71,10 +75,11 @@ import { Playground, Props } from 'docz'
     <AutoComplete
         openOnFocus
         suggestions={ ['Rock', 'Pop', 'Classic'] }
-        inputElement={
+        renderInput={ props =>
             <TextField
                 fullWidth
                 placeholder='Music genres'
+                { ...props }
             />
         }
         renderSuggestion={ (item, props, selected) =>
@@ -85,5 +90,6 @@ import { Playground, Props } from 'docz'
                 { item }
             </ListItem>
         }
+        onChange={ () => null }
     />
 </Playground>

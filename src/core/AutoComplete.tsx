@@ -1,7 +1,5 @@
 import { contains, toLower } from 'ramda'
 import React, {
-    cloneElement,
-    FocusEvent,
     Fragment,
     ReactNode,
     FC,
@@ -17,8 +15,6 @@ interface IProps {
     suggestions: TSelected[]
     value: TSelected
     defaultValue?: string
-    inputElement: React.ReactElement
-    InputProps?: object
     defaultIsOpen?: boolean
     openOnFocus?: boolean
     style?: CSSProperties
@@ -28,9 +24,18 @@ interface IProps {
         itemProps: object,
         selected: boolean
     ) => ReactNode
-    onChange?: (value: TSelected) => void
-    onFocus?: (event: FocusEvent<HTMLInputElement>) => void
-    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
+    onChange: (value: TSelected) => void
+    onFocus?: (event: FocusEvent) => void
+    onBlur?: (event: FocusEvent) => void
+    renderInput(props: IInputProps): React.ReactElement
+}
+
+interface IInputProps {
+    value: string
+    onChange(event: ChangeEvent<HTMLInputElement>): void
+    onFocus(event: FocusEvent): void
+    onBlur(event: FocusEvent): void
+    onKeyDown(event: KeyboardEvent): void
 }
 
 interface ISelected {
@@ -38,31 +43,27 @@ interface ISelected {
     value: string
     type?: string
     subheader?: string
+    action?: string
 }
 
 type TSelected = ISelected | string
 
 const AutoComplete: FC<IProps> = props => {
-    const initialValue = typeof props.value === 'object'
-        ? props.value.label
-        : props.value || ''
-
     const inputRef = useRef<HTMLInputElement>(null)
-    const [inputValue, setInputValue] = useState<string>(initialValue)
     const [highlighted, setHighlighted] = useState(0)
     const [open, setOpen] = useState(Boolean(props.defaultIsOpen))
+
+    const inputValue = typeof props.value === 'object'
+        ? props.value.label
+        : props.value || ''
 
     const handleSelect = (item: TSelected) => {
         if (typeof item === 'object' && item.subheader) {
             return
         }
 
-        setInputValue(typeof item === 'object' ? item.label : item || '')
         setOpen(false)
-
-        if (props.onChange) {
-            props.onChange(item)
-        }
+        props.onChange(item)
     }
 
     const getSuggestions = (value: string = inputValue): TSelected[] => {
@@ -113,7 +114,7 @@ const AutoComplete: FC<IProps> = props => {
         }
     })
 
-    const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
+    const handleFocus = (event: FocusEvent) => {
         if (props.openOnFocus) {
             setOpen(true)
         }
@@ -123,7 +124,7 @@ const AutoComplete: FC<IProps> = props => {
         }
     }
 
-    const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    const handleBlur = (event: FocusEvent) => {
         setTimeout(() => setOpen(false), 200)
 
         if (props.onBlur) {
@@ -132,12 +133,9 @@ const AutoComplete: FC<IProps> = props => {
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setInputValue(event.target.value)
         setHighlighted(0)
 
-        if (props.onChange) {
-            props.onChange(inputValue)
-        }
+        props.onChange(event.target.value)
 
         if (getSuggestions(event.target.value).length > 0) {
             setOpen(true)
@@ -186,28 +184,21 @@ const AutoComplete: FC<IProps> = props => {
         }
     }
 
-    const renderInput = () =>
-        cloneElement(props.inputElement, {
-            value: inputValue,
-            onChange: handleChange,
-            onFocus: handleFocus,
-            onBlur: handleBlur,
-            onKeyDown: handleNavigate,
-            InputProps: {
-                ...props.InputProps
-            },
-            inputProps: {
-                ref: inputRef
-            }
-        })
-
     return (
         <div
             style={ {
                 position: 'relative',
                 ...props.style
             } }>
-            { renderInput() }
+            {
+                props.renderInput({
+                    value: inputValue,
+                    onChange: handleChange,
+                    onFocus: handleFocus,
+                    onBlur: handleBlur,
+                    onKeyDown: handleNavigate
+                })
+            }
             { open && renderSuggestions() }
         </div>
     )
