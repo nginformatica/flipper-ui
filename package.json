@@ -28,7 +28,6 @@
     "@material-ui/pickers": "3.0.0",
     "color": "3.0.0",
     "date-fns": "2.0.0-alpha.27",
-    "downshift": "2.2.3",
     "fs-extra": "7.0.0",
     "ramda": "0.25.0",
     "react-number-format": "4.0.8"
