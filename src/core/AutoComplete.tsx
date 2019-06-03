@@ -1,3 +1,4 @@
+import { contains, toLower } from 'ramda'
 import React, {
     cloneElement,
     FocusEvent,
@@ -7,18 +8,21 @@ import React, {
     useState,
     useRef,
     ChangeEvent,
-    KeyboardEvent
+    KeyboardEvent,
+    CSSProperties
 } from 'react'
 import Paper from './Paper'
 
 interface IProps {
-    data: TSelected[]
+    suggestions: TSelected[]
     value: TSelected
     defaultValue?: string
     inputElement: React.ReactElement
     InputProps?: object
     defaultIsOpen?: boolean
     openOnFocus?: boolean
+    style?: CSSProperties
+    caseSensitive?: boolean
     renderSuggestion: (
         suggestion: string | object,
         itemProps: object,
@@ -44,16 +48,16 @@ const AutoComplete: FC<IProps> = props => {
         : props.value || ''
 
     const inputRef = useRef<HTMLInputElement>(null)
-    const [value, setValue] = useState<string>(initialValue)
+    const [inputValue, setInputValue] = useState<string>(initialValue)
     const [highlighted, setHighlighted] = useState(0)
-    const [open, setOpen] = useState(!!props.defaultIsOpen)
+    const [open, setOpen] = useState(Boolean(props.defaultIsOpen))
 
     const handleSelect = (item: TSelected) => {
         if (typeof item === 'object' && item.subheader) {
             return
         }
 
-        setValue(typeof item === 'object' ? item.label : item || '')
+        setInputValue(typeof item === 'object' ? item.label : item || '')
         setOpen(false)
 
         if (props.onChange) {
@@ -61,13 +65,13 @@ const AutoComplete: FC<IProps> = props => {
         }
     }
 
-    const getSuggestions = (): TSelected[] => {
+    const getSuggestions = (value: string = inputValue): TSelected[] => {
         if (props.openOnFocus && !value) {
-            return props.data
+            return props.suggestions
         }
 
         const items = value
-            ? props.data
+            ? props.suggestions
             : []
 
         return items
@@ -77,15 +81,18 @@ const AutoComplete: FC<IProps> = props => {
                         return true
                     }
 
-                    return item.label.toLowerCase().includes(value.toLowerCase())
+                    return props.caseSensitive
+                        ? contains(value, item.label)
+                        : contains(toLower(value), toLower(item.label))
                 }
 
-                return item.toLowerCase().includes(value.toLowerCase())
+                return props.caseSensitive
+                    ? contains(value, item)
+                    : contains(toLower(value), toLower(item))
             })
     }
 
     const getPaperPosition = () => {
-
         if (inputRef.current !== null) {
             const height = getSuggestions().length * 48
             const { top } = inputRef.current.getBoundingClientRect()
@@ -98,15 +105,13 @@ const AutoComplete: FC<IProps> = props => {
         return 'below'
     }
 
-    const getItemProps = (item: TSelected) => {
-        return {
-            onClick: (event: Event) => {
-                event.preventDefault()
-                event.stopPropagation()
-                handleSelect(item)
-            }
+    const getItemProps = (item: TSelected) => ({
+        onClick: (event: Event) => {
+            event.preventDefault()
+            event.stopPropagation()
+            handleSelect(item)
         }
-    }
+    })
 
     const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
         if (props.openOnFocus) {
@@ -127,14 +132,14 @@ const AutoComplete: FC<IProps> = props => {
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value)
+        setInputValue(event.target.value)
         setHighlighted(0)
 
         if (props.onChange) {
-            props.onChange(value)
+            props.onChange(inputValue)
         }
 
-        if (getSuggestions().length > 0) {
+        if (getSuggestions(event.target.value).length > 0) {
             setOpen(true)
         } else {
             setOpen(false)
@@ -184,7 +189,7 @@ const AutoComplete: FC<IProps> = props => {
 
     const renderInput = () =>
         cloneElement(props.inputElement, {
-            value,
+            value: inputValue,
             onChange: handleChange,
             onFocus: handleFocus,
             onBlur: handleBlur,
@@ -198,7 +203,11 @@ const AutoComplete: FC<IProps> = props => {
         })
 
     return (
-        <div style={ { position: 'relative' } }>
+        <div
+            style={ {
+                position: 'relative',
+                ...props.style
+            } }>
             { renderInput() }
             { open && renderSuggestions() }
         </div>
