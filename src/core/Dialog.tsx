@@ -99,6 +99,12 @@ class Dialog extends Component<IProps & IStyles> {
             <MuiDialog
                 { ...otherProps }
                 scroll={ scroll }
+                PaperProps={ {
+                    classes: this.props.scroll === 'unset'
+                        ? { root: this.props.classes.root }
+                        : undefined,
+                    ...this.props.PaperProps
+                } }
                 style={ { padding, margin, ...style } }>
                 { title && this.renderTitle(title) }
                 { text ? this.renderText(text) : this.renderContent(content) }
