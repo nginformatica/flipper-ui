@@ -182,6 +182,8 @@ const AutoComplete: FC<IProps> = props => {
             setHighlighted(highlighted + 1)
         } else if (event.key === 'ArrowUp' && highlighted > 0) {
             setHighlighted(highlighted - 1)
+        } else if (event.key === 'Escape') {
+            setOpen(false)
         } else if (event.key === 'Enter') {
             const item = getSuggestions()[highlighted]
             handleSelect(item)
