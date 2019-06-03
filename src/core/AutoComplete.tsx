@@ -44,10 +44,10 @@ interface IInputProps {
 
 interface ISelected {
     label: string
-    value: string
+    value?: string
     type?: string
-    subheader?: string
-    action?: string
+    subheader?: boolean
+    action?: boolean
 }
 
 type TSelected = ISelected | string
@@ -82,7 +82,7 @@ const AutoComplete: FC<IProps> = props => {
         return items
             .filter(item => {
                 if (typeof item === 'object') {
-                    if (item.subheader) {
+                    if (item.subheader || item.action) {
                         return true
                     }
 
