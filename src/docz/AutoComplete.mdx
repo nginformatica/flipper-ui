@@ -17,7 +17,7 @@ import { Playground, Props } from 'docz'
 ## Simple
 <Playground style={ { minHeight: '200px' } }>
     <AutoComplete
-        data={ ['Rock', 'Pop', 'Classic'] }
+        suggestions={ ['Rock', 'Pop', 'Classic'] }
         inputElement={
             <TextField
                 fullWidth
@@ -38,7 +38,7 @@ import { Playground, Props } from 'docz'
 ## With subheader
 <Playground style={ { minHeight: '200px' } }>
     <AutoComplete
-        data={ [{ label: 'Genres', subheader: true }, 'Rock', 'Pop', 'Classic'] }
+        suggestions={ [{ label: 'Genres', subheader: true }, 'Rock', 'Pop', 'Classic'] }
         defaultValue='Rock'
         inputElement={
             <TextField
@@ -70,7 +70,7 @@ import { Playground, Props } from 'docz'
 <Playground style={ { minHeight: '200px' } }>
     <AutoComplete
         openOnFocus
-        data={ ['Rock', 'Pop', 'Classic'] }
+        suggestions={ ['Rock', 'Pop', 'Classic'] }
         inputElement={
             <TextField
                 fullWidth
