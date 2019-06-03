@@ -7,7 +7,8 @@ import React, {
     useRef,
     ChangeEvent,
     KeyboardEvent,
-    CSSProperties
+    CSSProperties,
+    Ref
 } from 'react'
 import Paper from './Paper'
 
@@ -32,6 +33,9 @@ interface IProps {
 
 interface IInputProps {
     value: string
+    inputProps: {
+        ref: Ref<HTMLInputElement>
+    }
     onChange(event: ChangeEvent<HTMLInputElement>): void
     onFocus(event: FocusEvent): void
     onBlur(event: FocusEvent): void
@@ -40,10 +44,10 @@ interface IInputProps {
 
 interface ISelected {
     label: string
-    value: string
+    value?: string
     type?: string
-    subheader?: string
-    action?: string
+    subheader?: boolean
+    action?: boolean
 }
 
 type TSelected = ISelected | string
@@ -78,7 +82,7 @@ const AutoComplete: FC<IProps> = props => {
         return items
             .filter(item => {
                 if (typeof item === 'object') {
-                    if (item.subheader) {
+                    if (item.subheader || item.action) {
                         return true
                     }
 
@@ -193,6 +197,9 @@ const AutoComplete: FC<IProps> = props => {
             {
                 props.renderInput({
                     value: inputValue,
+                    inputProps: {
+                        ref: inputRef
+                    },
                     onChange: handleChange,
                     onFocus: handleFocus,
                     onBlur: handleBlur,
