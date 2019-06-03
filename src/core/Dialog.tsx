@@ -5,6 +5,7 @@ import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import React, { Component, CSSProperties, ReactNode } from 'react'
 import { IDefault } from './Advertise'
+import { withStyles } from '@material-ui/core'
 
 interface IProps extends IDefault {
     open: boolean
@@ -20,11 +21,23 @@ interface IProps extends IDefault {
     actionsStyle?: CSSProperties
     contentStyle?: CSSProperties
     contentTextStyle?: CSSProperties
-    scroll?: 'body' | 'paper'
+    scroll?: 'body' | 'paper' | 'unset'
     onClose?: () => void
 }
 
-class Dialog extends Component<IProps> {
+interface IStyles {
+    classes: {
+        root: string
+    }
+}
+
+const styles = () => ({
+    root: {
+        overflowY: 'unset' as 'unset'
+    }
+})
+
+class Dialog extends Component<IProps & IStyles> {
     public renderTitle(title: IProps['title']) {
         return (
             <MuiDialogTitle style={ this.props.titleStyle }>
@@ -35,7 +48,13 @@ class Dialog extends Component<IProps> {
 
     public renderContent(content: ReactNode) {
         return (
-            <MuiDialogContent style={ this.props.contentStyle }>
+            <MuiDialogContent
+                classes={
+                    this.props.scroll === 'unset'
+                        ? { root: this.props.classes.root }
+                        : undefined
+                }
+                style={ this.props.contentStyle }>
                 { content }
             </MuiDialogContent>
         )
@@ -72,9 +91,14 @@ class Dialog extends Component<IProps> {
             ...otherProps
         } = this.props
 
+        const scroll = this.props.scroll === 'unset'
+            ? undefined
+            : this.props.scroll
+
         return (
             <MuiDialog
                 { ...otherProps }
+                scroll={ scroll }
                 style={ { padding, margin, ...style } }>
                 { title && this.renderTitle(title) }
                 { text ? this.renderText(text) : this.renderContent(content) }
@@ -84,4 +108,4 @@ class Dialog extends Component<IProps> {
     }
 }
 
-export default Dialog
+export default withStyles(styles)(Dialog)
