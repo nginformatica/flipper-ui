@@ -6,7 +6,10 @@ interface IMaskProps {
     mask?: string
     type?: 'text' | 'tel' | 'password'
     decimalSeparator?: string
-    format: string
+    format?: string
+    decimalScale?: number
+    thousandSeparator?: boolean | string
+    fixedDecimalScale?: boolean
 }
 
 class MaskField extends Component<IProps & IMaskProps> {
