@@ -8,26 +8,31 @@ import React, {
     ChangeEvent,
     KeyboardEvent,
     CSSProperties,
-    Ref
+    Ref,
+    FocusEvent,
+    useEffect
 } from 'react'
 import Paper from './Paper'
 
 interface IProps {
+    autoFocus?: boolean
+    defaultIsOpen?: boolean
+    openOnFocus?: boolean
+    selectTextOnFocus?: boolean
+    caseSensitive?: boolean
+    focusDelay?: number
     suggestions: TSelected[]
     value: TSelected
     defaultValue?: string
-    defaultIsOpen?: boolean
-    openOnFocus?: boolean
     style?: CSSProperties
-    caseSensitive?: boolean
     renderSuggestion: (
         suggestion: string | object,
         itemProps: object,
         selected: boolean
     ) => ReactNode
     onChange: (value: TSelected) => void
-    onFocus?: (event: FocusEvent) => void
-    onBlur?: (event: FocusEvent) => void
+    onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     renderInput(props: IInputProps): React.ReactElement
 }
 
@@ -37,8 +42,8 @@ interface IInputProps {
         ref: Ref<HTMLInputElement>
     }
     onChange(event: ChangeEvent<HTMLInputElement>): void
-    onFocus(event: FocusEvent): void
-    onBlur(event: FocusEvent): void
+    onFocus(event: FocusEvent<HTMLInputElement>): void
+    onBlur(event: FocusEvent<HTMLInputElement>): void
     onKeyDown(event: KeyboardEvent): void
 }
 
@@ -56,6 +61,28 @@ const AutoComplete: FC<IProps> = props => {
     const inputRef = useRef<HTMLInputElement>(null)
     const [highlighted, setHighlighted] = useState(0)
     const [open, setOpen] = useState(Boolean(props.defaultIsOpen))
+
+    useEffect(() => {
+        if (props.autoFocus) {
+            if (inputRef.current) {
+                inputRef.current.focus()
+
+                if (props.openOnFocus) {
+                    setOpen(true)
+                }
+            }
+        } else if (props.focusDelay) {
+            setTimeout(() => {
+                if (inputRef.current) {
+                    inputRef.current.focus()
+                }
+
+                if (props.openOnFocus) {
+                    setOpen(true)
+                }
+            }, props.focusDelay)
+        }
+    }, [])
 
     const inputValue = typeof props.value === 'object'
         ? props.value.label
@@ -118,9 +145,17 @@ const AutoComplete: FC<IProps> = props => {
         }
     })
 
-    const handleFocus = (event: FocusEvent) => {
+    const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
         if (props.openOnFocus) {
             setOpen(true)
+        }
+
+        if (props.selectTextOnFocus && event.target) {
+            const input = event.target
+
+            if (input.select) {
+                input.select()
+            }
         }
 
         if (props.onFocus) {
@@ -128,7 +163,7 @@ const AutoComplete: FC<IProps> = props => {
         }
     }
 
-    const handleBlur = (event: FocusEvent) => {
+    const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
         setTimeout(() => setOpen(false), 200)
 
         if (props.onBlur) {

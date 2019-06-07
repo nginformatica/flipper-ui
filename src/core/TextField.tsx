@@ -1,5 +1,5 @@
 import { TextField as MuiTextField, withStyles } from '@material-ui/core'
-import React, { ChangeEvent, KeyboardEvent, FC } from 'react'
+import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent } from 'react'
 import { IDefault } from './Advertise'
 
 export interface IProps extends IDefault {
@@ -26,7 +26,7 @@ export interface IProps extends IDefault {
     rows?: string | number
     rowsMax?: string | number
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-    onBlur?: (event: FocusEvent) => void
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     onKeyUp?: (event: KeyboardEvent) => void
     onKeyDown?: (event: KeyboardEvent) => void
 }
