@@ -54,6 +54,10 @@ const DateTime: FC<TProps> = ({
     variant = 'inline',
     inputVariant = 'outlined',
     classes,
+    ampm = false,
+    invalidDateMessage = '',
+    minDateMessage = '',
+    maxDateMessage = '',
     locale = 'pt-BR',
     type = 'date',
     ...otherProps
@@ -62,6 +66,10 @@ const DateTime: FC<TProps> = ({
         format: format ? format : DEFAULT_FORMATS[type],
         variant,
         inputVariant,
+        ampm,
+        invalidDateMessage,
+        minDateMessage,
+        maxDateMessage,
         style: { margin, padding, ...style },
         InputAdornmentProps: {
             style: { width: '32px' },
