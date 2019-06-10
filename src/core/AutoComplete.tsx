@@ -13,6 +13,7 @@ import React, {
     useEffect
 } from 'react'
 import Paper from './Paper'
+import Fade from './Fade'
 
 interface IProps {
     autoFocus?: boolean
@@ -20,6 +21,7 @@ interface IProps {
     openOnFocus?: boolean
     selectTextOnFocus?: boolean
     caseSensitive?: boolean
+    fade?: boolean
     focusDelay?: number
     suggestions: TSelected[]
     value: TSelected
@@ -212,6 +214,14 @@ const AutoComplete: FC<IProps> = props => {
         )
     }
 
+    const renderPaper = () => props.fade
+        ? (
+            <Fade in={ open }>
+                { renderSuggestions() }
+            </Fade>
+        )
+        : renderSuggestions()
+
     const handleNavigate = (event: KeyboardEvent) => {
         if (event.key === 'ArrowDown' && highlighted < getSuggestions().length - 1) {
             setHighlighted(highlighted + 1)
@@ -243,7 +253,7 @@ const AutoComplete: FC<IProps> = props => {
                     onKeyDown: handleNavigate
                 })
             }
-            { open && renderSuggestions() }
+            { open && renderPaper() }
         </div>
     )
 }

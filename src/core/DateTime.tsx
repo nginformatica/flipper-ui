@@ -21,6 +21,7 @@ import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 interface IProps {
     locale?: 'en-US' | 'pt-BR' | 'es'
     type?: 'date' | 'time' | 'datetime'
+    inputProps?: object
     onAuxClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
     onAuxClickCapture?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
     onChange(date: MaterialUiPickersDate | null, value?: string): void
