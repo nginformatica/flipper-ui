@@ -81,9 +81,10 @@ class Dialog extends Component<IProps & IStyles> {
 
         return (
             <MuiDialogContent
-                classes={ scroll === 'unset-paper' || scroll === 'unset-body'
-                    ? { root: this.props.classes.root }
-                    : undefined
+                classes={
+                    scroll === 'unset-paper' || scroll === 'unset-body'
+                        ? { root: this.props.classes.root }
+                        : undefined
                 }
                 style={ this.props.contentStyle }>
                 { content }
