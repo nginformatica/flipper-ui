@@ -6,22 +6,26 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import React, { Component, CSSProperties, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 import { withStyles } from '@material-ui/core'
+import styled from 'styled-components'
 
 interface IProps extends IDefault {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
     title?: string | ReactNode
+    titleAction?: string | ReactNode
     actions?: ReactNode
     maxWidth?: 'xs'| 'sm'| 'md'| 'lg'
     content?: ReactNode
     text?: string
     PaperProps?: object
     titleStyle?: CSSProperties
+    titleWrapperStyle?: CSSProperties
+    titleActionStyle?: CSSProperties
     actionsStyle?: CSSProperties
     contentStyle?: CSSProperties
     contentTextStyle?: CSSProperties
-    scroll?: 'body' | 'paper' | 'unset'
+    scroll?: 'body' | 'paper' | 'unset-paper' | 'unset-body'
     onClose?: () => void
 }
 
@@ -31,6 +35,16 @@ interface IStyles {
     }
 }
 
+const TitleWrapper = styled.div`
+    display: flex;
+`
+
+const TitleAction = styled.div`
+    padding: 16px 24px;
+    align-items: center;
+    display: flex;
+`
+
 const styles = () => ({
     root: {
         overflowY: 'unset' as 'unset'
@@ -39,18 +53,36 @@ const styles = () => ({
 
 class Dialog extends Component<IProps & IStyles> {
     public renderTitle(title: IProps['title']) {
-        return (
-            <MuiDialogTitle style={ this.props.titleStyle }>
-                { title }
-            </MuiDialogTitle>
-        )
+        return this.props.titleAction
+            ? (
+                <TitleWrapper style={ this.props.titleWrapperStyle }>
+                    <MuiDialogTitle
+                        style={ {
+                            flex: 1,
+                            ...this.props.titleStyle
+                        } }>
+                        { title }
+                    </MuiDialogTitle>
+                    <TitleAction
+                        style={ this.props.titleActionStyle }>
+                        { this.props.titleAction }
+                    </TitleAction>
+                </TitleWrapper>
+            )
+            : (
+                <MuiDialogTitle style={ this.props.titleStyle }>
+                    { title }
+                </MuiDialogTitle>
+            )
     }
 
     public renderContent(content: ReactNode) {
+        const { scroll } = this.props
+
         return (
             <MuiDialogContent
                 classes={
-                    this.props.scroll === 'unset'
+                    scroll === 'unset-paper' || scroll === 'unset-body'
                         ? { root: this.props.classes.root }
                         : undefined
                 }
@@ -88,19 +120,22 @@ class Dialog extends Component<IProps & IStyles> {
             style,
             padding,
             margin,
+            scroll,
             ...otherProps
         } = this.props
 
-        const scroll = this.props.scroll === 'unset'
-            ? undefined
-            : this.props.scroll
+        const scrollMode = scroll === 'unset-body'
+            ? 'body'
+            : scroll === 'unset-paper'
+                ? 'paper'
+                : scroll
 
         return (
             <MuiDialog
                 { ...otherProps }
-                scroll={ scroll }
+                scroll={ scrollMode }
                 PaperProps={ {
-                    classes: this.props.scroll === 'unset'
+                    classes: scroll === 'unset-body' || scroll === 'unset-paper'
                         ? { root: this.props.classes.root }
                         : undefined,
                     ...this.props.PaperProps
