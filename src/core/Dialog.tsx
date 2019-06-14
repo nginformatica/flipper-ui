@@ -121,7 +121,13 @@ class Dialog extends Component<IProps & IStyles> {
             padding,
             margin,
             scroll,
-            ...otherProps
+            PaperProps,
+            open,
+            fullScreen,
+            fullWidth,
+            maxWidth,
+            classes,
+            onClose
         } = this.props
 
         const scrollMode = scroll === 'unset-body'
@@ -132,15 +138,19 @@ class Dialog extends Component<IProps & IStyles> {
 
         return (
             <MuiDialog
-                { ...otherProps }
+                open={ open }
+                fullScreen={ fullScreen }
+                fullWidth={ fullWidth }
+                maxWidth={ maxWidth }
                 scroll={ scrollMode }
                 PaperProps={ {
                     classes: scroll === 'unset-body' || scroll === 'unset-paper'
-                        ? { root: this.props.classes.root }
+                        ? { root: classes.root }
                         : undefined,
-                    ...this.props.PaperProps
+                    ...PaperProps
                 } }
-                style={ { padding, margin, ...style } }>
+                style={ { padding, margin, ...style } }
+                onClose={ onClose }>
                 { title && this.renderTitle(title) }
                 { text ? this.renderText(text) : this.renderContent(content) }
                 { actions && this.renderActions(actions) }
