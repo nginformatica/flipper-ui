@@ -1,12 +1,22 @@
 import { withStyles } from '@material-ui/core/styles'
-import MuiTableCell from '@material-ui/core/TableCell'
+import MuiTableCell, { TableCellProps } from '@material-ui/core/TableCell'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
-    classes: {
+    spacing?: TableCellProps['padding']
+    align?:
+        | 'inherit'
+        | 'left'
+        | 'center'
+        | 'right'
+        | 'justify'
+}
+
+interface IClasses {
+    classes?: {
         head: string
         root: string
     }
@@ -21,20 +31,22 @@ const styles = () => ({
     }
 })
 
-const TableCell: FC<IProps> = ({
+const TableCell: FC<TableCellProps & IProps & IClasses> = ({
     style,
     margin,
     padding,
     children,
     classes,
+    spacing,
     ...otherProps
 }) =>
     <MuiTableCell
         { ...otherProps }
         style={ { padding, margin, ...style } }
+        padding={ spacing }
         classes={ {
-            head: classes.head,
-            root: classes.root
+            head: classes ? classes.head : undefined,
+            root: classes ? classes.root : undefined
         } }>
         { children }
     </MuiTableCell>

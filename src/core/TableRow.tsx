@@ -1,25 +1,28 @@
-import MuiTableRow from '@material-ui/core/TableRow'
+import MuiTableRow, { TableRowProps } from '@material-ui/core/TableRow'
 import React, { FC } from 'react'
-import { background } from '../colors'
+import { background as backgroundColor } from '../colors'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     selected?: boolean
     hover?: boolean
+    background?: string
     onClick?: () => void
 }
 
-const TableRow: FC<IProps> = ({
+const TableRow: FC<TableRowProps & IProps> = ({
     style,
     margin,
     padding,
     children,
+    background,
     ...otherProps
 }) =>
     <MuiTableRow
         { ...otherProps }
         style={ {
-            borderColor: background.light,
+            background,
+            borderColor: backgroundColor.light,
             margin,
             padding,
             ...style
