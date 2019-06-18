@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { primary, white } from '../colors'
 import { IDefault } from './Advertise'
+import TableCell from './TableCell'
 
 interface IProps extends IDefault {
     xs?: number
@@ -57,6 +58,9 @@ const Card: FC<IProps> = ({
         { ...otherProps }>
         <Header>{ title }</Header>
         <Content>{ children }</Content>
+        <TableCell>
+            <Header />
+        </TableCell>
     </Container>
 
 export default Card
