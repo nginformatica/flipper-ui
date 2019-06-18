@@ -1,11 +1,13 @@
 import MuiTableCell, { TableCellProps } from '@material-ui/core/TableCell'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
+import { Omit } from 'ramda'
 
 interface IProps extends IDefault {
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
     spacing?: TableCellProps['padding']
+    padding?: number | string
     align?:
         | 'inherit'
         | 'left'
@@ -14,7 +16,7 @@ interface IProps extends IDefault {
         | 'justify'
 }
 
-const TableCell: FC<TableCellProps & IProps> = ({
+const TableCell: FC<Omit<TableCellProps, 'padding'> & IProps> = ({
     style,
     margin,
     padding,
