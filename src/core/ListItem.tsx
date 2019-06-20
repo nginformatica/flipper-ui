@@ -20,7 +20,7 @@ interface IProps extends Omit<IDefault, 'name'> {
     avatar?: JSX.Element
     icon?: JSX.Element
     action?: JSX.Element
-    title?: string
+    title?: string | JSX.Element
     subtitle?: string
     value?: string | number
     classes: { default: string }
