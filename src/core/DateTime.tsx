@@ -74,8 +74,8 @@ const DateTime: FC<TProps> = ({
         maxDateMessage,
         style: { margin, padding, ...style },
         inputProps: {
-            ...otherProps.inputProps,
-            autocomplete: 'off'
+            autocomplete: 'off',
+            ...otherProps.inputProps
         },
         InputAdornmentProps: {
             style: { width: '32px' },
