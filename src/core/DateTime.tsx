@@ -64,6 +64,7 @@ const DateTime: FC<TProps> = ({
     ...otherProps
 }) => {
     const fieldProps = {
+        ...otherProps,
         format: format ? format : DEFAULT_FORMATS[type],
         variant,
         inputVariant,
@@ -72,6 +73,10 @@ const DateTime: FC<TProps> = ({
         minDateMessage,
         maxDateMessage,
         style: { margin, padding, ...style },
+        inputProps: {
+            autocomplete: 'off',
+            ...otherProps.inputProps
+        },
         InputAdornmentProps: {
             style: { width: '32px' },
             ...otherProps.InputAdornmentProps
@@ -94,8 +99,7 @@ const DateTime: FC<TProps> = ({
                     : ''
             },
             ...otherProps.InputProps
-        },
-        ...otherProps
+        }
     }
 
     const renderDatePicker = () => <KeyboardDatePicker { ...fieldProps } />
