@@ -26,7 +26,7 @@ interface IProps extends IDefault {
         icon: string
         message: string
     }
-    transitionDuration?: {
+    transitionDuration?: number | {
         enter: number
         exit: number
     }
