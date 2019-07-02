@@ -26,6 +26,10 @@ interface IProps extends IDefault {
         icon: string
         message: string
     }
+    transitionDuration?: number | {
+        enter: number
+        exit: number
+    }
     anchorOrigin?: {
         horizontal: 'left' | 'center' | 'right',
         vertical: 'top' | 'bottom'
