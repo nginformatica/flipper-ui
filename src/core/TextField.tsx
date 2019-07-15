@@ -25,6 +25,7 @@ export interface IProps extends IDefault {
     SelectProps?: object
     rows?: string | number
     rowsMax?: string | number
+    helperText?: React.ReactNode
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     onKeyUp?: (event: KeyboardEvent) => void
