@@ -18,12 +18,15 @@ interface IProps extends IDefault {
     maxWidth?: 'xs'| 'sm'| 'md'| 'lg'
     content?: ReactNode
     text?: string
+    snippet?: ReactNode | JSX.Element
     PaperProps?: object
     titleStyle?: CSSProperties
+    snippetStyle?: CSSProperties
     titleWrapperStyle?: CSSProperties
     titleActionStyle?: CSSProperties
     actionsStyle?: CSSProperties
     contentStyle?: CSSProperties
+    snippetContentStyle?: CSSProperties
     contentTextStyle?: CSSProperties
     scroll?: 'body' | 'paper' | 'unset-paper' | 'unset-body'
     onClose?: () => void
@@ -45,6 +48,16 @@ const TitleAction = styled.div`
     display: flex;
 `
 
+const Snippet = styled.div`
+    display: flex;
+`
+
+const SnippetContent = styled.div`
+    position: relative;
+    height: inherit;
+    display: flex;
+`
+
 const styles = () => ({
     root: {
         overflowY: 'unset' as 'unset'
@@ -52,7 +65,7 @@ const styles = () => ({
 })
 
 class Dialog extends Component<IProps & IStyles> {
-    public renderTitle(title: IProps['title']) {
+    private renderTitle(title: IProps['title']) {
         return this.props.titleAction
             ? (
                 <TitleWrapper style={ this.props.titleWrapperStyle }>
@@ -76,7 +89,7 @@ class Dialog extends Component<IProps & IStyles> {
             )
     }
 
-    public renderContent(content: ReactNode) {
+    private renderContent(content: ReactNode) {
         const { scroll } = this.props
 
         return (
@@ -92,7 +105,7 @@ class Dialog extends Component<IProps & IStyles> {
         )
     }
 
-    public renderText(text: string) {
+    private renderText(text: string) {
         const content = (
             <MuiDialogContentText
                 style={ this.props.contentTextStyle }>
@@ -103,7 +116,7 @@ class Dialog extends Component<IProps & IStyles> {
         return this.renderContent(content)
     }
 
-    public renderActions(actions: ReactNode) {
+    private renderActions(actions: ReactNode) {
         return (
             <MuiDialogActions style={ this.props.actionsStyle }>
                 { actions }
@@ -111,12 +124,32 @@ class Dialog extends Component<IProps & IStyles> {
         )
     }
 
+    private renderPaperContent() {
+        const { actions, content, text, title } = this.props
+
+        return (
+            <>
+                { title && this.renderTitle(title) }
+                { text ? this.renderText(text) : this.renderContent(content) }
+                { actions && this.renderActions(actions) }
+            </>
+        )
+    }
+
+    private renderSnippet() {
+        return (
+            <Snippet style={ this.props.snippetStyle }>
+                <div>{ this.renderPaperContent() }</div>
+                <SnippetContent style={ this.props.snippetContentStyle }>
+                    { this.props.snippet }
+                </SnippetContent>
+            </Snippet>
+        )
+    }
+
     public render() {
         const {
-            actions,
-            content,
-            text,
-            title,
+            snippet,
             style,
             padding,
             margin,
@@ -151,9 +184,7 @@ class Dialog extends Component<IProps & IStyles> {
                 } }
                 style={ { padding, margin, ...style } }
                 onClose={ onClose }>
-                { title && this.renderTitle(title) }
-                { text ? this.renderText(text) : this.renderContent(content) }
-                { actions && this.renderActions(actions) }
+                { snippet ? this.renderSnippet() : this.renderPaperContent() }
             </MuiDialog>
         )
     }
