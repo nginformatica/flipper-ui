@@ -129,7 +129,7 @@ const AutoComplete: FC<IProps> = props => {
 
     const getPaperPosition = () => {
         if (inputRef.current !== null) {
-            const height = getSuggestions().length * 48
+            const height = props.maxHeight || (getSuggestions().length * 48)
             const { top } = inputRef.current.getBoundingClientRect()
 
             if ((top + height) > window.innerHeight) {
