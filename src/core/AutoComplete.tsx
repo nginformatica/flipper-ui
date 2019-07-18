@@ -27,6 +27,8 @@ interface IProps {
     value: TSelected
     defaultValue?: string
     style?: CSSProperties
+    maxHeight?: number
+    actions?: ReactNode | JSX.Element
     renderSuggestion: (
         suggestion: string | object,
         itemProps: object,
@@ -54,7 +56,6 @@ interface ISelected {
     value?: string
     type?: string
     subheader?: boolean
-    action?: boolean
 }
 
 type TSelected = ISelected | string
@@ -111,7 +112,7 @@ const AutoComplete: FC<IProps> = props => {
         return items
             .filter(item => {
                 if (typeof item === 'object') {
-                    if (item.subheader || item.action) {
+                    if (item.subheader) {
                         return true
                     }
 
@@ -186,8 +187,8 @@ const AutoComplete: FC<IProps> = props => {
     }
 
     const renderSuggestions = () => {
-        const paperStyle = {
-            position: 'absolute' as 'absolute',
+        const paperStyle: CSSProperties = {
+            position: 'absolute',
             width: inputRef.current ? inputRef.current.offsetWidth : 256,
             bottom: getPaperPosition() === 'above' && inputRef.current
                 ? inputRef.current.getBoundingClientRect().height + 1
@@ -197,19 +198,22 @@ const AutoComplete: FC<IProps> = props => {
 
         return (
             <Paper square style={ paperStyle }>
-                {
-                    getSuggestions().map((suggestion, index) =>
-                        <Fragment key={ index }>
-                            {
-                                props.renderSuggestion(
-                                    suggestion,
-                                    getItemProps(suggestion),
-                                    highlighted === index
-                                )
-                            }
-                        </Fragment>
-                    )
-                }
+                <div style={ { overflow: 'auto', maxHeight: props.maxHeight } }>
+                    {
+                        getSuggestions().map((suggestion, index) =>
+                            <Fragment key={ index }>
+                                {
+                                    props.renderSuggestion(
+                                        suggestion,
+                                        getItemProps(suggestion),
+                                        highlighted === index
+                                    )
+                                }
+                            </Fragment>
+                        )
+                    }
+                </div>
+                { props.actions }
             </Paper>
         )
     }
