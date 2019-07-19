@@ -23,7 +23,7 @@ interface IProps {
     caseSensitive?: boolean
     fade?: boolean
     focusDelay?: number
-    suggestions: TSelected[]
+    suggestions: ISelected[]
     value: TSelected
     defaultValue?: string
     style?: CSSProperties
@@ -62,7 +62,17 @@ type TSelected = ISelected | string
 
 const AutoComplete: FC<IProps> = props => {
     const inputRef = useRef<HTMLInputElement>(null)
-    const [highlighted, setHighlighted] = useState(0)
+
+    const index = props.suggestions
+        .findIndex(suggestion => {
+            if (props.value && typeof props.value === 'object') {
+                return props.value.value === suggestion.value
+            }
+
+            return false
+        })
+
+    const [highlighted, setHighlighted] = useState(Math.max(0, index))
     const [open, setOpen] = useState(Boolean(props.defaultIsOpen))
 
     useEffect(() => {
@@ -112,13 +122,13 @@ const AutoComplete: FC<IProps> = props => {
         return items
             .filter(item => {
                 if (typeof item === 'object') {
-                    if (item.subheader) {
-                        return true
+                    if (typeof props.value === 'string' && !item.subheader) {
+                        return props.caseSensitive
+                            ? contains(value, item.label)
+                            : contains(toLower(value), toLower(item.label))
                     }
 
-                    return props.caseSensitive
-                        ? contains(value, item.label)
-                        : contains(toLower(value), toLower(item.label))
+                    return true
                 }
 
                 return props.caseSensitive
