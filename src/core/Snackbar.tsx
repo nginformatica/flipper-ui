@@ -12,8 +12,9 @@ import {
     Info as IconInfo,
     Warning as IconWarning
 } from '@material-ui/icons'
-import React, { ReactNode, FC } from 'react'
+import React, { ReactNode, FC, FunctionComponent } from 'react'
 import { IDefault } from './Advertise'
+import { TransitionProps } from '@material-ui/core/transitions/transition'
 
 interface IProps extends IDefault {
     autoHide?: number,
@@ -34,7 +35,9 @@ interface IProps extends IDefault {
         horizontal: 'left' | 'center' | 'right',
         vertical: 'top' | 'bottom'
    }
-    onClose?: (value) => void
+   TransitionProps?: TransitionProps
+   TransitionComponent?: FunctionComponent<TransitionProps>
+   onClose?: (value) => void
 }
 
 const variants = {
@@ -84,6 +87,8 @@ const SnackBar: FC<IProps> = props => {
         style,
         variant = 'info',
         className,
+        TransitionComponent,
+        TransitionProps,
         ...other
     } = props
     const Icon = variants[variant].icon
@@ -96,6 +101,8 @@ const SnackBar: FC<IProps> = props => {
             autoHideDuration={ autoHide }
             style={ { padding, margin, ...style } }
             className={ className }
+            TransitionComponent={ TransitionComponent }
+            TransitionProps={ TransitionProps }
             onClose={ onClose }>
             <MuiSnackbarContent
                 style={ { backgroundColor: variants[variant].color } }
