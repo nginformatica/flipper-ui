@@ -17,7 +17,11 @@ import { Playground, Props } from 'docz'
 ## Simple
 <Playground style={ { minHeight: '200px' } }>
     <AutoComplete
-        suggestions={ ['Rock', 'Pop', 'Classic'] }
+        suggestions={ [
+            { value: 'rock', label: 'Rock' },
+            { value: 'pop', label: 'Pop' },
+            { value: 'classic', label: 'Classic' }
+        ] }
         renderInput={ props =>
             <TextField
                 fullWidth
@@ -30,7 +34,37 @@ import { Playground, Props } from 'docz'
                 key={ item }
                 selected={ selected }
                 { ...props }>
-                { item }
+                { item.label }
+            </ListItem>
+        }
+        onChange={ () => null }
+    />
+</Playground>
+
+
+## Opening when focused
+<Playground style={ { minHeight: '200px' } }>
+    <AutoComplete
+        openOnFocus
+        value={ { value: 'classic', label: 'Classic' } }
+        suggestions={ [
+            { value: 'rock', label: 'Rock' },
+            { value: 'pop', label: 'Pop' },
+            { value: 'classic', label: 'Classic' }
+        ] }
+        renderInput={ props =>
+            <TextField
+                fullWidth
+                placeholder='Music genres'
+                { ...props }
+            />
+        }
+        renderSuggestion={ (item, props, selected) =>
+            <ListItem
+                key={ item }
+                selected={ selected }
+                { ...props }>
+                { item.label }
             </ListItem>
         }
         onChange={ () => null }
@@ -40,8 +74,13 @@ import { Playground, Props } from 'docz'
 ## With subheader
 <Playground style={ { minHeight: '200px' } }>
     <AutoComplete
-        suggestions={ [{ label: 'Genres', subheader: true }, 'Rock', 'Pop', 'Classic'] }
-        defaultValue='Rock'
+        openOnFocus
+        suggestions={ [
+            { label: 'Genres', subheader: true },
+            { value: 'rock', label: 'Rock' },
+            { value: 'pop', label: 'Pop' },
+            { value: 'classic', label: 'Classic' }
+        ] }
         renderInput={ props =>
             <TextField
                 fullWidth
@@ -65,30 +104,6 @@ import { Playground, Props } from 'docz'
                     { item.label || item }
                 </ListItem>
             )
-        }
-        onChange={ () => null }
-    />
-</Playground>
-
-## Opening when focused
-<Playground style={ { minHeight: '200px' } }>
-    <AutoComplete
-        openOnFocus
-        suggestions={ ['Rock', 'Pop', 'Classic'] }
-        renderInput={ props =>
-            <TextField
-                fullWidth
-                placeholder='Music genres'
-                { ...props }
-            />
-        }
-        renderSuggestion={ (item, props, selected) =>
-            <ListItem
-                key={ item }
-                selected={ selected }
-                { ...props }>
-                { item }
-            </ListItem>
         }
         onChange={ () => null }
     />
