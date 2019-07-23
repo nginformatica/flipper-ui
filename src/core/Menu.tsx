@@ -1,35 +1,27 @@
 import { Menu as MuiMenu } from '@material-ui/core'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
+import { MenuProps } from '@material-ui/core/Menu'
+import { PopoverProps } from '@material-ui/core/Popover'
 
-interface IProps extends IDefault {
+interface IProps extends IDefault, PopoverProps, MenuProps {
     open: boolean
     anchorEl?: HTMLElement
-    menuProps?: object
-    anchorOrigin?: {
-        horizontal: number | 'left' | 'center' | 'right',
-        vertical: number | 'top' | 'center' | 'bottom',
-    },
-    transformOrigin?: {
-        vertical: number | 'top' | 'center' | 'bottom',
-        horizontal: number | 'left' | 'center' | 'right',
-    }
-    onClose?: () => void
+    withWrapper?: boolean
 }
 
 const Menu: FC<IProps> = ({
     children,
-    menuProps,
     padding,
     margin,
     style = {},
+    withWrapper,
     ...otherProps
 }) =>
     <MuiMenu
-        MenuListProps={ menuProps }
-        style={ { padding, margin, ...style } }
-        { ...otherProps }>
-        { children }
+        { ...otherProps }
+        style={ { padding, margin, ...style } }>
+        { withWrapper ? <div>{ children }</div> : children }
     </MuiMenu>
 
 export default Menu

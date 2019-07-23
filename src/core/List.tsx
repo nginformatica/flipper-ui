@@ -9,13 +9,16 @@ import { IDefault } from './Advertise'
 interface IProps extends IDefault {
     title?: string
     dense?: boolean
-    classes: {
+    color?: 'primary' | 'secondary' | 'default' | 'inherit'
+}
+
+interface IClasses {
+    classes?: {
         default: string
         inherit: string
         primary: string
         secondary: string
     }
-    color?: 'primary' | 'secondary' | 'default' | 'inherit'
 }
 
 const styles = theme => ({
@@ -37,7 +40,7 @@ const styles = theme => ({
     }
 })
 
-const List: FC<IProps> = ({
+const List: FC<IProps & IClasses> = ({
     title,
     padding,
     margin,
@@ -52,13 +55,13 @@ const List: FC<IProps> = ({
         subheader={
             title
                 ? (
-                    <MuiListHeader className={ classes[color] }>
+                    <MuiListHeader className={ classes ? classes[color] : '' }>
                         { title }
                     </MuiListHeader>
                 )
                 : undefined
         }
-        className={ `${classes[color]} ${className}` }
+        className={ classes ? `${classes[color]} ${className}` : '' }
         style={ { padding, margin, ...style } }
         { ...otherProps }>
         { children }

@@ -267,7 +267,7 @@ const AutoComplete: FC<IProps> = props => {
                     onKeyDown: handleNavigate
                 })
             }
-            { open && renderPaper() }
+            { renderPaper() }
         </div>
     )
 }

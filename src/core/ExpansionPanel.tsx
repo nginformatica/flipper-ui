@@ -2,7 +2,6 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import { withStyles } from '@material-ui/core/styles'
 import React, { ReactNode, FC } from 'react'
 import { IProps as IPaper } from './Paper'
 
@@ -19,20 +18,6 @@ interface IProps extends IPaper {
     actionsStyle?: object
     onChange?: (event?, expanded?) => void
 }
-
-const styles = () => ({
-    content: {
-        marginTop: '0 !important',
-        marginBottom: '0 !important'
-    },
-    expandIcon: {
-        left: '8px',
-        right: 'unset'
-    },
-    expanded: {
-        minHeight: '56px'
-    }
-})
 
 const ExpansionPanel: FC<IProps> = ({
     actions,
@@ -75,4 +60,4 @@ const ExpansionPanel: FC<IProps> = ({
         }
     </MuiExpansionPanel>
 
-export default withStyles(styles)(ExpansionPanel)
+export default ExpansionPanel
