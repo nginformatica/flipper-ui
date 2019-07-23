@@ -5,19 +5,21 @@ import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     centered?: boolean
-    fullWidth?: boolean
-    scrollable?: boolean
     value: string | number
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
-    classes: {
+    variant?: 'standard' | 'scrollable' | 'fullWidth'
+    children?: ReactNode
+    onChange?: (event: object, value: number) => void
+}
+
+interface IClasses {
+    classes?: {
         default: string
         inherit: string
         primary: string
         secondary: string
         indicator: string
     }
-    children?: ReactNode
-    onChange?: (event: object, value: number) => void
 }
 
 const styles = theme => ({
@@ -44,12 +46,10 @@ const styles = theme => ({
     }
 })
 
-class Tabs extends Component<IProps> {
+class Tabs extends Component<IProps & IClasses> {
     public static defaultProps = {
         centered: true,
-        fullWidth: false,
-        padding: '6px 0 0',
-        scrollable: false
+        padding: '6px 0 0'
     }
 
     public render() {
@@ -61,15 +61,17 @@ class Tabs extends Component<IProps> {
             style,
             padding,
             margin,
+            variant = 'standard',
             ...otherProps
         } = this.props
 
         return (
             <MuiTabs
                 { ...otherProps }
+                variant={ variant }
                 style={ { padding, margin, ...style } }
-                className={ `${classes[color]} ${className}` }
-                classes={ { indicator: classes.indicator } }>
+                className={ classes ? `${classes[color]} ${className}` : '' }
+                classes={ classes ? { indicator: classes.indicator } : {} }>
                 { children }
             </MuiTabs>
         )
