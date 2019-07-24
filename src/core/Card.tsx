@@ -1,62 +1,60 @@
-import { divide, multiply, pipe, prop } from 'ramda'
 import React, { FC } from 'react'
-import styled from 'styled-components'
-import { primary, white } from '../colors'
 import { IDefault } from './Advertise'
+import MuiCard, { CardProps } from '@material-ui/core/Card'
+import MuiCardActionArea, {
+    CardActionAreaProps
+} from '@material-ui/core/CardActionArea'
+import MuiCardActions, { CardActionsProps } from '@material-ui/core/CardActions'
+import MuiCardContent, { CardContentProps } from '@material-ui/core/CardContent'
+import MuiCardMedia, { CardMediaProps } from '@material-ui/core/CardMedia'
+import MuiCardHeader, { CardHeaderProps } from '@material-ui/core/CardHeader'
 
-interface IProps extends IDefault {
-    xs?: number
-    name?: string
-    id?: string
-    title?: string
-}
+export const CardActionArea: FC<IDefault & CardActionAreaProps> =
+    ({ margin, padding, style, ...otherProps }) =>
+        <MuiCardActionArea
+            { ...otherProps }
+            style={ { padding, margin, ...style } }>
+            { otherProps.children }
+        </MuiCardActionArea>
 
-interface IContainer {
-    xs: number
-    style?: object
-}
+export const CardActions: FC<IDefault & CardActionsProps> =
+    ({ margin, padding, style, ...otherProps }) =>
+        <MuiCardActions
+            { ...otherProps }
+            style={ { padding, margin, ...style } }>
+            { otherProps.children }
+        </MuiCardActions>
 
-// __ from ramda was not recognized by TS
-const getPercent = pipe(prop('xs'), multiply(100), num => divide(num, 12))
+export const CardContent: FC<IDefault & CardContentProps> =
+    ({ margin, padding, style, ...otherProps }) =>
+        <MuiCardContent
+            { ...otherProps }
+            style={ { padding, margin, ...style } }>
+            { otherProps.children }
+        </MuiCardContent>
 
-const Container = styled.div<IContainer>`
-    width: calc(${getPercent}% - 24px);
-    background: ${primary.normal};
-    font-family: 'Roboto', sans-serif;
-    display: block;
-    border-radius: 12px;
-    margin: 12px;
-`
+export const CardMedia: FC<IDefault & CardMediaProps> =
+    ({ margin, padding, style, ...otherProps }) =>
+        <MuiCardMedia
+            { ...otherProps }
+            style={ { padding, margin, ...style } }>
+            { otherProps.children }
+        </MuiCardMedia>
 
-const Header = styled.div`
-    border-radius: 12px;
-    color: ${white};
-    padding: 0.75em;
-`
+export const CardHeader: FC<IDefault & CardHeaderProps> =
+    ({ margin, padding, style, ...otherProps }) =>
+        <MuiCardHeader
+            { ...otherProps }
+            style={ { padding, margin, ...style } }>
+            { otherProps.children }
+        </MuiCardHeader>
 
-const Content = styled.div`
-    background: ${white};
-    border-radius: 12px;
-    min-height: 52px;
-    padding: 12px;
-    border: 1px solid ${primary.normal};
-`
-
-const Card: FC<IProps> = ({
-    children,
-    padding,
-    margin,
-    style = {},
-    title,
-    xs = 12,
-    ...otherProps
-}) =>
-    <Container
-        xs={ xs }
-        style={ { padding, margin, ...style } }
-        { ...otherProps }>
-        <Header>{ title }</Header>
-        <Content>{ children }</Content>
-    </Container>
+const Card: FC<IDefault & CardProps> =
+    ({ margin, padding, style, ...otherProps }) =>
+        <MuiCard
+            { ...otherProps }
+            style={ { padding, margin, ...style } }>
+            { otherProps.children }
+        </MuiCard>
 
 export default Card
