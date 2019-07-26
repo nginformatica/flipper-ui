@@ -3,7 +3,8 @@ name: Card
 route: /card
 ---
 
-import Card from '../core/Card'
+import Card, { CardActions, CardContent, CardMedia, CardActionArea } from '../core/Card'
+import Button from '../core/Button'
 import { Playground, Props } from 'docz'
 
 # Card
@@ -11,26 +12,21 @@ import { Playground, Props } from 'docz'
 ## Properties
 <Props of={ Card } />
 
-## Normal
+## Card
 <Playground>
-    <Card title='I am a card...'>
-        ...and that's what i have to say
+    <Card>
+        <CardActionArea>
+            <CardMedia
+            image='https://media2.s-nbcnews.com/j/newscms/2018_20/1339477/puppy-cute-today-180515-main_a936531048fdb698635dd1b418abdee9.fit-760w.jpg'
+            title='Puppies'
+            style={ { height: '256px' } }
+            />
+            <CardContent>
+                ...look, a beautiful person over here
+            </CardContent>
+        </CardActionArea>
+        <CardActions>
+            <Button size='small' color='primary'>Confirm</Button>
+        </CardActions>
     </Card>
-</Playground>
-
-## Normal without children
-<Playground>
-    <Card title='Just title' />
-</Playground>
-
-## Normal using 50% of the available screen
-<Playground>
-    <Card xs={ 6 } title='Half width card'>
-        Some content
-    </Card>
-</Playground>
-
-## Normal without children using 50% of the available screen
-<Playground>
-    <Card xs={ 6 } title='Half width card' />
 </Playground>
