@@ -7,7 +7,7 @@ import {
     KeyboardArrowRight as IconArrowRight
 } from '../icons'
 import { IDefault } from './Advertise'
-import Button from './Button'
+import Button, { IProps as IButtonProps } from './Button'
 
 interface IProps extends IDefault {
     open: boolean
@@ -22,6 +22,7 @@ interface IProps extends IDefault {
     top?: number | string
     paperClasses?: object
     name?: string
+    ButtonProps?: IButtonProps
     classes: {
         button: string
         default: string
@@ -95,6 +96,7 @@ class Sidebar extends Component<IProps, {}> {
             anchor = 'left',
             color = 'default',
             minWidth = 72,
+            ButtonProps,
             classes
         } = this.props
         const iconToLeft =
@@ -109,7 +111,8 @@ class Sidebar extends Component<IProps, {}> {
                     variant='contained'
                     className={ classes.button }
                     style={ { maxWidth: minWidth } }
-                    onClick={ this.props.onToggle }>
+                    onClick={ this.props.onToggle }
+                    { ...ButtonProps }>
                     {
                         iconToLeft
                             ? <IconArrowLeft className={ classes.icon } />

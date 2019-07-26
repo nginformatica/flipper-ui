@@ -3,7 +3,7 @@ import React, { FC, ElementType, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { IDefault } from './Advertise'
 
-interface IProps extends IDefault {
+export interface IProps extends IDefault {
     disabled?: boolean
     selected?: boolean
     component?: ElementType
