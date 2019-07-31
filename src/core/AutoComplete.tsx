@@ -189,7 +189,7 @@ const AutoComplete: FC<IProps> = props => {
 
         props.onChange(event.target.value)
 
-        if (getSuggestions(event.target.value).length > 0) {
+        if (getSuggestions(event.target.value).length > 0 || props.actions) {
             setOpen(true)
         } else {
             setOpen(false)

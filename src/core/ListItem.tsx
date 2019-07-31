@@ -21,7 +21,7 @@ interface IProps extends Omit<IDefault, 'name'> {
     icon?: JSX.Element
     action?: JSX.Element
     title?: string | JSX.Element
-    subtitle?: string
+    subtitle?: string | JSX.Element
     value?: string | number
     classes: { default: string }
     selected?: boolean
