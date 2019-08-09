@@ -1,4 +1,5 @@
-import { Chip as MuiChip, withStyles } from '@material-ui/core'
+import { Chip as MuiChip } from '@material-ui/core'
+import { withStyles } from '@material-ui/styles'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 

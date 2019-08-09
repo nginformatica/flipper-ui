@@ -2,7 +2,7 @@ import {
     List as MuiList,
     ListSubheader as MuiListHeader
 } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 

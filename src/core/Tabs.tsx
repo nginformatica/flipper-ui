@@ -1,5 +1,5 @@
 import { Tabs as MuiTabs } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import React, { Component, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 

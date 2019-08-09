@@ -4,7 +4,7 @@ import {
     SnackbarContent as MuiSnackbarContent
 } from '@material-ui/core'
 import { amber, blue, green, red } from '@material-ui/core/colors'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import {
     CheckCircle as IconCheck,
     Close as IconClose,
