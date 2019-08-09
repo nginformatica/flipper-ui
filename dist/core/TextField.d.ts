@@ -55,5 +55,5 @@ export declare const styles: () => {
         padding: string;
     };
 };
-declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps & IClasses>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "defaultValue" | "placeholder" | "onBlur" | "onChange" | "onKeyDown" | "onKeyUp" | "label" | "select" | "disabled" | "error" | "variant" | "type" | "autoFocus" | "value" | "autoComplete" | "required" | "rows" | "fullWidth" | "inputProps" | "InputLabelProps" | "InputProps" | "multiline" | "SelectProps" | "rowsMax" | "helperText"> & import("@material-ui/core").StyledComponentProps<"input" | "outlinedInput" | "outlinedLabel" | "outlinedMultiline">>;
+declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps & IClasses>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "defaultValue" | "placeholder" | "onBlur" | "onChange" | "onKeyDown" | "onKeyUp" | "label" | "select" | "disabled" | "error" | "variant" | "type" | "autoFocus" | "value" | "autoComplete" | "required" | "rows" | "fullWidth" | "inputProps" | "InputLabelProps" | "InputProps" | "multiline" | "SelectProps" | "rowsMax" | "helperText"> & import("@material-ui/styles/withStyles").StyledComponentProps<"input" | "outlinedInput" | "outlinedLabel" | "outlinedMultiline">>;
 export default _default;

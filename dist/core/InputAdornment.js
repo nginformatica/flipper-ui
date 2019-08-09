@@ -1,22 +1,23 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _InputAdornment = _interopRequireDefault(require("@material-ui/core/InputAdornment"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var InputAdornment = function InputAdornment(_ref) {
+  var children = _ref.children,
+      otherProps = (0, _objectWithoutProperties2["default"])(_ref, ["children"]);
+  return _react["default"].createElement(_InputAdornment["default"], otherProps, children);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@material-ui/core");
-const react_1 = __importDefault(require("react"));
-const InputAdornment = (_a) => {
-    var { children } = _a, otherProps = __rest(_a, ["children"]);
-    return react_1.default.createElement(core_1.InputAdornment, Object.assign({}, otherProps), children);
-};
-exports.default = InputAdornment;
-//# sourceMappingURL=InputAdornment.js.map
+
+var _default = InputAdornment;
+exports["default"] = _default;

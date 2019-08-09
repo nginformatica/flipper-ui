@@ -1,36 +1,78 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
-};
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@material-ui/core");
-const react_1 = __importStar(require("react"));
-class Badge extends react_1.Component {
-    render() {
-        const _a = this.props, { children, counter, color, limit = 99, padding, margin, style = {} } = _a, otherProps = __rest(_a, ["children", "counter", "color", "limit", "padding", "margin", "style"]);
-        return counter
-            ? (react_1.default.createElement(core_1.Badge, Object.assign({ badgeContent: counter > limit
-                    ? `+${limit}`
-                    : counter, color: color, style: Object.assign({ padding, margin }, style) }, otherProps), children))
-            : children;
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _Badge = _interopRequireDefault(require("@material-ui/core/Badge"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var Badge =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inherits2["default"])(Badge, _Component);
+
+  function Badge() {
+    (0, _classCallCheck2["default"])(this, Badge);
+    return (0, _possibleConstructorReturn2["default"])(this, (0, _getPrototypeOf2["default"])(Badge).apply(this, arguments));
+  }
+
+  (0, _createClass2["default"])(Badge, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          counter = _this$props.counter,
+          color = _this$props.color,
+          _this$props$limit = _this$props.limit,
+          limit = _this$props$limit === void 0 ? 99 : _this$props$limit,
+          padding = _this$props.padding,
+          margin = _this$props.margin,
+          _this$props$style = _this$props.style,
+          style = _this$props$style === void 0 ? {} : _this$props$style,
+          otherProps = (0, _objectWithoutProperties2["default"])(_this$props, ["children", "counter", "color", "limit", "padding", "margin", "style"]);
+      return counter ? _react["default"].createElement(_Badge["default"], (0, _extends2["default"])({
+        badgeContent: counter > limit ? "+".concat(limit) : counter,
+        color: color,
+        style: _objectSpread({
+          padding: padding,
+          margin: margin
+        }, style)
+      }, otherProps), children) : children;
     }
-}
-Badge.defaultProps = {
-    color: 'primary',
-    limit: 99
-};
-exports.default = Badge;
-//# sourceMappingURL=Badge.js.map
+  }]);
+  return Badge;
+}(_react.Component);
+
+(0, _defineProperty2["default"])(Badge, "defaultProps", {
+  color: 'primary',
+  limit: 99
+});
+var _default = Badge;
+exports["default"] = _default;

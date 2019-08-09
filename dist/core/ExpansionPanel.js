@@ -1,28 +1,58 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _ExpansionPanel = _interopRequireDefault(require("@material-ui/core/ExpansionPanel"));
+
+var _ExpansionPanelActions = _interopRequireDefault(require("@material-ui/core/ExpansionPanelActions"));
+
+var _ExpansionPanelDetails = _interopRequireDefault(require("@material-ui/core/ExpansionPanelDetails"));
+
+var _ExpansionPanelSummary = _interopRequireDefault(require("@material-ui/core/ExpansionPanelSummary"));
+
+var _react = _interopRequireDefault(require("react"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var ExpansionPanel = function ExpansionPanel(_ref) {
+  var actions = _ref.actions,
+      details = _ref.details,
+      expandIcon = _ref.expandIcon,
+      margin = _ref.margin,
+      padding = _ref.padding,
+      style = _ref.style,
+      summary = _ref.summary,
+      summaryStyle = _ref.summaryStyle,
+      detailsStyle = _ref.detailsStyle,
+      actionsStyle = _ref.actionsStyle,
+      otherProps = (0, _objectWithoutProperties2["default"])(_ref, ["actions", "details", "expandIcon", "margin", "padding", "style", "summary", "summaryStyle", "detailsStyle", "actionsStyle"]);
+  return _react["default"].createElement(_ExpansionPanel["default"], (0, _extends2["default"])({}, otherProps, {
+    style: _objectSpread({
+      margin: margin,
+      padding: padding
+    }, style)
+  }), summary && _react["default"].createElement(_ExpansionPanelSummary["default"], {
+    expandIcon: expandIcon,
+    style: summaryStyle
+  }, summary), details && _react["default"].createElement(_ExpansionPanelDetails["default"], {
+    style: detailsStyle
+  }, details), actions && _react["default"].createElement(_ExpansionPanelActions["default"], {
+    style: actionsStyle
+  }, actions));
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const ExpansionPanel_1 = __importDefault(require("@material-ui/core/ExpansionPanel"));
-const ExpansionPanelActions_1 = __importDefault(require("@material-ui/core/ExpansionPanelActions"));
-const ExpansionPanelDetails_1 = __importDefault(require("@material-ui/core/ExpansionPanelDetails"));
-const ExpansionPanelSummary_1 = __importDefault(require("@material-ui/core/ExpansionPanelSummary"));
-const react_1 = __importDefault(require("react"));
-const ExpansionPanel = (_a) => {
-    var { actions, details, expandIcon, margin, padding, style, summary, summaryStyle, detailsStyle, actionsStyle } = _a, otherProps = __rest(_a, ["actions", "details", "expandIcon", "margin", "padding", "style", "summary", "summaryStyle", "detailsStyle", "actionsStyle"]);
-    return react_1.default.createElement(ExpansionPanel_1.default, Object.assign({}, otherProps, { style: Object.assign({ margin, padding }, style) }),
-        summary && (react_1.default.createElement(ExpansionPanelSummary_1.default, { expandIcon: expandIcon, style: summaryStyle }, summary)),
-        details && (react_1.default.createElement(ExpansionPanelDetails_1.default, { style: detailsStyle }, details)),
-        actions && (react_1.default.createElement(ExpansionPanelActions_1.default, { style: actionsStyle }, actions)));
-};
-exports.default = ExpansionPanel;
-//# sourceMappingURL=ExpansionPanel.js.map
+
+var _default = ExpansionPanel;
+exports["default"] = _default;

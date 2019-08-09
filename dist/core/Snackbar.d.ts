@@ -24,5 +24,5 @@ interface IProps extends IDefault {
     TransitionComponent?: FunctionComponent<TransitionProps>;
     onClose?: (value: any) => void;
 }
-declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "open" | "icon" | "variant" | "transitionDuration" | "action" | "onClose" | "TransitionComponent" | "TransitionProps" | "anchorOrigin" | "message" | "autoHide"> & import("@material-ui/core").StyledComponentProps<"icon" | "message">>;
+declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "open" | "icon" | "variant" | "transitionDuration" | "action" | "onClose" | "TransitionComponent" | "TransitionProps" | "anchorOrigin" | "message" | "autoHide"> & import("@material-ui/styles/withStyles").StyledComponentProps<"icon" | "message">>;
 export default _default;

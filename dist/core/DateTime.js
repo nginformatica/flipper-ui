@@ -1,61 +1,122 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _pickers = require("@material-ui/pickers");
+
+var _dateFns = _interopRequireDefault(require("@date-io/date-fns"));
+
+var _ptBR = _interopRequireDefault(require("date-fns/locale/pt-BR"));
+
+var _es = _interopRequireDefault(require("date-fns/locale/es"));
+
+var _enUS = _interopRequireDefault(require("date-fns/locale/en-US"));
+
+var _TextField = require("./TextField");
+
+var _withStyles = _interopRequireDefault(require("@material-ui/styles/withStyles"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var LOCALES = {
+  'es': _es["default"],
+  'pt-BR': _ptBR["default"],
+  'en-US': _enUS["default"]
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var DEFAULT_FORMATS = {
+  date: 'dd/MM/yyyy',
+  time: 'HH:mm',
+  datetime: 'dd/MM/yyyy HH:mm'
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
-const pickers_1 = require("@material-ui/pickers");
-const date_fns_1 = __importDefault(require("@date-io/date-fns"));
-const pt_BR_1 = __importDefault(require("date-fns/locale/pt-BR"));
-const es_1 = __importDefault(require("date-fns/locale/es"));
-const en_US_1 = __importDefault(require("date-fns/locale/en-US"));
-const TextField_1 = require("./TextField");
-const styles_1 = require("@material-ui/styles");
-const LOCALES = {
-    'es': es_1.default,
-    'pt-BR': pt_BR_1.default,
-    'en-US': en_US_1.default
+
+var DateTime = function DateTime(_ref) {
+  var padding = _ref.padding,
+      margin = _ref.margin,
+      style = _ref.style,
+      format = _ref.format,
+      _ref$variant = _ref.variant,
+      variant = _ref$variant === void 0 ? 'inline' : _ref$variant,
+      _ref$inputVariant = _ref.inputVariant,
+      inputVariant = _ref$inputVariant === void 0 ? 'outlined' : _ref$inputVariant,
+      classes = _ref.classes,
+      _ref$ampm = _ref.ampm,
+      ampm = _ref$ampm === void 0 ? false : _ref$ampm,
+      _ref$invalidDateMessa = _ref.invalidDateMessage,
+      invalidDateMessage = _ref$invalidDateMessa === void 0 ? '' : _ref$invalidDateMessa,
+      _ref$minDateMessage = _ref.minDateMessage,
+      minDateMessage = _ref$minDateMessage === void 0 ? '' : _ref$minDateMessage,
+      _ref$maxDateMessage = _ref.maxDateMessage,
+      maxDateMessage = _ref$maxDateMessage === void 0 ? '' : _ref$maxDateMessage,
+      _ref$locale = _ref.locale,
+      locale = _ref$locale === void 0 ? 'pt-BR' : _ref$locale,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'date' : _ref$type,
+      otherProps = (0, _objectWithoutProperties2["default"])(_ref, ["padding", "margin", "style", "format", "variant", "inputVariant", "classes", "ampm", "invalidDateMessage", "minDateMessage", "maxDateMessage", "locale", "type"]);
+
+  var fieldProps = _objectSpread({}, otherProps, {
+    format: format ? format : DEFAULT_FORMATS[type],
+    variant: variant,
+    inputVariant: inputVariant,
+    ampm: ampm,
+    invalidDateMessage: invalidDateMessage,
+    minDateMessage: minDateMessage,
+    maxDateMessage: maxDateMessage,
+    style: _objectSpread({
+      margin: margin,
+      padding: padding
+    }, style),
+    inputProps: _objectSpread({
+      autocomplete: 'off'
+    }, otherProps.inputProps),
+    InputAdornmentProps: _objectSpread({
+      style: {
+        width: '32px'
+      }
+    }, otherProps.InputAdornmentProps),
+    InputLabelProps: _objectSpread({
+      classes: {
+        outlined: inputVariant === 'outlined' ? classes.outlinedLabel : ''
+      }
+    }, otherProps.InputLabelProps),
+    InputProps: _objectSpread({
+      classes: {
+        input: inputVariant === 'outlined' ? classes.outlinedInput : '',
+        multiline: inputVariant === 'outlined' ? classes.outlinedMultiline : ''
+      }
+    }, otherProps.InputProps)
+  });
+
+  var renderDatePicker = function renderDatePicker() {
+    return _react["default"].createElement(_pickers.KeyboardDatePicker, fieldProps);
+  };
+
+  var renderTimePicker = function renderTimePicker() {
+    return _react["default"].createElement(_pickers.KeyboardTimePicker, fieldProps);
+  };
+
+  var renderDateTimePicker = function renderDateTimePicker() {
+    return _react["default"].createElement(_pickers.KeyboardDateTimePicker, fieldProps);
+  };
+
+  return _react["default"].createElement(_pickers.MuiPickersUtilsProvider, {
+    utils: _dateFns["default"],
+    locale: LOCALES[locale]
+  }, type === 'date' && renderDatePicker(), type === 'time' && renderTimePicker(), type === 'datetime' && renderDateTimePicker());
 };
-const DEFAULT_FORMATS = {
-    date: 'dd/MM/yyyy',
-    time: 'HH:mm',
-    datetime: 'dd/MM/yyyy HH:mm'
-};
-const DateTime = (_a) => {
-    var { padding, margin, style, format, variant = 'inline', inputVariant = 'outlined', classes, ampm = false, invalidDateMessage = '', minDateMessage = '', maxDateMessage = '', locale = 'pt-BR', type = 'date' } = _a, otherProps = __rest(_a, ["padding", "margin", "style", "format", "variant", "inputVariant", "classes", "ampm", "invalidDateMessage", "minDateMessage", "maxDateMessage", "locale", "type"]);
-    const fieldProps = Object.assign({}, otherProps, { format: format ? format : DEFAULT_FORMATS[type], variant,
-        inputVariant,
-        ampm,
-        invalidDateMessage,
-        minDateMessage,
-        maxDateMessage, style: Object.assign({ margin, padding }, style), inputProps: Object.assign({ autocomplete: 'off' }, otherProps.inputProps), InputAdornmentProps: Object.assign({ style: { width: '32px' } }, otherProps.InputAdornmentProps), InputLabelProps: Object.assign({ classes: {
-                outlined: inputVariant === 'outlined'
-                    ? classes.outlinedLabel
-                    : ''
-            } }, otherProps.InputLabelProps), InputProps: Object.assign({ classes: {
-                input: inputVariant === 'outlined'
-                    ? classes.outlinedInput
-                    : '',
-                multiline: inputVariant === 'outlined'
-                    ? classes.outlinedMultiline
-                    : ''
-            } }, otherProps.InputProps) });
-    const renderDatePicker = () => react_1.default.createElement(pickers_1.KeyboardDatePicker, Object.assign({}, fieldProps));
-    const renderTimePicker = () => react_1.default.createElement(pickers_1.KeyboardTimePicker, Object.assign({}, fieldProps));
-    const renderDateTimePicker = () => react_1.default.createElement(pickers_1.KeyboardDateTimePicker, Object.assign({}, fieldProps));
-    return (react_1.default.createElement(pickers_1.MuiPickersUtilsProvider, { utils: date_fns_1.default, locale: LOCALES[locale] },
-        type === 'date' && renderDatePicker(),
-        type === 'time' && renderTimePicker(),
-        type === 'datetime' && renderDateTimePicker()));
-};
-exports.default = styles_1.withStyles(TextField_1.styles)(DateTime);
-//# sourceMappingURL=DateTime.js.map
+
+var _default = (0, _withStyles["default"])(_TextField.styles)(DateTime);
+
+exports["default"] = _default;

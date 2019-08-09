@@ -28,5 +28,5 @@ interface IStyles {
         root: string;
     };
 }
-declare const _default: import("react").ComponentType<Pick<IProps & IStyles, "style" | "padding" | "margin" | "className" | "name" | "id" | "title" | "text" | "scroll" | "content" | "open" | "maxWidth" | "fullWidth" | "onClose" | "fullScreen" | "PaperProps" | "titleAction" | "actions" | "snippet" | "titleStyle" | "snippetStyle" | "titleWrapperStyle" | "titleActionStyle" | "actionsStyle" | "contentStyle" | "snippetContentStyle" | "contentTextStyle"> & import("@material-ui/core").StyledComponentProps<"root">>;
+declare const _default: import("react").ComponentType<Pick<IProps & IStyles, "style" | "padding" | "margin" | "className" | "name" | "id" | "title" | "text" | "scroll" | "content" | "open" | "maxWidth" | "fullWidth" | "onClose" | "fullScreen" | "PaperProps" | "titleAction" | "actions" | "snippet" | "titleStyle" | "snippetStyle" | "titleWrapperStyle" | "titleActionStyle" | "actionsStyle" | "contentStyle" | "snippetContentStyle" | "contentTextStyle"> & import("@material-ui/styles/withStyles").StyledComponentProps<"root">>;
 export default _default;

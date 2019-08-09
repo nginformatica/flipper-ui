@@ -1,10 +1,24 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _styles = require("@material-ui/core/styles");
+
+var _react = _interopRequireDefault(require("react"));
+
+var ThemeProvider = function ThemeProvider(_ref) {
+  var _ref$options = _ref.options,
+      options = _ref$options === void 0 ? {} : _ref$options,
+      children = _ref.children;
+  return _react["default"].createElement(_styles.MuiThemeProvider, {
+    theme: (0, _styles.createMuiTheme)(options)
+  }, children);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const styles_1 = require("@material-ui/core/styles");
-const react_1 = __importDefault(require("react"));
-const ThemeProvider = ({ options = {}, children }) => react_1.default.createElement(styles_1.MuiThemeProvider, { theme: styles_1.createMuiTheme(options) }, children);
-exports.default = ThemeProvider;
-//# sourceMappingURL=ThemeProvider.js.map
+
+var _default = ThemeProvider;
+exports["default"] = _default;

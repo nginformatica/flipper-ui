@@ -13,5 +13,5 @@ interface IProps extends IDefault {
 declare const _default: import("react").ComponentType<Pick<Pick<IProps, "style" | "padding" | "className" | "name" | "id" | "classes" | "label" | "icon" | "value" | "selectedClass"> & Partial<Pick<IProps, "margin" | "disabled">> & Partial<Pick<{
     disabled: boolean;
     margin: string;
-}, never>>, "style" | "padding" | "margin" | "className" | "name" | "id" | "label" | "icon" | "disabled" | "value" | "selectedClass"> & import("@material-ui/core").StyledComponentProps<"root" | "selected">>;
+}, never>>, "style" | "padding" | "margin" | "className" | "name" | "id" | "label" | "icon" | "disabled" | "value" | "selectedClass"> & import("@material-ui/styles/withStyles").StyledComponentProps<"root" | "selected">>;
 export default _default;

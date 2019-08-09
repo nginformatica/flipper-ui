@@ -25,5 +25,5 @@ interface IProps extends IDefault {
     };
     onToggle: () => void;
 }
-declare const _default: import("react").ComponentType<Pick<IProps, "style" | "padding" | "margin" | "className" | "name" | "id" | "color" | "top" | "expanded" | "open" | "variant" | "maxWidth" | "minWidth" | "showButton" | "anchor" | "docked" | "paperClasses" | "ButtonProps" | "onToggle"> & import("@material-ui/core/styles").StyledComponentProps<"button" | "inherit" | "default" | "icon" | "primary" | "secondary" | "sidebar">>;
+declare const _default: import("react").ComponentType<Pick<IProps, "style" | "padding" | "margin" | "className" | "name" | "id" | "color" | "top" | "expanded" | "open" | "variant" | "maxWidth" | "minWidth" | "showButton" | "anchor" | "docked" | "paperClasses" | "ButtonProps" | "onToggle"> & import("@material-ui/styles/withStyles").StyledComponentProps<"button" | "inherit" | "default" | "icon" | "primary" | "secondary" | "sidebar">>;
 export default _default;

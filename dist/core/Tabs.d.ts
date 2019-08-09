@@ -20,5 +20,5 @@ interface IClasses {
 declare const _default: import("react").ComponentType<Pick<Pick<IProps & IClasses, "children" | "style" | "margin" | "className" | "name" | "id" | "classes" | "color" | "onChange" | "variant" | "value"> & Partial<Pick<IProps & IClasses, "padding" | "centered">> & Partial<Pick<{
     centered: boolean;
     padding: string;
-}, never>>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "color" | "onChange" | "variant" | "value" | "centered"> & import("@material-ui/core").StyledComponentProps<"inherit" | "default" | "primary" | "secondary" | "indicator">>;
+}, never>>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "color" | "onChange" | "variant" | "value" | "centered"> & import("@material-ui/styles/withStyles").StyledComponentProps<"inherit" | "default" | "primary" | "secondary" | "indicator">>;
 export default _default;

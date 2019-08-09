@@ -15,5 +15,5 @@ interface IProps extends Omit<IDefault, 'name'> {
     disabled?: boolean;
     onClick?: (event?: MouseEvent) => void;
 }
-declare const _default: import("react").ComponentType<Pick<IProps, "style" | "padding" | "margin" | "className" | "id" | "title" | "onClick" | "icon" | "disabled" | "value" | "action" | "selected" | "avatar" | "subtitle"> & import("@material-ui/core").StyledComponentProps<"default">>;
+declare const _default: import("react").ComponentType<Pick<IProps, "style" | "padding" | "margin" | "className" | "id" | "title" | "onClick" | "icon" | "disabled" | "value" | "action" | "selected" | "avatar" | "subtitle"> & import("@material-ui/styles/withStyles").StyledComponentProps<"default">>;
 export default _default;

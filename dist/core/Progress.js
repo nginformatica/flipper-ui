@@ -1,24 +1,47 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _CircularProgress = _interopRequireDefault(require("@material-ui/core/CircularProgress"));
+
+var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
+
+var _react = _interopRequireDefault(require("react"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var Progress = function Progress(_ref) {
+  var linear = _ref.linear,
+      _ref$style = _ref.style,
+      style = _ref$style === void 0 ? {} : _ref$style,
+      margin = _ref.margin,
+      padding = _ref.padding,
+      otherProps = (0, _objectWithoutProperties2["default"])(_ref, ["linear", "style", "margin", "padding"]);
+  return linear ? _react["default"].createElement(_LinearProgress["default"], (0, _extends2["default"])({
+    style: _objectSpread({
+      margin: margin,
+      padding: padding
+    }, style)
+  }, otherProps)) : _react["default"].createElement(_CircularProgress["default"], (0, _extends2["default"])({
+    style: _objectSpread({
+      margin: margin,
+      padding: padding
+    }, style)
+  }, otherProps));
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@material-ui/core");
-const react_1 = __importDefault(require("react"));
-const Progress = (_a) => {
-    var { linear, style = {}, margin, padding } = _a, otherProps = __rest(_a, ["linear", "style", "margin", "padding"]);
-    return linear
-        ? (react_1.default.createElement(core_1.LinearProgress, Object.assign({ style: Object.assign({ margin, padding }, style) }, otherProps)))
-        : (react_1.default.createElement(core_1.CircularProgress, Object.assign({ style: Object.assign({ margin, padding }, style) }, otherProps)));
-};
-exports.default = Progress;
-//# sourceMappingURL=Progress.js.map
+
+var _default = Progress;
+exports["default"] = _default;

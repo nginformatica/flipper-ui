@@ -13,5 +13,5 @@ interface IClasses {
         secondary: string;
     };
 }
-declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps & IClasses>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "title" | "color" | "dense"> & import("@material-ui/core").StyledComponentProps<import("@material-ui/core").PropTypes.Color>>;
+declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps & IClasses>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "title" | "color" | "dense"> & import("@material-ui/styles/withStyles").StyledComponentProps<import("@material-ui/core").PropTypes.Color>>;
 export default _default;

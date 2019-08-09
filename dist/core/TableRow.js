@@ -1,24 +1,44 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _TableRow = _interopRequireDefault(require("@material-ui/core/TableRow"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _colors = require("../colors");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var TableRow = function TableRow(_ref) {
+  var style = _ref.style,
+      margin = _ref.margin,
+      padding = _ref.padding,
+      children = _ref.children,
+      background = _ref.background,
+      otherProps = (0, _objectWithoutProperties2["default"])(_ref, ["style", "margin", "padding", "children", "background"]);
+  return _react["default"].createElement(_TableRow["default"], (0, _extends2["default"])({}, otherProps, {
+    style: _objectSpread({
+      background: background,
+      borderColor: _colors.background.light,
+      margin: margin,
+      padding: padding
+    }, style)
+  }), children);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const TableRow_1 = __importDefault(require("@material-ui/core/TableRow"));
-const react_1 = __importDefault(require("react"));
-const colors_1 = require("../colors");
-const TableRow = (_a) => {
-    var { style, margin, padding, children, background } = _a, otherProps = __rest(_a, ["style", "margin", "padding", "children", "background"]);
-    return react_1.default.createElement(TableRow_1.default, Object.assign({}, otherProps, { style: Object.assign({ background, borderColor: colors_1.background.light, margin,
-            padding }, style) }), children);
-};
-exports.default = TableRow;
-//# sourceMappingURL=TableRow.js.map
+
+var _default = TableRow;
+exports["default"] = _default;

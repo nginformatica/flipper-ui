@@ -9,5 +9,5 @@ interface IProps extends IDefault {
         secondary: string;
     };
 }
-declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "color"> & import("@material-ui/core/styles").StyledComponentProps<import("@material-ui/core").PropTypes.Color>>;
+declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "color"> & import("@material-ui/styles/withStyles").StyledComponentProps<import("@material-ui/core").PropTypes.Color>>;
 export default _default;

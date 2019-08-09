@@ -1,29 +1,61 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _taggedTemplateLiteral2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteral"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _templateObject() {
+  var data = (0, _taggedTemplateLiteral2["default"])(["\n    border-style: ", ";\n    opacity: ", ";\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var Button = function Button(_ref) {
+  var children = _ref.children,
+      margin = _ref.margin,
+      padding = _ref.padding,
+      _ref$style = _ref.style,
+      style = _ref$style === void 0 ? {} : _ref$style,
+      variant = _ref.variant,
+      otherProps = (0, _objectWithoutProperties2["default"])(_ref, ["children", "margin", "padding", "style", "variant"]);
+  return _react["default"].createElement(_Button["default"], (0, _extends2["default"])({}, otherProps, {
+    variant: variant === 'dashed' ? 'outlined' : variant,
+    style: _objectSpread({
+      margin: margin,
+      padding: padding
+    }, style)
+  }), children);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@material-ui/core");
-const react_1 = __importDefault(require("react"));
-const styled_components_1 = __importDefault(require("styled-components"));
-const Button = (_a) => {
-    var { children, margin, padding, style = {}, variant } = _a, otherProps = __rest(_a, ["children", "margin", "padding", "style", "variant"]);
-    return react_1.default.createElement(core_1.Button, Object.assign({}, otherProps, { variant: variant === 'dashed' ? 'outlined' : variant, style: Object.assign({ margin, padding }, style) }), children);
-};
-const ButtonStyled = styled_components_1.default(Button) `
-    border-style: ${props => props.variant === 'dashed'
-    ? 'dashed !important'
-    : 'initial'};
-    opacity: ${props => props.selected ? 0.5 : 1};
-`;
-exports.default = ButtonStyled;
-//# sourceMappingURL=Button.js.map
+
+var ButtonStyled = (0, _styledComponents["default"])(Button)(_templateObject(), function (props) {
+  return props.variant === 'dashed' ? 'dashed !important' : 'initial';
+}, function (props) {
+  return props.selected ? 0.5 : 1;
+});
+var _default = ButtonStyled;
+exports["default"] = _default;

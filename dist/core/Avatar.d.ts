@@ -11,5 +11,5 @@ interface IProps extends IDefault {
         primary: string;
     };
 }
-declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "primary" | "sizes" | "src" | "imgProps"> & import("@material-ui/core").StyledComponentProps<"primary">>;
+declare const _default: import("react").ComponentType<Pick<React.PropsWithChildren<IProps>, "children" | "style" | "padding" | "margin" | "className" | "name" | "id" | "primary" | "sizes" | "src" | "imgProps"> & import("@material-ui/styles/withStyles").StyledComponentProps<"primary">>;
 export default _default;
