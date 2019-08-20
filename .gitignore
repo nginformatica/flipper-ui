@@ -8,6 +8,7 @@ coverage
 
 # production
 docs
+dist
 
 # misc
 .DS_Store
