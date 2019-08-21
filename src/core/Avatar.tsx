@@ -1,7 +1,5 @@
-import {
-    Avatar as MuiAvatar,
-    withStyles
-} from '@material-ui/core'
+import { Avatar as MuiAvatar } from '@material-ui/core'
+import { withStyles } from '@material-ui/styles'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 

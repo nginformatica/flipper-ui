@@ -1,4 +1,4 @@
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import MuiTableHead from '@material-ui/core/TableHead'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'

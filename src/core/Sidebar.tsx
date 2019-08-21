@@ -1,5 +1,5 @@
 import Drawer from '@material-ui/core/Drawer'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import {

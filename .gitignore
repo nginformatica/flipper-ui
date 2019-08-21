@@ -7,8 +7,8 @@ node_modules
 coverage
 
 # production
-dist
 docs
+dist
 
 # misc
 .DS_Store
