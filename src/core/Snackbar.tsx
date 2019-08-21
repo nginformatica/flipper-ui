@@ -62,7 +62,7 @@ const variants = {
 const styles = theme => ({
     icon: {
         fontSize: 20,
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing,
         opacity: 0.9
     },
     message: {
@@ -105,7 +105,10 @@ const SnackBar: FC<IProps> = props => {
             TransitionProps={ TransitionProps }
             onClose={ onClose }>
             <MuiSnackbarContent
-                style={ { backgroundColor: variants[variant].color } }
+                style={ {
+                    backgroundColor: variants[variant].color,
+                    flexWrap: 'nowrap'
+                } }
                 aria-describedby='client-snackbar'
                 message={
                     <span id='client-snackbar' className={ classes.message }>
