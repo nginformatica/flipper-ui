@@ -113,7 +113,9 @@ const SnackBar: FC<IProps> = props => {
                 message={
                     <span id='client-snackbar' className={ classes.message }>
                         { icon || <Icon className={ classes.icon } /> }
-                        { message }
+                        <div style={ { marginLeft: '10px' } } >
+                            { message }
+                        </div>
                     </span>
                 }
                 action={
