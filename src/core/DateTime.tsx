@@ -10,8 +10,7 @@ import { IDefault } from './Advertise'
 import ptLocale from 'date-fns/locale/pt-BR'
 import esLocale from 'date-fns/locale/es'
 import enLocale from 'date-fns/locale/en-US'
-import { IClasses, styles } from './TextField'
-import { withStyles } from '@material-ui/styles'
+import { IClasses, useStyles } from './TextField'
 import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
@@ -54,7 +53,6 @@ const DateTime: FC<TProps> = ({
     format,
     variant = 'inline',
     inputVariant = 'outlined',
-    classes,
     ampm = false,
     invalidDateMessage = '',
     minDateMessage = '',
@@ -63,6 +61,8 @@ const DateTime: FC<TProps> = ({
     type = 'date',
     ...otherProps
 }) => {
+    const classes = useStyles()
+
     const fieldProps = {
         ...otherProps,
         format: format ? format : DEFAULT_FORMATS[type],
@@ -117,4 +117,4 @@ const DateTime: FC<TProps> = ({
     )
 }
 
-export default withStyles(styles)(DateTime)
+export default DateTime

@@ -1,6 +1,7 @@
 import { Tabs as MuiTabs } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
-import React, { Component, ReactNode } from 'react'
+import { makeStyles, createStyles } from '@material-ui/styles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import React, { FC, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -22,60 +23,56 @@ interface IClasses {
     }
 }
 
-const styles = theme => ({
-    default: {
-        backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary
-    },
-    indicator: {
-        height: 0,
-        opacity: 0,
-        width: 0
-    },
-    inherit: {
-        backgroundColor: 'inherit',
-        color: 'inherit'
-    },
-    primary: {
-        backgroundColor: theme.palette.primary.light,
-        color: theme.palette.primary.contrastText
-    },
-    secondary: {
-        backgroundColor: theme.palette.secondary.light,
-        color: theme.palette.secondary.contrastText
-    }
-})
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        default: {
+            backgroundColor: theme.palette.background.default,
+            color: theme.palette.text.primary
+        },
+        indicator: {
+            height: 0,
+            opacity: 0,
+            width: 0
+        },
+        inherit: {
+            backgroundColor: 'inherit',
+            color: 'inherit'
+        },
+        primary: {
+            backgroundColor: theme.palette.primary.light,
+            color: theme.palette.primary.contrastText
+        },
+        secondary: {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.secondary.contrastText
+        }
+    })
+)
 
-class Tabs extends Component<IProps & IClasses> {
-    public static defaultProps = {
-        centered: true,
-        padding: '6px 0 0'
-    }
+const Tabs: FC<IProps & IClasses> = ({
+    children,
+    color = 'primary',
+    className,
+    centered = true,
+    padding = '6px 0 0',
+    style,
+    margin,
+    variant = 'standard',
+    ...otherProps
+}) => {
+    const classes = useStyles()
 
-    public render() {
-        const {
-            children,
-            color = 'primary',
-            className,
-            classes,
-            style,
-            padding,
-            margin,
-            variant = 'standard',
-            ...otherProps
-        } = this.props
-
-        return (
-            <MuiTabs
-                { ...otherProps }
-                variant={ variant }
-                style={ { padding, margin, ...style } }
-                className={ classes ? `${classes[color]} ${className}` : '' }
-                classes={ classes ? { indicator: classes.indicator } : {} }>
-                { children }
-            </MuiTabs>
-        )
-    }
+    return (
+        <MuiTabs
+            centered={ centered }
+            { ...otherProps }
+            variant={ variant }
+            style={ { padding, margin, ...style } }
+            className={ classes ? `${classes[color]} ${className}` : '' }
+            classes={ classes ? { indicator: classes.indicator } : {} }>
+            { children }
+        </MuiTabs>
+    )
 }
 
-export default withStyles(styles)(Tabs)
+export default Tabs
