@@ -1,8 +1,8 @@
-import React from 'react';
-import ThemeProvider from "../core/ThemeProvider";
+import React from 'react'
+import ThemeProvider from '../core/ThemeProvider'
 
 const Wrapper = ({ children }) => (
-  <ThemeProvider>{children}</ThemeProvider>
-);
+    <ThemeProvider>{ children }</ThemeProvider>
+)
 
-export default Wrapper;
+export default Wrapper
