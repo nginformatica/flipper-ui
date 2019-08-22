@@ -1,5 +1,6 @@
 import { Avatar as MuiAvatar } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
+import { makeStyles, createStyles } from '@material-ui/styles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
@@ -10,28 +11,31 @@ interface IProps extends IDefault {
     src?: string
     imgProps?: object
     primary?: boolean
-    classes: {
-        primary: string
-    }
 }
 
-const styles = theme => ({
-    primary: {
-        backgroundColor: theme.palette.primary.main
-    }
-})
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        primary: {
+            backgroundColor: theme.palette.primary.main
+        }
+    })
+)
 
 const Avatar: FC<IProps> = ({
     children,
     primary,
     className,
-    classes,
     ...otherProps
-}) =>
-    <MuiAvatar
-        { ...otherProps }
-        className={ `${className} ${primary ? classes.primary : ''}` }>
-        { children }
-    </MuiAvatar>
+}) => {
+    const classes = useStyles()
 
-export default withStyles(styles)(Avatar)
+    return (
+        <MuiAvatar
+            { ...otherProps }
+            className={ `${className} ${primary ? classes['primary'] : ''}` }>
+            { children }
+        </MuiAvatar>
+    )
+}
+
+export default Avatar

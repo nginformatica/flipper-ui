@@ -1,5 +1,5 @@
 import { TextField as MuiTextField } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent } from 'react'
 import { IDefault } from './Advertise'
 
@@ -41,7 +41,7 @@ export interface IClasses {
     }
 }
 
-export const styles = () => ({
+export const useStyles = makeStyles({
     input: {
         fontSize: '14px',
         padding: '10px',
@@ -61,7 +61,9 @@ export const styles = () => ({
     }
 })
 
-const TextField: FC<IProps & IClasses> = ({
+type TProps = IProps
+
+const TextField: FC<TProps> = ({
     margin,
     padding,
     style = {},
@@ -69,33 +71,38 @@ const TextField: FC<IProps & IClasses> = ({
     variant = 'outlined',
     InputLabelProps = {},
     InputProps = {},
-    classes,
     autoComplete='off',
     ...otherProps
-}) =>
-    <MuiTextField
-        autoComplete={ autoComplete }
-        error={ error }
-        variant={ variant as 'outlined' }
-        style={ {
-            margin,
-            padding,
-            ...style
-        } }
-        InputLabelProps={ {
-            classes: {
-                outlined: variant === 'outlined' ? classes.outlinedLabel : ''
-            },
-            ...InputLabelProps
-        } }
-        InputProps={ {
-            classes: {
-                input: variant === 'outlined' ? classes.outlinedInput : '',
-                multiline: variant === 'outlined' ? classes.outlinedMultiline : ''
-            },
-            ...InputProps
-        } }
-        { ...otherProps }
-    />
+}) => {
+    const classes = useStyles()
 
-export default withStyles(styles)(TextField)
+    return (
+        <MuiTextField
+            autoComplete={ autoComplete }
+            error={ error }
+            variant={ variant as 'outlined' }
+            style={ {
+                margin,
+                padding,
+                ...style
+            } }
+            InputLabelProps={ {
+                classes: {
+                    outlined: variant === 'outlined' ? classes.outlinedLabel : ''
+                },
+                ...InputLabelProps
+            } }
+            InputProps={ {
+                classes: {
+                    input: variant === 'outlined' ? classes.outlinedInput : '',
+                    multiline:
+                        variant === 'outlined' ? classes.outlinedMultiline : ''
+                },
+                ...InputProps
+            } }
+            { ...otherProps }
+        />
+    )
+}
+
+export default TextField

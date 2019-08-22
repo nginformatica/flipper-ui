@@ -4,7 +4,8 @@ import {
     SnackbarContent as MuiSnackbarContent
 } from '@material-ui/core'
 import { amber, blue, green, red } from '@material-ui/core/colors'
-import { withStyles } from '@material-ui/styles'
+import { makeStyles, createStyles } from '@material-ui/styles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import {
     CheckCircle as IconCheck,
     Close as IconClose,
@@ -59,17 +60,19 @@ const variants = {
     }
 }
 
-const styles = theme => ({
-    icon: {
-        fontSize: 20,
-        marginRight: theme.spacing,
-        opacity: 0.9
-    },
-    message: {
-        alignItems: 'center',
-        display: 'flex'
-    }
-})
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        icon: {
+            fontSize: 20,
+            marginRight: theme.spacing,
+            opacity: 0.9
+        },
+        message: {
+            alignItems: 'center',
+            display: 'flex'
+        }
+    })
+)
 
 const SnackBar: FC<IProps> = props => {
     const {
@@ -77,7 +80,6 @@ const SnackBar: FC<IProps> = props => {
         action,
         anchorOrigin,
         autoHide = 6000,
-        classes,
         icon,
         message,
         onClose,
@@ -92,6 +94,7 @@ const SnackBar: FC<IProps> = props => {
         ...other
     } = props
     const Icon = variants[variant].icon
+    const classes = useStyles()
 
     return (
         <MuiSnackbar
@@ -134,4 +137,4 @@ const SnackBar: FC<IProps> = props => {
     )
 }
 
-export default withStyles(styles)(SnackBar)
+export default SnackBar
