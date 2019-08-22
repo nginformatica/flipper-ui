@@ -5,14 +5,15 @@ import {
     Radio,
     RadioGroup as MuiRadioGroup
 } from '@material-ui/core'
-import React, { ChangeEvent, FC } from 'react'
+import React, { ChangeEvent, FC, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
-    title?: string
+    row?: boolean
+    title?: ReactNode
     name: string
     value?: string
-    options?: Array<{ value: string, label?: string }>
+    options?: Array<{ value: string, label?: ReactNode }>
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
