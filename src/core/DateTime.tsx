@@ -10,7 +10,7 @@ import { IDefault } from './Advertise'
 import ptLocale from 'date-fns/locale/pt-BR'
 import esLocale from 'date-fns/locale/es'
 import enLocale from 'date-fns/locale/en-US'
-import { IClasses, useStyles } from './TextField'
+import { useStyles } from './TextField'
 import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
@@ -43,7 +43,6 @@ type TProps =
     & Omit<KeyboardDateTimePickerProps, 'margin' | 'onChange'>
     & Omit<KeyboardTimePickerProps, 'margin' | 'onChange'>
     & IProps
-    & IClasses
     & IDefault
 
 const DateTime: FC<TProps> = ({

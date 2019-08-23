@@ -24,15 +24,6 @@ interface IProps extends IDefault {
     paperClasses?: object
     name?: string
     ButtonProps?: IButtonProps
-    classes: {
-        button: string
-        default: string
-        icon: string
-        inherit: string
-        primary: string
-        secondary: string
-        sidebar: string
-    }
     onToggle: () => void
 }
 
