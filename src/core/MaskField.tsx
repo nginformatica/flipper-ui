@@ -10,7 +10,7 @@ interface IMaskProps {
     decimalScale?: number
     thousandSeparator?: boolean | string
     fixedDecimalScale?: boolean
-    customInput?: typeof TextField
+    customInput?: React.ComponentType<IProps>
 }
 
 class MaskField extends Component<IProps & IMaskProps> {
@@ -21,7 +21,6 @@ class MaskField extends Component<IProps & IMaskProps> {
             // Although react-number-format allow use of additional props,
             // shows problem with some props like have been do this
             // actually on flipper-ui. (e.g. errors treatment)
-            // @ts-ignore
             <NumberFormat
                 { ...otherProps }
                 customInput={ customInput || TextField }>

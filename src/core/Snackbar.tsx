@@ -24,10 +24,6 @@ interface IProps extends IDefault {
     action?: ReactNode
     icon?: ReactNode
     variant?: 'success' | 'warning' | 'error' | 'info'
-    classes: {
-        icon: string
-        message: string
-    }
     transitionDuration?: number | {
         enter: number
         exit: number
