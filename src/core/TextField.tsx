@@ -18,7 +18,7 @@ export interface IProps extends IDefault {
     required?: boolean
     select?: boolean
     type?: string
-    value?: string | number | boolean | string[]
+    value?: string | number
     variant?: 'standard' | 'outlined' | 'filled'
     inputProps?: object
     InputProps?: object
@@ -31,14 +31,6 @@ export interface IProps extends IDefault {
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     onKeyUp?: (event: KeyboardEvent) => void
     onKeyDown?: (event: KeyboardEvent) => void
-}
-
-export interface IClasses {
-    classes: {
-        outlinedInput: string
-        outlinedLabel: string
-        outlinedMultiline: string
-    }
 }
 
 export const useStyles = makeStyles({
