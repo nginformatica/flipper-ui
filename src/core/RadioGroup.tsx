@@ -28,6 +28,7 @@ const RadioGroup: FC<IProps> = ({
     title,
     value,
     spacing,
+    name,
     onChange,
     ...otherProps
 }) =>
