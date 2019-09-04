@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         icon: {
             fontSize: 20,
-            marginRight: theme.spacing,
+            marginRight: theme.spacing(1),
             opacity: 0.9
         },
         message: {
