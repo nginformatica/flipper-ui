@@ -1,4 +1,3 @@
-import { contains, toLower } from 'ramda'
 import React, {
     Fragment,
     ReactNode,
@@ -59,6 +58,10 @@ interface ISelected {
 }
 
 type TSelected = ISelected | string
+
+const removeAccents = (text: string) => text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
 
 const AutoComplete: FC<IProps> = props => {
     const inputRef = useRef<HTMLInputElement>(null)
@@ -121,19 +124,16 @@ const AutoComplete: FC<IProps> = props => {
 
         return items
             .filter(item => {
-                if (typeof item === 'object') {
-                    if (typeof props.value === 'string' && !item.subheader) {
-                        return props.caseSensitive
-                            ? contains(value, item.label)
-                            : contains(toLower(value), toLower(item.label))
-                    }
-
-                    return true
+                if (!item.subheader) {
+                    return props.caseSensitive
+                        ? removeAccents(item.label)
+                            .includes(removeAccents(value))
+                        : removeAccents(item.label)
+                            .toLocaleLowerCase()
+                            .includes(removeAccents(value).toLocaleLowerCase())
                 }
 
-                return props.caseSensitive
-                    ? contains(value, item)
-                    : contains(toLower(value), toLower(item))
+                return true
             })
     }
 
