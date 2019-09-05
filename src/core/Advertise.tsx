@@ -1,7 +1,8 @@
 import React, { FC, CSSProperties } from 'react'
 import { background } from '../colors'
-import Paper from './Paper'
+import MuiPaper from './Paper'
 import Typography from './Typography'
+import styled from 'styled-components'
 
 export interface IDefault {
     style?: CSSProperties
@@ -25,6 +26,11 @@ const styles = {
     }
 }
 
+const Paper = styled(MuiPaper)`
+    display: flex;
+    flex-direction: column;
+`
+
 const Advertise: FC<IProps> = ({
     comment,
     author,
@@ -37,13 +43,13 @@ const Advertise: FC<IProps> = ({
         padding={ padding }
         { ...otherProps }>
         <Typography
-            margin='12px 12px 0px'
+            margin='0 12px'
             padding='6px 18px'
             style={ { ...styles.border, ...commentStyle } }>
             { comment }
         </Typography>
         <Typography
-            margin='0px 12px 12px'
+            margin='0px 12px'
             padding='6px 18px'
             variant='caption'
             style={ { ...styles.border, ...authorStyle } }>
