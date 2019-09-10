@@ -1,5 +1,5 @@
 import { Tooltip as MuiTooltip } from '@material-ui/core'
-import React, { FC, ReactElement, CSSProperties } from 'react'
+import React, { FC, ReactElement, CSSProperties, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -16,7 +16,7 @@ interface IProps extends IDefault {
         | 'top-end'
         | 'top-start'
         | 'top'
-    title: string
+    title: string | ReactNode
     withWrapper?: boolean
     wrapperStyle?: CSSProperties
     onClose?: () => void
