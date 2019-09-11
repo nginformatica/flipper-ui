@@ -11,7 +11,8 @@ export const background = {
 }
 
 export const silver = {
-    medium: '#666666'
+    medium: '#666666',
+    light: '#D3D3D3'
 }
 
 export const white = '#FFFFFF'

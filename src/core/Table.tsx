@@ -1,7 +1,7 @@
 import MuiTable, { TableProps } from '@material-ui/core/Table'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
-import { background } from '../colors'
+import { silver } from '../colors'
 
 interface IProps extends IDefault {
     spacing?: TableProps['padding']
@@ -13,7 +13,7 @@ const Table: FC<TableProps & IProps> =
             { ...otherProps }
             padding={ spacing }
             style={ {
-                border: `1px solid ${background.light}`,
+                border: `1px solid ${silver.light}`,
                 padding,
                 margin,
                 ...style
