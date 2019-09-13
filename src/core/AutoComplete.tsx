@@ -138,7 +138,11 @@ const AutoComplete: FC<IProps> = props => {
     }
 
     useEffect(() => {
-        if (props.value && getSuggestions().length) {
+        const hasFocus = inputRef && inputRef.current
+            ? document.activeElement === inputRef.current
+            : false
+
+        if (props.value && getSuggestions().length && !open && hasFocus) {
             setOpen(true)
         }
     }, [getSuggestions(), props.value])
