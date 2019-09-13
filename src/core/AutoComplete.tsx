@@ -137,6 +137,12 @@ const AutoComplete: FC<IProps> = props => {
             })
     }
 
+    useEffect(() => {
+        if (props.value && getSuggestions().length) {
+            setOpen(true)
+        }
+    }, [getSuggestions(), props.value])
+
     const getPaperPosition = () => {
         if (inputRef.current !== null) {
             const height = props.maxHeight || (getSuggestions().length * 48)
@@ -188,12 +194,6 @@ const AutoComplete: FC<IProps> = props => {
         setHighlighted(0)
 
         props.onChange(event.target.value)
-
-        if (getSuggestions(event.target.value).length > 0 || props.actions) {
-            setOpen(true)
-        } else {
-            setOpen(false)
-        }
     }
 
     const renderSuggestions = () => {
