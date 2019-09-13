@@ -22,7 +22,6 @@ interface IClasses {
     }
 }
 
-
 const Tabs: FC<IProps & IClasses> = ({
     children,
     centered = true,
@@ -36,6 +35,7 @@ const Tabs: FC<IProps & IClasses> = ({
 
     return (
         <MuiTabs
+            indicatorColor={ indicatorColor }
             centered={ centered }
             { ...otherProps }
             variant={ variant }
