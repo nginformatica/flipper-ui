@@ -7,7 +7,6 @@ interface IProps extends IDefault {
     icon?: string | JSX.Element
     label?: string
     value?: unknown
-    selectedClass?: string
 }
 
 class Tab extends Component<IProps> {
@@ -21,7 +20,6 @@ class Tab extends Component<IProps> {
             style,
             margin,
             padding,
-            selectedClass,
             ...otherProps
         } = this.props
 
