@@ -51,7 +51,7 @@
     "babel-plugin-transform-imports": "2.0.0",
     "docz": "1.2.0",
     "docz-theme-default": "1.2.0",
-    "eslint": "6.3.0",
+    "eslint": "5.16.0",
     "eslint-config-prettier": "4.1.0",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-prefer-arrow": "1.1.5",
