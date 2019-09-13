@@ -12,22 +12,33 @@ interface IProps extends IDefault {
     onChange?: (event: object, value: number) => void
 }
 
-const Tabs: FC<IProps> = ({
+interface IClasses {
+    classes?: {
+        default: string
+        inherit: string
+        primary: string
+        secondary: string
+        indicator: string
+    }
+}
+
+
+const Tabs: FC<IProps & IClasses> = ({
     children,
     centered = true,
     padding = '6px 0 0',
     style,
     margin,
-    indicatorColor = 'primary',
     variant = 'standard',
+    indicatorColor= 'primary',
     ...otherProps
 }) => {
+
     return (
         <MuiTabs
             centered={ centered }
             { ...otherProps }
             variant={ variant }
-            indicatorColor={ indicatorColor }
             style={ { padding, margin, ...style } }>
             { children }
         </MuiTabs>
