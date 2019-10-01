@@ -1,0 +1,20 @@
+---
+name: Charts
+route: /charts
+---
+
+import { Charts } from '../core/Charts'
+import { Playground, Props } from 'docz'
+
+# Card
+
+## Properties
+<Props of={ Charts } />
+
+## Card
+<Playground>
+    <Charts 
+        data={[{x: 'Apples', y: 12}, {x: 'Bananas', y: 2}, {x: 'Cranberries', y: 11}]}
+    />
+</Playground>
+
