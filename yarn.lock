@@ -7708,7 +7708,15 @@ react-transition-group@^4.0.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-vis@1.11.7:
+react-vis-types@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-vis-types/-/react-vis-types-0.0.3.tgz#5857b2dbcec4ddec418b54b786924d119dc2f13e"
+  integrity sha512-lk2aX5/MuCKaUexrM7XkbnDpCItBh16YeY4eLBU4YD2166n+3f9ei/u5e5sBKBkX/f5/tUViD3WZdoDuQjGYqw==
+  dependencies:
+    "@types/react" "*"
+    react-vis "^1.11.7"
+
+react-vis@1.11.7, react-vis@^1.11.7:
   version "1.11.7"
   resolved "https://registry.yarnpkg.com/react-vis/-/react-vis-1.11.7.tgz#909902af00158895d14da1adfe1d0dc0045228ff"
   integrity sha512-vJqS12l/6RHeSq8DVl4PzX0j8iPgbT8H8PtgTRsimKsBNcPjPseO4RICw1FUPrwj8MPrrna34LBtzyC4ATd5Ow==

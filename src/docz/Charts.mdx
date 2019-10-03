@@ -3,18 +3,33 @@ name: Charts
 route: /charts
 ---
 
-import { Charts } from '../core/Charts'
+import VerticalBarsChart from '../core/VerticalBarsChart'
 import { Playground, Props } from 'docz'
 
-# Card
+# Charts
 
 ## Properties
-<Props of={ Charts } />
+<Props of={ VerticalBarsChart } />
 
-## Card
+## Vertical Chart Bar
 <Playground>
-    <Charts 
-        data={[{x: 'Apples', y: 12}, {x: 'Bananas', y: 2}, {x: 'Cranberries', y: 11}]}
+    <VerticalBarsChart 
+        percent
+        animation
+        yToolTip='Equipamento: '
+        xToolTip='Disponibilidade: '
+        data={ [
+            [100, 'NG-012'],
+            [45, 'NG-014'],
+            [32, 'NG-013'],
+            [12, 'NG-016'],
+            [10, 'NG-017'],
+            [4, 'NG-018'],
+            [90, 'NG-019'],
+            [84, 'NG-010'],
+            [32, 'NG-020'],
+            [8, 'NG-021']
+        ] }
     />
 </Playground>
 
