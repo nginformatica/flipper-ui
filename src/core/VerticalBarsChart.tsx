@@ -10,6 +10,8 @@ import {
 import { Typography } from '@material-ui/core'
 import styled from 'styled-components'
 
+type TData = [number | null, string | number | null]
+
 interface IProps {
     data: TData[]
     color?: string
@@ -23,9 +25,7 @@ interface IProps {
     percent?: boolean
 }
 
-type TData = [number | null, string | number | null]
-
-interface IReturn {
+interface IBarChartProps {
     x: TData[0]
     y: TData[1]
     xOffset: number
@@ -70,7 +70,7 @@ const getGreyBars = ([, y]: TData) => ({
     y
 })
 
-const formatToCartesianPlan = ([x, y]: TData): IReturn => ({
+const formatToCartesianPlan = ([x, y]: TData): IBarChartProps => ({
     x,
     y,
     xOffset: (x && x <= 7) ? 2 : -4,
@@ -86,10 +86,10 @@ const elipsize = text => text.toString().length > 6
     ? text.slice(0, 3) + '...'
     : text
 
-const INITIAL_STATE: IReturn = formatToCartesianPlan([null, null])
+const INITIAL_STATE: IBarChartProps = formatToCartesianPlan([null, null])
 
 const VerticalBarsChart = (props: IProps) => {
-    const [hoveredBar, setHoveredBar] = useState<IReturn>(INITIAL_STATE)
+    const [hoveredBar, setHoveredBar] = useState<IBarChartProps>(INITIAL_STATE)
     const {
         animation,
         xLabelType,
@@ -142,7 +142,7 @@ const VerticalBarsChart = (props: IProps) => {
                 barWidth={ barWidth || 0.8 }
                 color={ color || '#8BC34A' }
                 data={ newData }
-                onValueMouseOver={ (bar: IReturn) => setHoveredBar(bar) }
+                onValueMouseOver={ (bar: IBarChartProps) => setHoveredBar(bar) }
                 style={ {
                     rx: '6',
                     ry: '6'
