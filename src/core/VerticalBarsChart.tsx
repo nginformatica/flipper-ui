@@ -1,4 +1,4 @@
-import React, { useState, CSSProperties } from 'react'
+import React, { useState, CSSProperties, MouseEvent } from 'react'
 import {
     XYPlot,
     XAxis,
@@ -90,6 +90,7 @@ const INITIAL_STATE: IBarChartProps = formatToCartesianPlan([null, null])
 
 const VerticalBarsChart = (props: IProps) => {
     const [hoveredBar, setHoveredBar] = useState<IBarChartProps>(INITIAL_STATE)
+
     const {
         animation,
         xLabelType,
@@ -103,11 +104,22 @@ const VerticalBarsChart = (props: IProps) => {
         xToolTip
     } = props
 
-    const newData = data.map(formatToCartesianPlan)
+    const newData = data.map(formatToCartesianPlan).map(item => ({
+        ...item,
+        opacity: item.x === hoveredBar[0] && item.y === hoveredBar[1]
+            ? 0.5
+            : 1
+    }))
 
-    const onMouseOverBar = () => {
-        setHoveredBar(INITIAL_STATE)
-    }
+    const handleMouseOverBar =
+        (clear: boolean) =>
+            (param: MouseEvent<HTMLOrSVGElement> | IBarChartProps) => {
+                if (clear) {
+                    setHoveredBar(INITIAL_STATE)
+                } else if ('x' in param) {
+                    setHoveredBar(param)
+                }
+            }
 
     return (
         <XYPlot
@@ -116,7 +128,7 @@ const VerticalBarsChart = (props: IProps) => {
             yType={ xLabelType || 'ordinal' }
             width={ width || 400 }
             height={ height || 275 }
-            onMouseLeave={ onMouseOverBar }>
+            onMouseLeave={ handleMouseOverBar(true) }>
             <XAxis hideTicks />
             <YAxis
                 tickFormat={ (tick: string) => elipsize(tick) }
@@ -140,13 +152,15 @@ const VerticalBarsChart = (props: IProps) => {
                 cluster={ '1' }
                 animation={ animation }
                 barWidth={ barWidth || 0.8 }
-                color={ color || '#8BC34A' }
                 data={ newData }
-                onValueMouseOver={ (bar: IBarChartProps) => setHoveredBar(bar) }
+                color={ color || '#8BC34A' }
+                stroke={ color || '#8BC34A' }
+                onValueMouseOver={ handleMouseOverBar(false) }
                 style={ {
                     rx: '6',
                     ry: '6'
                 } }
+                onNearestY={ handleMouseOverBar(false) }
             />
             <LabelSeries
                 animation={ animation }
