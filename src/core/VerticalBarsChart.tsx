@@ -157,8 +157,8 @@ const VerticalBarsChart = (props: IProps) => {
                 stroke={ color || '#8BC34A' }
                 onValueMouseOver={ handleMouseOverBar(false) }
                 style={ {
-                    rx: '6',
-                    ry: '6'
+                    rx: '7',
+                    ry: '7'
                 } }
                 onNearestY={ handleMouseOverBar(false) }
             />

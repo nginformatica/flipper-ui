@@ -7708,7 +7708,7 @@ react-transition-group@^4.0.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-vis-types@^0.0.3:
+react-vis-types@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/react-vis-types/-/react-vis-types-0.0.3.tgz#5857b2dbcec4ddec418b54b786924d119dc2f13e"
   integrity sha512-lk2aX5/MuCKaUexrM7XkbnDpCItBh16YeY4eLBU4YD2166n+3f9ei/u5e5sBKBkX/f5/tUViD3WZdoDuQjGYqw==
