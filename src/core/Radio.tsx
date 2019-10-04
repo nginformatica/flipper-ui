@@ -6,6 +6,7 @@ interface IProps extends IDefault {
     checked?: boolean
     color?: 'primary' | 'secondary' | 'default'
     value?: string
+    disabled?: boolean
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 

@@ -13,9 +13,16 @@ interface IProps extends IDefault {
     title?: ReactNode
     name: string
     value?: string
+    disabled?: boolean
     spacing?: 'default' | 'equal'
-    options?: Array<{ value: string, label?: ReactNode }>
+    options?: IOption[]
     onChange?: (event: ChangeEvent<HTMLElement>) => void
+}
+
+interface IOption {
+    value: string
+    label?: ReactNode
+    disabled?: boolean
 }
 
 const RadioGroup: FC<IProps> = ({
@@ -50,6 +57,7 @@ const RadioGroup: FC<IProps> = ({
                         label={ option.label }
                         value={ option.value }
                         control={ <Radio /> }
+                        disabled={ option.disabled }
                         style={ spacing === 'equal' ? { flex: 1 } : {} }
                     />
                 )
