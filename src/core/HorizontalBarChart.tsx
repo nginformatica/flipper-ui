@@ -88,7 +88,7 @@ const elipsize = text => text.toString().length > 6
 
 const INITIAL_STATE: IBarChartProps = formatToCartesianPlan([null, null])
 
-const VerticalBarsChart = (props: IProps) => {
+const HorizontalBarChart = (props: IProps) => {
     const [hoveredBar, setHoveredBar] = useState<IBarChartProps>(INITIAL_STATE)
 
     const {
@@ -111,6 +111,8 @@ const VerticalBarsChart = (props: IProps) => {
             : 1
     }))
 
+    const height2 = Math.min(props.data.length * 44, 275)
+
     const handleMouseOverBar =
         (clear: boolean) =>
             (param: MouseEvent<HTMLOrSVGElement> | IBarChartProps) => {
@@ -124,16 +126,16 @@ const VerticalBarsChart = (props: IProps) => {
     return (
         <XYPlot
             animation={ animation }
-            margin={ { left: 50, right: 10, top: 10, bottom: 40 } }
+            margin={ { left: 60, right: 10, top: 10, bottom: 40 } }
             yType={ xLabelType || 'ordinal' }
             width={ width || 400 }
-            height={ height || 275 }
+            height={ height || height2 }
             onMouseLeave={ handleMouseOverBar(true) }>
             <XAxis hideTicks />
             <YAxis
                 tickFormat={ (tick: string) => elipsize(tick) }
                 style={ {
-                    text: { fontSize: '12px' }
+                    text: { fontSize: '12px', justifyContent: 'left' }
                 } }
             />
             <HorizontalBarSeries
@@ -141,11 +143,12 @@ const VerticalBarsChart = (props: IProps) => {
                 animation={ animation }
                 barWidth={ barWidth || 0.8 }
                 color='#8bc34a5c'
+                yDistance={ 50 }
                 stroke={ color || '#8BC34A' }
                 data={ data.map(getGreyBars) }
                 style={ {
-                    rx: '6',
-                    ry: '6'
+                    rx: '7',
+                    ry: '7'
                 } }
             />
             <HorizontalBarSeries
@@ -153,6 +156,7 @@ const VerticalBarsChart = (props: IProps) => {
                 animation={ animation }
                 barWidth={ barWidth || 0.8 }
                 data={ newData }
+                yDistance={ 50 }
                 color={ color || '#8BC34A' }
                 stroke={ color || '#8BC34A' }
                 onValueMouseOver={ handleMouseOverBar(false) }
@@ -180,4 +184,4 @@ const VerticalBarsChart = (props: IProps) => {
     )
 }
 
-export default VerticalBarsChart
+export default HorizontalBarChart
