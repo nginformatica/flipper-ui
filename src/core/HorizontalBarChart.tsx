@@ -110,8 +110,11 @@ const HorizontalBarChart = (props: IProps) => {
             ? 0.5
             : 1
     }))
+    const listSize = props.data.length <= 2
+        ? props.data.length * 48
+        : props.data.length * 38
 
-    const height2 = Math.min(props.data.length * 44, 275)
+    const barHeight = Math.min(listSize, 275)
 
     const handleMouseOverBar =
         (clear: boolean) =>
@@ -129,7 +132,7 @@ const HorizontalBarChart = (props: IProps) => {
             margin={ { left: 60, right: 10, top: 10, bottom: 40 } }
             yType={ xLabelType || 'ordinal' }
             width={ width || 400 }
-            height={ height || height2 }
+            height={ height || barHeight }
             onMouseLeave={ handleMouseOverBar(true) }>
             <XAxis hideTicks />
             <YAxis
