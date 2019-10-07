@@ -110,6 +110,7 @@ const HorizontalBarChart = (props: IProps) => {
             ? 0.5
             : 1
     }))
+
     const listSize = props.data.length >= 3
         ? props.data.length * 38
         : props.data.length === 2 ? 98 : 68

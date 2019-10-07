@@ -3,14 +3,15 @@ name: Charts
 route: /charts
 ---
 
-import HorizontalBarChart from '../core/HorizontalBarChart'
+import HorizontalBarChart from '../charts/HorizontalBarChart'
+import AreaBarChart from '../charts/AreaBarChart'
 import { Playground, Props } from 'docz'
 
 # Charts
 
 ## Properties
 <Props of={ HorizontalBarChart } />
-<Props of={ HorizontalBarChart } />
+<Props of={ AreaBarChart } />
 
 ## Horizontal Bar Char
 <Playground>
@@ -24,3 +25,22 @@ import { Playground, Props } from 'docz'
 </Playground>
 
 ## Area Chart 
+<Playground>
+    <AreaBarChart 
+        data={ 
+            [ 
+                [new Date('01-02-2018'), 2], 
+                [new Date('01-03-2018'), 3],
+                [new Date('01-04-2018'), 4],
+                [new Date('01-05-2018'), 3],
+                [new Date('01-06-2018'), 6],
+                [new Date('01-07-2018'), 8],
+                [new Date('01-08-2018'), 2],
+                [new Date('01-09-2018'), 6],
+                [new Date('01-10-2018'), 8],
+                [new Date('01-11-2018'), 2]
+            ] 
+        } 
+    />
+</Playground>
+
