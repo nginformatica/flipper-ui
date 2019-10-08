@@ -88,32 +88,28 @@ const elipsize = text => text.toString().length > 6
 
 const INITIAL_STATE: IBarChartProps = formatToCartesianPlan([null, null])
 
-const HorizontalBarChart = (props: IProps) => {
+const HorizontalBarChart = ({
+    animation,
+    xLabelType,
+    width,
+    height,
+    barWidth,
+    color,
+    data,
+    percent,
+    yToolTip,
+    xToolTip
+}: IProps) => {
     const [hoveredBar, setHoveredBar] = useState<IBarChartProps>(INITIAL_STATE)
-
-    const {
-        animation,
-        xLabelType,
-        width,
-        height,
-        barWidth,
-        color,
-        data,
-        percent,
-        yToolTip,
-        xToolTip
-    } = props
 
     const newData = data.map(formatToCartesianPlan).map(item => ({
         ...item,
-        opacity: item.x === hoveredBar[0] && item.y === hoveredBar[1]
-            ? 0.5
-            : 1
+        opacity: item.x === hoveredBar[0] && item.y === hoveredBar[1] ? 0.5 : 1
     }))
 
-    const listSize = props.data.length >= 3
-        ? props.data.length * 38
-        : props.data.length === 2 ? 98 : 68
+    const listSize = data.length >= 3
+        ? data.length * 38
+        : data.length === 2 ? 98 : 68
 
     const barHeight = Math.min(listSize, 275)
 

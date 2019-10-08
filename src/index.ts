@@ -1,4 +1,5 @@
 export { default as Advertise } from './core/Advertise'
+export { default as AreaBarChart } from './charts/AreaBarChart'
 export { default as AutoComplete } from './core/AutoComplete'
 export { default as Avatar } from './core/Avatar'
 export { default as Badge } from './core/Badge'

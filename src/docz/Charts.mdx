@@ -18,6 +18,7 @@ import { Playground, Props } from 'docz'
     <HorizontalBarChart 
         percent
         animation
+        width={ 600 }
         yToolTip='Equipamento: '
         xToolTip='Disponibilidade: '
         data={ [ [3,"NG 361"],[5,"NG 362"],[55,"NG 364"] ] } 
@@ -27,18 +28,24 @@ import { Playground, Props } from 'docz'
 ## Area Chart 
 <Playground>
     <AreaBarChart 
+        areaColor='#29B6F6'
+        lineColor='#1e88e5'
+        areaOpacity={ 0.5 }
+        width={ 600 }
+        yRange={[0, 10]}
+        xTickAngle={ 0 }
         data={ 
             [ 
-                [new Date('01-02-2018'), 2], 
-                [new Date('01-03-2018'), 3],
-                [new Date('01-04-2018'), 4],
+                [new Date('01-01-2018'), 1], 
+                [new Date('01-02-2018'), 2],
+                [new Date('01-03-2018'), 2],
+                [new Date('01-04-2018'), 3],
                 [new Date('01-05-2018'), 3],
-                [new Date('01-06-2018'), 6],
-                [new Date('01-07-2018'), 8],
+                [new Date('01-06-2018'), 3],
+                [new Date('01-07-2018'), 1],
                 [new Date('01-08-2018'), 2],
-                [new Date('01-09-2018'), 6],
-                [new Date('01-10-2018'), 8],
-                [new Date('01-11-2018'), 2]
+                [new Date('01-09-2018'), 3],
+                [new Date('01-10-2018'), 2]
             ] 
         } 
     />

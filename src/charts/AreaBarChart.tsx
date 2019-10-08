@@ -5,16 +5,24 @@ import {
     YAxis,
     VerticalGridLines,
     HorizontalGridLines,
-    AreaSeries
+    AreaSeries,
+    LineMarkSeries,
+    LabelSeries
 } from 'react-vis'
-import styled from 'styled-components'
+import { Wrapper } from './style'
 import { format } from 'date-fns'
+import { head, last } from 'ramda'
 
-type TData = [number | string | Date | null, number, null]
+type TData = [number | string | Date | null, number | null]
 
 interface IProps {
     width?: number
     height?: number
+    areaColor?: string
+    lineColor?: string
+    areaOpacity?: number
+    yRange?: number[]
+    xTickAngle?: number
     data: TData[]
 }
 
@@ -23,317 +31,81 @@ interface IAreaChartProps {
     y: TData[1]
 }
 
-const Wrapper = styled.div`
-    .react-vis-magic-css-import-rule {
-        display: inherit
-    }
+const formatToCartesianPlan = ([x, y]: TData) => ({ x, y, style: { fontSize: 12 } })
 
-    .rv-treemap {
-        font-size: 12px;
-        position: relative
-    }
-
-    .rv-treemap__leaf {
-        overflow: hidden;
-        position: absolute
-    }
-
-    .rv-treemap__leaf--circle {
-        align-items: center;
-        border-radius: 100%;
-        display: flex;
-        justify-content: center
-    }
-
-    .rv-treemap__leaf__content {
-        overflow: hidden;
-        padding: 10px;
-        text-overflow: ellipsis
-    }
-
-    .rv-xy-plot {
-        color: #c3c3c3;
-        position: relative
-    }
-
-    .rv-xy-plot canvas {
-        pointer-events: none
-    }
-
-    .rv-xy-plot .rv-xy-canvas {
-        pointer-events: none;
-        position: absolute
-    }
-
-    .rv-xy-plot__inner {
-        display: block
-    }
-
-    .rv-xy-plot__axis__line {
-        fill: none;
-        stroke-width: 2px;
-        stroke: #e6e6e9
-    }
-
-    .rv-xy-plot__axis__tick__line {
-        stroke: #e6e6e9
-    }
-
-    .rv-xy-plot__axis__tick__text {
-        fill: #6b6b76;
-        font-size: 11px
-    }
-
-    .rv-xy-plot__axis__title text {
-        fill: #6b6b76;
-        font-size: 11px
-    }
-
-    .rv-xy-plot__grid-lines__line {
-        stroke: #e6e6e9
-    }
-
-    .rv-xy-plot__circular-grid-lines__line {
-        fill-opacity: 0;
-        stroke: #e6e6e9
-    }
-
-    .rv-xy-plot__series,
-    .rv-xy-plot__series path {
-        pointer-events: all
-    }
-
-    .rv-xy-plot__series--line {
-        fill: none;
-        stroke: #000;
-        stroke-width: 2px
-    }
-
-    .rv-crosshair {
-        position: absolute;
-        font-size: 11px;
-        pointer-events: none
-    }
-
-    .rv-crosshair__line {
-        background: #47d3d9;
-        width: 1px
-    }
-
-    .rv-crosshair__inner {
-        position: absolute;
-        text-align: left;
-        top: 0
-    }
-
-    .rv-crosshair__inner__content {
-        border-radius: 4px;
-        background: #3a3a48;
-        color: #fff;
-        font-size: 12px;
-        padding: 7px 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5)
-    }
-
-    .rv-crosshair__inner--left {
-        right: 4px
-    }
-
-    .rv-crosshair__inner--right {
-        left: 4px
-    }
-
-    .rv-crosshair__title {
-        font-weight: bold;
-        white-space: nowrap
-    }
-
-    .rv-crosshair__item {
-        white-space: nowrap
-    }
-
-    .rv-hint {
-        position: absolute;
-        pointer-events: none
-    }
-
-    .rv-hint__content {
-        border-radius: 4px;
-        padding: 7px 10px;
-        font-size: 12px;
-        background: #3a3a48;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        color: #fff;
-        text-align: left;
-        white-space: nowrap
-    }
-
-    .rv-discrete-color-legend {
-        box-sizing: border-box;
-        overflow-y: auto;
-        font-size: 12px
-    }
-
-    .rv-discrete-color-legend.horizontal {
-        white-space: nowrap
-    }
-
-    .rv-discrete-color-legend-item {
-        color: #3a3a48;
-        border-radius: 1px;
-        padding: 9px 10px
-    }
-
-    .rv-discrete-color-legend-item.horizontal {
-        display: inline-block
-    }
-
-    .rv-discrete-color-legend-item.horizontal .rv-discrete-color-legend-item__title {
-        margin-left: 0;
-        display: block
-    }
-
-    .rv-discrete-color-legend-item__color {
-        display: inline-block;
-        vertical-align: middle;
-        overflow: visible
-    }
-
-    .rv-discrete-color-legend-item__color__path {
-        stroke: #dcdcdc;
-        stroke-width: 2px
-    }
-
-    .rv-discrete-color-legend-item__title {
-        margin-left: 10px
-    }
-
-    .rv-discrete-color-legend-item.disabled {
-        color: #b8b8b8
-    }
-
-    .rv-discrete-color-legend-item.clickable {
-        cursor: pointer
-    }
-
-    .rv-discrete-color-legend-item.clickable:hover {
-        background: #f9f9f9
-    }
-
-    .rv-search-wrapper {
-        display: flex;
-        flex-direction: column
-    }
-
-    .rv-search-wrapper__form {
-        flex: 0
-    }
-
-    .rv-search-wrapper__form__input {
-        width: 100%;
-        color: #a6a6a5;
-        border: 1px solid #e5e5e4;
-        padding: 7px 10px;
-        font-size: 12px;
-        box-sizing: border-box;
-        border-radius: 2px;
-        margin: 0 0 9px;
-        outline: 0
-    }
-
-    .rv-search-wrapper__contents {
-        flex: 1;
-        overflow: auto
-    }
-
-    .rv-continuous-color-legend {
-        font-size: 12px
-    }
-
-    .rv-continuous-color-legend .rv-gradient {
-        height: 4px;
-        border-radius: 2px;
-        margin-bottom: 5px
-    }
-
-    .rv-continuous-size-legend {
-        font-size: 12px
-    }
-
-    .rv-continuous-size-legend .rv-bubbles {
-        text-align: justify;
-        overflow: hidden;
-        margin-bottom: 5px;
-        width: 100%
-    }
-
-    .rv-continuous-size-legend .rv-bubble {
-        background: #d8d9dc;
-        display: inline-block;
-        vertical-align: bottom
-    }
-
-    .rv-continuous-size-legend .rv-spacer {
-        display: inline-block;
-        font-size: 0;
-        line-height: 0;
-        width: 100%
-    }
-
-    .rv-legend-titles {
-        height: 16px;
-        position: relative
-    }
-
-    .rv-legend-titles__left,
-    .rv-legend-titles__right,
-    .rv-legend-titles__center {
-        position: absolute;
-        white-space: nowrap;
-        overflow: hidden
-    }
-
-    .rv-legend-titles__center {
-        display: block;
-        text-align: center;
-        width: 100%
-    }
-
-    .rv-legend-titles__right {
-        right: 0
-    }
-
-    .rv-radial-chart .rv-xy-plot__series--label {
-        pointer-events: none
-    }
-`
-
-const formatToCartesianPlan = ([x, y]: TData) => ({ x, y })
+const getDomainX = (data: TData[]) => data.map(([x]: TData) => x)
+const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 
 const AreaBarChart = (props: IProps) => {
-    const { width, height, data } = props
+    const {
+        width,
+        height,
+        data,
+        areaColor,
+        lineColor,
+        areaOpacity,
+        yRange,
+        xTickAngle
+    } = props
     const areaData = data.map(formatToCartesianPlan)
+    const maxValue = Math.max.apply(null, getDomainY(data))
 
     return (
         <Wrapper>
             <XYPlot
-                yDomain={ [1, 10] }
-                xDomain={ [new Date('01-02-2018'), new Date('01-12-2018')] }
-                width={ width || 400 }
+                title='horas'
+                yDomain={ yRange || [0, maxValue] }
+                xDomain={ [head(getDomainX(data)), last(getDomainX(data))] }
+                xType='time'
+                yType='linear'
+                width={ width || 600 }
                 height={ height || 275 }>
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis
-                    tickLabelAngle={ 90 }
+                    title='período'
+                    tickLabelAngle={ xTickAngle || 0 }
                     tickFormat={ (tick: Date) => format(tick, 'dd MMM') }
+                    tickSize={ xTickAngle ? 30 : 0 }
                     style={ {
-                        ticks: { marginTop: '10px' }
+                        text: {
+                            fill: 'black',
+                            fontSize: '12px'
+                        }
                     } }
                 />
-                <YAxis />
+                <YAxis
+                    title='horas'
+                    tickFormat={ (hour: string) => hour+'h' }
+                    style={ {
+                        text: {
+                            fill: 'black',
+                            fontSize: '12px'
+                        }
+                    } }
+                />
                 <AreaSeries
-                    opacity={ 0.5 }
+                    opacity={ areaOpacity || 0.8 }
+                    color={ areaColor || '#29B6F6' }
                     data={ areaData }
+                />
+                <LineMarkSeries
+                    style={ {
+                        strokeLinejoin: 'round',
+                        strokeWidth: 1,
+                        markWidht: 1
+                    } }
+                    lineStyle={ { stroke: lineColor || '#004A7C' } }
+                    markStyle={ {
+                        stroke: lineColor || '#004A7C',
+                        fill: lineColor || '#004A7C',
+                        r: 2.5
+                    } }
+                    data={ areaData }
+                />
+                <LabelSeries
+                    data={ areaData }
+                    getLabel={ (newData => `${newData.y}h`) }
                 />
             </XYPlot>
         </Wrapper>
