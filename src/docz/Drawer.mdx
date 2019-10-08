@@ -1,0 +1,28 @@
+---
+name: Drawer
+route: /drawer
+---
+
+import Drawer from '../core/Drawer'
+import Container from '../core/Container'
+import List from '../core/List'
+import ListItem from '../core/ListItem'
+import { Backup as IconBackup } from '../icons'
+import { Playground, Props } from 'docz'
+
+# Drawer
+
+## Properties
+<Props of={ Drawer } />
+
+## Default
+<Playground>
+    <Container style={ { height: 256 } }>
+        <Drawer expanded={ false }>
+            <List>
+                <ListItem icon={ <IconBackup /> } />
+                <ListItem icon={ <IconBackup /> } />
+            </List>
+        </Drawer>
+    </Container>
+</Playground>
