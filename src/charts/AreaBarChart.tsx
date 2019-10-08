@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    XYPlot,
+    FlexibleWidthXYPlot,
     XAxis,
     YAxis,
     VerticalGridLines,
@@ -10,8 +10,8 @@ import {
     LabelSeries
 } from 'react-vis'
 import { Wrapper } from './style'
-import { format } from 'date-fns'
-import { head, last } from 'ramda'
+import { format, parse } from 'date-fns'
+// import { head, last } from 'ramda'
 
 type TData = [number | string | Date | null, number | null]
 
@@ -22,6 +22,7 @@ interface IProps {
     lineColor?: string
     areaOpacity?: number
     yRange?: number[]
+    xRange?: number[] | Date[]
     xTickAngle?: number
     data: TData[]
 }
@@ -31,9 +32,17 @@ interface IAreaChartProps {
     y: TData[1]
 }
 
-const formatToCartesianPlan = ([x, y]: TData) => ({ x, y, style: { fontSize: 12 } })
+const formatToCartesianPlan = ([x, y]: TData) => {
+    console.log(parse(x as string, 'MM-dd-yyyy', new Date()))
 
-const getDomainX = (data: TData[]) => data.map(([x]: TData) => x)
+    return ({
+        x: parse(x as string, 'MM-dd-yyyy', new Date()),
+        y, style: { fontSize: 12 }
+    })
+}
+
+const truncate = (value: number) => Number(value.toFixed(2))
+// const getDomainX = (data: TData[]) => data.map(([x]: TData) => x)
 const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 
 const AreaBarChart = (props: IProps) => {
@@ -52,10 +61,9 @@ const AreaBarChart = (props: IProps) => {
 
     return (
         <Wrapper>
-            <XYPlot
+            <FlexibleWidthXYPlot
                 title='horas'
-                yDomain={ yRange || [0, maxValue] }
-                xDomain={ [head(getDomainX(data)), last(getDomainX(data))] }
+                yDomain={ yRange || [0, maxValue+10] }
                 xType='time'
                 yType='linear'
                 width={ width || 600 }
@@ -65,7 +73,7 @@ const AreaBarChart = (props: IProps) => {
                 <XAxis
                     title='período'
                     tickLabelAngle={ xTickAngle || 0 }
-                    tickFormat={ (tick: Date) => format(tick, 'dd MMM') }
+                    tickFormat={ tick => format(tick, 'dd MMM') }
                     tickSize={ xTickAngle ? 30 : 0 }
                     style={ {
                         text: {
@@ -76,7 +84,7 @@ const AreaBarChart = (props: IProps) => {
                 />
                 <YAxis
                     title='horas'
-                    tickFormat={ (hour: string) => hour+'h' }
+                    tickFormat={ (hour: number) => truncate(hour)+'h' }
                     style={ {
                         text: {
                             fill: 'black',
@@ -91,7 +99,6 @@ const AreaBarChart = (props: IProps) => {
                 />
                 <LineMarkSeries
                     style={ {
-                        strokeLinejoin: 'round',
                         strokeWidth: 1,
                         markWidht: 1
                     } }
@@ -105,9 +112,9 @@ const AreaBarChart = (props: IProps) => {
                 />
                 <LabelSeries
                     data={ areaData }
-                    getLabel={ (newData => `${newData.y}h`) }
+                    getLabel={ (newData => `${truncate(newData.y)}h`) }
                 />
-            </XYPlot>
+            </FlexibleWidthXYPlot>
         </Wrapper>
     )
 }

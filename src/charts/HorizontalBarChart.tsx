@@ -1,6 +1,6 @@
 import React, { useState, CSSProperties, MouseEvent } from 'react'
 import {
-    XYPlot,
+    FlexibleWidthXYPlot,
     XAxis,
     YAxis,
     HorizontalBarSeries,
@@ -124,7 +124,7 @@ const HorizontalBarChart = ({
             }
 
     return (
-        <XYPlot
+        <FlexibleWidthXYPlot
             animation={ animation }
             margin={ { left: 60, right: 10, top: 10, bottom: 40 } }
             yType={ xLabelType || 'ordinal' }
@@ -180,7 +180,7 @@ const HorizontalBarChart = ({
                     </ChartsTooltip>
                 </Hint>
             }
-        </XYPlot>
+        </FlexibleWidthXYPlot>
     )
 }
 
