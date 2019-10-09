@@ -100,7 +100,7 @@ const LineAreaChart = (props: IProps) => {
                 yType='linear'
                 width={ width || 600 }
                 height={ height || 275 }>
-                <VerticalGridLines />
+                <VerticalGridLines tickTotal={ areaData.length } />
                 <HorizontalGridLines />
                 {
                     referenceLine && <DiscreteColorLegend
