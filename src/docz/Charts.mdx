@@ -28,10 +28,37 @@ import { Playground, Props } from 'docz'
 ## Area Chart 
 <Playground>
     <AreaBarChart 
-        areaColor='#29B6F6'
-        lineColor='#1e88e5'
+        areaColor='blue'
         areaOpacity={ 0.5 }
         width={ 600 }
+        yDataType='hour'
+        xTickAngle={ 0 }
+        data={ 
+            [ 
+                ['09-11-2019', 9.1111111111],
+                ['09-12-2019', 11],
+                ['09-13-2019', 12],
+                ['09-14-2019', 12],
+                ['09-15-2019', 13],
+                ['09-16-2019', 16],
+                ['09-17-2019', 16],
+                ['09-18-2019', 17],
+                ['09-19-2019', 17],
+                ['09-20-2019', 18]
+            ] 
+        } 
+    />
+</Playground>
+
+## Area Chart with reference line
+<Playground>
+    <AreaBarChart
+        lineColor='green'
+        areaColor='green'
+        areaOpacity={ 0.5 }
+        width={ 600 }
+        referenceLine={ 3 }
+        referenceColor='black'
         xTickAngle={ 0 }
         data={ 
             [ 

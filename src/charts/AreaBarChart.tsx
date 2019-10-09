@@ -1,17 +1,18 @@
 import React from 'react'
 import {
-    FlexibleWidthXYPlot,
+    FlexibleXYPlot,
     XAxis,
     YAxis,
     VerticalGridLines,
     HorizontalGridLines,
     AreaSeries,
     LineMarkSeries,
-    LabelSeries
+    LineSeries,
+    LabelSeries,
+    DiscreteColorLegend
 } from 'react-vis'
 import { Wrapper } from './style'
 import { format, parse } from 'date-fns'
-// import { head, last } from 'ramda'
 
 type TData = [number | string | Date | null, number | null]
 
@@ -24,6 +25,10 @@ interface IProps {
     yRange?: number[]
     xRange?: number[] | Date[]
     xTickAngle?: number
+    referenceLine?: number
+    referenceColor?: string
+    referenceLegend?: string
+    yDataType?: 'hour' | 'percent'
     data: TData[]
 }
 
@@ -32,18 +37,27 @@ interface IAreaChartProps {
     y: TData[1]
 }
 
-const formatToCartesianPlan = ([x, y]: TData) => {
-    console.log(parse(x as string, 'MM-dd-yyyy', new Date()))
-
-    return ({
+const formatToCartesianPlan = ([x, y]: TData) => (
+    {
         x: parse(x as string, 'MM-dd-yyyy', new Date()),
-        y, style: { fontSize: 12 }
-    })
+        y,
+        style: { fontSize: 12 }
+    }
+)
+
+const legendPosition = {
+    position: 'absolute',
+    right: '18px',
+    top: '0px'
 }
 
 const truncate = (value: number) => Number(value.toFixed(2))
 // const getDomainX = (data: TData[]) => data.map(([x]: TData) => x)
 const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
+const putReference = (
+    yAxis: number,
+    data: IAreaChartProps[]
+) => data.map (({ x }:IAreaChartProps) => ({ x, y: yAxis }))
 
 const AreaBarChart = (props: IProps) => {
     const {
@@ -54,15 +68,27 @@ const AreaBarChart = (props: IProps) => {
         lineColor,
         areaOpacity,
         yRange,
-        xTickAngle
+        xTickAngle,
+        referenceLine,
+        referenceColor,
+        referenceLegend,
+        yDataType
     } = props
     const areaData = data.map(formatToCartesianPlan)
     const maxValue = Math.max.apply(null, getDomainY(data))
 
+    const extension = yDataType === 'hour' ? 'h' : '%'
+    const title = yDataType === 'hour' ? 'horas' : 'porcentagem'
+
+    const legendInfo = [{
+        title: referenceLegend || 'mark',
+        color: referenceColor || 'green'
+    }]
+
     return (
         <Wrapper>
-            <FlexibleWidthXYPlot
-                title='horas'
+            <FlexibleXYPlot
+                margin={ { right: 20 } }
                 yDomain={ yRange || [0, maxValue+10] }
                 xType='time'
                 yType='linear'
@@ -70,6 +96,12 @@ const AreaBarChart = (props: IProps) => {
                 height={ height || 275 }>
                 <VerticalGridLines />
                 <HorizontalGridLines />
+                {
+                    referenceLine && <DiscreteColorLegend
+                        style={ legendPosition }
+                        items={ legendInfo }
+                    />
+                }
                 <XAxis
                     title='período'
                     tickLabelAngle={ xTickAngle || 0 }
@@ -83,8 +115,8 @@ const AreaBarChart = (props: IProps) => {
                     } }
                 />
                 <YAxis
-                    title='horas'
-                    tickFormat={ (hour: number) => truncate(hour)+'h' }
+                    title={ title }
+                    tickFormat={ (value: number) => truncate(value)+extension }
                     style={ {
                         text: {
                             fill: 'black',
@@ -110,11 +142,18 @@ const AreaBarChart = (props: IProps) => {
                     } }
                     data={ areaData }
                 />
+                {
+                    referenceLine &&
+                        <LineSeries
+                            data={ putReference(referenceLine, areaData) }
+                            color={ referenceColor || 'green' }
+                        />
+                }
                 <LabelSeries
                     data={ areaData }
-                    getLabel={ (newData => `${truncate(newData.y)}h`) }
+                    getLabel={ (newData => truncate(newData.y)+extension) }
                 />
-            </FlexibleWidthXYPlot>
+            </FlexibleXYPlot>
         </Wrapper>
     )
 }
