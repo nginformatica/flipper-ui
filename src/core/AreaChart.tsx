@@ -7,7 +7,8 @@ import {
     HorizontalGridLines,
     AreaSeries,
     LineMarkSeries,
-    LineSeries
+    LineSeries,
+    LabelSeries
 } from 'react-vis'
 import { Wrapper } from '../charts/style'
 import { format, parse } from 'date-fns'
@@ -45,7 +46,7 @@ const formatToCartesianPlan = ([x, y]: TData) => (
     }
 )
 
-const truncate = (value: number) => Number(value.toFixed(2))
+export const truncate = (value: number) => Number(value.toFixed(2))
 const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 const putReference = (
     yAxis: number,
@@ -72,6 +73,7 @@ const AreaChart = (props: IProps) => {
     const areaData = data.map(formatToCartesianPlan)
     const maxValue = Math.max.apply(null, getDomainY(data))
     const extension = yDataType === 'hour' ? 'h' : '%'
+    const xAxisTicks = areaData.map(data => data.x)
 
     return (
         <Wrapper>
@@ -82,11 +84,12 @@ const AreaChart = (props: IProps) => {
                 yType='linear'
                 width={ width || 600 }
                 height={ height || 275 }>
-                <VerticalGridLines />
+                <VerticalGridLines tickTotal={ areaData.length } />
                 <HorizontalGridLines />
                 <XAxis
                     title={ xTitle || null }
                     tickLabelAngle={ xTickAngle || 0 }
+                    tickValues={ xAxisTicks }
                     tickFormat={ tick => format(tick, 'dd MMM') }
                     tickSize={ xTickAngle ? 30 : 0 }
                     style={ {
@@ -131,6 +134,10 @@ const AreaChart = (props: IProps) => {
                             color={ referenceColor || 'green' }
                         />
                 }
+                <LabelSeries
+                    data={ areaData }
+                    getLabel={ newData => truncate(newData.y)+extension }
+                />
             </FlexibleXYPlot>
         </Wrapper>
     )

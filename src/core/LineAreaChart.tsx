@@ -13,6 +13,7 @@ import {
 } from 'react-vis'
 import { Wrapper } from '../charts/style'
 import { format, parse } from 'date-fns'
+import { truncate } from './AreaChart'
 
 type TData = [number | string | Date | null, number | null]
 
@@ -55,7 +56,6 @@ const legendPosition = {
     top: '0px'
 }
 
-const truncate = (value: number) => Number(value.toFixed(2))
 const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 const putReference = (
     yAxis: number,
@@ -158,7 +158,7 @@ const LineAreaChart = (props: IProps) => {
                 }
                 <LabelSeries
                     data={ areaData }
-                    getLabel={ (newData => truncate(newData.y)+extension) }
+                    getLabel={ newData => truncate(newData.y)+extension }
                 />
             </FlexibleXYPlot>
         </Wrapper>
