@@ -19,7 +19,7 @@ const getStyles = (top?: number, width?: number) =>
             drawerPaper: {
                 top: 'inherit',
                 width: 'inherit',
-                height: top ? `calc(100% - ${top})` : '100%'
+                height: top ? `calc(100% - ${top}px)` : '100%'
             }
         })
     )
