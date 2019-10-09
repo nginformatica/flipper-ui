@@ -3,15 +3,17 @@ name: Charts
 route: /charts
 ---
 
-import HorizontalBarChart from '../charts/HorizontalBarChart'
-import AreaBarChart from '../charts/AreaBarChart'
+import HorizontalBarChart from '../core/HorizontalBarChart'
+import AreaChart from '../core/AreaChart'
+import LineAreaChart from '../core/LineAreaChart'
 import { Playground, Props } from 'docz'
 
 # Charts
 
 ## Properties
 <Props of={ HorizontalBarChart } />
-<Props of={ AreaBarChart } />
+<Props of={ AreaChart } />
+<Props of={ LineAreaChart } />
 
 ## Horizontal Bar Char
 <Playground>
@@ -27,7 +29,7 @@ import { Playground, Props } from 'docz'
 
 ## Area Chart 
 <Playground>
-    <AreaBarChart 
+    <AreaChart 
         areaColor='blue'
         areaOpacity={ 0.5 }
         width={ 600 }
@@ -37,48 +39,44 @@ import { Playground, Props } from 'docz'
         yTitle='hours'
         data={ 
             [ 
-                ['09-11-2019', 9.1111111111],
-                ['09-12-2019', 11],
-                ['09-13-2019', 12],
-                ['09-14-2019', 12],
-                ['09-15-2019', 13],
-                ['09-16-2019', 16],
-                ['09-17-2019', 16],
-                ['09-18-2019', 17],
-                ['09-19-2019', 17],
-                ['09-20-2019', 18]
+                ['2019-09-11', 9.1111111111],
+                ['2019-09-12', 11],
+                ['2019-09-13', 12],
+                ['2019-09-14', 12],
+                ['2019-09-15', 13],
+                ['2019-09-16', 16],
+                ['2019-09-17', 16],
+                ['2019-09-18', 17],
+                ['2019-09-19', 17],
+                ['2019-09-20', 18]
             ] 
         } 
     />
 </Playground>
 
-## Area Chart with reference line
+## Line Area Chart
+
 <Playground>
-    <AreaBarChart
-        lineColor='green'
+    <LineAreaChart 
         areaColor='green'
+        lineColor='green'
         areaOpacity={ 0.5 }
-        height={ 300 }
         width={ 600 }
-        referenceLine={ 3 }
-        referenceColor='black'
-        xTitle='period'
-        yTitle='percentage'
+        yDataType='percent'
         xTickAngle={ 0 }
+        xTitle='period'
+        yTitle='hours'
+        referenceLine={ 3 } 
+        referenceColor='green'
+        referenceLegend='mark'
         data={ 
             [ 
-                ['07-01-2019', 9.1111111111],
-                ['07-02-2019', 11.2222],
-                ['07-03-2019', 14.987949],
-                ['07-04-2019', 18.1],
-                ['07-05-2019', 13.12],
-                ['07-06-2019', 26],
-                ['07-07-2019', 35],
-                ['07-08-2019', 38.25],
-                ['07-09-2019', 37],
-                ['07-10-2019', 22]
+                ['2019-01-01 14:01', 9.11],
+                ['2019-02-01 14:01', 11],
+                ['2019-03-01 14:01', 12],
+                ['2019-04-01 14:01', 12],
+                ['2019-05-01 14:01', 13]
             ] 
         } 
     />
 </Playground>
-
