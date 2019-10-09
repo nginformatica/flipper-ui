@@ -26,8 +26,8 @@ const getStyles = (top?: number, width?: number) =>
 
 const Drawer: FC<IProps> = props => {
     const { style, margin, padding, top = 0, width, ...otherProps } = props
-    const styles = getStyles(top, width)
-    const classes = styles()
+    const useStyles = getStyles(top, width)
+    const classes = useStyles()
 
     return (
         <MuiDrawer
