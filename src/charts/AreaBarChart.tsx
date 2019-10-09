@@ -24,11 +24,13 @@ interface IProps {
     areaOpacity?: number
     yRange?: number[]
     xRange?: number[] | Date[]
+    yDataType?: 'hour' | 'percent'
     xTickAngle?: number
+    yTitle?: string
+    xTitle?: string
     referenceLine?: number
     referenceColor?: string
     referenceLegend?: string
-    yDataType?: 'hour' | 'percent'
     data: TData[]
 }
 
@@ -52,7 +54,6 @@ const legendPosition = {
 }
 
 const truncate = (value: number) => Number(value.toFixed(2))
-// const getDomainX = (data: TData[]) => data.map(([x]: TData) => x)
 const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 const putReference = (
     yAxis: number,
@@ -72,14 +73,14 @@ const AreaBarChart = (props: IProps) => {
         referenceLine,
         referenceColor,
         referenceLegend,
-        yDataType
+        yDataType,
+        yTitle,
+        xTitle
     } = props
+
     const areaData = data.map(formatToCartesianPlan)
     const maxValue = Math.max.apply(null, getDomainY(data))
-
     const extension = yDataType === 'hour' ? 'h' : '%'
-    const title = yDataType === 'hour' ? 'horas' : 'porcentagem'
-
     const legendInfo = [{
         title: referenceLegend || 'mark',
         color: referenceColor || 'green'
@@ -103,7 +104,7 @@ const AreaBarChart = (props: IProps) => {
                     />
                 }
                 <XAxis
-                    title='período'
+                    title={ xTitle || null }
                     tickLabelAngle={ xTickAngle || 0 }
                     tickFormat={ tick => format(tick, 'dd MMM') }
                     tickSize={ xTickAngle ? 30 : 0 }
@@ -115,7 +116,7 @@ const AreaBarChart = (props: IProps) => {
                     } }
                 />
                 <YAxis
-                    title={ title }
+                    title={ yTitle || null }
                     tickFormat={ (value: number) => truncate(value)+extension }
                     style={ {
                         text: {
