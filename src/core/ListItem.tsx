@@ -30,7 +30,7 @@ interface IProps extends Omit<IDefault, 'name'> {
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
-        ...theme.typography.body1,
+        ...theme.typography.body2,
         [theme.breakpoints.up('sm')]: {
             minHeight: '48px'
         }
