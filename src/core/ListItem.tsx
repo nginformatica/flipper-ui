@@ -4,16 +4,16 @@ import {
     ListItemIcon as MuiListItemIcon,
     ListItemSecondaryAction as MuiListItemSecondaryAction,
     ListItemText as MuiListItemText,
-    MenuItem
+    MenuItem,
+    Theme
 } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 import React, {
-    Component,
     Fragment,
-    MouseEvent
+    MouseEvent,
+    FC
 } from 'react'
 import { IDefault } from './Advertise'
-import Typography from './Typography'
 import { Omit } from 'ramda'
 
 interface IProps extends Omit<IDefault, 'name'> {
@@ -23,77 +23,65 @@ interface IProps extends Omit<IDefault, 'name'> {
     title?: string | JSX.Element
     subtitle?: string | JSX.Element
     value?: string | number
-    classes: { default: string }
     selected?: boolean
     disabled?: boolean
     onClick?: (event?: MouseEvent) => void
 }
 
-const styles = () => ({
+const useStyles = makeStyles((theme: Theme) => ({
+    root: {
+        ...theme.typography.body1,
+        [theme.breakpoints.up('sm')]: {
+            minHeight: '48px'
+        }
+    },
     default: {
         color: 'inherit'
     }
-})
+}))
 
-class ListItem extends Component<IProps, {}> {
+const ListItem: FC<IProps> = props => {
+    const { padding, margin, style } = props
+    const classes = useStyles()
+    const className = classes.default
 
-    private renderChildren () {
-        return (
-            typeof this.props.children === 'string'
-                ? (
-                    <Typography>
-                        { this.props.children }
-                    </Typography>
-                )
-                : this.props.children
-        )
-    }
-
-    private renderCustomItem() {
-        const {
-            action,
-            avatar,
-            icon,
-            title,
-            subtitle,
-            classes
-        } = this.props
-        const minWidth = title || subtitle ? '42px' : '0px'
+    const renderCustomItem = () => {
+        const minWidth = props.title || props.subtitle ? '42px' : '0px'
         const className = classes.default
 
         return (
             <Fragment>
                 {
-                    avatar && (
+                    props.avatar && (
                         <MuiListItemAvatar>
-                            { avatar }
+                            { props.avatar }
                         </MuiListItemAvatar>
                     )
                 }
                 {
-                    icon && (
+                    props.icon && (
                         <MuiListItemIcon
                             className={ className }
                             style={ { minWidth } }>
-                            { icon }
+                            { props.icon }
                         </MuiListItemIcon>
                     )
                 }
                 {
-                    (title || subtitle) && (
+                    (props.title || props.subtitle) && (
                         <MuiListItemText
                             primaryTypographyProps={ { className } }
                             secondaryTypographyProps={ { className } }
-                            primary={ title }
-                            secondary={ subtitle }
-                            style={ action ? { marginRight: '36px' } : {} }
+                            primary={ props.title }
+                            secondary={ props.subtitle }
+                            style={ props.action ? { marginRight: '36px' } : {} }
                         />
                     )
                 }
                 {
-                    action && (
+                    props.action && (
                         <MuiListItemSecondaryAction className={ className }>
-                            { action }
+                            { props.action }
                         </MuiListItemSecondaryAction>
                     )
                 }
@@ -101,47 +89,34 @@ class ListItem extends Component<IProps, {}> {
         )
     }
 
-    public render() {
-        const {
-            id,
-            className,
-            children,
-            value,
-            style = {},
-            padding,
-            margin,
-            selected,
-            disabled,
-            onClick
-        } = this.props
-
-        return children
-            ? (
-                <MenuItem
-                    button
-                    id={ id }
-                    style={ { padding, margin, ...style } }
-                    className={ className }
-                    selected={ selected }
-                    disabled={ disabled }
-                    value={ value }
-                    onClick={ onClick }>
-                    { this.renderChildren() }
-                </MenuItem>
-            )
-            : (
-                <MuiListItem
-                    button
-                    id={ id }
-                    style={ { padding, margin, ...style } }
-                    className={ className }
-                    selected={ selected }
-                    disabled={ disabled }
-                    onClick={ onClick }>
-                    { this.renderCustomItem() }
-                </MuiListItem>
-            )
-    }
+    return props.children
+        ? (
+            <MenuItem
+                button
+                id={ props.id }
+                style={ { padding, margin, ...style } }
+                className={ className }
+                classes={ { root: classes.root } }
+                selected={ props.selected }
+                disabled={ props.disabled }
+                value={ props.value }
+                onClick={ props.onClick }>
+                { props.children }
+            </MenuItem>
+        )
+        : (
+            <MuiListItem
+                button
+                id={ props.id }
+                style={ { padding, margin, ...style } }
+                className={ className }
+                classes={ { root: classes.root } }
+                selected={ props.selected }
+                disabled={ props.disabled }
+                onClick={ props.onClick }>
+                { renderCustomItem() }
+            </MuiListItem>
+        )
 }
 
-export default withStyles(styles)(ListItem)
+export default ListItem
