@@ -283,4 +283,11 @@ export const Wrapper = styled.div`
     .rv-radial-chart .rv-xy-plot__series--label {
         pointer-events: none
     }
+
+    .vertical-chart-legend .rv-discrete-color-legend-item {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        grid-gap: 4px;
+    }
 `

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
+import { equals } from 'ramda'
 import {
     FlexibleXYPlot,
     XAxis,
@@ -8,12 +9,15 @@ import {
     AreaSeries,
     LineMarkSeries,
     LineSeries,
-    LabelSeries
+    LabelSeries,
+    Crosshair
 } from 'react-vis'
 import { Wrapper } from '../charts/style'
-import { format, parse } from 'date-fns'
+import { format, parse, isSameDay } from 'date-fns'
+import { ChartsTooltip } from './HorizontalBarChart'
+import styled from 'styled-components'
 
-type TData = [number | string | Date | null, number | null]
+type TData = [number | string | Date, number]
 
 interface IProps {
     width?: number
@@ -23,10 +27,12 @@ interface IProps {
     areaOpacity?: number
     yRange?: number[]
     xRange?: number[] | Date[]
-    yDataType?: 'hour' | 'percent'
+    yDataType?: 'hour' | 'percent' | 'quantity'
     xTickAngle?: number
     yTitle?: string
     xTitle?: string
+    yTooltipLegend?: string
+    xTooltipLegend?: string
     referenceLine?: number
     referenceColor?: string
     referenceLegend?: string
@@ -47,11 +53,37 @@ const formatToCartesianPlan = ([x, y]: TData) => (
 )
 
 export const truncate = (value: number) => Number(value.toFixed(2))
-const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
+
+export const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
+
+const units = {
+    hour: 'h',
+    percent: '%',
+    quantity: ''
+}
+
+export const TooltipText = styled.div`
+    display: flex;
+    flex-direction: row;
+    font-size: 10px !important;
+    color: white !important;
+`
+
+export const compare = (
+    first: string | number | Date,
+    second: string | number | Date
+) => {
+    if (first instanceof Date && second instanceof Date) {
+        return isSameDay(first, second)
+    }
+
+    return equals(first, second)
+}
+
 const putReference = (
     yAxis: number,
     data: IAreaChartProps[]
-) => data.map (({ x }:IAreaChartProps) => ({ x, y: yAxis }))
+) => data.map(({ x }: IAreaChartProps) => ({ x, y: yAxis }))
 
 const AreaChart = (props: IProps) => {
     const {
@@ -67,21 +99,57 @@ const AreaChart = (props: IProps) => {
         referenceColor,
         yDataType,
         yTitle,
-        xTitle
+        xTitle,
+        yTooltipLegend,
+        xTooltipLegend
     } = props
-
     const areaData = data.map(formatToCartesianPlan)
     const maxValue = Math.max.apply(null, getDomainY(data))
-    const extension = yDataType === 'hour' ? 'h' : '%'
     const xAxisTicks = areaData.map(data => data.x)
+    const unit = units as { [key: string]: string }
+    const [hoveredValue, setHoveredValue] =
+        useState<{ x: TData[0], y: TData[1] }[]>([])
+
+    const handleLeaveMouse = () => {
+        setHoveredValue([])
+    }
+
+    const handleNearMouse = useCallback(
+        (selected: unknown, { index }: { index: number }) => {
+            setHoveredValue([areaData[index]])
+        }, [])
+
+    const renderPosition = () => {
+        const values = hoveredValue.length && areaData
+            .find(item => compare(item.x, hoveredValue[0].x))
+
+        const xValue = values
+            ? xTooltipLegend + ': ' + format(values.x as Date, 'dd/MM/yyyy')
+            : null
+        const yValue = values
+            ? yTooltipLegend + ': ' + truncate(values.y)
+            : null
+
+        return (
+            <div style={ { width: '80px' } }>
+                <TooltipText>
+                    { xValue }
+                </TooltipText>
+                <TooltipText>
+                    { yValue }
+                </TooltipText>
+            </div>
+        )
+    }
 
     return (
         <Wrapper>
             <FlexibleXYPlot
-                margin={ { right: 20 } }
-                yDomain={ yRange || [0, maxValue+10] }
+                margin={ { right: 24, left: 44 } }
+                yDomain={ yRange || [0, maxValue + 10] }
                 xType='time'
                 yType='linear'
+                onMouseLeave={ handleLeaveMouse }
                 width={ width || 600 }
                 height={ height || 275 }>
                 <VerticalGridLines tickTotal={ areaData.length } />
@@ -101,7 +169,10 @@ const AreaChart = (props: IProps) => {
                 />
                 <YAxis
                     title={ yTitle || null }
-                    tickFormat={ (value: number) => truncate(value)+extension }
+                    tickFormat={
+                        (value: number) =>
+                            truncate(value) + unit[yDataType || 'quantity']
+                    }
                     style={ {
                         text: {
                             fill: 'black',
@@ -115,6 +186,7 @@ const AreaChart = (props: IProps) => {
                     data={ areaData }
                 />
                 <LineMarkSeries
+                    onNearestX={ handleNearMouse }
                     style={ {
                         strokeWidth: 1,
                         markWidht: 1
@@ -129,15 +201,25 @@ const AreaChart = (props: IProps) => {
                 />
                 {
                     referenceLine &&
-                        <LineSeries
-                            data={ putReference(referenceLine, areaData) }
-                            color={ referenceColor || 'green' }
-                        />
+                <LineSeries
+                    data={ putReference(referenceLine, areaData) }
+                    color={ referenceColor || 'green' }
+                />
                 }
                 <LabelSeries
                     data={ areaData }
-                    getLabel={ newData => truncate(newData.y)+extension }
+                    getLabel={
+                        newData =>
+                            truncate(newData.y) + unit[yDataType || 'quantity']
+                    }
                 />
+                <Crosshair
+                    style={ { line: { backgroundColor: '#C1C1C1' } } }
+                    values={ hoveredValue }>
+                    <ChartsTooltip>
+                        { renderPosition() }
+                    </ChartsTooltip>
+                </Crosshair>
             </FlexibleXYPlot>
         </Wrapper>
     )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import {
     FlexibleXYPlot,
     XAxis,
@@ -9,13 +9,15 @@ import {
     LineMarkSeries,
     LineSeries,
     LabelSeries,
-    DiscreteColorLegend
+    DiscreteColorLegend,
+    Crosshair
 } from 'react-vis'
 import { Wrapper } from '../charts/style'
 import { format, parse } from 'date-fns'
-import { truncate } from './AreaChart'
+import { truncate, TooltipText, compare } from './AreaChart'
+import { ChartsTooltip } from './HorizontalBarChart'
 
-type TData = [number | string | Date | null, number | null]
+type TData = [number | string | Date, number]
 
 interface IProps {
     width?: number
@@ -32,6 +34,8 @@ interface IProps {
     referenceLine?: number
     referenceColor?: string
     referenceLegend?: string
+    yTooltipLegend?: string
+    xTooltipLegend?: string
     data: TData[]
 }
 
@@ -40,7 +44,8 @@ interface IAreaChartProps {
     y: TData[1]
 }
 
-const toDate = (x: string) => parse(x as string, 'yyyy-MM-dd HH:mm', new Date())
+export const toDate =
+    (x: string) => parse(x as string, 'yyyy-MM-dd HH:mm', new Date())
 
 const formatToCartesianPlan = ([x, y]: TData) => (
     {
@@ -60,7 +65,7 @@ const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 const putReference = (
     yAxis: number,
     data: IAreaChartProps[]
-) => data.map (({ x }:IAreaChartProps) => ({ x, y: yAxis }))
+) => data.map(({ x }: IAreaChartProps) => ({ x, y: yAxis }))
 
 const LineAreaChart = (props: IProps) => {
     const {
@@ -77,27 +82,61 @@ const LineAreaChart = (props: IProps) => {
         referenceLegend,
         yDataType,
         yTitle,
-        xTitle
+        xTitle,
+        yTooltipLegend,
+        xTooltipLegend
     } = props
-
     const areaData = data.map(formatToCartesianPlan)
     const xAxisTicks = areaData.map(data => data.x)
-    console.log(xAxisTicks)
-
     const maxValue = Math.max.apply(null, getDomainY(data))
     const extension = yDataType === 'hour' ? 'h' : '%'
     const legendInfo = [{
         title: referenceLegend || 'mark',
         color: referenceColor || 'green'
     }]
+    const [hoveredValue, setHoveredValue] =
+        useState<{ x: TData[0], y: TData[1] }[]>([])
+
+    const handleLeaveMouse = () => {
+        setHoveredValue([])
+    }
+
+    const handleNearMouse = useCallback(
+        (selected: unknown, { index }: { index: number }) => {
+            setHoveredValue([areaData[index]])
+        }, [])
+
+    const renderPosition = () => {
+        const values = hoveredValue.length && areaData
+            .find(item => compare(item.x, hoveredValue[0].x))
+
+        const xValue = values
+            ? xTooltipLegend + ': ' + format(values.x as Date, 'MMM/yyyy')
+            : null
+        const yValue = values
+            ? yTooltipLegend + ': ' + truncate(values.y) + extension
+            : null
+
+        return (
+            <div style={ { width: '80px' } }>
+                <TooltipText>
+                    { xValue }
+                </TooltipText>
+                <TooltipText>
+                    { yValue }
+                </TooltipText>
+            </div>
+        )
+    }
 
     return (
         <Wrapper>
             <FlexibleXYPlot
-                margin={ { right: 24 } }
-                yDomain={ yRange || [0, maxValue+10] }
+                margin={ { right: 24, left: 44 } }
+                yDomain={ yRange || [0, maxValue + 10] }
                 xType='time'
                 yType='linear'
+                onMouseLeave={ handleLeaveMouse }
                 width={ width || 600 }
                 height={ height || 275 }>
                 <VerticalGridLines tickTotal={ areaData.length } />
@@ -123,7 +162,7 @@ const LineAreaChart = (props: IProps) => {
                 />
                 <YAxis
                     title={ yTitle || null }
-                    tickFormat={ (value: number) => truncate(value)+extension }
+                    tickFormat={ (value: number) => truncate(value) + extension }
                     style={ {
                         text: {
                             fill: 'black',
@@ -137,6 +176,7 @@ const LineAreaChart = (props: IProps) => {
                     data={ areaData }
                 />
                 <LineMarkSeries
+                    onNearestX={ handleNearMouse }
                     style={ {
                         strokeWidth: 1,
                         markWidht: 1
@@ -151,15 +191,22 @@ const LineAreaChart = (props: IProps) => {
                 />
                 {
                     referenceLine &&
-                        <LineSeries
-                            data={ putReference(referenceLine, areaData) }
-                            color={ referenceColor || 'green' }
-                        />
+                    <LineSeries
+                        data={ putReference(referenceLine, areaData) }
+                        color={ referenceColor || 'green' }
+                    />
                 }
                 <LabelSeries
                     data={ areaData }
-                    getLabel={ newData => truncate(newData.y)+extension }
+                    getLabel={ newData => truncate(newData.y) + extension }
                 />
+                <Crosshair
+                    style={ { line: { backgroundColor: '#C1C1C1' } } }
+                    values={ hoveredValue }>
+                    <ChartsTooltip>
+                        { renderPosition() }
+                    </ChartsTooltip>
+                </Crosshair>
             </FlexibleXYPlot>
         </Wrapper>
     )

@@ -6,6 +6,8 @@ route: /charts
 import HorizontalBarChart from '../core/HorizontalBarChart'
 import AreaChart from '../core/AreaChart'
 import LineAreaChart from '../core/LineAreaChart'
+import LineVerticalBarChart from '../core/LineVerticalBarChart'
+import TwoYAxisLineBarChart from '../core/TwoYAxisLineBarChart'
 import { Playground, Props } from 'docz'
 
 # Charts
@@ -14,6 +16,88 @@ import { Playground, Props } from 'docz'
 <Props of={ HorizontalBarChart } />
 <Props of={ AreaChart } />
 <Props of={ LineAreaChart } />
+<Props of={ LineVerticalBarChart } />
+
+## Two Y axis Line Bar Chart
+<Playground>
+    <TwoYAxisLineBarChart
+        width={ 600 }
+        barsInfo={ [ 
+            { 
+                title: 'Preventivas',
+                color: '#487086'
+            },
+            {
+                title: 'Corretivas',
+                color: '#87C4CB'
+            },
+            {
+                title: 'Total',
+                color: '#E97551',
+            }
+        ] }
+        data={ [
+            [
+                ['aaa', 10000], ['bbb', 200000], ['ccc', 300000],['ddd', 5000]
+            ], 
+            [
+                ['aaa', 20000], ['bbb', 30000], ['ccc', 20000], ['ddd', 5000]
+            ], 
+            [
+                ['aaa', 200000],['bbb', 500000], ['ccc', 600000], ['ddd', 800000]
+            ]
+        ] }
+    />
+</Playground>
+
+
+## Line Bar Chart
+<Playground>
+    <LineVerticalBarChart
+        yTitle='(R$) Custo total'
+        barsInfo={ [ 
+            { 
+                title: 'Preventivas',
+                color: '#9F88FB'
+            },
+            {
+                title: 'Corretivas',
+                color: '#30D2D6'
+            },
+            {
+                title: 'Total',
+                color: '#F09B1B',
+            }
+        ] }
+        data={ [
+            [ 
+                ['2019-01-01 14:01', 10],
+                ['2019-02-01 14:01', 20],
+                ['2019-03-01 14:01', 30],
+                ['2019-04-01 14:01', 40],
+                ['2019-05-01 14:01', 50],
+                ['2019-06-01 14:01', 60]
+            ],
+            [ 
+                ['2019-01-01 14:01', 10],
+                ['2019-02-01 14:01', 25],
+                ['2019-03-01 14:01', 12],
+                ['2019-04-01 14:01', 40],
+                ['2019-05-01 14:01', 50],
+                ['2019-06-01 14:01', 60]
+            ],
+            [ 
+                ['2019-01-01 14:01', 100],
+                ['2019-02-01 14:01', 110],
+                ['2019-03-01 14:01', 120],
+                ['2019-04-01 14:01', 130],
+                ['2019-05-01 14:01', 140],
+                ['2019-06-01 14:01', 150]
+            ]
+        ] }
+    />
+</Playground>
+
 
 ## Horizontal Bar Char
 <Playground>
@@ -33,26 +117,27 @@ import { Playground, Props } from 'docz'
         areaColor='blue'
         areaOpacity={ 0.5 }
         width={ 600 }
-        yDataType='hour'
         xTickAngle={ 0 }
         xTitle='period'
-        yTitle='hours'
+        yTooltipLegend='Quantidade'
+        xTooltipLegend='Data' 
+        yDomain={ [0, 300] }
+        yTitle='quantity'
         data={ 
             [ 
-                ['2019-09-11', 9.1111111111],
-                ['2019-09-12', 11],
-                ['2019-09-13', 12],
-                ['2019-09-14', 12],
-                ['2019-09-15', 13],
-                ['2019-09-16', 16],
-                ['2019-09-17', 16]
+                ['2019-09-01', 9.1111111111],
+                ['2019-09-02', 110],
+                ['2019-09-03', 120],
+                ['2019-09-04', 298],
+                ['2019-09-05', 299],
+                ['2019-09-06', 160],
+                ['2019-09-07', 16]
             ] 
         } 
     />
 </Playground>
 
 ## Line Area Chart
-
 <Playground>
     <LineAreaChart 
         areaColor='green'
@@ -66,6 +151,8 @@ import { Playground, Props } from 'docz'
         referenceLine={ 3 } 
         referenceColor='green'
         referenceLegend='mark'
+        yTooltipLegend='Porcentagem'    
+        xTooltipLegend='Período'
         data={ 
             [ 
                 ['2019-01-01 14:01', 9.11],
