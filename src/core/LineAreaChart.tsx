@@ -16,6 +16,7 @@ import { Wrapper } from '../charts/style'
 import { format, parse } from 'date-fns'
 import { truncate, TooltipText, compare } from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
+import ptBR from 'date-fns/locale/pt-BR'
 
 type TData = [number | string | Date, number]
 
@@ -111,14 +112,15 @@ const LineAreaChart = (props: IProps) => {
             .find(item => compare(item.x, hoveredValue[0].x))
 
         const xValue = values
-            ? xTooltipLegend + ': ' + format(values.x as Date, 'MMM/yyyy')
+            ? xTooltipLegend + ': ' +
+                format(values.x as Date, 'MMM/yyyy', { locale: ptBR })
             : null
         const yValue = values
             ? yTooltipLegend + ': ' + truncate(values.y) + extension
             : null
 
         return (
-            <div style={ { width: '80px' } }>
+            <div style={ { width: '110px' } }>
                 <TooltipText>
                     { xValue }
                 </TooltipText>

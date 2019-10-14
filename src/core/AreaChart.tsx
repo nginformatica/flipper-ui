@@ -16,6 +16,7 @@ import { Wrapper } from '../charts/style'
 import { format, parse, isSameDay } from 'date-fns'
 import { ChartsTooltip } from './HorizontalBarChart'
 import styled from 'styled-components'
+import ptBR from 'date-fns/locale/pt-BR'
 
 type TData = [number | string | Date, number]
 
@@ -65,7 +66,7 @@ const units = {
 export const TooltipText = styled.div`
     display: flex;
     flex-direction: row;
-    font-size: 10px !important;
+    font-size: 12px !important;
     color: white !important;
 `
 
@@ -131,7 +132,7 @@ const AreaChart = (props: IProps) => {
             : null
 
         return (
-            <div style={ { width: '80px' } }>
+            <div style={ { width: '100px' } }>
                 <TooltipText>
                     { xValue }
                 </TooltipText>
@@ -158,7 +159,7 @@ const AreaChart = (props: IProps) => {
                     title={ xTitle || null }
                     tickLabelAngle={ xTickAngle || 0 }
                     tickValues={ xAxisTicks }
-                    tickFormat={ tick => format(tick, 'dd MMM') }
+                    tickFormat={ tick => format(tick, 'dd MMM', { locale: ptBR }) }
                     tickSize={ xTickAngle ? 30 : 0 }
                     style={ {
                         text: {

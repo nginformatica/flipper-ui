@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import {
     FlexibleXYPlot,
     XAxis,
@@ -15,6 +15,8 @@ import { format } from 'date-fns'
 import { Wrapper } from '../charts/style'
 import { ChartsTooltip } from './HorizontalBarChart'
 import styled from 'styled-components'
+import { formatToBRL } from 'brazilian-values'
+import ptBR from 'date-fns/locale/pt-BR'
 
 type TData = [string, number]
 
@@ -24,6 +26,7 @@ export interface IBarInfos {
 }
 
 interface IProps {
+    yDataType: 'money'
     width?: number
     height?: number
     yTitle?: string[]
@@ -34,12 +37,12 @@ interface IProps {
 export const TooltipText = styled.div`
     display: flex;
     flex-direction: row;
-    font-size: 10px !important;
+    font-size: 12px !important;
     color: white !important;
 `
 
 const toCartesianPlan = ([x, y]: TData) => ({
-    x: format(toDate(x), 'MMM/yy'),
+    x: format(toDate(x), 'MMM/yy', { locale: ptBR }),
     y
 })
 
@@ -53,8 +56,7 @@ const styleLegend = {
 }
 
 const LineVerticalBarChart = (props: IProps) => {
-    const styles = useRef<HTMLDivElement | null>(null)
-    const { width, height, data, yTitle, barsInfo } = props
+    const { width, height, data, yTitle, barsInfo, yDataType } = props
     const firstX = data[0].map(toCartesianPlan)
     const secondX = data[1].map(toCartesianPlan)
     const lineMark = data[2].map(toCartesianPlan)
@@ -76,23 +78,23 @@ const LineVerticalBarChart = (props: IProps) => {
         const positionSecond = crosshair.length && secondX
             .find(item => item.x === crosshair[0].x)
 
-        const positionLineMark = crosshair.length && lineMark
+        const positionMark = crosshair.length && lineMark
             .find(item => item.x === crosshair[0].x)
 
-        if (positionFirst && positionSecond && positionLineMark) {
+        if (positionFirst && positionSecond && positionMark) {
             return (
-                <div style={ { width: '80px' } }>
+                <div style={ { width: '180px' } }>
                     <TooltipText>
                         { positionFirst.x }
                     </TooltipText>
                     <TooltipText>
-                        { `${barsInfo[0].title}: ${positionFirst.y}` }
+                        { `${barsInfo[0].title}: ${formatToBRL(positionFirst.y)}` }
                     </TooltipText>
                     <TooltipText>
-                        { `${barsInfo[1].title}: ${positionSecond.y}` }
+                        { `${barsInfo[1].title}: ${formatToBRL(positionSecond.y)}` }
                     </TooltipText>
                     <TooltipText>
-                        { `${barsInfo[2].title}: ${positionLineMark.y}` }
+                        { `${barsInfo[2].title}: ${formatToBRL(positionMark.y)}` }
                     </TooltipText>
                 </div>
             )
@@ -108,14 +110,20 @@ const LineVerticalBarChart = (props: IProps) => {
                 height={ height || 275 }
                 xType='ordinal'
                 yType='linear'
-                ref={ styles }
+                margin={ { right: 40, left: 80 } }
                 onMouseLeave={ handleLeaveMouse }
-                yDomain={ [0, 200] }
                 stackBy='y'>
                 <HorizontalGridLines />
                 <VerticalGridLines tickTotal={ firstX.length } />
                 <XAxis />
-                <YAxis title={ yTitle } />
+                <YAxis
+                    title={ yTitle }
+                    tickFormat={
+                        tick => yDataType === 'money'
+                            ? formatToBRL(tick)
+                            : tick
+                    }
+                />
                 <VerticalBarSeries
                     barWidth={ 0.7 }
                     data={ firstX }
@@ -154,7 +162,6 @@ const LineVerticalBarChart = (props: IProps) => {
                     </ChartsTooltip>
                 </Crosshair>
             </FlexibleXYPlot>
-
         </Wrapper>
     )
 }
