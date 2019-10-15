@@ -191,7 +191,7 @@ const AreaChart = (props: IProps) => {
                 />
                 <AreaSeries
                     opacity={ areaOpacity || 0.8 }
-                    color={ areaColor || '#29B6F6' }
+                    color={ areaColor }
                     data={ areaData }
                 />
                 <LineMarkSeries
@@ -200,10 +200,10 @@ const AreaChart = (props: IProps) => {
                         strokeWidth: 1,
                         markWidht: 1
                     } }
-                    lineStyle={ { stroke: lineColor || '#004A7C' } }
+                    lineStyle={ { stroke: lineColor } }
                     markStyle={ {
-                        stroke: lineColor || '#004A7C',
-                        fill: lineColor || '#004A7C',
+                        stroke: lineColor,
+                        fill: lineColor,
                         r: 2.5
                     } }
                     data={ areaData }
