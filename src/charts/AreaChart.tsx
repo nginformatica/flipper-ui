@@ -212,7 +212,7 @@ const AreaChart = (props: IProps) => {
                     referenceLine &&
                 <LineSeries
                     data={ putReference(referenceLine, areaData) }
-                    color={ referenceColor || 'green' }
+                    color={ referenceColor }
                 />
                 }
                 <LabelSeries
