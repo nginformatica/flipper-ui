@@ -50,7 +50,9 @@ const TwoYAxisLineBarChart = (props: IProps) => {
     const firstX = data[2].map(toCartesianPlan)
     const secondX = data[1].map(toCartesianPlan)
     const lineMark = data[0].map(toCartesianPlan)
-    const maxValue = Math.max.apply(null, getDomainY(data[0]))
+    const maxValeuFirstX = Math.max.apply(null, getDomainY(data[2]))
+    const maxValeuSecondX = Math.max.apply(null, getDomainY(data[1]))
+    const maxDomain = (maxValeuFirstX + maxValeuSecondX)+100
     const [crosshair, setCrosshair] = useState<TChartValues[]>([])
 
     const handleLeaveMouse = () => {
@@ -72,7 +74,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
         const botValues = crosshair.length && firstX
             .find(item => item.x === crosshair[0].x)
 
-        if (topValues && midValues && midValues) {
+        if (topValues && midValues && botValues) {
             const total = midValues.y + botValues.y
 
             return (
@@ -81,7 +83,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                         { topValues.x }
                     </TooltipText>
                     <TooltipText>
-                        { topValues.y + '%' }
+                        { barsInfo[0].title + ': ' + topValues.y + '%' }
                     </TooltipText>
                     <TooltipText>
                         {
@@ -118,12 +120,12 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                 yType='linear'
                 margin={ { right: 40, left: 80 } }
                 onMouseLeave={ handleLeaveMouse }
+                yDomain={ [0, maxDomain] }
                 stackBy='y'>
                 <HorizontalGridLines tickTotal={ firstX.length } />
                 <VerticalGridLines tickTotal={ firstX.length } />
                 <XAxis />
                 <YAxis
-                    yDomain={ [0, maxValue] }
                     title={ yTitle }
                     tickFormat={
                         tick => yDataType === 'money'
@@ -162,6 +164,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                     data={ secondX }
                 />
                 <LineMarkSeries
+                    yDomain={ [0, 100] }
                     onNearestXY={ handleNearMouse }
                     style={ {
                         strokeWidth: 1,

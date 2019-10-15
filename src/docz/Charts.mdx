@@ -8,15 +8,33 @@ import AreaChart from '../core/AreaChart'
 import LineAreaChart from '../core/LineAreaChart'
 import LineVerticalBarChart from '../core/LineVerticalBarChart'
 import TwoYAxisLineBarChart from '../core/TwoYAxisLineBarChart'
+import SingleBarChart from '../core/SingleBarChart'
 import { Playground, Props } from 'docz'
 
 # Charts
 
 ## Properties
+<Props of={ SingleBarChart } />
 <Props of={ HorizontalBarChart } />
 <Props of={ AreaChart } />
 <Props of={ LineAreaChart } />
 <Props of={ LineVerticalBarChart } />
+
+
+## Single Bar Chart
+<Playground>
+    <SingleBarChart
+        width={ 600 }
+        height={ 275 }
+        color='#004A7C'
+        yDataType='quantity'
+        yTitle='quantity'
+        xTitle='equipment'
+        yTooltipTitle='aaaa'
+        xTooltipTitle='bbbb'
+        data={ [["NG 361", 23]] } 
+    />
+</Playground>
 
 ## Two Y axis Line Bar Chart
 <Playground>
@@ -26,7 +44,7 @@ import { Playground, Props } from 'docz'
         yDataType='money'
         barsInfo={ [
             {
-                title: 'Pareto',
+                title: 'Custo acumulado',
                 color: '#E97551',
             },
             {
@@ -39,9 +57,9 @@ import { Playground, Props } from 'docz'
             }
         ] }
         data={ [
-            [['sss', 800], ['aaa', 900] ], 
-            [['sss', 200000], ['aaa', 300000] ], 
-            [['sss', 1000], ['aaa', 1000] ]
+            [['sss', 80],  ['aaa', 90], ['zzz', 95]   ]  ,
+            [['sss', 200], ['aaa', 300], ['zzz', 300] ], 
+            [['sss', 500], ['aaa', 400], ['zzz', 600] ]
         ] }
     />
 </Playground>

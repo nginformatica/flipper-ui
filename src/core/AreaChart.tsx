@@ -57,7 +57,7 @@ export const truncate = (value: number) => Number(value.toFixed(2))
 
 export const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 
-const units = {
+export const units = {
     hour: 'h',
     percent: '%',
     quantity: ''
