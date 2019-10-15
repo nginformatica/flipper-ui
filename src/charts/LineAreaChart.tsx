@@ -14,7 +14,13 @@ import {
 } from 'react-vis'
 import { Wrapper } from './style'
 import { format, parse } from 'date-fns'
-import { truncate, TooltipText, compare } from './AreaChart'
+import {
+    truncate,
+    TooltipText,
+    compare,
+    getMaxDomain,
+    getYAxis
+} from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
 import ptBR from 'date-fns/locale/pt-BR'
 
@@ -26,9 +32,8 @@ interface IProps {
     areaColor?: string
     lineColor?: string
     areaOpacity?: number
-    yRange?: number[]
-    xRange?: number[] | Date[]
-    yDataType?: 'hour' | 'percent'
+    yDomainExtra?: number
+    yDataType?: 'hour' | 'percent' | 'quantity'
     xTickAngle?: number
     yTitle?: string
     xTitle?: string
@@ -62,7 +67,6 @@ const legendPosition = {
     top: '0px'
 }
 
-const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
 const putReference = (
     yAxis: number,
     data: IAreaChartProps[]
@@ -76,7 +80,6 @@ const LineAreaChart = (props: IProps) => {
         areaColor,
         lineColor,
         areaOpacity,
-        yRange,
         xTickAngle,
         referenceLine,
         referenceColor,
@@ -85,11 +88,11 @@ const LineAreaChart = (props: IProps) => {
         yTitle,
         xTitle,
         yTooltipLegend,
-        xTooltipLegend
+        xTooltipLegend,
+        yDomainExtra
     } = props
     const areaData = data.map(formatToCartesianPlan)
     const xAxisTicks = areaData.map(data => data.x)
-    const maxValue = Math.max.apply(null, getDomainY(data))
     const extension = yDataType === 'hour' ? 'h' : '%'
     const legendInfo = [{
         title: referenceLegend || 'mark',
@@ -135,7 +138,7 @@ const LineAreaChart = (props: IProps) => {
         <Wrapper>
             <FlexibleXYPlot
                 margin={ { right: 24, left: 44 } }
-                yDomain={ yRange || [0, maxValue + 10] }
+                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
                 xType='time'
                 yType='linear'
                 onMouseLeave={ handleLeaveMouse }
@@ -152,7 +155,7 @@ const LineAreaChart = (props: IProps) => {
                 <XAxis
                     title={ xTitle || null }
                     tickValues={ xAxisTicks }
-                    tickFormat={ tick => format(tick, 'MMM/yy') }
+                    tickFormat={ tick => format(tick, 'MMM/yy', { locale: ptBR }) }
                     tickLabelAngle={ xTickAngle || 0 }
                     tickSize={ xTickAngle ? 30 : 0 }
                     style={ {

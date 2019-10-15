@@ -13,7 +13,6 @@ import styled from 'styled-components'
 type TData = [number | null, string | number | null]
 
 interface IProps {
-    data: TData[]
     color?: string
     animation?: boolean
     width?: number
@@ -23,6 +22,7 @@ interface IProps {
     yToolTip?: string
     xToolTip?: string
     percent?: boolean
+    data: TData[]
 }
 
 interface IBarChartProps {
@@ -42,7 +42,7 @@ export const ChartsTooltip = styled.div`
     opacity: 0.6; 
 `
 
-const TooltipText = styled(Typography)`
+export const TooltipText = styled(Typography)`
     font-size: 10px !important;
     color: white !important;
 `
@@ -65,7 +65,7 @@ export const mountTooltip = (
     )
 }
 
-const getGreyBars = ([, y]: TData) => ({
+const getBehindBars = ([, y]: TData) => ({
     x: 100,
     y
 })
@@ -145,7 +145,7 @@ const HorizontalBarChart = ({
                 color='#8bc34a5c'
                 yDistance={ 50 }
                 stroke={ color || '#8BC34A' }
-                data={ data.map(getGreyBars) }
+                data={ data.map(getBehindBars) }
                 style={ {
                     rx: '7',
                     ry: '7'

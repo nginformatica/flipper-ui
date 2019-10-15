@@ -28,7 +28,8 @@ import { Playground, Props } from 'docz'
         width={ 600 }
         height={ 275 }
         color='#004A7C'
-        yDataType='quantity'
+        yDataType='money'
+        yDomainExtra={ 100 }
         yTitle='quantity'
         xTitle='equipment'
         yTooltipTitle='aaaa'
@@ -42,6 +43,7 @@ import { Playground, Props } from 'docz'
     <ParetoLineBarChart
         width={ 600 }
         yTitle='(R$) Custo'
+        yDomainExtra={ 100 }
         yDataType='money'
         barsInfo={ [
             {
@@ -71,6 +73,7 @@ import { Playground, Props } from 'docz'
     <LineVerticalBarChart
         yTitle='(R$) Custo'
         yDataType='money'
+        yDomainExtra={ 20 }
         barsInfo={ [ 
             { 
                 title: 'Preventivas',
@@ -137,7 +140,8 @@ import { Playground, Props } from 'docz'
         xTitle='period'
         yTooltipLegend='Quantidade'
         xTooltipLegend='Data' 
-        yDomain={ [0, 300] }
+        yDataType='quantity'
+        yDomainExtra={ 5 }
         yTitle='quantity'
         data={ 
             [ 
@@ -147,7 +151,7 @@ import { Playground, Props } from 'docz'
                 ['2019-09-04', 298],
                 ['2019-09-05', 299],
                 ['2019-09-06', 160],
-                ['2019-09-07', 16]
+                ['2019-09-07', 60]
             ] 
         } 
     />
@@ -169,13 +173,14 @@ import { Playground, Props } from 'docz'
         referenceLegend='mark'
         yTooltipLegend='Porcentagem'    
         xTooltipLegend='Período'
+        yDomainExtra={ 50 }
         data={ 
             [ 
                 ['2019-01-01 14:01', 9.11],
                 ['2019-02-01 14:01', 11],
                 ['2019-03-01 14:01', 12],
                 ['2019-04-01 14:01', 12],
-                ['2019-05-01 14:01', 13]
+                ['2019-05-01 14:01', 21]
             ] 
         } 
     />

@@ -17,6 +17,7 @@ import { ChartsTooltip } from './HorizontalBarChart'
 import styled from 'styled-components'
 import { formatToBRL } from 'brazilian-values'
 import ptBR from 'date-fns/locale/pt-BR'
+import { getMaxDomain, getYAxis } from './AreaChart'
 
 type TData = [string, number]
 
@@ -26,11 +27,12 @@ export interface IBarInfos {
 }
 
 interface IProps {
-    yDataType: 'money'
+    yDataType: 'money' | 'quantity'
     width?: number
     height?: number
     yTitle?: string[]
     barsInfo?: IBarInfos[]
+    yDomainExtra?: number
     data: TData[][]
 }
 
@@ -52,11 +54,11 @@ const styleLegend = {
     flexDirection: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginTop: '-10px'
+    marginTop: '-14px'
 }
 
 const LineVerticalBarChart = (props: IProps) => {
-    const { width, height, data, yTitle, barsInfo, yDataType } = props
+    const { width, height, data, yTitle, barsInfo, yDataType, yDomainExtra } = props
     const firstX = data[0].map(toCartesianPlan)
     const secondX = data[1].map(toCartesianPlan)
     const lineMark = data[2].map(toCartesianPlan)
@@ -110,14 +112,31 @@ const LineVerticalBarChart = (props: IProps) => {
                 height={ height || 275 }
                 xType='ordinal'
                 yType='linear'
+                yDomain={ [
+                    0,
+                    getMaxDomain(getYAxis(data[2]), yDomainExtra || 10)
+                ] }
                 margin={ { right: 40, left: 80 } }
                 onMouseLeave={ handleLeaveMouse }
                 stackBy='y'>
                 <HorizontalGridLines />
                 <VerticalGridLines tickTotal={ firstX.length } />
-                <XAxis />
+                <XAxis
+                    style={ {
+                        text: {
+                            fill: 'black',
+                            fontSize: '12px'
+                        }
+                    } }
+                />
                 <YAxis
                     title={ yTitle }
+                    style={ {
+                        text: {
+                            fill: 'black',
+                            fontSize: '12px'
+                        }
+                    } }
                     tickFormat={
                         tick => yDataType === 'money'
                             ? formatToBRL(tick)

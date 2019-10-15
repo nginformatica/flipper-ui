@@ -26,9 +26,8 @@ interface IProps {
     areaColor?: string
     lineColor?: string
     areaOpacity?: number
-    yRange?: number[]
-    xRange?: number[] | Date[]
-    yDataType?: 'hour' | 'percent' | 'quantity'
+    yDataType?: 'hour' | 'unit' | 'percent'
+    yDomainExtra?: number
     xTickAngle?: number
     yTitle?: string
     xTitle?: string
@@ -45,30 +44,14 @@ interface IAreaChartProps {
     y: TData[1]
 }
 
-const formatToCartesianPlan = ([x, y]: TData) => (
-    {
-        x: parse(x as string, 'yyyy-MM-dd', new Date()),
-        y,
-        style: { fontSize: 12 }
-    }
-)
-
-export const truncate = (value: number) => Number(value.toFixed(2))
-
-export const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
-
 export const units = {
     hour: 'h',
     percent: '%',
     quantity: ''
 }
 
-export const TooltipText = styled.div`
-    display: flex;
-    flex-direction: row;
-    font-size: 12px !important;
-    color: white !important;
-`
+export const truncate = (value: number) => Number(value.toFixed(2))
+export const getYAxis = (data: TData[]) => data.map(([, y]: TData) => y)
 
 export const compare = (
     first: string | number | Date,
@@ -86,6 +69,31 @@ const putReference = (
     data: IAreaChartProps[]
 ) => data.map(({ x }: IAreaChartProps) => ({ x, y: yAxis }))
 
+const formatToCartesianPlan = ([x, y]: TData) => (
+    {
+        x: parse(x as string, 'yyyy-MM-dd', new Date()),
+        y,
+        style: { fontSize: 12 }
+    }
+)
+
+export const TooltipText = styled.div`
+    display: flex;
+    flex-direction: row;
+    font-size: 12px !important;
+    color: white !important;
+`
+
+export const getMaxDomain = (yValues: number[], extraDomain: number) => {
+    const maxValue = Math.max.apply(null, yValues)
+
+    return (
+        maxValue <= 20
+            ? maxValue+10
+            : maxValue+(extraDomain*(maxValue/100))
+    )
+}
+
 const AreaChart = (props: IProps) => {
     const {
         width,
@@ -94,7 +102,6 @@ const AreaChart = (props: IProps) => {
         areaColor,
         lineColor,
         areaOpacity,
-        yRange,
         xTickAngle,
         referenceLine,
         referenceColor,
@@ -102,10 +109,11 @@ const AreaChart = (props: IProps) => {
         yTitle,
         xTitle,
         yTooltipLegend,
-        xTooltipLegend
+        xTooltipLegend,
+        yDomainExtra
     } = props
+
     const areaData = data.map(formatToCartesianPlan)
-    const maxValue = Math.max.apply(null, getDomainY(data))
     const xAxisTicks = areaData.map(data => data.x)
     const unit = units as { [key: string]: string }
     const [hoveredValue, setHoveredValue] =
@@ -147,7 +155,7 @@ const AreaChart = (props: IProps) => {
         <Wrapper>
             <FlexibleXYPlot
                 margin={ { right: 24, left: 44 } }
-                yDomain={ yRange || [0, maxValue + 10] }
+                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
                 xType='time'
                 yType='linear'
                 onMouseLeave={ handleLeaveMouse }

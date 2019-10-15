@@ -9,9 +9,10 @@ import {
     Crosshair
 } from 'react-vis'
 import { Wrapper } from './style'
-import { getDomainY, TooltipText, units, truncate } from './AreaChart'
+import { getYAxis, TooltipText, units, truncate } from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
 import { format } from 'date-fns'
+import { formatToBRL } from 'brazilian-values'
 
 type TData = [string | Date, number]
 
@@ -20,13 +21,12 @@ type TBarChart = {
     y: TData[1]
 }
 
-type TYDataType = 'hour' | 'unit' | 'percent'
-
 interface IProps {
     width?: number
     height?: number
     color?: string
-    yDataType?: TYDataType
+    xType?: 'ordinal' | 'time'
+    yDataType?: 'hour' | 'quantity' | 'percent' | 'money'
     yTitle?: string
     xTitle?: string
     yTooltipTitle?: string
@@ -48,11 +48,12 @@ const SingleBarChart = (props: IProps) => {
         xTooltipTitle,
         yTitle,
         xTitle,
+        xType,
         yDataType
     } = props
     const [crosshair, setCrosshair] = useState<TBarChart[]>([])
     const barData = data.map(toCartesianPlan)
-    const maxValue = Math.max.apply(null, getDomainY(data))
+    const maxValue = Math.max.apply(null, getYAxis(data))
     const unit = units as { [key: string]: string }
     const flexibleDomain = maxValue >= 20
         ? maxValue+40*(maxValue/100)
@@ -71,35 +72,61 @@ const SingleBarChart = (props: IProps) => {
         const values = crosshair.length && barData
             .find(item => item.x === crosshair[0].x)
 
-        return (
-            <div style={ { width: '100px' } }>
-                <TooltipText>
-                    { xTooltipTitle + ': ' + values.x }
-                </TooltipText>
-                <TooltipText>
-                    { yTooltipTitle + ': ' + values.y }
-                </TooltipText>
-            </div>
-        )
+        if (values) {
+            return (
+                <div style={ { width: '100px' } }>
+                    <TooltipText>
+                        { xTooltipTitle + ': ' + values.x }
+                    </TooltipText>
+                    <TooltipText>
+                        {
+                            yTooltipTitle + ': ' + (
+                                yDataType !== 'money'
+                                    ? truncate(values.y) +
+                                        unit[yDataType || 'quantity']
+                                    : formatToBRL(values.y)
+                            )
+                        }
+                    </TooltipText>
+                </div>
+            )
+        }
+
+        return null
     }
 
     return (
         <Wrapper>
             <FlexibleXYPlot
+                margin={ { right: 40, left: 80 } }
                 width={ width || 300 }
                 height={ height || 275 }
                 yDomain={ [0, flexibleDomain] }
                 onMouseLeave={ handleMouseOver }
-                xType='ordinal'
+                xType={ xType || 'ordinal' }
                 yType='linear'>
                 <HorizontalGridLines />
                 <VerticalGridLines />
-                <XAxis title={ xTitle } />
+                <XAxis
+                    title={ xTitle }
+                    style={ {
+                        text: {
+                            fill: 'black'
+                        }
+                    } }
+                />
                 <YAxis
+                    style={ {
+                        text: {
+                            fill: 'black'
+                        }
+                    } }
                     title={ yTitle }
                     tickFormat={
                         (value: number) =>
-                            truncate(value) + unit[yDataType || 'quantity']
+                            yDataType !== 'money'
+                                ? truncate(value) + unit[yDataType || 'quantity']
+                                : formatToBRL(value)
                     }
                 />
                 <VerticalBarSeries

@@ -12,7 +12,7 @@ import {
 } from 'react-vis'
 import { IBarInfos, TooltipText } from './LineVerticalBarChart'
 import { ChartsTooltip } from './HorizontalBarChart'
-import { truncate } from './AreaChart'
+import { truncate, getMaxDomain, getYAxis } from './AreaChart'
 import { formatToBRL } from 'brazilian-values'
 
 type TData = [string, number]
@@ -22,20 +22,18 @@ type TChartValues = {
     y: TData[1]
 }
 
-type TYDataType = 'money' | 'unit'
-
 interface IProps {
-    yDataType: TYDataType
+    yDataType: 'money' | 'unit'
     width?: number
     height?: number
     barsInfo?: IBarInfos[]
     yTitle?: string
+    yDomainExtra?: number
     data: TData[][]
 }
 
 const toCartesianPlan = ([x, y]: TData) => ({ x, y })
-const getDomainY = (data: TData[]) => data.map(([, y]: TData) => y)
-const getBody = (y: number, type: TYDataType, total?: number) => {
+const getBody = (y: number, type: 'money' | 'unit', total?: number) => {
     const percent = total ? (' (' + truncate(y * (100 / total)) + '%)') : ''
 
     return (
@@ -46,14 +44,15 @@ const getBody = (y: number, type: TYDataType, total?: number) => {
 }
 
 const TwoYAxisLineBarChart = (props: IProps) => {
-    const { width, height, data, barsInfo, yDataType, yTitle } = props
-    const firstX = data[2].map(toCartesianPlan)
-    const secondX = data[1].map(toCartesianPlan)
-    const lineMark = data[0].map(toCartesianPlan)
-    const maxValeuFirstX = Math.max.apply(null, getDomainY(data[2]))
-    const maxValeuSecondX = Math.max.apply(null, getDomainY(data[1]))
-    const maxDomain = (maxValeuFirstX + maxValeuSecondX)+100
+    const { width, height, data, barsInfo, yDataType, yTitle, yDomainExtra } = props
     const [crosshair, setCrosshair] = useState<TChartValues[]>([])
+    const bottomX = data[2].map(toCartesianPlan)
+    const topX = data[1].map(toCartesianPlan)
+    const lineMark = data[0].map(toCartesianPlan)
+    const stackedYAxis = getYAxis(data[2]).map(
+        (value: number, index: number) => {
+            return value + getYAxis(data[1])[index]
+        })
 
     const handleLeaveMouse = () => {
         setCrosshair([])
@@ -61,17 +60,17 @@ const TwoYAxisLineBarChart = (props: IProps) => {
 
     const handleNearMouse = useCallback(
         (selected: unknown, { index }: { index: number }) => {
-            setCrosshair([firstX[index]])
+            setCrosshair([bottomX[index]])
         }, [])
 
     const renderPosition = () => {
         const topValues = crosshair.length && lineMark
             .find(item => item.x === crosshair[0].x)
 
-        const midValues = crosshair.length && secondX
+        const midValues = crosshair.length && topX
             .find(item => item.x === crosshair[0].x)
 
-        const botValues = crosshair.length && firstX
+        const botValues = crosshair.length && bottomX
             .find(item => item.x === crosshair[0].x)
 
         if (topValues && midValues && botValues) {
@@ -120,11 +119,18 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                 yType='linear'
                 margin={ { right: 40, left: 80 } }
                 onMouseLeave={ handleLeaveMouse }
-                yDomain={ [0, maxDomain] }
+                yDomain={ [0, getMaxDomain(stackedYAxis, yDomainExtra || 50)] }
                 stackBy='y'>
-                <HorizontalGridLines tickTotal={ firstX.length } />
-                <VerticalGridLines tickTotal={ firstX.length } />
-                <XAxis />
+                <HorizontalGridLines tickTotal={ bottomX.length } />
+                <VerticalGridLines tickTotal={ bottomX.length } />
+                <XAxis
+                    style={ {
+                        text: {
+                            fontSize: '12px',
+                            fill: 'black'
+                        }
+                    } }
+                />
                 <YAxis
                     title={ yTitle }
                     tickFormat={
@@ -136,6 +142,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                     style={ {
                         text: {
                             fontSize: '12px',
+                            fill: 'black',
                             transform: 'translate(-4px)'
                         }
                     } }
@@ -157,11 +164,11 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                 />
                 <VerticalBarSeries
                     color={ barsInfo[2].color }
-                    data={ firstX }
+                    data={ bottomX }
                 />
                 <VerticalBarSeries
                     color={ barsInfo[1].color }
-                    data={ secondX }
+                    data={ topX }
                 />
                 <LineMarkSeries
                     yDomain={ [0, 100] }
