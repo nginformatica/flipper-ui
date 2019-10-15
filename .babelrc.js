@@ -18,6 +18,10 @@ module.exports = {
           "transform": "@material-ui/icons/${member}",
           "preventFullImport": true
         },
+        "../charts": {
+          "transform": "flipper-ui/charts/${member}",
+          "preventFullImport": true
+        },
         "ramda": {
           "transform": "ramda/es/${member}",
           "preventFullImport": true

@@ -169,12 +169,12 @@ const LineVerticalBarChart = (props: IProps) => {
                 <VerticalBarSeries
                     barWidth={ 0.7 }
                     data={ firstX }
-                    color={ barsInfo[0].color }
+                    color={ bottomBarInfo.color }
                 />
                 <VerticalBarSeries
                     barWidth={ 0.7 }
                     data={ secondX }
-                    color={ barsInfo[1].color }
+                    color={ topBarInfo.color }
                 />
                 <LineMarkSeries
                     data={ lineMark }
@@ -183,10 +183,10 @@ const LineVerticalBarChart = (props: IProps) => {
                         strokeWidth: 1,
                         markWidht: 1
                     } }
-                    lineStyle={ { stroke: barsInfo[2].color || '#004A7C' } }
+                    lineStyle={ { stroke: lineMarkInfo.color || '#004A7C' } }
                     markStyle={ {
-                        stroke: barsInfo[2].color || '#004A7C',
-                        fill: barsInfo[2].color || '#004A7C',
+                        stroke: lineMarkInfo.color || '#004A7C',
+                        fill: lineMarkInfo.color || '#004A7C',
                         r: 2.5
                     } }
                 />
