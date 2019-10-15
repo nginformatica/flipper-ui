@@ -2,7 +2,7 @@ import { Typography as MuiTypography } from '@material-ui/core'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 
-interface IProps extends IDefault {
+export interface IProps extends IDefault {
     noWrap?: boolean
     variant?:
         | 'h1'

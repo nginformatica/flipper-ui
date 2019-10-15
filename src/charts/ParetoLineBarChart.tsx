@@ -49,7 +49,15 @@ const getBody = (y: number, type: 'money' | 'unit', total?: number) => {
 }
 
 const TwoYAxisLineBarChart = (props: IProps) => {
-    const { width, height, data, barsInfo, yDataType, yTitle, yDomainExtra } = props
+    const {
+        width = 0,
+        height,
+        data,
+        barsInfo,
+        yDataType,
+        yTitle,
+        yDomainExtra
+    } = props
     const [
         lineMarkInfo = defaultBarInfo,
         topBarInfo = defaultBarInfo,
