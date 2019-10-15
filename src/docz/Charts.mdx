@@ -3,12 +3,12 @@ name: Charts
 route: /charts
 ---
 
-import HorizontalBarChart from '../core/HorizontalBarChart'
-import AreaChart from '../core/AreaChart'
-import LineAreaChart from '../core/LineAreaChart'
-import LineVerticalBarChart from '../core/LineVerticalBarChart'
-import TwoYAxisLineBarChart from '../core/TwoYAxisLineBarChart'
-import SingleBarChart from '../core/SingleBarChart'
+import HorizontalBarChart from '../charts/HorizontalBarChart'
+import AreaChart from '../charts/AreaChart'
+import LineAreaChart from '../charts/LineAreaChart'
+import LineVerticalBarChart from '../charts/LineVerticalBarChart'
+import ParetoLineBarChart from '../charts/ParetoLineBarChart'
+import SingleBarChart from '../charts/SingleBarChart'
 import { Playground, Props } from 'docz'
 
 # Charts
@@ -19,6 +19,7 @@ import { Playground, Props } from 'docz'
 <Props of={ AreaChart } />
 <Props of={ LineAreaChart } />
 <Props of={ LineVerticalBarChart } />
+<Props of={ ParetoLineBarChart } />
 
 
 ## Single Bar Chart
@@ -36,9 +37,9 @@ import { Playground, Props } from 'docz'
     />
 </Playground>
 
-## Two Y axis Line Bar Chart
+## Pareto Line Bar Chart
 <Playground>
-    <TwoYAxisLineBarChart
+    <ParetoLineBarChart
         width={ 600 }
         yTitle='(R$) Custo'
         yDataType='money'
