@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme: Theme) => ({
         ...theme.typography.body2,
         [theme.breakpoints.up('sm')]: {
             minHeight: '48px'
-        }
+        },
+        color: 'inherit'
     },
     default: {
         color: 'inherit'
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const ListItem: FC<IProps> = props => {
     const { padding, margin, style } = props
     const classes = useStyles()
-    const className = classes.default
+    const className = props.className
 
     const renderCustomItem = () => {
         const minWidth = props.title || props.subtitle ? '42px' : '0px'
