@@ -57,11 +57,19 @@ const styleLegend = {
     marginTop: '-14px'
 }
 
+export const defaultBarInfo = { color: '', title: '' }
+export const defaultChartData = [['', 0]]
+
 const LineVerticalBarChart = (props: IProps) => {
     const { width, height, data, yTitle, barsInfo, yDataType, yDomainExtra } = props
-    const firstX = data[0].map(toCartesianPlan)
-    const secondX = data[1].map(toCartesianPlan)
-    const lineMark = data[2].map(toCartesianPlan)
+    const [
+        bottomBarInfo = defaultBarInfo,
+        topBarInfo = defaultBarInfo,
+        lineMarkInfo = defaultBarInfo
+    ] = barsInfo || []
+    const firstX = (data[0] || defaultChartData).map(toCartesianPlan)
+    const secondX = (data[1] || defaultChartData).map(toCartesianPlan)
+    const lineMark = (data[2] || defaultChartData).map(toCartesianPlan)
     const [crosshair, setCrosshair] = useState<{ x: TData[0], y: TData[1] }[]>([])
 
     const handleLeaveMouse = () => {
@@ -90,13 +98,28 @@ const LineVerticalBarChart = (props: IProps) => {
                         { positionFirst.x }
                     </TooltipText>
                     <TooltipText>
-                        { `${barsInfo[0].title}: ${formatToBRL(positionFirst.y)}` }
+                        {
+                            bottomBarInfo && (
+                                bottomBarInfo.title + ': ' +
+                                formatToBRL(positionFirst.y)
+                            )
+                        }
                     </TooltipText>
                     <TooltipText>
-                        { `${barsInfo[1].title}: ${formatToBRL(positionSecond.y)}` }
+                        {
+                            topBarInfo && (
+                                topBarInfo.title + ': ' +
+                                formatToBRL(positionSecond.y)
+                            )
+                        }
                     </TooltipText>
                     <TooltipText>
-                        { `${barsInfo[2].title}: ${formatToBRL(positionMark.y)}` }
+                        {
+                            lineMarkInfo && (
+                                lineMarkInfo.title + ': ' +
+                                formatToBRL(positionMark.y)
+                            )
+                        }
                     </TooltipText>
                 </div>
             )
