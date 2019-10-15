@@ -39,8 +39,8 @@ interface IProps {
 export const TooltipText = styled.div`
     display: flex;
     flex-direction: row;
-    font-size: 12px !important;
-    color: white !important;
+    font-size: 12px;
+    color: white;
 `
 
 const toCartesianPlan = ([x, y]: TData) => ({
