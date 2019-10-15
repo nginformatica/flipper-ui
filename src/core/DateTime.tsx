@@ -7,9 +7,6 @@ import {
 } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 import { IDefault } from './Advertise'
-import ptLocale from 'date-fns/locale/pt-BR'
-import esLocale from 'date-fns/locale/es'
-import enLocale from 'date-fns/locale/en-US'
 import { useStyles } from './TextField'
 import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
@@ -18,18 +15,12 @@ import { Omit } from 'ramda'
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 
 interface IProps {
-    locale?: 'en-US' | 'pt-BR' | 'es'
+    locale?: DateFnsUtils['locale']
     type?: 'date' | 'time' | 'datetime'
     inputProps?: object
     onAuxClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
     onAuxClickCapture?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
     onChange(date: MaterialUiPickersDate | null, value?: string): void
-}
-
-const LOCALES = {
-    'es': esLocale,
-    'pt-BR': ptLocale,
-    'en-US': enLocale
 }
 
 const DEFAULT_FORMATS = {
@@ -56,7 +47,7 @@ const DateTime: FC<TProps> = ({
     invalidDateMessage = '',
     minDateMessage = '',
     maxDateMessage = '',
-    locale = 'pt-BR',
+    locale,
     type = 'date',
     ...otherProps
 }) => {
@@ -108,7 +99,7 @@ const DateTime: FC<TProps> = ({
     return (
         <MuiPickersUtilsProvider
             utils={ DateFnsUtils }
-            locale={ LOCALES[locale] }>
+            locale={ locale }>
             { type === 'date' && renderDatePicker() }
             { type === 'time' && renderTimePicker() }
             { type === 'datetime' && renderDateTimePicker() }
