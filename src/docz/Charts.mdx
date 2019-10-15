@@ -1,0 +1,183 @@
+---
+name: Charts
+route: /charts
+---
+
+import HorizontalBarChart from '../charts/HorizontalBarChart'
+import AreaChart from '../charts/AreaChart'
+import LineAreaChart from '../charts/LineAreaChart'
+import LineVerticalBarChart from '../charts/LineVerticalBarChart'
+import ParetoLineBarChart from '../charts/ParetoLineBarChart'
+import SingleBarChart from '../charts/SingleBarChart'
+import { Playground, Props } from 'docz'
+
+# Charts
+
+## Properties
+<Props of={ SingleBarChart } />
+<Props of={ HorizontalBarChart } />
+<Props of={ AreaChart } />
+<Props of={ LineAreaChart } />
+<Props of={ LineVerticalBarChart } />
+<Props of={ ParetoLineBarChart } />
+
+## Single Bar Chart
+<Playground>
+    <SingleBarChart
+        width={ 600 }
+        height={ 275 }
+        color='#004A7C'
+        yDataType='money'
+        yDomainExtra={ 100 }
+        yTitle='quantity'
+        xTitle='equipment'
+        yTooltipTitle='aaaa'
+        xTooltipTitle='bbbb'
+        yDomainExtra={ 10 }
+        data={ [["NG 361", 23]] } 
+    />
+</Playground>
+
+## Pareto Line Bar Chart
+<Playground>
+    <ParetoLineBarChart
+        width={ 600 }
+        yTitle='(R$) Custo'
+        yDomainExtra={ 100 }
+        yDataType='money'
+        barsInfo={ [
+            {
+                title: 'Custo total',
+                color: '#E97551'
+            },
+            {
+                title: 'Manutenção',
+                color: '#87C4CB'
+            },
+            { 
+                title: 'Aquisição',
+                color: '#487086'
+            }
+        ] }
+        data={ [
+            [['sss', 80],  ['aaa', 90], ['zzz', 95]]  ,
+            [['sss', 200], ['aaa', 300], ['zzz', 300] ], 
+            [['sss', 500], ['aaa', 400], ['zzz', 600] ]
+        ] }
+    />
+</Playground>
+
+
+## Line Bar Chart
+<Playground>
+    <LineVerticalBarChart
+        yTitle='(R$) Custo'
+        yDataType='money'
+        yDomainExtra={ 20 }
+        barsInfo={ [ 
+            { 
+                title: 'Preventivas',
+                color: '#9F88FB'
+            },
+            {
+                title: 'Corretivas',
+                color: '#30D2D6'
+            },
+            {
+                title: 'Total',
+                color: '#F09B1B',
+            }
+        ] }
+        data={ [
+            [ 
+                ['2019-01-01 14:01', 1000],
+                ['2019-02-01 14:01', 2000],
+                ['2019-03-01 14:01', 3000],
+                ['2019-04-01 14:01', 4000],
+                ['2019-05-01 14:01', 5000],
+                ['2019-06-01 14:01', 6000]
+            ],
+            [ 
+                ['2019-01-01 14:01', 1000],
+                ['2019-02-01 14:01', 2500],
+                ['2019-03-01 14:01', 1200],
+                ['2019-04-01 14:01', 4000],
+                ['2019-05-01 14:01', 5000],
+                ['2019-06-01 14:01', 6000]
+            ],
+            [ 
+                ['2019-01-01 14:01', 10000],
+                ['2019-02-01 14:01', 11000],
+                ['2019-03-01 14:01', 12000],
+                ['2019-04-01 14:01', 13000],
+                ['2019-05-01 14:01', 14000],
+                ['2019-06-01 14:01', 15000]
+            ]
+        ] }
+    />
+</Playground>
+
+
+## Horizontal Bar Char
+<Playground>
+    <HorizontalBarChart 
+        percent
+        color='#8BC34A'
+        behindColor='#8bc34a5c'
+        width={ 600 }
+        yToolTip='Equipamento: '
+        xToolTip='Disponibilidade: '
+        data={ [ [3,"NG 361"],[5,"NG 362"],[55,"NG 364"] ] } 
+    />
+</Playground>
+
+## Area Chart 
+<Playground>
+    <AreaChart 
+        areaOpacity={ 0.5 }
+        width={ 600 }
+        xTickAngle={ 0 }
+        xTitle='period'
+        yTooltipLegend='Quantidade'
+        xTooltipLegend='Data' 
+        yDataType='quantity'
+        yDomainExtra={ 5 }
+        yTitle='quantity'
+        data={ 
+            [ 
+                ['2019-09-01', 9.1111111111],
+                ['2019-09-02', 110],
+                ['2019-09-03', 120],
+                ['2019-09-04', 298],
+                ['2019-09-05', 299],
+                ['2019-09-06', 160],
+                ['2019-09-07', 60]
+            ] 
+        } 
+    />
+</Playground>
+
+## Line Area Chart
+<Playground>
+    <LineAreaChart 
+        width={ 600 }
+        yDataType='percent'
+        xTickAngle={ 0 }
+        xTitle='period'
+        yTitle='percentage'
+        referenceLine={ 3 } 
+        referenceLegend='mark'
+        yTooltipLegend='Porcentagem'    
+        xTooltipLegend='Período'
+        yDomainExtra={ 50 }
+        data={ 
+            [ 
+                ['2019-01-01 14:01', 9.11],
+                ['2019-02-01 14:01', 11],
+                ['2019-03-01 14:01', 12],
+                ['2019-04-01 14:01', 12],
+                ['2019-05-01 14:01', 21]
+            ] 
+        } 
+    />
+</Playground>
