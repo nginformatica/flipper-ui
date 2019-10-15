@@ -7,8 +7,8 @@ import {
     LabelSeries,
     Hint
 } from 'react-vis'
-import { Typography } from '@material-ui/core'
 import styled from 'styled-components'
+import Typography from '../core/Typography'
 
 type TData = [number | null, string | number | null]
 
@@ -174,13 +174,14 @@ const HorizontalBarChart = ({
                 getLabel={ percent && (newData => `${newData.x}%`) }
             />
             {
-                hoveredBar !== INITIAL_STATE &&
-                <Hint value={ hoveredBar }>
-                    <ChartsTooltip>
-                        { mountTooltip(hoveredBar.y, yToolTip) }
-                        { mountTooltip(hoveredBar.x, xToolTip, percent) }
-                    </ChartsTooltip>
-                </Hint>
+                hoveredBar !== INITIAL_STATE && (
+                    <Hint value={ hoveredBar }>
+                        <ChartsTooltip>
+                            { mountTooltip(hoveredBar.y, yToolTip) }
+                            { mountTooltip(hoveredBar.x, xToolTip, percent) }
+                        </ChartsTooltip>
+                    </Hint>
+                )
             }
         </FlexibleXYPlot>
     )

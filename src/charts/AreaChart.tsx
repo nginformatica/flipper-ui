@@ -80,8 +80,8 @@ const formatToCartesianPlan = ([x, y]: TData) => (
 export const TooltipText = styled.div`
     display: flex;
     flex-direction: row;
-    font-size: 12px !important;
-    color: white !important;
+    font-size: 12px;
+    color: white;
 `
 
 export const getMaxDomain = (yValues: number[], extraDomain: number) => {
