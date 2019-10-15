@@ -60,7 +60,7 @@ import { Playground, Props } from 'docz'
             }
         ] }
         data={ [
-            [['sss', 80],  ['aaa', 90], ['zzz', 95]   ]  ,
+            [['sss', 80],  ['aaa', 90], ['zzz', 95]]  ,
             [['sss', 200], ['aaa', 300], ['zzz', 300] ], 
             [['sss', 500], ['aaa', 400], ['zzz', 600] ]
         ] }
@@ -122,7 +122,8 @@ import { Playground, Props } from 'docz'
 <Playground>
     <HorizontalBarChart 
         percent
-        animation
+        color='#8BC34A'
+        behindColor='#8bc34a5c'
         width={ 600 }
         yToolTip='Equipamento: '
         xToolTip='Disponibilidade: '
@@ -133,7 +134,6 @@ import { Playground, Props } from 'docz'
 ## Area Chart 
 <Playground>
     <AreaChart 
-        areaColor='blue'
         areaOpacity={ 0.5 }
         width={ 600 }
         xTickAngle={ 0 }
@@ -160,16 +160,12 @@ import { Playground, Props } from 'docz'
 ## Line Area Chart
 <Playground>
     <LineAreaChart 
-        areaColor='green'
-        lineColor='green'
-        areaOpacity={ 0.5 }
         width={ 600 }
         yDataType='percent'
         xTickAngle={ 0 }
         xTitle='period'
         yTitle='percentage'
         referenceLine={ 3 } 
-        referenceColor='green'
         referenceLegend='mark'
         yTooltipLegend='Porcentagem'    
         xTooltipLegend='Período'

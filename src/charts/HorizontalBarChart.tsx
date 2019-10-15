@@ -14,6 +14,7 @@ type TData = [number | null, string | number | null]
 
 interface IProps {
     color?: string
+    behindColor?: string
     animation?: boolean
     width?: number
     height?: number
@@ -94,6 +95,7 @@ const HorizontalBarChart = ({
     width,
     height,
     barWidth,
+    behindColor,
     color,
     data,
     percent,
@@ -142,9 +144,9 @@ const HorizontalBarChart = ({
                 cluster={ '1' }
                 animation={ animation }
                 barWidth={ barWidth || 0.8 }
-                color='#8bc34a5c'
+                color={ behindColor }
                 yDistance={ 50 }
-                stroke={ color || '#8BC34A' }
+                stroke={ color }
                 data={ data.map(getBehindBars) }
                 style={ {
                     rx: '7',
@@ -157,8 +159,8 @@ const HorizontalBarChart = ({
                 barWidth={ barWidth || 0.8 }
                 data={ newData }
                 yDistance={ 50 }
-                color={ color || '#8BC34A' }
-                stroke={ color || '#8BC34A' }
+                color={ color }
+                stroke={ color }
                 onValueMouseOver={ handleMouseOverBar(false) }
                 style={ {
                     rx: '7',

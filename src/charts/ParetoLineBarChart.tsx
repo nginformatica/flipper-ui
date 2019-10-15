@@ -177,10 +177,10 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                         strokeWidth: 1,
                         markWidht: 1
                     } }
-                    lineStyle={ { stroke: barsInfo[0].color || '#004A7C' } }
+                    lineStyle={ { stroke: barsInfo[0].color } }
                     markStyle={ {
-                        stroke: barsInfo[0].color || '#004A7C',
-                        fill: barsInfo[0].color || '#004A7C',
+                        stroke: barsInfo[0].color,
+                        fill: barsInfo[0].color,
                         r: 2.5
                     } }
                     data={ lineMark }
