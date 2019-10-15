@@ -9,7 +9,7 @@ import {
     Crosshair
 } from 'react-vis'
 import { Wrapper } from './style'
-import { getYAxis, TooltipText, units, truncate } from './AreaChart'
+import { getYAxis, TooltipText, units, truncate, getMaxDomain } from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
 import { format } from 'date-fns'
 import { formatToBRL } from 'brazilian-values'
@@ -27,6 +27,7 @@ interface IProps {
     color?: string
     xType?: 'ordinal' | 'time'
     yDataType?: 'hour' | 'quantity' | 'percent' | 'money'
+    yDomainExtra?: number
     yTitle?: string
     xTitle?: string
     yTooltipTitle?: string
@@ -49,15 +50,12 @@ const SingleBarChart = (props: IProps) => {
         yTitle,
         xTitle,
         xType,
-        yDataType
+        yDataType,
+        yDomainExtra
     } = props
     const [crosshair, setCrosshair] = useState<TBarChart[]>([])
     const barData = data.map(toCartesianPlan)
-    const maxValue = Math.max.apply(null, getYAxis(data))
     const unit = units as { [key: string]: string }
-    const flexibleDomain = maxValue >= 20
-        ? maxValue+40*(maxValue/100)
-        : maxValue+5
 
     const handleMouseOver = () => {
         setCrosshair([])
@@ -101,7 +99,7 @@ const SingleBarChart = (props: IProps) => {
                 margin={ { right: 40, left: 80 } }
                 width={ width || 300 }
                 height={ height || 275 }
-                yDomain={ [0, flexibleDomain] }
+                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
                 onMouseLeave={ handleMouseOver }
                 xType={ xType || 'ordinal' }
                 yType='linear'>

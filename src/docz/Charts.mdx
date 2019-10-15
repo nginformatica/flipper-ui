@@ -21,7 +21,6 @@ import { Playground, Props } from 'docz'
 <Props of={ LineVerticalBarChart } />
 <Props of={ ParetoLineBarChart } />
 
-
 ## Single Bar Chart
 <Playground>
     <SingleBarChart
@@ -34,6 +33,7 @@ import { Playground, Props } from 'docz'
         xTitle='equipment'
         yTooltipTitle='aaaa'
         xTooltipTitle='bbbb'
+        yDomainExtra={ 10 }
         data={ [["NG 361", 23]] } 
     />
 </Playground>
