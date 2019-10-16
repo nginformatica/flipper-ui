@@ -9,10 +9,17 @@ import {
     Crosshair
 } from 'react-vis'
 import { Wrapper } from './style'
-import { getYAxis, TooltipText, units, truncate, getMaxDomain } from './AreaChart'
+import {
+    getYAxis,
+    TooltipText,
+    units,
+    truncate,
+    getMaxDomain
+} from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
-import { format } from 'date-fns'
+import { format, parse } from 'date-fns'
 import { formatToBRL } from 'brazilian-values'
+import { ptBR } from 'date-fns/locale'
 
 type TData = [string | Date, number]
 
@@ -27,12 +34,23 @@ interface IProps {
     color?: string
     xType?: 'ordinal' | 'time'
     yDataType?: 'hour' | 'quantity' | 'percent' | 'money'
+    xTickType?: 'date' | 'text'
     yDomainExtra?: number
     yTitle?: string
     xTitle?: string
+    referenceLine?: number
+    referenceColor?: string
+    referenceLegend?: string
     yTooltipTitle?: string
     xTooltipTitle?: string
     data: TData[]
+}
+
+const toDate = (value: string, tooltip?: string) => {
+    const date = parse(value as string, 'yyyy-MM-dd', new Date())
+    const isTooltip = tooltip ? 'dd/MM/yyyy' : 'dd MMM'
+
+    return format(date, isTooltip, { locale: ptBR })
 }
 
 const toCartesianPlan = ([x,y]: TData) => ({
@@ -45,6 +63,7 @@ const SingleBarChart = (props: IProps) => {
         color,
         width,
         height,
+        xTickType,
         yTooltipTitle,
         xTooltipTitle,
         yTitle,
@@ -74,7 +93,13 @@ const SingleBarChart = (props: IProps) => {
             return (
                 <div style={ { width: '100px' } }>
                     <TooltipText>
-                        { xTooltipTitle + ': ' + values.x }
+                        {
+                            xTooltipTitle + ': ' + (
+                                xTickType === 'date'
+                                    ? toDate(values.x, 'tooltip')
+                                    : values.x
+                            )
+                        }
                     </TooltipText>
                     <TooltipText>
                         {
@@ -107,6 +132,12 @@ const SingleBarChart = (props: IProps) => {
                 <VerticalGridLines />
                 <XAxis
                     title={ xTitle }
+                    tickFormat={
+                        (value: string) =>
+                            xTickType === 'date'
+                                ? toDate(value)
+                                : value
+                    }
                     style={ {
                         text: {
                             fill: 'black'

@@ -28,13 +28,17 @@ import { Playground, Props } from 'docz'
         height={ 275 }
         color='#004A7C'
         yDataType='money'
-        yDomainExtra={ 100 }
+        xTickType='date'
+        referenceLine={ 3 }
+        referenceLegend='aaa'
+        referenceColor='black'
+        yDomainExtra={ 10 }
         yTitle='quantity'
         xTitle='equipment'
         yTooltipTitle='aaaa'
         xTooltipTitle='bbbb'
         yDomainExtra={ 10 }
-        data={ [["NG 361", 23]] } 
+        data={ [["2019-10-16", 23]] } 
     />
 </Playground>
 
@@ -138,9 +142,9 @@ import { Playground, Props } from 'docz'
         width={ 600 }
         xTickAngle={ 0 }
         xTitle='period'
-        yTooltipLegend='Quantidade'
+        yTooltipLegend='Tempo'
         xTooltipLegend='Data' 
-        yDataType='quantity'
+        yDataType='hour'
         yDomainExtra={ 5 }
         yTitle='quantity'
         data={ 
