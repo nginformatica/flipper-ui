@@ -30,18 +30,21 @@ export interface IProps extends IDefault {
         | 'center'
         | 'right'
         | 'justify'
+    component?: 'div'
 }
 
 const Typography: FC<IProps> = ({
     children,
     margin,
     padding,
+    component,
     style = {},
     variant = 'body2',
     ...otherProps
 }) =>
     <MuiTypography
         { ...otherProps }
+        component={ component }
         variant={ variant }
         style={ { margin, padding, ...style } }>
         { children }

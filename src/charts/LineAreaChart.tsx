@@ -19,7 +19,8 @@ import {
     TooltipText,
     compare,
     getMaxDomain,
-    getYAxis
+    getYAxis,
+    putReference
 } from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -61,16 +62,11 @@ const formatToCartesianPlan = ([x, y]: TData) => (
     }
 )
 
-const legendPosition = {
+export const legendPosition = {
     position: 'absolute',
     right: '18px',
     top: '0px'
 }
-
-const putReference = (
-    yAxis: number,
-    data: IAreaChartProps[]
-) => data.map(({ x }: IAreaChartProps) => ({ x, y: yAxis }))
 
 const LineAreaChart = (props: IProps) => {
     const {
@@ -96,7 +92,7 @@ const LineAreaChart = (props: IProps) => {
     const extension = yDataType === 'hour' ? 'h' : '%'
     const legendInfo = [{
         title: referenceLegend || 'mark',
-        color: referenceColor || 'green'
+        color: referenceColor
     }]
     const [hoveredValue, setHoveredValue] =
         useState<{ x: TData[0], y: TData[1] }[]>([])
