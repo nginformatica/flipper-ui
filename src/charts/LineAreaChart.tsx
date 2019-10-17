@@ -28,7 +28,6 @@ import ptBR from 'date-fns/locale/pt-BR'
 type TData = [number | string | Date, number]
 
 interface IProps {
-    width?: number
     height?: number
     areaColor?: string
     lineColor?: string
@@ -70,7 +69,6 @@ export const legendPosition = {
 
 const LineAreaChart = (props: IProps) => {
     const {
-        width,
         height,
         data,
         areaColor,
@@ -138,8 +136,7 @@ const LineAreaChart = (props: IProps) => {
                 xType='time'
                 yType='linear'
                 onMouseLeave={ handleLeaveMouse }
-                width={ width || 600 }
-                height={ height || 275 }>
+                height={ height || 300 }>
                 <VerticalGridLines tickTotal={ areaData.length } />
                 <HorizontalGridLines />
                 {

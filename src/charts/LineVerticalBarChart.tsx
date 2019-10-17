@@ -28,12 +28,11 @@ export interface IBarInfos {
 
 interface IProps {
     yDataType: 'money' | 'quantity'
-    width?: number
     height?: number
     yTitle?: string[]
     barsInfo?: IBarInfos[]
     yDomainExtra?: number
-    data: TData[][]
+    data: [TData[], TData[], TData[]]
 }
 
 export const TooltipText = styled.div`
@@ -61,7 +60,7 @@ export const defaultBarInfo = { color: '', title: '' }
 export const defaultChartData = [['', 0]]
 
 const LineVerticalBarChart = (props: IProps) => {
-    const { width, height, data, yTitle, barsInfo, yDataType, yDomainExtra } = props
+    const { height, data, yTitle, barsInfo, yDataType, yDomainExtra } = props
     const [
         bottomBarInfo = defaultBarInfo,
         topBarInfo = defaultBarInfo,
@@ -131,8 +130,7 @@ const LineVerticalBarChart = (props: IProps) => {
     return (
         <Wrapper>
             <FlexibleXYPlot
-                widht={ width || 400 }
-                height={ height || 275 }
+                height={ height || 300 }
                 xType='ordinal'
                 yType='linear'
                 yDomain={ [
