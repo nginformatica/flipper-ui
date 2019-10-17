@@ -27,8 +27,8 @@ interface IProps extends IDefault {
 }
 
 const Tooltip: FC<IProps> =
-    ({ children, withWrapper, wrapperStyle, ...otherProps }) =>
-        <MuiTooltip { ...otherProps }>
+    ({ children, withWrapper, wrapperStyle, enterDelay = 1000, ...otherProps }) =>
+        <MuiTooltip enterDelay={ enterDelay } { ...otherProps }>
             {
                 withWrapper
                     ? (
