@@ -26,7 +26,7 @@ interface IProps {
     areaColor?: string
     lineColor?: string
     areaOpacity?: number
-    yDataType?: 'hour' | 'unit' | 'percent'
+    yDataType?: 'hour' | 'quantity' | 'percent'
     yDomainExtra?: number
     xTickAngle?: number
     yTitle?: string
@@ -64,7 +64,7 @@ export const compare = (
     return equals(first, second)
 }
 
-const putReference = (
+export const putReference = (
     yAxis: number,
     data: IAreaChartProps[]
 ) => data.map(({ x }: IAreaChartProps) => ({ x, y: yAxis }))
@@ -136,11 +136,15 @@ const AreaChart = (props: IProps) => {
             ? xTooltipLegend + ': ' + format(values.x as Date, 'dd/MM/yyyy')
             : null
         const yValue = values
-            ? yTooltipLegend + ': ' + truncate(values.y)
+            ? (
+                yTooltipLegend + ': ' + truncate(values.y) + (
+                    unit[yDataType || 'quantity']
+                )
+            )
             : null
 
         return (
-            <div style={ { width: '100px' } }>
+            <div style={ { width: yDataType === 'quantity' ? '130px' : '100px' } }>
                 <TooltipText>
                     { xValue }
                 </TooltipText>

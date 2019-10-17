@@ -8,7 +8,7 @@ import {
     Hint
 } from 'react-vis'
 import styled from 'styled-components'
-import Typography from '../core/Typography'
+import { TooltipText } from './AreaChart'
 
 type TData = [number | null, string | number | null]
 
@@ -41,11 +41,6 @@ export const ChartsTooltip = styled.div`
     border-radius: 4px;
     padding: 6px;
     opacity: 0.6; 
-`
-
-export const TooltipText = styled(Typography)`
-    font-size: 10px !important;
-    color: white !important;
 `
 
 export const mountTooltip = (

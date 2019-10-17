@@ -1,6 +1,7 @@
 import { Select as MuiSelect } from '@material-ui/core'
 import React, { ChangeEvent, FC } from 'react'
 import { IDefault } from './Advertise'
+import { makeStyles } from '@material-ui/styles'
 
 interface IProps extends IDefault {
     autoWidth?: boolean
@@ -11,6 +12,15 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void
 }
 
+const useStyles = makeStyles(() => ({
+    root: {
+        padding: '10px 24px 10px 12px'
+    },
+    iconOutlined: {
+        right: '2px'
+    }
+}))
+
 const Select: FC<IProps> = ({
     children,
     style = {},
@@ -18,12 +28,21 @@ const Select: FC<IProps> = ({
     padding,
     variant = 'outlined',
     ...otherProps
-}) =>
-    <MuiSelect
-        variant={ variant as 'outlined' }
-        style={ { margin, padding, ...style } }
-        { ...otherProps }>
-        { children }
-    </MuiSelect>
+}) => {
+    const classes = useStyles()
+
+    return (
+        <MuiSelect
+            variant={ variant as 'outlined' }
+            classes={ {
+                root: classes.root,
+                icon: classes.iconOutlined
+            } }
+            style={ { margin, padding, ...style } }
+            { ...otherProps }>
+            { children }
+        </MuiSelect>
+    )
+}
 
 export default Select
