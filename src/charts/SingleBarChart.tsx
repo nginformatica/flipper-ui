@@ -60,7 +60,6 @@ const SingleBarChart = (props: IProps) => {
     const {
         data,
         color,
-        width,
         height,
         xTickType,
         yTooltipTitle,
