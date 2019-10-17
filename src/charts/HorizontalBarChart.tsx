@@ -16,7 +16,6 @@ interface IProps {
     color?: string
     behindColor?: string
     animation?: boolean
-    width?: number
     height?: number
     xLabelType?: 'ordinal' | 'literal'
     barWidth?: number
@@ -87,7 +86,6 @@ const INITIAL_STATE: IBarChartProps = formatToCartesianPlan([null, null])
 const HorizontalBarChart = ({
     animation,
     xLabelType,
-    width,
     height,
     barWidth,
     behindColor,
@@ -125,7 +123,6 @@ const HorizontalBarChart = ({
             animation={ animation }
             margin={ { left: 60, right: 10, top: 10, bottom: 40 } }
             yType={ xLabelType || 'ordinal' }
-            width={ width || 400 }
             height={ height || barHeight }
             onMouseLeave={ handleMouseOverBar(true) }>
             <XAxis hideTicks />

@@ -29,7 +29,6 @@ type TBarChart = {
 }
 
 interface IProps {
-    width?: number
     height?: number
     color?: string
     xType?: 'ordinal' | 'time'
@@ -122,8 +121,7 @@ const SingleBarChart = (props: IProps) => {
         <Wrapper>
             <FlexibleXYPlot
                 margin={ { right: 40, left: 80 } }
-                width={ width || 300 }
-                height={ height || 275 }
+                height={ height || 300 }
                 yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
                 onMouseLeave={ handleMouseOver }
                 xType={ xType || 'ordinal' }
