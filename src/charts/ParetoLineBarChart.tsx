@@ -29,7 +29,6 @@ type TChartValues = {
 
 interface IProps {
     yDataType: 'money' | 'unit'
-    width?: number
     height?: number
     barsInfo?: [IBarInfos, IBarInfos, IBarInfos]
     yTitle?: string
@@ -50,7 +49,6 @@ const getBody = (y: number, type: 'money' | 'unit', total?: number) => {
 
 const TwoYAxisLineBarChart = (props: IProps) => {
     const {
-        width = 0,
         height,
         data,
         barsInfo,
@@ -136,10 +134,9 @@ const TwoYAxisLineBarChart = (props: IProps) => {
         <Wrapper>
             <FlexibleXYPlot
                 height={ height || 275 }
-                width={ width || 275 }
                 xType='ordinal'
                 yType='linear'
-                margin={ { right: 40, left: 80 } }
+                margin={ { right: 60, left: 100 } }
                 onMouseLeave={ handleLeaveMouse }
                 yDomain={ [0, getMaxDomain(stackedYAxis, yDomainExtra || 50)] }
                 stackBy='y'>
@@ -171,13 +168,13 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                 />
                 <YAxis
                     tickFormat={ tick => tick + '%' }
-                    left={ (width - 120) }
+                    orientation='right'
+                    position='end'
                     yDomain={ [0, 100] }
-                    tickSize={ 4 }
+                    tickSize={ -4 }
                     style={ {
                         line: { stroke: lineMarkInfo.color },
                         text: {
-                            transform: 'translate(32px)',
                             fontSize: '12px',
                             fontWeight: '300',
                             fill: lineMarkInfo.color

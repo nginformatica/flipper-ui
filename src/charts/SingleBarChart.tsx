@@ -37,9 +37,6 @@ interface IProps {
     yDomainExtra?: number
     yTitle?: string
     xTitle?: string
-    referenceLine?: number
-    referenceColor?: string
-    referenceLegend?: string
     yTooltipTitle?: string
     xTooltipTitle?: string
     data: TData[]
@@ -119,7 +116,7 @@ const SingleBarChart = (props: IProps) => {
     return (
         <Wrapper>
             <FlexibleXYPlot
-                margin={ { right: 40, left: 80 } }
+                margin={ { right: 60, left: 100 } }
                 height={ height || 300 }
                 yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
                 onMouseLeave={ handleMouseOver }
