@@ -16,11 +16,12 @@ import {
     defaultBarInfo,
     defaultChartData
 } from './LineVerticalBarChart'
-import { ChartsTooltip } from './HorizontalBarChart'
+import { ChartsTooltip, elipsize } from './HorizontalBarChart'
 import { truncate, getMaxDomain, getYAxis } from './AreaChart'
 import { formatToBRL } from 'brazilian-values'
 
 type TData = [string, number]
+type TUniTypes = 'hour' | 'quantity' | 'percent' | 'money' | 'unit'
 
 type TChartValues = {
     x: TData[0],
@@ -29,7 +30,6 @@ type TChartValues = {
 
 interface IProps {
     yDataType: 'money' | 'unit'
-    width?: number
     height?: number
     barsInfo?: [IBarInfos, IBarInfos, IBarInfos]
     yTitle?: string
@@ -38,7 +38,7 @@ interface IProps {
 }
 
 const toCartesianPlan = ([x, y]: TData) => ({ x, y })
-const getBody = (y: number, type: 'money' | 'unit', total?: number) => {
+export const getBody = (y: number, type: TUniTypes, total?: number) => {
     const percent = total ? (' (' + truncate(y * (100 / total)) + '%)') : ''
 
     return (
@@ -50,7 +50,6 @@ const getBody = (y: number, type: 'money' | 'unit', total?: number) => {
 
 const TwoYAxisLineBarChart = (props: IProps) => {
     const {
-        width = 0,
         height,
         data,
         barsInfo,
@@ -136,16 +135,18 @@ const TwoYAxisLineBarChart = (props: IProps) => {
         <Wrapper>
             <FlexibleXYPlot
                 height={ height || 275 }
-                width={ width || 275 }
                 xType='ordinal'
                 yType='linear'
-                margin={ { right: 40, left: 80 } }
+                margin={ { right: 60, left: 100 } }
                 onMouseLeave={ handleLeaveMouse }
                 yDomain={ [0, getMaxDomain(stackedYAxis, yDomainExtra || 50)] }
                 stackBy='y'>
                 <HorizontalGridLines tickTotal={ bottomX.length } />
                 <VerticalGridLines tickTotal={ bottomX.length } />
                 <XAxis
+                    tickFormat={
+                        tick => elipsize(tick, 9, 6)
+                    }
                     style={ {
                         text: {
                             fontSize: '12px',
@@ -171,13 +172,13 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                 />
                 <YAxis
                     tickFormat={ tick => tick + '%' }
-                    left={ (width - 120) }
+                    orientation='right'
+                    position='end'
                     yDomain={ [0, 100] }
-                    tickSize={ 4 }
+                    tickSize={ -4 }
                     style={ {
                         line: { stroke: lineMarkInfo.color },
                         text: {
-                            transform: 'translate(32px)',
                             fontSize: '12px',
                             fontWeight: '300',
                             fill: lineMarkInfo.color

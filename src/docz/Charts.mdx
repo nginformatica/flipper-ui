@@ -8,6 +8,7 @@ import AreaChart from '../charts/AreaChart'
 import LineAreaChart from '../charts/LineAreaChart'
 import LineVerticalBarChart from '../charts/LineVerticalBarChart'
 import ParetoLineBarChart from '../charts/ParetoLineBarChart'
+import StackedBarChart from '../charts/StackedBarChart'
 import SingleBarChart from '../charts/SingleBarChart'
 import { Playground, Props } from 'docz'
 
@@ -20,6 +21,31 @@ import { Playground, Props } from 'docz'
 <Props of={ LineAreaChart } />
 <Props of={ LineVerticalBarChart } />
 <Props of={ ParetoLineBarChart } />
+<Props of={ StackedBarChart } />
+
+## Stacked Bar Chart
+<Playground>
+    <StackedBarChart
+        yDataType='money'
+        xTickType='text'
+        yTitle='value'
+        barsInfo={[
+            {
+                title: 'Manutenção',
+                color: '#87C4CB'
+            },
+            { 
+                title: 'Aquisição',
+                color: '#487086'
+            }
+        ]}
+        data={ [
+            [['equipment', 20000]], 
+            [['equipment', 50000]]
+        ] } 
+    />
+</Playground>
+
 
 ## Single Bar Chart
 <Playground>
@@ -28,14 +54,11 @@ import { Playground, Props } from 'docz'
         color='#004A7C'
         yDataType='money'
         xTickType='date'
-        referenceLine={ 3 }
-        referenceLegend='aaa'
-        referenceColor='black'
         yDomainExtra={ 10 }
         yTitle='quantity'
         xTitle='equipment'
-        yTooltipTitle='aaaa'
-        xTooltipTitle='bbbb'
+        yTooltipTitle='big description'
+        xTooltipTitle='big description'
         yDomainExtra={ 10 }
         data={ [["2019-10-16", 23]] } 
     />
@@ -63,10 +86,44 @@ import { Playground, Props } from 'docz'
             }
         ] }
         data={ [
-            [['sss', 80],  ['aaa', 90], ['zzz', 95]]  ,
-            [['sss', 200], ['aaa', 300], ['zzz', 300] ], 
-            [['sss', 500], ['aaa', 400], ['zzz', 600] ]
-        ] }
+            [
+                ['EQUIPMENT01', 80],    
+                ['EQUIPMENT02', 90],    
+                ['EQUIPMENT03', 95],
+                ['EQUIPMENT04', 80],
+                ['EQUIPMENT05', 90],
+                ['EQUIPMENT06', 95],
+                ['EQUIPMENT07', 80],
+                ['EQUIPMENT08', 90],
+                ['EQUIPMENT09', 95],
+                ['EQUIPMENT10', 80]    
+            ],
+            [
+                ['EQUIPMENT01', 8000],
+                ['EQUIPMENT02', 9000],
+                ['EQUIPMENT03', 9500],
+                ['EQUIPMENT04', 10000],
+                ['EQUIPMENT05', 11000],
+                ['EQUIPMENT06', 11500],
+                ['EQUIPMENT07', 11600],
+                ['EQUIPMENT08', 11700],
+                ['EQUIPMENT09', 11800],
+                ['EQUIPMENT10', 11900]
+            ],
+            [
+                ['EQUIPMENT01', 800],
+                ['EQUIPMENT02', 900],
+                ['EQUIPMENT03', 950],
+                ['EQUIPMENT04', 1000],
+                ['EQUIPMENT05', 1100],
+                ['EQUIPMENT06', 1150],
+                ['EQUIPMENT07', 1160],
+                ['EQUIPMENT08', 1170],
+                ['EQUIPMENT09', 1180],
+                ['EQUIPMENT10', 1190]
+            ]
+        ]
+    }
     />
 </Playground>
 
@@ -93,28 +150,28 @@ import { Playground, Props } from 'docz'
         ] }
         data={ [
             [ 
-                ['2019-01-01 14:01', 1000],
-                ['2019-02-01 14:01', 2000],
-                ['2019-03-01 14:01', 3000],
-                ['2019-04-01 14:01', 4000],
-                ['2019-05-01 14:01', 5000],
-                ['2019-06-01 14:01', 6000]
+                ['2019-01-01', 1000000],
+                ['2019-02-01', 2000000],
+                ['2019-03-01', 3000000],
+                ['2019-04-01', 4000000],
+                ['2019-05-01', 5000000],
+                ['2019-06-01', 6000000]
             ],
             [ 
-                ['2019-01-01 14:01', 1000],
-                ['2019-02-01 14:01', 2500],
-                ['2019-03-01 14:01', 1200],
-                ['2019-04-01 14:01', 4000],
-                ['2019-05-01 14:01', 5000],
-                ['2019-06-01 14:01', 6000]
+                ['2019-01-01', 100000],
+                ['2019-02-01', 250000],
+                ['2019-03-01', 120000],
+                ['2019-04-01', 400000],
+                ['2019-05-01', 500000],
+                ['2019-06-01', 600000]
             ],
             [ 
-                ['2019-01-01 14:01', 10000],
-                ['2019-02-01 14:01', 11000],
-                ['2019-03-01 14:01', 12000],
-                ['2019-04-01 14:01', 13000],
-                ['2019-05-01 14:01', 14000],
-                ['2019-06-01 14:01', 15000]
+                ['2019-01-01', 10000000],
+                ['2019-02-01', 11000000],
+                ['2019-03-01', 12000000],
+                ['2019-04-01', 13000000],
+                ['2019-05-01', 14000000],
+                ['2019-06-01', 15000000]
             ]
         ] }
     />

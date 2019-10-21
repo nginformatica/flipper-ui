@@ -77,9 +77,10 @@ const formatToCartesianPlan = ([x, y]: TData): IBarChartProps => ({
     }
 })
 
-const elipsize = text => text.toString().length > 6
-    ? text.slice(0, 3) + '...'
-    : text
+export const elipsize = (text: string, length: number, size: number) =>
+    text.toString().length > length
+        ? text.slice(0, size) + '...'
+        : text
 
 const INITIAL_STATE: IBarChartProps = formatToCartesianPlan([null, null])
 
@@ -127,7 +128,7 @@ const HorizontalBarChart = ({
             onMouseLeave={ handleMouseOverBar(true) }>
             <XAxis hideTicks />
             <YAxis
-                tickFormat={ (tick: string) => elipsize(tick) }
+                tickFormat={ (tick: string) => elipsize(tick, 6, 3) }
                 style={ {
                     text: { fontSize: '12px', justifyContent: 'left' }
                 } }

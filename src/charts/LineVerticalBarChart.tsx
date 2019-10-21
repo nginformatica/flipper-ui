@@ -10,8 +10,7 @@ import {
     DiscreteColorLegend,
     Crosshair
 } from 'react-vis'
-import { toDate } from './LineAreaChart'
-import { format } from 'date-fns'
+import { format, parse } from 'date-fns'
 import { Wrapper } from './style'
 import { ChartsTooltip } from './HorizontalBarChart'
 import styled from 'styled-components'
@@ -41,6 +40,9 @@ export const TooltipText = styled.div`
     font-size: 12px;
     color: white;
 `
+
+const toDate =
+    (x: string) => parse(x as string, 'yyyy-MM-dd', new Date())
 
 const toCartesianPlan = ([x, y]: TData) => ({
     x: format(toDate(x), 'MMM/yy', { locale: ptBR }),
@@ -137,7 +139,7 @@ const LineVerticalBarChart = (props: IProps) => {
                     0,
                     getMaxDomain(getYAxis(data[2]), yDomainExtra || 10)
                 ] }
-                margin={ { right: 40, left: 80 } }
+                margin={ { right: 60, left: 100 } }
                 onMouseLeave={ handleLeaveMouse }
                 stackBy='y'>
                 <HorizontalGridLines />
@@ -151,6 +153,7 @@ const LineVerticalBarChart = (props: IProps) => {
                     } }
                 />
                 <YAxis
+                    tickSize={ -4 }
                     title={ yTitle }
                     style={ {
                         text: {
