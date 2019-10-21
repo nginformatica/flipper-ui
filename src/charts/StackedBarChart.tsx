@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { IBarInfos, defaultBarInfo } from './LineVerticalBarChart'
 import {
     FlexibleXYPlot,
@@ -6,14 +6,15 @@ import {
     VerticalGridLines,
     XAxis,
     YAxis,
-    VerticalBarSeries
+    VerticalBarSeries,
+    Crosshair
 } from 'react-vis'
 import { Wrapper } from './style'
-import { getYAxis, getMaxDomain, truncate, units } from './AreaChart'
-import { toDate } from './LineAreaChart'
+import { getYAxis, getMaxDomain, truncate, units, TooltipText } from './AreaChart'
 import { formatToBRL } from 'brazilian-values'
-
-type TData = [string, number]
+import { TData, TBarChart, toDate } from './SingleBarChart'
+import { ChartsTooltip } from './HorizontalBarChart'
+import { getBody } from './ParetoLineBarChart'
 
 interface IProps {
     height?: number
@@ -45,16 +46,63 @@ const StackedBarChart = (props: IProps) => {
     } = props
     const topBarValues = data[0] ? data[0].map(toCartesianPlan) : defaultBar
     const bottomBarValues = data[1] ? data[1].map(toCartesianPlan) : defaultBar
-    const unit = units as { [key: string]: string }
     const [
         topBarInfo = defaultBarInfo,
         bottomBarInfo = defaultBarInfo
     ] = barsInfo || []
+    const [crosshair, setCrosshair] = useState<TBarChart[]>([])
+    const unit = units as { [key: string]: string }
 
     const stackedYAxis = getYAxis(data[1]).map(
         (value: number, index: number) => {
             return value + getYAxis(data[0])[index]
         })
+
+    const handleMouseOver = () => {
+        setCrosshair([])
+    }
+
+    const handleNearMouse = useCallback(
+        (selected: unknown, { index }: { index: number }) => {
+            setCrosshair([topBarValues[index]])
+        }, [])
+
+    const renderPosition = () => {
+        const topValues = crosshair.length && topBarValues
+            .find(item => item.x === crosshair[0].x)
+
+        const bottomValues = crosshair.length && bottomBarValues
+            .find(item => item.x === crosshair[0].x)
+
+        if (topValues && bottomValues) {
+            const total = topValues.y + bottomValues.y
+
+            return (
+                <div style={ { width: '180px' } }>
+                    <TooltipText>
+                        {
+                            topBarInfo && (topBarInfo.title + getBody(
+                                topValues.y,
+                                yDataType ? yDataType : 'quantity',
+                                total
+                            ))
+                        }
+                    </TooltipText>
+                    <TooltipText>
+                        {
+                            bottomBarInfo && (bottomBarInfo.title + getBody(
+                                bottomValues.y,
+                                yDataType ? yDataType : 'quantity',
+                                total
+                            ))
+                        }
+                    </TooltipText>
+                </div>
+            )
+        }
+
+        return null
+    }
 
     return (
         <Wrapper>
@@ -65,6 +113,7 @@ const StackedBarChart = (props: IProps) => {
                 xType='ordinal'
                 yType='linear'
                 yDomain={ [0, getMaxDomain(stackedYAxis, yDomainExtra || 50)] }
+                onMouseLeave={ handleMouseOver }
                 stackedBy='y'>
                 <HorizontalGridLines />
                 <VerticalGridLines />
@@ -97,6 +146,7 @@ const StackedBarChart = (props: IProps) => {
                     }
                 />
                 <VerticalBarSeries
+                    onNearestXY={ handleNearMouse }
                     barWidth={ 0.3 }
                     color={ bottomBarInfo.color }
                     data={ bottomBarValues }
@@ -106,6 +156,13 @@ const StackedBarChart = (props: IProps) => {
                     color={ topBarInfo.color }
                     data={ topBarValues }
                 />
+                <Crosshair
+                    style={ { line: { backgroundColor: '#C1C1C1' } } }
+                    values={ crosshair } >
+                    <ChartsTooltip>
+                        { renderPosition() }
+                    </ChartsTooltip>
+                </Crosshair>
             </FlexibleXYPlot>
         </Wrapper>
     )

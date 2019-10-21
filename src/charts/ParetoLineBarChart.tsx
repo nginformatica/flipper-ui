@@ -16,11 +16,12 @@ import {
     defaultBarInfo,
     defaultChartData
 } from './LineVerticalBarChart'
-import { ChartsTooltip } from './HorizontalBarChart'
+import { ChartsTooltip, elipsize } from './HorizontalBarChart'
 import { truncate, getMaxDomain, getYAxis } from './AreaChart'
 import { formatToBRL } from 'brazilian-values'
 
 type TData = [string, number]
+type TUniTypes = 'hour' | 'quantity' | 'percent' | 'money' | 'unit'
 
 type TChartValues = {
     x: TData[0],
@@ -37,7 +38,7 @@ interface IProps {
 }
 
 const toCartesianPlan = ([x, y]: TData) => ({ x, y })
-const getBody = (y: number, type: 'money' | 'unit', total?: number) => {
+export const getBody = (y: number, type: TUniTypes, total?: number) => {
     const percent = total ? (' (' + truncate(y * (100 / total)) + '%)') : ''
 
     return (
@@ -143,6 +144,9 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                 <HorizontalGridLines tickTotal={ bottomX.length } />
                 <VerticalGridLines tickTotal={ bottomX.length } />
                 <XAxis
+                    tickFormat={
+                        tick => elipsize(tick, 9, 6)
+                    }
                     style={ {
                         text: {
                             fontSize: '12px',

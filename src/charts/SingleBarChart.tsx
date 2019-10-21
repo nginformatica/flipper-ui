@@ -21,9 +21,9 @@ import { format, parse } from 'date-fns'
 import { formatToBRL } from 'brazilian-values'
 import { ptBR } from 'date-fns/locale'
 
-type TData = [string | Date, number]
+export type TData = [string | Date, number]
 
-type TBarChart = {
+export type TBarChart = {
     x: TData[0]
     y: TData[1]
 }
@@ -42,7 +42,7 @@ interface IProps {
     data: TData[]
 }
 
-const toDate = (value: string, tooltip?: string) => {
+export const toDate = (value: string, tooltip?: string) => {
     const date = parse(value as string, 'yyyy-MM-dd', new Date())
     const isTooltip = tooltip ? 'dd/MM/yyyy' : 'dd MMM'
 

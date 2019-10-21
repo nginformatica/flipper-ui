@@ -26,6 +26,9 @@ import { Playground, Props } from 'docz'
 ## Stacked Bar Chart
 <Playground>
     <StackedBarChart
+        yDataType='money'
+        xTickType='text'
+        yTitle='value'
         barsInfo={[
             {
                 title: 'Manutenção',
@@ -37,8 +40,8 @@ import { Playground, Props } from 'docz'
             }
         ]}
         data={ [
-            [['sss', 20000] ], 
-            [['sss', 50000] ]
+            [['equipment', 20000] ], 
+            [['equipment', 50000] ]
         ] } 
     />
 </Playground>
@@ -83,10 +86,44 @@ import { Playground, Props } from 'docz'
             }
         ] }
         data={ [
-            [['sss', 80],  ['aaa', 90], ['zzz', 95]]  ,
-            [['sss', 20000], ['aaa', 30000], ['zzz', 30000] ], 
-            [['sss', 50000], ['aaa', 40000], ['zzz', 60000] ]
-        ] }
+            [
+                ['EQUIPMENT01', 80],    
+                ['EQUIPMENT02', 90],    
+                ['EQUIPMENT03', 95],
+                ['EQUIPMENT04', 80],
+                ['EQUIPMENT05', 90],
+                ['EQUIPMENT06', 95],
+                ['EQUIPMENT07', 80],
+                ['EQUIPMENT08', 90],
+                ['EQUIPMENT09', 95],
+                ['EQUIPMENT10', 80]    
+            ],
+            [
+                ['EQUIPMENT01', 8000],
+                ['EQUIPMENT02', 9000],
+                ['EQUIPMENT03', 9500],
+                ['EQUIPMENT04', 10000],
+                ['EQUIPMENT05', 11000],
+                ['EQUIPMENT06', 11500],
+                ['EQUIPMENT07', 11600],
+                ['EQUIPMENT08', 11700],
+                ['EQUIPMENT09', 11800],
+                ['EQUIPMENT10', 11900]
+            ],
+            [
+                ['EQUIPMENT01', 800],
+                ['EQUIPMENT02', 900],
+                ['EQUIPMENT03', 950],
+                ['EQUIPMENT04', 1000],
+                ['EQUIPMENT05', 1100],
+                ['EQUIPMENT06', 1150],
+                ['EQUIPMENT07', 1160],
+                ['EQUIPMENT08', 1170],
+                ['EQUIPMENT09', 1180],
+                ['EQUIPMENT10', 1190]
+            ]
+        ]
+    }
     />
 </Playground>
 
