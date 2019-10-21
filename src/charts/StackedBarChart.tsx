@@ -29,10 +29,7 @@ interface IProps {
 
 const defaultBar = [{ x: '', y: 0 }]
 
-const toCartesianPlan = ([x,y]: TData) => ({
-    x,
-    y
-})
+const toCartesianPlan = ([x,y]: TData) => ({ x, y })
 
 const StackedBarChart = (props: IProps) => {
     const {
