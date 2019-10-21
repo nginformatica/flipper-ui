@@ -86,7 +86,7 @@ const SingleBarChart = (props: IProps) => {
 
         if (values) {
             return (
-                <div style={ { width: '120px' } }>
+                <div style={ { width: '140px' } }>
                     <TooltipText>
                         {
                             xTooltipTitle + ': ' + (
