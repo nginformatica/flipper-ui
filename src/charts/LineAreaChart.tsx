@@ -84,7 +84,7 @@ const LineAreaChart = (props: IProps) => {
         {
             x: toDate(x as string),
             y,
-            style: { fontSize: labelTextSize || 12 + 'px' }
+            style: { fontSize: (labelTextSize || 12) + 'px' }
         }
     )
 
@@ -157,7 +157,7 @@ const LineAreaChart = (props: IProps) => {
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: labelTextSize || 12 + 'px'
+                            fontSize: (labelTextSize || 12) + 'px'
                         }
                     } }
                 />
