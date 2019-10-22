@@ -22,6 +22,7 @@ type TData = [number | string | Date, number]
 
 interface IProps {
     height?: number
+    labelTextSize?: number
     areaColor?: string
     lineColor?: string
     areaOpacity?: number
@@ -51,6 +52,10 @@ export const units = {
 
 export const truncate = (value: number) => Number(value.toFixed(2))
 export const getYAxis = (data: TData[]) => data.map(([, y]: TData) => y)
+export const labelTruncate = (
+    value: number,
+    size: number
+) => Number(value.toFixed(size > 10 ? 2 : 1))
 
 export const compare = (
     first: string | number | Date,
@@ -67,14 +72,6 @@ export const putReference = (
     yAxis: number,
     data: IAreaChartProps[]
 ) => data.map(({ x }: IAreaChartProps) => ({ x, y: yAxis }))
-
-const formatToCartesianPlan = ([x, y]: TData) => (
-    {
-        x: parse(x as string, 'yyyy-MM-dd', new Date()),
-        y,
-        style: { fontSize: 12 }
-    }
-)
 
 export const TooltipText = styled.div`
     display: flex;
@@ -108,8 +105,17 @@ const AreaChart = (props: IProps) => {
         xTitle,
         yTooltipLegend,
         xTooltipLegend,
-        yDomainExtra
+        yDomainExtra,
+        labelTextSize = 12
     } = props
+
+    const formatToCartesianPlan = ([x, y]: TData) => (
+        {
+            x: parse(x as string, 'yyyy-MM-dd', new Date()),
+            y,
+            style: { fontSize: labelTextSize }
+        }
+    )
 
     const areaData = data.map(formatToCartesianPlan)
     const xAxisTicks = areaData.map(data => data.x)
@@ -180,8 +186,9 @@ const AreaChart = (props: IProps) => {
                 <YAxis
                     title={ yTitle || null }
                     tickFormat={
-                        (value: number) =>
+                        (value: number) => (
                             truncate(value) + unit[yDataType || 'quantity']
+                        )
                     }
                     style={ {
                         text: {
@@ -220,7 +227,10 @@ const AreaChart = (props: IProps) => {
                     data={ areaData }
                     getLabel={
                         newData =>
-                            truncate(newData.y) + unit[yDataType || 'quantity']
+                            labelTruncate(
+                                newData.y,
+                                labelTextSize
+                            ) + unit[yDataType || 'quantity']
                     }
                 />
                 <Crosshair
