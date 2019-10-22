@@ -145,7 +145,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                 <VerticalGridLines tickTotal={ bottomX.length } />
                 <XAxis
                     tickFormat={
-                        tick => elipsize(tick, 9, 6)
+                        tick => elipsize(tick, 6, 3)
                     }
                     style={ {
                         text: {
