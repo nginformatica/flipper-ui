@@ -31,6 +31,7 @@ interface IProps {
     yTitle?: string[]
     barsInfo?: IBarInfos[]
     yDomainExtra?: number
+    xTickSize?: number
     data: [TData[], TData[], TData[]]
 }
 
@@ -62,7 +63,15 @@ export const defaultBarInfo = { color: '', title: '' }
 export const defaultChartData = [['', 0]]
 
 const LineVerticalBarChart = (props: IProps) => {
-    const { height, data, yTitle, barsInfo, yDataType, yDomainExtra } = props
+    const {
+        height,
+        data,
+        yTitle,
+        barsInfo,
+        yDataType,
+        yDomainExtra,
+        xTickSize
+    } = props
     const [
         bottomBarInfo = defaultBarInfo,
         topBarInfo = defaultBarInfo,
@@ -148,7 +157,7 @@ const LineVerticalBarChart = (props: IProps) => {
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: '12px'
+                            fontSize: (xTickSize || 12) + 'px'
                         }
                     } }
                 />
