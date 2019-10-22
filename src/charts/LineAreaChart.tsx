@@ -157,7 +157,7 @@ const LineAreaChart = (props: IProps) => {
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: '12px'
+                            fontSize: labelTextSize +'px'
                         }
                     } }
                 />
