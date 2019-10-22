@@ -106,14 +106,14 @@ const AreaChart = (props: IProps) => {
         yTooltipLegend,
         xTooltipLegend,
         yDomainExtra,
-        labelTextSize = 12
+        labelTextSize
     } = props
 
     const formatToCartesianPlan = ([x, y]: TData) => (
         {
             x: parse(x as string, 'yyyy-MM-dd', new Date()),
             y,
-            style: { fontSize: labelTextSize }
+            style: { fontSize: (labelTextSize || 12) + 'px' }
         }
     )
 
@@ -179,7 +179,7 @@ const AreaChart = (props: IProps) => {
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: labelTextSize + 'px'
+                            fontSize: (labelTextSize || 12) + 'px'
                         }
                     } }
                 />
@@ -229,7 +229,7 @@ const AreaChart = (props: IProps) => {
                         newData =>
                             labelTruncate(
                                 newData.y,
-                                labelTextSize
+                                (labelTextSize || 12)
                             ) + unit[yDataType || 'quantity']
                     }
                 />

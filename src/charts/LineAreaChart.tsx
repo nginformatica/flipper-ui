@@ -78,13 +78,13 @@ const LineAreaChart = (props: IProps) => {
         yTooltipLegend,
         xTooltipLegend,
         yDomainExtra,
-        labelTextSize = 12
+        labelTextSize
     } = props
     const formatToCartesianPlan = ([x, y]: TData) => (
         {
             x: toDate(x as string),
             y,
-            style: { fontSize: labelTextSize }
+            style: { fontSize: (labelTextSize || 12) + 'px' }
         }
     )
 
@@ -157,7 +157,7 @@ const LineAreaChart = (props: IProps) => {
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: labelTextSize +'px'
+                            fontSize: (labelTextSize || 12) + 'px'
                         }
                     } }
                 />
@@ -202,7 +202,7 @@ const LineAreaChart = (props: IProps) => {
                     getLabel={
                         newData => labelTruncate(
                             newData.y,
-                            labelTextSize
+                            labelTextSize || 12
                         ) + extension
                     }
                 />
