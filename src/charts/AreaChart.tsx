@@ -113,7 +113,7 @@ const AreaChart = (props: IProps) => {
         {
             x: parse(x as string, 'yyyy-MM-dd', new Date()),
             y,
-            style: { fontSize: labelTextSize || 12 + 'px' }
+            style: { fontSize: (labelTextSize || 12) + 'px' }
         }
     )
 
@@ -179,7 +179,7 @@ const AreaChart = (props: IProps) => {
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: labelTextSize || 12 + 'px'
+                            fontSize: (labelTextSize || 12) + 'px'
                         }
                     } }
                 />
@@ -229,7 +229,7 @@ const AreaChart = (props: IProps) => {
                         newData =>
                             labelTruncate(
                                 newData.y,
-                                labelTextSize || 12
+                                (labelTextSize || 12)
                             ) + unit[yDataType || 'quantity']
                     }
                 />
