@@ -84,7 +84,8 @@ const LineAreaChart = (props: IProps) => {
         {
             x: toDate(x as string),
             y,
-            style: { fontSize: (labelTextSize || 12) + 'px' }
+            style: { fontSize: (labelTextSize || 12) + 'px' },
+            yOffset: -8
         }
     )
 
@@ -198,6 +199,8 @@ const LineAreaChart = (props: IProps) => {
                     />
                 }
                 <LabelSeries
+                    labelAnchorX='middle'
+                    labelAnchorY='middle'
                     data={ areaData }
                     getLabel={
                         newData => labelTruncate(
