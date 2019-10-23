@@ -55,7 +55,7 @@ export const getYAxis = (data: TData[]) => data.map(([, y]: TData) => y)
 export const labelTruncate = (
     value: number,
     size: number
-) => Number(value.toFixed(size > 10 ? 2 : 1))
+) => Number(value.toFixed(size > 11 ? 2 : 1))
 
 export const compare = (
     first: string | number | Date,
