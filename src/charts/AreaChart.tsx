@@ -176,7 +176,7 @@ const AreaChart = (props: IProps) => {
                     tickLabelAngle={ xTickAngle || 0 }
                     tickValues={ xAxisTicks }
                     tickFormat={ tick => format(tick, 'dd MMM', { locale: ptBR }) }
-                    tickSize={ xTickAngle ? 24 : 0 }
+                    tickSize={ xTickAngle ? 20 : 0 }
                     style={ {
                         text: {
                             fill: 'black',

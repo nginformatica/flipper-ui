@@ -32,6 +32,7 @@ interface IProps {
     barsInfo?: IBarInfos[]
     yDomainExtra?: number
     xTickSize?: number
+    xTickAngle?: number
     data: [TData[], TData[], TData[]]
 }
 
@@ -70,7 +71,8 @@ const LineVerticalBarChart = (props: IProps) => {
         barsInfo,
         yDataType,
         yDomainExtra,
-        xTickSize
+        xTickSize,
+        xTickAngle
     } = props
     const [
         bottomBarInfo = defaultBarInfo,
@@ -154,6 +156,8 @@ const LineVerticalBarChart = (props: IProps) => {
                 <HorizontalGridLines />
                 <VerticalGridLines tickTotal={ firstX.length } />
                 <XAxis
+                    tickLabelAngle={ xTickAngle || 0 }
+                    tickSize={ xTickAngle ? 24 : 0 }
                     style={ {
                         text: {
                             fill: 'black',
