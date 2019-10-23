@@ -203,7 +203,7 @@ const LineAreaChart = (props: IProps) => {
                         newData => labelTruncate(
                             newData.y,
                             labelTextSize || 12
-                        ) + extension
+                        )
                     }
                 />
                 <Crosshair

@@ -113,7 +113,8 @@ const AreaChart = (props: IProps) => {
         {
             x: parse(x as string, 'yyyy-MM-dd', new Date()),
             y,
-            style: { fontSize: (labelTextSize || 12) + 'px' }
+            style: { fontSize: (labelTextSize || 12) + 'px' },
+            yOffset: -8
         }
     )
 
@@ -175,11 +176,14 @@ const AreaChart = (props: IProps) => {
                     tickLabelAngle={ xTickAngle || 0 }
                     tickValues={ xAxisTicks }
                     tickFormat={ tick => format(tick, 'dd MMM', { locale: ptBR }) }
-                    tickSize={ xTickAngle ? 30 : 0 }
+                    tickSize={ xTickAngle ? 24 : 0 }
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: (labelTextSize || 12) + 'px'
+                            fontSize:
+                                xTickAngle
+                                    ? '12px'
+                                    : (labelTextSize || 12) + 'px'
                         }
                     } }
                 />
@@ -224,13 +228,13 @@ const AreaChart = (props: IProps) => {
                 />
                 }
                 <LabelSeries
+                    labelAnchorX='middle'
+                    labelAnchorY='middle'
+                    rotation={ xTickAngle || 0 }
                     data={ areaData }
                     getLabel={
                         newData =>
-                            labelTruncate(
-                                newData.y,
-                                (labelTextSize || 12)
-                            ) + unit[yDataType || 'quantity']
+                            labelTruncate(newData.y, (labelTextSize || 12))
                     }
                 />
                 <Crosshair
