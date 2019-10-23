@@ -1,6 +1,10 @@
 {
   "name": "flipper-ui",
+<<<<<<< HEAD
   "version": "0.21.2",
+=======
+  "version": "0.21.1",
+>>>>>>> a032e1b8c9694e147a5576f194d3ac2b51721fb9
   "description": "",
   "main": "dist/index.js",
   "homepage": "https://nginformatica.github.io/flipper-ui/",
