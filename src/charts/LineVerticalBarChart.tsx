@@ -31,6 +31,8 @@ interface IProps {
     yTitle?: string[]
     barsInfo?: IBarInfos[]
     yDomainExtra?: number
+    xTickSize?: number
+    xTickAngle?: number
     data: [TData[], TData[], TData[]]
 }
 
@@ -62,7 +64,16 @@ export const defaultBarInfo = { color: '', title: '' }
 export const defaultChartData = [['', 0]]
 
 const LineVerticalBarChart = (props: IProps) => {
-    const { height, data, yTitle, barsInfo, yDataType, yDomainExtra } = props
+    const {
+        height,
+        data,
+        yTitle,
+        barsInfo,
+        yDataType,
+        yDomainExtra,
+        xTickSize,
+        xTickAngle
+    } = props
     const [
         bottomBarInfo = defaultBarInfo,
         topBarInfo = defaultBarInfo,
@@ -145,10 +156,12 @@ const LineVerticalBarChart = (props: IProps) => {
                 <HorizontalGridLines />
                 <VerticalGridLines tickTotal={ firstX.length } />
                 <XAxis
+                    tickLabelAngle={ xTickAngle || 0 }
+                    tickSize={ xTickAngle ? 24 : 0 }
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: '12px'
+                            fontSize: (xTickSize || 12) + 'px'
                         }
                     } }
                 />
