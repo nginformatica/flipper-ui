@@ -15,6 +15,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/flipper-ui.svg)](https://www.npmjs.com/package/flipper-ui)
 [![Dependencies](https://img.shields.io/david/nginformatica/flipper-ui.svg?style=flat-square)](https://david-dm.org/nginformatica/flipper-ui)
 [![DevDependencies](https://img.shields.io/david/dev/nginformatica/flipper-ui.svg)](https://david-dm.org/nginformatica/flipper-ui?type=dev)
+[![Build Status](https://travis-ci.org/nginformatica/flipper-ui.svg?branch=master)](https://travis-ci.org/nginformatica/flipper-ui)
 
 </div>
 
