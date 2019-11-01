@@ -15,12 +15,13 @@ import {
 import { Wrapper } from './style'
 import { format, parse } from 'date-fns'
 import {
-    truncate,
     TooltipText,
     compare,
     getMaxDomain,
     getYAxis,
-    putReference
+    putReference,
+    truncate,
+    labelTruncate
 } from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -42,6 +43,7 @@ interface IProps {
     referenceLegend?: string
     yTooltipLegend?: string
     xTooltipLegend?: string
+    labelTextSize?: number
     data: TData[]
 }
 
@@ -52,14 +54,6 @@ interface IAreaChartProps {
 
 export const toDate =
     (x: string) => parse(x as string, 'yyyy-MM-dd HH:mm', new Date())
-
-const formatToCartesianPlan = ([x, y]: TData) => (
-    {
-        x: toDate(x as string),
-        y,
-        style: { fontSize: 12 }
-    }
-)
 
 export const legendPosition = {
     position: 'absolute',
@@ -83,8 +77,18 @@ const LineAreaChart = (props: IProps) => {
         xTitle,
         yTooltipLegend,
         xTooltipLegend,
-        yDomainExtra
+        yDomainExtra,
+        labelTextSize
     } = props
+    const formatToCartesianPlan = ([x, y]: TData) => (
+        {
+            x: toDate(x as string),
+            y,
+            style: { fontSize: (labelTextSize || 12) + 'px' },
+            yOffset: -8
+        }
+    )
+
     const areaData = data.map(formatToCartesianPlan)
     const xAxisTicks = areaData.map(data => data.x)
     const extension = yDataType === 'hour' ? 'h' : '%'
@@ -154,7 +158,7 @@ const LineAreaChart = (props: IProps) => {
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: '12px'
+                            fontSize: (labelTextSize || 12) + 'px'
                         }
                     } }
                 />
@@ -195,8 +199,15 @@ const LineAreaChart = (props: IProps) => {
                     />
                 }
                 <LabelSeries
+                    labelAnchorX='middle'
+                    labelAnchorY='middle'
                     data={ areaData }
-                    getLabel={ newData => truncate(newData.y) + extension }
+                    getLabel={
+                        newData => labelTruncate(
+                            newData.y,
+                            labelTextSize || 12
+                        )
+                    }
                 />
                 <Crosshair
                     style={ { line: { backgroundColor: '#C1C1C1' } } }

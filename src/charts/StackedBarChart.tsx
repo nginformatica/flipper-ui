@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react'
+import { IBarInfos, defaultBarInfo } from './LineVerticalBarChart'
 import {
     FlexibleXYPlot,
     HorizontalGridLines,
@@ -9,67 +10,50 @@ import {
     Crosshair
 } from 'react-vis'
 import { Wrapper } from './style'
-import {
-    getYAxis,
-    TooltipText,
-    units,
-    truncate,
-    getMaxDomain
-} from './AreaChart'
-import { ChartsTooltip } from './HorizontalBarChart'
-import { format, parse } from 'date-fns'
+import { getYAxis, getMaxDomain, truncate, units, TooltipText } from './AreaChart'
 import { formatToBRL } from 'brazilian-values'
-import { ptBR } from 'date-fns/locale'
-
-export type TData = [string | Date, number]
-
-export type TBarChart = {
-    x: TData[0]
-    y: TData[1]
-}
+import { TData, TBarChart, toDate } from './SingleBarChart'
+import { ChartsTooltip } from './HorizontalBarChart'
+import { getBody } from './ParetoLineBarChart'
 
 interface IProps {
     height?: number
-    color?: string
-    xType?: 'ordinal' | 'time'
-    yDataType?: 'hour' | 'quantity' | 'percent' | 'money'
-    xTickType?: 'date' | 'text'
     yDomainExtra?: number
     yTitle?: string
     xTitle?: string
-    yTooltipTitle?: string
-    xTooltipTitle?: string
-    data: TData[]
+    yDataType?: 'hour' | 'quantity' | 'percent' | 'money'
+    xTickType?: 'date' | 'text'
+    barsInfo?: [IBarInfos, IBarInfos]
+    data: [TData[], TData[]]
 }
 
-export const toDate = (value: string, tooltip?: string) => {
-    const date = parse(value as string, 'yyyy-MM-dd', new Date())
-    const isTooltip = tooltip ? 'dd/MM/yyyy' : 'dd MMM'
+const defaultBar = [{ x: '', y: 0 }]
 
-    return format(date, isTooltip, { locale: ptBR })
-}
+const toCartesianPlan = ([x,y]: TData) => ({ x, y })
 
-const toCartesianPlan = ([x,y]: TData) => ({
-    x: typeof x === 'string' ? x : format(x, 'MMM/yyyy'),
-    y })
-
-const SingleBarChart = (props: IProps) => {
+const StackedBarChart = (props: IProps) => {
     const {
+        barsInfo,
         data,
-        color,
-        height,
-        xTickType,
-        yTooltipTitle,
-        xTooltipTitle,
         yTitle,
         xTitle,
-        xType,
-        yDataType,
-        yDomainExtra
+        yDomainExtra,
+        xTickType,
+        yDataType
     } = props
+    const topBarValues = data[0] ? data[0].map(toCartesianPlan) : defaultBar
+    const bottomBarValues = data[1] ? data[1].map(toCartesianPlan) : defaultBar
+    const [
+        topBarInfo = defaultBarInfo,
+        bottomBarInfo = defaultBarInfo
+    ] = barsInfo || []
     const [crosshair, setCrosshair] = useState<TBarChart[]>([])
-    const barData = data.map(toCartesianPlan)
     const unit = units as { [key: string]: string }
+
+    const stackedYAxis = getYAxis(data[1]).map(
+        (value: number, index: number) => {
+            return value + getYAxis(data[0])[index]
+        })
 
     const handleMouseOver = () => {
         setCrosshair([])
@@ -77,33 +61,37 @@ const SingleBarChart = (props: IProps) => {
 
     const handleNearMouse = useCallback(
         (selected: unknown, { index }: { index: number }) => {
-            setCrosshair([barData[index]])
+            setCrosshair([topBarValues[index]])
         }, [])
 
     const renderPosition = () => {
-        const values = crosshair.length && barData
+        const topValues = crosshair.length && topBarValues
             .find(item => item.x === crosshair[0].x)
 
-        if (values) {
+        const bottomValues = crosshair.length && bottomBarValues
+            .find(item => item.x === crosshair[0].x)
+
+        if (topValues && bottomValues) {
+            const total = topValues.y + bottomValues.y
+
             return (
-                <div style={ { width: '140px' } }>
+                <div style={ { width: '180px' } }>
                     <TooltipText>
                         {
-                            xTooltipTitle + ': ' + (
-                                xTickType === 'date'
-                                    ? toDate(values.x, 'tooltip')
-                                    : values.x
-                            )
+                            topBarInfo && (topBarInfo.title + getBody(
+                                topValues.y,
+                                yDataType ? yDataType : 'quantity',
+                                total
+                            ))
                         }
                     </TooltipText>
                     <TooltipText>
                         {
-                            yTooltipTitle + ': ' + (
-                                yDataType !== 'money'
-                                    ? truncate(values.y) +
-                                        unit[yDataType || 'quantity']
-                                    : formatToBRL(values.y)
-                            )
+                            bottomBarInfo && (bottomBarInfo.title + getBody(
+                                bottomValues.y,
+                                yDataType ? yDataType : 'quantity',
+                                total
+                            ))
                         }
                     </TooltipText>
                 </div>
@@ -116,16 +104,18 @@ const SingleBarChart = (props: IProps) => {
     return (
         <Wrapper>
             <FlexibleXYPlot
+                height={ 300 }
+                stackBy='y'
                 margin={ { right: 60, left: 100 } }
-                height={ height || 300 }
-                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
+                xType='ordinal'
+                yType='linear'
+                yDomain={ [0, getMaxDomain(stackedYAxis, yDomainExtra || 50)] }
                 onMouseLeave={ handleMouseOver }
-                xType={ xType || 'ordinal' }
-                yType='linear'>
+                stackedBy='y'>
                 <HorizontalGridLines />
                 <VerticalGridLines />
                 <XAxis
-                    title={ xTitle }
+                    title={ yTitle }
                     tickFormat={
                         (value: string) =>
                             xTickType === 'date'
@@ -139,12 +129,12 @@ const SingleBarChart = (props: IProps) => {
                     } }
                 />
                 <YAxis
+                    title={ xTitle }
                     style={ {
                         text: {
                             fill: 'black'
                         }
                     } }
-                    title={ yTitle }
                     tickFormat={
                         (value: number) =>
                             yDataType !== 'money'
@@ -155,8 +145,13 @@ const SingleBarChart = (props: IProps) => {
                 <VerticalBarSeries
                     onNearestXY={ handleNearMouse }
                     barWidth={ 0.3 }
-                    data={ barData }
-                    color={ color || 'green' }
+                    color={ bottomBarInfo.color }
+                    data={ bottomBarValues }
+                />
+                <VerticalBarSeries
+                    barWidth={ 0.3 }
+                    color={ topBarInfo.color }
+                    data={ topBarValues }
                 />
                 <Crosshair
                     style={ { line: { backgroundColor: '#C1C1C1' } } }
@@ -170,4 +165,4 @@ const SingleBarChart = (props: IProps) => {
     )
 }
 
-export default SingleBarChart
+export default StackedBarChart

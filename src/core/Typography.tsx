@@ -1,50 +1,17 @@
-import { Typography as MuiTypography } from '@material-ui/core'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
+import MuiTypography, { TypographyProps } from '@material-ui/core/Typography'
 
-export interface IProps extends IDefault {
-    noWrap?: boolean
-    variant?:
-        | 'h1'
-        | 'h2'
-        | 'h3'
-        | 'h4'
-        | 'h5'
-        | 'h6'
-        | 'subtitle1'
-        | 'subtitle2'
-        | 'body1'
-        | 'body2'
-        | 'caption'
-        | 'button'
-    color?:
-        | 'error'
-        | 'inherit'
-        | 'primary'
-        | 'secondary'
-        | 'textPrimary'
-        | 'textSecondary'
-    align?:
-        | 'inherit'
-        | 'left'
-        | 'center'
-        | 'right'
-        | 'justify'
-    component?: 'div'
-}
-
-const Typography: FC<IProps> = ({
+const Typography: FC<TypographyProps & IDefault> = ({
     children,
     margin,
     padding,
-    component,
     style = {},
     variant = 'body2',
     ...otherProps
 }) =>
     <MuiTypography
         { ...otherProps }
-        component={ component }
         variant={ variant }
         style={ { margin, padding, ...style } }>
         { children }

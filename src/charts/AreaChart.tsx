@@ -22,6 +22,7 @@ type TData = [number | string | Date, number]
 
 interface IProps {
     height?: number
+    labelTextSize?: number
     areaColor?: string
     lineColor?: string
     areaOpacity?: number
@@ -51,6 +52,10 @@ export const units = {
 
 export const truncate = (value: number) => Number(value.toFixed(2))
 export const getYAxis = (data: TData[]) => data.map(([, y]: TData) => y)
+export const labelTruncate = (
+    value: number,
+    size: number
+) => Number(value.toFixed(size > 11 ? 2 : 1))
 
 export const compare = (
     first: string | number | Date,
@@ -67,14 +72,6 @@ export const putReference = (
     yAxis: number,
     data: IAreaChartProps[]
 ) => data.map(({ x }: IAreaChartProps) => ({ x, y: yAxis }))
-
-const formatToCartesianPlan = ([x, y]: TData) => (
-    {
-        x: parse(x as string, 'yyyy-MM-dd', new Date()),
-        y,
-        style: { fontSize: 12 }
-    }
-)
 
 export const TooltipText = styled.div`
     display: flex;
@@ -108,8 +105,18 @@ const AreaChart = (props: IProps) => {
         xTitle,
         yTooltipLegend,
         xTooltipLegend,
-        yDomainExtra
+        yDomainExtra,
+        labelTextSize
     } = props
+
+    const formatToCartesianPlan = ([x, y]: TData) => (
+        {
+            x: parse(x as string, 'yyyy-MM-dd', new Date()),
+            y,
+            style: { fontSize: (labelTextSize || 12) + 'px' },
+            yOffset: -8
+        }
+    )
 
     const areaData = data.map(formatToCartesianPlan)
     const xAxisTicks = areaData.map(data => data.x)
@@ -169,19 +176,23 @@ const AreaChart = (props: IProps) => {
                     tickLabelAngle={ xTickAngle || 0 }
                     tickValues={ xAxisTicks }
                     tickFormat={ tick => format(tick, 'dd MMM', { locale: ptBR }) }
-                    tickSize={ xTickAngle ? 30 : 0 }
+                    tickSize={ xTickAngle ? 20 : 0 }
                     style={ {
                         text: {
                             fill: 'black',
-                            fontSize: '12px'
+                            fontSize:
+                                xTickAngle
+                                    ? '12px'
+                                    : (labelTextSize || 12) + 'px'
                         }
                     } }
                 />
                 <YAxis
                     title={ yTitle || null }
                     tickFormat={
-                        (value: number) =>
+                        (value: number) => (
                             truncate(value) + unit[yDataType || 'quantity']
+                        )
                     }
                     style={ {
                         text: {
@@ -217,10 +228,13 @@ const AreaChart = (props: IProps) => {
                 />
                 }
                 <LabelSeries
+                    labelAnchorX='middle'
+                    labelAnchorY='middle'
+                    rotation={ xTickAngle || 0 }
                     data={ areaData }
                     getLabel={
                         newData =>
-                            truncate(newData.y) + unit[yDataType || 'quantity']
+                            labelTruncate(newData.y, (labelTextSize || 12))
                     }
                 />
                 <Crosshair
