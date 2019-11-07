@@ -1,12 +1,12 @@
 import React, { useState, CSSProperties, MouseEvent } from 'react'
 import {
-    FlexibleXYPlot,
     XAxis,
     YAxis,
     HorizontalBarSeries,
     LabelSeries,
     Hint
 } from 'react-vis'
+import { FlexibleXYPlot } from 'react-vis/es/make-vis-flexible'
 import styled from 'styled-components'
 import { TooltipText } from './AreaChart'
 
