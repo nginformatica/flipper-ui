@@ -24,12 +24,14 @@ interface IProps {
     yDataType?: 'hour' | 'quantity' | 'percent' | 'money'
     xTickType?: 'date' | 'text'
     barsInfo?: [IBarInfos, IBarInfos]
+    tooltipWidth?: number
+    tooltipFooter?: string
     data: [TData[], TData[]]
 }
 
 const defaultBar = [{ x: '', y: 0 }]
 
-const toCartesianPlan = ([x,y]: TData) => ({ x, y })
+const toCartesianPlan = ([x, y]: TData) => ({ x, y })
 
 const StackedBarChart = (props: IProps) => {
     const {
@@ -39,7 +41,9 @@ const StackedBarChart = (props: IProps) => {
         xTitle,
         yDomainExtra,
         xTickType,
-        yDataType
+        yDataType,
+        tooltipWidth,
+        tooltipFooter
     } = props
     const topBarValues = data[0] ? data[0].map(toCartesianPlan) : defaultBar
     const bottomBarValues = data[1] ? data[1].map(toCartesianPlan) : defaultBar
@@ -49,6 +53,7 @@ const StackedBarChart = (props: IProps) => {
     ] = barsInfo || []
     const [crosshair, setCrosshair] = useState<TBarChart[]>([])
     const unit = units as { [key: string]: string }
+    const width = tooltipWidth ? tooltipWidth + 'px' : '180px'
 
     const stackedYAxis = getYAxis(data[1]).map(
         (value: number, index: number) => {
@@ -75,7 +80,7 @@ const StackedBarChart = (props: IProps) => {
             const total = topValues.y + bottomValues.y
 
             return (
-                <div style={ { width: '180px' } }>
+                <div style={ { width } }>
                     <TooltipText>
                         {
                             topBarInfo && (topBarInfo.title + getBody(
@@ -93,6 +98,9 @@ const StackedBarChart = (props: IProps) => {
                                 total
                             ))
                         }
+                    </TooltipText>
+                    <TooltipText>
+                        { tooltipFooter }
                     </TooltipText>
                 </div>
             )

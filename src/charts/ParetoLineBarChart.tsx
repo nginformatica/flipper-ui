@@ -7,14 +7,17 @@ import {
     YAxis,
     VerticalBarSeries,
     LineMarkSeries,
-    Crosshair
+    Crosshair,
+    DiscreteColorLegend
 } from 'react-vis'
 import { FlexibleXYPlot } from 'react-vis/es/make-vis-flexible'
 import {
     IBarInfos,
     TooltipText,
     defaultBarInfo,
-    defaultChartData
+    defaultChartData,
+    toTripleTuple,
+    styleLegend
 } from './LineVerticalBarChart'
 import { ChartsTooltip, elipsize } from './HorizontalBarChart'
 import { truncate, getMaxDomain, getYAxis } from './AreaChart'
@@ -34,10 +37,13 @@ interface IProps {
     barsInfo?: [IBarInfos, IBarInfos, IBarInfos]
     yTitle?: string
     yDomainExtra?: number
-    data: [TData[], TData[], TData[]]
+    tooltipFooter?: string
+    xTooltipTitle?: string
+    data: [TData[], TData[], TData[]] | TData[][]
 }
 
 const toCartesianPlan = ([x, y]: TData) => ({ x, y })
+
 export const getBody = (y: number, type: TUniTypes, total?: number) => {
     const percent = total ? (' (' + truncate(y * (100 / total)) + '%)') : ''
 
@@ -55,21 +61,25 @@ const TwoYAxisLineBarChart = (props: IProps) => {
         barsInfo,
         yDataType,
         yTitle,
-        yDomainExtra
+        yDomainExtra,
+        xTooltipTitle,
+        tooltipFooter
     } = props
     const [
         lineMarkInfo = defaultBarInfo,
         topBarInfo = defaultBarInfo,
         bottomBarInfo = defaultBarInfo
     ] = barsInfo || []
-    const [crosshair, setCrosshair] = useState<TChartValues[]>([])
-    const bottomX = (data[2] || defaultChartData).map(toCartesianPlan)
-    const topX = (data[1] || defaultChartData).map(toCartesianPlan)
-    const lineMark = (data[0] || defaultChartData).map(toCartesianPlan)
+    const tripleData = toTripleTuple(data)
 
-    const stackedYAxis = getYAxis(data[2]).map(
+    const [crosshair, setCrosshair] = useState<TChartValues[]>([])
+    const bottomX = (tripleData[2] || defaultChartData).map(toCartesianPlan)
+    const topX = (tripleData[1] || defaultChartData).map(toCartesianPlan)
+    const lineMark = (tripleData[0] || defaultChartData).map(toCartesianPlan)
+
+    const stackedYAxis = getYAxis(tripleData[2]).map(
         (value: number, index: number) => {
-            return value + getYAxis(data[1])[index]
+            return value + getYAxis(tripleData[1])[index]
         })
 
     const handleLeaveMouse = () => {
@@ -97,7 +107,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
             return (
                 <div style={ { width: '200px' } }>
                     <TooltipText>
-                        { topValues.x }
+                        { xTooltipTitle } :{ topValues.x }
                     </TooltipText>
                     <TooltipText>
                         {
@@ -123,7 +133,9 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                             ))
                         }
                     </TooltipText>
-
+                    <TooltipText>
+                        { tooltipFooter }
+                    </TooltipText>
                 </div>
             )
         }
@@ -207,6 +219,12 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                         r: 2.5
                     } }
                     data={ lineMark }
+                />
+                <DiscreteColorLegend
+                    orientation='horizontal'
+                    className='vertical-chart-legend'
+                    style={ styleLegend }
+                    items={ barsInfo }
                 />
                 <Crosshair
                     style={ { line: { backgroundColor: '#C1C1C1' } } }

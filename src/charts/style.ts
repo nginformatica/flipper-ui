@@ -290,4 +290,11 @@ export const Wrapper = styled.div`
         align-items: center;
         grid-gap: 4px;
     }
+
+    .line-area-chart-legend .rv-discrete-color-legend-item {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        grid-gap: 4px;
+    }
 `

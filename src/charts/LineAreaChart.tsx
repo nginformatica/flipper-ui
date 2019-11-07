@@ -25,6 +25,8 @@ import {
 } from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
 import ptBR from 'date-fns/locale/pt-BR'
+import { styleLegend } from './LineVerticalBarChart'
+import styled from 'styled-components'
 
 type TData = [number | string | Date, number]
 
@@ -44,6 +46,7 @@ interface IProps {
     yTooltipLegend?: string
     xTooltipLegend?: string
     labelTextSize?: number
+    tooltipFooter?: string
     data: TData[]
 }
 
@@ -60,6 +63,12 @@ export const legendPosition = {
     right: '18px',
     top: '0px'
 }
+
+const LegendContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+`
 
 const LineAreaChart = (props: IProps) => {
     const {
@@ -78,7 +87,8 @@ const LineAreaChart = (props: IProps) => {
         yTooltipLegend,
         xTooltipLegend,
         yDomainExtra,
-        labelTextSize
+        labelTextSize,
+        tooltipFooter
     } = props
     const formatToCartesianPlan = ([x, y]: TData) => (
         {
@@ -128,6 +138,9 @@ const LineAreaChart = (props: IProps) => {
                 <TooltipText>
                     { yValue }
                 </TooltipText>
+                <TooltipText>
+                    { tooltipFooter }
+                </TooltipText>
             </div>
         )
     }
@@ -143,12 +156,15 @@ const LineAreaChart = (props: IProps) => {
                 height={ height || 300 }>
                 <VerticalGridLines tickTotal={ areaData.length } />
                 <HorizontalGridLines />
-                {
-                    referenceLine && <DiscreteColorLegend
-                        style={ legendPosition }
+                <LegendContainer>
+                } }>
+                    { referenceLine && <DiscreteColorLegend
+                        orientation='horizontal'
+                        className='line-area-chart-legend'
+                        style={ styleLegend }
                         items={ legendInfo }
-                    />
-                }
+                    /> }
+                </LegendContainer>
                 <XAxis
                     title={ xTitle || null }
                     tickValues={ xAxisTicks }
