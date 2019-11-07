@@ -26,6 +26,7 @@ import {
 import { ChartsTooltip } from './HorizontalBarChart'
 import ptBR from 'date-fns/locale/pt-BR'
 import { styleLegend } from './LineVerticalBarChart'
+import styled from 'styled-components'
 
 type TData = [number | string | Date, number]
 
@@ -62,6 +63,12 @@ export const legendPosition = {
     right: '18px',
     top: '0px'
 }
+
+const LegendContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+`
 
 const LineAreaChart = (props: IProps) => {
     const {
@@ -149,10 +156,7 @@ const LineAreaChart = (props: IProps) => {
                 height={ height || 300 }>
                 <VerticalGridLines tickTotal={ areaData.length } />
                 <HorizontalGridLines />
-                <div style={ {
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginTop: '-10px'
+                <LegendContainer>
                 } }>
                     { referenceLine && <DiscreteColorLegend
                         orientation='horizontal'
@@ -160,7 +164,7 @@ const LineAreaChart = (props: IProps) => {
                         style={ styleLegend }
                         items={ legendInfo }
                     /> }
-                </div>
+                </LegendContainer>
                 <XAxis
                     title={ xTitle || null }
                     tickValues={ xAxisTicks }
