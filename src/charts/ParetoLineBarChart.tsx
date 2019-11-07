@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { Wrapper } from './style'
 import {
-    FlexibleXYPlot,
     HorizontalGridLines,
     VerticalGridLines,
     XAxis,
@@ -11,6 +10,7 @@ import {
     Crosshair,
     DiscreteColorLegend
 } from 'react-vis'
+import { FlexibleXYPlot } from 'react-vis/es/make-vis-flexible'
 import {
     IBarInfos,
     TooltipText,
