@@ -33,7 +33,7 @@ interface IProps {
     yDomainExtra?: number
     xTickSize?: number
     xTickAngle?: number
-    data: [TData[], TData[], TData[]]
+    data: [TData[], TData[], TData[]] | TData[][]
 }
 
 export const TooltipText = styled.div`
@@ -62,6 +62,8 @@ const styleLegend = {
 
 export const defaultBarInfo = { color: '', title: '' }
 export const defaultChartData = [['', 0]]
+export const toTripleTuple = (data: TData[][]) =>
+    data.length < 3 ? [data[0], data[0], data[0]] : data
 
 const LineVerticalBarChart = (props: IProps) => {
     const {
@@ -79,9 +81,11 @@ const LineVerticalBarChart = (props: IProps) => {
         topBarInfo = defaultBarInfo,
         lineMarkInfo = defaultBarInfo
     ] = barsInfo || []
-    const firstX = (data[0] || defaultChartData).map(toCartesianPlan)
-    const secondX = (data[1] || defaultChartData).map(toCartesianPlan)
-    const lineMark = (data[2] || defaultChartData).map(toCartesianPlan)
+    const tripleData = toTripleTuple(data)
+
+    const firstX = (tripleData[0] || defaultChartData).map(toCartesianPlan)
+    const secondX = (tripleData[1] || defaultChartData).map(toCartesianPlan)
+    const lineMark = (tripleData[2] || defaultChartData).map(toCartesianPlan)
     const [crosshair, setCrosshair] = useState<{ x: TData[0], y: TData[1] }[]>([])
 
     const handleLeaveMouse = () => {
@@ -148,7 +152,7 @@ const LineVerticalBarChart = (props: IProps) => {
                 yType='linear'
                 yDomain={ [
                     0,
-                    getMaxDomain(getYAxis(data[2]), yDomainExtra || 10)
+                    getMaxDomain(getYAxis(tripleData[2]), yDomainExtra || 10)
                 ] }
                 margin={ { right: 60, left: 100 } }
                 onMouseLeave={ handleLeaveMouse }
