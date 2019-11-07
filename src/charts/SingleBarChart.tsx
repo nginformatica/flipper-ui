@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react'
 import {
-    FlexibleXYPlot,
     HorizontalGridLines,
     VerticalGridLines,
     XAxis,
@@ -8,6 +7,7 @@ import {
     VerticalBarSeries,
     Crosshair
 } from 'react-vis'
+import { FlexibleXYPlot } from 'react-vis/es/make-vis-flexible'
 import { Wrapper } from './style'
 import {
     getYAxis,
@@ -19,7 +19,7 @@ import {
 import { ChartsTooltip } from './HorizontalBarChart'
 import { format, parse } from 'date-fns'
 import { formatToBRL } from 'brazilian-values'
-import { ptBR } from 'date-fns/locale'
+import ptBR from 'date-fns/locale/pt-BR'
 
 export type TData = [string | Date, number]
 

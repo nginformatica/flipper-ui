@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { equals } from 'ramda'
 import {
-    FlexibleXYPlot,
     XAxis,
     YAxis,
     VerticalGridLines,
@@ -12,6 +11,7 @@ import {
     LabelSeries,
     Crosshair
 } from 'react-vis'
+import { FlexibleXYPlot } from 'react-vis/es/make-vis-flexible'
 import { Wrapper } from './style'
 import { format, parse, isSameDay } from 'date-fns'
 import { ChartsTooltip } from './HorizontalBarChart'

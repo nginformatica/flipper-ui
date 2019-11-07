@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react'
 import {
-    FlexibleXYPlot,
     XAxis,
     YAxis,
     VerticalGridLines,
@@ -12,6 +11,7 @@ import {
     DiscreteColorLegend,
     Crosshair
 } from 'react-vis'
+import { FlexibleXYPlot } from 'react-vis/es/make-vis-flexible'
 import { Wrapper } from './style'
 import { format, parse } from 'date-fns'
 import {
