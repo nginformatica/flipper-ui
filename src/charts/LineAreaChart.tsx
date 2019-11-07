@@ -152,7 +152,7 @@ const LineAreaChart = (props: IProps) => {
                 <div style={ {
                     display: 'flex',
                     justifyContent: 'center',
-                    marginTop: '-28px'
+                    marginTop: '-10px'
                 } }>
                     { referenceLine && <DiscreteColorLegend
                         orientation='horizontal'

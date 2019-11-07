@@ -8,14 +8,16 @@ import {
     YAxis,
     VerticalBarSeries,
     LineMarkSeries,
-    Crosshair
+    Crosshair,
+    DiscreteColorLegend
 } from 'react-vis'
 import {
     IBarInfos,
     TooltipText,
     defaultBarInfo,
     defaultChartData,
-    toTripleTuple
+    toTripleTuple,
+    styleLegend
 } from './LineVerticalBarChart'
 import { ChartsTooltip, elipsize } from './HorizontalBarChart'
 import { truncate, getMaxDomain, getYAxis } from './AreaChart'
@@ -217,6 +219,12 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                         r: 2.5
                     } }
                     data={ lineMark }
+                />
+                <DiscreteColorLegend
+                    orientation='horizontal'
+                    className='vertical-chart-legend'
+                    style={ styleLegend }
+                    items={ barsInfo }
                 />
                 <Crosshair
                     style={ { line: { backgroundColor: '#C1C1C1' } } }
