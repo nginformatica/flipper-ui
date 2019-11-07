@@ -25,6 +25,7 @@ import {
 } from './AreaChart'
 import { ChartsTooltip } from './HorizontalBarChart'
 import ptBR from 'date-fns/locale/pt-BR'
+import { styleLegend } from './LineVerticalBarChart'
 
 type TData = [number | string | Date, number]
 
@@ -44,6 +45,7 @@ interface IProps {
     yTooltipLegend?: string
     xTooltipLegend?: string
     labelTextSize?: number
+    tooltipFooter?: string
     data: TData[]
 }
 
@@ -78,7 +80,8 @@ const LineAreaChart = (props: IProps) => {
         yTooltipLegend,
         xTooltipLegend,
         yDomainExtra,
-        labelTextSize
+        labelTextSize,
+        tooltipFooter
     } = props
     const formatToCartesianPlan = ([x, y]: TData) => (
         {
@@ -128,6 +131,9 @@ const LineAreaChart = (props: IProps) => {
                 <TooltipText>
                     { yValue }
                 </TooltipText>
+                <TooltipText>
+                    { tooltipFooter }
+                </TooltipText>
             </div>
         )
     }
@@ -143,12 +149,18 @@ const LineAreaChart = (props: IProps) => {
                 height={ height || 300 }>
                 <VerticalGridLines tickTotal={ areaData.length } />
                 <HorizontalGridLines />
-                {
-                    referenceLine && <DiscreteColorLegend
-                        style={ legendPosition }
+                <div style={ {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: '-28px'
+                } }>
+                    { referenceLine && <DiscreteColorLegend
+                        orientation='horizontal'
+                        className='line-area-chart-legend'
+                        style={ styleLegend }
                         items={ legendInfo }
-                    />
-                }
+                    /> }
+                </div>
                 <XAxis
                     title={ xTitle || null }
                     tickValues={ xAxisTicks }

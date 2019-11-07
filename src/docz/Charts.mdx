@@ -29,6 +29,8 @@ import { Playground, Props } from 'docz'
         yDataType='money'
         xTickType='text'
         yTitle='value'
+        tooltipWidth={ 200 }
+        tooltipFooter='footer example'
         barsInfo={[
             {
                 title: 'Manutenção',
@@ -71,6 +73,8 @@ import { Playground, Props } from 'docz'
         yTitle='(R$) Custo'
         yDomainExtra={ 100 }
         yDataType='money'
+        xTooltipTitle='title'
+        tooltipFooter='aaaaaaaaaaa'
         barsInfo={ [
             {
                 title: 'Custo total',
@@ -136,6 +140,7 @@ import { Playground, Props } from 'docz'
         yDomainExtra={ 20 }
         xTickSize={ 10 }
         xTickAngle={ 45 }
+        xTooltipTitle='title'
         barsInfo={ [ 
             { 
                 title: 'Preventivas',
@@ -252,6 +257,7 @@ import { Playground, Props } from 'docz'
         xTooltipLegend='Período'
         yDomainExtra={ 50 }
         labelTextSize={ 12 }
+        tooltipFooter='footer example'
         data={ 
             [ 
                 ['2019-01-01 14:01', 9.11],

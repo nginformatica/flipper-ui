@@ -33,6 +33,7 @@ interface IProps {
     yDomainExtra?: number
     xTickSize?: number
     xTickAngle?: number
+    xTooltipTitle?: string
     data: [TData[], TData[], TData[]] | TData[][]
 }
 
@@ -51,7 +52,7 @@ const toCartesianPlan = ([x, y]: TData) => ({
     y
 })
 
-const styleLegend = {
+export const styleLegend = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'flex',
@@ -74,7 +75,8 @@ const LineVerticalBarChart = (props: IProps) => {
         yDataType,
         yDomainExtra,
         xTickSize,
-        xTickAngle
+        xTickAngle,
+        xTooltipTitle
     } = props
     const [
         bottomBarInfo = defaultBarInfo,
@@ -111,7 +113,7 @@ const LineVerticalBarChart = (props: IProps) => {
             return (
                 <div style={ { width: '180px' } }>
                     <TooltipText>
-                        { positionFirst.x }
+                        { xTooltipTitle }: { positionFirst.x }
                     </TooltipText>
                     <TooltipText>
                         {

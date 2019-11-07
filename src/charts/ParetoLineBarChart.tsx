@@ -35,6 +35,8 @@ interface IProps {
     barsInfo?: [IBarInfos, IBarInfos, IBarInfos]
     yTitle?: string
     yDomainExtra?: number
+    tooltipFooter?: string
+    xTooltipTitle?: string
     data: [TData[], TData[], TData[]] | TData[][]
 }
 
@@ -57,7 +59,9 @@ const TwoYAxisLineBarChart = (props: IProps) => {
         barsInfo,
         yDataType,
         yTitle,
-        yDomainExtra
+        yDomainExtra,
+        xTooltipTitle,
+        tooltipFooter
     } = props
     const [
         lineMarkInfo = defaultBarInfo,
@@ -101,7 +105,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
             return (
                 <div style={ { width: '200px' } }>
                     <TooltipText>
-                        { topValues.x }
+                        { xTooltipTitle } :{ topValues.x }
                     </TooltipText>
                     <TooltipText>
                         {
@@ -127,7 +131,9 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                             ))
                         }
                     </TooltipText>
-
+                    <TooltipText>
+                        { tooltipFooter }
+                    </TooltipText>
                 </div>
             )
         }
