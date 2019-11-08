@@ -107,7 +107,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
             return (
                 <div style={ { width: '200px' } }>
                     <TooltipText>
-                        { xTooltipTitle } :{ topValues.x }
+                        { xTooltipTitle }: { topValues.x }
                     </TooltipText>
                     <TooltipText>
                         {
@@ -134,7 +134,7 @@ const TwoYAxisLineBarChart = (props: IProps) => {
                         }
                     </TooltipText>
                     <TooltipText>
-                        { tooltipFooter }
+                        { tooltipFooter }: { formatToBRL(total) }
                     </TooltipText>
                 </div>
             )

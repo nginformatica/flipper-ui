@@ -58,7 +58,7 @@ export const styleLegend = {
     flexDirection: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginTop: '-14px'
+    marginTop: '-10px'
 }
 
 export const defaultBarInfo = { color: '', title: '' }
