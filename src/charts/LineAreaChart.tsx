@@ -124,7 +124,7 @@ const LineAreaChart = (props: IProps) => {
 
         const xValue = values
             ? xTooltipLegend + ': ' +
-                format(values.x as Date, 'MMM/yyyy', { locale: ptBR })
+            format(values.x as Date, 'MMM/yyyy', { locale: ptBR })
             : null
         const yValue = values
             ? yTooltipLegend + ': ' + truncate(values.y) + extension
@@ -157,13 +157,16 @@ const LineAreaChart = (props: IProps) => {
                 <VerticalGridLines tickTotal={ areaData.length } />
                 <HorizontalGridLines />
                 <LegendContainer>
-                } }>
-                    { referenceLine && <DiscreteColorLegend
-                        orientation='horizontal'
-                        className='line-area-chart-legend'
-                        style={ styleLegend }
-                        items={ legendInfo }
-                    /> }
+                    {
+                        referenceLine && (
+                            <DiscreteColorLegend
+                                orientation='horizontal'
+                                className='line-area-chart-legend'
+                                style={ styleLegend }
+                                items={ legendInfo }
+                            />
+                        )
+                    }
                 </LegendContainer>
                 <XAxis
                     title={ xTitle || null }
