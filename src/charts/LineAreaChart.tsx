@@ -31,6 +31,7 @@ import styled from 'styled-components'
 type TData = [number | string | Date, number]
 
 interface IProps {
+    xDateFormat: string
     height?: number
     areaColor?: string
     lineColor?: string
@@ -56,7 +57,7 @@ interface IAreaChartProps {
 }
 
 export const toDate =
-    (x: string) => parse(x as string, 'yyyy-MM-dd HH:mm', new Date())
+    (x: string, format: string) => parse(x as string, format, new Date())
 
 export const legendPosition = {
     position: 'absolute',
@@ -72,6 +73,7 @@ const LegendContainer = styled.div`
 
 const LineAreaChart = (props: IProps) => {
     const {
+        xDateFormat,
         height,
         data,
         areaColor,
@@ -92,7 +94,7 @@ const LineAreaChart = (props: IProps) => {
     } = props
     const formatToCartesianPlan = ([x, y]: TData) => (
         {
-            x: toDate(x as string),
+            x: toDate(x as string, xDateFormat),
             y,
             style: { fontSize: (labelTextSize || 12) + 'px' },
             yOffset: -8
