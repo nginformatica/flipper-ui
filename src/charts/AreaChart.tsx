@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { equals, mean } from 'ramda'
+import { equals, mean, takeLast } from 'ramda'
 import {
     XAxis,
     YAxis,
@@ -57,7 +57,7 @@ export const getYAxis = (data: TData[]) => data.map(([, y]: TData) => y)
 export const timeConvert = (value: number) => {
     const seconds = Math.round((value % 1) * 3600)
     const minutes = Math.trunc(seconds/60)
-    const formatedMinutes = minutes < 10 ? '0' + minutes : minutes
+    const formatedMinutes = takeLast(2, '0' + minutes)
 
     return minutes > 0
         ? Math.round(value) + ':' + formatedMinutes
