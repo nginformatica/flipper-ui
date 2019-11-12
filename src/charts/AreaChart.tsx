@@ -55,7 +55,7 @@ export const truncate = (value: number) => Number(value.toFixed(2))
 export const getYAxis = (data: TData[]) => data.map(([, y]: TData) => y)
 
 export const timeConvert = (value: number) => {
-    const seconds = (Math.round((value % 1) * 3600))
+    const seconds = Math.round((value % 1) * 3600)
     const minutes = Math.trunc(seconds/60)
     const formatedMinutes = minutes < 10 ? '0' + minutes : minutes
 
