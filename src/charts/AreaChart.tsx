@@ -18,7 +18,7 @@ import { ChartsTooltip } from './HorizontalBarChart'
 import styled from 'styled-components'
 import ptBR from 'date-fns/locale/pt-BR'
 
-type TData = [number | string | Date, number]
+export type TData = [number | string | Date, number]
 
 interface IProps {
     height?: number
