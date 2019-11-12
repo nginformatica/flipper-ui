@@ -95,12 +95,12 @@ export const TooltipText = styled.div`
 
 export const getMaxDomain = (yValues: number[], extraDomain?: number) => {
     const maxValue = Math.max.apply(null, yValues)
-    const meanValue = maxValue >= mean(yValues) ? maxValue + 2 : mean(yValues) * 2
-    const extraDomains = maxValue <= 20
+    const meanDomain = maxValue >= mean(yValues) ? maxValue + 2 : mean(yValues) * 2
+    const percentDomain = maxValue <= 20
         ? maxValue + 10
         : maxValue + ((extraDomain || 0) * (maxValue / 100))
 
-    return extraDomain ? extraDomains : meanValue
+    return extraDomain ? percentDomain : meanDomain
 }
 
 const AreaChart = (props: IProps) => {
