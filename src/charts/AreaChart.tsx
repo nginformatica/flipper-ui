@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { equals } from 'ramda'
+import { equals, mean, takeLast } from 'ramda'
 import {
     XAxis,
     YAxis,
@@ -18,7 +18,7 @@ import { ChartsTooltip } from './HorizontalBarChart'
 import styled from 'styled-components'
 import ptBR from 'date-fns/locale/pt-BR'
 
-type TData = [number | string | Date, number]
+export type TData = [number | string | Date, number]
 
 interface IProps {
     height?: number
@@ -36,6 +36,7 @@ interface IProps {
     referenceLine?: number
     referenceColor?: string
     referenceLegend?: string
+    isTime?: boolean
     data: TData[]
 }
 
@@ -52,10 +53,24 @@ export const units = {
 
 export const truncate = (value: number) => Number(value.toFixed(2))
 export const getYAxis = (data: TData[]) => data.map(([, y]: TData) => y)
-export const labelTruncate = (
-    value: number,
-    size: number
-) => Number(value.toFixed(size > 11 ? 2 : 1))
+
+export const timeConvert = (value: number) => {
+    const seconds = Math.round((value % 1) * 3600)
+    const minutes = Math.trunc(seconds/60)
+    const formatedMinutes = takeLast(2, '0' + minutes)
+
+    return minutes > 0
+        ? Math.round(value) + ':' + formatedMinutes
+        : Math.round(value) + ':00'
+}
+
+export const formatValue = (value: number, isTime?: boolean) =>
+    isTime ? timeConvert(value) : truncate(value)
+
+export const labelTruncate = (value: number, size: number, isTime?: boolean ) =>
+    isTime
+        ? formatValue(Number(value.toFixed(size > 11 ? 2 : 1)), isTime)
+        : Number(value.toFixed(size > 11 ? 2 : 1))
 
 export const compare = (
     first: string | number | Date,
@@ -80,14 +95,14 @@ export const TooltipText = styled.div`
     color: white;
 `
 
-export const getMaxDomain = (yValues: number[], extraDomain: number) => {
+export const getMaxDomain = (yValues: number[], extraDomain?: number) => {
     const maxValue = Math.max.apply(null, yValues)
+    const meanDomain = maxValue >= mean(yValues) ? maxValue + 2 : mean(yValues) * 2
+    const percentDomain = maxValue <= 20
+        ? maxValue + 10
+        : maxValue + ((extraDomain || 0) * (maxValue / 100))
 
-    return (
-        maxValue <= 20
-            ? maxValue+10
-            : maxValue+(extraDomain*(maxValue/100))
-    )
+    return extraDomain ? percentDomain : meanDomain
 }
 
 const AreaChart = (props: IProps) => {
@@ -106,7 +121,8 @@ const AreaChart = (props: IProps) => {
         yTooltipLegend,
         xTooltipLegend,
         yDomainExtra,
-        labelTextSize
+        labelTextSize,
+        isTime
     } = props
 
     const formatToCartesianPlan = ([x, y]: TData) => (
@@ -142,7 +158,7 @@ const AreaChart = (props: IProps) => {
             : null
         const yValue = values
             ? (
-                yTooltipLegend + ': ' + truncate(values.y) + (
+                yTooltipLegend + ': ' + formatValue(values.y, isTime) + (
                     unit[yDataType || 'quantity']
                 )
             )
@@ -163,8 +179,8 @@ const AreaChart = (props: IProps) => {
     return (
         <Wrapper>
             <FlexibleXYPlot
-                margin={ { right: 24, left: 44 } }
-                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
+                margin={ { right: 24, left: 52 } }
+                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra)] }
                 xType='time'
                 yType='linear'
                 onMouseLeave={ handleLeaveMouse }
@@ -191,7 +207,9 @@ const AreaChart = (props: IProps) => {
                     title={ yTitle || null }
                     tickFormat={
                         (value: number) => (
-                            truncate(value) + unit[yDataType || 'quantity']
+                            formatValue(value, isTime) + (
+                                unit[yDataType || 'quantity']
+                            )
                         )
                     }
                     style={ {
@@ -222,10 +240,10 @@ const AreaChart = (props: IProps) => {
                 />
                 {
                     referenceLine &&
-                <LineSeries
-                    data={ putReference(referenceLine, areaData) }
-                    color={ referenceColor }
-                />
+                    <LineSeries
+                        data={ putReference(referenceLine, areaData) }
+                        color={ referenceColor }
+                    />
                 }
                 <LabelSeries
                     labelAnchorX='middle'
@@ -234,7 +252,7 @@ const AreaChart = (props: IProps) => {
                     data={ areaData }
                     getLabel={
                         newData =>
-                            labelTruncate(newData.y, (labelTextSize || 12))
+                            labelTruncate(newData.y, (labelTextSize || 12), isTime)
                     }
                 />
                 <Crosshair
