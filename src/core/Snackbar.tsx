@@ -13,7 +13,7 @@ import {
     Info as IconInfo,
     Warning as IconWarning
 } from '@material-ui/icons'
-import React, { ReactNode, FC, FunctionComponent } from 'react'
+import React, { ReactNode, FC, FunctionComponent, MouseEvent } from 'react'
 import { IDefault } from './Advertise'
 import { TransitionProps } from '@material-ui/core/transitions/transition'
 
@@ -34,7 +34,8 @@ interface IProps extends IDefault {
    }
    TransitionProps?: TransitionProps
    TransitionComponent?: FunctionComponent<TransitionProps>
-   onClose?: (value) => void
+   onClose?(): void
+   onClick?(): void
 }
 
 const variants = {
@@ -87,10 +88,24 @@ const SnackBar: FC<IProps> = props => {
         className,
         TransitionComponent,
         TransitionProps,
+        onClick,
         ...other
     } = props
     const Icon = variants[variant].icon
     const classes = useStyles()
+
+    const cursor = onClick
+        ? 'pointer'
+        : undefined
+
+    const handleClose = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+        event.stopPropagation()
+
+        if (props.onClose) {
+            props.onClose()
+        }
+    }
 
     return (
         <MuiSnackbar
@@ -98,15 +113,17 @@ const SnackBar: FC<IProps> = props => {
             open={ open }
             id={ id }
             autoHideDuration={ autoHide }
-            style={ { padding, margin, ...style } }
+            style={ { cursor, padding, margin, ...style } }
             className={ className }
             TransitionComponent={ TransitionComponent }
             TransitionProps={ TransitionProps }
+            onClick={ onClick }
             onClose={ onClose }>
             <MuiSnackbarContent
                 style={ {
                     backgroundColor: variants[variant].color,
-                    flexWrap: 'nowrap'
+                    flexWrap: 'nowrap',
+                    cursor
                 } }
                 aria-describedby='client-snackbar'
                 message={
@@ -123,7 +140,7 @@ const SnackBar: FC<IProps> = props => {
                         key='close'
                         aria-label='Close'
                         color='inherit'
-                        onClick={ onClose }>
+                        onClick={ handleClose }>
                         <IconClose />
                     </MuiIconButton>
                 }
