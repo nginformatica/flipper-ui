@@ -37,6 +37,8 @@ interface IProps {
     referenceColor?: string
     referenceLegend?: string
     isTime?: boolean
+    marginLeft?: number
+    marginRight?: number
     data: TData[]
 }
 
@@ -122,6 +124,8 @@ const AreaChart = (props: IProps) => {
         xTooltipLegend,
         yDomainExtra,
         labelTextSize,
+        marginLeft,
+        marginRight,
         isTime
     } = props
 
@@ -179,7 +183,7 @@ const AreaChart = (props: IProps) => {
     return (
         <Wrapper>
             <FlexibleXYPlot
-                margin={ { right: 24, left: 52 } }
+                margin={ { right: marginRight || 24, left: marginLeft || 52 } }
                 yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra)] }
                 xType='time'
                 yType='linear'
