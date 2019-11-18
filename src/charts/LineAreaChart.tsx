@@ -48,6 +48,8 @@ interface IProps {
     xTooltipLegend?: string
     labelTextSize?: number
     tooltipFooter?: string
+    marginLeft?: number
+    marginRight?: number
     data: TData[]
 }
 
@@ -90,7 +92,9 @@ const LineAreaChart = (props: IProps) => {
         xTooltipLegend,
         yDomainExtra,
         labelTextSize,
-        tooltipFooter
+        tooltipFooter,
+        marginLeft,
+        marginRight
     } = props
     const formatToCartesianPlan = ([x, y]: TData) => (
         {
@@ -150,8 +154,8 @@ const LineAreaChart = (props: IProps) => {
     return (
         <Wrapper>
             <FlexibleXYPlot
-                margin={ { right: 24, left: 44 } }
-                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra || 30)] }
+                margin={ { right: marginRight || 24, left: marginLeft || 44 } }
+                yDomain={ [0, getMaxDomain(getYAxis(data), yDomainExtra)] }
                 xType='time'
                 yType='linear'
                 onMouseLeave={ handleLeaveMouse }
