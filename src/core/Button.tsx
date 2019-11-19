@@ -20,7 +20,7 @@ export interface IProps extends IDefault {
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-const ButtonStyled = styled(MuiButton)<IProps & { dashed?: boolean }>`
+const StyledButton = styled(MuiButton)<IProps & { dashed?: boolean }>`
     border-style: ${props => props.dashed
         ? 'dashed !important'
         : 'initial'};
@@ -35,12 +35,12 @@ const Button: FC<IProps> = ({
     variant,
     ...otherProps
 }) =>
-    <ButtonStyled
+    <StyledButton
         { ...otherProps }
         dashed={ variant === 'dashed' }
         variant={ variant === 'dashed' ? 'outlined' : variant }
         style={ { margin, padding, ...style } }>
         { children }
-    </ButtonStyled>
+    </StyledButton>
 
 export default Button
