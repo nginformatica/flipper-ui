@@ -5,7 +5,7 @@ import { IDefault } from './Advertise'
 interface IProps extends IDefault {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
     disabled?: boolean
-    onClick?:(event: MouseEvent<HTMLButtonElement>) => void
+    onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
 const IconButton: FC<IProps> = ({
