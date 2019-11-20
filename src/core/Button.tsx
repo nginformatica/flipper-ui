@@ -6,6 +6,7 @@ import { IDefault } from './Advertise'
 export interface IProps extends IDefault {
     disabled?: boolean
     selected?: boolean
+    disableTouchRipple?: boolean
     component?: ElementType
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'
