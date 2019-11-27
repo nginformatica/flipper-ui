@@ -28,21 +28,29 @@ const TableCell: FC<Omit<TableCellProps, 'padding'> & IProps> = ({
 }) => {
     const { onSort, active, direction } = useContext(SortContext)
 
+    const handleSort = () => {
+        if (onSort) {
+            onSort(otherProps.name || '')
+        }
+    }
+
     return (
         <MuiTableCell
             { ...otherProps }
             style={ { padding, margin, ...style } }
             padding={ spacing }>
             {
-                onSort && (
-                    <MuiTableSortLabel
-                        onClick={ onSort }
-                        active={ active }
-                        direction={ direction }
-                    />
-                )
+                onSort
+                    ? (
+                        <MuiTableSortLabel
+                            onClick={ handleSort }
+                            active={ active }
+                            direction={ direction }>
+                            { children }
+                        </MuiTableSortLabel>
+                    )
+                    : { children }
             }
-            { children }
         </MuiTableCell>
     )
 }

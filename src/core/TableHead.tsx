@@ -21,7 +21,7 @@ enum Direction {
 interface ISort {
     active?: boolean
     direction?: Direction
-    onSort?(): void
+    onSort?(name: string): void
 }
 
 const styles = theme => ({
