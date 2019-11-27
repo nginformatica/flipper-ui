@@ -13,9 +13,14 @@ interface IProps extends IDefault, ISort {
     }
 }
 
+enum Direction {
+    ASCENDENT = 'asc',
+    DESCENDENT = 'desc'
+}
+
 interface ISort {
     active?: boolean
-    direction?: 'asc' | 'desc'
+    direction?: Direction
     onSort?(): void
 }
 
@@ -36,7 +41,7 @@ const styles = theme => ({
 
 export const SortContext = createContext<ISort>({
     active: true,
-    direction: 'asc',
+    direction: Direction.ASCENDENT,
     onSort: undefined
 })
 

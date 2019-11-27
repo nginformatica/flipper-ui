@@ -34,12 +34,13 @@ const TableCell: FC<Omit<TableCellProps, 'padding'> & IProps> = ({
             style={ { padding, margin, ...style } }
             padding={ spacing }>
             {
-                onSort &&
-                <MuiTableSortLabel
-                    onClick={ onSort }
-                    active={ active }
-                    direction={ direction }
-                />
+                onSort && (
+                    <MuiTableSortLabel
+                        onClick={ onSort }
+                        active={ active }
+                        direction={ direction }
+                    />
+                )
             }
             { children }
         </MuiTableCell>
