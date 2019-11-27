@@ -1,9 +1,9 @@
 import { withStyles } from '@material-ui/styles'
 import MuiTableHead from '@material-ui/core/TableHead'
-import React, { FC } from 'react'
+import React, { FC, createContext } from 'react'
 import { IDefault } from './Advertise'
 
-interface IProps extends IDefault {
+interface IProps extends IDefault, ISort {
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
     classes: {
         default: string
@@ -11,6 +11,17 @@ interface IProps extends IDefault {
         primary: string
         secondary: string
     }
+}
+
+enum Direction {
+    ASCENDENT = 'asc',
+    DESCENDENT = 'desc'
+}
+
+interface ISort {
+    active?: boolean
+    direction?: Direction
+    onSort?(): void
 }
 
 const styles = theme => ({
@@ -28,6 +39,12 @@ const styles = theme => ({
     }
 })
 
+export const SortContext = createContext<ISort>({
+    active: true,
+    direction: Direction.ASCENDENT,
+    onSort: undefined
+})
+
 const TableHead: FC<IProps> = ({
     style,
     margin,
@@ -35,19 +52,24 @@ const TableHead: FC<IProps> = ({
     children,
     color,
     classes,
+    active,
+    direction,
+    onSort,
     ...otherProps
 }) =>
-    <MuiTableHead
-        { ...otherProps }
-        style={ { padding, margin, ...style } }
-        classes={
-            color
-                ? {
-                    root: classes[color]
-                }
-                : {}
-        }>
-        { children }
-    </MuiTableHead>
+    <SortContext.Provider value={ { active, direction, onSort } }>
+        <MuiTableHead
+            { ...otherProps }
+            style={ { padding, margin, ...style } }
+            classes={
+                color
+                    ? {
+                        root: classes[color]
+                    }
+                    : {}
+            }>
+            { children }
+        </MuiTableHead>
+    </SortContext.Provider>
 
 export default withStyles(styles)(TableHead)
