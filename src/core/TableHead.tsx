@@ -19,7 +19,7 @@ enum Direction {
 }
 
 interface ISort {
-    active?: boolean
+    active?: string
     direction?: Direction
     onSort?(name: string): void
 }
@@ -40,7 +40,7 @@ const styles = theme => ({
 })
 
 export const SortContext = createContext<ISort>({
-    active: true,
+    active: undefined,
     direction: Direction.ASCENDENT,
     onSort: undefined
 })

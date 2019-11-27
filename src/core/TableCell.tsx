@@ -44,12 +44,12 @@ const TableCell: FC<Omit<TableCellProps, 'padding'> & IProps> = ({
                     ? (
                         <MuiTableSortLabel
                             onClick={ handleSort }
-                            active={ active }
+                            active={ otherProps.name === active }
                             direction={ direction }>
                             { children }
                         </MuiTableSortLabel>
                     )
-                    : { children }
+                    : children
             }
         </MuiTableCell>
     )
