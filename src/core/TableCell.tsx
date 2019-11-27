@@ -11,11 +11,11 @@ interface IProps extends IDefault {
     spacing?: TableCellProps['padding']
     padding?: number | string
     align?:
-    | 'inherit'
-    | 'left'
-    | 'center'
-    | 'right'
-    | 'justify'
+        | 'inherit'
+        | 'left'
+        | 'center'
+        | 'right'
+        | 'justify'
 }
 
 const TableCell: FC<Omit<TableCellProps, 'padding'> & IProps> = ({
@@ -35,11 +35,11 @@ const TableCell: FC<Omit<TableCellProps, 'padding'> & IProps> = ({
             padding={ spacing }>
             {
                 onSort &&
-                        <MuiTableSortLabel
-                            onClick={ onSort }
-                            active={ active }
-                            direction={ direction }
-                        />
+                <MuiTableSortLabel
+                    onClick={ onSort }
+                    active={ active }
+                    direction={ direction }
+                />
             }
             { children }
         </MuiTableCell>
