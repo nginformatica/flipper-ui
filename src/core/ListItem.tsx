@@ -49,7 +49,7 @@ const ListItem: FC<IProps> = props => {
     const renderCustomItem = () => {
         const minWidth = props.title || props.subtitle ? '42px' : '0px'
         const className = classes.default
-        const typographyProps = { className, component: 'span' as const }
+        const typographyProps = { className, component: 'div' as const }
 
         return (
             <Fragment>
