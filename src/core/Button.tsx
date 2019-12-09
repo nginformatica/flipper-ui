@@ -21,11 +21,11 @@ export interface IProps extends IDefault {
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-const StyledButton = styled(MuiButton)<IProps & { dashed?: boolean }>`
-    border-style: ${props => props.dashed
-        ? 'dashed !important'
-        : 'initial'};
-    opacity: ${props => props.selected ? 0.5 : 1};
+const StyledButton = styled(MuiButton)<IProps & { dashed?: 'true' | 'false' }>`
+    && {
+        border-style: ${props => props.dashed === 'true' ? 'dashed' : 'initial'};
+        opacity: ${props => props.selected ? 0.5 : 1};
+    }
 `
 
 const Button: FC<IProps> = ({
@@ -38,7 +38,7 @@ const Button: FC<IProps> = ({
 }) =>
     <StyledButton
         { ...otherProps }
-        dashed={ variant === 'dashed' }
+        dashed={ variant === 'dashed' ? 'true' : 'false' }
         variant={ variant === 'dashed' ? 'outlined' : variant }
         style={ { margin, padding, ...style } }>
         { children }
