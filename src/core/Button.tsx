@@ -22,10 +22,9 @@ export interface IProps extends IDefault {
 }
 
 const StyledButton = styled(MuiButton)<IProps & { dashed?: 'true' | 'false' }>`
-    && {
-        border-style: ${props => props.dashed === 'true' ? 'dashed' : 'initial'};
-        opacity: ${props => props.selected ? 0.5 : 1};
-    }
+    border-style: ${props => props.dashed === 'true'
+        ? 'dashed !important' : 'initial'};
+    opacity: ${props => props.selected ? 0.5 : 1};
 `
 
 const Button: FC<IProps> = ({
