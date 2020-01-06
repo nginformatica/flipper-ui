@@ -20,6 +20,7 @@ export interface IProps extends IDefault {
     type?: string
     value?: string | number
     variant?: 'standard' | 'outlined' | 'filled'
+    inputRef?: React.Ref<HTMLInputElement>
     inputProps?: object
     InputProps?: object
     InputLabelProps?: object
