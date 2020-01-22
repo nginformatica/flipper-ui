@@ -25,9 +25,14 @@ const Chip: FC<ChipProps & IProps> =
             <MuiChip
                 classes={ square ? classes : undefined }
                 style={ { padding, margin, ...style } }
+                color='primary'
                 { ...otherProps }
             />
         )
     }
+
+Chip.defaultProps = {
+    color: 'primary'
+}
 
 export default Chip
