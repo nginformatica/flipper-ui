@@ -52,8 +52,8 @@ export const useStyles = makeStyles({
     outlinedMultiline: {
         padding: '0px'
     },
-    select: {
-        paddingRight: '34px'
+    iconOutlined: {
+        right: '2px'
     }
 })
 
@@ -67,6 +67,7 @@ const TextField: FC<TProps> = ({
     variant = 'outlined',
     InputLabelProps = {},
     InputProps = {},
+    SelectProps = {},
     autoComplete='off',
     ...otherProps
 }) => {
@@ -92,10 +93,15 @@ const TextField: FC<TProps> = ({
                 classes: {
                     input: variant === 'outlined' ? classes.outlinedInput : '',
                     multiline:
-                        variant === 'outlined' ? classes.outlinedMultiline : '',
-                    inputSelect: classes.select
+                        variant === 'outlined' ? classes.outlinedMultiline : ''
                 },
                 ...InputProps
+            } }
+            SelectProps={ {
+                classes: {
+                    iconOutlined: classes.iconOutlined
+                },
+                ...SelectProps
             } }
             { ...otherProps }
         />
