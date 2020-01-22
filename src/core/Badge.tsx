@@ -44,11 +44,16 @@ const Badge: FC<IProps> = props => {
                 badgeContent={ counter }
                 classes={ classes }
                 style={ { padding, margin, ...style } }
+                color='primary'
                 { ...otherProps }>
                 { children }
             </MuiBadge>
         )
         : <>{ children }</>
+}
+
+Badge.defaultProps = {
+    color: 'primary'
 }
 
 export default Badge
