@@ -33,8 +33,7 @@
     "color": "3.0.0",
     "date-fns": "2.4.1",
     "ramda": "0.25.0",
-    "react-number-format": "4.0.8",
-    "react-vis": "1.11.7"
+    "react-number-format": "4.0.8"
   },
   "devDependencies": {
     "@babel/cli": "7.8.3",
@@ -66,7 +65,6 @@
     "jest": "24.9.0",
     "node-fetch": "2.6.0",
     "prettier": "1.16.4",
-    "react-vis-types": "0.0.3",
     "styled-components": "5.0.0",
     "typescript": "3.7.5"
   },
