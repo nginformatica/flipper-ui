@@ -4,7 +4,7 @@ import {
     SnackbarContent as MuiSnackbarContent
 } from '@material-ui/core'
 import { amber, blue, green, red } from '@material-ui/core/colors'
-import { makeStyles, createStyles } from '@material-ui/styles'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import {
     CheckCircle as IconCheck,
