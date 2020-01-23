@@ -109,6 +109,7 @@ module.exports = {
       }
     ],
     "@babel/plugin-transform-runtime",
+    "transform-class-properties"
   ],
   "presets": [
     "@babel/env",
