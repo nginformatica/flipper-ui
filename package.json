@@ -29,8 +29,6 @@
     "@material-ui/icons": "4.4.3",
     "@material-ui/lab": "4.0.0-alpha.39",
     "@material-ui/pickers": "3.2.6",
-    "brazilian-values": "0.6.0",
-    "color": "3.0.0",
     "date-fns": "2.4.1",
     "ramda": "0.25.0",
     "react-number-format": "4.0.8"
