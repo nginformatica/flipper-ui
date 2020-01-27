@@ -32,18 +32,36 @@ import { Playground, Props } from 'docz'
 
 ## TextField select
 <Playground>
-    <TextField select value='reais'>
-        {
-            [
-                { label: 'R$', value: 'reais' },
-                { label: '$', value: 'dollar' }
-            ].map(({ label, value }) =>
-                <ListItem
-                    key={ value }
-                    value={ value }>
-                    { label }
-                </ListItem>
-            )
-        }
-    </TextField>
+    <div>
+        <TextField select value='reais'>
+            {
+                [
+                    { label: 'R$', value: 'reais' },
+                    { label: '$', value: 'dollar' }
+                ].map(({ label, value }) =>
+                    <ListItem
+                        key={ value }
+                        value={ value }>
+                        { label }
+                    </ListItem>
+                )
+            }
+        </TextField>
+        <TextField select value='functional-frontend' value='fable'>
+            {
+                [
+                    { label: 'Elm', value: 'elm' },
+                    { label: 'ReasonML', value: 'reasonml' },
+                    { label: 'Purescript', value: 'purescript' },
+                    { label: 'Fable', value: 'fable' }
+                ].map(({ label, value }) =>
+                    <ListItem
+                        key={ value }
+                        value={ value }>
+                        { label }
+                    </ListItem>
+                )
+            }
+        </TextField>
+    </div>
 </Playground>

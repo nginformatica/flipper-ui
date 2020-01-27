@@ -2,7 +2,7 @@ import { Badge as MuiBadge } from '@material-ui/core'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 import { BadgeProps } from '@material-ui/core/Badge'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/core/styles'
 
 interface IProps extends IDefault, BadgeProps {
     max?: number
@@ -44,11 +44,16 @@ const Badge: FC<IProps> = props => {
                 badgeContent={ counter }
                 classes={ classes }
                 style={ { padding, margin, ...style } }
+                color='primary'
                 { ...otherProps }>
                 { children }
             </MuiBadge>
         )
         : <>{ children }</>
+}
+
+Badge.defaultProps = {
+    color: 'primary'
 }
 
 export default Badge

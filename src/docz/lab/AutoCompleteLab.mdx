@@ -1,0 +1,41 @@
+---
+name: AutoComplete
+route: /autocomplete@lab
+---
+
+import { Autocomplete } from '../../lab'
+import ListItem from '../../core/ListItem'
+import TextField from '../../core/TextField'
+import Typography from '../../core/Typography'
+import { Playground, Props } from 'docz'
+
+# AutoComplete@lab
+
+## Properties
+<Props of={ Autocomplete } />
+
+## Simple
+<Playground style={ { minHeight: '200px' } }>
+    <Autocomplete
+        options={ [
+            { label: 'Anemone', value: 'forget-me-not' },
+            { label: 'Forget me not', value: 'anemone' },
+            { label: 'Snapdragon', value: 'snapdragon' },
+            { label: 'Sunflower', value: 'sunflower' },
+            { label: 'Rose', value: 'rose' }
+        ] }
+        getOptionLabel={ option => option.label }
+        style={{ width: 300 }}
+        renderInput={ props =>
+            <TextField
+                { ...props }
+                label='Flowers'
+                placeholder='Flowers'
+                variant='outlined'
+                fullWidth
+            />
+        }
+        onChange={ () => null }
+    />
+</Playground>
+

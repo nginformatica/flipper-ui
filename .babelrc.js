@@ -108,9 +108,8 @@ module.exports = {
         },
       }
     ],
-    "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread",
     "@babel/plugin-transform-runtime",
+    "transform-class-properties"
   ],
   "presets": [
     "@babel/env",

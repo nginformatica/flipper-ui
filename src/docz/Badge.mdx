@@ -12,14 +12,14 @@ import { Playground, Props } from 'docz'
 ## Properties
 <Props of={ Badge } />
 
-## Normal
+## Primary
 <Playground>
-    <Badge  color='secondary'>Secondary color</Badge>
+    <Badge counter={ 2 }>Secondary color</Badge>
 </Playground>
 
-## Secondary color with +99 items
+## Secondary
 <Playground>
-    <Badge counter={ 150 }>
+    <Badge counter={ 150 } color='secondary'>
         <Button variant='outlined'>
             Try changing the counter to Zero
         </Button>

@@ -1,5 +1,5 @@
 import { Chip as MuiChip } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
 import { ChipProps } from '@material-ui/core/Chip'
@@ -25,9 +25,14 @@ const Chip: FC<ChipProps & IProps> =
             <MuiChip
                 classes={ square ? classes : undefined }
                 style={ { padding, margin, ...style } }
+                color='primary'
                 { ...otherProps }
             />
         )
     }
+
+Chip.defaultProps = {
+    color: 'primary'
+}
 
 export default Chip
