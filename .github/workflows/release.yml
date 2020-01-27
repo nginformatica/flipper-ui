@@ -15,7 +15,9 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: yarn
-      - run: yarn release
+      - run: yarn build
+      - run: node pre-publish.js
+      - run: npm publish dist --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -27,8 +29,9 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@nginformatica'
       - run: yarn
-      - run: yarn release
+      - run: yarn build
+      - run: node pre-publish.js
+      - run: npm publish dist --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
