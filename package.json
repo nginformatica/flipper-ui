@@ -19,7 +19,7 @@
     "predeploy": "yarn build && docz build",
     "type-check": "tsc --noEmit",
     "deploy": "gh-pages -d docs",
-    "release": "yarn build && node pre-publish.js && yarn publish dist"
+    "release": "yarn build && node pre-publish.js && npm publish dist --access public"
   },
   "author": "NG Informática",
   "license": "MIT",
