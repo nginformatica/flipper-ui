@@ -1,0 +1,35 @@
+---
+name: DinamicTable
+route: /dinamic-table
+---
+
+import { DinamicTable } from '../core/DinamicTable'
+import { Playground, Props } from 'docz'
+
+# DinamicTable
+
+## Properties
+<Props of={ DinamicTable } />
+
+
+<Playground>
+    <DinamicTable
+        title='Adicionar contador'
+        columns={[
+            { title: 'Leitura', field: 'readAt'  },
+            { title: 'Posição', field: 'position' },
+            { title: 'Origem', field: 'origin' }
+        ]}
+        data={[{ 
+              readAt: '01/07/2019 17:21', 
+              position: '7.000', 
+              origin: 'Manual'
+        }]}
+        options={{ 
+            search: false,
+            draggable: false,
+            sorting: false,
+            maxBodyHeight: 400
+        }}     
+    />
+</Playground>
