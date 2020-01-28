@@ -5,6 +5,7 @@ route: /dinamic-table
 
 import { DinamicTable } from '../core/DinamicTable'
 import { Playground, Props } from 'docz'
+import { NoteAdd } from '../icons'
 
 # DinamicTable
 
@@ -14,9 +15,10 @@ import { Playground, Props } from 'docz'
 
 <Playground>
     <DinamicTable
-        title='Adicionar contador'
+        isEditable
+        addItemTitle='Adicionar contador'
         columns={[
-            { title: 'Leitura', field: 'readAt'  },
+            { title: 'Leitura', field: 'readAt' },
             { title: 'Posição', field: 'position' },
             { title: 'Origem', field: 'origin' }
         ]}
@@ -29,7 +31,16 @@ import { Playground, Props } from 'docz'
             search: false,
             draggable: false,
             sorting: false,
-            maxBodyHeight: 400
-        }}     
+            maxBodyHeight: 400,
+            showTitle: false,
+            addRowPosition: 'first',
+            actionsColumnIndex: 4,
+            toolbarButtonAlignment: 'left',
+            headerStyle: {
+                borderBottom: '4px #CED4DE solid',
+                borderCollapse: 'none'
+            } 
+        }}
+     
     />
 </Playground>
