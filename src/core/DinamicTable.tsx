@@ -13,6 +13,8 @@ import {
 } from '../icons'
 import IconButton from './IconButton'
 import Typography from './Typography'
+import ptBR from 'date-fns/locale/pt-BR'
+import { update } from 'ramda'
 
 interface IProps {
     title?: string | React.ReactElement
@@ -41,10 +43,11 @@ export const DinamicTable: FC<IProps> = props => {
 
     const handleUpdate = (newData: TColumn, oldData: TColumn) =>
         new Promise<void>(resolve => {
+            const index = data.indexOf(oldData)
+            const updatedData = update(index, newData, data)
+            setData(updatedData)
+
             resolve()
-            if (oldData) {
-                (setData([newData]))
-            }
         })
 
     const handleAdd = (newData: TColumn) =>
@@ -75,6 +78,11 @@ export const DinamicTable: FC<IProps> = props => {
     return (
         <div style={ { width: '100%' } } >
             <MaterialTable
+                localization={ {
+                    body: {
+                        dateTimePickerLocalization: { locale: ptBR }
+                    }
+                } }
                 icons={ {
                     Add: forwardRef(() =>
                         <IconButton color='primary'>

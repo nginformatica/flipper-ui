@@ -6,6 +6,7 @@ route: /dinamic-table
 import { DinamicTable } from '../core/DinamicTable'
 import { Playground, Props } from 'docz'
 import { NoteAdd } from '../icons'
+ import frLocale from 'date-fns/locale/fr';
 
 # DinamicTable
 
@@ -18,14 +19,23 @@ import { NoteAdd } from '../icons'
         isEditable
         addItemTitle='Adicionar contador'
         columns={[
-            { title: 'Leitura', field: 'readAt' },
-            { title: 'Posição', field: 'position' },
+            {   
+                title: 'Leitura', 
+                field: 'readAt', 
+                type: 'datetime'
+            },
+            { title: 'Posição', field: 'position', type: 'numeric' },
             { title: 'Origem', field: 'origin' }
         ]}
         data={[{ 
-              readAt: '01/07/2019 17:21', 
-              position: '7.000', 
-              origin: 'Manual'
+            readAt: '01/07/2019 17:21', 
+            position: 7000, 
+            origin: 'Manual'
+        },
+        {
+            readAt: '01/07/2019 17:22', 
+            position: 4000, 
+            origin: 'Manual'
         }]}
         options={{ 
             search: false,
@@ -36,8 +46,9 @@ import { NoteAdd } from '../icons'
             addRowPosition: 'first',
             actionsColumnIndex: 4,
             toolbarButtonAlignment: 'left',
+            padding: 'dense',
             headerStyle: {
-                borderBottom: '4px #CED4DE solid',
+                borderBottom: '2px #CED4DE solid',
                 borderCollapse: 'none'
             } 
         }}
