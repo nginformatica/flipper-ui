@@ -80,10 +80,10 @@ export const EditableTable: FC<IProps> = props => {
     const handleUpdate = (newData: TCounterColumn, oldData: TCounterColumn) =>
         new Promise<void>(resolve => {
             const index = data.indexOf(oldData)
-            const updatedData =
-                reverse(sortBy(prop('readAt'), update(index, newData, data)))
+            const updatedData = update(index, newData, data)
+            const sortedData = reverse(sortBy(prop('readAt'), updatedData))
 
-            setData(updatedData as TCounterColumn[])
+            setData(sortedData)
 
             resolve()
         })
@@ -154,8 +154,6 @@ export const EditableTable: FC<IProps> = props => {
                     },
                     EditField: props => { console.log(props)
                         if (props.columnDef.type === 'datetime') {
-                            console.log(props)
-
                             return (
                                 <DateTime
                                     type={ props.columnDef.type }

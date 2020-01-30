@@ -11,7 +11,6 @@ import { Playground, Props } from 'docz'
 ## Properties
 <Props of={ EditableTable } />
 
-
 <Playground>
     <EditableTable
         isEditable
@@ -23,8 +22,17 @@ import { Playground, Props } from 'docz'
                 initialEditValue: new Date(),
                 type: 'datetime'
             },
-            { title: 'Posição', field: 'position', type: 'numeric' },
-            { title: 'Origem', field: 'origin', editable: 'never', initialEditValue: 'Manual' }
+            { 
+                title: 'Posição', 
+                field: 'position', 
+                type: 'numeric' 
+            },
+            { 
+                title: 'Origem', 
+                field: 'origin', 
+                editable: 'never', 
+                initialEditValue: 'Manual'
+            }
         ]}
         data={[
             { 
@@ -40,28 +48,13 @@ import { Playground, Props } from 'docz'
             {
                 readAt: new Date('06/01/2019 19:22'),
                 position: 6450, 
-                origin: 'O.S. 018774 Preventiva'
+                origin: 'S.O. 018774'
             },
             {
                 readAt: new Date('05/15/2019 14:07'),
                 position: 5600, 
-                origin: 'O.S. 018774 Preventiva'
+                origin: 'S.0. 018774'
             }
         ]}
-        options={{ 
-            search: false,
-            draggable: false,
-            sorting: false,
-            showTitle: false,
-            addRowPosition: 'first',
-            actionsColumnIndex: 4,
-            toolbarButtonAlignment: 'left',
-            padding: 'dense',
-            headerStyle: {
-                borderBottom: '2px #CED4DE solid',
-                borderCollapse: 'none'
-            }
-        }}
-     
     />
 </Playground>
