@@ -24,6 +24,7 @@ import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
 import ptBRLocale from 'date-fns/locale/pt-BR'
+import { black, silver } from '../colors'
 
 interface IProps {
     title?: string
@@ -52,9 +53,6 @@ const CustomRemove = styled(MTableEditRow)({
     }
 })
 
-const BLACK = ' rgba(189,189,189,0)'
-const GRAY = 'rgba(189,189,189,1)'
-
 const CustomRows = styled(MTableBodyRow)`
     transition: opacity 200ms ease;
     button {
@@ -62,9 +60,9 @@ const CustomRows = styled(MTableBodyRow)`
     };   
     &:hover {
         cursor: pointer;
-        background: -moz-linear-gradient(left,${BLACK} 0%, ${GRAY} 100%);
-        background: -webkit-linear-gradient(left,${BLACK} 0%,${GRAY} 100%);
-        background: linear-gradient(to right,${BLACK} 0%,${GRAY} 100%);
+        background: -moz-linear-gradient(left,${black} 0%, ${silver.light} 100%);
+        background: -webkit-linear-gradient(left,${black} 0%,${silver.light} 100%);
+        background: linear-gradient(to right,${black} 0%,${silver.light} 100%);
     };
     &:hover button {
         display: inline-block !important;
@@ -152,7 +150,7 @@ export const EditableTable: FC<IProps> = props => {
 
                         return <MTableAction { ...props } />
                     },
-                    EditField: props => { console.log(props)
+                    EditField: props => {
                         if (props.columnDef.type === 'datetime') {
                             return (
                                 <DateTime
