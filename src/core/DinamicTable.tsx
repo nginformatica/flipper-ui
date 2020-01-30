@@ -1,5 +1,10 @@
 import React, { FC, useState, forwardRef } from 'react'
-import MaterialTable, { Column, Options } from 'material-table'
+import MaterialTable, {
+    Column,
+    Options,
+    MTableEditRow,
+    MTableBodyRow
+} from 'material-table'
 import {
     NoteAdd as IconAdd,
     Done as IconDone,
@@ -11,10 +16,10 @@ import {
     FirstPage,
     LastPage
 } from '../icons'
-import IconButton from './IconButton'
 import Typography from './Typography'
 import ptBR from 'date-fns/locale/pt-BR'
-import { update } from 'ramda'
+import { update, sortBy, prop, reverse } from 'ramda'
+import styled from 'styled-components'
 
 interface IProps {
     title?: string | React.ReactElement
@@ -35,8 +40,38 @@ export type TColumns = {
 }
 
 export type TColumn = {
-    title: string
+    readAt: string
+    position: string
+    origin: string,
 }
+
+const Remove = styled(MTableEditRow)({
+    '&': {
+        '& h6': {
+            fontSize: '0.85em'
+        }
+    }
+})
+
+
+const Rows = styled(MTableBodyRow)`
+    transition: opacity 200ms ease;
+    button {
+        display: none;  
+    };   
+    &:hover {
+        cursor: pointer;
+        background: -moz-linear-gradient(left, rgba(189,189,189,0) 0%, rgba(189,189,189,1) 100%);
+        background: -webkit-linear-gradient(left, rgba(189,189,189,0) 0%,rgba(189,189,189,1) 100%);
+        background: linear-gradient(to right, rgba(189,189,189,0) 0%,rgba(189,189,189,1) 100%);
+    };
+    &:hover button {
+        display: inline-block !important;
+    };
+    td {
+        min-width: 64px;
+    };
+`
 
 export const DinamicTable: FC<IProps> = props => {
     const [data, setData] = useState<TColumn[]>(props.data || [])
@@ -44,16 +79,27 @@ export const DinamicTable: FC<IProps> = props => {
     const handleUpdate = (newData: TColumn, oldData: TColumn) =>
         new Promise<void>(resolve => {
             const index = data.indexOf(oldData)
-            const updatedData = update(index, newData, data)
-            setData(updatedData)
+            const updatedData =
+                reverse(sortBy(prop('readAt'), update(index, newData, data)))
+
+            setData(updatedData as TColumn[])
 
             resolve()
         })
 
     const handleAdd = (newData: TColumn) =>
         new Promise<void>(resolve => {
+            const defaultValue = {
+                readAt: new Date(),
+                origin: 'Manual',
+                ...newData
+            }
+
+            const updatedData =
+                reverse(sortBy(prop('readAt'), [defaultValue, ...data]))
+
+            setData(updatedData)
             resolve()
-            setData([newData, ...data])
         })
 
     const handleRemove = (oldData: TColumn) =>
@@ -76,70 +122,84 @@ export const DinamicTable: FC<IProps> = props => {
         : {}
 
     return (
-        <div style={ { width: '100%' } } >
+        <div style={{ width: '100%' }} >
             <MaterialTable
-                localization={ {
+                components={{
+                    EditRow: props => <Remove {...props} />,
+                    Row: props => <Rows {...props} />
+                }}
+                localization={{
                     body: {
-                        dateTimePickerLocalization: { locale: ptBR }
+                        dateTimePickerLocalization: { locale: ptBR },
+                        emptyDataSourceMessage:
+                            'Não há dados para serem exibidos no momento',
+                        editRow: {
+                            saveTooltip: 'Salvar',
+                            cancelTooltip: 'Cancelar',
+                            deleteText:
+                                'Você tem certeza que deseja excluir esse contador?'
+                        },
+                        addTooltip: 'Adicionar contador',
+                        deleteTooltip: 'Remover contador',
+                        editTooltip: 'Editar contador'
+                    },
+                    header: {
+                        actions: ''
+                    },
+                    pagination: {
+                        firstTooltip: 'Primeira',
+                        firstAriaLabel: 'Primeira',
+                        previousTooltip: 'Anterior',
+                        previousAriaLabel: 'Anterior',
+                        nextTooltip: 'Próxima',
+                        nextAriaLabel: 'Próxima',
+                        lastTooltip: 'Ultima',
+                        lastAriaLabel: 'Ulima',
+                        labelRowsSelect: 'Linhas'
                     }
-                } }
-                icons={ {
+                }}
+                icons={{
                     Add: forwardRef(() =>
-                        <IconButton color='primary'>
+                        <div style={{ display: 'flex', alignItems: 'end' }} >
                             <IconAdd />
-                            <Typography>
-                                { props.addItemTitle }
+                            <Typography style={{ marginLeft: '4px' }}>
+                                {props.addItemTitle}
                             </Typography>
-                        </IconButton>
+                        </div>
                     ),
                     Delete: forwardRef(() =>
-                        <IconButton color='primary'>
-                            <IconRemove />
-                        </IconButton>
+                        <IconRemove />
                     ),
                     Check: forwardRef(() =>
-                        <IconButton color='primary'>
-                            <IconDone />
-                        </IconButton>
+                        <IconDone />
                     ),
                     Clear: forwardRef(() =>
-                        <IconButton color='primary'>
-                            <IconClear />
-                        </IconButton>
+                        <IconClear />
                     ),
                     Edit: forwardRef(() =>
-                        <IconButton color='primary'>
-                            <IconEdit />
-                        </IconButton>
+                        <IconEdit />
                     ),
                     FirstPage: forwardRef(() =>
-                        <IconButton>
-                            <FirstPage />
-                        </IconButton>
+                        <FirstPage />
                     ),
                     PreviousPage: forwardRef(() =>
-                        <IconButton>
-                            <ChevronLeft />
-                        </IconButton>
+                        <ChevronLeft />
                     ),
                     LastPage: forwardRef(() =>
-                        <IconButton>
-                            <LastPage />
-                        </IconButton>
+                        <LastPage />
                     ),
                     NextPage: forwardRef(() =>
-                        <IconButton>
-                            <ChevronRight />
-                        </IconButton>)
-                } }
-                style={ {
+                        <ChevronRight />
+                    )
+                }}
+                style={{
                     border: '1px solid #CED4DE',
                     boxShadow: 'none'
-                } }
-                columns={ props.columns || [] }
-                data={ data }
-                options={ props.options }
-                { ...editable }
+                }}
+                columns={props.columns || []}
+                data={data}
+                options={props.options}
+                {...editable}
             />
         </div>
     )

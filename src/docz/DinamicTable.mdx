@@ -22,26 +22,38 @@ import { NoteAdd } from '../icons'
             {   
                 title: 'Leitura', 
                 field: 'readAt', 
+                initialEditValue: new Date(),
                 type: 'datetime'
             },
             { title: 'Posição', field: 'position', type: 'numeric' },
-            { title: 'Origem', field: 'origin' }
+            { title: 'Origem', field: 'origin', editable: 'never', initialEditValue: 'Manual' }
         ]}
-        data={[{ 
-            readAt: '01/07/2019 17:21', 
-            position: 7000, 
-            origin: 'Manual'
-        },
-        {
-            readAt: '01/07/2019 17:22', 
-            position: 4000, 
-            origin: 'Manual'
-        }]}
+        data={[
+            { 
+                readAt: new Date('07/01/2019 17:21'), 
+                position: 7000, 
+                origin: 'Manual'
+            },
+            {
+                readAt: new Date('06/15/2019 16:01'), 
+                position: 6740, 
+                origin: 'Manual'
+            },
+            {
+                readAt: new Date('06/01/2019 19:22'),
+                position: 6450, 
+                origin: 'O.S. 018774 Preventiva'
+            },
+            {
+                readAt: new Date('05/15/2019 14:07'),
+                position: 5600, 
+                origin: 'O.S. 018774 Preventiva'
+            }
+        ]}
         options={{ 
             search: false,
             draggable: false,
             sorting: false,
-            maxBodyHeight: 400,
             showTitle: false,
             addRowPosition: 'first',
             actionsColumnIndex: 4,
@@ -50,7 +62,7 @@ import { NoteAdd } from '../icons'
             headerStyle: {
                 borderBottom: '2px #CED4DE solid',
                 borderCollapse: 'none'
-            } 
+            }
         }}
      
     />
