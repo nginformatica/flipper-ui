@@ -24,10 +24,10 @@ import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
 import ptBRLocale from 'date-fns/locale/pt-BR'
-import { black, silver } from '../colors'
 
 interface IProps {
     title?: string
+    color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
     columns?: Column<object>[]
     data?: TCounterColumn[]
     options?: Options
@@ -53,6 +53,9 @@ const CustomRemove = styled(MTableEditRow)({
     }
 })
 
+const BLACK = ' rgba(189,189,189,0)'
+const GRAY = 'rgba(189,189,189,1)'
+
 const CustomRows = styled(MTableBodyRow)`
     transition: opacity 200ms ease;
     button {
@@ -60,9 +63,9 @@ const CustomRows = styled(MTableBodyRow)`
     };   
     &:hover {
         cursor: pointer;
-        background: -moz-linear-gradient(left,${black} 0%, ${silver.light} 100%);
-        background: -webkit-linear-gradient(left,${black} 0%,${silver.light} 100%);
-        background: linear-gradient(to right,${black} 0%,${silver.light} 100%);
+        background: -moz-linear-gradient(left,${BLACK} 0%, ${GRAY} 100%);
+        background: -webkit-linear-gradient(left,${BLACK} 0%,${GRAY} 100%);
+        background: linear-gradient(to right,${BLACK} 0%,${GRAY} 100%);
     };
     &:hover button {
         display: inline-block !important;
@@ -79,7 +82,8 @@ export const EditableTable: FC<IProps> = props => {
         new Promise<void>(resolve => {
             const index = data.indexOf(oldData)
             const updatedData = update(index, newData, data)
-            const sortedData = reverse(sortBy(prop('readAt'), updatedData))
+            const sortedData = reverse(sortBy(prop('readAt'
+            ), updatedData))
 
             setData(sortedData)
 
@@ -142,6 +146,7 @@ export const EditableTable: FC<IProps> = props => {
 
                             return (
                                 <Button
+                                    color={ props.color || 'primary' }
                                     onClick={ props.action.onClick }>
                                     <Label />
                                 </Button>
@@ -198,14 +203,29 @@ export const EditableTable: FC<IProps> = props => {
                 } }
                 icons={ {
                     Add: forwardRef(() => renderAddComponent()),
-                    Delete: forwardRef(() => <IconRemove />),
-                    Check: forwardRef(() => <IconDone />),
-                    Clear: forwardRef(() => <IconClear />),
-                    Edit: forwardRef(() => <IconEdit />),
-                    FirstPage: forwardRef(() => <FirstPage />),
-                    PreviousPage: forwardRef(() => <ChevronLeft />),
-                    LastPage: forwardRef(() => <LastPage />),
-                    NextPage: forwardRef(() => <ChevronRight />)
+                    Delete: forwardRef(() =>
+                        <IconRemove color={ props.color || 'primary' } />
+                    ),
+                    Check: forwardRef(() =>
+                        <IconDone color={ props.color || 'primary' } />
+                    ),
+                    Clear: forwardRef(() =>
+                        <IconClear color={ props.color || 'primary' } />
+                    ),
+                    Edit: forwardRef(() =>
+                        <IconEdit color={ props.color || 'primary' } />
+                    ),
+                    FirstPage: forwardRef(() =>
+                        <FirstPage color={ props.color || 'primary' } />
+                    ),
+                    PreviousPage: forwardRef(() =>
+                        <ChevronLeft color={ props.color || 'primary' } />
+                    ),
+                    LastPage: forwardRef(() =>
+                        <LastPage color={ props.color || 'primary' } />
+                    ),
+                    NextPage: forwardRef(() =>
+                        <ChevronRight color={ props.color || 'primary' } />)
                 } }
                 style={ {
                     border: '1px solid #CED4DE',
