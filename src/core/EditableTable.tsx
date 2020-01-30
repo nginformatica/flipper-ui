@@ -13,9 +13,9 @@ import {
     Delete as IconRemove,
     Clear as IconClear,
     Edit as IconEdit,
-    ChevronLeft,
-    ChevronRight,
-    FirstPage,
+    ChevronLeft as IconChevronLeft ,
+    ChevronRight as IconChevronRight ,
+    FirstPage as IconFirstPage ,
     LastPage
 } from '../icons'
 import Typography from './Typography'
@@ -53,7 +53,7 @@ const CustomRemove = styled(MTableEditRow)({
     }
 })
 
-const BLACK = ' rgba(189,189,189,0)'
+const BLACK = 'rgba(189,189,189,0)'
 const GRAY = 'rgba(189,189,189,1)'
 
 const CustomRows = styled(MTableBodyRow)`
@@ -79,18 +79,16 @@ export const EditableTable: FC<IProps> = props => {
     const [data, setData] = useState<TCounterColumn[]>(props.data || [])
 
     const handleUpdate = (newData: TCounterColumn, oldData: TCounterColumn) =>
-        new Promise<void>(resolve => {
+        Promise.resolve().then((() => {
             const index = data.indexOf(oldData)
             const updatedData = update(index, newData, data)
-            const sortedData = reverse(sortBy(prop('readAt'
-            ), updatedData))
+            const sortedData = reverse(sortBy(prop('readAt'), updatedData))
 
             setData(sortedData)
-            resolve()
-        })
+        }))
 
     const handleAdd = (newData: TCounterColumn) =>
-        new Promise<void>(resolve => {
+        Promise.resolve().then((() => {
             const defaultValue = {
                 readAt: new Date(),
                 origin: 'Manual',
@@ -101,17 +99,15 @@ export const EditableTable: FC<IProps> = props => {
                 reverse(sortBy(prop('readAt'), [defaultValue, ...data]))
 
             setData(updatedData)
-            resolve()
-        })
+        }))
 
     const handleDelete = (oldData: TCounterColumn) =>
-        new Promise<void>(resolve => {
+        Promise.resolve().then((() => {
             const newData =
                 data.filter(data => data['readAt'] !== oldData['readAt'])
 
             setData(newData)
-            resolve()
-        })
+        }))
 
     const editable = props.isEditable || props.onAddRow
         ? {
@@ -216,16 +212,16 @@ export const EditableTable: FC<IProps> = props => {
                         <IconEdit color={ props.color || 'primary' } />
                     ),
                     FirstPage: forwardRef(() =>
-                        <FirstPage color={ props.color || 'primary' } />
+                        <IconFirstPage color={ props.color || 'primary' } />
                     ),
                     PreviousPage: forwardRef(() =>
-                        <ChevronLeft color={ props.color || 'primary' } />
+                        <IconChevronLeft color={ props.color || 'primary' } />
                     ),
                     LastPage: forwardRef(() =>
                         <LastPage color={ props.color || 'primary' } />
                     ),
                     NextPage: forwardRef(() =>
-                        <ChevronRight color={ props.color || 'primary' } />)
+                        <IconChevronRight color={ props.color || 'primary' } />)
                 } }
                 style={ {
                     border: '1px solid #CED4DE',
