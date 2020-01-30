@@ -7466,7 +7466,7 @@ match-sorter@^3.0.0:
   dependencies:
     remove-accents "0.4.2"
 
-material-table@^1.56.1:
+material-table@1.56.1:
   version "1.56.1"
   resolved "https://registry.yarnpkg.com/material-table/-/material-table-1.56.1.tgz#40be8c3430df4db62ad9bd0548051104db70b379"
   integrity sha512-j1424uQxExXXTMaED4MI0ROw7gIq2R3bUo4yVrSH6rPwxc1TPjoNytOkW1i+h5YmXzHQ7Ak+ERlehUz8g5OgpA==

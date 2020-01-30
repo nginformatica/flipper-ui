@@ -86,7 +86,6 @@ export const EditableTable: FC<IProps> = props => {
             ), updatedData))
 
             setData(sortedData)
-
             resolve()
         })
 
@@ -107,11 +106,11 @@ export const EditableTable: FC<IProps> = props => {
 
     const handleDelete = (oldData: TCounterColumn) =>
         new Promise<void>(resolve => {
-            resolve()
             const newData =
                 data.filter(data => data['readAt'] !== oldData['readAt'])
 
             setData(newData)
+            resolve()
         })
 
     const editable = props.isEditable || props.onAddRow
@@ -139,7 +138,8 @@ export const EditableTable: FC<IProps> = props => {
                     EditRow: props => <CustomRemove { ...props } />,
                     Row: props => <CustomRows { ...props } />,
                     Action: props => {
-                        if ('position' in props.action &&
+                        if (
+                            'position' in props.action &&
                             props.action.position === 'toolbar'
                         ) {
                             const Label = props.action.icon
