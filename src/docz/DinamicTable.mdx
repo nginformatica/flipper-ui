@@ -1,23 +1,21 @@
 ---
-name: DinamicTable
-route: /dinamic-table
+name: Editable Table
+route: /editable-table
 ---
 
-import { DinamicTable } from '../core/DinamicTable'
+import { EditableTable } from '../core/EditableTable'
 import { Playground, Props } from 'docz'
-import { NoteAdd } from '../icons'
- import frLocale from 'date-fns/locale/fr';
 
-# DinamicTable
+# Editable TAble
 
 ## Properties
-<Props of={ DinamicTable } />
+<Props of={ EditableTable } />
 
 
 <Playground>
-    <DinamicTable
+    <EditableTable
         isEditable
-        addItemTitle='Adicionar contador'
+        title='contador'
         columns={[
             {   
                 title: 'Leitura', 
