@@ -6,6 +6,7 @@ import { IDefault } from './Advertise'
 export interface IProps extends IDefault {
     disabled?: boolean
     selected?: boolean
+    disableTouchRipple?: boolean
     component?: ElementType
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'
@@ -17,8 +18,14 @@ export interface IProps extends IDefault {
         | 'contained'
         | 'dashed'
     target?: string
-    onClick?: (event: MouseEvent<HTMLButtonElement>) => void
+    onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
+
+const StyledButton = styled(MuiButton)<IProps & { dashed?: 'true' | 'false' }>`
+    border-style: ${props => props.dashed === 'true'
+        ? 'dashed !important' : 'initial'};
+    opacity: ${props => props.selected ? 0.5 : 1};
+`
 
 const Button: FC<IProps> = ({
     children,
@@ -28,18 +35,12 @@ const Button: FC<IProps> = ({
     variant,
     ...otherProps
 }) =>
-    <MuiButton
+    <StyledButton
         { ...otherProps }
+        dashed={ variant === 'dashed' ? 'true' : 'false' }
         variant={ variant === 'dashed' ? 'outlined' : variant }
         style={ { margin, padding, ...style } }>
         { children }
-    </MuiButton>
+    </StyledButton>
 
-const ButtonStyled = styled(Button)`
-    border-style: ${props => props.variant === 'dashed'
-        ? 'dashed !important'
-        : 'initial'};
-    opacity: ${props => props.selected ? 0.5 : 1};
-`
-
-export default ButtonStyled
+export default Button

@@ -1,47 +1,59 @@
 import { Badge as MuiBadge } from '@material-ui/core'
-import React, { Component } from 'react'
+import React, { FC } from 'react'
 import { IDefault } from './Advertise'
+import { BadgeProps } from '@material-ui/core/Badge'
+import { makeStyles } from '@material-ui/core/styles'
 
-interface IProps extends IDefault {
-    color?: 'default' | 'primary' | 'secondary' | 'error'
+interface IProps extends IDefault, BadgeProps {
+    max?: number
     counter: number | string
-    limit?: number
+    position?: {
+        top?: number
+        bottom?: number
+        left?: number
+        right?: number
+    }
 }
 
-class Badge extends Component<IProps, {}> {
-    public static defaultProps = {
-        color: 'primary',
-        limit: 99
-    }
+const useBadgeStyles = (position: IProps['position']) => {
+    const getStyles = makeStyles({
+        badge: {
+            ...position
+        }
+    })
 
-    public render() {
-        const {
-            children,
-            counter,
-            color,
-            limit = 99,
-            padding,
-            margin,
-            style = {},
-            ...otherProps
-        } = this.props
+    return getStyles()
+}
 
-        return counter
-            ? (
-                <MuiBadge
-                    badgeContent={
-                        counter > limit
-                            ? `+${limit}`
-                            : counter
-                    }
-                    color={ color }
-                    style={ { padding, margin, ...style } }
-                    { ...otherProps }>
-                    { children }
-                </MuiBadge>
-            )
-            : children
-    }
+const Badge: FC<IProps> = props => {
+    const {
+        children,
+        counter,
+        padding,
+        margin,
+        position,
+        style = {},
+        ...otherProps
+    } = props
+
+    const classes = useBadgeStyles(position)
+
+    return counter
+        ? (
+            <MuiBadge
+                badgeContent={ counter }
+                classes={ classes }
+                style={ { padding, margin, ...style } }
+                color='primary'
+                { ...otherProps }>
+                { children }
+            </MuiBadge>
+        )
+        : <>{ children }</>
+}
+
+Badge.defaultProps = {
+    color: 'primary'
 }
 
 export default Badge

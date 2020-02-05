@@ -7,6 +7,7 @@ interface IProps extends IDefault {
     icon?: string | JSX.Element
     label?: string
     value?: unknown
+    disableRipple?: boolean
 }
 
 class Tab extends Component<IProps> {
@@ -19,12 +20,14 @@ class Tab extends Component<IProps> {
         const {
             style,
             margin,
+            disableRipple,
             padding,
             ...otherProps
         } = this.props
 
         return (
             <MuiTab
+                disableRipple
                 style={ { margin, padding, ...style } }
                 { ...otherProps }
             />

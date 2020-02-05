@@ -1,7 +1,7 @@
 import MuiDrawer, { DrawerProps } from '@material-ui/core/Drawer'
 import React, { FC } from 'react'
 import { IDefault } from './Advertise'
-import { makeStyles, createStyles } from '@material-ui/styles'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
 
 interface IProps extends DrawerProps, IDefault {
     top?: number

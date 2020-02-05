@@ -7,7 +7,7 @@ import {
     MenuItem,
     Theme
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import React, {
     Fragment,
     MouseEvent,
@@ -49,6 +49,7 @@ const ListItem: FC<IProps> = props => {
     const renderCustomItem = () => {
         const minWidth = props.title || props.subtitle ? '42px' : '0px'
         const className = classes.default
+        const typographyProps = { className }
 
         return (
             <Fragment>
@@ -71,8 +72,8 @@ const ListItem: FC<IProps> = props => {
                 {
                     (props.title || props.subtitle) && (
                         <MuiListItemText
-                            primaryTypographyProps={ { className } }
-                            secondaryTypographyProps={ { className } }
+                            primaryTypographyProps={ typographyProps }
+                            secondaryTypographyProps={ typographyProps }
                             primary={ props.title }
                             secondary={ props.subtitle }
                             style={ props.action ? { marginRight: '36px' } : {} }

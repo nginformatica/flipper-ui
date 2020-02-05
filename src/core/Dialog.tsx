@@ -5,7 +5,7 @@ import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import React, { CSSProperties, ReactNode, FC } from 'react'
 import { IDefault } from './Advertise'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
 
 interface IProps extends IDefault {

@@ -1,0 +1,60 @@
+---
+name: Editable Table
+route: /editable-table
+---
+
+import { EditableTable } from '../core/EditableTable'
+import { Playground, Props } from 'docz'
+
+# Editable TAble
+
+## Properties
+<Props of={ EditableTable } />
+
+<Playground>
+    <EditableTable
+        isEditable
+        title='contador'
+        columns={[
+            {   
+                title: 'Leitura', 
+                field: 'readAt', 
+                initialEditValue: new Date(),
+                type: 'datetime'
+            },
+            { 
+                title: 'Posição', 
+                field: 'position', 
+                type: 'numeric' 
+            },
+            { 
+                title: 'Origem', 
+                field: 'origin', 
+                editable: 'never', 
+                initialEditValue: 'Manual'
+            }
+        ]}
+        data={[
+            { 
+                readAt: new Date('07/01/2019 17:21'), 
+                position: 7000, 
+                origin: 'Manual'
+            },
+            {
+                readAt: new Date('06/15/2019 16:01'), 
+                position: 6740, 
+                origin: 'Manual'
+            },
+            {
+                readAt: new Date('06/01/2019 19:22'),
+                position: 6450, 
+                origin: 'S.O. 018774'
+            },
+            {
+                readAt: new Date('05/15/2019 14:07'),
+                position: 5600, 
+                origin: 'S.0. 018774'
+            }
+        ]}
+    />
+</Playground>

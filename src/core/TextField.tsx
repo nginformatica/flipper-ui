@@ -1,5 +1,5 @@
 import { TextField as MuiTextField } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent } from 'react'
 import { IDefault } from './Advertise'
 
@@ -20,6 +20,7 @@ export interface IProps extends IDefault {
     type?: string
     value?: string | number
     variant?: 'standard' | 'outlined' | 'filled'
+    inputRef?: React.Ref<HTMLInputElement>
     inputProps?: object
     InputProps?: object
     InputLabelProps?: object
@@ -51,8 +52,8 @@ export const useStyles = makeStyles({
     outlinedMultiline: {
         padding: '0px'
     },
-    select: {
-        paddingRight: '34px'
+    iconOutlined: {
+        right: '2px'
     }
 })
 
@@ -66,6 +67,7 @@ const TextField: FC<TProps> = ({
     variant = 'outlined',
     InputLabelProps = {},
     InputProps = {},
+    SelectProps = {},
     autoComplete='off',
     ...otherProps
 }) => {
@@ -91,10 +93,15 @@ const TextField: FC<TProps> = ({
                 classes: {
                     input: variant === 'outlined' ? classes.outlinedInput : '',
                     multiline:
-                        variant === 'outlined' ? classes.outlinedMultiline : '',
-                    inputSelect: classes.select
+                        variant === 'outlined' ? classes.outlinedMultiline : ''
                 },
                 ...InputProps
+            } }
+            SelectProps={ {
+                classes: {
+                    iconOutlined: classes.iconOutlined
+                },
+                ...SelectProps
             } }
             { ...otherProps }
         />
