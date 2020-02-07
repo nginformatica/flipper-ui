@@ -75,7 +75,7 @@ const CustomRows = styled(MTableBodyRow)`
     };
 `
 
-export const EditableTable: FC<IProps> = props => {
+const EditableTable: FC<IProps> = props => {
     const [data, setData] = useState<TCounterColumn[]>(props.data || [])
 
     const handleUpdate = (newData: TCounterColumn, oldData: TCounterColumn) =>
@@ -248,3 +248,5 @@ export const EditableTable: FC<IProps> = props => {
         </div>
     )
 }
+
+export default EditableTable
