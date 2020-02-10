@@ -100,7 +100,7 @@ const EditableTable: FC<IProps> = props => {
             const index = data.indexOf(oldData)
             const updatedData = update(index, newData, data)
 
-            setData(updatedData)
+            setData(reverse(updatedData))
         }))
 
     const handleAdd = (newData: TCounterColumn) =>
