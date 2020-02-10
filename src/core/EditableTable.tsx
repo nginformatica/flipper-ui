@@ -1,4 +1,4 @@
-import React, { FC, useState, forwardRef } from 'react'
+import React, { FC, useState, forwardRef, useRef, useEffect } from 'react'
 import MaterialTable, {
     Column,
     Options,
@@ -19,7 +19,7 @@ import {
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { update, sortBy, prop, reverse } from 'ramda'
+import { equals, update, reverse } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -40,8 +40,8 @@ interface IProps {
 }
 
 export type TCounterColumn = {
-    readAt: string
-    position: string
+    readAt: string | Date
+    position: string | number
     origin: string,
 }
 
@@ -75,16 +75,32 @@ const CustomRows = styled(MTableBodyRow)`
     };
 `
 
+const usePrevious = (data?: TCounterColumn[]) => {
+    const ref = useRef<TCounterColumn[] | undefined>()
+
+    useEffect(() => {
+        ref.current = data
+    })
+
+    return ref.current
+}
+
 const EditableTable: FC<IProps> = props => {
     const [data, setData] = useState<TCounterColumn[]>(props.data || [])
+    const previous = usePrevious(props.data)
+
+    useEffect(() => {
+        if (props.data && !equals(props.data, previous)) {
+            setData(props.data)
+        }
+    }, [props.data])
 
     const handleUpdate = (newData: TCounterColumn, oldData: TCounterColumn) =>
         Promise.resolve().then((() => {
             const index = data.indexOf(oldData)
             const updatedData = update(index, newData, data)
-            const sortedData = reverse(sortBy(prop('readAt'), updatedData))
 
-            setData(sortedData)
+            setData(reverse(updatedData))
         }))
 
     const handleAdd = (newData: TCounterColumn) =>
@@ -95,8 +111,7 @@ const EditableTable: FC<IProps> = props => {
                 ...newData
             }
 
-            const updatedData =
-                reverse(sortBy(prop('readAt'), [defaultValue, ...data]))
+            const updatedData = reverse([defaultValue, ...data])
 
             setData(updatedData)
         }))
