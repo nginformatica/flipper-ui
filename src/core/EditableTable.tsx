@@ -19,7 +19,7 @@ import {
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { equals, update, sortBy, prop, reverse } from 'ramda'
+import { equals, update, reverse } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -40,8 +40,8 @@ interface IProps {
 }
 
 export type TCounterColumn = {
-    readAt: string
-    position: string
+    readAt: string | Date
+    position: string | number
     origin: string,
 }
 
@@ -99,9 +99,8 @@ const EditableTable: FC<IProps> = props => {
         Promise.resolve().then((() => {
             const index = data.indexOf(oldData)
             const updatedData = update(index, newData, data)
-            const sortedData = reverse(sortBy(prop('readAt'), updatedData))
 
-            setData(sortedData)
+            setData(updatedData)
         }))
 
     const handleAdd = (newData: TCounterColumn) =>
@@ -112,8 +111,7 @@ const EditableTable: FC<IProps> = props => {
                 ...newData
             }
 
-            const updatedData =
-                reverse(sortBy(prop('readAt'), [defaultValue, ...data]))
+            const updatedData = reverse([defaultValue, ...data])
 
             setData(updatedData)
         }))
