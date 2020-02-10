@@ -1,4 +1,4 @@
-import React, { FC, useState, forwardRef } from 'react'
+import React, { FC, useState, forwardRef, useRef, useEffect } from 'react'
 import MaterialTable, {
     Column,
     Options,
@@ -19,7 +19,7 @@ import {
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { update, sortBy, prop, reverse } from 'ramda'
+import { equals, update, sortBy, prop, reverse } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -75,8 +75,25 @@ const CustomRows = styled(MTableBodyRow)`
     };
 `
 
+const usePrevious = (data?: TCounterColumn[]) => {
+    const ref = useRef<TCounterColumn[] | undefined>()
+
+    useEffect(() => {
+        ref.current = data
+    })
+
+    return ref.current
+}
+
 const EditableTable: FC<IProps> = props => {
     const [data, setData] = useState<TCounterColumn[]>(props.data || [])
+    const previous = usePrevious(props.data)
+
+    useEffect(() => {
+        if (props.data && !equals(props.data, previous)) {
+            setData(props.data)
+        }
+    }, [props.data])
 
     const handleUpdate = (newData: TCounterColumn, oldData: TCounterColumn) =>
         Promise.resolve().then((() => {
