@@ -13,9 +13,20 @@ const useStyles = makeStyles({
     }
 })
 
-export type IProps = AutocompleteProps
+// Missing props, the multiple prop is required for a better inference
+export type IProps<T> = AutocompleteProps<T> & ({
+    multiple: false
+    defaultValue?: T
+    value?: T
+    onChange?(event: React.ChangeEvent<{}>, value: T): void
+} | {
+    multiple: true
+    defaultValue?: T[]
+    value?: T[]
+    onChange?(event: React.ChangeEvent<{}>, value: T[]): void
+})
 
-const Autocomplete = (props: IProps) => {
+const Autocomplete = <T,>(props: IProps<T>) => {
     const { classes, ...otherProps } = props
     const styles = useStyles(props)
 
@@ -28,6 +39,10 @@ const Autocomplete = (props: IProps) => {
             } }
         />
     )
+}
+
+Autocomplete.defaultProps = {
+    multiple: false
 }
 
 export default Autocomplete
