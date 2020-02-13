@@ -63,7 +63,6 @@ const CustomRows = styled(MTableBodyRow)`
         display: none;  
     };   
     &:hover {
-        cursor: pointer;
         background: -moz-linear-gradient(left,${BLACK} 0%, ${GRAY} 100%);
         background: -webkit-linear-gradient(left,${BLACK} 0%,${GRAY} 100%);
         background: linear-gradient(to right,${BLACK} 0%,${GRAY} 100%);
