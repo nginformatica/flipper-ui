@@ -13,13 +13,13 @@ import {
     Delete as IconRemove,
     Clear as IconClear,
     Edit as IconEdit,
-    ChevronLeft as IconChevronLeft ,
-    ChevronRight as IconChevronRight ,
-    FirstPage as IconFirstPage ,
+    ChevronLeft as IconChevronLeft,
+    ChevronRight as IconChevronRight,
+    FirstPage as IconFirstPage,
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { equals, update, reverse } from 'ramda'
+import { equals } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -31,10 +31,11 @@ interface IProps {
     columns?: Column<object>[]
     data?: TCounterColumn[]
     options?: Options
-    isEditable?: boolean
     addIcon?: React.ReactElement
     deleteIcon?: React.ReactElement
-    onUpdateRow?: (newData: object) => Promise<void>
+    paginationInfo?: boolean
+    noHeader?: boolean
+    onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
 }
@@ -95,45 +96,6 @@ const EditableTable: FC<IProps> = props => {
         }
     }, [props.data])
 
-    const handleUpdate = (newData: TCounterColumn, oldData: TCounterColumn) =>
-        Promise.resolve().then((() => {
-            const index = data.indexOf(oldData)
-            const updatedData = update(index, newData, data)
-
-            setData(reverse(updatedData))
-        }))
-
-    const handleAdd = (newData: TCounterColumn) =>
-        Promise.resolve().then((() => {
-            const defaultValue = {
-                readAt: new Date(),
-                origin: 'Manual',
-                ...newData
-            }
-
-            const updatedData = reverse([defaultValue, ...data])
-
-            setData(updatedData)
-        }))
-
-    const handleDelete = (oldData: TCounterColumn) =>
-        Promise.resolve().then((() => {
-            const newData =
-                data.filter(data => data['readAt'] !== oldData['readAt'])
-
-            setData(newData)
-        }))
-
-    const editable = props.isEditable || props.onAddRow
-        ? {
-            editable: {
-                onRowUpdate: props.onUpdateRow || handleUpdate,
-                onRowAdd: props.onAddRow || handleAdd,
-                onRowDelete: props.onDeleteRow || handleDelete
-            }
-        }
-        : {}
-
     const renderAddComponent = () =>
         <div style={ { display: 'flex', alignItems: 'end' } } >
             <IconAdd />
@@ -141,6 +103,9 @@ const EditableTable: FC<IProps> = props => {
                 Adicionar { props.title }
             </Typography>
         </div>
+
+    const pagination = !props.paginationInfo && { Pagination: (() => null) }
+    const toolbar = props.noHeader && { Toolbar: (() => null ) }
 
     return (
         <div style={ { width: '100%' } } >
@@ -179,7 +144,9 @@ const EditableTable: FC<IProps> = props => {
                         }
 
                         return <MTableEditField { ...props } />
-                    }
+                    },
+                    ...pagination,
+                    ...toolbar
                 } }
                 localization={ {
                     body: {
@@ -258,7 +225,11 @@ const EditableTable: FC<IProps> = props => {
                     },
                     ...props.options
                 } }
-                { ...editable }
+                editable={ {
+                    onRowUpdate: props.onUpdateRow,
+                    onRowAdd: props.onAddRow,
+                    onRowDelete: props.onDeleteRow
+                } }
             />
         </div>
     )
