@@ -121,7 +121,8 @@ const EditableTable: FC<IProps> = props => {
                                 { ...props }
                                 actions={ [actions] }
                                 components={ { Action: props.components.Action } }
-                            />)
+                            />
+                        )
                     },
                     Action: props => {
                         if (
