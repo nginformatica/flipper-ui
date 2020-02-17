@@ -5,7 +5,8 @@ import MaterialTable, {
     MTableEditRow,
     MTableBodyRow,
     MTableAction,
-    MTableEditField
+    MTableEditField,
+    MTableActions
 } from 'material-table'
 import {
     NoteAdd as IconAdd,
@@ -96,7 +97,7 @@ const EditableTable: FC<IProps> = props => {
     }, [props.data])
 
     const renderAddComponent = () =>
-        <div style={ { display: 'flex', alignItems: 'end' } } >
+        <div style={ { display: 'flex', alignItems: 'center' } } >
             <IconAdd />
             <Typography style={ { marginLeft: '4px' } }>
                 Adicionar { props.title }
@@ -112,6 +113,7 @@ const EditableTable: FC<IProps> = props => {
                 components={ {
                     EditRow: props => <CustomRemove { ...props } />,
                     Row: props => <CustomRows { ...props } />,
+                    Toolbar: props => <MTableActions { ...props } />,
                     Action: props => {
                         if (
                             'position' in props.action &&
@@ -121,6 +123,8 @@ const EditableTable: FC<IProps> = props => {
 
                             return (
                                 <Button
+                                    fullWidth
+                                    variant='dashed'
                                     color={ props.color || 'primary' }
                                     onClick={ props.action.onClick }>
                                     <Label />

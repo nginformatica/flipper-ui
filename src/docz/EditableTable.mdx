@@ -11,15 +11,16 @@ import { Playground, Props } from 'docz'
 ## Properties
 <Props of={ EditableTable } />
 
+## Default
+
 <Playground>
     <EditableTable
-        noHeader
         title='adicionar'
         columns={[
             {   
                 title: 'Leitura', 
                 field: 'readAt', 
-                initialEditValue: new Date(),
+                initialEditValue: new Date(),            
                 type: 'datetime'
             },
             { 
