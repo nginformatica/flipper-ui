@@ -105,7 +105,7 @@ const EditableTable: FC<IProps> = props => {
         </div>
 
     const pagination = !props.paginationInfo && { Pagination: (() => null) }
-    const toolbar = props.noHeader && { Toolbar: (() => null ) }
+    const toolbar = props.noHeader && { Toolbar: (() => null) }
 
     return (
         <div style={ { width: '100%' } } >
@@ -113,7 +113,17 @@ const EditableTable: FC<IProps> = props => {
                 components={ {
                     EditRow: props => <CustomRemove { ...props } />,
                     Row: props => <CustomRows { ...props } />,
-                    Toolbar: props => <MTableActions { ...props } />,
+                    Toolbar: props => {
+                        const [actions] = props.actions
+
+                        return (
+                            <MTableActions
+                                { ...props }
+                                actions={ [actions] }
+                                components={ { Action: props.components.Action } }
+                            />
+                        )
+                    },
                     Action: props => {
                         if (
                             'position' in props.action &&
