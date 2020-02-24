@@ -107,7 +107,7 @@ const EditableTable: FC<IProps> = props => {
     }, [props.data])
 
     const renderAddComponent = () =>
-        <AddRowButton id='add-row'>
+        <AddRowButton data-id='add-row'>
             <IconAdd />
             <AddRowText>
                 Adicionar { props.title }
