@@ -47,6 +47,16 @@ export type TCounterColumn = {
     origin: string,
 }
 
+const AddRowButton = styled.div`
+    display: flex;
+    align-items: center;
+`
+
+const AddRowText = styled(Typography)`
+    margin-left: 4px; 
+    font-weight: 500 !important;
+`
+
 const CustomRemove = styled(MTableEditRow)({
     '&': {
         '& h6': {
@@ -97,12 +107,12 @@ const EditableTable: FC<IProps> = props => {
     }, [props.data])
 
     const renderAddComponent = () =>
-        <div style={ { display: 'flex', alignItems: 'center' } } >
+        <AddRowButton data-id='add-row'>
             <IconAdd />
-            <Typography style={ { marginLeft: '4px' } }>
+            <AddRowText>
                 Adicionar { props.title }
-            </Typography>
-        </div>
+            </AddRowText>
+        </AddRowButton>
 
     const pagination = !props.paginationInfo && { Pagination: (() => null) }
     const toolbar = props.noHeader && { Toolbar: (() => null) }
@@ -148,6 +158,7 @@ const EditableTable: FC<IProps> = props => {
                         if (props.columnDef.type === 'datetime') {
                             return (
                                 <DateTime
+                                    name={ props.columnDef.field + '-input' }
                                     type={ props.columnDef.type }
                                     value={ props.value }
                                     locale={ ptBRLocale }
@@ -156,7 +167,10 @@ const EditableTable: FC<IProps> = props => {
                             )
                         }
 
-                        return <MTableEditField { ...props } />
+                        return <MTableEditField
+                            name={ props.columnDef.field + '-input' }
+                            { ...props }
+                        />
                     },
                     ...pagination,
                     ...toolbar
@@ -195,16 +209,28 @@ const EditableTable: FC<IProps> = props => {
                 icons={ {
                     Add: forwardRef(() => renderAddComponent()),
                     Delete: forwardRef(() =>
-                        <IconRemove color={ props.color || 'primary' } />
+                        <IconRemove
+                            name='row-remove'
+                            color={ props.color || 'primary' }
+                        />
                     ),
                     Check: forwardRef(() =>
-                        <IconDone color={ props.color || 'primary' } />
+                        <IconDone
+                            name='confirm-row-edit'
+                            color={ props.color || 'primary' }
+                        />
                     ),
                     Clear: forwardRef(() =>
-                        <IconClear color={ props.color || 'primary' } />
+                        <IconClear
+                            name='cancel-row-edit'
+                            color={ props.color || 'primary' }
+                        />
                     ),
                     Edit: forwardRef(() =>
-                        <IconEdit color={ props.color || 'primary' } />
+                        <IconEdit
+                            name='row-edit'
+                            color={ props.color || 'primary' }
+                        />
                     ),
                     FirstPage: forwardRef(() =>
                         <IconFirstPage color={ props.color || 'primary' } />
