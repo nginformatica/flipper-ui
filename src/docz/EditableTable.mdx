@@ -14,8 +14,9 @@ import { Playground, Props } from 'docz'
 ## Default
 <Playground>
     <EditableTable
-        noHeader
         title='adicionar'
+        onAddRow={ () => Promise.resolve(console.log('aaaa')) }
+        onUpdateRow={ () => Promise.resolve(console.log('aaaa')) }
         columns={[
             {   
                 title: 'Leitura', 
