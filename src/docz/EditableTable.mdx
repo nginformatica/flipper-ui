@@ -61,3 +61,38 @@ import { Playground, Props } from 'docz'
         ]}
     />
 </Playground>
+
+## With Autocomplete
+<Playground>
+    <EditableTable
+        title='adicionar'
+        autoCompleteSuggestions={
+            [
+                { label: 'other values', id: '123456', }
+                { label: 'only values', id: '10000', }
+                { label: 'some values', id: '5000', }
+                { label: 'any values', id: '12' }
+            ]
+        }
+        onClickAdd={ () => console.log('window alert')}
+        columns={[
+            {   
+                title: 'Auto complete', 
+                field: 'autoComplete', 
+                cellStyle: { textAlign: 'right' },
+                headerStyle: { textAlign: 'right' }
+            },
+            { 
+                title: 'Posição', 
+                field: 'position', 
+                type: 'numeric' 
+            }
+        ]}
+        data={
+            [
+                { autoComplete: 'some values', position: 7000 },
+                { autoComplete: 'any values', position: 6740 }
+            ]
+        }
+    />
+</Playground>
