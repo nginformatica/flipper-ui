@@ -25,6 +25,9 @@ import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
 import ptBRLocale from 'date-fns/locale/pt-BR'
+import AutoComplete from './AutoComplete'
+import ListItem from './ListItem'
+import TextField from './TextField'
 
 interface IProps {
     title?: string
@@ -36,9 +39,16 @@ interface IProps {
     deleteIcon?: React.ReactElement
     paginationInfo?: boolean
     noHeader?: boolean
+    autoCompleteSuggestions?: TSuggestion[]
+    autoComplete?: React.ReactElement
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
+}
+
+export type TSuggestion = {
+    label: string
+    value: string
 }
 
 export type TCounterColumn = {
@@ -117,6 +127,33 @@ const EditableTable: FC<IProps> = props => {
     const pagination = !props.paginationInfo && { Pagination: (() => null) }
     const toolbar = props.noHeader && { Toolbar: (() => null) }
 
+    const renderAutoComplete = item => {
+        return (
+            <AutoComplete
+                openOnFocus
+                value={ item.value }
+                onChange={ item.onChange }
+                suggestions={ props.autoCompleteSuggestions || [] }
+                renderSuggestion={
+                    (item: TSuggestion, props, selected) =>
+                        <ListItem
+                            key={ item.value }
+                            selected={ selected }
+                            { ...props }>
+                            { item.label }
+                        </ListItem>
+                }
+                renderInput={
+                    itemProps =>
+                        <TextField
+                            fullWidth
+                            { ...itemProps }
+                        />
+                }
+            />
+        )
+    }
+
     return (
         <div style={ { width: '100%' } } >
             <MaterialTable
@@ -154,22 +191,29 @@ const EditableTable: FC<IProps> = props => {
 
                         return <MTableAction { ...props } />
                     },
-                    EditField: props => {
-                        if (props.columnDef.type === 'datetime') {
+                    EditField: localProps => {
+                        if (localProps.columnDef.type === 'datetime') {
                             return (
                                 <DateTime
-                                    name={ props.columnDef.field + '-input' }
-                                    type={ props.columnDef.type }
-                                    value={ props.value }
+                                    name={ localProps.columnDef.field + '-input' }
+                                    type={ localProps.columnDef.type }
+                                    value={ localProps.value }
                                     locale={ ptBRLocale }
-                                    onChange={ props.onChange }
+                                    onChange={ localProps.onChange }
                                 />
                             )
                         }
 
+                        if (
+                            localProps.columnDef.field === 'autoComplete' &&
+                            props.autoCompleteSuggestions
+                        ) {
+                            return renderAutoComplete(localProps)
+                        }
+
                         return <MTableEditField
-                            name={ props.columnDef.field + '-input' }
-                            { ...props }
+                            name={ localProps.columnDef.field + '-input' }
+                            { ...localProps }
                         />
                     },
                     ...pagination,

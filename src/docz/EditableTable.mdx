@@ -65,16 +65,18 @@ import { Playground, Props } from 'docz'
 ## With Autocomplete
 <Playground>
     <EditableTable
+        noHeader
         title='adicionar'
         autoCompleteSuggestions={
             [
-                { label: 'other values', id: '123456', }
-                { label: 'only values', id: '10000', }
-                { label: 'some values', id: '5000', }
-                { label: 'any values', id: '12' }
+                { label: 'other values', value: '123456' },
+                { label: 'only values', value: '10000' }, 
+                { label: 'some values', value: '5000' }, 
+                { label: 'any values', value: '12' }, 
             ]
         }
-        onClickAdd={ () => console.log('window alert')}
+        onUpdateRow={ () => Promise.resolve(console.log('resolve promise'))}
+        onClickAdd={ () => null }
         columns={[
             {   
                 title: 'Auto complete', 
