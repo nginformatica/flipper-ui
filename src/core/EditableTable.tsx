@@ -134,45 +134,42 @@ const EditableTable: FC<IProps> = props => {
     const pagination = !props.paginationInfo && { Pagination: (() => null) }
     const toolbar = props.noHeader && { Toolbar: (() => null) }
 
-    const renderAutoComplete = item => {
-        return (
-            <AutoComplete
-                openOnFocus
-                selectTextOnFocus
-                value={ item.value }
-                onChange={ item.onChange }
-                suggestions={ props.autoCompleteSuggestions || [] }
-                renderSuggestion={ (item: TSuggestion, props, selected) =>
-                    <ListItem
-                        key={ item.value }
-                        selected={ selected }
-                        { ...props }>
-                        { item.label }
-                    </ListItem>
-                }
-                renderInput={ itemProps =>
-                    <TextField
-                        fullWidth
-                        name={ item.columnDef.field + '-input' }
-                        { ...itemProps }
-                    />
-                }
-                actions={
-                    props.onClickAdd && (
-                        <FullWidthButton
-                            color={ addButtonColor }
-                            name='dialog-add'
-                            margin='12px'
-                            variant='dashed'
-                            onClick={ props.onClickAdd }>
-                            <IconAdd />
+    const renderAutoComplete = inputProps =>
+        <AutoComplete
+            openOnFocus
+            selectTextOnFocus
+            value={ inputProps.value }
+            onChange={ inputProps.onChange }
+            suggestions={ props.autoCompleteSuggestions || [] }
+            renderSuggestion={ (item: TSuggestion, props, selected) =>
+                <ListItem
+                    key={ item.value }
+                    selected={ selected }
+                    { ...props }>
+                    { item.label }
+                </ListItem>
+            }
+            renderInput={ itemProps =>
+                <TextField
+                    fullWidth
+                    name={ inputProps.columnDef.field + '-input' }
+                    { ...itemProps }
+                />
+            }
+            actions={
+                props.onClickAdd && (
+                    <FullWidthButton
+                        color={ addButtonColor }
+                        name='dialog-add'
+                        margin='12px'
+                        variant='dashed'
+                        onClick={ props.onClickAdd }>
+                        <IconAdd />
                             Adicionar
-                        </FullWidthButton>
-                    )
-                }
-            />
-        )
-    }
+                    </FullWidthButton>
+                )
+            }
+        />
 
     return (
         <div style={ { width: '100%' } } >
