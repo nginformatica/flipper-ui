@@ -33,7 +33,7 @@ interface IProps {
     title?: string
     color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
     columns?: Column<object>[]
-    data?: TCounterColumn[]
+    data?: object[]
     options?: Options
     addIcon?: React.ReactElement
     deleteIcon?: React.ReactElement
@@ -50,12 +50,6 @@ interface IProps {
 export type TSuggestion = {
     label: string
     value: string
-}
-
-export type TCounterColumn = {
-    readAt: string | Date
-    position: string | number
-    origin: string,
 }
 
 const AddRowButton = styled.div`
@@ -102,8 +96,8 @@ const CustomRows = styled(MTableBodyRow)`
     };
 `
 
-const usePrevious = (data?: TCounterColumn[]) => {
-    const ref = useRef<TCounterColumn[] | undefined>()
+const usePrevious = (data?: object[]) => {
+    const ref = useRef<object[] | undefined>()
 
     useEffect(() => {
         ref.current = data
@@ -113,7 +107,7 @@ const usePrevious = (data?: TCounterColumn[]) => {
 }
 
 const EditableTable: FC<IProps> = props => {
-    const [data, setData] = useState<TCounterColumn[]>(props.data || [])
+    const [data, setData] = useState<object[]>(props.data || [])
     const previous = usePrevious(props.data)
     const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
 
