@@ -1,4 +1,4 @@
-import React, { FC, useState, forwardRef, useRef, useEffect } from 'react'
+import React, { useState, forwardRef, useRef, useEffect } from 'react'
 import MaterialTable, {
     Column,
     Options,
@@ -25,26 +25,31 @@ import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
 import ptBRLocale from 'date-fns/locale/pt-BR'
+import AutoComplete from './AutoComplete'
+import ListItem from './ListItem'
+import TextField from './TextField'
 
-interface IProps {
+interface IProps<T extends object> {
     title?: string
     color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
     columns?: Column<object>[]
-    data?: TCounterColumn[]
+    data?: T[]
     options?: Options
     addIcon?: React.ReactElement
     deleteIcon?: React.ReactElement
     paginationInfo?: boolean
     noHeader?: boolean
+    autoCompleteSuggestions?: TSuggestion[]
+    autoCompleteField?: string
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
+    onClickAdd?(): void
 }
 
-export type TCounterColumn = {
-    readAt: string | Date
-    position: string | number
-    origin: string,
+export type TSuggestion = {
+    label: string
+    value: string
 }
 
 const AddRowButton = styled.div`
@@ -55,6 +60,11 @@ const AddRowButton = styled.div`
 const AddRowText = styled(Typography)`
     margin-left: 4px; 
     font-weight: 500 !important;
+`
+
+const FullWidthButton = styled(Button)`
+    width: calc(100% - 24px);
+    margin: 12px !important;
 `
 
 const CustomRemove = styled(MTableEditRow)({
@@ -86,8 +96,8 @@ const CustomRows = styled(MTableBodyRow)`
     };
 `
 
-const usePrevious = (data?: TCounterColumn[]) => {
-    const ref = useRef<TCounterColumn[] | undefined>()
+const usePrevious = (data?: object[]) => {
+    const ref = useRef<object[] | undefined>()
 
     useEffect(() => {
         ref.current = data
@@ -96,9 +106,10 @@ const usePrevious = (data?: TCounterColumn[]) => {
     return ref.current
 }
 
-const EditableTable: FC<IProps> = props => {
-    const [data, setData] = useState<TCounterColumn[]>(props.data || [])
+const EditableTable = <T extends object>(props: IProps<T>) => {
+    const [data, setData] = useState<object[]>(props.data || [])
     const previous = usePrevious(props.data)
+    const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
 
     useEffect(() => {
         if (props.data && !equals(props.data, previous)) {
@@ -116,6 +127,42 @@ const EditableTable: FC<IProps> = props => {
 
     const pagination = !props.paginationInfo && { Pagination: (() => null) }
     const toolbar = props.noHeader && { Toolbar: (() => null) }
+
+    const renderAutoComplete = inputProps =>
+        <AutoComplete
+            openOnFocus
+            selectTextOnFocus
+            value={ inputProps.value }
+            onChange={ inputProps.onChange }
+            suggestions={ props.autoCompleteSuggestions || [] }
+            renderSuggestion={ (item: TSuggestion, props, selected) =>
+                <ListItem
+                    key={ item.value }
+                    selected={ selected }
+                    { ...props }>
+                    { item.label }
+                </ListItem>
+            }
+            renderInput={ itemProps =>
+                <TextField
+                    fullWidth
+                    name={ inputProps.columnDef.field + '-input' }
+                    { ...itemProps }
+                />
+            }
+            actions={
+                props.onClickAdd && (
+                    <FullWidthButton
+                        color={ addButtonColor }
+                        name='dialog-add'
+                        variant='dashed'
+                        onClick={ props.onClickAdd }>
+                        <IconAdd />
+                        Adicionar
+                    </FullWidthButton>
+                )
+            }
+        />
 
     return (
         <div style={ { width: '100%' } } >
@@ -154,22 +201,29 @@ const EditableTable: FC<IProps> = props => {
 
                         return <MTableAction { ...props } />
                     },
-                    EditField: props => {
-                        if (props.columnDef.type === 'datetime') {
+                    EditField: localProps => {
+                        if (localProps.columnDef.type === 'datetime') {
                             return (
                                 <DateTime
-                                    name={ props.columnDef.field + '-input' }
-                                    type={ props.columnDef.type }
-                                    value={ props.value }
+                                    name={ localProps.columnDef.field + '-input' }
+                                    type={ localProps.columnDef.type }
+                                    value={ localProps.value }
                                     locale={ ptBRLocale }
-                                    onChange={ props.onChange }
+                                    onChange={ localProps.onChange }
                                 />
                             )
                         }
 
+                        if (
+                            localProps.columnDef.field === props.autoCompleteField &&
+                            props.autoCompleteSuggestions
+                        ) {
+                            return renderAutoComplete(localProps)
+                        }
+
                         return <MTableEditField
-                            name={ props.columnDef.field + '-input' }
-                            { ...props }
+                            name={ localProps.columnDef.field + '-input' }
+                            { ...localProps }
                         />
                     },
                     ...pagination,
