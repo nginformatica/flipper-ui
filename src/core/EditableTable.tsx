@@ -1,4 +1,4 @@
-import React, { FC, useState, forwardRef, useRef, useEffect } from 'react'
+import React, { useState, forwardRef, useRef, useEffect } from 'react'
 import MaterialTable, {
     Column,
     Options,
@@ -29,11 +29,11 @@ import AutoComplete from './AutoComplete'
 import ListItem from './ListItem'
 import TextField from './TextField'
 
-interface IProps {
+interface IProps<T extends object> {
     title?: string
     color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
     columns?: Column<object>[]
-    data?: object[]
+    data?: T[]
     options?: Options
     addIcon?: React.ReactElement
     deleteIcon?: React.ReactElement
@@ -64,7 +64,7 @@ const AddRowText = styled(Typography)`
 
 const FullWidthButton = styled(Button)`
     width: calc(100% - 24px);
-    margin: 12px;
+    margin: 12px !important;
 `
 
 const CustomRemove = styled(MTableEditRow)({
@@ -106,7 +106,7 @@ const usePrevious = (data?: object[]) => {
     return ref.current
 }
 
-const EditableTable: FC<IProps> = props => {
+const EditableTable = <T extends object>(props: IProps<T>) => {
     const [data, setData] = useState<object[]>(props.data || [])
     const previous = usePrevious(props.data)
     const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
