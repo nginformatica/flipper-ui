@@ -40,10 +40,11 @@ interface IProps {
     paginationInfo?: boolean
     noHeader?: boolean
     autoCompleteSuggestions?: TSuggestion[]
-    autoComplete?: React.ReactElement
+    autoCompleteField?: string
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
+    onClickAdd?(): void
 }
 
 export type TSuggestion = {
@@ -65,6 +66,11 @@ const AddRowButton = styled.div`
 const AddRowText = styled(Typography)`
     margin-left: 4px; 
     font-weight: 500 !important;
+`
+
+const FullWidthButton = styled(Button)`
+    width: calc(100% - 24px);
+    margin: 12px;
 `
 
 const CustomRemove = styled(MTableEditRow)({
@@ -109,6 +115,7 @@ const usePrevious = (data?: TCounterColumn[]) => {
 const EditableTable: FC<IProps> = props => {
     const [data, setData] = useState<TCounterColumn[]>(props.data || [])
     const previous = usePrevious(props.data)
+    const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
 
     useEffect(() => {
         if (props.data && !equals(props.data, previous)) {
@@ -131,24 +138,37 @@ const EditableTable: FC<IProps> = props => {
         return (
             <AutoComplete
                 openOnFocus
+                selectTextOnFocus
                 value={ item.value }
                 onChange={ item.onChange }
                 suggestions={ props.autoCompleteSuggestions || [] }
-                renderSuggestion={
-                    (item: TSuggestion, props, selected) =>
-                        <ListItem
-                            key={ item.value }
-                            selected={ selected }
-                            { ...props }>
-                            { item.label }
-                        </ListItem>
+                renderSuggestion={ (item: TSuggestion, props, selected) =>
+                    <ListItem
+                        key={ item.value }
+                        selected={ selected }
+                        { ...props }>
+                        { item.label }
+                    </ListItem>
                 }
-                renderInput={
-                    itemProps =>
-                        <TextField
-                            fullWidth
-                            { ...itemProps }
-                        />
+                renderInput={ itemProps =>
+                    <TextField
+                        fullWidth
+                        name={ item.columnDef.field + '-input' }
+                        { ...itemProps }
+                    />
+                }
+                actions={
+                    props.onClickAdd && (
+                        <FullWidthButton
+                            color={ addButtonColor }
+                            name='dialog-add'
+                            margin='12px'
+                            variant='dashed'
+                            onClick={ props.onClickAdd }>
+                            <IconAdd />
+                            Adicionar
+                        </FullWidthButton>
+                    )
                 }
             />
         )
@@ -205,7 +225,7 @@ const EditableTable: FC<IProps> = props => {
                         }
 
                         if (
-                            localProps.columnDef.field === 'autoComplete' &&
+                            localProps.columnDef.field === props.autoCompleteField &&
                             props.autoCompleteSuggestions
                         ) {
                             return renderAutoComplete(localProps)
