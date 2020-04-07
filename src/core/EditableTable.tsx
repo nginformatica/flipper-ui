@@ -155,11 +155,10 @@ const EditableTable: FC<IProps> = props => {
                     <FullWidthButton
                         color={ addButtonColor }
                         name='dialog-add'
-                        margin='12px'
                         variant='dashed'
                         onClick={ props.onClickAdd }>
                         <IconAdd />
-                            Adicionar
+                        Adicionar
                     </FullWidthButton>
                 )
             }
