@@ -1,6 +1,6 @@
 <!-- Logo -->
 <p align="center">
-  <a href="https://nginformatica.github.io/flipper-ui/" rel="noopener" target="_blank"><img width="150" src="https://i.imgur.com/blNtXzI.png" alt="Flipper-UI logo"></a></p>
+  <img width="150" src="logo.png" alt="Flipper-UI logo"></a></p>
 </p>
 
 <!-- Name -->
