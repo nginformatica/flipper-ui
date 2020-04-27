@@ -6,7 +6,8 @@ import MaterialTable, {
     MTableBodyRow,
     MTableAction,
     MTableEditField,
-    MTableActions
+    MTableActions,
+    MTablePagination
 } from 'material-table'
 import {
     NoteAdd as IconAdd,
@@ -20,7 +21,7 @@ import {
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { equals } from 'ramda'
+import { equals, omit } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -38,6 +39,7 @@ interface IProps<T extends object> {
     addIcon?: React.ReactElement
     deleteIcon?: React.ReactElement
     paginationInfo?: boolean
+    noRowsExpand?: boolean
     noHeader?: boolean
     autoCompleteSuggestions?: TSuggestion[]
     autoCompleteField?: string
@@ -96,6 +98,13 @@ const CustomRows = styled(MTableBodyRow)`
     };
 `
 
+const RightPagination = styled.div`
+    .MTablePaginationInner-root-57 {
+        display: block;
+        float: right;
+    }
+`
+
 const usePrevious = (data?: object[]) => {
     const ref = useRef<object[] | undefined>()
 
@@ -125,7 +134,17 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
             </AddRowText>
         </AddRowButton>
 
-    const pagination = !props.paginationInfo && { Pagination: (() => null) }
+    const pagination = !props.paginationInfo
+        ? { Pagination: (() => null) }
+        : props.noRowsExpand && {
+            Pagination: item =>
+                <RightPagination>
+                    <MTablePagination
+                        { ...omit(['classes'], item) }
+                    />
+                </RightPagination>
+        }
+
     const toolbar = props.noHeader && { Toolbar: (() => null) }
 
     const renderAutoComplete = inputProps =>
@@ -299,8 +318,12 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                         <IconChevronRight color={ props.color || 'primary' } />)
                 } }
                 style={ {
+                    display: 'flex',
                     border: '1px solid #CED4DE',
-                    boxShadow: 'none'
+                    boxShadow: 'none',
+                    height: '270px',
+                    justifyContent: 'space-between',
+                    flexDirection: 'column'
                 } }
                 columns={ props.columns || [] }
                 data={ data }
