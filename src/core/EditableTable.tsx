@@ -99,7 +99,7 @@ const CustomRows = styled(MTableBodyRow)`
 `
 
 const RightPagination = styled.div`
-    & div[class*=MTablePaginationInner-root] {
+    & > div {
         display: block;
         float: right;
     }
