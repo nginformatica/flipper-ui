@@ -184,7 +184,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
         />
 
     return (
-        <div style={ { width: '100%', height: '300px' } } >
+        <div style={ { width: '100%' } } >
             <MaterialTable
                 components={ {
                     EditRow: props => <CustomRemove { ...props } />,
@@ -318,8 +318,12 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                         <IconChevronRight color={ props.color || 'primary' } />)
                 } }
                 style={ {
+                    display: 'flex',
                     border: '1px solid #CED4DE',
-                    boxShadow: 'none'
+                    boxShadow: 'none',
+                    height: '270px',
+                    justifyContent: 'space-between',
+                    flexDirection: 'column'
                 } }
                 columns={ props.columns || [] }
                 data={ data }
