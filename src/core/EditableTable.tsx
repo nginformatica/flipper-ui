@@ -39,7 +39,7 @@ interface IProps<T extends object> {
     addIcon?: React.ReactElement
     deleteIcon?: React.ReactElement
     paginationInfo?: boolean
-    noMoreLines?: boolean
+    noRowsExpand?: boolean
     noHeader?: boolean
     autoCompleteSuggestions?: TSuggestion[]
     autoCompleteField?: string
@@ -136,7 +136,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
 
     const pagination = !props.paginationInfo
         ? { Pagination: (() => null) }
-        : props.noMoreLines && {
+        : props.noRowsExpand && {
             Pagination: item =>
                 <RightPagination>
                     <MTablePagination
