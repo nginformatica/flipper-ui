@@ -120,6 +120,39 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
     const previous = usePrevious(props.data)
     const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
 
+    const localization = {
+        body: {
+            dateTimePickerLocalization: { locale: ptBRLocale },
+            emptyDataSourceMessage:
+                'Não há dados para serem exibidos no momento',
+            editRow: {
+                saveTooltip: 'Salvar',
+                cancelTooltip: 'Cancelar',
+                deleteText:
+                    'Você tem certeza que deseja excluir esse '
+                    + props.title + '?'
+            },
+            addTooltip: 'Adicionar ' + props.title,
+            deleteTooltip: 'Remover ' + props.title,
+            editTooltip: 'Editar ' + props.title
+        },
+        header: {
+            actions: ''
+        },
+        pagination: {
+            firstTooltip: 'Primeira',
+            firstAriaLabel: 'Primeira',
+            previousTooltip: 'Anterior',
+            previousAriaLabel: 'Anterior',
+            nextTooltip: 'Próxima',
+            nextAriaLabel: 'Próxima',
+            lastTooltip: 'Ultima',
+            lastAriaLabel: 'Ulima',
+            labelRowsSelect: 'Linhas',
+            labelDisplayedRows: '{from}-{to} de {count}'
+        }
+    }
+
     useEffect(() => {
         if (props.data && !equals(props.data, previous)) {
             setData(props.data)
@@ -141,6 +174,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                 <RightPagination>
                     <MTablePagination
                         { ...omit(['classes'], item) }
+                        localization={ localization.pagination }
                     />
                 </RightPagination>
         }
@@ -248,37 +282,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     ...pagination,
                     ...toolbar
                 } }
-                localization={ {
-                    body: {
-                        dateTimePickerLocalization: { locale: ptBRLocale },
-                        emptyDataSourceMessage:
-                            'Não há dados para serem exibidos no momento',
-                        editRow: {
-                            saveTooltip: 'Salvar',
-                            cancelTooltip: 'Cancelar',
-                            deleteText:
-                                'Você tem certeza que deseja excluir esse '
-                                + props.title + '?'
-                        },
-                        addTooltip: 'Adicionar ' + props.title,
-                        deleteTooltip: 'Remover ' + props.title,
-                        editTooltip: 'Editar ' + props.title
-                    },
-                    header: {
-                        actions: ''
-                    },
-                    pagination: {
-                        firstTooltip: 'Primeira',
-                        firstAriaLabel: 'Primeira',
-                        previousTooltip: 'Anterior',
-                        previousAriaLabel: 'Anterior',
-                        nextTooltip: 'Próxima',
-                        nextAriaLabel: 'Próxima',
-                        lastTooltip: 'Ultima',
-                        lastAriaLabel: 'Ulima',
-                        labelRowsSelect: 'Linhas'
-                    }
-                } }
+                localization={ localization }
                 icons={ {
                     Add: forwardRef(() => renderAddComponent()),
                     Delete: forwardRef(() =>
@@ -321,7 +325,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     display: 'flex',
                     border: '1px solid #CED4DE',
                     boxShadow: 'none',
-                    height: '270px',
+                    height: props.noRowsExpand ? '270px' : undefined,
                     justifyContent: 'space-between',
                     flexDirection: 'column'
                 } }

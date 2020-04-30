@@ -1,6 +1,6 @@
 {
   "name": "flipper-ui",
-  "version": "0.22.14",
+  "version": "0.22.15",
   "description": "",
   "main": "dist/index.js",
   "homepage": "https://nginformatica.github.io/flipper-ui/",
@@ -31,7 +31,7 @@
     "@material-ui/lab": "4.0.0-alpha.42",
     "@material-ui/pickers": "3.2.6",
     "date-fns": "2.4.1",
-    "material-table": "1.56.1",
+    "material-table": "1.57.2",
     "ramda": "0.25.0",
     "react-number-format": "4.0.8"
   },
