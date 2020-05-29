@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { ChangeEvent } from 'react'
 import { Autocomplete as MuiAutocomplete } from '@material-ui/lab'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
@@ -11,9 +11,11 @@ interface IProps {
     selectTextOnFocus?: boolean
     suggestions: TSelected[]
     actions?: React.ReactNode | JSX.Element
+    onChange:
+    (value: string | TSelected) =>
+        (event: React.ChangeEvent<HTMLInputElement>) => void
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     renderInput(params): JSX.Element
-    onInputChange(event: React.ChangeEvent<HTMLInputElement>): void
     onBlur?(event: React.ChangeEvent<{}>): void
 }
 
@@ -38,7 +40,7 @@ const useStyles = makeStyles({
         }
     },
 
-    inputRoot: (props: IProps) => ({
+    inputRoot: (props: { actions: React.ReactNode | JSX.Element }) => ({
         '&.MuiOutlinedInput-root': {
             padding: props.actions
                 ? '0 170px 0 8px !important'
@@ -57,14 +59,11 @@ const useStyles = makeStyles({
 
 })
 
-const AutocompleteNew: FC<IProps> = props => {
+const AutocompleteNew = (props: IProps) => {
     const styles = useStyles(props)
 
     const {
-        renderInput: propRenderInput,
-        openOnFocus,
-        selectTextOnFocus,
-        ...otherProps
+        renderInput: propRenderInput
     } = props
 
     const getOptionLabel = opt => opt?.label || ''
@@ -75,15 +74,20 @@ const AutocompleteNew: FC<IProps> = props => {
             { props.actions }
         </Wrapper>
 
+    const handleChange = (_: ChangeEvent<{}>, value: string | TSelected) => {
+        props.onChange(value)
+    }
+
     return (
         <MuiAutocomplete
             freeSolo
             autoHighlight
+            value={ props.value }
             selectOnFocus={ props.selectTextOnFocus }
             getOptionLabel={ getOptionLabel }
             options={ props.suggestions }
             renderInput={ renderInput }
-            onInputChange={ props.onInputChange }
+            onChange={ handleChange }
             disableOpenOnFocus={ !props.openOnFocus }
             // TODO: passar isso como prop e colocar um default e.g:
             // clearText={ props.clearText || 'clean it' }
@@ -96,7 +100,6 @@ const AutocompleteNew: FC<IProps> = props => {
                 focused: styles.focused,
                 ...props.classes
             } }
-            { ...otherProps }
         />
     )
 }
