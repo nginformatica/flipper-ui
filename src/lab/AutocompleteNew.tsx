@@ -5,15 +5,14 @@ import styled from 'styled-components'
 
 interface IProps {
     value?: string | TSelected
+    defaultValue?: string
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     classes?: any
     openOnFocus?: boolean
     selectTextOnFocus?: boolean
     suggestions: TSelected[]
     actions?: React.ReactNode | JSX.Element
-    onChange:
-    (value: string | TSelected) =>
-        (event: React.ChangeEvent<HTMLInputElement>) => void
+    onChange(event: React.ChangeEvent<{}>, value?: TSelected): void
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     renderInput(params): JSX.Element
     onBlur?(event: React.ChangeEvent<{}>): void
@@ -56,39 +55,30 @@ const useStyles = makeStyles({
             borderColor: '#152849'
         }
     }
-
 })
+
+const getOptionLabel = (props: TSelected) => props.label
 
 const AutocompleteNew = (props: IProps) => {
     const styles = useStyles(props)
 
-    const {
-        renderInput: propRenderInput
-    } = props
-
-    const getOptionLabel = opt => opt?.label || ''
-
     const renderInput = params =>
         <Wrapper>
-            { propRenderInput(params) }
+            { props.renderInput(params) }
             { props.actions }
         </Wrapper>
 
-    const handleChange = (_: ChangeEvent<{}>, value: string | TSelected) => {
-        props.onChange(value)
-    }
-
     return (
         <MuiAutocomplete
+            { ...props }
             freeSolo
             autoHighlight
-            value={ props.value }
-            selectOnFocus={ props.selectTextOnFocus }
-            getOptionLabel={ getOptionLabel }
+            multiple={ false }
             options={ props.suggestions }
-            renderInput={ renderInput }
-            onChange={ handleChange }
+            getOptionLabel={ getOptionLabel }
+            selectOnFocus={ props.selectTextOnFocus }
             disableOpenOnFocus={ !props.openOnFocus }
+            renderInput={ renderInput }
             // TODO: passar isso como prop e colocar um default e.g:
             // clearText={ props.clearText || 'clean it' }
             clearText='Limpar'
