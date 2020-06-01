@@ -42,8 +42,8 @@ const useStyles = makeStyles({
     inputRoot: (props: { actions: React.ReactNode | JSX.Element }) => ({
         '&.MuiOutlinedInput-root': {
             padding: props.actions
-                ? '0 170px 0 8px !important'
-                : '0 65px 0 8px !important'
+                ? '0 150px 0 8px !important'
+                : '0 39px 0 8px !important'
         }
     }),
 
