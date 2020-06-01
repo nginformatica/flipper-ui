@@ -36,6 +36,9 @@ const useStyles = makeStyles({
         '& .MuiOutlinedInput-input': {
             paddingTop: '10px',
             paddingBottom: '10px'
+        },
+        '& .MuiAutocomplete-clearIndicator': {
+            color: '#152849'
         }
     },
 
