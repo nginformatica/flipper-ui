@@ -12,10 +12,11 @@ interface IProps {
     selectTextOnFocus?: boolean
     suggestions: TSelected[]
     actions?: React.ReactNode | JSX.Element
-    onChange(event: React.ChangeEvent<{}>, value?: TSelected): void
+    onChange?(event: React.ChangeEvent<{}>, value?: TSelected): void
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     renderInput(params): JSX.Element
     onBlur?(event: React.ChangeEvent<{}>): void
+    onInputChange?(event: React.ChangeEvent<{}>, value?: string): void
 }
 
 type TSelected = {
@@ -80,7 +81,7 @@ const AutocompleteNew = (props: IProps) => {
             options={ props.suggestions }
             getOptionLabel={ getOptionLabel }
             selectOnFocus={ props.selectTextOnFocus }
-            disableOpenOnFocus={ !props.openOnFocus }
+            openOnFocus={ props.openOnFocus }
             renderInput={ renderInput }
             // TODO: passar isso como prop e colocar um default e.g:
             // clearText={ props.clearText || 'clean it' }
