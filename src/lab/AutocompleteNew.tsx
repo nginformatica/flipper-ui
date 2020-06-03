@@ -48,9 +48,9 @@ const useStyles = makeStyles({
         }
     },
 
-    inputRoot: (props: { actions: React.ReactNode | JSX.Element }) => ({
+    inputRoot: (actions: React.ReactNode | JSX.Element) => ({
         '&.MuiOutlinedInput-root': {
-            padding: props.actions
+            padding: actions
                 ? '0 150px 0 8px !important'
                 : '0 39px 0 8px !important'
         }
@@ -68,13 +68,22 @@ const useStyles = makeStyles({
 
 const getOptionLabel = (props: TSelected) => props.label
 
-const AutocompleteNew = (props: IProps) => {
-    const styles = useStyles(props)
+const AutocompleteNew = ({
+    suggestions,
+    selectTextOnFocus,
+    openOnFocus,
+    classes,
+    actions,
+    renderInput: renderInputProp,
+    ...otherProps
+}: IProps) => {
+
+    const styles = useStyles(actions)
 
     const renderInput = params =>
         <Wrapper>
-            { props.renderInput(params) }
-            { props.actions }
+            { renderInputProp(params) }
+            { actions }
         </Wrapper>
 
     return (
@@ -82,18 +91,18 @@ const AutocompleteNew = (props: IProps) => {
             freeSolo
             autoHighlight
             multiple={ false }
-            options={ props.suggestions }
+            options={ suggestions }
             getOptionLabel={ getOptionLabel }
-            selectOnFocus={ props.selectTextOnFocus }
-            disableOpenOnFocus={ !props.openOnFocus }
+            selectOnFocus={ selectTextOnFocus }
+            disableOpenOnFocus={ !openOnFocus }
             renderInput={ renderInput }
             classes={ {
                 root: styles.root,
                 inputRoot: styles.inputRoot,
                 focused: styles.focused,
-                ...props.classes
+                ...classes
             } }
-            { ...props }
+            { ...otherProps }
         />
     )
 }
