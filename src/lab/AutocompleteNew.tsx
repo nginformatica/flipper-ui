@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import { Autocomplete as MuiAutocomplete } from '@material-ui/lab'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
@@ -13,10 +13,9 @@ interface IProps {
     suggestions: TSelected[]
     actions?: React.ReactNode | JSX.Element
     onChange?(event: React.ChangeEvent<{}>, value?: TSelected): void
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onInputChange?(event: React.ChangeEvent<{}>, value?: string): void
     renderInput(params): JSX.Element
     onBlur?(event: React.ChangeEvent<{}>): void
-    onInputChange?(event: React.ChangeEvent<{}>, value?: string): void
 }
 
 type TSelected = {
@@ -81,7 +80,7 @@ const AutocompleteNew = (props: IProps) => {
             options={ props.suggestions }
             getOptionLabel={ getOptionLabel }
             selectOnFocus={ props.selectTextOnFocus }
-            openOnFocus={ props.openOnFocus }
+            disableOpenOnFocus={ !props.openOnFocus }
             renderInput={ renderInput }
             // TODO: passar isso como prop e colocar um default e.g:
             // clearText={ props.clearText || 'clean it' }
