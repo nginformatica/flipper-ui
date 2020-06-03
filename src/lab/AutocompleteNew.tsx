@@ -1,20 +1,26 @@
-import React from 'react'
-import { Autocomplete as MuiAutocomplete } from '@material-ui/lab'
+import React, { ReactNode } from 'react'
+import {
+    Autocomplete as MuiAutocomplete,
+    AutocompleteClassKey,
+    RenderInputParams
+} from '@material-ui/lab'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
 
 interface IProps {
     value?: string | TSelected
     defaultValue?: string
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    classes?: any
+    clearText?: string
+    closeText?: string
+    noOptionsText?: string
+    classes?: Partial<Record<AutocompleteClassKey, string>>
     openOnFocus?: boolean
     selectTextOnFocus?: boolean
     suggestions: TSelected[]
     actions?: React.ReactNode | JSX.Element
     onChange?(event: React.ChangeEvent<{}>, value?: TSelected): void
     onInputChange?(event: React.ChangeEvent<{}>, value?: string): void
-    renderInput(params): JSX.Element
+    renderInput(params: RenderInputParams): ReactNode
     onBlur?(event: React.ChangeEvent<{}>): void
 }
 
@@ -73,7 +79,6 @@ const AutocompleteNew = (props: IProps) => {
 
     return (
         <MuiAutocomplete
-            { ...props }
             freeSolo
             autoHighlight
             multiple={ false }
@@ -82,17 +87,13 @@ const AutocompleteNew = (props: IProps) => {
             selectOnFocus={ props.selectTextOnFocus }
             disableOpenOnFocus={ !props.openOnFocus }
             renderInput={ renderInput }
-            // TODO: passar isso como prop e colocar um default e.g:
-            // clearText={ props.clearText || 'clean it' }
-            clearText='Limpar'
-            closeText='Fechar'
-            noOptionsText='Não localizado'
             classes={ {
                 root: styles.root,
                 inputRoot: styles.inputRoot,
                 focused: styles.focused,
                 ...props.classes
             } }
+            { ...props }
         />
     )
 }
