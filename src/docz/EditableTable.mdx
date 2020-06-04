@@ -17,6 +17,7 @@ import { Playground, Props } from 'docz'
         noHeader
         paginationInfo
         noRowsExpand
+        onRowClick={ (item, data) => console.log(data) }
         title='adicionar'
         columns={[
             {   
@@ -108,7 +109,7 @@ import { Playground, Props } from 'docz'
                 },
                 { 
                     title: 'Posição', 
-                    field: 'position', 
+                    field: 'position',
                     type: 'numeric' 
                 }
             ]

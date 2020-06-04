@@ -29,6 +29,7 @@ import ptBRLocale from 'date-fns/locale/pt-BR'
 import AutoComplete from './AutoComplete'
 import ListItem from './ListItem'
 import TextField from './TextField'
+import MaskField from './MaskField'
 
 interface IProps<T extends object> {
     title?: string
@@ -43,6 +44,7 @@ interface IProps<T extends object> {
     noHeader?: boolean
     autoCompleteSuggestions?: TSuggestion[]
     autoCompleteField?: string
+    onRowClick?: (event?: React.MouseEvent, rowData?: T) => void
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
@@ -220,6 +222,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
     return (
         <div style={ { width: '100%' } } >
             <MaterialTable
+                onRowClick={ props.onRowClick }
                 components={ {
                     EditRow: props => <CustomRemove { ...props } />,
                     Row: props => <CustomRows { ...props } />,
@@ -256,6 +259,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     },
                     EditField: localProps => {
                         if (localProps.columnDef.type === 'datetime') {
+
                             return (
                                 <DateTime
                                     name={ localProps.columnDef.field + '-input' }
@@ -267,10 +271,24 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                             )
                         }
 
+                        if (localProps.columnDef.type === 'numeric') {
+
+                            return (
+                                <MaskField
+                                    thousandSeparator='.'
+                                    decimalSeparator=','
+                                    name={ localProps.columnDef.field + '-input' }
+                                    type={ localProps.columnDef.type }
+                                    value={ localProps.value }
+                                />
+                            )
+                        }
+
                         if (
                             localProps.columnDef.field === props.autoCompleteField &&
                             props.autoCompleteSuggestions
                         ) {
+
                             return renderAutoComplete(localProps)
                         }
 
