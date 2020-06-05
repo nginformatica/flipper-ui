@@ -29,6 +29,7 @@ import ptBRLocale from 'date-fns/locale/pt-BR'
 import AutoComplete from './AutoComplete'
 import ListItem from './ListItem'
 import TextField from './TextField'
+import MaskField from './MaskField'
 
 interface IProps<T extends object> {
     title?: string
@@ -36,13 +37,12 @@ interface IProps<T extends object> {
     columns?: Column<object>[]
     data?: T[]
     options?: Options
-    addIcon?: React.ReactElement
-    deleteIcon?: React.ReactElement
     paginationInfo?: boolean
     noRowsExpand?: boolean
     noHeader?: boolean
     autoCompleteSuggestions?: TSuggestion[]
     autoCompleteField?: string
+    onRowClick?: (event?: React.MouseEvent, rowData?: T) => void
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
@@ -108,9 +108,7 @@ const RightPagination = styled.div`
 const usePrevious = (data?: object[]) => {
     const ref = useRef<object[] | undefined>()
 
-    useEffect(() => {
-        ref.current = data
-    })
+    useEffect(() => { ref.current = data })
 
     return ref.current
 }
@@ -220,6 +218,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
     return (
         <div style={ { width: '100%' } } >
             <MaterialTable
+                onRowClick={ props.onRowClick }
                 components={ {
                     EditRow: props => <CustomRemove { ...props } />,
                     Row: props => <CustomRows { ...props } />,
@@ -239,7 +238,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                             'position' in props.action &&
                             props.action.position === 'toolbar'
                         ) {
-                            const Label = props.action.icon
+                            const ActionIcon = props.action.icon
 
                             return (
                                 <Button
@@ -247,7 +246,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                                     variant='dashed'
                                     color={ props.color || 'primary' }
                                     onClick={ props.action.onClick }>
-                                    <Label />
+                                    <ActionIcon />
                                 </Button>
                             )
                         }
@@ -256,6 +255,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     },
                     EditField: localProps => {
                         if (localProps.columnDef.type === 'datetime') {
+
                             return (
                                 <DateTime
                                     name={ localProps.columnDef.field + '-input' }
@@ -267,10 +267,29 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                             )
                         }
 
+                        if (localProps.columnDef.type === 'numeric') {
+
+                            return (
+                                <MaskField
+                                    type='text'
+                                    thousandSeparator='.'
+                                    decimalSeparator=','
+                                    name={ localProps.columnDef.field + '-input' }
+                                    value={ localProps.value }
+                                    onChange={
+                                        event => localProps.onChange(
+                                            event.currentTarget.value
+                                        )
+                                    }
+                                />
+                            )
+                        }
+
                         if (
                             localProps.columnDef.field === props.autoCompleteField &&
                             props.autoCompleteSuggestions
                         ) {
+
                             return renderAutoComplete(localProps)
                         }
 
@@ -340,9 +359,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     actionsColumnIndex: 4,
                     toolbarButtonAlignment: 'left',
                     padding: 'dense',
-                    headerStyle: {
-                        borderBottom: '2px #CED4DE solid'
-                    },
+                    headerStyle: { borderBottom: '2px #CED4DE solid' },
                     ...props.options
                 } }
                 editable={ {
