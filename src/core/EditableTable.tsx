@@ -238,6 +238,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                             'position' in props.action &&
                             props.action.position === 'toolbar'
                         ) {
+                            const ActionIcon = props.action.icon
 
                             return (
                                 <Button
@@ -245,7 +246,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                                     variant='dashed'
                                     color={ props.color || 'primary' }
                                     onClick={ props.action.onClick }>
-                                    { props.action.icon }
+                                    <ActionIcon />
                                 </Button>
                             )
                         }
