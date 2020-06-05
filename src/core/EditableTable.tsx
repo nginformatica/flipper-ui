@@ -37,8 +37,6 @@ interface IProps<T extends object> {
     columns?: Column<object>[]
     data?: T[]
     options?: Options
-    addIcon?: React.ReactElement
-    deleteIcon?: React.ReactElement
     paginationInfo?: boolean
     noRowsExpand?: boolean
     noHeader?: boolean
@@ -110,9 +108,7 @@ const RightPagination = styled.div`
 const usePrevious = (data?: object[]) => {
     const ref = useRef<object[] | undefined>()
 
-    useEffect(() => {
-        ref.current = data
-    })
+    useEffect(() => { ref.current = data })
 
     return ref.current
 }
@@ -242,7 +238,6 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                             'position' in props.action &&
                             props.action.position === 'toolbar'
                         ) {
-                            const Label = props.action.icon
 
                             return (
                                 <Button
@@ -250,7 +245,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                                     variant='dashed'
                                     color={ props.color || 'primary' }
                                     onClick={ props.action.onClick }>
-                                    <Label />
+                                    { props.action.icon }
                                 </Button>
                             )
                         }
@@ -275,11 +270,16 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
 
                             return (
                                 <MaskField
+                                    type='text'
                                     thousandSeparator='.'
                                     decimalSeparator=','
                                     name={ localProps.columnDef.field + '-input' }
-                                    type={ localProps.columnDef.type }
                                     value={ localProps.value }
+                                    onChange={
+                                        event => localProps.onChange(
+                                            event.currentTarget.value
+                                        )
+                                    }
                                 />
                             )
                         }
@@ -358,9 +358,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     actionsColumnIndex: 4,
                     toolbarButtonAlignment: 'left',
                     padding: 'dense',
-                    headerStyle: {
-                        borderBottom: '2px #CED4DE solid'
-                    },
+                    headerStyle: { borderBottom: '2px #CED4DE solid' },
                     ...props.options
                 } }
                 editable={ {
