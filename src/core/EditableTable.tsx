@@ -271,9 +271,11 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
 
                             return (
                                 <MaskField
+                                    fixedDecimalScale
                                     type='text'
                                     thousandSeparator='.'
                                     decimalSeparator=','
+                                    decimalScale={ 0 }
                                     name={ localProps.columnDef.field + '-input' }
                                     value={ localProps.value }
                                     onChange={
