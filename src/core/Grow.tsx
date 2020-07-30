@@ -1,19 +1,20 @@
 import { Grow as MuiGrow } from '@material-ui/core'
-import React, { FC } from 'react'
+import React from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     in: boolean
     timeout?: number | { enter?: number, exit?: number } | 'auto'
+    children?: React.ReactElement<{}>
 }
 
-const Grow: FC<IProps> = ({
+const Grow = ({
     children,
     padding,
     margin,
     style = {},
     ...otherProps
-}) =>
+}: IProps) =>
     <MuiGrow
         style={ { padding, margin, ...style } }
         { ...otherProps }>

@@ -1,21 +1,22 @@
 import { Slide as MuiSlide } from '@material-ui/core'
-import React, { FC } from 'react'
+import React from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
     in: boolean
     direction: 'left' | 'right' | 'up' | 'down'
     timeout?: number | { enter?: number, exit?: number }
+    children?: React.ReactElement<{}>
 }
 
-const Slide: FC<IProps> = ({
+const Slide = ({
     children,
     direction = 'down',
     margin,
     padding,
     style = {},
     ...otherProps
-}) =>
+}: IProps) =>
     <MuiSlide
         direction={ direction as 'down' }
         style={ { padding, margin, ...style } }

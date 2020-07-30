@@ -1,5 +1,5 @@
 import { Fab as MuiFab } from '@material-ui/core'
-import React, { FC, MouseEvent } from 'react'
+import React, { MouseEvent } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -12,16 +12,17 @@ interface IProps extends IDefault {
         | 'round'
         | 'extended'
     onClick?: (event?: MouseEvent<HTMLElement>) => void
+    children: React.ReactElement<{}>
 }
 
-const Fab: FC<IProps> = ({
+const Fab = ({
     children,
     margin,
     padding,
     style = {},
     variant,
     ...otherProps
-}) =>
+}: IProps) =>
     <MuiFab
         { ...otherProps }
         variant={ variant }
