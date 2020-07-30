@@ -1,5 +1,5 @@
 import { Tooltip as MuiTooltip } from '@material-ui/core'
-import React, { FC, ReactElement, CSSProperties, ReactNode } from 'react'
+import React, { ReactElement, CSSProperties } from 'react'
 import { IDefault } from './Advertise'
 
 interface IProps extends IDefault {
@@ -16,7 +16,7 @@ interface IProps extends IDefault {
         | 'top-end'
         | 'top-start'
         | 'top'
-    title: string | ReactNode
+    title: React.ReactNode
     withWrapper?: boolean
     wrapperStyle?: CSSProperties
     onClose?: () => void
@@ -26,22 +26,28 @@ interface IProps extends IDefault {
     enterDelay?: number
 }
 
-const Tooltip: FC<IProps> =
-    ({ children, withWrapper, wrapperStyle, enterDelay = 1000, ...otherProps }) =>
-        <MuiTooltip enterDelay={ enterDelay } { ...otherProps }>
-            {
-                withWrapper
-                    ? (
-                        <div
-                            style={ {
-                                display: 'inherit',
-                                ...wrapperStyle
-                            } }>
-                            { children }
-                        </div>
-                    )
-                    : children
-            }
-        </MuiTooltip>
+const Tooltip = ({
+    children,
+    withWrapper,
+    wrapperStyle,
+    enterDelay = 1000,
+    title,
+    ...otherProps
+}: IProps) =>
+    <MuiTooltip title={ title || '' } enterDelay={ enterDelay } { ...otherProps }>
+        {
+            withWrapper
+                ? (
+                    <div
+                        style={ {
+                            display: 'inherit',
+                            ...wrapperStyle
+                        } }>
+                        { children }
+                    </div>
+                )
+                : children
+        }
+    </MuiTooltip>
 
 export default Tooltip

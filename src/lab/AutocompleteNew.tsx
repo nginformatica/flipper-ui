@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import {
     Autocomplete as MuiAutocomplete,
     AutocompleteClassKey,
-    RenderInputParams
+    AutocompleteRenderInputParams
 } from '@material-ui/lab'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
@@ -20,7 +20,7 @@ interface IProps {
     actions?: React.ReactNode | JSX.Element
     onChange?(event: React.ChangeEvent<{}>, value?: TSelected): void
     onInputChange?(event: React.ChangeEvent<{}>, value?: string): void
-    renderInput(params: RenderInputParams): ReactNode
+    renderInput(params: AutocompleteRenderInputParams): ReactNode
     onBlur?(event: React.ChangeEvent<{}>): void
 }
 
@@ -80,7 +80,7 @@ const AutocompleteNew = ({
 
     const styles = useStyles(actions)
 
-    const renderInput = params =>
+    const renderInput = (params: AutocompleteRenderInputParams) =>
         <Wrapper>
             { renderInputProp(params) }
             { actions }
@@ -94,7 +94,6 @@ const AutocompleteNew = ({
             options={ suggestions }
             getOptionLabel={ getOptionLabel }
             selectOnFocus={ selectTextOnFocus }
-            disableOpenOnFocus={ !openOnFocus }
             renderInput={ renderInput }
             classes={ {
                 root: styles.root,

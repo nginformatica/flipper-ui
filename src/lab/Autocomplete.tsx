@@ -2,6 +2,8 @@ import React from 'react'
 import {
     default as MuiAutocomplete
 } from '@material-ui/lab/Autocomplete'
+export { AutocompleteRenderInputParams } from '@material-ui/lab/Autocomplete'
+export { AutocompleteProps } from '@material-ui/lab/Autocomplete'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
