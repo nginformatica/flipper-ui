@@ -63,7 +63,7 @@
     "fs-extra": "7.0.0",
     "gh-pages": "2.0.0",
     "jest": "24.9.0",
-    "node-fetch": "2.6.0",
+    "node-fetch": "2.6.1",
     "prettier": "1.16.4",
     "styled-components": "5.0.0",
     "typescript": "3.9.5"
