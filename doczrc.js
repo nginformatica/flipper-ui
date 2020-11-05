@@ -3,5 +3,6 @@ export default {
     dest: '/docs',
     base: '/flipper-ui/',
     description: 'Flipper-ui React Components',
-    wrapper: '../../src/docz/Wrapper.tsx'
+    wrapper: '../../src/docz/Wrapper.tsx',
+    hashRouter:true
 }
