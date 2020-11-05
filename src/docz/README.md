@@ -1,6 +1,6 @@
 <!-- Logo -->
 <p align="center">
-  <img width="150" src="logo.png" alt="Flipper-UI logo" /></a></p>
+  <img width="150" src="logo.png" alt="Flipper-UI logo" />
 </p>
 
 <!-- Name -->
