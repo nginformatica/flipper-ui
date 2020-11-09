@@ -1,9 +1,9 @@
 {
   "name": "flipper-ui",
-  "version": "0.22.21",
+  "version": "0.23.0",
   "description": "",
   "main": "dist/index.js",
-  "homepage": "https://nginformatica.github.io/flipper-ui/",
+  "homepage": "https://flipper-ui.vercel.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/nginformatica/flipper-ui.git"
