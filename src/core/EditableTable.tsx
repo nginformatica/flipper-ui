@@ -21,7 +21,7 @@ import {
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { equals, omit } from 'ramda'
+import { equals, omit, contains } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -42,6 +42,8 @@ interface IProps<T extends object> {
     noHeader?: boolean
     autoCompleteSuggestions?: TSuggestion[]
     autoCompleteField?: string
+    disableAddHeader?: boolean
+    errors?: string[]
     onRowClick?: (event?: React.MouseEvent, rowData?: T) => void
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
@@ -49,10 +51,7 @@ interface IProps<T extends object> {
     onClickAdd?(): void
 }
 
-export type TSuggestion = {
-    label: string
-    value: string
-}
+export type TSuggestion = { label: string, value: string }
 
 const AddRowButton = styled.div`
     display: flex;
@@ -118,6 +117,8 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
     const previous = usePrevious(props.data)
     const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
 
+    const getErrors = (field: string) => contains(field, props.errors || [])
+
     const localization = {
         body: {
             dateTimePickerLocalization: { locale: ptBRLocale },
@@ -134,9 +135,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
             deleteTooltip: 'Remover ' + props.title,
             editTooltip: 'Editar ' + props.title
         },
-        header: {
-            actions: ''
-        },
+        header: { actions: '' },
         pagination: {
             firstTooltip: 'Primeira',
             firstAriaLabel: 'Primeira',
@@ -197,6 +196,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
             renderInput={ itemProps =>
                 <TextField
                     fullWidth
+                    error={ getErrors(inputProps.columnDef.field) }
                     name={ inputProps.columnDef.field + '-input' }
                     { ...itemProps }
                 />
@@ -233,31 +233,33 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                             />
                         )
                     },
-                    Action: props => {
+                    Action: localProps => {
                         if (
-                            'position' in props.action &&
-                            props.action.position === 'toolbar'
+                            'position' in localProps.action &&
+                            localProps.action.position === 'toolbar'
                         ) {
-                            const ActionIcon = props.action.icon
+                            const ActionIcon = localProps.action.icon
 
                             return (
                                 <Button
                                     fullWidth
+                                    disabled={ props.disableAddHeader }
                                     variant='dashed'
-                                    color={ props.color || 'primary' }
-                                    onClick={ props.action.onClick }>
+                                    color={ localProps.color || 'primary' }
+                                    onClick={ localProps.action.onClick }>
                                     <ActionIcon />
                                 </Button>
                             )
                         }
 
-                        return <MTableAction { ...props } />
+                        return <MTableAction { ...localProps } />
                     },
                     EditField: localProps => {
                         if (localProps.columnDef.type === 'datetime') {
 
                             return (
                                 <DateTime
+                                    error={ getErrors(localProps.columnDef.field) }
                                     name={ localProps.columnDef.field + '-input' }
                                     type={ localProps.columnDef.type }
                                     value={ localProps.value }
@@ -272,6 +274,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                             return (
                                 <MaskField
                                     fixedDecimalScale
+                                    error={ getErrors(localProps.columnDef.field) }
                                     type='text'
                                     thousandSeparator='.'
                                     decimalSeparator=','
