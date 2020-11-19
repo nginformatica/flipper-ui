@@ -14,9 +14,10 @@ import { Playground, Props } from 'docz'
 ## Default
 <Playground>
     <EditableTable
-        noHeader
         paginationInfo
         noRowsExpand
+        disableAddHeader
+        onAddRow={ item => Promise.resolve(console.log(item)) }
         onRowClick={ () => window.alert('hello') }
         title='adicionar'
         columns={[
