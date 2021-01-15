@@ -25,7 +25,7 @@ export type TChipValues = {
 const ChipField = <T extends TChipValues>(props: IProps<T>) => {
     const values = useMemo(() =>
         props.values.map(item => item.value),
-        [props.values]
+    [props.values]
     )
 
     return (
