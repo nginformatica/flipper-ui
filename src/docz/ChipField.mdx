@@ -12,14 +12,26 @@ import { Playground, Props } from 'docz'
 <Props of={ ChipField } />
 
 ## ChipField Example
-<Playground>
-    <ChipField
-        fullwidth
 
-        label='chips'
-        variant='outlined' 
-        onAdd={item => { console.log(item)}}
-        onDelete={(item, index) => { console.log(item, index)}}
-        values={[{ value: 'alpha'}]} />
+<Playground>
+    { 
+        () => {
+            const [state, setState] = React.useState([{ value: 'alpha' }])
+            
+            const handleRemove = value =>
+                setState(state.filter(item => item.value !== value))
+
+            return (
+                <ChipField
+                    fullwidth
+                    fullwidthInput
+                    label='chips'
+                    variant='outlined' 
+                    onAdd={item => setState([ { value: item }, ...state])}
+                    onDelete={handleRemove}
+                    values={state}/>
+            )
+        }
+    }
 </Playground>
 
