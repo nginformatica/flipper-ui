@@ -1,0 +1,26 @@
+---
+name: ChipField
+route: /chipfield
+---
+
+import ChipField from '../core/ChipField'
+import { Playground, Props } from 'docz'
+
+# ChipField
+
+## Properties
+<Props of={ ChipField } />
+
+## ChipField Example
+
+<Playground>
+    <ChipField
+        fullwidth
+
+        label='chips'
+        variant='outlined' 
+        onAdd={item => { console.log(item)}}
+        onDelete={(item, index) => { console.log(item, index)}}
+        values={[{ value: 'alpha'}]} />
+</Playground>
+
