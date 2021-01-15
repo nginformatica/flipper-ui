@@ -1,5 +1,5 @@
 import React from 'react'
-import ChipInput from 'material-ui-chip-input'
+import ChipInput, { ChipRenderer } from 'material-ui-chip-input'
 import { InputLabelProps } from '@material-ui/core'
 
 interface IProps<T extends TChipValues> {
@@ -13,6 +13,7 @@ interface IProps<T extends TChipValues> {
   label?: React.ReactNode
   placeholder?: string
   readOnly?: boolean
+  chipRenderer?: ChipRenderer
   onAdd: (values: T[]) => void;
   onDelete: (value: T, index: number) => void;
 }
