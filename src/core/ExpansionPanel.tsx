@@ -2,8 +2,14 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import React, { ReactNode, FC } from 'react'
+import React, { ReactNode, FC, MouseEvent, useState } from 'react'
+import IconButton from './IconButton'
 import { IProps as IPaper } from './Paper'
+import {
+    TextFieldWrapper as ExpansionPanelHeaderWrapper,
+    Helper
+} from './TextField'
+import { Help as ContactSupportIcon } from '@material-ui/icons'
 
 interface IProps extends IPaper {
     actions?: ReactNode
@@ -16,6 +22,8 @@ interface IProps extends IPaper {
     summaryStyle?: object
     detailsStyle?: object
     actionsStyle?: object
+    helperIcon?: React.ReactNode
+    onHelperClick?: () => void
     onChange?: (event?, expanded?) => void
 }
 
@@ -30,34 +38,74 @@ const ExpansionPanel: FC<IProps> = ({
     summaryStyle,
     detailsStyle,
     actionsStyle,
+    onHelperClick,
+    helperIcon,
     ...otherProps
-}) =>
-    <MuiExpansionPanel
-        { ...otherProps }
-        style={ { margin, padding, ...style } }>
-        {
-            summary && (
-                <MuiExpansionPanelSummary
-                    expandIcon={ expandIcon }
-                    style={ summaryStyle }>
-                    { summary }
-                </MuiExpansionPanelSummary>
-            )
+}) => {
+    const [hovered, setHovered] = useState(false)
+
+    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+        if (onHelperClick) {
+            event.stopPropagation()
+            onHelperClick()
+            setHovered(true)
         }
-        {
-            details && (
-                <MuiExpansionPanelDetails style={ detailsStyle }>
-                    { details }
-                </MuiExpansionPanelDetails>
-            )
-        }
-        {
-            actions && (
-                <MuiExpansionPanelActions style={ actionsStyle }>
-                    { actions }
-                </MuiExpansionPanelActions>
-            )
-        }
-    </MuiExpansionPanel>
+    }
+
+    const hoveredItem = () => {
+        setHovered(true)
+    }
+
+    return (
+        <MuiExpansionPanel
+            { ...otherProps }
+            style={ { margin, padding, ...style } }>
+            {
+                summary && (
+                    <MuiExpansionPanelSummary
+                        expandIcon={ expandIcon }
+                        style={ summaryStyle }>
+                        <ExpansionPanelHeaderWrapper
+                            hovered={ hovered }
+                            onMouseOver={ hoveredItem }>
+                            {
+                                onHelperClick && (
+                                    <Helper>
+                                        <IconButton
+                                            padding={ 4 }
+                                            onClick={ handleClick }>
+                                            {
+                                                helperIcon || (
+                                                    <ContactSupportIcon
+                                                        color='primary'
+                                                    />
+                                                )
+                                            }
+                                        </IconButton>
+                                    </Helper>
+                                )
+                            }
+                            { summary }
+                        </ExpansionPanelHeaderWrapper>
+                    </MuiExpansionPanelSummary>
+                )
+            }
+            {
+                details && (
+                    <MuiExpansionPanelDetails style={ detailsStyle }>
+                        { details }
+                    </MuiExpansionPanelDetails>
+                )
+            }
+            {
+                actions && (
+                    <MuiExpansionPanelActions style={ actionsStyle }>
+                        { actions }
+                    </MuiExpansionPanelActions>
+                )
+            }
+        </MuiExpansionPanel >
+    )
+}
 
 export default ExpansionPanel
