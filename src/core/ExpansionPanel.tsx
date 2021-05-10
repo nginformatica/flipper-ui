@@ -67,7 +67,7 @@ const ExpansionPanel: FC<IProps> = ({
                                 onHelperClick && (
                                     <Helper>
                                         <IconButton
-                                            padding={ 4 }
+                                            padding='6px 2px'
                                             onClick={ handleClick }>
                                             {
                                                 helperIcon || (

@@ -140,7 +140,9 @@ const TextField: FC<TProps> = ({
             {
                 onHelperClick && (
                     <Helper>
-                        <IconButton padding={ 4 } onClick={ handleClick }>
+                        <IconButton
+                            padding='6px 2px'
+                            onClick={ handleClick }>
                             { helperIcon || <ContactSupportIcon color='primary' /> }
                         </IconButton>
                     </Helper >
