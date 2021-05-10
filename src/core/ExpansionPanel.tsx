@@ -2,14 +2,12 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import React, { ReactNode, FC, MouseEvent, useState } from 'react'
+import React, { ReactNode, FC, MouseEvent } from 'react'
 import IconButton from './IconButton'
 import { IProps as IPaper } from './Paper'
-import {
-    TextFieldWrapper as ExpansionPanelHeaderWrapper,
-    Helper
-} from './TextField'
+import { TextFieldWrapper as ExpansionPanelHeaderWrapper } from './TextField'
 import { Help as ContactSupportIcon } from '@material-ui/icons'
+import styled from 'styled-components'
 
 interface IProps extends IPaper {
     actions?: ReactNode
@@ -27,6 +25,11 @@ interface IProps extends IPaper {
     onChange?: (event?, expanded?) => void
 }
 
+const Helper = styled.div`
+    width: 32px;
+    height: 38px;
+`
+
 const ExpansionPanel: FC<IProps> = ({
     actions,
     details,
@@ -42,18 +45,12 @@ const ExpansionPanel: FC<IProps> = ({
     helperIcon,
     ...otherProps
 }) => {
-    const [hovered, setHovered] = useState(false)
 
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
         if (onHelperClick) {
             event.stopPropagation()
             onHelperClick()
-            setHovered(true)
         }
-    }
-
-    const hoveredItem = () => {
-        setHovered(true)
     }
 
     return (
@@ -65,9 +62,7 @@ const ExpansionPanel: FC<IProps> = ({
                     <MuiExpansionPanelSummary
                         expandIcon={ expandIcon }
                         style={ summaryStyle }>
-                        <ExpansionPanelHeaderWrapper
-                            hovered={ hovered }
-                            onMouseOver={ hoveredItem }>
+                        <ExpansionPanelHeaderWrapper>
                             {
                                 onHelperClick && (
                                     <Helper>

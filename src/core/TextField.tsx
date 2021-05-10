@@ -1,6 +1,6 @@
 import { TextField as MuiTextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent, useState } from 'react'
+import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent } from 'react'
 import { IDefault } from './Advertise'
 import { Help as ContactSupportIcon } from '@material-ui/icons'
 import IconButton from './IconButton'
@@ -64,16 +64,20 @@ export const useStyles = makeStyles({
 
 type TProps = IProps
 
-export const Helper = styled.div`
+const Helper = styled.div`
     width: 42px;
     height: 38px;
 `
 
-export const TextFieldWrapper = styled.div<{ hovered: boolean }>`
+export const TextFieldWrapper = styled.div`
     display: flex;
     flex-direction: rows;
+    width: 100%;
     button {
-        display: ${props => props.hovered ? 'flex' : 'none'};  
+        display: none;  
+    }
+    :hover button {
+        display: flex;
     }
 `
 
@@ -89,26 +93,19 @@ const TextField: FC<TProps> = ({
     autoComplete = 'off',
     onHelperClick,
     helperIcon,
+    fullWidth,
     ...otherProps
 }) => {
     const classes = useStyles()
-    const [hovered, setHovered] = useState(false)
 
     const handleClick = () => {
         if (onHelperClick) {
             onHelperClick()
-            setHovered(true)
         }
     }
 
-    const hoveredItem = () => {
-        setHovered(true)
-    }
-
     return (
-        <TextFieldWrapper
-            hovered={ hovered }
-            onMouseOver={ hoveredItem }>
+        <TextFieldWrapper>
             <MuiTextField
                 autoComplete={ autoComplete }
                 error={ error }
