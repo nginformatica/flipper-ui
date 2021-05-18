@@ -2,6 +2,9 @@ import { TextField as MuiTextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent } from 'react'
 import { IDefault } from './Advertise'
+import { Help as ContactSupportIcon } from '@material-ui/icons'
+import IconButton from './IconButton'
+import styled from 'styled-components'
 
 export interface IProps extends IDefault {
     autoComplete?: string
@@ -28,6 +31,8 @@ export interface IProps extends IDefault {
     rows?: string | number
     rowsMax?: string | number
     helperText?: React.ReactNode
+    helperIcon?: React.ReactNode
+    onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     onKeyUp?: (event: KeyboardEvent) => void
@@ -59,6 +64,23 @@ export const useStyles = makeStyles({
 
 type TProps = IProps
 
+const Helper = styled.div`
+    width: 42px;
+    height: 38px;
+`
+
+export const TextFieldWrapper = styled.div`
+    display: flex;
+    flex-direction: rows;
+    width: 100%;
+    button {
+        display: none;  
+    }
+    :hover button {
+        display: flex;
+    }
+`
+
 const TextField: FC<TProps> = ({
     margin,
     padding,
@@ -68,43 +90,65 @@ const TextField: FC<TProps> = ({
     InputLabelProps = {},
     InputProps = {},
     SelectProps = {},
-    autoComplete='off',
+    autoComplete = 'off',
+    onHelperClick,
+    helperIcon,
+    fullWidth,
     ...otherProps
 }) => {
     const classes = useStyles()
 
+    const handleClick = () => {
+        if (onHelperClick) {
+            onHelperClick()
+        }
+    }
+
     return (
-        <MuiTextField
-            autoComplete={ autoComplete }
-            error={ error }
-            variant={ variant as 'outlined' }
-            style={ {
-                margin,
-                padding,
-                ...style
-            } }
-            InputLabelProps={ {
-                classes: {
-                    outlined: variant === 'outlined' ? classes.outlinedLabel : ''
-                },
-                ...InputLabelProps
-            } }
-            InputProps={ {
-                classes: {
-                    input: variant === 'outlined' ? classes.outlinedInput : '',
-                    multiline:
-                        variant === 'outlined' ? classes.outlinedMultiline : ''
-                },
-                ...InputProps
-            } }
-            SelectProps={ {
-                classes: {
-                    iconOutlined: classes.iconOutlined
-                },
-                ...SelectProps
-            } }
-            { ...otherProps }
-        />
+        <TextFieldWrapper>
+            <MuiTextField
+                autoComplete={ autoComplete }
+                error={ error }
+                variant={ variant as 'outlined' }
+                style={ {
+                    margin,
+                    padding,
+                    ...style
+                } }
+                InputLabelProps={ {
+                    classes: {
+                        outlined: variant === 'outlined' ? classes.outlinedLabel : ''
+                    },
+                    ...InputLabelProps
+                } }
+                InputProps={ {
+                    classes: {
+                        input: variant === 'outlined' ? classes.outlinedInput : '',
+                        multiline:
+                            variant === 'outlined' ? classes.outlinedMultiline : ''
+                    },
+                    ...InputProps
+                } }
+                SelectProps={ {
+                    classes: {
+                        iconOutlined: classes.iconOutlined
+                    },
+                    ...SelectProps
+                } }
+                { ...otherProps }
+            />
+            {
+                onHelperClick && (
+                    <Helper>
+                        <IconButton
+                            padding='6px 2px'
+                            onClick={ handleClick }>
+                            { helperIcon || <ContactSupportIcon color='primary' /> }
+                        </IconButton>
+                    </Helper >
+                )
+            }
+        </TextFieldWrapper>
     )
 }
 
