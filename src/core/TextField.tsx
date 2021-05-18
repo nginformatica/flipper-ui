@@ -107,6 +107,7 @@ const TextField: FC<TProps> = ({
     return (
         <TextFieldWrapper>
             <MuiTextField
+                fullWidth={ fullWidth }
                 autoComplete={ autoComplete }
                 error={ error }
                 variant={ variant as 'outlined' }
