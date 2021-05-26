@@ -20,6 +20,15 @@ import { Playground, Props } from 'docz'
     />
 </Playground>
 
+## Normal with helper
+<Playground>
+    <Checkbox
+        onHelperClick={ () => alert('Do you need help?') }
+        label='I agree with the terms'
+        name='terms'
+        onChange={ () => alert('You clicked on the checkbox!') }
+    />
+</Playground>
 
 ## Primary
 <Playground>
@@ -42,6 +51,17 @@ import { Playground, Props } from 'docz'
 ## Switch
 <Playground>
     <Checkbox
+        name='bluetooth'
+        type='switch'
+        label='Bluetooth'
+        onChange={ () => alert('You clicked on the switcher!') }
+    />
+</Playground>
+
+## Switch with helper
+<Playground>
+    <Checkbox
+        onHelperClick={ () => alert('Do you need help?') }
         name='bluetooth'
         type='switch'
         label='Bluetooth'

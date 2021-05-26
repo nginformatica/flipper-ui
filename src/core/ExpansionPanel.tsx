@@ -3,11 +3,11 @@ import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import React, { ReactNode, FC, MouseEvent } from 'react'
-import IconButton from './IconButton'
 import { IProps as IPaper } from './Paper'
-import { TextFieldWrapper as ExpansionPanelHeaderWrapper } from './TextField'
-import { Help as ContactSupportIcon } from '@material-ui/icons'
-import styled from 'styled-components'
+import {
+    HelperBox,
+    TextFieldWrapper as ExpansionPanelHeaderWrapper
+} from './TextField'
 
 interface IProps extends IPaper {
     actions?: ReactNode
@@ -21,14 +21,10 @@ interface IProps extends IPaper {
     detailsStyle?: object
     actionsStyle?: object
     helperIcon?: React.ReactNode
+    helperButtonPosition?: 'left' | 'right'
     onHelperClick?: () => void
     onChange?: (event?, expanded?) => void
 }
-
-const Helper = styled.div`
-    width: 32px;
-    height: 38px;
-`
 
 const ExpansionPanel: FC<IProps> = ({
     actions,
@@ -43,6 +39,7 @@ const ExpansionPanel: FC<IProps> = ({
     actionsStyle,
     onHelperClick,
     helperIcon,
+    helperButtonPosition = 'right',
     ...otherProps
 }) => {
 
@@ -52,6 +49,19 @@ const ExpansionPanel: FC<IProps> = ({
             onHelperClick()
         }
     }
+
+    const renderHelper = (
+        <>
+            {
+                onHelperClick && (
+                    <HelperBox
+                        helperIcon
+                        onHelperClick={ handleClick }
+                    />
+                )
+            }
+        </>
+    )
 
     return (
         <MuiExpansionPanel
@@ -63,24 +73,9 @@ const ExpansionPanel: FC<IProps> = ({
                         expandIcon={ expandIcon }
                         style={ summaryStyle }>
                         <ExpansionPanelHeaderWrapper>
-                            {
-                                onHelperClick && (
-                                    <Helper>
-                                        <IconButton
-                                            padding='6px 2px'
-                                            onClick={ handleClick }>
-                                            {
-                                                helperIcon || (
-                                                    <ContactSupportIcon
-                                                        color='primary'
-                                                    />
-                                                )
-                                            }
-                                        </IconButton>
-                                    </Helper>
-                                )
-                            }
+                            { helperButtonPosition === 'left' && renderHelper }
                             { summary }
+                            { helperButtonPosition === 'right' && renderHelper }
                         </ExpansionPanelHeaderWrapper>
                     </MuiExpansionPanelSummary>
                 )
