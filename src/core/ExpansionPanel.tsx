@@ -3,11 +3,9 @@ import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import React, { ReactNode, FC, MouseEvent } from 'react'
+import styled from 'styled-components'
 import { IProps as IPaper } from './Paper'
-import {
-    HelperBox,
-    TextFieldWrapper as ExpansionPanelHeaderWrapper
-} from './TextField'
+import { HelperBox } from './TextField'
 
 interface IProps extends IPaper {
     actions?: ReactNode
@@ -25,6 +23,18 @@ interface IProps extends IPaper {
     onHelperClick?: () => void
     onChange?: (event?, expanded?) => void
 }
+
+const ExpansionPanelHeaderWrapper = styled.div`
+    display: flex;
+    flex-direction: rows;
+    align-items: center;
+    button {
+        display: none;  
+    }
+    :hover button {
+        display: flex;
+    }
+`
 
 const ExpansionPanel: FC<IProps> = ({
     actions,
