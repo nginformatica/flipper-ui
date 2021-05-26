@@ -4,9 +4,9 @@ import {
     Switch as MuiSwitch,
     Typography
 } from '@material-ui/core'
-import React, { ChangeEvent, ReactNode, FC } from 'react'
+import React, { ChangeEvent, ReactNode } from 'react'
 import { IDefault } from './Advertise'
-
+import { HelperBox, TextFieldWrapper as CheckFieldsWrapper } from './TextField'
 interface IProps extends IDefault {
     name: string
     label?: ReactNode
@@ -16,11 +16,33 @@ interface IProps extends IDefault {
     checked?: boolean
     dense?: boolean
     type?: 'switch' | 'checkbox'
+    helperIcon?: React.ReactNode
+    onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Checkbox: FC<IProps> = props => {
-    const { type = 'checkbox', margin, padding, style } = props
+const Checkbox = (props: IProps) => {
+    const {
+        type = 'checkbox',
+        margin,
+        padding,
+        style,
+        helperIcon,
+        onHelperClick
+    } = props
+
+    const renderHelper = (
+        <>
+            {
+                onHelperClick && (
+                    <HelperBox
+                        helperIcon={ helperIcon }
+                        onHelperClick={ onHelperClick }
+                    />
+                )
+            }
+        </>
+    )
 
     const renderCheckbox = () =>
         <MuiCheckbox
@@ -58,16 +80,23 @@ const Checkbox: FC<IProps> = props => {
             )
             : props.label
 
-    return props.label
-        ? (
-            <MuiFormControlLabel
-                style={ { padding, margin, ...style } }
-                className={ props.className }
-                label={ renderLabel() }
-                control={ renderControl() }
-            />
-        )
-        : renderControl()
+    return (
+        <CheckFieldsWrapper>
+            {
+                props.label
+                    ? (
+                        <MuiFormControlLabel
+                            style={ { padding, margin, ...style } }
+                            className={ props.className }
+                            label={ renderLabel() }
+                            control={ renderControl() }
+                        />
+                    )
+                    : renderControl()
+            }
+            { renderHelper }
+        </CheckFieldsWrapper>
+    )
 }
 
 export default Checkbox

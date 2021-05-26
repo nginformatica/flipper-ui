@@ -1,6 +1,6 @@
 import { TextField as MuiTextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent } from 'react'
+import React, { ChangeEvent, KeyboardEvent, FC, FocusEvent, ReactNode } from 'react'
 import { IDefault } from './Advertise'
 import { Help as ContactSupportIcon } from '@material-ui/icons'
 import IconButton from './IconButton'
@@ -30,8 +30,8 @@ export interface IProps extends IDefault {
     SelectProps?: object
     rows?: string | number
     rowsMax?: string | number
-    helperText?: React.ReactNode
-    helperIcon?: React.ReactNode
+    helperText?: ReactNode
+    helperIcon?: ReactNode
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
@@ -73,6 +73,7 @@ export const TextFieldWrapper = styled.div`
     display: flex;
     flex-direction: rows;
     width: 100%;
+    align-items: center;
     button {
         display: none;  
     }
@@ -80,6 +81,16 @@ export const TextFieldWrapper = styled.div`
         display: flex;
     }
 `
+
+export const HelperBox = (props: Pick<TProps, 'helperIcon' | 'onHelperClick'>) => (
+    <Helper>
+        <IconButton
+            padding='6px 2px'
+            onClick={ props.onHelperClick }>
+            { props.helperIcon || <ContactSupportIcon color='primary' /> }
+        </IconButton>
+    </Helper>
+)
 
 const TextField: FC<TProps> = ({
     margin,
@@ -140,13 +151,10 @@ const TextField: FC<TProps> = ({
             />
             {
                 onHelperClick && (
-                    <Helper>
-                        <IconButton
-                            padding='6px 2px'
-                            onClick={ handleClick }>
-                            { helperIcon || <ContactSupportIcon color='primary' /> }
-                        </IconButton>
-                    </Helper >
+                    <HelperBox
+                        helperIcon
+                        onHelperClick={ handleClick }
+                    />
                 )
             }
         </TextFieldWrapper>
