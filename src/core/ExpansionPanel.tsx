@@ -55,7 +55,7 @@ const ExpansionPanel: FC<IProps> = ({
             {
                 onHelperClick && (
                     <HelperBox
-                        helperIcon
+                        helperIcon={ helperIcon }
                         onHelperClick={ handleClick }
                     />
                 )

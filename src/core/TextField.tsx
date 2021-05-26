@@ -163,7 +163,7 @@ const TextField: FC<TProps> = ({
             {
                 onHelperClick && (
                     <HelperBox
-                        helperIcon
+                        helperIcon={ helperIcon }
                         onHelperClick={ handleClick }
                     />
                 )
