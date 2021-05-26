@@ -56,7 +56,6 @@ const ExpansionPanel: FC<IProps> = ({
                 onHelperClick && (
                     <HelperBox
                         helperIcon
-                        // @ts-ignore
                         onHelperClick={ handleClick }
                     />
                 )
