@@ -21,6 +21,8 @@ interface IProps extends IDefault {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
+const DENSE = { padding: '2px', margin: '0px 7px' }
+
 const Checkbox = (props: IProps) => {
     const {
         type = 'checkbox',
@@ -46,20 +48,18 @@ const Checkbox = (props: IProps) => {
 
     const renderCheckbox = () =>
         <MuiCheckbox
+            { ...props }
             checked={ props.checked }
             value={ props.name }
             color={ props.color }
-            style={
-                props.dense
-                    ? { padding: '2px', margin: '0px 7px' }
-                    : {}
-            }
+            style={ props.dense ? DENSE : {} }
             disabled={ props.disabled }
             onChange={ props.onChange }
         />
 
     const renderSwitch = () =>
         <MuiSwitch
+            { ...props }
             checked={ props.checked }
             value={ props.name }
             color={ props.color }
