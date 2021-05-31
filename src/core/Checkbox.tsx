@@ -48,7 +48,6 @@ const Checkbox = (props: IProps) => {
 
     const renderCheckbox = () =>
         <MuiCheckbox
-            id={ props.id }
             name={ props.name }
             checked={ props.checked }
             value={ props.name }
@@ -60,7 +59,6 @@ const Checkbox = (props: IProps) => {
 
     const renderSwitch = () =>
         <MuiSwitch
-            id={ props.id }
             name={ props.name }
             checked={ props.checked }
             value={ props.name }
@@ -83,7 +81,7 @@ const Checkbox = (props: IProps) => {
             : props.label
 
     return (
-        <CheckFieldsWrapper>
+        <CheckFieldsWrapper id={ props.id }>
             {
                 props.label
                     ? (
