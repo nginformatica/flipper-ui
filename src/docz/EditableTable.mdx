@@ -17,18 +17,43 @@ import { Playground, Props } from 'docz'
 <Playground>
     {
         () => {
-        
-            const handleAdd = (item) => {
-                if (item.someTitle < 10) {
-                    window.alert('error, value can be smaller than 10')
+            const [fieldError, setFieldError] = React.useState(false)
+            const [data, setData] = React.useState([{someTitle: 11}])
+
+            const handleAdd = item => new Promise((resolve, reject) => {
+                if (item.someTitle < 10) {   
+                    setFieldError(true)
+                    reject()
+                } else {
+                    setData([...data, item])
+                    setFieldError(false)
+                    resolve()
                 }
-            }
+            })
+
+            const handleUpdate = (newItem) => new Promise((resolve, reject) => {
+                if (newItem.someTitle < 10) {   
+                    setFieldError(true)
+                    reject()
+                } else {
+                    setData([newItem])
+                    setFieldError(false)
+                    resolve()
+                }
+            })
+
+            const handleCancel = () => Promise.resolve(setFieldError(false))
 
             return (
                 <EditableTable
                     paginationInfo
                     noRowsExpand
-                    onAddRow={(item) => Promise.resolve(handleAdd(item))}
+                    errors={ fieldError ? ['someTitle'] : [] }
+                    onAddRow={handleAdd}
+                    onUpdateRow={handleUpdate}
+                    onRowUpdateCancelled={handleCancel}
+                    onRowAddCancelled={handleCancel}
+                    value=""
                     columns={[
                         {
                             title: 'some title',
@@ -36,14 +61,11 @@ import { Playground, Props } from 'docz'
                             type: 'numeric'
                         }
                     ]}
-                    data={[
-                        {
-                            someTitle: 0
-                        }
-                    ]}
+                    data={data}
                 />
             )
     }}
+
 </Playground>
 
 ## Default
