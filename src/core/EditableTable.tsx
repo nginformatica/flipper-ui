@@ -269,6 +269,9 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                                     thousandSeparator='.'
                                     decimalSeparator=','
                                     decimalScale={ 0 }
+                                    // This approach was necessary to fix the
+                                    // library problem to handle with the state
+                                    // values of the inputs
                                     value={ error
                                         ? valueRef.current
                                         : localProps.value ?? valueRef.current }
