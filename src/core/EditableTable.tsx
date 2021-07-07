@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useRef, useEffect } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import MaterialTable, {
     Column,
     Options,
@@ -21,7 +21,7 @@ import {
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { equals, omit, contains } from 'ramda'
+import { omit, contains } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -36,7 +36,7 @@ interface IProps<T extends object> {
     color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
     columns?: Column<object>[]
     data?: T[]
-    options?: Options
+    options?: Options<T>
     paginationInfo?: boolean
     noRowsExpand?: boolean
     noHeader?: boolean
@@ -44,10 +44,13 @@ interface IProps<T extends object> {
     autoCompleteField?: string
     disableAddHeader?: boolean
     errors?: string[]
+    value?: string
     onRowClick?: (event?: React.MouseEvent, rowData?: T) => void
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
+    onRowAddCancelled: (newData: object) => Promise<void>
+    onRowUpdateCancelled: (newData: object) => Promise<void>
     onClickAdd?(): void
 }
 
@@ -104,18 +107,9 @@ const RightPagination = styled.div`
     }
 `
 
-const usePrevious = (data?: object[]) => {
-    const ref = useRef<object[] | undefined>()
-
-    useEffect(() => { ref.current = data })
-
-    return ref.current
-}
-
 const EditableTable = <T extends object>(props: IProps<T>) => {
-    const [data, setData] = useState<object[]>(props.data || [])
-    const previous = usePrevious(props.data)
     const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
+    const valueRef = useRef<string | number>()
 
     const getErrors = (field: string) => contains(field, props.errors || [])
 
@@ -150,18 +144,10 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
         }
     }
 
-    useEffect(() => {
-        if (props.data && !equals(props.data, previous)) {
-            setData(props.data)
-        }
-    }, [props.data])
-
     const renderAddComponent = () =>
         <AddRowButton data-id='add-row'>
             <IconAdd />
-            <AddRowText>
-                Adicionar { props.title }
-            </AddRowText>
+            <AddRowText> Adicionar { props.title } </AddRowText>
         </AddRowButton>
 
     const pagination = !props.paginationInfo
@@ -201,18 +187,16 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     { ...itemProps }
                 />
             }
-            actions={
-                props.onClickAdd && (
-                    <FullWidthButton
-                        color={ addButtonColor }
-                        name='dialog-add'
-                        variant='dashed'
-                        onClick={ props.onClickAdd }>
-                        <IconAdd />
-                        Adicionar
-                    </FullWidthButton>
-                )
-            }
+            actions={ props.onClickAdd && (
+                <FullWidthButton
+                    color={ addButtonColor }
+                    name='dialog-add'
+                    variant='dashed'
+                    onClick={ props.onClickAdd }>
+                    <IconAdd />
+                    Adicionar
+                </FullWidthButton>
+            ) }
         />
 
     return (
@@ -246,7 +230,11 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                                     disabled={ props.disableAddHeader }
                                     variant='dashed'
                                     color={ localProps.color || 'primary' }
-                                    onClick={ localProps.action.onClick }>
+                                    onClick={ () => {
+                                        localProps.action.onClick()
+                                        valueRef.current = ''
+                                    }
+                                    }>
                                     <ActionIcon />
                                 </Button>
                             )
@@ -270,22 +258,28 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                         }
 
                         if (localProps.columnDef.type === 'numeric') {
+                            const error = getErrors(localProps.columnDef.field)
 
                             return (
                                 <MaskField
+                                    { ...localProps }
                                     fixedDecimalScale
-                                    error={ getErrors(localProps.columnDef.field) }
+                                    error={ error }
                                     type='text'
                                     thousandSeparator='.'
                                     decimalSeparator=','
                                     decimalScale={ 0 }
+                                    // This approach was necessary to fix the
+                                    // library problem to handle with the state
+                                    // values of the inputs
+                                    value={ error
+                                        ? valueRef.current
+                                        : localProps.value ?? valueRef.current }
                                     name={ localProps.columnDef.field + '-input' }
-                                    value={ localProps.value }
-                                    onChange={
-                                        event => localProps.onChange(
-                                            event.currentTarget.value
-                                        )
-                                    }
+                                    onChange={ event => {
+                                        localProps.onChange(event.target.value)
+                                        valueRef.current = event.target.value
+                                    } }
                                 />
                             )
                         }
@@ -354,7 +348,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     flexDirection: 'column'
                 } }
                 columns={ props.columns || [] }
-                data={ data }
+                data={ props.data ?? [] }
                 options={ {
                     search: false,
                     draggable: false,
@@ -370,7 +364,9 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                 editable={ {
                     onRowUpdate: props.onUpdateRow,
                     onRowAdd: props.onAddRow,
-                    onRowDelete: props.onDeleteRow
+                    onRowDelete: props.onDeleteRow,
+                    onRowAddCancelled: props.onRowAddCancelled,
+                    onRowUpdateCancelled: props.onRowUpdateCancelled
                 } }
             />
         </div>
