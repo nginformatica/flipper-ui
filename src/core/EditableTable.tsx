@@ -30,6 +30,8 @@ import AutoComplete from './AutoComplete'
 import ListItem from './ListItem'
 import TextField from './TextField'
 import MaskField from './MaskField'
+import { DARK, GREY } from '../colors'
+import { getLocalization } from '../lib/localization'
 
 interface IProps<T extends object> {
     title?: string
@@ -79,18 +81,15 @@ const CustomRemove = styled(MTableEditRow)({
     }
 })
 
-const BLACK = 'rgba(189,189,189,0)'
-const GRAY = 'rgba(189,189,189,1)'
-
 const CustomRows = styled(MTableBodyRow)`
     transition: opacity 200ms ease;
     button {
         display: none;  
     };   
     &:hover {
-        background: -moz-linear-gradient(left,${BLACK} 0%, ${GRAY} 100%);
-        background: -webkit-linear-gradient(left,${BLACK} 0%,${GRAY} 100%);
-        background: linear-gradient(to right,${BLACK} 0%,${GRAY} 100%);
+        background: -moz-linear-gradient(left,${DARK} 0%, ${GREY} 100%);
+        background: -webkit-linear-gradient(left,${DARK} 0%,${GREY} 100%);
+        background: linear-gradient(to right,${DARK} 0%,${GREY} 100%);
     };
     &:hover button {
         display: inline-block !important;
@@ -107,42 +106,36 @@ const RightPagination = styled.div`
     }
 `
 
+const Wrapper = styled.div`
+    & > div {
+        justify-content: flex-end;
+    }
+`
 const EditableTable = <T extends object>(props: IProps<T>) => {
     const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
     const valueRef = useRef<string | number>()
 
     const getErrors = (field: string) => contains(field, props.errors || [])
 
-    const localization = {
-        body: {
-            dateTimePickerLocalization: { locale: ptBRLocale },
-            emptyDataSourceMessage:
-                'Não há dados para serem exibidos no momento',
-            editRow: {
-                saveTooltip: 'Salvar',
-                cancelTooltip: 'Cancelar',
-                deleteText:
-                    'Você tem certeza que deseja excluir esse '
-                    + props.title + '?'
-            },
-            addTooltip: 'Adicionar ' + props.title,
-            deleteTooltip: 'Remover ' + props.title,
-            editTooltip: 'Editar ' + props.title
-        },
-        header: { actions: '' },
-        pagination: {
-            firstTooltip: 'Primeira',
-            firstAriaLabel: 'Primeira',
-            previousTooltip: 'Anterior',
-            previousAriaLabel: 'Anterior',
-            nextTooltip: 'Próxima',
-            nextAriaLabel: 'Próxima',
-            lastTooltip: 'Ultima',
-            lastAriaLabel: 'Ulima',
-            labelRowsSelect: 'Linhas',
-            labelDisplayedRows: '{from}-{to} de {count}'
-        }
-    }
+    const renderMaskField = (item, error: boolean) =>
+        <Wrapper>
+            <MaskField
+                fixedDecimalScale
+                error={ error }
+                type='text'
+                thousandSeparator='.'
+                decimalSeparator=','
+                decimalScale={ 0 }
+                // This approach was necessary to fix the problem with the
+                // state values of the inputs
+                value={ error ? valueRef.current : item.value ?? valueRef.current }
+                name={ item.columnDef.field + '-input' }
+                onChange={ event => {
+                    item.onChange(event.target.value)
+                    valueRef.current = event.target.value
+                } }
+            />
+        </Wrapper>
 
     const renderAddComponent = () =>
         <AddRowButton data-id='add-row'>
@@ -157,7 +150,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                 <RightPagination>
                     <MTablePagination
                         { ...omit(['classes'], item) }
-                        localization={ localization.pagination }
+                        localization={ getLocalization(props.title).pagination }
                     />
                 </RightPagination>
         }
@@ -260,28 +253,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                         if (localProps.columnDef.type === 'numeric') {
                             const error = getErrors(localProps.columnDef.field)
 
-                            return (
-                                <MaskField
-                                    { ...localProps }
-                                    fixedDecimalScale
-                                    error={ error }
-                                    type='text'
-                                    thousandSeparator='.'
-                                    decimalSeparator=','
-                                    decimalScale={ 0 }
-                                    // This approach was necessary to fix the
-                                    // library problem to handle with the state
-                                    // values of the inputs
-                                    value={ error
-                                        ? valueRef.current
-                                        : localProps.value ?? valueRef.current }
-                                    name={ localProps.columnDef.field + '-input' }
-                                    onChange={ event => {
-                                        localProps.onChange(event.target.value)
-                                        valueRef.current = event.target.value
-                                    } }
-                                />
-                            )
+                            return renderMaskField(localProps, error)
                         }
 
                         if (
@@ -300,7 +272,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     ...pagination,
                     ...toolbar
                 } }
-                localization={ localization }
+                localization={ getLocalization(props.title) }
                 icons={ {
                     Add: forwardRef(() => renderAddComponent()),
                     Delete: forwardRef(() =>
