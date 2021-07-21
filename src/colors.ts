@@ -27,3 +27,7 @@ export const error = {
 
 export const warning = '#FFC107'
 export const success = '#4CAF50'
+
+// Table gradient hover colors with opacity
+export const DARK = 'rgba(189,189,189,0)'
+export const GREY = 'rgba(189,189,189,1)'
