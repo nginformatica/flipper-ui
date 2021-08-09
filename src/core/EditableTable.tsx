@@ -51,8 +51,8 @@ interface IProps<T extends object> {
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
-    onRowAddCancelled: (newData: object) => Promise<void>
-    onRowUpdateCancelled: (newData: object) => Promise<void>
+    onRowAddCancelled?: (newData: object) => Promise<void>
+    onRowUpdateCancelled?: (newData: object) => Promise<void>
     onClickAdd?(): void
 }
 
