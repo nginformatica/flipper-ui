@@ -330,6 +330,9 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                     actionsColumnIndex: 4,
                     toolbarButtonAlignment: 'left',
                     padding: 'dense',
+                    rowStyle: {
+                        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif;'
+                    },
                     headerStyle: { borderBottom: '2px #CED4DE solid' },
                     ...props.options
                 } }
