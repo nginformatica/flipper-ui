@@ -242,7 +242,10 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
 
                             return (
                                 <DateTime
-                                    error={ getErrors(localProps.columnDef.field) }
+                                    error={ props.errors
+                                        ? getErrors(localProps.columnDef.field)
+                                        : localProps.error
+                                    }
                                     name={ localProps.columnDef.field + '-input' }
                                     type={ localProps.columnDef.type }
                                     value={ localProps.value }
