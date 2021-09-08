@@ -17,38 +17,49 @@ import { Playground, Props } from 'docz'
 <Playground>
     {
         () => {
-            const [fieldError, setFieldError] = React.useState(false)
-            const [data, setData] = React.useState([{someTitle: 11}])
+            const [data, setData] = React.useState([
+                {someTitle: 11, readAt: new Date()}
+            ])
 
             const handleAdd = item => new Promise((resolve, reject) => {
                 if (item.someTitle < 10) {   
-                    setFieldError(true)
                     reject()
                 } else {
                     setData([...data, item])
-                    setFieldError(false)
                     resolve()
                 }
             })
 
             const handleUpdate = (newItem) => new Promise((resolve, reject) => {
-                if (newItem.someTitle < 10) {   
-                    setFieldError(true)
-                    reject()
-                } else {
+                const value = newItem.someTitle.toString().split('.').join('')
+
+                if (value > 10) {
                     setData([newItem])
-                    setFieldError(false)
                     resolve()
+                } else {
+                    reject()                
                 }
             })
 
-            const handleCancel = () => Promise.resolve(setFieldError(false))
+            const handleCancel = () => Promise.resolve()
+
+            const renderText = item => 
+                item.someTitle.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+
+            const validateField = item => {
+                if (item.someTitle) { 
+                    const value = item.someTitle.toString().split('.').join('')
+                                
+                    return value > 10 
+                }
+
+                return true 
+            }
 
             return (
                 <EditableTable
                     paginationInfo
                     noRowsExpand
-                    errors={ fieldError ? ['someTitle'] : [] }
                     onAddRow={handleAdd}
                     onUpdateRow={handleUpdate}
                     onRowUpdateCancelled={handleCancel}
@@ -58,7 +69,15 @@ import { Playground, Props } from 'docz'
                         {
                             title: 'some title',
                             field: 'someTitle',
-                            type: 'numeric'
+                            type: 'numeric',
+                            render: renderText,
+                            validate: validateField
+                        },
+                        {
+                            title: 'Leitura',
+                            field: 'readAt',
+                            initialEditValue: new Date(),
+                            type: 'datetime',
                         }
                     ]}
                     data={data}
