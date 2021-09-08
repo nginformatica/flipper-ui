@@ -21,19 +21,20 @@ import { Playground, Props } from 'docz'
                 {someTitle: 11, readAt: new Date()}
             ])
 
+            const getValue = item => 
+                item.someTitle.toString().split('.').join('')
+
             const handleAdd = item => new Promise((resolve, reject) => {
-                if (item.someTitle < 10) {   
-                    reject()
-                } else {
+                if (getValue(item) > 10) {
                     setData([...data, item])
                     resolve()
+                } else {
+                    reject()
                 }
             })
 
             const handleUpdate = (newItem) => new Promise((resolve, reject) => {
-                const value = newItem.someTitle.toString().split('.').join('')
-
-                if (value > 10) {
+                if (getValue(newItem) > 10) {
                     setData([newItem])
                     resolve()
                 } else {
@@ -47,10 +48,8 @@ import { Playground, Props } from 'docz'
                 item.someTitle.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 
             const validateField = item => {
-                if (item.someTitle) { 
-                    const value = item.someTitle.toString().split('.').join('')
-                                
-                    return value > 10 
+                if (item.someTitle) {                                 
+                    return getValue(item) > 10 
                 }
 
                 return true 
