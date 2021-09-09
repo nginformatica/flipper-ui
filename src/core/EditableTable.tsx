@@ -120,8 +120,9 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
     const renderMaskField = (item, error: boolean) =>
         <Wrapper>
             <MaskField
+                { ...item }
                 fixedDecimalScale
-                error={ error }
+                error={ props.errors ? error : item.error }
                 type='text'
                 thousandSeparator='.'
                 decimalSeparator=','
@@ -137,11 +138,12 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
             />
         </Wrapper>
 
-    const renderAddComponent = () =>
+    const renderAddComponent = (
         <AddRowButton data-id='add-row'>
             <IconAdd />
             <AddRowText> Adicionar { props.title } </AddRowText>
         </AddRowButton>
+    )
 
     const pagination = !props.paginationInfo
         ? { Pagination: (() => null) }
@@ -240,7 +242,10 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
 
                             return (
                                 <DateTime
-                                    error={ getErrors(localProps.columnDef.field) }
+                                    error={ props.errors
+                                        ? getErrors(localProps.columnDef.field)
+                                        : localProps.error
+                                    }
                                     name={ localProps.columnDef.field + '-input' }
                                     type={ localProps.columnDef.type }
                                     value={ localProps.value }
@@ -274,7 +279,7 @@ const EditableTable = <T extends object>(props: IProps<T>) => {
                 } }
                 localization={ getLocalization(props.title) }
                 icons={ {
-                    Add: forwardRef(() => renderAddComponent()),
+                    Add: forwardRef(() => renderAddComponent),
                     Delete: forwardRef(() =>
                         <IconRemove
                             name='row-remove'
