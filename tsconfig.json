@@ -16,6 +16,7 @@
     },
     "include": [
         "./src/*",
+        "./src/core/**/*",
         "./src/lab/*",
         "./src/charts/*"
     ]
