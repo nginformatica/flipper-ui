@@ -33,7 +33,7 @@ import MaskField from './MaskField'
 import { DARK, GREY } from '../colors'
 import { getLocalization } from '../lib/localization'
 
-interface IProps<T extends object> {
+interface EditableTableProps<T extends object> {
     title?: string
     color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
     columns?: Column<object>[]
@@ -111,7 +111,7 @@ const Wrapper = styled.div`
         justify-content: flex-end;
     }
 `
-const EditableTable = <T extends object>(props: IProps<T>) => {
+const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
     const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
     const valueRef = useRef<string | number>()
 

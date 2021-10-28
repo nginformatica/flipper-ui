@@ -5,9 +5,9 @@ import {
     Typography
 } from '@material-ui/core'
 import React, { ChangeEvent, ReactNode } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { HelperBox, TextFieldWrapper as CheckFieldsWrapper } from './TextField'
-interface IProps extends IDefault {
+interface CheckboxProps extends DefaultProps {
     name: string
     label?: ReactNode
     color?: 'primary' | 'secondary' | 'default'
@@ -23,7 +23,7 @@ interface IProps extends IDefault {
 
 const DENSE = { padding: '2px', margin: '0px 7px' }
 
-const Checkbox = (props: IProps) => {
+const Checkbox = (props: CheckboxProps) => {
     const {
         type = 'checkbox',
         margin,

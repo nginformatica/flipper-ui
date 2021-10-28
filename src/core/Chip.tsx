@@ -1,10 +1,10 @@
 import { Chip as MuiChip } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { ChipProps } from '@material-ui/core/Chip'
 
-interface IProps extends IDefault {
+interface IChipProps extends DefaultProps {
     square?: boolean
 }
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     }
 })
 
-const Chip: FC<ChipProps & IProps> =
+const Chip: FC<ChipProps & IChipProps> =
     ({ square, padding, margin, style = {}, ...otherProps }) => {
         const classes = useStyles()
 

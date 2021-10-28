@@ -1,8 +1,8 @@
 import { Zoom as MuiZoom } from '@material-ui/core'
 import React from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface ZoomProps extends DefaultProps {
     in: boolean
     timeout?: number | { enter?: number, exit?: number }
     children?: React.ReactElement<{}>
@@ -14,7 +14,7 @@ const Zoom = ({
     margin,
     style = {},
     ...otherProps
-}: IProps) =>
+}: ZoomProps) =>
     <MuiZoom
         style={ { padding, margin, ...style } }
         { ...otherProps }>

@@ -1,8 +1,8 @@
 import { Tabs as MuiTabs } from '@material-ui/core'
 import React, { FC, ReactNode } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface TabsProps extends DefaultProps {
     centered?: boolean
     value: string | number
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
@@ -22,7 +22,7 @@ interface IClasses {
     }
 }
 
-const Tabs: FC<IProps & IClasses> = ({
+const Tabs: FC<TabsProps & IClasses> = ({
     children,
     centered = true,
     padding = '6px 0 0',

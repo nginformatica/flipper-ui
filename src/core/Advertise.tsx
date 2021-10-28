@@ -1,19 +1,11 @@
-import React, { FC, CSSProperties } from 'react'
+import React, { FC } from 'react'
 import { background } from '../colors'
 import MuiPaper from './Paper'
 import Typography from './Typography'
 import styled from 'styled-components'
+import type { DefaultProps } from './types'
 
-export interface IDefault {
-    style?: CSSProperties
-    className?: string
-    margin?: number | string
-    padding?: number | string
-    name?: string
-    id?: string
-}
-
-interface IProps extends IDefault {
+interface AdvertiseProps extends DefaultProps {
     comment: string
     author: string
     commentStyle?: object
@@ -31,7 +23,7 @@ const Paper = styled(MuiPaper)`
     flex-direction: column;
 `
 
-const Advertise: FC<IProps> = ({
+const Advertise: FC<AdvertiseProps> = ({
     comment,
     author,
     padding = 4,

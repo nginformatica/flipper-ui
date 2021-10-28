@@ -4,9 +4,9 @@ import {
     Stepper as MuiStepper
 } from '@material-ui/core'
 import React, { Component } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface StepperProps extends DefaultProps {
     active?: number
     steps: Array<string | TStep>
     bottomLabel?: boolean
@@ -18,12 +18,12 @@ type TStep = {
     icon: JSX.Element | ((active?: boolean) => JSX.Element)
 }
 
-const isActive = (index: number, active: IProps['active']) =>
+const isActive = (index: number, active: StepperProps['active']) =>
     active !== undefined
         ? active >= index
         : undefined
 
-class Stepper extends Component<IProps, {}> {
+class Stepper extends Component<StepperProps, {}> {
     public static defaultProps = { active: 0 }
 
     public render() {

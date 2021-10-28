@@ -1,8 +1,8 @@
 import { Tooltip as MuiTooltip } from '@material-ui/core'
 import React, { ReactElement, CSSProperties } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface TooltipProps extends DefaultProps {
     placement?:
         | 'bottom-end'
         | 'bottom-start'
@@ -33,7 +33,7 @@ const Tooltip = ({
     enterDelay = 1000,
     title,
     ...otherProps
-}: IProps) =>
+}: TooltipProps) =>
     <MuiTooltip title={ title || '' } enterDelay={ enterDelay } { ...otherProps }>
         {
             withWrapper

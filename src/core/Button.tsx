@@ -1,9 +1,9 @@
 import { Button as MuiButton } from '@material-ui/core'
 import React, { FC, ElementType, MouseEvent } from 'react'
 import styled from 'styled-components'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-export interface IProps extends IDefault {
+export interface ButtonProps extends DefaultProps {
     disabled?: boolean
     selected?: boolean
     disableTouchRipple?: boolean
@@ -21,13 +21,13 @@ export interface IProps extends IDefault {
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-const StyledButton = styled(MuiButton)<IProps & { dashed?: 'true' | 'false' }>`
+const StyledButton = styled(MuiButton)<ButtonProps & { dashed?: 'true' | 'false' }>`
     border-style: ${props => props.dashed === 'true'
         ? 'dashed !important' : 'initial'};
     opacity: ${props => props.selected ? 0.5 : 1};
 `
 
-const Button: FC<IProps> = ({
+const Button: FC<ButtonProps> = ({
     children,
     margin,
     padding,

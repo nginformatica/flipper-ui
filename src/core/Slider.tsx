@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 import MuiSlider, { SliderProps } from '@material-ui/core/Slider'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps {
+interface ISliderProps {
   defaultValue?: number | number[]
 }
 
-const Slider: FC<Omit<SliderProps, 'defaultValue'> & IDefault & IProps> =
+const Slider: FC<Omit<SliderProps, 'defaultValue'> & DefaultProps & ISliderProps> =
     ({ padding, margin, style = {}, defaultValue, ...otherProps }) =>
         <MuiSlider
             { ...otherProps }

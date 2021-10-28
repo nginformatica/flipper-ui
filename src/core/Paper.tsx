@@ -1,13 +1,13 @@
 import { Paper as MuiPaper } from '@material-ui/core'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import type { DefaultProps } from './types'
 
-export interface IProps extends IDefault {
+export interface PaperProps extends DefaultProps {
     square?: boolean
     elevation?: number
 }
 
-const Paper: FC<IProps> = ({
+const Paper: FC<PaperProps> = ({
     children,
     style = {},
     padding,

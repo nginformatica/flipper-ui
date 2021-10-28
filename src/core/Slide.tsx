@@ -1,8 +1,8 @@
 import { Slide as MuiSlide } from '@material-ui/core'
 import React from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface SlideProps extends DefaultProps {
     in: boolean
     direction: 'left' | 'right' | 'up' | 'down'
     timeout?: number | { enter?: number, exit?: number }
@@ -16,7 +16,7 @@ const Slide = ({
     padding,
     style = {},
     ...otherProps
-}: IProps) =>
+}: SlideProps) =>
     <MuiSlide
         direction={ direction as 'down' }
         style={ { padding, margin, ...style } }

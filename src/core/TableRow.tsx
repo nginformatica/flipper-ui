@@ -1,16 +1,18 @@
-import MuiTableRow, { TableRowProps } from '@material-ui/core/TableRow'
+import MuiTableRow, {
+    TableRowProps as MuiTableRowProps
+} from '@material-ui/core/TableRow'
 import React, { FC, MouseEvent } from 'react'
 import { background as backgroundColor } from '../colors'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface TableRowProps extends DefaultProps {
     selected?: boolean
     hover?: boolean
     background?: string
     onClick?: (event: MouseEvent<HTMLTableRowElement>) => void
 }
 
-const TableRow: FC<TableRowProps & IProps> = ({
+const TableRow: FC<MuiTableRowProps & TableRowProps> = ({
     style,
     margin,
     padding,

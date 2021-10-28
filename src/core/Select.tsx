@@ -1,9 +1,9 @@
 import { Select as MuiSelect } from '@material-ui/core'
 import React, { ChangeEvent, FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { makeStyles } from '@material-ui/core/styles'
 
-interface IProps extends IDefault {
+interface SelectProps extends DefaultProps {
     autoWidth?: boolean
     value?: string | number
     multiple?: boolean
@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-const Select: FC<IProps> = ({
+const Select: FC<SelectProps> = ({
     children,
     style = {},
     margin,

@@ -1,8 +1,8 @@
 import { Fab as MuiFab } from '@material-ui/core'
 import React, { MouseEvent } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface FabProps extends DefaultProps {
     disabled?: boolean
     component?: string
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
@@ -22,7 +22,7 @@ const Fab = ({
     style = {},
     variant,
     ...otherProps
-}: IProps) =>
+}: FabProps) =>
     <MuiFab
         { ...otherProps }
         variant={ variant }

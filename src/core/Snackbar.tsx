@@ -14,10 +14,10 @@ import {
     Warning as IconWarning
 } from '@material-ui/icons'
 import React, { ReactNode, FC, FunctionComponent, MouseEvent } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { TransitionProps } from '@material-ui/core/transitions/transition'
 
-interface IProps extends IDefault {
+interface SnackBarProps extends DefaultProps {
     autoHide?: number,
     message: ReactNode
     open: boolean
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const SnackBar: FC<IProps> = props => {
+const SnackBar: FC<SnackBarProps> = props => {
     const {
         id,
         action,

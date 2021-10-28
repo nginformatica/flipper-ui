@@ -1,8 +1,8 @@
 import { InputBase as MuiInputBase } from '@material-ui/core'
 import React, { ChangeEvent, ReactNode, FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-export interface IProps extends IDefault {
+export interface InputAdornmentProps extends DefaultProps {
     autoComplete?: string
     autoFocus?: boolean
     classes?: object
@@ -25,7 +25,7 @@ export interface IProps extends IDefault {
     value?: string | number | boolean
 }
 
-const InputAdornment: FC<IProps> = ({
+const InputAdornment: FC<InputAdornmentProps> = ({
     margin,
     padding,
     style = {},

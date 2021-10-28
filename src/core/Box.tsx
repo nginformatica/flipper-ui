@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import type { DefaultProps } from './types'
 import Paper from './Paper'
 
-interface IProps extends IDefault {
+interface BoxProps extends DefaultProps {
     minHeight?: number
 }
 
-const Box: FC<IProps> = ({
+const Box: FC<BoxProps> = ({
     children,
     margin,
     padding = 18,

@@ -8,12 +8,12 @@ import React,{
     ReactNode,
     MouseEvent
 } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { Help as ContactSupportIcon } from '@material-ui/icons'
 import IconButton from './IconButton'
 import styled from 'styled-components'
 
-export interface IProps extends IDefault {
+export interface TextFieldProps extends DefaultProps {
     autoComplete?: string
     autoFocus?: boolean
     defaultValue?: string | number
@@ -46,9 +46,7 @@ export interface IProps extends IDefault {
     onKeyDown?: (event: KeyboardEvent) => void
 }
 
-type TProps = IProps
-
-interface IHelperProps extends Pick<TProps, 'helperIcon'> {
+interface IHelperProps extends Pick<TextFieldProps, 'helperIcon'> {
     onHelperClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -103,7 +101,7 @@ export const HelperBox = (props: IHelperProps) => (
     </Helper>
 )
 
-const TextField: FC<TProps> = ({
+const TextField: FC<TextFieldProps> = ({
     margin,
     padding,
     style = {},

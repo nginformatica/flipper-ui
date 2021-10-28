@@ -1,13 +1,13 @@
 import { Divider as MuiDivider } from '@material-ui/core'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface DividerProps extends DefaultProps {
     inset?: boolean
     light?: boolean
 }
 
-const Divider: FC<IProps> = ({ margin, padding, style = {}, ...otherProps }) =>
+const Divider: FC<DividerProps> = ({ margin, padding, style = {}, ...otherProps }) =>
     <MuiDivider
         { ...otherProps }
         style={ { margin, padding, ...style } }

@@ -1,10 +1,10 @@
 import { Badge as MuiBadge } from '@material-ui/core'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
-import { BadgeProps } from '@material-ui/core/Badge'
+import { BadgeProps as MuiBadgeProps } from '@material-ui/core/Badge'
 import { makeStyles } from '@material-ui/core/styles'
+import type { DefaultProps } from './types'
 
-interface IProps extends IDefault, BadgeProps {
+interface BadgeProps extends DefaultProps, MuiBadgeProps {
     max?: number
     counter: number | string
     position?: {
@@ -15,7 +15,7 @@ interface IProps extends IDefault, BadgeProps {
     }
 }
 
-const useBadgeStyles = (position: IProps['position']) => {
+const useBadgeStyles = (position: BadgeProps['position']) => {
     const getStyles = makeStyles({
         badge: {
             ...position
@@ -25,7 +25,7 @@ const useBadgeStyles = (position: IProps['position']) => {
     return getStyles()
 }
 
-const Badge: FC<IProps> = props => {
+const Badge: FC<BadgeProps> = props => {
     const {
         children,
         counter,

@@ -1,14 +1,14 @@
 import MuiIconButton from '@material-ui/core/IconButton'
 import React, { FC, MouseEvent } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface IconButtonProps extends DefaultProps {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
     disabled?: boolean
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-const IconButton: FC<IProps> = ({
+const IconButton: FC<IconButtonProps> = ({
     children,
     padding,
     margin,

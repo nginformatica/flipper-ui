@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
 const StyledContent = styled.main`
     flex: 1;
     transition: all 500ms ease;
 `
 
-const Content: FC<IDefault> = ({
+const Content: FC<DefaultProps> = ({
     children,
     padding,
     margin,

@@ -1,8 +1,8 @@
 import { Fade as MuiFade } from '@material-ui/core'
 import React from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface FadeProps extends DefaultProps {
     in: boolean
     timeout?: number | { enter?: number, exit?: number }
     children?: React.ReactElement<{}>
@@ -14,7 +14,7 @@ const Fade = ({
     margin,
     style = {},
     ...otherProps
-}: IProps) =>
+}: FadeProps) =>
     <MuiFade
         style={ { padding, margin, ...style } }
         { ...otherProps }>

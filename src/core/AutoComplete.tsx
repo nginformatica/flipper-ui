@@ -14,7 +14,7 @@ import React, {
 import Paper from './Paper'
 import Fade from './Fade'
 
-interface IProps {
+interface AutoCompleteProps {
     autoFocus?: boolean
     defaultIsOpen?: boolean
     openOnFocus?: boolean
@@ -63,7 +63,7 @@ const removeAccents = (text: string) => text
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
 
-const AutoComplete: FC<IProps> = props => {
+const AutoComplete: FC<AutoCompleteProps> = props => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const index = props.suggestions

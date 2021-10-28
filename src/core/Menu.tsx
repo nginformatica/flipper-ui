@@ -1,15 +1,15 @@
 import { Menu as MuiMenu } from '@material-ui/core'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
-import { MenuProps } from '@material-ui/core/Menu'
+import { DefaultProps } from './types'
+import { MenuProps as MuiMenuProps } from '@material-ui/core/Menu'
 
-interface IProps extends IDefault, MenuProps {
+interface MenuProps extends DefaultProps, MuiMenuProps {
     open: boolean
     anchorEl?: HTMLElement
     withWrapper?: boolean
 }
 
-const Menu: FC<IProps> = ({
+const Menu: FC<MenuProps> = ({
     children,
     padding,
     margin,

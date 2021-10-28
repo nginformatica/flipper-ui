@@ -1,13 +1,13 @@
 import { AppBar, Toolbar } from '@material-ui/core'
 import React, { FC } from 'react'
-import { IProps as IPaper } from './Paper'
+import { PaperProps } from './Paper'
 
-interface IProps extends IPaper {
+interface HeaderProps extends PaperProps {
     position?: 'absolute' | 'fixed' | 'static' | 'sticky'
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }
 
-const Header: FC<IProps> = ({
+const Header: FC<HeaderProps> = ({
     children,
     padding,
     margin,

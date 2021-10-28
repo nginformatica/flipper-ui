@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
 const StyledContainer = styled.div`
     display: flex;
     flex: 1;
 `
 
-const Container: FC<IDefault> = ({
+const Container: FC<DefaultProps> = ({
     children,
     padding,
     margin,

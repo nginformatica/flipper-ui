@@ -13,10 +13,10 @@ import React, {
     MouseEvent,
     FC
 } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { Omit } from 'ramda'
 
-interface IProps extends Omit<IDefault, 'name'> {
+interface ListItemProps extends Omit<DefaultProps, 'name'> {
     avatar?: JSX.Element
     icon?: JSX.Element
     action?: JSX.Element
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
 }))
 
-const ListItem: FC<IProps> = props => {
+const ListItem: FC<ListItemProps> = props => {
     const { padding, margin, style } = props
     const classes = useStyles()
     const className = props.className

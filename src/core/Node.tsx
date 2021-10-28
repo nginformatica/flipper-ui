@@ -6,9 +6,9 @@ import {
     KeyboardArrowDown as IconArrowDown,
     KeyboardArrowUp as IconArrowUp
 } from '../icons'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface NodeProps extends DefaultProps {
     name: string
 }
 
@@ -50,7 +50,7 @@ const Li = styled.li<IListItem>`
     }
 `
 
-class Node extends Component<IProps, IState> {
+class Node extends Component<NodeProps, IState> {
     constructor(props) {
         super(props)
         this.state = { open: false }

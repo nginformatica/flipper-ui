@@ -1,9 +1,9 @@
-import MuiDrawer, { DrawerProps } from '@material-ui/core/Drawer'
+import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@material-ui/core/Drawer'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 
-interface IProps extends DrawerProps, IDefault {
+interface DrawerProps extends MuiDrawerProps, DefaultProps {
     top?: number
     width?: number
 }
@@ -23,7 +23,7 @@ const getStyles = (top?: number, width?: number) =>
         })
     )
 
-const Drawer: FC<IProps> = props => {
+const Drawer: FC<DrawerProps> = props => {
     const { style, margin, padding, top = 0, width, ...otherProps } = props
     const useStyles = getStyles(top, width)
     const classes = useStyles()
