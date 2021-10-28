@@ -130,7 +130,6 @@
                 "before": true
             }
         ],
-        "valid-jsdoc": "error",
         "object-curly-spacing": [
             "error",
             "always"
@@ -191,10 +190,7 @@
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-object-literal-type-assertion": "off",
-        "@typescript-eslint/interface-name-prefix": [
-            "error",
-            "always"
-        ],
+        "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/explicit-function-return-type": "off"
     },
