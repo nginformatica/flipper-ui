@@ -16,7 +16,7 @@ interface RadioGroupProps extends DefaultProps {
     disabled?: boolean
     spacing?: 'default' | 'equal'
     options?: IOption[]
-    onChange?: (event: ChangeEvent<HTMLElement>) => void
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 interface IOption {
