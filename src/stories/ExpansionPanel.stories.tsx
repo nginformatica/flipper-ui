@@ -1,7 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import ExpansionPanel from '../core/ExpansionPanel'
-import Typography from '../core/Typography'
 
 export default {
     title: 'Testing/ExpansionPanel',
