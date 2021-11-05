@@ -5,10 +5,7 @@ import Button from '../core/Button'
 
 export default {
     title: 'Collapse',
-    component: Collapse,
-    argTypes: {
-        backgroundColor: { control: 'color' }
-    }
+    component: Collapse
 } as ComponentMeta<typeof Collapse>
 
 const Template: ComponentStory<typeof Collapse> = args => <Collapse { ...args } />

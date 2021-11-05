@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import Zoom from '../core/Zoom'
 import Button from '../core/Button'
 
@@ -8,7 +8,7 @@ export default {
     component: Zoom
 } as ComponentMeta<typeof Zoom>
 
-const Template: ComponentStory<typeof Zoom> = args => {
+export const Default = () => {
     const [open, setOpen] = useState(true)
     const [btnLabel, setBtnLabel] = useState('Close')
 
@@ -26,14 +26,9 @@ const Template: ComponentStory<typeof Zoom> = args => {
                 onClick={ handleClick }>
                 { btnLabel }
             </Button>
-            <Zoom { ...args } in={ open }>
-                <span>{ args.children }</span>
+            <Zoom in={ open }>
+                <span>I am open for discussions</span>
             </Zoom>
         </>
     )
-}
-
-export const Default = Template.bind({})
-Default.args = {
-    children: 'I am open for discussions'
 }

@@ -11,9 +11,8 @@ export default {
 export const Default = () => {
     const [select, setSelect] = useState('3')
 
-    function handleChange(event: ChangeEvent) {
-        const target = event.target as HTMLInputElement
-        setSelect(target.value)
+    function handleChange(event: ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
+        setSelect(event.target.value)
     }
 
     return (

@@ -4,7 +4,7 @@ import Link from '../core/Link'
 import Breadcrumb from '../core/Breadcrumb'
 
 export default {
-    title: 'Example/Breadcrumb',
+    title: 'Breadcrumb',
     component: Breadcrumb,
     argTypes: {
         backgroundColor: { control: 'color' }
