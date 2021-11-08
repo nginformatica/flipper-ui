@@ -7,7 +7,7 @@ import { Backup as IconBackup } from '../icons'
 import Button from '../core/Button'
 
 export default {
-    title: 'Test/Drawer',
+    title: 'Drawer',
     component: Drawer
 } as ComponentMeta<typeof Drawer>
 

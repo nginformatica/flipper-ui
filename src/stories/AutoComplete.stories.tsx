@@ -6,7 +6,7 @@ import TextField from '../core/TextField'
 import Typography from '../core/Typography'
 
 export default {
-    title: 'Testing/AutoComplete',
+    title: 'AutoComplete',
     component: AutoComplete
 } as ComponentMeta<typeof AutoComplete>
 
