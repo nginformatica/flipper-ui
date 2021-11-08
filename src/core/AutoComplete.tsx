@@ -23,7 +23,7 @@ interface AutoCompleteProps {
     fade?: boolean
     focusDelay?: number
     suggestions: ISelected[]
-    value: TSelected
+    value?: TSelected
     defaultValue?: string
     style?: CSSProperties
     maxHeight?: number
