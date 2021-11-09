@@ -7,10 +7,10 @@ import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
 } from '../icons'
-import { IDefault } from './Advertise'
-import Button, { IProps as IButtonProps } from './Button'
+import { DefaultProps } from './types'
+import Button, { ButtonProps } from './Button'
 
-interface IProps extends IDefault {
+interface SidebarProps extends DefaultProps {
     open: boolean
     expanded?: boolean
     showButton?: boolean
@@ -23,13 +23,13 @@ interface IProps extends IDefault {
     top?: number | string
     paperClasses?: object
     name?: string
-    ButtonProps?: IButtonProps
+    ButtonProps?: ButtonProps
     onToggle: () => void
 }
 
 interface IAction {
     anchor?: 'top' | 'left' | 'bottom' | 'right'
-    minWidth?: IProps['minWidth']
+    minWidth?: SidebarProps['minWidth']
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -83,7 +83,7 @@ const Action = styled.div<IAction>`
     padding: 4px;
 `
 
-const Sidebar: FC<IProps> = ({
+const Sidebar: FC<SidebarProps> = ({
     id,
     anchor = 'left',
     className,
@@ -102,7 +102,8 @@ const Sidebar: FC<IProps> = ({
     variant = 'permanent',
     ButtonProps,
     onToggle,
-    children
+    children,
+    name
 }) => {
     const classes = useStyles()
 

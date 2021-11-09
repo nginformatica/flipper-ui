@@ -4,10 +4,10 @@ import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import React, { ReactNode, FC, MouseEvent } from 'react'
 import styled from 'styled-components'
-import { IProps as IPaper } from './Paper'
+import { PaperProps } from './Paper'
 import { HelperBox } from './TextField'
 
-interface IProps extends IPaper {
+interface ExpansionPanelProps extends PaperProps {
     actions?: ReactNode
     defaultExpanded?: boolean
     details?: ReactNode
@@ -36,7 +36,7 @@ const ExpansionPanelHeaderWrapper = styled.div`
     }
 `
 
-const ExpansionPanel: FC<IProps> = ({
+const ExpansionPanel: FC<ExpansionPanelProps> = ({
     actions,
     details,
     expandIcon,

@@ -1,8 +1,8 @@
 import MuiTableBody from '@material-ui/core/TableBody'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-const TableBody: FC<IDefault> = ({
+const TableBody: FC<DefaultProps> = ({
     style,
     margin,
     padding,

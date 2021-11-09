@@ -3,7 +3,7 @@ import ChipInput, { ChipRenderer } from 'material-ui-chip-input'
 import { InputLabelProps } from '@material-ui/core'
 import styled from 'styled-components'
 
-interface IProps<T extends TChipValues> {
+interface ChipFieldProps<T extends TChipValues> {
     allowDuplicates?: boolean
     values: T[]
     variant?: 'outlined' | 'standard' | 'filled'
@@ -44,7 +44,7 @@ const StyledChipInput = styled(ChipInput)`
     }
 `
 
-const ChipField = <T extends TChipValues>(props: IProps<T>) => {
+const ChipField = <T extends TChipValues>(props: ChipFieldProps<T>) => {
     const values = useMemo(() =>
         props.values.map(item => item.value),
     [props.values]

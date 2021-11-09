@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import MuiTypography, { TypographyProps } from '@material-ui/core/Typography'
 
-const Typography: FC<TypographyProps & IDefault> = ({
+const Typography: FC<TypographyProps & DefaultProps> = ({
     children,
     margin,
     padding,

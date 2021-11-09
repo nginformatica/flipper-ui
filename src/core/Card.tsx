@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import MuiCard, { CardProps } from '@material-ui/core/Card'
 import MuiCardActionArea, {
     CardActionAreaProps
@@ -9,7 +9,7 @@ import MuiCardContent, { CardContentProps } from '@material-ui/core/CardContent'
 import MuiCardMedia, { CardMediaProps } from '@material-ui/core/CardMedia'
 import MuiCardHeader, { CardHeaderProps } from '@material-ui/core/CardHeader'
 
-export const CardActionArea: FC<IDefault & CardActionAreaProps> =
+export const CardActionArea: FC<DefaultProps & CardActionAreaProps> =
     ({ margin, padding, style, ...otherProps }) =>
         <MuiCardActionArea
             { ...otherProps }
@@ -17,7 +17,7 @@ export const CardActionArea: FC<IDefault & CardActionAreaProps> =
             { otherProps.children }
         </MuiCardActionArea>
 
-export const CardActions: FC<IDefault & CardActionsProps> =
+export const CardActions: FC<DefaultProps & CardActionsProps> =
     ({ margin, padding, style, ...otherProps }) =>
         <MuiCardActions
             { ...otherProps }
@@ -25,7 +25,7 @@ export const CardActions: FC<IDefault & CardActionsProps> =
             { otherProps.children }
         </MuiCardActions>
 
-export const CardContent: FC<IDefault & CardContentProps> =
+export const CardContent: FC<DefaultProps & CardContentProps> =
     ({ margin, padding, style, ...otherProps }) =>
         <MuiCardContent
             { ...otherProps }
@@ -33,7 +33,7 @@ export const CardContent: FC<IDefault & CardContentProps> =
             { otherProps.children }
         </MuiCardContent>
 
-export const CardMedia: FC<IDefault & CardMediaProps> =
+export const CardMedia: FC<DefaultProps & CardMediaProps> =
     ({ margin, padding, style, ...otherProps }) =>
         <MuiCardMedia
             { ...otherProps }
@@ -41,7 +41,7 @@ export const CardMedia: FC<IDefault & CardMediaProps> =
             { otherProps.children }
         </MuiCardMedia>
 
-export const CardHeader: FC<IDefault & CardHeaderProps> =
+export const CardHeader: FC<DefaultProps & CardHeaderProps> =
     ({ margin, padding, style, ...otherProps }) =>
         <MuiCardHeader
             { ...otherProps }
@@ -49,7 +49,7 @@ export const CardHeader: FC<IDefault & CardHeaderProps> =
             { otherProps.children }
         </MuiCardHeader>
 
-const Card: FC<IDefault & CardProps> =
+const Card: FC<DefaultProps & CardProps> =
     ({ margin, padding, style, ...otherProps }) =>
         <MuiCard
             { ...otherProps }

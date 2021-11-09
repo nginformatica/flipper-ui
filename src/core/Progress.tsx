@@ -3,7 +3,7 @@ import {
     LinearProgress as MuiLinearProgress
 } from '@material-ui/core'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
 interface ILinear {
     color?: 'primary' | 'secondary'
@@ -23,12 +23,12 @@ interface ICircular {
     variant?: 'determinate' | 'indeterminate' | 'static'
 }
 
-interface IProps extends IDefault {
+interface ProgressProps extends DefaultProps {
     value?: number
     linear?: boolean
 }
 
-const Progress: FC<IProps & ICircular & ILinear> = ({
+const Progress: FC<ProgressProps & ICircular & ILinear> = ({
     linear,
     style = {},
     margin,

@@ -5,9 +5,9 @@ import {
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface ListProps extends DefaultProps {
     title?: string
     dense?: boolean
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
@@ -34,7 +34,7 @@ const useStyles = makeStyles(
     })
 )
 
-const List: FC<IProps> = ({
+const List: FC<ListProps> = ({
     title,
     padding,
     margin,

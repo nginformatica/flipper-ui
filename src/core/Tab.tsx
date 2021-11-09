@@ -1,8 +1,8 @@
 import { Tab as MuiTab } from '@material-ui/core'
 import React, { Component } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface TabProps extends DefaultProps {
     disabled?: boolean
     icon?: string | JSX.Element
     label?: string
@@ -10,7 +10,7 @@ interface IProps extends IDefault {
     disableRipple?: boolean
 }
 
-class Tab extends Component<IProps> {
+class Tab extends Component<TabProps> {
     public static defaultProps = {
         disabled: false,
         margin: '0 4px'

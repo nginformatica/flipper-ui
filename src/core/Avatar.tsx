@@ -2,9 +2,9 @@ import { Avatar as MuiAvatar } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import React, { FC } from 'react'
-import { IDefault } from './Advertise'
+import type { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface AvatarProps extends DefaultProps {
     name?: string
     id?: string
     sizes?: string
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const Avatar: FC<IProps> = ({
+const Avatar: FC<AvatarProps> = ({
     children,
     primary,
     className,

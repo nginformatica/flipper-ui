@@ -1,9 +1,9 @@
 import { withStyles } from '@material-ui/core/styles'
 import MuiTableHead from '@material-ui/core/TableHead'
 import React, { FC, createContext } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault, ISort {
+interface TableHeadProps extends DefaultProps, ISort {
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
     classes: {
         default: string
@@ -45,7 +45,7 @@ export const SortContext = createContext<ISort>({
     onSort: undefined
 })
 
-const TableHead: FC<IProps> = ({
+const TableHead: FC<TableHeadProps> = ({
     style,
     margin,
     padding,

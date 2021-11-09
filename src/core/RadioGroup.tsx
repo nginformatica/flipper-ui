@@ -6,9 +6,9 @@ import {
     RadioGroup as MuiRadioGroup
 } from '@material-ui/core'
 import React, { ChangeEvent, FC, ReactNode } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 
-interface IProps extends IDefault {
+interface RadioGroupProps extends DefaultProps {
     row?: boolean
     title?: ReactNode
     name: string
@@ -16,7 +16,7 @@ interface IProps extends IDefault {
     disabled?: boolean
     spacing?: 'default' | 'equal'
     options?: IOption[]
-    onChange?: (event: ChangeEvent<HTMLElement>) => void
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 interface IOption {
@@ -25,7 +25,7 @@ interface IOption {
     disabled?: boolean
 }
 
-const RadioGroup: FC<IProps> = ({
+const RadioGroup: FC<RadioGroupProps> = ({
     row,
     options = [],
     className,

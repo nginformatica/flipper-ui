@@ -6,7 +6,7 @@ import {
     MuiPickersUtilsProvider
 } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { useStyles } from './TextField'
 import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
@@ -29,14 +29,14 @@ const DEFAULT_FORMATS = {
     datetime: 'dd/MM/yyyy HH:mm'
 }
 
-type TProps =
+type DateTimeProps =
     & Omit<KeyboardDatePickerProps, 'margin' | 'onChange'>
     & Omit<KeyboardDateTimePickerProps, 'margin' | 'onChange'>
     & Omit<KeyboardTimePickerProps, 'margin' | 'onChange'>
     & IProps
-    & IDefault
+    & DefaultProps
 
-const DateTime: FC<TProps> = ({
+const DateTime: FC<DateTimeProps> = ({
     padding,
     margin,
     style,

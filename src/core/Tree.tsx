@@ -7,11 +7,11 @@ interface INode {
     nodes?: INode[]
 }
 
-interface IProps {
+interface TreeProps {
     nodes?: INode[]
 }
 
-class Tree extends Component<IProps, {}> {
+class Tree extends Component<TreeProps, {}> {
     public renderNode(node, index, root = false) {
         const { id, name, nodes } = node
 

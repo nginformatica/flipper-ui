@@ -5,10 +5,10 @@ import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
 } from '../icons'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import Button from './Button'
 
-interface IProps extends IDefault {
+interface PaginationProps extends DefaultProps {
     pages?: number
     active: number
     onNext: () => {}
@@ -24,7 +24,7 @@ const Content = styled.div`
     margin: 0.75em;
 `
 
-class Pagination extends Component<IProps, {}> {
+class Pagination extends Component<PaginationProps, {}> {
     public render() {
         const {
             active,

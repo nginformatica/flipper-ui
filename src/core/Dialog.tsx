@@ -4,11 +4,11 @@ import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import React, { CSSProperties, ReactNode, FC } from 'react'
-import { IDefault } from './Advertise'
+import { DefaultProps } from './types'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
 
-interface IProps extends IDefault {
+interface DialogProps extends DefaultProps {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     }
 })
 
-const Dialog: FC<IProps> = ({
+const Dialog: FC<DialogProps> = ({
     snippet,
     style,
     padding,
@@ -86,7 +86,7 @@ const Dialog: FC<IProps> = ({
 }) => {
     const classes = useStyles()
 
-    const renderTitle = (title: IProps['title']) => {
+    const renderTitle = (title: DialogProps['title']) => {
         return titleAction
             ? (
                 <TitleWrapper style={ titleWrapperStyle }>
