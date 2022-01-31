@@ -41,7 +41,7 @@ export const WithClear = () => {
     }
 
     const handleClear = () => {
-        setSelect(null)
+        setSelect('')
     }
 
     return (
@@ -50,7 +50,7 @@ export const WithClear = () => {
             onClear={ handleClear }
             value={ select }
             onChange={ handleChange }>
-            <ListItem value={ null } />
+            <ListItem value='' />
             <ListItem value='0'>Option 0</ListItem>
             <ListItem value='1'>Option 1</ListItem>
             <ListItem value='2'>Option 2</ListItem>
