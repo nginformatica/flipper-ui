@@ -25,23 +25,13 @@ const iconStyle = {
     right: '2px'
 }
 
-const renderEndAdornment = (
-    hasValue: boolean,
-    hasClear?: boolean,
-    onClear?: () => void
-) => {
-    if (hasValue && hasClear) {
-        return (
-            <InputAdornment position='end'>
-                <IconButton onClick={ onClear } size='small'>
-                    <Clear style={ { fontSize: '15px' } } />
-                </IconButton>
-            </InputAdornment>
-        )
-    } else {
-        return null
-    }
-}
+const renderEndAdornment = (onClear?: () => void) => (
+    <InputAdornment position='end'>
+        <IconButton onClick={ onClear } size='small'>
+            <Clear style={ { fontSize: '15px' } } />
+        </IconButton>
+    </InputAdornment>
+)
 
 const Select: FC<SelectProps> = ({
     children,
@@ -65,9 +55,14 @@ const Select: FC<SelectProps> = ({
 
     const hasValue = !!otherProps.value
 
+    const endAdornment =
+        hasValue && hasClear
+            ? { endAdornment: renderEndAdornment(onClear) }
+            : {}
+
     return (
         <MuiSelect
-            endAdornment={ renderEndAdornment(hasValue, hasClear, onClear) }
+            { ...endAdornment }
             variant={ variant as 'outlined' }
             classes={ {
                 root: classes.root,
