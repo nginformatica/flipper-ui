@@ -16,7 +16,6 @@ import { DefaultProps } from './types'
 import { Clear, Help as ContactSupportIcon } from '@material-ui/icons'
 import IconButton from './IconButton'
 import styled from 'styled-components'
-import { CreateCSSProperties } from '@material-ui/styles'
 
 export interface TextFieldProps extends DefaultProps {
     autoComplete?: string
@@ -82,6 +81,29 @@ export const StaticTextFieldWrapper = styled.div`
     align-items: center;
 `
 
+export const useStyles = makeStyles({
+    input: {
+        fontSize: '14px',
+        padding: '10px',
+        height: 'auto'
+    },
+    outlinedInput: {
+        fontSize: '14px',
+        padding: '10px',
+        height: 'auto'
+    },
+    outlinedLabel: {
+        fontSize: '14px',
+        transform: 'translate(14px, 13px) scale(1)'
+    },
+    outlinedMultiline: {
+        padding: '0px'
+    },
+    iconOutlined: {
+        right: '2px'
+    }
+})
+
 export const HelperBox = (props: IHelperProps) => (
     <Helper>
         <IconButton padding='6px 2px' onClick={ props.onHelperClick }>
@@ -115,38 +137,12 @@ const TextField: FC<TextFieldProps> = ({
     onClear,
     ...otherProps
 }) => {
-    const hasClearProps: CreateCSSProperties<{}> = {
-        position: 'relative',
-        marginLeft: '-20px'
-    }
-    let iconOutlined: CreateCSSProperties<{}> = {
-        right: '2px'
-    }
-    if (hasClear) {
-        iconOutlined = {
-            ...iconOutlined,
-            ...hasClearProps
+    const clearStyle = makeStyles({
+        iconOutlined: {
+            position: 'relative',
+            right: '2px',
+            marginLeft: '-20px'
         }
-    }
-    const useStyles = makeStyles({
-        input: {
-            fontSize: '14px',
-            padding: '10px',
-            height: 'auto'
-        },
-        outlinedInput: {
-            fontSize: '14px',
-            padding: '10px',
-            height: 'auto'
-        },
-        outlinedLabel: {
-            fontSize: '14px',
-            transform: 'translate(14px, 13px) scale(1)'
-        },
-        outlinedMultiline: {
-            padding: '0px'
-        },
-        iconOutlined
     })
 
     const hasValue = !!otherProps.value
@@ -157,6 +153,7 @@ const TextField: FC<TextFieldProps> = ({
             : {}
 
     const classes = useStyles()
+    const clearClass = clearStyle()
 
     const handleClick = () => {
         if (onHelperClick) {
@@ -198,7 +195,9 @@ const TextField: FC<TextFieldProps> = ({
                 } }
                 SelectProps={ {
                     classes: {
-                        iconOutlined: classes.iconOutlined
+                        iconOutlined: hasClear
+                            ? clearClass.iconOutlined
+                            : classes.iconOutlined
                     },
                     ...endAdornment,
                     ...SelectProps
