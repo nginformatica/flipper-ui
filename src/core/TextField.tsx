@@ -1,6 +1,10 @@
-import { TextField as MuiTextField } from '@material-ui/core'
+import {
+    InputAdornment,
+    TextField as MuiTextField,
+    IconButton as MuiButton
+} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import React,{
+import React, {
     ChangeEvent,
     KeyboardEvent,
     FC,
@@ -9,9 +13,10 @@ import React,{
     MouseEvent
 } from 'react'
 import { DefaultProps } from './types'
-import { Help as ContactSupportIcon } from '@material-ui/icons'
+import { Clear, Help as ContactSupportIcon } from '@material-ui/icons'
 import IconButton from './IconButton'
 import styled from 'styled-components'
+import { CreateCSSProperties } from '@material-ui/styles'
 
 export interface TextFieldProps extends DefaultProps {
     autoComplete?: string
@@ -39,6 +44,8 @@ export interface TextFieldProps extends DefaultProps {
     rowsMax?: string | number
     helperText?: ReactNode
     helperIcon?: ReactNode
+    hasClear?: boolean
+    onClear?: () => void
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
@@ -49,29 +56,6 @@ export interface TextFieldProps extends DefaultProps {
 interface IHelperProps extends Pick<TextFieldProps, 'helperIcon'> {
     onHelperClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
-
-export const useStyles = makeStyles({
-    input: {
-        fontSize: '14px',
-        padding: '10px',
-        height: 'auto'
-    },
-    outlinedInput: {
-        fontSize: '14px',
-        padding: '10px',
-        height: 'auto'
-    },
-    outlinedLabel: {
-        fontSize: '14px',
-        transform: 'translate(14px, 13px) scale(1)'
-    },
-    outlinedMultiline: {
-        padding: '0px'
-    },
-    iconOutlined: {
-        right: '2px'
-    }
-})
 
 const Helper = styled.div`
     width: 42px;
@@ -84,21 +68,34 @@ export const TextFieldWrapper = styled.div`
     width: 100%;
     align-items: center;
     button {
-        display: none;  
+        display: none;
     }
     :hover button {
         display: flex;
     }
 `
 
+export const StaticTextFieldWrapper = styled.div`
+    display: flex;
+    flex-direction: rows;
+    width: 100%;
+    align-items: center;
+`
+
 export const HelperBox = (props: IHelperProps) => (
     <Helper>
-        <IconButton
-            padding='6px 2px'
-            onClick={ props.onHelperClick }>
+        <IconButton padding='6px 2px' onClick={ props.onHelperClick }>
             { props.helperIcon || <ContactSupportIcon color='primary' /> }
         </IconButton>
     </Helper>
+)
+
+const renderEndAdornment = (onClear?: () => void) => (
+    <InputAdornment position='end'>
+        <MuiButton onClick={ onClear } size='small'>
+            <Clear style={ { fontSize: '15px' } } />
+        </MuiButton>
+    </InputAdornment>
 )
 
 const TextField: FC<TextFieldProps> = ({
@@ -114,8 +111,51 @@ const TextField: FC<TextFieldProps> = ({
     onHelperClick,
     helperIcon,
     fullWidth,
+    hasClear,
+    onClear,
     ...otherProps
 }) => {
+    const hasClearProps: CreateCSSProperties<{}> = {
+        position: 'relative',
+        marginLeft: '-20px'
+    }
+    let iconOutlined: CreateCSSProperties<{}> = {
+        right: '2px'
+    }
+    if (hasClear) {
+        iconOutlined = {
+            ...iconOutlined,
+            ...hasClearProps
+        }
+    }
+    const useStyles = makeStyles({
+        input: {
+            fontSize: '14px',
+            padding: '10px',
+            height: 'auto'
+        },
+        outlinedInput: {
+            fontSize: '14px',
+            padding: '10px',
+            height: 'auto'
+        },
+        outlinedLabel: {
+            fontSize: '14px',
+            transform: 'translate(14px, 13px) scale(1)'
+        },
+        outlinedMultiline: {
+            padding: '0px'
+        },
+        iconOutlined
+    })
+
+    const hasValue = !!otherProps.value
+
+    const endAdornment =
+        hasValue && hasClear
+            ? { endAdornment: renderEndAdornment(onClear) }
+            : {}
+
     const classes = useStyles()
 
     const handleClick = () => {
@@ -124,8 +164,10 @@ const TextField: FC<TextFieldProps> = ({
         }
     }
 
+    const Wrapper = hasClear ? StaticTextFieldWrapper : TextFieldWrapper
+
     return (
-        <TextFieldWrapper>
+        <Wrapper>
             <MuiTextField
                 fullWidth={ fullWidth }
                 autoComplete={ autoComplete }
@@ -138,15 +180,19 @@ const TextField: FC<TextFieldProps> = ({
                 } }
                 InputLabelProps={ {
                     classes: {
-                        outlined: variant === 'outlined' ? classes.outlinedLabel : ''
+                        outlined:
+                            variant === 'outlined' ? classes.outlinedLabel : ''
                     },
                     ...InputLabelProps
                 } }
                 InputProps={ {
                     classes: {
-                        input: variant === 'outlined' ? classes.outlinedInput : '',
+                        input:
+                            variant === 'outlined' ? classes.outlinedInput : '',
                         multiline:
-                            variant === 'outlined' ? classes.outlinedMultiline : ''
+                            variant === 'outlined'
+                                ? classes.outlinedMultiline
+                                : ''
                     },
                     ...InputProps
                 } }
@@ -154,19 +200,18 @@ const TextField: FC<TextFieldProps> = ({
                     classes: {
                         iconOutlined: classes.iconOutlined
                     },
+                    ...endAdornment,
                     ...SelectProps
                 } }
                 { ...otherProps }
             />
-            {
-                onHelperClick && (
-                    <HelperBox
-                        helperIcon={ helperIcon }
-                        onHelperClick={ handleClick }
-                    />
-                )
-            }
-        </TextFieldWrapper>
+            { onHelperClick && (
+                <HelperBox
+                    helperIcon={ helperIcon }
+                    onHelperClick={ handleClick }
+                />
+            ) }
+        </Wrapper>
     )
 }
 
