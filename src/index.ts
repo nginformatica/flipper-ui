@@ -57,4 +57,5 @@ export { default as Tooltip } from './core/Tooltip'
 export { default as Tree } from './core/Tree'
 export { default as Typography } from './core/Typography'
 export { default as Zoom } from './core/Zoom'
+export { default as PinInput } from './core/PinInput'
 
