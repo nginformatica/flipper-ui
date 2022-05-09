@@ -2,11 +2,26 @@ import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import PinInput from '../core/PinInput'
 import { Button } from '@material-ui/core'
+import styled from 'styled-components'
 
 export default {
     title: 'PinInput',
     component: PinInput
 } as ComponentMeta<typeof PinInput>
+
+const ValidateContainer = styled.div`
+    display: flex;
+    width: auto;
+    justify-content: center;
+    margin-bottom: 2rem;
+`
+
+const ButtonContainer = styled.div`
+    display: flex;
+    width: auto;
+    justify-content: center;
+    margin-top: 3rem;
+`
 
 const PIN_LENGTH = 6
 
@@ -37,9 +52,9 @@ export const Default = () => {
 
     return (
         <>
-            <span>Valid pin: 123123</span>
-            <br />
-            <br />
+            <ValidateContainer>
+                <span>Valid pin: 123123</span>
+            </ValidateContainer>
             <PinInput
                 pin={ pin }
                 setPin={ setPin }
@@ -48,15 +63,16 @@ export const Default = () => {
                 validationResult={ hasError }
                 isValidating={ isValidating }
                 size='small'
+                variant='outlined'
             />
-            <br />
-            <br />
-            <Button
-                onClick={ () => {
-                    handleValidation()
-                } }>
-                Validate
-            </Button>
+            <ButtonContainer>
+                <Button
+                    onClick={ () => {
+                        handleValidation()
+                    } }>
+                    Validate
+                </Button>
+            </ButtonContainer>
         </>
     )
 }
@@ -82,16 +98,15 @@ export const Large = () => {
         } else {
             setHasError(false)
             alert('PIN is correct')
-
         }
         setIsValidating(false)
     }
 
     return (
         <>
-            <span>Valid pin: 123123</span>
-            <br />
-            <br />
+            <ValidateContainer>
+                <span>Valid pin: 123123</span>
+            </ValidateContainer>
             <PinInput
                 pin={ pin }
                 setPin={ setPin }
@@ -101,14 +116,14 @@ export const Large = () => {
                 isValidating={ isValidating }
                 size='large'
             />
-            <br />
-            <br />
-            <Button
-                onClick={ () => {
-                    handleValidation()
-                } }>
-                Validate
-            </Button>
+            <ButtonContainer>
+                <Button
+                    onClick={ () => {
+                        handleValidation()
+                    } }>
+                    Validate
+                </Button>
+            </ButtonContainer>
         </>
     )
 }
