@@ -116,12 +116,9 @@ const PinInput: React.FC<PinInputGridProps> = ({
         const style = {
             width: size === 'small' ? '40px' : '40px',
             height: size === 'small' ? '30px' : '40px',
-            marginInline: size === 'small' ? '5px' : '10px'
+            marginInline: size === 'small' ? '5px' : '10px',
+            ...styleProps
         } as React.CSSProperties
-
-        if (styleProps) {
-            Object.assign(style, styleProps)
-        }
 
         return style
     }
@@ -132,12 +129,9 @@ const PinInput: React.FC<PinInputGridProps> = ({
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: size === 'small' ? '16px' : '20px',
-            padding: 'auto'
+            padding: 'auto',
+            ...inputProps
         } as React.CSSProperties
-
-        if (inputProps) {
-            Object.assign(style, inputProps)
-        }
 
         return style
     }
@@ -148,7 +142,7 @@ const PinInput: React.FC<PinInputGridProps> = ({
                 { Array.from({ length: pinLength }, (_, index) => (
                     <TextField
                         disabled={ isValidating }
-                        variant={ variant ? variant : 'outlined' }
+                        variant={ variant || 'outlined' }
                         onKeyDown={ event => onKeyDown(event, index) }
                         onPaste={ onPaste }
                         color='primary'
