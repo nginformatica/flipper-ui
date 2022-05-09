@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { TextField } from '@material-ui/core'
+import styled from 'styled-components'
 
 interface PinInputGridProps {
     pin: Array<number | undefined>
@@ -9,7 +10,16 @@ interface PinInputGridProps {
     validationResult: boolean | undefined
     isValidating: boolean
     size: 'small' | 'large'
+    style?: React.CSSProperties
+    inputProps?: React.CSSProperties
+    variant?: 'outlined' | 'standard'
 }
+
+const Container = styled.div`
+    display: flex;
+    width: auto;
+    justify-content: center;
+`
 
 const removeValuesFromArray = (valuesArray: string[], value: string) => {
     const valueIndex = valuesArray.findIndex(entry => entry === value)
@@ -30,7 +40,10 @@ const PinInput: React.FC<PinInputGridProps> = ({
     onPinChanged,
     validationResult,
     isValidating,
-    size
+    size,
+    style: styleProps,
+    inputProps,
+    variant
 }) => {
     const inputRefs = useRef<HTMLInputElement[]>([])
 
@@ -60,7 +73,9 @@ const PinInput: React.FC<PinInputGridProps> = ({
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index: number
     ) => {
-        if (event.target.value.length > 1) {return}
+        if (event.target.value.length > 1) {
+            return
+        }
         const previousValue = event.target.defaultValue
         const valuesArray = event.target.value.split('')
         removeValuesFromArray(valuesArray, previousValue)
@@ -97,30 +112,44 @@ const PinInput: React.FC<PinInputGridProps> = ({
         }
     }
 
+    const useStyleProps = (): React.CSSProperties => {
+        const style = {
+            width: size === 'small' ? '40px' : '40px',
+            height: size === 'small' ? '30px' : '40px',
+            marginInline: size === 'small' ? '5px' : '10px',
+            ...styleProps
+        } as React.CSSProperties
+
+        return style
+    }
+
+    const useInputProps = (): React.CSSProperties => {
+        const style = {
+            width: size === 'small' ? '40px' : '45px',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: size === 'small' ? '16px' : '20px',
+            padding: 'auto',
+            ...inputProps
+        } as React.CSSProperties
+
+        return style
+    }
+
     return (
         <>
-            <div>
+            <Container>
                 { Array.from({ length: pinLength }, (_, index) => (
                     <TextField
                         disabled={ isValidating }
-                        variant='outlined'
+                        variant={ variant || 'outlined' }
                         onKeyDown={ event => onKeyDown(event, index) }
                         onPaste={ onPaste }
                         color='primary'
                         error={ validationResult }
-                        style={ {
-                            width: size === 'small' ? '40px' : '40px',
-                            height: size === 'small' ? '30px' : '40px',
-                            marginInline: size === 'small' ? '5px' : '10px'
-                        } }
+                        style={ useStyleProps() }
                         InputProps={ {
-                            style: {
-                                width: size === 'small' ? '40px' : '45px',
-                                textAlign: 'center',
-                                fontWeight: 'bold',
-                                fontSize: size === 'small' ? '16px' : '20px',
-                                padding: 'auto'
-                            }
+                            style: useInputProps()
                         } }
                         inputRef={ (el: HTMLInputElement) => {
                             inputRefs.current[index] = el
@@ -132,7 +161,7 @@ const PinInput: React.FC<PinInputGridProps> = ({
                         value={ pin[index] || '' }
                     />
                 )) }
-            </div>
+            </Container>
         </>
     )
 }
