@@ -47,6 +47,7 @@ export interface TextFieldProps extends DefaultProps {
     onClear?: () => void
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    onPaste?: (event: React.ClipboardEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     onKeyUp?: (event: KeyboardEvent) => void
     onKeyDown?: (event: KeyboardEvent) => void
