@@ -80,7 +80,7 @@ const PinInput: React.FC<PinInputGridProps> = ({
         const valuesArray = event.target.value.split('')
         removeValuesFromArray(valuesArray, previousValue)
         const value = valuesArray.pop()
-        if (!value) {
+        if (!value || value === ' ' || value === '') {
             return
         }
         const pinNumber = Number(value.trim())
@@ -158,7 +158,7 @@ const PinInput: React.FC<PinInputGridProps> = ({
                         onChange={ event => {
                             onChange(event, index)
                         } }
-                        value={ pin[index] || '' }
+                        value={ pin[index] === 0 ? 0 : pin[index] || '' }
                     />
                 )) }
             </Container>
