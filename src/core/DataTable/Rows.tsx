@@ -45,6 +45,7 @@ const renderEditMode = <D extends Data>(
                 value={ date }
                 fullWidth
                 error={ hasError }
+                name={ column.field.toString() }
                 onChange={ value => {
                     updateRow(column.field, value as D[keyof D])
                 } }
