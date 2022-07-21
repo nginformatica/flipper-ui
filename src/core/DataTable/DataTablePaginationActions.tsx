@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import React from 'react'
-import IconButton from '@material-ui/core/IconButton/IconButton'
+import IconButton from '../IconButton'
 import FirstPageIcon from '@material-ui/icons/FirstPage'
 import LastPageIcon from '@material-ui/icons/LastPage'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
