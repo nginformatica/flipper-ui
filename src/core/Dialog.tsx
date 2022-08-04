@@ -29,7 +29,7 @@ interface DialogProps extends DefaultProps {
     snippetContentStyle?: CSSProperties
     contentTextStyle?: CSSProperties
     scroll?: 'body' | 'paper' | 'unset-paper' | 'unset-body'
-    onClose?: () => void
+    onClose?: (event: Event) => void
 }
 
 const TitleWrapper = styled.div`

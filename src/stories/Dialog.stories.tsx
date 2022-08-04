@@ -28,6 +28,29 @@ export const Default = () => {
     )
 }
 
+export const WithAlertOnClose = () => {
+    const [open, setOpen] = useState(false)
+    const handleClose = (e: Event) => {
+        e.preventDefault()
+        alert('I prevented dialog to close')
+    }
+
+    return (
+        <>
+            <Button onClick={ () => setOpen(true) }>Open dialog</Button>
+            <Dialog
+                open={ open }
+                title='My beautiful Dialog'
+                text={ 'Isn\'t it?' }
+                onClose={ handleClose }
+                actions={
+                    <Button onClick={ () => setOpen(false) }>Close dialog</Button>
+                }
+            />
+        </>
+    )
+}
+
 export const WithTypography = () => {
     const [open, setOpen] = useState(false)
 
