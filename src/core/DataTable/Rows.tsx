@@ -70,12 +70,7 @@ const renderEditMode = <D extends Data>(
                 value={ numeric }
                 name={ column.field.toString() }
                 onChange={ event => {
-                    const rawValue =
-                        event.target.value?.replace('.','').replace(',','.')
-                    const value = decimalScale === 0
-                        ? parseInt(rawValue)
-                        : parseFloat(rawValue)
-                    updateRow(column.field, value as D[keyof D])
+                    updateRow(column.field, event.target.value as D[keyof D])
                 } }
             />
         )
