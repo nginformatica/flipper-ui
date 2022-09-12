@@ -98,7 +98,8 @@ const defaultPagination: PaginationOptions = {
     disabled: false,
     showFirstButton: false,
     showLastButton: false,
-    rowsPerPageOptions: [5, 10, 20]
+    rowsPerPageOptions: [5, 10, 20],
+    clickable: false
 }
 
 const sliceData = <D,>(data: D[], page: number, rowsPerPage: number) => {
