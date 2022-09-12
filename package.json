@@ -1,6 +1,6 @@
 {
     "name": "flipper-ui",
-    "version": "0.25.12",
+    "version": "0.25.13",
     "description": "",
     "main": "dist/index.js",
     "homepage": "https://flipper-ui.ngi.com.br/",
@@ -31,10 +31,12 @@
         "@material-ui/lab": "4.0.0-alpha.54",
         "@material-ui/pickers": "3.2.6",
         "date-fns": "2.4.1",
+        "faker": "5.5.3",
         "material-table": "1.69.3",
         "material-ui-chip-input": "2.0.0-beta.2",
         "ramda": "0.25.0",
-        "react-number-format": "4.4.1"
+        "react-number-format": "4.4.1",
+        "uuid": "9.0.0"
     },
     "devDependencies": {
         "@babel/cli": "7.10.0",
@@ -48,11 +50,13 @@
         "@storybook/addon-links": "6.3.12",
         "@storybook/react": "6.3.12",
         "@testing-library/react": "9.3.2",
+        "@types/faker": "5.5.3",
         "@types/jest": "24.0.22",
         "@types/node": "10.9.4",
         "@types/ramda": "0.25.36",
         "@types/react": "16.8.18",
         "@types/styled-components": "4.4.2",
+        "@types/uuid": "8.3.4",
         "@typescript-eslint/eslint-plugin": "1.6.0",
         "@typescript-eslint/parser": "1.6.0",
         "babel-loader": "8.2.3",

@@ -16,13 +16,15 @@ interface DataTablePaginationActionsProps {
 interface DataTablePaginationActionsBuilder {
     showFirstButton?: boolean
     showLastButton?: boolean
+    clickable?: boolean
 }
 
 const PAGINATION_WRAPPER_STYLE = { display: 'flex', marginLeft: '12px' }
 
 export const makeDataTablePaginationActions = ({
     showFirstButton,
-    showLastButton
+    showLastButton,
+    clickable
 }: DataTablePaginationActionsBuilder) => ({
     count,
     page,
@@ -54,27 +56,27 @@ export const makeDataTablePaginationActions = ({
             { showFirstButton && (
                 <IconButton
                     onClick={ handleFirstPageButtonClick }
-                    disabled={ page === 0 }
+                    disabled={ page === 0 || clickable }
                     aria-label="first page">
                     <FirstPageIcon />
                 </IconButton>
             ) }
             <IconButton
                 onClick={ handleBackButtonClick }
-                disabled={ page === 0 }
+                disabled={ page === 0 || clickable }
                 aria-label="previous page">
                 <KeyboardArrowLeft />
             </IconButton>
             <IconButton
                 onClick={ handleNextButtonClick }
-                disabled={ page >= totalPages }
+                disabled={ page >= totalPages || clickable }
                 aria-label="next page">
                 <KeyboardArrowRight />
             </IconButton>
             { showLastButton && (
                 <IconButton
                     onClick={ handleLastPageButtonClick }
-                    disabled={ page >= totalPages }
+                    disabled={ page >= totalPages || clickable }
                     aria-label="last page">
                     <LastPageIcon />
                 </IconButton>

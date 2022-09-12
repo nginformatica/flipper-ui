@@ -70,6 +70,7 @@ export type PaginationOptions = {
     showFirstButton?: boolean
     showLastButton?: boolean
     disabled: boolean
+    clickable: boolean
 }
 
 export type RowAction<D> = {
