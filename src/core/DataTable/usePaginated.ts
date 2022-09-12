@@ -62,7 +62,7 @@ export const usePaginated = () => {
     }, [])
 
     useEffect(() => {
-        if(splitData[state.actualPage]) {
+        if (splitData[state.actualPage]) {
             setState(prev => ({ ...prev, items: splitData[state.actualPage] }))
         } else {
             setState(prev => ({ ...prev, items: splitData[0], actualPage: 0 }))
@@ -92,6 +92,7 @@ export const usePaginated = () => {
         }, MOCK_DELAY_VALUE)
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const setData = (data: any) => {
         setState(prev => ({ ...prev, items: data }))
     }

@@ -304,24 +304,31 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                     </TableHead>
                 ) }
                 <TableBody style={ bodyStyle }>
-                    { currentRowsNumber === 0 || pagination.clickable ? componentForEmpty : rowsElements }
+                    {
+                        currentRowsNumber === 0
+                            || pagination.clickable
+                            ? componentForEmpty
+                                : rowsElements }
                     { hiddenRowFiller }
+
                 </TableBody>
                 { !pagination.disabled && (
                     <TableFooter>
                         <TableRow>
                             <TablePagination
-                                count={ totalElements } // NOTE - Aqui digo quantos itens existem no total
-                                page={ page } // NOTE - The actual page
+                                count={ totalElements }
+                                page={ page }
                                 rowsPerPageOptions={ pagination.rowsPerPageOptions }
                                 rowsPerPage={ perPage }
                                 labelRowsPerPage={ pagination.labelRowsPerPage }
                                 labelDisplayedRows={ pagination.labelDisplayedRows }
                                 onChangePage={ (_, page) => {
-                                    handleChangePage(page) // NOTE - Aqui estou trocando a pagina atual
+                                    handleChangePage(page)
                                 } }
                                 onChangeRowsPerPage={ event => {
-                                    handleChangePerPage(parseInt(event.target.value,10))
+                                    handleChangePerPage(
+                                        parseInt(event.target.value, 10)
+                                    )
                                 } }
                                 ActionsComponent={ paginationActionsComponent }
                             />
