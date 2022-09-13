@@ -37,6 +37,26 @@ export type DataTableProps<D extends Data, V extends StackView = {}> = {
      */
     data: D[]
     /**
+     * The total elements present in query
+     */
+    totalElements: number
+    /**
+     * Change current page handler
+     */
+    handleChangePage: (page: number) => void
+    /**
+     * Per page value
+     */
+     perPage: number
+    /**
+     * Change page handler
+     */
+    handleChangePerPage: (value: number) => void
+    /**
+     * Actual page
+     */
+    page: number
+    /**
      * Errors as an object where the key is the ID of the row and the value is
      * a Set with the fields of error
      */
@@ -98,26 +118,22 @@ const defaultPagination: PaginationOptions = {
     disabled: false,
     showFirstButton: false,
     showLastButton: false,
-    rowsPerPageOptions: [5, 10, 20],
-    clickable: false
+    clickable: true,
+    rowsPerPageOptions: [5, 10, 25, 50]
 }
 
-const sliceData = <D,>(data: D[], page: number, rowsPerPage: number) => {
-    const start = page * rowsPerPage
-    const end = start + rowsPerPage
-
-    return data.slice(start,end)
-}
-
-export const DataTable = <D extends Data, V extends StackView>(
+export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
     props: DataTableProps<D,V>
 ) => {
-    const [page, setPage] = useState(0)
     const pagination = { ...defaultPagination, ...props.pagination }
-    const [rowsPerPage, setRowsPerPage] = useState(pagination.rowsPerPage)
     const {
         data,
+        totalElements,
+        handleChangePage,
+        perPage,
+        handleChangePerPage,
         columns,
+        page,
         rowViews,
         onRowClick,
         controllerRef,
@@ -137,13 +153,9 @@ export const DataTable = <D extends Data, V extends StackView>(
         if (pagination.disabled) {
             return data
         }
-        // this case is not good for the useRowsMode hook
-        if (newRow && page === 0) {
-            return sliceData(data, page, rowsPerPage - 1)
-        }
 
-        return sliceData(data, page, rowsPerPage)
-    }, [pagination.disabled, data, rowsPerPage, page, newRow])
+        return data
+    }, [pagination.disabled, data, perPage, page, newRow])
 
     const {
         getRowState,
@@ -165,7 +177,7 @@ export const DataTable = <D extends Data, V extends StackView>(
                 setNewRow(undefined)
             },
             addRow: partial => {
-                setPage(0)
+                handleChangePerPage(0)
                 setNewRow(partial)
             },
             getEditedRowData: id => ({ id, ...getRowState(id)?.editableState }),
@@ -246,7 +258,7 @@ export const DataTable = <D extends Data, V extends StackView>(
 
     const hiddenRowsNumber = pagination.disabled
         ? 0
-        : rowsPerPage - currentRowsNumber
+        : perPage - currentRowsNumber
 
     const hiddenRowFiller = hiddenRowsNumber !== 0 && (
         <TableRow style={ bodyRowStyle }>
@@ -278,9 +290,10 @@ export const DataTable = <D extends Data, V extends StackView>(
     const paginationActionsComponent = useMemo(() =>
         makeDataTablePaginationActions({
             showFirstButton: pagination.showFirstButton,
-            showLastButton: pagination.showLastButton
+            showLastButton: pagination.showLastButton,
+            clickable: pagination.clickable
        })
-    , [pagination.showFirstButton, pagination.showLastButton])
+    , [pagination.showFirstButton, pagination.showLastButton, pagination.clickable])
 
     return (
         <TableContainer component={ Paper }>
@@ -291,27 +304,31 @@ export const DataTable = <D extends Data, V extends StackView>(
                     </TableHead>
                 ) }
                 <TableBody style={ bodyStyle }>
-                    { currentRowsNumber === 0 ? componentForEmpty : rowsElements }
+                    {
+                        currentRowsNumber === 0
+                            || pagination.clickable
+                            ? componentForEmpty
+                                : rowsElements }
                     { hiddenRowFiller }
+
                 </TableBody>
                 { !pagination.disabled && (
                     <TableFooter>
                         <TableRow>
                             <TablePagination
-                                count={ data.length }
+                                count={ totalElements }
                                 page={ page }
                                 rowsPerPageOptions={ pagination.rowsPerPageOptions }
-                                rowsPerPage={ rowsPerPage }
+                                rowsPerPage={ perPage }
                                 labelRowsPerPage={ pagination.labelRowsPerPage }
                                 labelDisplayedRows={ pagination.labelDisplayedRows }
                                 onChangePage={ (_, page) => {
-                                    setPage(page)
+                                    handleChangePage(page)
                                 } }
                                 onChangeRowsPerPage={ event => {
-                                    setRowsPerPage(
-                                        parseInt(event.target.value,10)
+                                    handleChangePerPage(
+                                        parseInt(event.target.value, 10)
                                     )
-                                    setPage(0)
                                 } }
                                 ActionsComponent={ paginationActionsComponent }
                             />
@@ -323,4 +340,4 @@ export const DataTable = <D extends Data, V extends StackView>(
     )
 }
 
-export default DataTable
+export default DataTableQueryPaginated
