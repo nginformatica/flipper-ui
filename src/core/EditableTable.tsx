@@ -64,7 +64,7 @@ const AddRowButton = styled.div`
 `
 
 const AddRowText = styled(Typography)`
-    margin-left: 4px; 
+    margin-left: 4px;
     font-weight: 500 !important;
 `
 
@@ -84,8 +84,8 @@ const CustomRemove = styled(MTableEditRow)({
 const CustomRows = styled(MTableBodyRow)`
     transition: opacity 200ms ease;
     button {
-        display: none;  
-    };   
+        display: none;
+    };
     &:hover {
         background: -moz-linear-gradient(left,${DARK} 0%, ${GREY} 100%);
         background: -webkit-linear-gradient(left,${DARK} 0%,${GREY} 100%);
@@ -213,7 +213,9 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                         )
                     },
                     Action: localProps => {
-                        if (
+                        if(!localProps.action) {
+                            return <MTableAction { ...localProps } />
+                        } else if (
                             'position' in localProps.action &&
                             localProps.action.position === 'toolbar'
                         ) {
@@ -233,9 +235,10 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                                     <ActionIcon />
                                 </Button>
                             )
+                        } else {
+                            return <MTableAction { ...localProps } />
                         }
 
-                        return <MTableAction { ...localProps } />
                     },
                     EditField: localProps => {
                         if (localProps.columnDef.type === 'datetime') {
