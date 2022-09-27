@@ -1,13 +1,14 @@
+/* eslint-disable max-lines */
 import React, { forwardRef, useRef } from 'react'
 import MaterialTable, {
     Column,
     Options,
     MTableEditRow,
     MTableBodyRow,
-    MTableAction,
     MTableEditField,
-    MTableActions,
-    MTablePagination
+    MTableAction,
+    MTablePagination,
+    MTableActions
 } from 'material-table'
 import {
     NoteAdd as IconAdd,
@@ -21,7 +22,7 @@ import {
     LastPage
 } from '../icons'
 import Typography from './Typography'
-import { omit, contains } from 'ramda'
+import { omit, contains, cond, T } from 'ramda'
 import styled from 'styled-components'
 import Button from './Button'
 import DateTime from './DateTime'
@@ -213,12 +214,10 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                         )
                     },
                     Action: localProps => {
-                        if(!localProps.action) {
-                            return <MTableAction { ...localProps } />
-                        } else if (
-                            'position' in localProps.action &&
-                            localProps.action.position === 'toolbar'
-                        ) {
+                        const { disabled, size, data } = localProps
+                        const isDisabled = !!disabled
+
+                        const renderToolbarButton = () => {
                             const ActionIcon = localProps.action.icon
 
                             return (
@@ -235,9 +234,35 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                                     <ActionIcon />
                                 </Button>
                             )
-                        } else {
-                            return <MTableAction { ...localProps } />
                         }
+
+                        const renderActionButton = () => <MTableAction
+                        disabled={ isDisabled }
+                        size={ size }
+                        data={ data }
+                        action={ localProps.action }
+                        />
+
+                        const renderDefault = () => <MTableAction
+                                disabled
+                                action={ () => {} }
+                                size={ 0 }
+                                data={ [] }
+                        />
+
+                        const hasData =
+                            localProps => !!localProps.action && size && data
+                        const isToolbar =
+                            localProps =>
+                                localProps.action
+                                && 'position' in localProps.action
+                                && localProps.action.position === 'toolbar'
+
+                        return cond([
+                            [isToolbar, renderToolbarButton],
+                            [hasData, renderActionButton],
+                            [T, renderDefault]
+                        ])(localProps)
 
                     },
                     EditField: localProps => {
