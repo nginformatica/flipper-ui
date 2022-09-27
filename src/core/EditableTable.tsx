@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { forwardRef, useRef } from 'react'
 import MaterialTable, {
     Column,
