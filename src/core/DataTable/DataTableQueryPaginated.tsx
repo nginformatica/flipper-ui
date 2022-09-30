@@ -291,7 +291,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         makeDataTablePaginationActions({
             showFirstButton: pagination.showFirstButton,
             showLastButton: pagination.showLastButton,
-            clickable: pagination.clickable
+            clickable: !pagination.clickable
        })
     , [pagination.showFirstButton, pagination.showLastButton, pagination.clickable])
 
@@ -306,7 +306,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                 <TableBody style={ bodyStyle }>
                     {
                         currentRowsNumber === 0
-                            || pagination.clickable
+                            || !pagination.clickable
                             ? componentForEmpty
                                 : rowsElements }
                     { hiddenRowFiller }

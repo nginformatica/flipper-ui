@@ -128,7 +128,7 @@ export const Default = () => {
             pagination={ {
                 rowsPerPage: size,
                 labelRowsPerPage: 'Row per page ',
-                clickable: loading
+                clickable: !loading
             } }
             columns={ columnsData }
         />
@@ -281,7 +281,7 @@ export const NoHeader = () => {
             pagination={ {
                 rowsPerPage: 5,
                 labelRowsPerPage: 'Row per page',
-                clickable: loading
+                clickable: !loading
             } }
             columns={ columns }
         />
@@ -555,7 +555,7 @@ export const Crud = () => {
                 perPage={ size }
                 pagination={ {
                     rowsPerPage: 5,
-                    clickable: loading,
+                    clickable: !loading,
                     showFirstButton: true,
                     showLastButton: true,
                     labelRowsPerPage: 'Rows per page:',
