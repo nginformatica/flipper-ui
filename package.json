@@ -1,6 +1,6 @@
 {
     "name": "flipper-ui",
-    "version": "0.26.0",
+    "version": "0.26.1",
     "description": "",
     "main": "dist/index.js",
     "homepage": "https://flipper-ui.ngi.com.br/",
@@ -24,7 +24,7 @@
         "docs:build": "build-storybook -o docs",
         "type-check": "tsc --noEmit",
         "deploy": "gh-pages -d docs",
-        "release": "yarn build && node pre-publish.js && npm publish dist --access public"
+        "release": "yarn build && node pre-publish.js && npm publish ./dist --access public"
     },
     "author": "NG Informática",
     "license": "MIT",
@@ -94,6 +94,12 @@
     "jest": {
         "setupFilesAfterEnv": [
             "<rootDir>/src/setupTests.js"
+        ]
+    },
+    "publishConfig": {
+        "ignore": [
+            "!dist/",
+            "!/node_modules/"
         ]
     }
 }
