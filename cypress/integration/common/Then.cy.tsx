@@ -14,3 +14,13 @@ Then(
       })
     }
   )
+
+  Then('I should see {int} {string}', (quantity: number, element: string) => {
+    cy.get(element).then(elements => {
+      expect(elements.length).to.equal(quantity)
+    })
+  })
+
+  Then('I should not see any {string}', (element: string) => {
+    cy.get(element).should('not.exist')
+  })
