@@ -7,24 +7,60 @@ import 'cypress-wait-until'
 import React from 'react'
 import { mount, MountOptions, MountReturn } from 'cypress/react'
 import { MemoryRouter } from 'react-router-dom'
-import type { MemoryRouterProps } from './types-interfaces-enums'
+import { MemoryRouterProps, MockCats, MockObj } from './types-interfaces-enums'
 import './commands'
+import faker from 'faker'
 
 declare global {
-  namespace Cypress {
-    interface Chainable {
-      mount(
-        component: React.ReactNode,
-        options?: MountOptions & { routerProps?: MemoryRouterProps }
-      ): Cypress.Chainable<MountReturn>
+    namespace Cypress {
+        interface Chainable {
+            mount(
+                component: React.ReactNode,
+                options?: MountOptions & { routerProps?: MemoryRouterProps }
+            ): Cypress.Chainable<MountReturn>
+            getMock(name: MockCats): Chainable<JQuery<HTMLElement>>
+        }
     }
-  }
 }
 
 Cypress.Commands.add('mount', (component: React.ReactNode, options = {}) => {
-  const { routerProps = { initialEntries: ['/'] }, ...mountOptions } = options
+    const { routerProps = { initialEntries: ['/'] }, ...mountOptions } = options
 
-  const wrapped = <MemoryRouter { ...routerProps }>{ component }</MemoryRouter>
+    const wrapped = <MemoryRouter { ...routerProps }>{ component }</MemoryRouter>
 
-  return mount(wrapped, mountOptions)
+    return mount(wrapped, mountOptions)
 })
+
+export const Mocks = new Map<MockCats, MockObj>([
+  [
+    'advertise-author',
+    { original: 'advertise-author-mock', alias: '@advertise-author-mock' }
+  ],
+  [
+    'advertise-comment',
+    { original: 'advertise-comment-mock', alias: '@advertise-comment-mock' }
+  ]
+])
+
+type MockTypes = 'Name' | 'Words'
+
+export const generateMock = (value: MockCats, type: MockTypes) => {
+  const FALLBACK = 'unknown-mock'
+  let mock = ''
+
+  switch (type) {
+    case 'Name':
+      mock = faker.name.firstName()
+
+      break
+
+    case 'Words':
+      mock = faker.random.words()
+      break
+
+      default:
+        break
+      }
+
+      return cy.wrap(mock).as(Mocks.get(value)?.original || FALLBACK)
+}
