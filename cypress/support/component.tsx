@@ -7,7 +7,12 @@ import 'cypress-wait-until'
 import React from 'react'
 import { mount, MountOptions, MountReturn } from 'cypress/react'
 import { MemoryRouter } from 'react-router-dom'
-import { MemoryRouterProps, MockCats, MockObj } from './types-interfaces-enums'
+import {
+  MemoryRouterProps,
+  MockCats,
+  MockObj,
+  MockTypes
+} from './types-interfaces-enums'
 import './commands'
 import faker from 'faker'
 
@@ -39,10 +44,12 @@ export const Mocks = new Map<MockCats, MockObj>([
   [
     'advertise-comment',
     { original: 'advertise-comment-mock', alias: '@advertise-comment-mock' }
+  ],
+  [
+    'avatar-children',
+    { original: 'avatar-children-mock', alias: '@avatar-children-mock' }
   ]
 ])
-
-type MockTypes = 'Name' | 'Words'
 
 export const generateMock = (value: MockCats, type: MockTypes) => {
   const FALLBACK = 'unknown-mock'
@@ -58,6 +65,9 @@ export const generateMock = (value: MockCats, type: MockTypes) => {
       mock = faker.random.words()
       break
 
+      case 'Letter':
+        mock = faker.random.alpha({ count: 1 })
+        break
       default:
         break
       }
