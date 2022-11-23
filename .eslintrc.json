@@ -13,12 +13,10 @@
         "plugin:ramda/recommended"
     ],
     "rules": {
+        "@typescript-eslint/no-use-before-define": "off",
         "template-curly-spacing": "off",
         "no-sequences": "error",
-        "spaced-comment": [
-            "error",
-            "always"
-        ],
+        "spaced-comment": ["error", "always"],
         "key-spacing": [
             "error",
             {
@@ -46,17 +44,11 @@
         ],
         "no-var": "error",
         "newline-before-return": "error",
-        "arrow-parens": [
-            "error",
-            "as-needed"
-        ],
+        "arrow-parens": ["error", "as-needed"],
         "no-bitwise": "error",
         "max-classes-per-file": "error",
         "no-duplicate-imports": "error",
-        "lines-between-class-members": [
-            "error",
-            "always"
-        ],
+        "lines-between-class-members": ["error", "always"],
         "padding-line-between-statements": [
             "error",
             {
@@ -71,12 +63,7 @@
                 "ignoreCase": true,
                 "ignoreDeclarationSort": true,
                 "ignoreMemberSort": true,
-                "memberSyntaxSortOrder": [
-                    "none",
-                    "all",
-                    "multiple",
-                    "single"
-                ]
+                "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
             }
         ],
         "no-irregular-whitespace": "error",
@@ -88,40 +75,23 @@
         "no-undef": "off",
         "no-case-declarations": "off",
         "indent": "off",
-        "no-unused-vars": [
-            "off"
-        ],
+        "no-unused-vars": ["off"],
         "no-console": [
             "error",
             {
-                "allow": [
-                    "log",
-                    "error"
-                ]
+                "allow": ["log", "error"]
             }
         ],
-        "comma-dangle": [
-            "error",
-            "never"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
+        "comma-dangle": ["error", "never"],
+        "semi": ["error", "never"],
         "no-multiple-empty-lines": [
             "error",
             {
                 "max": 1
             }
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "eol-last": [
-            "error",
-            "always"
-        ],
+        "quotes": ["error", "single"],
+        "eol-last": ["error", "always"],
         "no-new-wrappers": "error",
         "arrow-spacing": [
             "error",
@@ -130,10 +100,7 @@
                 "before": true
             }
         ],
-        "object-curly-spacing": [
-            "error",
-            "always"
-        ],
+        "object-curly-spacing": ["error", "always"],
         "react/jsx-closing-bracket-location": [
             1,
             {
@@ -194,12 +161,7 @@
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/explicit-function-return-type": "off"
     },
-    "plugins": [
-        "react",
-        "prefer-arrow",
-        "@typescript-eslint",
-        "ramda"
-    ],
+    "plugins": ["react", "prefer-arrow", "@typescript-eslint", "ramda"],
     "settings": {
         "react": {
             "pragma": "React",
