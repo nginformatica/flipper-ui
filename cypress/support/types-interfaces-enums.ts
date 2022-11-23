@@ -12,9 +12,14 @@ export interface MemoryRouterProps {
   keyLength?: number
 }
 
+export type MockTypes = 'Name' | 'Words' | 'Letter'
+
+export type AvatarVariant = 'default' | 'primary' | 'with-children'
+
 export type MockCats =
   | 'advertise-author'
   | 'advertise-comment'
+  | 'avatar-children'
 
 export interface SpyObj {
   original: string
