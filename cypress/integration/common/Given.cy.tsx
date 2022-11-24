@@ -1,25 +1,16 @@
 import { mount } from '@cypress/react'
 import { Given } from 'cypress-cucumber-preprocessor/steps'
-import { generateMock, generateSpy } from 'cypress/support/component'
+import { generateMock, generateSpy } from '../../support/component'
 import {
     AvatarVariant,
     BadgeVariant
-} from 'cypress/support/types-interfaces-enums'
+} from '../../support/types-interfaces-enums'
 import React from 'react'
-import { Advertise, Avatar, Badge, Box } from 'src'
-import { BadgeProps } from 'src/core/Badge'
+import { Avatar, Badge, Box } from '../../../src'
+import { BadgeProps } from '../../../src/core/Badge'
+import { AdvertiseFactory } from '../../support/factories/advertise'
 
-Given('I render Advertise', () => {
-    let author = ''
-    let comment = ''
-
-    generateMock({ value: 'advertise-author', type: 'Name' }).then(e => {
-        author = typeof e === 'string' ? e : e.toString()
-        generateMock({ value: 'advertise-comment', type: 'Words' })
-            .then(e => (comment = typeof e === 'string' ? e : e.toString()))
-            .then(() => mount(<Advertise author={ author } comment={ comment } />))
-    })
-})
+Given('I render Advertise', () => AdvertiseFactory())
 
 Given('I render Avatar with {string} preset', (preset: AvatarVariant) => {
     generateMock({
