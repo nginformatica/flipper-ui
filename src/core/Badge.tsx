@@ -4,7 +4,7 @@ import { BadgeProps as MuiBadgeProps } from '@material-ui/core/Badge'
 import { makeStyles } from '@material-ui/core/styles'
 import type { DefaultProps } from './types'
 
-interface BadgeProps extends DefaultProps, MuiBadgeProps {
+export interface BadgeProps extends DefaultProps, MuiBadgeProps {
     max?: number
     counter: number | string
     position?: {
