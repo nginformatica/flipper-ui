@@ -19,6 +19,7 @@ import {
 import './commands'
 import faker from 'faker'
 import Button from '../../src/core/Button'
+import { BoxProps } from '../../src/core/Box'
 
 declare global {
     namespace Cypress {
@@ -42,10 +43,10 @@ Cypress.Commands.add('mount', (component: React.ReactNode, options = {}) => {
 })
 
 export const Spies = new Map<SpyCats, SpyObj>([
-  [
-    'badge-children',
-    { original: 'badge-children-spy', alias: '@badge-children-spy' }
-  ]
+    [
+        'badge-children',
+        { original: 'badge-children-spy', alias: '@badge-children-spy' }
+    ]
 ])
 
 export const Mocks = new Map<MockCats, MockObj>([
@@ -62,22 +63,37 @@ export const Mocks = new Map<MockCats, MockObj>([
         { original: 'avatar-children-mock', alias: '@avatar-children-mock' }
     ],
     [
-      'badge-counter',
-      { original: 'badge-counter-mock', alias: '@badge-counter-mock' }
+        'badge-counter',
+        { original: 'badge-counter-mock', alias: '@badge-counter-mock' }
     ],
     [
-      'badge-children',
-      { original: 'badge-children-mock', alias: '@badge-children-mock' }
-    ]
+        'badge-children',
+        { original: 'badge-children-mock', alias: '@badge-children-mock' }
+    ],
+    [
+        'box-children',
+        { original: 'box-children-mock', alias: '@box-children-mock' }
+    ],
+    ['box-params', { original: 'box-params-mock', alias: '@box-params-mock' }]
 ])
 
+const generateNumber = (min: number, max: number): number => {
+  const number = faker.datatype.number(max)
+
+  return number < min ? min : number
+}
+
 export const generateMock = (
-  value: MockCats,
-  type: MockTypes,
-  options?: TMockOptions
-  ) => {
+    value: MockCats,
+    type: MockTypes,
+    options?: TMockOptions
+) => {
     const FALLBACK = 'unknown-mock'
-    let mock: string | number | JSX.Element = ''
+    let mock:
+        | string
+        | number
+        | JSX.Element
+        | BoxProps = ''
 
     switch (type) {
         case 'Name':
@@ -102,13 +118,25 @@ export const generateMock = (
             mock = number
             break
         case 'JSXButton':
-            mock = <Button
-                      id='mocked-button'
-                      variant='outlined'
-                      onClick={ options?.onClick }>
-                        Try changing the counter to Zero
-                  </Button>
+            mock = (
+              <Button
+                id='mocked-button'
+                variant='outlined'
+                onClick={ options?.onClick }>
+                    Try changing the counter to Zero
+                </Button>
+            )
             break
+        case 'BoxParams':
+          mock = {
+            padding: generateNumber(1, 20),
+            margin: generateNumber(1, 20),
+            name: faker.random.word(),
+            className: faker.random.word(),
+            id: 'box-testing-id',
+            minHeight: generateNumber(200, 500)
+          }
+          break
         default:
             break
     }
@@ -117,7 +145,7 @@ export const generateMock = (
 }
 
 export const generateSpy = (value: SpyCats) => {
-  const FALLBACK = 'unknown-spy'
+    const FALLBACK = 'unknown-spy'
 
-  return cy.spy().as(Spies.get(value)?.original || FALLBACK)
+    return cy.spy().as(Spies.get(value)?.original || FALLBACK)
 }
