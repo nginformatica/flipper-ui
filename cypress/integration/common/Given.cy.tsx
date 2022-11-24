@@ -3,6 +3,7 @@ import { mount } from '@cypress/react'
 import { Given } from 'cypress-cucumber-preprocessor/steps'
 import Advertise from '../../../src/core/Advertise'
 import Avatar from '../../../src/core/Avatar'
+import Box from '../../../src/core/Box'
 import Badge, { BadgeProps } from '../../../src/core/Badge'
 import { generateMock, generateSpy } from '../../support/component'
 import { AvatarVariant, BadgeVariant } from 'support/types-interfaces-enums'
@@ -76,4 +77,18 @@ Given('I render Badge with {string} preset', (preset: BadgeVariant) => {
 
         }
     )
+})
+
+Given('I render Box', () => {
+    generateMock('box-params', 'BoxParams').then(params => {
+        if(params instanceof Object && 'minHeight' in params) {
+            generateMock('box-children', 'Words').then(e => {
+                const child = typeof e === 'string' ? e : e.toString()
+                mount(<Box { ...params }>{ child }</Box>)
+            })
+        } else {
+            throw new Error('Invalid mock generation')
+
+        }
+    })
 })
