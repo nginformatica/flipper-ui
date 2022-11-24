@@ -6,33 +6,15 @@ import {
     BadgeVariant
 } from '../../support/types-interfaces-enums'
 import React from 'react'
-import { Avatar, Badge, Box } from '../../../src'
+import { Badge, Box } from '../../../src'
 import { BadgeProps } from '../../../src/core/Badge'
 import { AdvertiseFactory } from '../../support/factories/advertise'
+import { AvatarFactory } from '../../support/factories/avatar'
 
 Given('I render Advertise', () => AdvertiseFactory())
 
-Given('I render Avatar with {string} preset', (preset: AvatarVariant) => {
-    generateMock({
-        value: 'avatar-children',
-        type: 'Letter',
-        options: { length: 1 }
-    }).then(mock => {
-        let params = {}
-        switch (preset) {
-            case 'primary':
-                params = Object.assign({}, { primary: true })
-                break
-
-            case 'with-children':
-                params = Object.assign({}, { children: mock, primary: true })
-                break
-            default:
-                break
-        }
-        mount(<Avatar { ...params } />)
-    })
-})
+Given('I render Avatar with {string} preset', (preset: AvatarVariant) =>
+    AvatarFactory(preset))
 
 Given('I render Badge with {string} preset', (preset: BadgeVariant) => {
     const onClickSpy = generateSpy('badge-children')
