@@ -8,13 +8,17 @@ import React from 'react'
 import { mount, MountOptions, MountReturn } from 'cypress/react'
 import { MemoryRouter } from 'react-router-dom'
 import {
-  MemoryRouterProps,
-  MockCats,
-  MockObj,
-  MockTypes
+    MemoryRouterProps,
+    MockCats,
+    MockObj,
+    MockTypes,
+    SpyCats,
+    SpyObj,
+    TMockOptions
 } from './types-interfaces-enums'
 import './commands'
 import faker from 'faker'
+import Button from '../../src/core/Button'
 
 declare global {
     namespace Cypress {
@@ -23,6 +27,7 @@ declare global {
                 component: React.ReactNode,
                 options?: MountOptions & { routerProps?: MemoryRouterProps }
             ): Cypress.Chainable<MountReturn>
+            getSpy(name: SpyCats): Chainable<JQuery<HTMLElement>>
             getMock(name: MockCats): Chainable<JQuery<HTMLElement>>
         }
     }
@@ -36,41 +41,83 @@ Cypress.Commands.add('mount', (component: React.ReactNode, options = {}) => {
     return mount(wrapped, mountOptions)
 })
 
-export const Mocks = new Map<MockCats, MockObj>([
+export const Spies = new Map<SpyCats, SpyObj>([
   [
-    'advertise-author',
-    { original: 'advertise-author-mock', alias: '@advertise-author-mock' }
-  ],
-  [
-    'advertise-comment',
-    { original: 'advertise-comment-mock', alias: '@advertise-comment-mock' }
-  ],
-  [
-    'avatar-children',
-    { original: 'avatar-children-mock', alias: '@avatar-children-mock' }
+    'badge-children',
+    { original: 'badge-children-spy', alias: '@badge-children-spy' }
   ]
 ])
 
-export const generateMock = (value: MockCats, type: MockTypes) => {
-  const FALLBACK = 'unknown-mock'
-  let mock = ''
+export const Mocks = new Map<MockCats, MockObj>([
+    [
+        'advertise-author',
+        { original: 'advertise-author-mock', alias: '@advertise-author-mock' }
+    ],
+    [
+        'advertise-comment',
+        { original: 'advertise-comment-mock', alias: '@advertise-comment-mock' }
+    ],
+    [
+        'avatar-children',
+        { original: 'avatar-children-mock', alias: '@avatar-children-mock' }
+    ],
+    [
+      'badge-counter',
+      { original: 'badge-counter-mock', alias: '@badge-counter-mock' }
+    ],
+    [
+      'badge-children',
+      { original: 'badge-children-mock', alias: '@badge-children-mock' }
+    ]
+])
 
-  switch (type) {
-    case 'Name':
-      mock = faker.name.firstName()
+export const generateMock = (
+  value: MockCats,
+  type: MockTypes,
+  options?: TMockOptions
+  ) => {
+    const FALLBACK = 'unknown-mock'
+    let mock: string | number | JSX.Element = ''
 
-      break
+    switch (type) {
+        case 'Name':
+            mock = faker.name.firstName()
+            break
 
-    case 'Words':
-      mock = faker.random.words()
-      break
+        case 'Words':
+            mock = faker.random.words()
+            break
 
-      case 'Letter':
-        mock = faker.random.alpha({ count: 1 })
-        break
-      default:
-        break
-      }
+        case 'Letter':
+            mock = faker.random.alpha({ count: options?.length })
+            break
+        case 'Number':
+            const number = faker.datatype.number(options?.max)
+            if(options?.min) {
+              if(number < options.min) {
+                mock = options.min
+                break
+              }
+            }
+            mock = number
+            break
+        case 'JSXButton':
+            mock = <Button
+                      id='mocked-button'
+                      variant='outlined'
+                      onClick={ options?.onClick }>
+                        Try changing the counter to Zero
+                  </Button>
+            break
+        default:
+            break
+    }
 
-      return cy.wrap(mock).as(Mocks.get(value)?.original || FALLBACK)
+    return cy.wrap(mock).as(Mocks.get(value)?.original || FALLBACK)
+}
+
+export const generateSpy = (value: SpyCats) => {
+  const FALLBACK = 'unknown-spy'
+
+  return cy.spy().as(Spies.get(value)?.original || FALLBACK)
 }
