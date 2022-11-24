@@ -8,13 +8,12 @@ import React from 'react'
 import { mount, MountOptions, MountReturn } from 'cypress/react'
 import { MemoryRouter } from 'react-router-dom'
 import {
+    GenerateMockProps,
     MemoryRouterProps,
     MockCats,
     MockObj,
-    MockTypes,
     SpyCats,
-    SpyObj,
-    TMockOptions
+    SpyObj
 } from './types-interfaces-enums'
 import './commands'
 import faker from 'faker'
@@ -83,11 +82,7 @@ const generateNumber = (min: number, max: number): number => {
   return number < min ? min : number
 }
 
-export const generateMock = (
-    value: MockCats,
-    type: MockTypes,
-    options?: TMockOptions
-) => {
+export const generateMock = ({ value, type, options }: GenerateMockProps) => {
     const FALLBACK = 'unknown-mock'
     let mock:
         | string

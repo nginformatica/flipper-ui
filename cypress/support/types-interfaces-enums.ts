@@ -54,3 +54,9 @@ export type TMockOptions = {
     length?: number
     onClick?: () => void
 }
+
+export interface GenerateMockProps {
+    value: MockCats,
+    type: MockTypes,
+    options?: TMockOptions
+}
