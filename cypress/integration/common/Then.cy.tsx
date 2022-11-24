@@ -4,7 +4,7 @@ import {
     MockCats,
     MuiSelectors,
     SpyCats
-} from '../../support/types-interfaces-enums'
+} from 'cypress/support/types-interfaces-enums'
 
 Then('I should see {string}', (text: string) =>
     cy.waitUntil(() => cy.contains(text).should('exist'))

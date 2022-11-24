@@ -18,7 +18,7 @@ import {
 } from './types-interfaces-enums'
 import './commands'
 import faker from 'faker'
-import Button from '../../src/core/Button'
+import { Button } from 'src'
 import { BoxProps } from '../../src/core/Box'
 
 declare global {

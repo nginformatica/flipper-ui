@@ -6,12 +6,13 @@
         "lib": ["es5", "dom", "es2016"],
         "types": [
             "cypress",
+            "node",
             "cypress-cucumber-preprocessor",
             "cypress-wait-until",
             "cypress-real-events"
         ],
         "typeRoots": ["../node_modules/@types"],
-        "baseUrl": ".",
+        "baseUrl": "..",
         "esModuleInterop": true,
         "moduleResolution": "node"
     },

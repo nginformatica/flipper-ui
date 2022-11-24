@@ -1,12 +1,10 @@
-import React from 'react'
 import { mount } from '@cypress/react'
 import { Given } from 'cypress-cucumber-preprocessor/steps'
-import Advertise from '../../../src/core/Advertise'
-import Avatar from '../../../src/core/Avatar'
-import Box from '../../../src/core/Box'
-import Badge, { BadgeProps } from '../../../src/core/Badge'
-import { generateMock, generateSpy } from '../../support/component'
-import { AvatarVariant, BadgeVariant } from 'support/types-interfaces-enums'
+import { generateMock, generateSpy } from 'cypress/support/component'
+import { AvatarVariant, BadgeVariant } from 'cypress/support/types-interfaces-enums'
+import React from 'react'
+import { Advertise, Avatar, Badge, Box } from 'src'
+import { BadgeProps } from 'src/core/Badge'
 
 Given('I render Advertise', () => {
     let author = ''
@@ -50,7 +48,11 @@ Given('I render Badge with {string} preset', (preset: BadgeVariant) => {
             }).then(mockChildren => {
                 switch (preset) {
                     case 'primary':
-                        params = { color: 'primary', children: 'Badge', counter }
+                        params = {
+                            color: 'primary',
+                            children: 'Badge',
+                            counter
+                        }
                         break
 
                     case 'secondary':
@@ -74,21 +76,19 @@ Given('I render Badge with {string} preset', (preset: BadgeVariant) => {
                 }
                 mount(<Badge { ...params } />)
             })
-
         }
     )
 })
 
 Given('I render Box', () => {
     generateMock('box-params', 'BoxParams').then(params => {
-        if(params instanceof Object && 'minHeight' in params) {
+        if (params instanceof Object && 'minHeight' in params) {
             generateMock('box-children', 'Words').then(e => {
                 const child = typeof e === 'string' ? e : e.toString()
                 mount(<Box { ...params }>{ child }</Box>)
             })
         } else {
             throw new Error('Invalid mock generation')
-
         }
     })
 })
