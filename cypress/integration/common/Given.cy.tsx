@@ -4,11 +4,13 @@ import {
     AvatarFactory,
     BadgeFactory,
     BoxFactory,
-    BreadcrumbFactory
+    BreadcrumbFactory,
+    ButtonFactory
 } from '../../support/factories'
 import {
     AvatarVariant,
-    BadgeVariant
+    BadgeVariant,
+    ButtonVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => AdvertiseFactory())
@@ -24,3 +26,11 @@ Given('I render Badge with {string} preset', (preset: BadgeVariant) =>
 Given('I render Box', () => BoxFactory())
 
 Given('I render Breadcrumb', () => BreadcrumbFactory())
+
+Given('I render Button with {string} preset', (preset: ButtonVariant) =>
+    ButtonFactory(preset)
+)
+
+Given('I render Button with Icon', (preset: ButtonVariant) =>
+    ButtonFactory(preset, 'Icon')
+)
