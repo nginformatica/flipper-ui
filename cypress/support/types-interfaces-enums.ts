@@ -20,6 +20,7 @@ export type MockTypes =
     | 'Numbers'
     | 'JSXButton'
     | 'BoxParams'
+    | 'ListOfWords'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
@@ -32,6 +33,7 @@ export type MockCats =
     | 'badge-children'
     | 'box-children'
     | 'box-params'
+    | 'breadcrumb-links'
 
 export type SpyCats = 'badge-children'
 
