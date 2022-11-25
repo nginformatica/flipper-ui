@@ -12,8 +12,8 @@ Then('I should see {string}', (text: string) =>
 
 Then('I expect {string} mock to exist', (mockName: MockCats) => {
     cy.getMock(mockName).then(spy => {
-        // @ts-ignore
-        cy.waitUntil(() => cy.contains(spy).should('exist'))
+        const element: string = spy.toString()
+        cy.waitUntil(() => cy.contains(element).should('exist'))
     })
 })
 
@@ -46,15 +46,14 @@ Then('I expect Box component style to match with mock', () => {
         const styles = pick(['padding', 'margin', 'minHeight'], mock)
         console.log({ props, styles })
         for (const prop in props) {
-            cy.get('[id="box-testing-id"]')
-                .first()
-                .should('have.attr', prop)
+            cy.get('[id="box-testing-id"]').first().should('have.attr', prop)
         }
         for (const style in styles) {
+            const List: Record<string, string> = styles
+            const styleValue = List[style]
             cy.get('[id="box-testing-id"]')
                 .first()
-                // @ts-ignore
-                .should('have.css', style, `${styles[style]}px`)
+                .should('have.css', style, `${styleValue}px`)
         }
     })
 })

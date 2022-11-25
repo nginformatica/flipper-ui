@@ -19,7 +19,8 @@
             "error",
             {
             "singleQuote": true,
-            "parser": "flow"
+            "parser": "flow",
+            "arrowParens": "avoid"
             }
         ],
         "@typescript-eslint/no-use-before-define": "off",

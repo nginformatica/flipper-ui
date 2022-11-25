@@ -22,5 +22,5 @@ export const AvatarFactory = (preset: AvatarVariant) =>
             default:
                 break
         }
-        mount(<Avatar { ...params } />)
+        mount(<Avatar {...params} />)
     })

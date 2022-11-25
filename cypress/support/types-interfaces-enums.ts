@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // @ts-ignore
 import type * as H from 'history'
@@ -58,7 +60,7 @@ export type TMockOptions = {
 }
 
 export interface GenerateMockProps {
-    value: MockCats,
-    type: MockTypes,
+    value: MockCats
+    type: MockTypes
     options?: TMockOptions
 }

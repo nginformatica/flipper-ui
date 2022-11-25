@@ -15,9 +15,13 @@ export const BadgeFactory = (preset: BadgeVariant) => {
         options: { min: 1, max: 99 }
     }).then(mockCounter => {
         counter = Number(mockCounter)
-        generateMock({ value: 'badge-children', type: 'JSXButton', options: {
-            onClick: onClickSpy
-        } }).then(mockChildren => {
+        generateMock({
+            value: 'badge-children',
+            type: 'JSXButton',
+            options: {
+                onClick: onClickSpy
+            }
+        }).then(mockChildren => {
             switch (preset) {
                 case 'primary':
                     params = {
@@ -46,7 +50,7 @@ export const BadgeFactory = (preset: BadgeVariant) => {
                     params = { children: 'Badge', counter }
                     break
             }
-            mount(<Badge { ...params } />)
+            mount(<Badge {...params} />)
         })
     })
 }
