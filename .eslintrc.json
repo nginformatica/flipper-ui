@@ -19,7 +19,7 @@
             "error",
             {
             "singleQuote": true,
-            "parser": "flow",
+            "parser": "typescript",
             "arrowParens": "avoid"
             }
         ],
