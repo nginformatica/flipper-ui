@@ -24,10 +24,12 @@ import {
     generateFakeLetter,
     generateFakeName,
     generateFakeNumber,
+    generateFakeWord,
     generateFakeWords,
+    generateIcon,
     generateJSXElement,
     generateListOfFakeWords
-} from './utils/generators'
+} from './utils/generators/fakes'
 import { mockValidators } from './utils/validators'
 
 const DEFAULT_MIN_SIZE = 1
@@ -60,6 +62,10 @@ export const Spies = new Map<SpyCats, SpyObj>([
     [
         'badge-children',
         { original: 'badge-children-spy', alias: '@badge-children-spy' }
+    ],
+    [
+        'button-onclick',
+        { original: 'button-onclick-spy', alias: '@button-onclick-spy' }
     ]
 ])
 
@@ -92,6 +98,10 @@ export const Mocks = new Map<MockCats, MockObj>([
     [
         'breadcrumb-links',
         { original: 'breadcrumb-links-mock', alias: '@breadcrumb-links-mock' }
+    ],
+    [
+        'button-label',
+        { original: 'button-label-mock', alias: '@button-label-mock' }
     ]
 ])
 
@@ -102,15 +112,18 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
     const {
         isName,
         isNumber,
+        isWord,
         isWords,
         isListOfWords,
         isLetter,
         isJSXButton,
-        isBoxParams
+        isBoxParams,
+        isIcon
     } = mockValidators
 
     const mockedValue: mockType = cond([
         [isName, generateFakeName],
+        [isWord, generateFakeWord],
         [isWords, generateFakeWords],
         [
             isListOfWords,
@@ -135,7 +148,8 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
                 )
         ],
         [isJSXButton, () => generateJSXElement(options?.onClick)],
-        [isBoxParams, generateFakeBoxParams]
+        [isBoxParams, generateFakeBoxParams],
+        [isIcon, generateIcon]
     ])(type)
 
     return cy.wrap(mockedValue).as(Mocks.get(value)?.original || FALLBACK)
