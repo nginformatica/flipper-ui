@@ -7,14 +7,23 @@
     "extends": [
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
+        "plugin:cypress/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended",
         "eslint:recommended",
         "prettier",
-        "prettier/@typescript-eslint",
         "plugin:ramda/recommended"
     ],
     "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+            "singleQuote": true,
+            "parser": "flow"
+            }
+        ],
         "@typescript-eslint/no-use-before-define": "off",
-        "template-curly-spacing": "off",
+        "template-curly-spacing": "warn",
         "no-sequences": "error",
         "spaced-comment": ["error", "always"],
         "key-spacing": [
@@ -112,13 +121,6 @@
         "react/display-name": "off",
         "react/jsx-boolean-value": "off",
         "react/jsx-wrap-multilines": "off",
-        "react/jsx-curly-spacing": [
-            "error",
-            {
-                "when": "always",
-                "children": true
-            }
-        ],
         "react/no-unescaped-entities": "off",
         "prefer-arrow/prefer-arrow-functions": [
             "warn",
@@ -135,7 +137,6 @@
             }
         ],
         "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/class-name-casing": "error",
         "@typescript-eslint/member-ordering": [
             "error",
             {
@@ -161,7 +162,7 @@
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/explicit-function-return-type": "off"
     },
-    "plugins": ["react", "prefer-arrow", "@typescript-eslint", "ramda"],
+    "plugins": ["react", "prefer-arrow", "@typescript-eslint", "ramda", "eslint-plugin-prettier"],
     "settings": {
         "react": {
             "pragma": "React",
