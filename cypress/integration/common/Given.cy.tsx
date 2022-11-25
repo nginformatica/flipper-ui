@@ -3,7 +3,8 @@ import {
     AdvertiseFactory,
     AvatarFactory,
     BadgeFactory,
-    BoxFactory
+    BoxFactory,
+    BreadcrumbFactory
 } from '../../support/factories'
 import {
     AvatarVariant,
@@ -21,3 +22,5 @@ Given('I render Badge with {string} preset', (preset: BadgeVariant) =>
 )
 
 Given('I render Box', () => BoxFactory())
+
+Given('I render Breadcrumb', () => BreadcrumbFactory())
