@@ -1,12 +1,16 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-namespace */
 import '@cypress/code-coverage/support'
 import '@testing-library/cypress/add-commands'
 import 'cypress-plugin-tab'
 import 'cypress-real-events/support'
 import 'cypress-wait-until'
-import React from 'react'
 import { mount, MountOptions, MountReturn } from 'cypress/react'
+import { cond } from 'ramda'
+import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
+import { BoxProps } from '../../src/core/Box'
+import './commands'
 import {
     GenerateMockProps,
     MemoryRouterProps,
@@ -15,10 +19,21 @@ import {
     SpyCats,
     SpyObj
 } from './types-interfaces-enums'
-import './commands'
-import faker from 'faker'
-import { Button } from '../../src/'
-import { BoxProps } from '../../src/core/Box'
+import {
+    generateFakeBoxParams,
+    generateFakeLetter,
+    generateFakeName,
+    generateFakeNumber,
+    generateFakeWords,
+    generateJSXElement,
+    generateListOfFakeWords
+} from './utils/generators'
+import { mockValidators } from './utils/validators'
+
+const DEFAULT_MIN_SIZE = 1
+const DEFAULT_MAX_SIZE = 20
+const DEFAULT_FAKE_WORD_LENGTH = 1
+const DEFAULT_FAKE_LETTER_LENGTH = 1
 
 declare global {
     namespace Cypress {
@@ -36,7 +51,7 @@ declare global {
 Cypress.Commands.add('mount', (component: React.ReactNode, options = {}) => {
     const { routerProps = { initialEntries: ['/'] }, ...mountOptions } = options
 
-    const wrapped = <MemoryRouter { ...routerProps }>{ component }</MemoryRouter>
+    const wrapped = <MemoryRouter {...routerProps}>{component}</MemoryRouter>
 
     return mount(wrapped, mountOptions)
 })
@@ -80,76 +95,50 @@ export const Mocks = new Map<MockCats, MockObj>([
     ]
 ])
 
-const generateNumber = (min: number, max: number): number => {
-  const number = faker.datatype.number(max)
-
-  return number < min ? min : number
-}
+type mockType = string | string[] | number | JSX.Element | BoxProps
 
 export const generateMock = ({ value, type, options }: GenerateMockProps) => {
     const FALLBACK = 'unknown-mock'
-    let mock:
-        | string
-        | string[]
-        | number
-        | JSX.Element
-        | BoxProps = ''
+    const {
+        isName,
+        isNumber,
+        isWords,
+        isListOfWords,
+        isLetter,
+        isJSXButton,
+        isBoxParams
+    } = mockValidators
 
-    switch (type) {
-        case 'Name':
-            mock = faker.name.firstName()
-            break
+    const mockedValue: mockType = cond([
+        [isName, generateFakeName],
+        [isWords, generateFakeWords],
+        [
+            isListOfWords,
+            () =>
+                generateListOfFakeWords(
+                    options?.length ?? DEFAULT_FAKE_WORD_LENGTH
+                )
+        ],
+        [
+            isLetter,
+            () =>
+                generateFakeLetter(
+                    options?.length ?? DEFAULT_FAKE_LETTER_LENGTH
+                )
+        ],
+        [
+            isNumber,
+            () =>
+                generateFakeNumber(
+                    options?.min ?? DEFAULT_MIN_SIZE,
+                    options?.max ?? DEFAULT_MAX_SIZE
+                )
+        ],
+        [isJSXButton, () => generateJSXElement(options?.onClick)],
+        [isBoxParams, generateFakeBoxParams]
+    ])(type)
 
-        case 'Words':
-            mock = faker.random.words()
-            break
-        case 'ListOfWords':
-            const size = options?.length ?? 1
-            const list = []
-            for (let i = 0; i < size; i++) {
-                list.push(faker.random.word())
-            }
-
-            mock = list
-            break
-        case 'Letter':
-            mock = faker.random.alpha({ count: options?.length })
-            break
-        case 'Number':
-            const number = faker.datatype.number(options?.max)
-            if(options?.min) {
-              if(number < options.min) {
-                mock = options.min
-                break
-              }
-            }
-            mock = number
-            break
-        case 'JSXButton':
-            mock = (
-              <Button
-                id='mocked-button'
-                variant='outlined'
-                onClick={ options?.onClick }>
-                    Try changing the counter to Zero
-                </Button>
-            )
-            break
-        case 'BoxParams':
-          mock = {
-            padding: generateNumber(1, 20),
-            margin: generateNumber(1, 20),
-            name: faker.random.word(),
-            className: faker.random.word(),
-            id: 'box-testing-id',
-            minHeight: generateNumber(200, 500)
-          }
-          break
-        default:
-            break
-    }
-
-    return cy.wrap(mock).as(Mocks.get(value)?.original || FALLBACK)
+    return cy.wrap(mockedValue).as(Mocks.get(value)?.original || FALLBACK)
 }
 
 export const generateSpy = (value: SpyCats) => {
