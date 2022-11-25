@@ -10,7 +10,6 @@ Cypress.Commands.add('getMock', (name: MockCats) => {
 
 Cypress.Commands.add('getSpy', (name: SpyCats) => {
     const FALLBACK = '@unknown-spy'
-    console.log({ name })
 
     return cy.get(Spies.get(name)?.alias || FALLBACK)
 })
