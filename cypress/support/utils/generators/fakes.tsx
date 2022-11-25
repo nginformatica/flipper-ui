@@ -1,6 +1,7 @@
 import React from 'react'
 import faker from 'faker'
-import { Button } from '../../../src'
+import { Button } from '../../../../src'
+import { Add } from '@material-ui/icons'
 
 export const generateNumber = (min: number, max: number): number => {
     const number = faker.datatype.number(max)
@@ -14,6 +15,7 @@ export const generateFakeNumber = (min: number, max: number) => {
 
     return number < min ? min : number
 }
+export const generateFakeWord = () => faker.random.word()
 export const generateFakeWords = () => faker.random.words()
 export const generateListOfFakeWords = (length: number) => {
     const size = length
@@ -39,3 +41,5 @@ export const generateFakeBoxParams = () => ({
     id: 'box-testing-id',
     minHeight: generateNumber(200, 500)
 })
+
+export const generateIcon = () => <Add />
