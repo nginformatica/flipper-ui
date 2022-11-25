@@ -16,6 +16,7 @@ export interface MemoryRouterProps {
 
 export type MockTypes =
     | 'Name'
+    | 'Word'
     | 'Words'
     | 'Letter'
     | 'Number'
@@ -23,8 +24,27 @@ export type MockTypes =
     | 'JSXButton'
     | 'BoxParams'
     | 'ListOfWords'
+    | 'Icon'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
+
+export type ButtonVariant =
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'contained-primary'
+    | 'contained-secondary'
+    | 'outlined-primary'
+    | 'outlined-secondary'
+    | 'selected'
+    | 'dashed-primary'
+    | 'dashed-secondary'
+    | 'add-icon'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'disabled'
+
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
 
 export type MockCats =
@@ -36,8 +56,10 @@ export type MockCats =
     | 'box-children'
     | 'box-params'
     | 'breadcrumb-links'
+    | 'button-params'
+    | 'button-label'
 
-export type SpyCats = 'badge-children'
+export type SpyCats = 'badge-children' | 'button-onclick'
 
 export interface SpyObj {
     original: string
@@ -49,7 +71,17 @@ export type MockObj = SpyObj
 // export interface MockObj extends SpyObj {}
 
 export enum MuiSelectors {
-    BadgeDot = '.MuiBadge-dot'
+    BadgeDot = '.MuiBadge-dot',
+    BtnTextPrimary = 'MuiButton-textPrimary',
+    BtnTextSecondary = 'MuiButton-textSecondary',
+    BtnContainedPrimary = 'MuiButton-containedPrimary',
+    BtnContainedSecondary = 'MuiButton-containedSecondary',
+    BtnContained = 'MuiButton-contained',
+    BtnOutlined = 'MuiButton-outlined',
+    BtnOutlinedPrimary = 'MuiButton-outlinedPrimary',
+    BtnOutlinedSecondary = 'MuiButton-outlinedSecondary',
+    BtnSmall = 'MuiButton-sizeSmall',
+    BtnLarge = 'MuiButton-sizeLarge'
 }
 
 export type TMockOptions = {
