@@ -73,7 +73,11 @@ export const Mocks = new Map<MockCats, MockObj>([
         'box-children',
         { original: 'box-children-mock', alias: '@box-children-mock' }
     ],
-    ['box-params', { original: 'box-params-mock', alias: '@box-params-mock' }]
+    ['box-params', { original: 'box-params-mock', alias: '@box-params-mock' }],
+    [
+        'breadcrumb-links',
+        { original: 'breadcrumb-links-mock', alias: '@breadcrumb-links-mock' }
+    ]
 ])
 
 const generateNumber = (min: number, max: number): number => {
@@ -86,6 +90,7 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
     const FALLBACK = 'unknown-mock'
     let mock:
         | string
+        | string[]
         | number
         | JSX.Element
         | BoxProps = ''
@@ -98,7 +103,15 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
         case 'Words':
             mock = faker.random.words()
             break
+        case 'ListOfWords':
+            const size = options?.length ?? 1
+            const list = []
+            for (let i = 0; i < size; i++) {
+                list.push(faker.random.word())
+            }
 
+            mock = list
+            break
         case 'Letter':
             mock = faker.random.alpha({ count: options?.length })
             break
