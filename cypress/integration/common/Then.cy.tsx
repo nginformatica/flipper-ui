@@ -58,3 +58,16 @@ Then('I expect Box component style to match with mock', () => {
         }
     })
 })
+
+Then('I expect Breadcrumb links to match with mock', () => {
+    cy.getMock('breadcrumb-links').then(mockedList => {
+        cy.get('a').then(elements => {
+            elements.each((i, el) => {
+                expect(el.getAttribute('href')).to.equal(
+                    `route-${mockedList[i]}`
+                )
+                expect(el.innerText).to.equal(mockedList[i])
+            })
+        })
+    })
+})
