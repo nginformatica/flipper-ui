@@ -1,5 +1,5 @@
 import { When } from 'cypress-cucumber-preprocessor/steps'
-import { MockCats } from 'cypress/support/types-interfaces-enums'
+import { MockCats, MuiSelectors } from '../../support/types-interfaces-enums'
 
 When('I click on button {string}', (button: string) =>
     cy.get(`button[id=${button}]`).click({ force: true })
@@ -39,4 +39,8 @@ When('I hover mocked text {string}', (cat: MockCats) => {
         console.log({ mock })
     })
     // cy.contains(text).realHover()
+})
+
+When('I click on delete icon', () => {
+    cy.get(`.${MuiSelectors.ChipDeleteIcon}`).first().click()
 })
