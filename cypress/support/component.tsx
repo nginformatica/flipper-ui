@@ -11,11 +11,14 @@ import { MemoryRouter } from 'react-router-dom'
 import { BoxProps } from '../../src/core/Box'
 import './commands'
 import {
+    GenerateMockListProps,
     GenerateMockProps,
     MemoryRouterProps,
     MockCats,
+    MockTypes,
     SpyCats,
-    TAlias
+    TAlias,
+    TMockOptions
 } from './types-interfaces-enums'
 import {
     generateFakeBoxParams,
@@ -27,7 +30,8 @@ import {
     generateFakeWords,
     generateIcon,
     generateJSXElement,
-    generateListOfFakeWords
+    generateListOfFakeWords,
+    generateFakeCheckboxParams
 } from './utils/generators/fakes'
 import { mockValidators } from './utils/validators'
 
@@ -69,8 +73,8 @@ export const spies = (cat: SpyCats): TAlias => ({
 
 type mockType = string | string[] | number | JSX.Element | BoxProps
 
-export const generateMock = ({ value, type, options }: GenerateMockProps) => {
-    const mockedValue: mockType = cond([
+const getMockedValues = (type: MockTypes, options?: TMockOptions) =>
+    cond([
         [mockValidators('Name'), generateFakeName],
         [mockValidators('Word'), generateFakeWord],
         [mockValidators('Words'), generateFakeWords],
@@ -102,10 +106,28 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
         ],
         [mockValidators('BoxParams'), generateFakeBoxParams],
         [mockValidators('Icon'), generateIcon],
-        [mockValidators('CardParams'), generateFakeCardParams]
+        [mockValidators('CardParams'), generateFakeCardParams],
+        [mockValidators('CheckboxParams'), generateFakeCheckboxParams]
     ])(type)
 
+export const generateMock = ({ value, type, options }: GenerateMockProps) => {
+    const mockedValue: mockType = getMockedValues(type, options)
+
     return cy.wrap(mockedValue).as(mock(value).original)
+}
+
+export const generateMockList = ({
+    value,
+    type,
+    options
+}: GenerateMockListProps) => {
+    const list: GenerateMockProps[] = []
+
+    type.forEach(item => {
+        list.push(getMockedValues(item, options))
+    })
+
+    return cy.wrap(list).as(mock(value).original)
 }
 
 export const generateSpy = (cat: SpyCats) => cy.spy().as(spies(cat).original)
