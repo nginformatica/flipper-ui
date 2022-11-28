@@ -48,4 +48,9 @@ export const generateFakeCardParams = () => ({
     id: 'card-testing-id'
 })
 
+export const generateFakeCheckboxParams = () => ({
+    ...omit(['minHeight'], generateFakeBoxParams()),
+    id: 'checkbox-testing-id'
+})
+
 export const generateIcon = () => <Add />
