@@ -57,6 +57,14 @@ export type CheckboxVariant =
     | 'switch'
     | 'switch-with-helper'
 
+export type ChipVariant =
+    | 'default'
+    | 'squared'
+    | 'with-avatar'
+    | 'with-icon-avatar'
+    | 'with-image-avatar'
+    | 'secondary-color'
+
 export type MockCats =
     | 'advertise-author'
     | 'advertise-comment'
@@ -93,7 +101,13 @@ export enum MuiSelectors {
     BtnOutlinedSecondary = 'MuiButton-outlinedSecondary',
     BtnSmall = 'MuiButton-sizeSmall',
     BtnLarge = 'MuiButton-sizeLarge',
-    CheckboxSelected = 'Mui-checked'
+    CheckboxSelected = 'Mui-checked',
+    ChipRoot = '.MuiChip-root',
+    ChipDeleteIcon = 'MuiChip-deleteIcon',
+    ChipSquare = '.makeStyles-root-3',
+    ChipRound = '.makeStyles-root-1',
+    ChipAvatar = '.MuiAvatar-root',
+    ChipSecondaryColor = '.MuiChip-colorSecondary'
 }
 
 export type TMockOptions = {
