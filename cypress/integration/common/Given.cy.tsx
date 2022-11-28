@@ -7,12 +7,14 @@ import {
     BreadcrumbFactory,
     ButtonFactory,
     CardFactory,
-    ChapterFactory
+    ChapterFactory,
+    CheckboxFactory
 } from '../../support/factories'
 import {
     AvatarVariant,
     BadgeVariant,
-    ButtonVariant
+    ButtonVariant,
+    CheckboxVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => AdvertiseFactory())
@@ -40,3 +42,7 @@ Given('I render Button with Icon', (preset: ButtonVariant) =>
 Given('I render Card', () => CardFactory())
 
 Given('I render Chapter', () => ChapterFactory())
+
+Given('I render Checkbox with {string} preset', (preset: CheckboxVariant) =>
+    CheckboxFactory(preset)
+)
