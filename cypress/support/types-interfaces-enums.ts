@@ -26,6 +26,7 @@ export type MockTypes =
     | 'ListOfWords'
     | 'Icon'
     | 'CardParams'
+    | 'CheckboxParams'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
 
@@ -48,6 +49,14 @@ export type ButtonVariant =
 
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
 
+export type CheckboxVariant =
+    | 'default'
+    | 'with-helper'
+    | 'primary'
+    | 'without-label'
+    | 'switch'
+    | 'switch-with-helper'
+
 export type MockCats =
     | 'advertise-author'
     | 'advertise-comment'
@@ -61,15 +70,19 @@ export type MockCats =
     | 'button-label'
     | 'card-params'
     | 'chapter-content'
+    | 'checkbox-params'
 
 export type SpyCats =
     | 'badge-children'
     | 'button-onclick'
     | 'card-top'
     | 'card-bottom'
+    | 'checkbox-onchange'
+    | 'checkbox-onHelper-click'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
+    BtnBaseRoot = '.MuiButtonBase-root',
     BtnTextPrimary = 'MuiButton-textPrimary',
     BtnTextSecondary = 'MuiButton-textSecondary',
     BtnContainedPrimary = 'MuiButton-containedPrimary',
@@ -79,7 +92,8 @@ export enum MuiSelectors {
     BtnOutlinedPrimary = 'MuiButton-outlinedPrimary',
     BtnOutlinedSecondary = 'MuiButton-outlinedSecondary',
     BtnSmall = 'MuiButton-sizeSmall',
-    BtnLarge = 'MuiButton-sizeLarge'
+    BtnLarge = 'MuiButton-sizeLarge',
+    CheckboxSelected = 'Mui-checked'
 }
 
 export type TMockOptions = {
@@ -92,6 +106,12 @@ export type TMockOptions = {
 export interface GenerateMockProps {
     value: MockCats
     type: MockTypes
+    options?: TMockOptions
+}
+
+export interface GenerateMockListProps {
+    value: MockCats
+    type: MockTypes[]
     options?: TMockOptions
 }
 
