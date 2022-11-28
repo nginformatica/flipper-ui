@@ -164,3 +164,43 @@ Then('I expect checkbox to be unchecked', () => {
             expect(checkbox.hasClass(MuiSelectors.CheckboxSelected)).to.be.false
         })
 })
+
+Then('I expect chip to exist', () => {
+    cy.get(MuiSelectors.ChipRoot).should('exist')
+})
+
+Then('I expect to see delete icon from chip', () => {
+    cy.get(MuiSelectors.ChipRoot)
+        .first()
+        .then(el => {
+            const hasClass = el
+                .find('svg')
+                .hasClass(MuiSelectors.ChipDeleteIcon)
+
+            expect(hasClass).to.be.true
+        })
+})
+
+Then('I expect chip to be rounded', () => {
+    cy.get(MuiSelectors.ChipRound).should('not.exist')
+})
+
+Then('I expect chip to be square', () => {
+    cy.get(MuiSelectors.ChipSquare).should('exist')
+})
+
+Then('I expect chip to have avatar', () => {
+    cy.get(MuiSelectors.ChipAvatar).should('exist')
+})
+
+Then('I expect chip to not have avatar', () => {
+    cy.get(MuiSelectors.ChipAvatar).should('not.exist')
+})
+
+Then('I expect chip to have color secondary', () => {
+    cy.get(MuiSelectors.ChipSecondaryColor).should('exist')
+})
+
+Then('I expect chip to not have color secondary', () => {
+    cy.get(MuiSelectors.ChipSecondaryColor).should('not.exist')
+})
