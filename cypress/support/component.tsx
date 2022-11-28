@@ -33,7 +33,7 @@ import {
     generateListOfFakeWords,
     generateFakeCheckboxParams
 } from './utils/generators/fakes'
-import { mockValidators } from './utils/validators'
+import { validator } from './utils/validators'
 
 const DEFAULT_MIN_SIZE = 1
 const DEFAULT_MAX_SIZE = 20
@@ -73,43 +73,42 @@ export const spies = (cat: SpyCats): TAlias => ({
 
 type mockType = string | string[] | number | JSX.Element | BoxProps
 
-const getMockedValues = (type: MockTypes, options?: TMockOptions) =>
-    cond([
-        [mockValidators('Name'), generateFakeName],
-        [mockValidators('Word'), generateFakeWord],
-        [mockValidators('Words'), generateFakeWords],
+const getMockedValues = (type: MockTypes, options?: TMockOptions) => {
+    const validate = (variant: MockTypes) => validator<MockTypes>(variant)
+
+    return cond([
+        [validate('Name'), generateFakeName],
+        [validate('Word'), generateFakeWord],
+        [validate('Words'), generateFakeWords],
         [
-            mockValidators('ListOfWords'),
+            validate('ListOfWords'),
             () =>
                 generateListOfFakeWords(
                     options?.length ?? DEFAULT_FAKE_WORD_LENGTH
                 )
         ],
         [
-            mockValidators('Letter'),
+            validate('Letter'),
             () =>
                 generateFakeLetter(
                     options?.length ?? DEFAULT_FAKE_LETTER_LENGTH
                 )
         ],
         [
-            mockValidators('Number'),
+            validate('Number'),
             () =>
                 generateFakeNumber(
                     options?.min ?? DEFAULT_MIN_SIZE,
                     options?.max ?? DEFAULT_MAX_SIZE
                 )
         ],
-        [
-            mockValidators('JSXButton'),
-            () => generateJSXElement(options?.onClick)
-        ],
-        [mockValidators('BoxParams'), generateFakeBoxParams],
-        [mockValidators('Icon'), generateIcon],
-        [mockValidators('CardParams'), generateFakeCardParams],
-        [mockValidators('CheckboxParams'), generateFakeCheckboxParams]
+        [validate('JSXButton'), () => generateJSXElement(options?.onClick)],
+        [validate('BoxParams'), generateFakeBoxParams],
+        [validate('Icon'), generateIcon],
+        [validate('CardParams'), generateFakeCardParams],
+        [validate('CheckboxParams'), generateFakeCheckboxParams]
     ])(type)
-
+}
 export const generateMock = ({ value, type, options }: GenerateMockProps) => {
     const mockedValue: mockType = getMockedValues(type, options)
 
