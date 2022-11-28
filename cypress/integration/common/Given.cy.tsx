@@ -1,15 +1,5 @@
 import { Given } from 'cypress-cucumber-preprocessor/steps'
-import {
-    AdvertiseFactory,
-    AvatarFactory,
-    BadgeFactory,
-    BoxFactory,
-    BreadcrumbFactory,
-    ButtonFactory,
-    CardFactory,
-    ChapterFactory,
-    CheckboxFactory
-} from '../../support/factories'
+import { Factory } from '../../support'
 import {
     AvatarVariant,
     BadgeVariant,
@@ -17,32 +7,32 @@ import {
     CheckboxVariant
 } from '../../support/types-interfaces-enums'
 
-Given('I render Advertise', () => AdvertiseFactory())
+Given('I render Advertise', () => Factory.AdvertiseFactory())
 
 Given('I render Avatar with {string} preset', (preset: AvatarVariant) =>
-    AvatarFactory(preset)
+    Factory.AvatarFactory(preset)
 )
 
 Given('I render Badge with {string} preset', (preset: BadgeVariant) =>
-    BadgeFactory(preset)
+    Factory.BadgeFactory(preset)
 )
 
-Given('I render Box', () => BoxFactory())
+Given('I render Box', () => Factory.BoxFactory())
 
-Given('I render Breadcrumb', () => BreadcrumbFactory())
+Given('I render Breadcrumb', () => Factory.BreadcrumbFactory())
 
 Given('I render Button with {string} preset', (preset: ButtonVariant) =>
-    ButtonFactory(preset)
+    Factory.ButtonFactory(preset)
 )
 
 Given('I render Button with Icon', (preset: ButtonVariant) =>
-    ButtonFactory(preset, 'Icon')
+    Factory.ButtonFactory(preset, 'Icon')
 )
 
-Given('I render Card', () => CardFactory())
+Given('I render Card', () => Factory.CardFactory())
 
-Given('I render Chapter', () => ChapterFactory())
+Given('I render Chapter', () => Factory.ChapterFactory())
 
 Given('I render Checkbox with {string} preset', (preset: CheckboxVariant) =>
-    CheckboxFactory(preset)
+    Factory.CheckboxFactory(preset)
 )

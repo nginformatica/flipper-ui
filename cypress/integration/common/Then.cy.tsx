@@ -6,11 +6,7 @@ import {
     MuiSelectors,
     SpyCats
 } from '../../support/types-interfaces-enums'
-import {
-    colorMapValues,
-    sizeMapValues,
-    variantMapValues
-} from '../../support/utils/aliases'
+import { Utils } from '../../support'
 
 Then('I should see {string}', (text: string) =>
     cy.waitUntil(() => cy.contains(text).should('exist'))
@@ -116,7 +112,7 @@ Then(
         cy.get(`button[id=${id}]`)
             .first()
             .then(btn => {
-                const list = colorMapValues.get(color) ?? []
+                const list = Utils.colorMapValues.get(color) ?? []
                 const hasClass = list.some(val => btn.hasClass(val))
                 expect(hasClass).equal(true)
             })
@@ -129,7 +125,7 @@ Then(
         cy.get(`button[id=${id}]`)
             .first()
             .then(btn => {
-                const list = variantMapValues.get(variant) ?? []
+                const list = Utils.variantMapValues.get(variant) ?? []
                 const hasClass = list.some(val => btn.hasClass(val))
                 expect(hasClass).equal(true)
             })
@@ -146,10 +142,10 @@ Then(
 Then(
     'I expect button {string} to have size {string}',
     (id: string, size: ButtonProps['size']) => {
-        sizeMapValues.get(size)
+        Utils.sizeMapValues.get(size)
         cy.get(`button[id=${id}]`)
             .first()
-            .should('have.class', sizeMapValues.get(size))
+            .should('have.class', Utils.sizeMapValues.get(size))
     }
 )
 

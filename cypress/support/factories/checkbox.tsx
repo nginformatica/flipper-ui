@@ -3,7 +3,7 @@ import React from 'react'
 import { CheckboxProps } from 'src/core/Checkbox'
 import { Checkbox } from '../../../src'
 // eslint-disable-next-line max-len
-import { checkboxPropsGenerator } from '../../support/utils/generators/checkbox-props'
+import { Generators } from '../../support'
 import { generateMockList, generateSpy } from '../component'
 import { CheckboxVariant } from '../types-interfaces-enums'
 
@@ -19,7 +19,7 @@ export const CheckboxFactory = (variant: CheckboxVariant) => {
             label: mockedList[0]
         } as unknown as CheckboxProps
 
-        const props = checkboxPropsGenerator(
+        const props = Generators.checkboxPropsGenerator(
             variant,
             defaultProps,
             onHelperClickSpy
