@@ -2,6 +2,7 @@ import React from 'react'
 import faker from 'faker'
 import { Button } from '../../../../src'
 import { Add } from '@material-ui/icons'
+import { omit } from 'ramda'
 
 export const generateNumber = (min: number, max: number): number => {
     const number = faker.datatype.number(max)
@@ -40,6 +41,11 @@ export const generateFakeBoxParams = () => ({
     className: faker.random.word(),
     id: 'box-testing-id',
     minHeight: generateNumber(200, 500)
+})
+
+export const generateFakeCardParams = () => ({
+    ...omit(['minHeight'], generateFakeBoxParams()),
+    id: 'card-testing-id'
 })
 
 export const generateIcon = () => <Add />
