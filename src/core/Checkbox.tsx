@@ -7,7 +7,7 @@ import {
 import React, { ChangeEvent, ReactNode } from 'react'
 import { DefaultProps } from './types'
 import { HelperBox, TextFieldWrapper as CheckFieldsWrapper } from './TextField'
-interface CheckboxProps extends DefaultProps {
+export interface CheckboxProps extends DefaultProps {
     name: string
     label?: ReactNode
     color?: 'primary' | 'secondary' | 'default'
@@ -35,66 +35,61 @@ const Checkbox = (props: CheckboxProps) => {
 
     const renderHelper = (
         <>
-            {
-                onHelperClick && (
-                    <HelperBox
-                        helperIcon={ helperIcon }
-                        onHelperClick={ onHelperClick }
-                    />
-                )
-            }
+            {onHelperClick && (
+                <HelperBox
+                    helperIcon={helperIcon}
+                    onHelperClick={onHelperClick}
+                />
+            )}
         </>
     )
 
-    const renderCheckbox = () =>
+    const renderCheckbox = () => (
         <MuiCheckbox
-            name={ props.name }
-            checked={ props.checked }
-            value={ props.name }
-            color={ props.color }
-            style={ props.dense ? DENSE : {} }
-            disabled={ props.disabled }
-            onChange={ props.onChange }
+            name={props.name}
+            checked={props.checked}
+            value={props.name}
+            color={props.color}
+            style={props.dense ? DENSE : {}}
+            disabled={props.disabled}
+            onChange={props.onChange}
         />
+    )
 
-    const renderSwitch = () =>
+    const renderSwitch = () => (
         <MuiSwitch
-            name={ props.name }
-            checked={ props.checked }
-            value={ props.name }
-            color={ props.color }
-            disabled={ props.disabled }
-            onChange={ props.onChange }
+            name={props.name}
+            checked={props.checked}
+            value={props.name}
+            color={props.color}
+            disabled={props.disabled}
+            onChange={props.onChange}
         />
+    )
 
-    const renderControl = () => type === 'checkbox'
-        ? renderCheckbox()
-        : renderSwitch()
+    const renderControl = () =>
+        type === 'checkbox' ? renderCheckbox() : renderSwitch()
 
     const renderLabel = () =>
-        typeof props.label === 'string' && props.dense
-            ? (
-                <Typography variant='body2'>
-                    { props.label }
-                </Typography>
-            )
-            : props.label
+        typeof props.label === 'string' && props.dense ? (
+            <Typography variant='body2'>{props.label}</Typography>
+        ) : (
+            props.label
+        )
 
     return (
-        <CheckFieldsWrapper id={ props.id }>
-            {
-                props.label
-                    ? (
-                        <MuiFormControlLabel
-                            style={ { padding, margin, ...style } }
-                            className={ props.className }
-                            label={ renderLabel() }
-                            control={ renderControl() }
-                        />
-                    )
-                    : renderControl()
-            }
-            { renderHelper }
+        <CheckFieldsWrapper id={props.id}>
+            {props.label ? (
+                <MuiFormControlLabel
+                    style={{ padding, margin, ...style }}
+                    className={props.className}
+                    label={renderLabel()}
+                    control={renderControl()}
+                />
+            ) : (
+                renderControl()
+            )}
+            {renderHelper}
         </CheckFieldsWrapper>
     )
 }
