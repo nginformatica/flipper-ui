@@ -6,7 +6,8 @@ import {
     BoxFactory,
     BreadcrumbFactory,
     ButtonFactory,
-    CardFactory
+    CardFactory,
+    ChapterFactory
 } from '../../support/factories'
 import {
     AvatarVariant,
@@ -37,3 +38,5 @@ Given('I render Button with Icon', (preset: ButtonVariant) =>
 )
 
 Given('I render Card', () => CardFactory())
+
+Given('I render Chapter', () => ChapterFactory())
