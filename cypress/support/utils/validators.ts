@@ -1,8 +1,4 @@
-import {
-    ButtonVariant,
-    CheckboxVariant,
-    MockTypes
-} from '../types-interfaces-enums'
+import { CheckboxVariant, MockTypes } from '../types-interfaces-enums'
 
 export const mockValidators = (type: MockTypes) => (value: MockTypes) =>
     value === type
@@ -15,7 +11,3 @@ export const checkboxValidators =
 export function validator<T>(type: T) {
     return (value: T) => value === type
 }
-
-export const buttonValidators =
-    (variant: ButtonVariant) => (value: ButtonVariant) =>
-        value === variant

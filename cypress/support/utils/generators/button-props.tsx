@@ -1,7 +1,7 @@
 import { cond } from 'ramda'
 import { ButtonProps } from '../../../../src/core/Button'
 import { ButtonVariant } from '../../types-interfaces-enums'
-import { buttonValidators } from '../validators'
+import { validator } from '../validators'
 
 const generate = (props: ButtonProps): Record<ButtonVariant, ButtonProps> => ({
     default: props,
@@ -100,20 +100,24 @@ const {
     disabled
 } = generate(DEFAULT)
 
-export const buttonPropsGenerator = (preset: ButtonVariant): ButtonProps =>
-    cond([
-        [buttonValidators('primary'), () => primary],
-        [buttonValidators('secondary'), () => secondary],
-        [buttonValidators('contained-primary'), () => containedPrimary],
-        [buttonValidators('contained-secondary'), () => containedSecondary],
-        [buttonValidators('outlined-primary'), () => outlinedPrimary],
-        [buttonValidators('outlined-secondary'), () => outlinedSecondary],
-        [buttonValidators('selected'), () => selected],
-        [buttonValidators('dashed-primary'), () => dashedPrimary],
-        [buttonValidators('dashed-secondary'), () => dashedSecondary],
-        [buttonValidators('add-icon'), () => addIcon],
-        [buttonValidators('small'), () => small],
-        [buttonValidators('medium'), () => medium],
-        [buttonValidators('large'), () => large],
-        [buttonValidators('disabled'), () => disabled]
+export const buttonPropsGenerator = (preset: ButtonVariant): ButtonProps => {
+    const validate = (variant: ButtonVariant) =>
+        validator<ButtonVariant>(variant)
+
+    return cond([
+        [validate('primary'), () => primary],
+        [validate('secondary'), () => secondary],
+        [validate('contained-primary'), () => containedPrimary],
+        [validate('contained-secondary'), () => containedSecondary],
+        [validate('outlined-primary'), () => outlinedPrimary],
+        [validate('outlined-secondary'), () => outlinedSecondary],
+        [validate('selected'), () => selected],
+        [validate('dashed-primary'), () => dashedPrimary],
+        [validate('dashed-secondary'), () => dashedSecondary],
+        [validate('add-icon'), () => addIcon],
+        [validate('small'), () => small],
+        [validate('medium'), () => medium],
+        [validate('large'), () => large],
+        [validate('disabled'), () => disabled]
     ])(preset)
+}
