@@ -4,7 +4,8 @@ import {
     AvatarVariant,
     BadgeVariant,
     ButtonVariant,
-    CheckboxVariant
+    CheckboxVariant,
+    ChipVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => Factory.AdvertiseFactory())
@@ -35,4 +36,8 @@ Given('I render Chapter', () => Factory.ChapterFactory())
 
 Given('I render Checkbox with {string} preset', (preset: CheckboxVariant) =>
     Factory.CheckboxFactory(preset)
+)
+
+Given('I render Chip with {string} preset', (preset: ChipVariant) =>
+    Factory.ChipFactory(preset)
 )
