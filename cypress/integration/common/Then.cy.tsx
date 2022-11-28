@@ -63,22 +63,27 @@ Then('I expect Box component style to match with mock', () => {
     })
 })
 
-Then('I expect Card component style to match with mock', () => {
-    cy.getMock('card-params').then(mock => {
-        const props = pick(['name', 'id'], mock)
-        const styles = pick(['padding', 'margin'], mock)
-        for (const prop in props) {
-            cy.get('[id="card-testing-id"]').first().should('have.attr', prop)
-        }
-        for (const style in styles) {
-            const List: Record<string, string> = styles
-            const styleValue = List[style]
-            cy.get('[id="card-testing-id"]')
-                .first()
-                .should('have.css', style, `${styleValue}px`)
-        }
-    })
-})
+Then(
+    'I expect generic {string} component props and style to match with mock',
+    (mockCat: MockCats) => {
+        cy.getMock(mockCat).then(mock => {
+            const props = pick(['name', 'id'], mock)
+            const styles = pick(['padding', 'margin'], mock)
+            for (const prop in props) {
+                cy.get('[id="card-testing-id"]')
+                    .first()
+                    .should('have.attr', prop)
+            }
+            for (const style in styles) {
+                const List: Record<string, string> = styles
+                const styleValue = List[style]
+                cy.get('[id="card-testing-id"]')
+                    .first()
+                    .should('have.css', style, `${styleValue}px`)
+            }
+        })
+    }
+)
 
 Then('I expect Breadcrumb links to match with mock', () => {
     cy.getMock('breadcrumb-links').then(mockedList => {
@@ -147,3 +152,19 @@ Then(
             .should('have.class', sizeMapValues.get(size))
     }
 )
+
+Then('I expect checkbox to be checked', () => {
+    cy.get(MuiSelectors.BtnBaseRoot)
+        .first()
+        .then(checkbox => {
+            expect(checkbox.hasClass(MuiSelectors.CheckboxSelected)).to.be.true
+        })
+})
+
+Then('I expect checkbox to be unchecked', () => {
+    cy.get(MuiSelectors.BtnBaseRoot)
+        .first()
+        .then(checkbox => {
+            expect(checkbox.hasClass(MuiSelectors.CheckboxSelected)).to.be.false
+        })
+})
