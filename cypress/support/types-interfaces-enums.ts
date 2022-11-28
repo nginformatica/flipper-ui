@@ -67,15 +67,6 @@ export type SpyCats =
     | 'card-top'
     | 'card-bottom'
 
-export interface SpyObj {
-    original: string
-    alias: string
-}
-
-export type MockObj = SpyObj
-
-// export interface MockObj extends SpyObj {}
-
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
     BtnTextPrimary = 'MuiButton-textPrimary',
@@ -101,4 +92,9 @@ export interface GenerateMockProps {
     value: MockCats
     type: MockTypes
     options?: TMockOptions
+}
+
+export type TAlias = {
+    original: string
+    alias: string
 }

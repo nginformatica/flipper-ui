@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-namespace */
 import '@cypress/code-coverage/support'
 import '@testing-library/cypress/add-commands'
@@ -15,9 +14,8 @@ import {
     GenerateMockProps,
     MemoryRouterProps,
     MockCats,
-    MockObj,
     SpyCats,
-    SpyObj
+    TAlias
 } from './types-interfaces-enums'
 import {
     generateFakeBoxParams,
@@ -59,64 +57,19 @@ Cypress.Commands.add('mount', (component: React.ReactNode, options = {}) => {
     return mount(wrapped, mountOptions)
 })
 
-export const Spies = new Map<SpyCats, SpyObj>([
-    [
-        'badge-children',
-        { original: 'badge-children-spy', alias: '@badge-children-spy' }
-    ],
-    [
-        'button-onclick',
-        { original: 'button-onclick-spy', alias: '@button-onclick-spy' }
-    ],
-    ['card-top', { original: 'card-top-spy', alias: '@card-top-spy' }],
-    ['card-bottom', { original: 'card-bottom-spy', alias: '@card-bottom-spy' }]
-])
+export const mock = (cat: MockCats): TAlias => ({
+    original: `${cat}-mock`,
+    alias: `@${cat}-mock`
+})
 
-export const Mocks = new Map<MockCats, MockObj>([
-    [
-        'advertise-author',
-        { original: 'advertise-author-mock', alias: '@advertise-author-mock' }
-    ],
-    [
-        'advertise-comment',
-        { original: 'advertise-comment-mock', alias: '@advertise-comment-mock' }
-    ],
-    [
-        'avatar-children',
-        { original: 'avatar-children-mock', alias: '@avatar-children-mock' }
-    ],
-    [
-        'badge-counter',
-        { original: 'badge-counter-mock', alias: '@badge-counter-mock' }
-    ],
-    [
-        'badge-children',
-        { original: 'badge-children-mock', alias: '@badge-children-mock' }
-    ],
-    [
-        'box-children',
-        { original: 'box-children-mock', alias: '@box-children-mock' }
-    ],
-    ['box-params', { original: 'box-params-mock', alias: '@box-params-mock' }],
-    [
-        'breadcrumb-links',
-        { original: 'breadcrumb-links-mock', alias: '@breadcrumb-links-mock' }
-    ],
-    [
-        'button-label',
-        { original: 'button-label-mock', alias: '@button-label-mock' }
-    ],
-    [
-        'card-params',
-        { original: 'card-params-mock', alias: '@card-params-mock' }
-    ]
-])
+export const spies = (cat: SpyCats): TAlias => ({
+    original: `${cat}-spy`,
+    alias: `@${cat}-spy`
+})
 
 type mockType = string | string[] | number | JSX.Element | BoxProps
 
 export const generateMock = ({ value, type, options }: GenerateMockProps) => {
-    const FALLBACK = 'unknown-mock'
-
     const mockedValue: mockType = cond([
         [mockValidators('Name'), generateFakeName],
         [mockValidators('Word'), generateFakeWord],
@@ -152,11 +105,7 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
         [mockValidators('CardParams'), generateFakeCardParams]
     ])(type)
 
-    return cy.wrap(mockedValue).as(Mocks.get(value)?.original || FALLBACK)
+    return cy.wrap(mockedValue).as(mock(value).original)
 }
 
-export const generateSpy = (value: SpyCats) => {
-    const FALLBACK = 'unknown-spy'
-
-    return cy.spy().as(Spies.get(value)?.original || FALLBACK)
-}
+export const generateSpy = (cat: SpyCats) => cy.spy().as(spies(cat).original)
