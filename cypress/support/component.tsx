@@ -116,49 +116,40 @@ type mockType = string | string[] | number | JSX.Element | BoxProps
 
 export const generateMock = ({ value, type, options }: GenerateMockProps) => {
     const FALLBACK = 'unknown-mock'
-    const {
-        isName,
-        isNumber,
-        isWord,
-        isWords,
-        isListOfWords,
-        isLetter,
-        isJSXButton,
-        isBoxParams,
-        isIcon,
-        isCardParams
-    } = mockValidators
 
     const mockedValue: mockType = cond([
-        [isName, generateFakeName],
-        [isWord, generateFakeWord],
-        [isWords, generateFakeWords],
+        [mockValidators('Name'), generateFakeName],
+        [mockValidators('Word'), generateFakeWord],
+        [mockValidators('Words'), generateFakeWords],
         [
-            isListOfWords,
+            mockValidators('ListOfWords'),
             () =>
                 generateListOfFakeWords(
                     options?.length ?? DEFAULT_FAKE_WORD_LENGTH
                 )
         ],
         [
-            isLetter,
+            mockValidators('Letter'),
             () =>
                 generateFakeLetter(
                     options?.length ?? DEFAULT_FAKE_LETTER_LENGTH
                 )
         ],
         [
-            isNumber,
+            mockValidators('Number'),
             () =>
                 generateFakeNumber(
                     options?.min ?? DEFAULT_MIN_SIZE,
                     options?.max ?? DEFAULT_MAX_SIZE
                 )
         ],
-        [isJSXButton, () => generateJSXElement(options?.onClick)],
-        [isBoxParams, generateFakeBoxParams],
-        [isIcon, generateIcon],
-        [isCardParams, generateFakeCardParams]
+        [
+            mockValidators('JSXButton'),
+            () => generateJSXElement(options?.onClick)
+        ],
+        [mockValidators('BoxParams'), generateFakeBoxParams],
+        [mockValidators('Icon'), generateIcon],
+        [mockValidators('CardParams'), generateFakeCardParams]
     ])(type)
 
     return cy.wrap(mockedValue).as(Mocks.get(value)?.original || FALLBACK)

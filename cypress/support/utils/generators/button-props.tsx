@@ -84,23 +84,6 @@ const DEFAULT: ButtonProps = {
 }
 
 const {
-    isPrimary,
-    isSecondary,
-    isContainedPrimary,
-    isContainedSecondary,
-    isOutlinedPrimary,
-    isOutlinedSecondary,
-    isSelected,
-    isDashedPrimary,
-    isDashedSecondary,
-    isWithAddIcon,
-    isSmall,
-    isMedium,
-    isLarge,
-    isDisabled
-} = buttonValidators
-
-const {
     primary,
     secondary,
     'contained-primary': containedPrimary,
@@ -119,18 +102,18 @@ const {
 
 export const buttonPropsGenerator = (preset: ButtonVariant): ButtonProps =>
     cond([
-        [isPrimary, () => primary],
-        [isSecondary, () => secondary],
-        [isContainedPrimary, () => containedPrimary],
-        [isContainedSecondary, () => containedSecondary],
-        [isOutlinedPrimary, () => outlinedPrimary],
-        [isOutlinedSecondary, () => outlinedSecondary],
-        [isSelected, () => selected],
-        [isDashedPrimary, () => dashedPrimary],
-        [isDashedSecondary, () => dashedSecondary],
-        [isWithAddIcon, () => addIcon],
-        [isSmall, () => small],
-        [isMedium, () => medium],
-        [isLarge, () => large],
-        [isDisabled, () => disabled]
+        [buttonValidators('primary'), () => primary],
+        [buttonValidators('secondary'), () => secondary],
+        [buttonValidators('contained-primary'), () => containedPrimary],
+        [buttonValidators('contained-secondary'), () => containedSecondary],
+        [buttonValidators('outlined-primary'), () => outlinedPrimary],
+        [buttonValidators('outlined-secondary'), () => outlinedSecondary],
+        [buttonValidators('selected'), () => selected],
+        [buttonValidators('dashed-primary'), () => dashedPrimary],
+        [buttonValidators('dashed-secondary'), () => dashedSecondary],
+        [buttonValidators('add-icon'), () => addIcon],
+        [buttonValidators('small'), () => small],
+        [buttonValidators('medium'), () => medium],
+        [buttonValidators('large'), () => large],
+        [buttonValidators('disabled'), () => disabled]
     ])(preset)
