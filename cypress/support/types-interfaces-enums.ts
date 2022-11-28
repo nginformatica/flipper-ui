@@ -60,6 +60,7 @@ export type MockCats =
     | 'button-params'
     | 'button-label'
     | 'card-params'
+    | 'chapter-content'
 
 export type SpyCats =
     | 'badge-children'
