@@ -5,7 +5,8 @@ import {
     BadgeFactory,
     BoxFactory,
     BreadcrumbFactory,
-    ButtonFactory
+    ButtonFactory,
+    CardFactory
 } from '../../support/factories'
 import {
     AvatarVariant,
@@ -34,3 +35,5 @@ Given('I render Button with {string} preset', (preset: ButtonVariant) =>
 Given('I render Button with Icon', (preset: ButtonVariant) =>
     ButtonFactory(preset, 'Icon')
 )
+
+Given('I render Card', () => CardFactory())
