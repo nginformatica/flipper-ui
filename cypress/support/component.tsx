@@ -21,6 +21,7 @@ import {
 } from './types-interfaces-enums'
 import {
     generateFakeBoxParams,
+    generateFakeCardParams,
     generateFakeLetter,
     generateFakeName,
     generateFakeNumber,
@@ -66,7 +67,9 @@ export const Spies = new Map<SpyCats, SpyObj>([
     [
         'button-onclick',
         { original: 'button-onclick-spy', alias: '@button-onclick-spy' }
-    ]
+    ],
+    ['card-top', { original: 'card-top-spy', alias: '@card-top-spy' }],
+    ['card-bottom', { original: 'card-bottom-spy', alias: '@card-bottom-spy' }]
 ])
 
 export const Mocks = new Map<MockCats, MockObj>([
@@ -102,6 +105,10 @@ export const Mocks = new Map<MockCats, MockObj>([
     [
         'button-label',
         { original: 'button-label-mock', alias: '@button-label-mock' }
+    ],
+    [
+        'card-params',
+        { original: 'card-params-mock', alias: '@card-params-mock' }
     ]
 ])
 
@@ -118,7 +125,8 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
         isLetter,
         isJSXButton,
         isBoxParams,
-        isIcon
+        isIcon,
+        isCardParams
     } = mockValidators
 
     const mockedValue: mockType = cond([
@@ -149,7 +157,8 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
         ],
         [isJSXButton, () => generateJSXElement(options?.onClick)],
         [isBoxParams, generateFakeBoxParams],
-        [isIcon, generateIcon]
+        [isIcon, generateIcon],
+        [isCardParams, generateFakeCardParams]
     ])(type)
 
     return cy.wrap(mockedValue).as(Mocks.get(value)?.original || FALLBACK)

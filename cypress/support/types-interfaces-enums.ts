@@ -25,6 +25,7 @@ export type MockTypes =
     | 'BoxParams'
     | 'ListOfWords'
     | 'Icon'
+    | 'CardParams'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
 
@@ -58,8 +59,13 @@ export type MockCats =
     | 'breadcrumb-links'
     | 'button-params'
     | 'button-label'
+    | 'card-params'
 
-export type SpyCats = 'badge-children' | 'button-onclick'
+export type SpyCats =
+    | 'badge-children'
+    | 'button-onclick'
+    | 'card-top'
+    | 'card-bottom'
 
 export interface SpyObj {
     original: string

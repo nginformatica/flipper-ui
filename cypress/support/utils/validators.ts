@@ -9,7 +9,8 @@ export const mockValidators = {
     isLetter: (value: MockTypes) => value === 'Letter',
     isJSXButton: (value: MockTypes) => value === 'JSXButton',
     isBoxParams: (value: MockTypes) => value === 'BoxParams',
-    isIcon: (value: MockTypes) => value === 'Icon'
+    isIcon: (value: MockTypes) => value === 'Icon',
+    isCardParams: (value: MockTypes) => value === 'CardParams'
 }
 
 export const buttonValidators = {
