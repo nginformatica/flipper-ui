@@ -54,3 +54,15 @@ export const generateFakeCheckboxParams = () => ({
 })
 
 export const generateIcon = () => <Add />
+
+export const generateListOfChips = () => {
+    const length = generateNumber(2, 10)
+    const list = []
+    for (let i = 0; i < length; i++) {
+        list.push({
+            value: faker.random.word()
+        })
+    }
+
+    return list
+}
