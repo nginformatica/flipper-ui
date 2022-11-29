@@ -27,6 +27,7 @@ export type MockTypes =
     | 'Icon'
     | 'CardParams'
     | 'CheckboxParams'
+    | 'ListOfChips'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
 
@@ -79,6 +80,7 @@ export type MockCats =
     | 'card-params'
     | 'chapter-content'
     | 'checkbox-params'
+    | 'chip-field-values'
 
 export type SpyCats =
     | 'badge-children'
@@ -87,6 +89,8 @@ export type SpyCats =
     | 'card-bottom'
     | 'checkbox-onchange'
     | 'checkbox-onHelper-click'
+    | 'chip-field-on-add'
+    | 'chip-field-on-delete'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
