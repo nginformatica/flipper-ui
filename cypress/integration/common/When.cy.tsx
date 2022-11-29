@@ -64,3 +64,11 @@ When(
             .realType(`${text}{enter}`)
     }
 )
+
+When('I click on Mui ExpansionPanel', () => {
+    cy.get(MuiSelectors.ExpansionPanel).first().realClick()
+})
+
+When('I click on first Mui SvgIcon', () => {
+    cy.get(MuiSelectors.Icon).realClick()
+})
