@@ -14,8 +14,15 @@ Then('I should see {string}', (text: string) =>
 
 Then('I expect {string} mock to exist', (mockName: MockCats) => {
     cy.getMock(mockName).then(mock => {
-        const element: string = mock.toString()
-        cy.waitUntil(() => cy.contains(element).should('exist'))
+        if (mock instanceof Array) {
+            mock.forEach(el => {
+                const element: string = el.toString()
+                cy.waitUntil(() => cy.contains(element).should('exist'))
+            })
+        } else {
+            const element: string = mock.toString()
+            cy.waitUntil(() => cy.contains(element).should('exist'))
+        }
     })
 })
 
@@ -234,4 +241,12 @@ Then('I expect Collapse to be visible', () => {
 Then('I expect Collapse to be hidden', () => {
     cy.get(MuiSelectors.CollapseHidden).should('exist')
     cy.get(MuiSelectors.CollapseVisible).should('not.exist')
+})
+
+Then('I expect to see an Mui Dialog', () => {
+    cy.get(MuiSelectors.DialogContainer).should('exist')
+})
+
+Then('I do not expect to see an Mui Dialog', () => {
+    cy.get(MuiSelectors.DialogContainer).should('not.exist')
 })
