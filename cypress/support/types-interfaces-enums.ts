@@ -85,6 +85,7 @@ export type MockCats =
     | 'container-style'
     | 'content-content'
     | 'content-style'
+    | 'dialog-content'
 
 export type SpyCats =
     | 'badge-children'
@@ -118,7 +119,8 @@ export enum MuiSelectors {
     ChipSecondaryColor = '.MuiChip-colorSecondary',
     Button = '.MuiButton-root',
     CollapseHidden = '.MuiCollapse-hidden',
-    CollapseVisible = '.MuiCollapse-entered'
+    CollapseVisible = '.MuiCollapse-entered',
+    DialogContainer = '.MuiDialog-container'
 }
 
 export type TMockOptions = {
