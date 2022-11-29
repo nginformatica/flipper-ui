@@ -1,8 +1,10 @@
 import React from 'react'
 import faker from 'faker'
-import { Button } from '../../../../src'
+import { Button, ListItem } from '../../../../src'
+import { Backup as IconBackup } from '../../../../src/icons'
 import { Add } from '@material-ui/icons'
 import { omit } from 'ramda'
+import { v4 as uuid } from 'uuid'
 
 export const generateNumber = (min: number, max: number): number => {
     const number = faker.datatype.number(max)
@@ -56,6 +58,16 @@ export const generateListOfChips = () => {
         list.push({
             value: faker.random.word()
         })
+    }
+
+    return list
+}
+
+export const generateListOfItems = () => {
+    const length = generateNumber(2, 10)
+    const list = []
+    for (let i = 0; i < length; i++) {
+        list.push(<ListItem key={uuid()} icon={<IconBackup />} />)
     }
 
     return list
