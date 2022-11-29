@@ -26,6 +26,14 @@ Then('I expect {string} mock to exist', (mockName: MockCats) => {
     })
 })
 
+Then('I expect element {string} to be visible', (id: string) => {
+    cy.get(`[id="${id}"]`).should('be.visible')
+})
+
+Then('I expect element {string} to be hidden', (id: string) => {
+    cy.get(`[id="${id}"]`).should('not.visible')
+})
+
 Then('I should see {int} {string}', (quantity: number, element: string) => {
     cy.get(element).then(elements => {
         expect(elements.length).to.equal(quantity)
