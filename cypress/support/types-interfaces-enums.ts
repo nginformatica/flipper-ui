@@ -25,8 +25,7 @@ export type MockTypes =
     | 'BoxParams'
     | 'ListOfWords'
     | 'Icon'
-    | 'CardParams'
-    | 'CheckboxParams'
+    | 'GenericStyleParams'
     | 'ListOfChips'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
@@ -82,6 +81,8 @@ export type MockCats =
     | 'checkbox-params'
     | 'chip-field-values'
     | 'collapse-content'
+    | 'container-content'
+    | 'container-style'
 
 export type SpyCats =
     | 'badge-children'
