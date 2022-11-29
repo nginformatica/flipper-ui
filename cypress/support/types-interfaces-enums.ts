@@ -83,6 +83,8 @@ export type MockCats =
     | 'collapse-content'
     | 'container-content'
     | 'container-style'
+    | 'content-content'
+    | 'content-style'
 
 export type SpyCats =
     | 'badge-children'
