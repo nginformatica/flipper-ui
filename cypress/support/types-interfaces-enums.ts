@@ -101,6 +101,7 @@ export type SpyCats =
     | 'chip-field-on-delete'
     | 'expansion-panel-on-helper-click'
     | 'expansion-panel-on-confirm-click'
+    | 'fab-onclick'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
