@@ -49,3 +49,5 @@ Given('I render Collapse', () => Factory.CollapseFactory())
 Given('I render Container', () => Factory.ContainerFactory())
 
 Given('I render Content', () => Factory.ContentFactory())
+
+Given('I render Dialog', () => Factory.DialogFactory())
