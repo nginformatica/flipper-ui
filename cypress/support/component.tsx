@@ -31,7 +31,8 @@ import {
     generateJSXElement,
     generateListOfFakeWords,
     generateListOfChips,
-    generateFakeStyleParams
+    generateFakeStyleParams,
+    generateListOfItems
 } from './utils/generators/fakes'
 import { validator } from './utils/validators'
 
@@ -106,7 +107,8 @@ const getMockedValues = (type: MockTypes, options?: TMockOptions) => {
         [validate('BoxParams'), generateFakeBoxParams],
         [validate('Icon'), generateIcon],
         [validate('ListOfChips'), generateListOfChips],
-        [validate('GenericStyleParams'), generateFakeStyleParams]
+        [validate('GenericStyleParams'), generateFakeStyleParams],
+        [validate('ListOfItens'), generateListOfItems]
     ])(type)
 }
 export const generateMock = ({ value, type, options }: GenerateMockProps) => {
