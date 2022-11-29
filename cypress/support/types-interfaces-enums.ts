@@ -120,7 +120,8 @@ export enum MuiSelectors {
     Button = '.MuiButton-root',
     CollapseHidden = '.MuiCollapse-hidden',
     CollapseVisible = '.MuiCollapse-entered',
-    DialogContainer = '.MuiDialog-container'
+    DialogContainer = '.MuiDialog-container',
+    Divider = '.MuiDivider-root'
 }
 
 export type TMockOptions = {
