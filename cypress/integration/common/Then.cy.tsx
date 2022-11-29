@@ -254,3 +254,22 @@ Then('I do not expect to see an Mui Dialog', () => {
 Then('I expect to see one divider', () => {
     cy.get(MuiSelectors.Divider).should('exist')
 })
+
+Then('I expect to see an Mui Drawer', () => {
+    cy.get(MuiSelectors.Drawer).should('exist')
+})
+
+Then('I do not expect to see an Mui Drawer', () => {
+    cy.get(MuiSelectors.Drawer).should('not.exist')
+})
+
+Then('I expect drawer to match mock {string} size', (mock: MockCats) => {
+    cy.getMock(mock).then(mockedList => {
+        if (mockedList instanceof Array) {
+            cy.get(MuiSelectors.ListItem).should(
+                'have.length',
+                mockedList.length
+            )
+        }
+    })
+})
