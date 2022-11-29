@@ -88,6 +88,7 @@ export type MockCats =
     | 'content-style'
     | 'dialog-content'
     | 'drawer-content'
+    | 'expansion-panel-content'
 
 export type SpyCats =
     | 'badge-children'
@@ -98,6 +99,8 @@ export type SpyCats =
     | 'checkbox-onHelper-click'
     | 'chip-field-on-add'
     | 'chip-field-on-delete'
+    | 'expansion-panel-on-helper-click'
+    | 'expansion-panel-on-confirm-click'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
@@ -125,7 +128,9 @@ export enum MuiSelectors {
     DialogContainer = '.MuiDialog-container',
     Divider = '.MuiDivider-root',
     Drawer = '.MuiDrawer-paper',
-    ListItem = '.MuiListItem-root'
+    ListItem = '.MuiListItem-root',
+    ExpansionPanel = '.MuiExpansionPanelSummary-root',
+    Icon = '.MuiIconButton-label'
 }
 
 export type TMockOptions = {
