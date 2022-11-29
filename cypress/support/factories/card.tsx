@@ -17,32 +17,34 @@ export const CardFactory = () => {
     const onClickSpyTop = generateSpy('card-top')
     const onClickSpyBottom = generateSpy('card-bottom')
 
-    generateMock({ value: 'card-params', type: 'CardParams' }).then(params => {
-        if (params instanceof Object && 'className' in params) {
-            mount(
-                <Card {...params} id='card-testing-id'>
-                    <CardActionArea onClick={onClickSpyTop}>
-                        <CardMedia
-                            image={url}
-                            title='Puppies'
-                            style={{ height: '256px' }}
-                        />
-                        <CardContent>
-                            ...look, a beautiful person over here
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button
-                            size='small'
-                            color='primary'
-                            onClick={onClickSpyBottom}>
-                            Confirm
-                        </Button>
-                    </CardActions>
-                </Card>
-            )
-        } else {
-            throw new Error('Invalid mock generation')
+    generateMock({ value: 'card-params', type: 'GenericStyleParams' }).then(
+        params => {
+            if (params instanceof Object && 'className' in params) {
+                mount(
+                    <Card {...params} id='generic-testing-id'>
+                        <CardActionArea onClick={onClickSpyTop}>
+                            <CardMedia
+                                image={url}
+                                title='Puppies'
+                                style={{ height: '256px' }}
+                            />
+                            <CardContent>
+                                ...look, a beautiful person over here
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button
+                                size='small'
+                                color='primary'
+                                onClick={onClickSpyBottom}>
+                                Confirm
+                            </Button>
+                        </CardActions>
+                    </Card>
+                )
+            } else {
+                throw new Error('Invalid mock generation')
+            }
         }
-    })
+    )
 }

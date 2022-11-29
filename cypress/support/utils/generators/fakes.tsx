@@ -39,18 +39,12 @@ export const generateFakeBoxParams = () => ({
     margin: generateNumber(1, 20),
     name: faker.random.word(),
     className: faker.random.word(),
-    id: 'box-testing-id',
+    id: 'generic-testing-id',
     minHeight: generateNumber(200, 500)
 })
 
-export const generateFakeCardParams = () => ({
-    ...omit(['minHeight'], generateFakeBoxParams()),
-    id: 'card-testing-id'
-})
-
-export const generateFakeCheckboxParams = () => ({
-    ...omit(['minHeight'], generateFakeBoxParams()),
-    id: 'checkbox-testing-id'
+export const generateFakeStyleParams = () => ({
+    ...omit(['minHeight'], generateFakeBoxParams())
 })
 
 export const generateIcon = () => <Add />

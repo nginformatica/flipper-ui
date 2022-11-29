@@ -12,7 +12,7 @@ export const CheckboxFactory = (variant: CheckboxVariant) => {
     const onHelperClickSpy = generateSpy('checkbox-onHelper-click')
     generateMockList({
         value: 'checkbox-params',
-        type: ['Word', 'CheckboxParams']
+        type: ['Word', 'GenericStyleParams']
     }).then(mockedList => {
         const defaultProps = {
             ...mockedList[1],

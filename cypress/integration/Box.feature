@@ -6,4 +6,4 @@ Feature: Box
     Scenario: I should render default
         Given I render Box
         Then I expect 'box-children' mock to exist
-        And I expect Box component style to match with mock
+        And I expect generic 'box-params' component props and style to match with mock

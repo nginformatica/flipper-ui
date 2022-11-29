@@ -22,7 +22,6 @@ import {
 } from './types-interfaces-enums'
 import {
     generateFakeBoxParams,
-    generateFakeCardParams,
     generateFakeLetter,
     generateFakeName,
     generateFakeNumber,
@@ -31,8 +30,8 @@ import {
     generateIcon,
     generateJSXElement,
     generateListOfFakeWords,
-    generateFakeCheckboxParams,
-    generateListOfChips
+    generateListOfChips,
+    generateFakeStyleParams
 } from './utils/generators/fakes'
 import { validator } from './utils/validators'
 
@@ -106,9 +105,8 @@ const getMockedValues = (type: MockTypes, options?: TMockOptions) => {
         [validate('JSXButton'), () => generateJSXElement(options?.onClick)],
         [validate('BoxParams'), generateFakeBoxParams],
         [validate('Icon'), generateIcon],
-        [validate('CardParams'), generateFakeCardParams],
-        [validate('CheckboxParams'), generateFakeCheckboxParams],
-        [validate('ListOfChips'), generateListOfChips]
+        [validate('ListOfChips'), generateListOfChips],
+        [validate('GenericStyleParams'), generateFakeStyleParams]
     ])(type)
 }
 export const generateMock = ({ value, type, options }: GenerateMockProps) => {
