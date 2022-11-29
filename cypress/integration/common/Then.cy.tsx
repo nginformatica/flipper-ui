@@ -250,3 +250,7 @@ Then('I expect to see an Mui Dialog', () => {
 Then('I do not expect to see an Mui Dialog', () => {
     cy.get(MuiSelectors.DialogContainer).should('not.exist')
 })
+
+Then('I expect to see one divider', () => {
+    cy.get(MuiSelectors.Divider).should('exist')
+})
