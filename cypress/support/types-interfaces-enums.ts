@@ -27,6 +27,7 @@ export type MockTypes =
     | 'Icon'
     | 'GenericStyleParams'
     | 'ListOfChips'
+    | 'ListOfItens'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
 
@@ -86,6 +87,7 @@ export type MockCats =
     | 'content-content'
     | 'content-style'
     | 'dialog-content'
+    | 'drawer-content'
 
 export type SpyCats =
     | 'badge-children'
@@ -121,7 +123,9 @@ export enum MuiSelectors {
     CollapseHidden = '.MuiCollapse-hidden',
     CollapseVisible = '.MuiCollapse-entered',
     DialogContainer = '.MuiDialog-container',
-    Divider = '.MuiDivider-root'
+    Divider = '.MuiDivider-root',
+    Drawer = '.MuiDrawer-paper',
+    ListItem = '.MuiListItem-root'
 }
 
 export type TMockOptions = {
