@@ -36,6 +36,13 @@ Then(
     }
 )
 
+Then(
+    'I expect {string} spy to have been called with {string}',
+    (spyName: SpyCats, value: string) => {
+        cy.getSpy(spyName).should('always.have.been.calledWith', value)
+    }
+)
+
 Then('I should see {int} BadgeDot', (quantity: number) =>
     cy.get(MuiSelectors.BadgeDot).then(elements => {
         expect(elements).to.length(quantity)
@@ -204,3 +211,26 @@ Then('I expect chip to have color secondary', () => {
 Then('I expect chip to not have color secondary', () => {
     cy.get(MuiSelectors.ChipSecondaryColor).should('not.exist')
 })
+
+Then('I expect {string} mock size match with chip itens', (mock: MockCats) => {
+    cy.getMock(mock).then(mockedList => {
+        cy.get(MuiSelectors.ChipRoot).then(elements => {
+            expect(elements.length).to.eq(mockedList.length)
+        })
+    })
+})
+
+Then(
+    // eslint-disable-next-line max-len
+    'I expect spy {string} to have been called with mocked {string} values at {int} pos',
+    (spy: SpyCats, mock: MockCats, pos: number) => {
+        cy.getMock(mock).then(mockedList => {
+            cy.getSpy(spy).should(
+                'always.have.been.calledWith',
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                mockedList[pos].value
+            )
+        })
+    }
+)
