@@ -89,6 +89,7 @@ export type MockCats =
     | 'dialog-content'
     | 'drawer-content'
     | 'expansion-panel-content'
+    | 'fade-content'
 
 export type SpyCats =
     | 'badge-children'
