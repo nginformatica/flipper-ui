@@ -47,3 +47,5 @@ Given('I render ChipField', () => Factory.ChipFieldFactory())
 Given('I render Collapse', () => Factory.CollapseFactory())
 
 Given('I render Container', () => Factory.ContainerFactory())
+
+Given('I render Content', () => Factory.ContentFactory())
