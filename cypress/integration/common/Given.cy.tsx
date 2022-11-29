@@ -43,3 +43,5 @@ Given('I render Chip with {string} preset', (preset: ChipVariant) =>
 )
 
 Given('I render ChipField', () => Factory.ChipFieldFactory())
+
+Given('I render Collapse', () => Factory.CollapseFactory())
