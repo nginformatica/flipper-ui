@@ -59,3 +59,5 @@ Given('I render Drawer', () => Factory.DrawerFactory())
 Given('I render ExpansionPanel', () => Factory.ExpansionPanelFactory())
 
 Given('I render Fab', () => Factory.FabFactory())
+
+Given('I render Fade', () => Factory.FadeFactory())
