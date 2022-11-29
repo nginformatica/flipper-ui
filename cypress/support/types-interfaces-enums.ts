@@ -81,6 +81,7 @@ export type MockCats =
     | 'chapter-content'
     | 'checkbox-params'
     | 'chip-field-values'
+    | 'collapse-content'
 
 export type SpyCats =
     | 'badge-children'
@@ -111,7 +112,10 @@ export enum MuiSelectors {
     ChipSquare = '.makeStyles-root-3',
     ChipRound = '.makeStyles-root-1',
     ChipAvatar = '.MuiAvatar-root',
-    ChipSecondaryColor = '.MuiChip-colorSecondary'
+    ChipSecondaryColor = '.MuiChip-colorSecondary',
+    Button = '.MuiButton-root',
+    CollapseHidden = '.MuiCollapse-hidden',
+    CollapseVisible = '.MuiCollapse-entered'
 }
 
 export type TMockOptions = {
