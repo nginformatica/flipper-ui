@@ -234,3 +234,21 @@ Then(
         })
     }
 )
+
+Then('I should see mocked {string} value on screen', (mock: MockCats) => {
+    cy.getMock(mock).then(mockedText => {
+        cy.waitUntil(() =>
+            cy.contains(mockedText as unknown as string).should('exist')
+        )
+    })
+})
+
+Then('I expect Collapse to be visible', () => {
+    cy.get(MuiSelectors.CollapseVisible).should('exist')
+    cy.get(MuiSelectors.CollapseHidden).should('not.exist')
+})
+
+Then('I expect Collapse to be hidden', () => {
+    cy.get(MuiSelectors.CollapseHidden).should('exist')
+    cy.get(MuiSelectors.CollapseVisible).should('not.exist')
+})
