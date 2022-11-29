@@ -55,3 +55,5 @@ Given('I render Dialog', () => Factory.DialogFactory())
 Given('I render Divider', () => Factory.DividerFactory())
 
 Given('I render Drawer', () => Factory.DrawerFactory())
+
+Given('I render ExpansionPanel', () => Factory.ExpansionPanelFactory())
