@@ -21,6 +21,10 @@ When('I click on {int}th checkbox', (pos: number) =>
 
 When('I click on text {string}', (text: string) => cy.contains(text).click())
 
+When('I click on first Mui Button', () => {
+    cy.get(MuiSelectors.Button).first().realClick()
+})
+
 When('I hover mocked text {string}', (cat: MockCats) => {
     cy.getMock(cat).then(mock => {
         if (mock instanceof Array) {
