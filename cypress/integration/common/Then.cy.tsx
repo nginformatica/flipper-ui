@@ -49,23 +49,6 @@ Then('I should see {int} BadgeDot', (quantity: number) =>
     })
 )
 
-Then('I expect Box component style to match with mock', () => {
-    cy.getMock('box-params').then(mock => {
-        const props = pick(['name', 'id'], mock)
-        const styles = pick(['padding', 'margin', 'minHeight'], mock)
-        for (const prop in props) {
-            cy.get('[id="box-testing-id"]').first().should('have.attr', prop)
-        }
-        for (const style in styles) {
-            const List: Record<string, string> = styles
-            const styleValue = List[style]
-            cy.get('[id="box-testing-id"]')
-                .first()
-                .should('have.css', style, `${styleValue}px`)
-        }
-    })
-})
-
 Then(
     'I expect generic {string} component props and style to match with mock',
     (mockCat: MockCats) => {
@@ -73,14 +56,14 @@ Then(
             const props = pick(['name', 'id'], mock)
             const styles = pick(['padding', 'margin'], mock)
             for (const prop in props) {
-                cy.get('[id="card-testing-id"]')
+                cy.get('[id="generic-testing-id"]')
                     .first()
                     .should('have.attr', prop)
             }
             for (const style in styles) {
                 const List: Record<string, string> = styles
                 const styleValue = List[style]
-                cy.get('[id="card-testing-id"]')
+                cy.get('[id="generic-testing-id"]')
                     .first()
                     .should('have.css', style, `${styleValue}px`)
             }
