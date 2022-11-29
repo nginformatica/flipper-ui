@@ -41,3 +41,5 @@ Given('I render Checkbox with {string} preset', (preset: CheckboxVariant) =>
 Given('I render Chip with {string} preset', (preset: ChipVariant) =>
     Factory.ChipFactory(preset)
 )
+
+Given('I render ChipField', () => Factory.ChipFieldFactory())
