@@ -316,3 +316,10 @@ Then('I expect input not to be empty', () => {
 Then('I expect input to have value {string}', (value: string) => {
     cy.get('input').first().should('have.value', value)
 })
+
+Then('I expect to see Mui Menu', () => {
+    cy.get(MuiSelectors.Paper).should('exist')
+})
+Then('I do not expect to see Mui Menu', () => {
+    cy.get(MuiSelectors.Paper).should('not.exist')
+})

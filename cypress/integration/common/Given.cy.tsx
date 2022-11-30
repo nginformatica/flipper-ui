@@ -80,3 +80,5 @@ Given('I render List', () => Factory.ListFactory())
 Given('I render MaskField with {string} preset', (preset: MaskFieldVariant) =>
     Factory.MaskFieldFactory(preset)
 )
+
+Given('I render Menu', () => Factory.MenuFactory())

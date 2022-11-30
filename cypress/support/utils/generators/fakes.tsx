@@ -75,7 +75,7 @@ export const generateListOfItems = () => {
     return list
 }
 
-export const generateListOfSpiedItems = () => {
+export const generateListOfSpiedItems = (): JSX.Element[] => {
     const length = generateNumber(2, 10)
     const list = []
     for (let i = 0; i < length; i++) {
