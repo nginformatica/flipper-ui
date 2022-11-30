@@ -73,3 +73,5 @@ Given('I render Header with {string} preset', (preset: HeaderVariant) =>
 Given('I render IconButton with {string} preset', (preset: IconButtonVariant) =>
     Factory.IconButtonFactory(preset)
 )
+
+Given('I render List', () => Factory.ListFactory())

@@ -5,6 +5,7 @@ import { Backup as IconBackup } from '../../../../src/icons'
 import { Add } from '@material-ui/icons'
 import { omit } from 'ramda'
 import { v4 as uuid } from 'uuid'
+import { generateGenericSpy } from '../../component'
 
 export const generateNumber = (min: number, max: number): number => {
     const number = faker.datatype.number(max)
@@ -69,6 +70,26 @@ export const generateListOfItems = () => {
     for (let i = 0; i < length; i++) {
         list.push(<ListItem key={uuid()} icon={<IconBackup />} />)
     }
+
+    return list
+}
+
+export const generateListOfSpiedItems = () => {
+    const length = generateNumber(2, 10)
+    const list = []
+    for (let i = 0; i < length; i++) {
+        const onClickSpy = generateGenericSpy(`generic-spy-${i}`)
+        list.push(
+            <ListItem
+                onClick={onClickSpy}
+                title={`Item ${i}`}
+                id={`testing-generic-${i}`}
+                key={uuid()}
+            />
+        )
+    }
+
+    cy.wrap(list.length).as('list-of-spied-items-length')
 
     return list
 }

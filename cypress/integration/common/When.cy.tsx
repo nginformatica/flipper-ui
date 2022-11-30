@@ -86,3 +86,13 @@ When('I click on Mui ExpansionPanel', () => {
 When('I click on first Mui SvgIcon', () => {
     cy.get(MuiSelectors.Icon).realClick()
 })
+
+When('I click in all itens on the list', () => {
+    cy.get('@list-of-spied-items-length').then(length => {
+        const value = Number(length)
+
+        for (let i = 0; i < value; i++) {
+            cy.get(`[id="testing-generic-${i}"]`).first().click()
+        }
+    })
+})

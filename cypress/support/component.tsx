@@ -132,3 +132,5 @@ export const generateMockList = ({
 }
 
 export const generateSpy = (cat: SpyCats) => cy.spy().as(spies(cat).original)
+
+export const generateGenericSpy = (name: string) => cy.spy().as(name)

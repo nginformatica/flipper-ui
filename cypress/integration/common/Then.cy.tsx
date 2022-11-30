@@ -288,3 +288,13 @@ Then('I expect header to have Mui {string} class', (mock: string) => {
 
     cy.get(selector).should('exist')
 })
+
+Then('I expect all spies to have been called on the list', () => {
+    cy.get('@list-of-spied-items-length').then(length => {
+        const value = Number(length)
+
+        for (let i = 0; i < value; i++) {
+            cy.get(`@generic-spy-${i}`).should('have.been.called', 1)
+        }
+    })
+})
