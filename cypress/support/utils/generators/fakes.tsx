@@ -37,6 +37,7 @@ export const generateJSXElement = (onClick?: () => void) => (
         Try changing the counter to Zero
     </Button>
 )
+
 export const generateFakeBoxParams = () => ({
     padding: generateNumber(1, 20),
     margin: generateNumber(1, 20),

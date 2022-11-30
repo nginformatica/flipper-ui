@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import TextField, { TextFieldProps } from './TextField'
 import NumberFormat from 'react-number-format'
 
-interface MaskFieldProps {
+export interface MaskFieldProps {
     mask?: string
     type?: 'text' | 'tel' | 'password'
     decimalSeparator?: string
@@ -22,9 +22,8 @@ class MaskField extends Component<TextFieldProps & MaskFieldProps> {
             // shows problem with some props like have been do this
             // actually on flipper-ui. (e.g. errors treatment)
             <NumberFormat
-                { ...otherProps }
-                customInput={ customInput || TextField }>
-            </NumberFormat>
+                {...otherProps}
+                customInput={customInput || TextField}></NumberFormat>
         )
     }
 }

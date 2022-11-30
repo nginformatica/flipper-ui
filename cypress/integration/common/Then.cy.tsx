@@ -298,3 +298,21 @@ Then('I expect all spies to have been called on the list', () => {
         }
     })
 })
+
+Then('I expect input to have placeholder {string}', (text: string) => {
+    cy.get('input').first().invoke('prop', 'placeholder').should('equal', text)
+})
+
+Then('I expect input to be empty', () => {
+    cy.get('input').first().should('have.value', '')
+})
+
+Then('I expect input not to be empty', () => {
+    cy.get('input')
+        .first()
+        .invoke('prop', 'value')
+        .should('have.length.above', 0)
+})
+Then('I expect input to have value {string}', (value: string) => {
+    cy.get('input').first().should('have.value', value)
+})

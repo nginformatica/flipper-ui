@@ -7,7 +7,8 @@ import {
     CheckboxVariant,
     ChipVariant,
     HeaderVariant,
-    IconButtonVariant
+    IconButtonVariant,
+    MaskFieldVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => Factory.AdvertiseFactory())
@@ -75,3 +76,7 @@ Given('I render IconButton with {string} preset', (preset: IconButtonVariant) =>
 )
 
 Given('I render List', () => Factory.ListFactory())
+
+Given('I render MaskField with {string} preset', (preset: MaskFieldVariant) =>
+    Factory.MaskFieldFactory(preset)
+)

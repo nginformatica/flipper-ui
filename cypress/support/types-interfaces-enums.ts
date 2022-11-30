@@ -50,6 +50,8 @@ export type ButtonVariant =
 
 export type IconButtonVariant = 'default' | 'primary' | 'secondary' | 'disabled'
 
+export type MaskFieldVariant = 'default' | 'with-input-adornment'
+
 export type HeaderVariant = 'default' | 'primary' | 'secondary' | 'inherit'
 
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'

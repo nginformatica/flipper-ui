@@ -79,6 +79,10 @@ When(
     }
 )
 
+When('I type {string} on input', (text: string) => {
+    cy.get('input').first().focus().realType(text)
+})
+
 When('I click on Mui ExpansionPanel', () => {
     cy.get(MuiSelectors.ExpansionPanel).first().realClick()
 })
