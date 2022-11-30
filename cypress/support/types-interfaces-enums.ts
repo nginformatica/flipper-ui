@@ -48,6 +48,8 @@ export type ButtonVariant =
     | 'large'
     | 'disabled'
 
+export type IconButtonVariant = 'default' | 'primary' | 'secondary' | 'disabled'
+
 export type HeaderVariant = 'default' | 'primary' | 'secondary' | 'inherit'
 
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
@@ -107,6 +109,7 @@ export type SpyCats =
     | 'expansion-panel-on-helper-click'
     | 'expansion-panel-on-confirm-click'
     | 'fab-onclick'
+    | 'icon-button-onclick'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
