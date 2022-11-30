@@ -5,7 +5,8 @@ import {
     BadgeVariant,
     ButtonVariant,
     CheckboxVariant,
-    ChipVariant
+    ChipVariant,
+    HeaderVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => Factory.AdvertiseFactory())
@@ -63,3 +64,7 @@ Given('I render Fab', () => Factory.FabFactory())
 Given('I render Fade', () => Factory.FadeFactory())
 
 Given('I render Grow', () => Factory.GrowFactory())
+
+Given('I render Header with {string} preset', (preset: HeaderVariant) =>
+    Factory.HeaderFactory(preset)
+)
