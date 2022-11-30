@@ -12,6 +12,20 @@ When('I click on {int}th button', (pos: number) =>
         .click({ force: true })
 )
 
+When('I click on {int}th button should be disabled', (pos: number) =>
+    cy
+        .get('button')
+        .eq(pos - 1)
+        .should('be.disabled')
+)
+
+When('I click on {int}th button should be enabled', (pos: number) =>
+    cy
+        .get('button')
+        .eq(pos - 1)
+        .should('not.be.disabled')
+)
+
 When('I click on {int}th checkbox', (pos: number) =>
     cy
         .get('input[type=checkbox]')
