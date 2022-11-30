@@ -1,6 +1,6 @@
 import React from 'react'
 import faker from 'faker'
-import { Button, ListItem } from '../../../../src'
+import { Button, ListItem, Node } from '../../../../src'
 import { Backup as IconBackup } from '../../../../src/icons'
 import { Add } from '@material-ui/icons'
 import { omit } from 'ramda'
@@ -93,4 +93,50 @@ export const generateListOfSpiedItems = (): JSX.Element[] => {
     cy.wrap(list.length).as('list-of-spied-items-length')
 
     return list
+}
+export const generateFakeNodeTree = () => {
+    const depth = generateNumber(1, 3)
+    let level = 0
+    const namesToMock: string[] = []
+
+    const generateNode = (): JSX.Element[] | JSX.Element[][] => {
+        if (level <= depth) {
+            level++
+
+            const size = generateNumber(1, 3)
+            const elements: JSX.Element[] = []
+
+            for (let i = 0; i < size; i++) {
+                const name = faker.random.word()
+                namesToMock.push(name)
+                const id = uuid()
+                elements.push(
+                    <Node id={uuid()} key={id} name={name}>
+                        {generateNode()}
+                    </Node>
+                )
+            }
+
+            return elements
+        } else {
+            const size = generateNumber(1, 3)
+            const elements: JSX.Element[] = []
+
+            for (let i = 0; i < size; i++) {
+                const name = faker.random.word()
+                namesToMock.push(name)
+                const id = uuid()
+                elements.push(<Node id={id} key={id} name={name} />)
+            }
+
+            return elements
+        }
+    }
+
+    const elements = generateNode()
+
+    return {
+        elements,
+        names: namesToMock
+    }
 }

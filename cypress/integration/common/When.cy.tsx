@@ -100,3 +100,37 @@ When('I click in all itens on the list', () => {
         }
     })
 })
+
+When('I expand all nodes', () => {
+    let initial = 0
+
+    cy.get('ul')
+        .then(size => {
+            initial = size.length
+            const clickMultiple = () => {
+                cy.get('ul').click({ multiple: true })
+
+                cy.on('fail', () => {
+                    console.log('FAIL')
+
+                    return false
+                })
+
+                // eslint-disable-next-line cypress/no-unnecessary-waiting
+                cy.wait(500)
+
+                cy.scrollTo('bottom', { ensureScrollable: false })
+
+                cy.get('ul').then(size => {
+                    if (size.length > initial + 1) {
+                        initial = size.length
+                        clickMultiple()
+                    }
+                })
+            }
+            clickMultiple()
+        })
+        .then(() => {
+            cy.get('ul').should('have.length', initial)
+        })
+})

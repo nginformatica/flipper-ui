@@ -323,3 +323,15 @@ Then('I expect to see Mui Menu', () => {
 Then('I do not expect to see Mui Menu', () => {
     cy.get(MuiSelectors.Paper).should('not.exist')
 })
+
+Then('I expect to see all Node names from mocked values', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    cy.get('@node-schema').then(({ names }) => {
+        const list: string[] = names
+
+        list.forEach(name => {
+            cy.waitUntil(() => cy.contains(name).should('exist'))
+        })
+    })
+})
