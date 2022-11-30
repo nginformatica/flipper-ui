@@ -281,3 +281,10 @@ Then('I expect drawer to match mock {string} size', (mock: MockCats) => {
         }
     })
 })
+
+Then('I expect header to have Mui {string} class', (mock: string) => {
+    const index = Object.keys(MuiSelectors).indexOf(mock)
+    const selector = Object.values(MuiSelectors)[index]
+
+    cy.get(selector).should('exist')
+})
