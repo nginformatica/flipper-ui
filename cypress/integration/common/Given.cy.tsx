@@ -6,7 +6,8 @@ import {
     ButtonVariant,
     CheckboxVariant,
     ChipVariant,
-    HeaderVariant
+    HeaderVariant,
+    IconButtonVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => Factory.AdvertiseFactory())
@@ -67,4 +68,8 @@ Given('I render Grow', () => Factory.GrowFactory())
 
 Given('I render Header with {string} preset', (preset: HeaderVariant) =>
     Factory.HeaderFactory(preset)
+)
+
+Given('I render IconButton with {string} preset', (preset: IconButtonVariant) =>
+    Factory.IconButtonFactory(preset)
 )
