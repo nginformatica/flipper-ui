@@ -48,6 +48,8 @@ export type ButtonVariant =
     | 'large'
     | 'disabled'
 
+export type HeaderVariant = 'default' | 'primary' | 'secondary' | 'inherit'
+
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
 
 export type CheckboxVariant =
@@ -91,6 +93,7 @@ export type MockCats =
     | 'expansion-panel-content'
     | 'fade-content'
     | 'grow-content'
+    | 'header-content'
 
 export type SpyCats =
     | 'badge-children'
@@ -133,7 +136,11 @@ export enum MuiSelectors {
     Drawer = '.MuiDrawer-paper',
     ListItem = '.MuiListItem-root',
     ExpansionPanel = '.MuiExpansionPanelSummary-root',
-    Icon = '.MuiIconButton-label'
+    Icon = '.MuiIconButton-label',
+    AppBarDefaultColor = '.MuiAppBar-colorDefault',
+    AppBarPrimaryColor = '.MuiAppBar-colorPrimary',
+    AppBarSecondaryColor = '.MuiAppBar-colorSecondary',
+    AppBarInheritColor = '.MuiAppBar-colorInherit'
 }
 
 export type TMockOptions = {
