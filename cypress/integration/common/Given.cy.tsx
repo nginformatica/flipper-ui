@@ -88,3 +88,5 @@ Given('I render Node', () => Factory.NodeFactory())
 Given('I render Pagination', () => Factory.PaginationFactory())
 
 Given('I render Paper', () => Factory.PaperFactory())
+
+Given('I render PinInput', () => Factory.PinInputFactory())

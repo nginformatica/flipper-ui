@@ -150,7 +150,8 @@ export enum MuiSelectors {
     AppBarPrimaryColor = '.MuiAppBar-colorPrimary',
     AppBarSecondaryColor = '.MuiAppBar-colorSecondary',
     AppBarInheritColor = '.MuiAppBar-colorInherit',
-    Paper = '.MuiPaper-root'
+    Paper = '.MuiPaper-root',
+    Error = '.Mui-error'
 }
 
 export type TMockOptions = {

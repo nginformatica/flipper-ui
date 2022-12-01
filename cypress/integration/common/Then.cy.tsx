@@ -342,3 +342,22 @@ Then(
         cy.getSpy(spy).should('have.been.calledWith', value)
     }
 )
+
+Then('I expect first input to be focussed', () => {
+    cy.get('input').first().should('be.focused')
+})
+
+Then('I expect all inputs to have errors', () => {
+    cy.get('.pin-input-field').each(input => {
+        const el = input.find(MuiSelectors.Error)
+        expect(el).to.have.length(1)
+        expect(el).to.have.class('Mui-error')
+    })
+})
+
+Then('I expect success when click to validate input', () => {
+    cy.get('button').first().click()
+    cy.on('window:alert', txt => {
+        expect(txt).to.contains('PIN is correct')
+    })
+})
