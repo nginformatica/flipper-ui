@@ -8,7 +8,8 @@ import {
     ChipVariant,
     HeaderVariant,
     IconButtonVariant,
-    MaskFieldVariant
+    MaskFieldVariant,
+    SelectVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => Factory.AdvertiseFactory())
@@ -92,3 +93,7 @@ Given('I render Paper', () => Factory.PaperFactory())
 Given('I render PinInput', () => Factory.PinInputFactory())
 
 Given('I render RadioGroup', () => Factory.RadioGroupFactory())
+
+Given('I render Select with {string} preset', (preset: SelectVariant) =>
+    Factory.SelectFactory(preset)
+)

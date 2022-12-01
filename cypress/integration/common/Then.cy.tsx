@@ -313,6 +313,7 @@ Then('I expect input not to be empty', () => {
         .invoke('prop', 'value')
         .should('have.length.above', 0)
 })
+
 Then('I expect input to have value {string}', (value: string) => {
     cy.get('input').first().should('have.value', value)
 })
@@ -372,4 +373,22 @@ Then('I expect {int}th option to be unchecked', (pos: number) => {
     cy.get('[name=options]')
         .eq(pos - 1)
         .should('not.be.checked')
+})
+
+Then('I should see all mocker options', () => {
+    cy.get('@list-of-spied-items-length').then(mockedLength => {
+        const length = Number(mockedLength)
+        for (let i = 0; i < length; i++) {
+            cy.waitUntil(() => cy.contains(`Option ${i}`).should('exist'))
+        }
+    })
+})
+
+Then('I expect all options spies to have been called', () => {
+    cy.get('@list-of-spied-items-length').then(mockedLength => {
+        const length = Number(mockedLength)
+        for (let i = 0; i < length; i++) {
+            cy.get(`@generic-spy-${i}`).should('have.been.called')
+        }
+    })
 })

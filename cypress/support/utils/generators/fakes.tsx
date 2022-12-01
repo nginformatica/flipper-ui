@@ -75,18 +75,18 @@ export const generateListOfItems = () => {
     return list
 }
 
-export const generateListOfSpiedItems = (): JSX.Element[] => {
-    const length = generateNumber(2, 10)
+export const generateListOfSpiedItems = (maxItens?: number): JSX.Element[] => {
+    const length = generateNumber(2, maxItens ?? 10)
     const list = []
     for (let i = 0; i < length; i++) {
         const onClickSpy = generateGenericSpy(`generic-spy-${i}`)
         list.push(
             <ListItem
                 onClick={onClickSpy}
+                value={i.toString()}
                 title={`Item ${i}`}
                 id={`testing-generic-${i}`}
-                key={uuid()}
-            />
+                key={uuid()}>{`Option ${i}`}</ListItem>
         )
     }
 

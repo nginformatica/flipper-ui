@@ -56,6 +56,8 @@ export type HeaderVariant = 'default' | 'primary' | 'secondary' | 'inherit'
 
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
 
+export type SelectVariant = 'default' | 'with-clear'
+
 export type CheckboxVariant =
     | 'default'
     | 'with-helper'
@@ -151,7 +153,9 @@ export enum MuiSelectors {
     AppBarSecondaryColor = '.MuiAppBar-colorSecondary',
     AppBarInheritColor = '.MuiAppBar-colorInherit',
     Paper = '.MuiPaper-root',
-    Error = '.Mui-error'
+    Error = '.Mui-error',
+    SelectRoot = '.MuiSelect-root',
+    AdornmentEnd = '.MuiInputAdornment-positionEnd'
 }
 
 export type TMockOptions = {

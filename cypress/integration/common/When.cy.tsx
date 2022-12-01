@@ -140,3 +140,15 @@ When('I click on {int}th option', (pos: number) => {
         .eq(pos - 1)
         .realClick()
 })
+
+When('I click on Mui select option', () => {
+    cy.get(MuiSelectors.SelectRoot).first().click()
+})
+
+When('I click in all list options', () => {
+    cy.get('li').click({ multiple: true })
+})
+
+When('I click on right Adornment from input', () => {
+    cy.get(MuiSelectors.AdornmentEnd).first().click()
+})
