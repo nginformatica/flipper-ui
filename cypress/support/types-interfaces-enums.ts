@@ -101,6 +101,7 @@ export type MockCats =
     | 'grow-content'
     | 'header-content'
     | 'paper-params'
+    | 'slide-content'
 
 export type SpyCats =
     | 'badge-children'

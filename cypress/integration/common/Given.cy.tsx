@@ -98,3 +98,5 @@ Given('I render Select with {string} preset', (preset: SelectVariant) =>
     Factory.SelectFactory(preset)
 )
 Given('I render Sidebar', () => Factory.SidebarFactory())
+
+Given('I render Slide', () => Factory.SlideFactory())
