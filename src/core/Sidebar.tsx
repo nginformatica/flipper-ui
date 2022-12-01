@@ -10,7 +10,7 @@ import {
 import { DefaultProps } from './types'
 import Button, { ButtonProps } from './Button'
 
-interface SidebarProps extends DefaultProps {
+export interface SidebarProps extends DefaultProps {
     open: boolean
     expanded?: boolean
     showButton?: boolean
@@ -38,12 +38,12 @@ const useStyles = makeStyles((theme: Theme) =>
             '&:active': {
                 boxShadow: 'none'
             },
-            'alignSelf': 'right',
-            'backgroundColor': 'transparent',
-            'boxShadow': 'none',
-            'maxWidth': 'inherit',
-            'minWidth': 'auto',
-            'width': '100%'
+            alignSelf: 'right',
+            backgroundColor: 'transparent',
+            boxShadow: 'none',
+            maxWidth: 'inherit',
+            minWidth: 'auto',
+            width: '100%'
         },
         default: {
             backgroundColor: theme.palette.background.default,
@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
         sidebar: {
             bottom: '0px',
             left: '0px',
-            position: 'fixed' as 'fixed',
+            position: 'fixed' as const,
             top: 'inherit',
             width: 'inherit'
         }
@@ -75,10 +75,8 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 const Action = styled.div<IAction>`
-    flex-direction: ${props => props.anchor === 'left'
-        ? 'row-reverse'
-        : 'row'
-};
+    flex-direction: ${props =>
+        props.anchor === 'left' ? 'row-reverse' : 'row'};
     display: flex;
     padding: 4px;
 `
@@ -109,24 +107,23 @@ const Sidebar: FC<SidebarProps> = ({
 
     const renderAction = () => {
         const iconToLeft =
-            (anchor === 'left' && expanded)
-            || (anchor === 'right' && !expanded)
+            (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
 
         return (
-            <Action anchor={ anchor }>
+            <Action anchor={anchor}>
                 <Button
-                    name={ `button-${name || 'sidebar'}` }
-                    color={ color }
+                    name={`button-${name || 'sidebar'}`}
+                    color={color}
                     variant='contained'
-                    className={ classes.button }
-                    style={ { maxWidth: minWidth } }
-                    onClick={ onToggle }
-                    { ...ButtonProps }>
-                    {
-                        iconToLeft
-                            ? <IconArrowLeft className={ classes.icon } />
-                            : <IconArrowRight className={ classes.icon } />
-                    }
+                    className={classes.button}
+                    style={{ maxWidth: minWidth }}
+                    onClick={onToggle}
+                    {...ButtonProps}>
+                    {iconToLeft ? (
+                        <IconArrowLeft className={classes.icon} />
+                    ) : (
+                        <IconArrowRight className={classes.icon} />
+                    )}
                 </Button>
             </Action>
         )
@@ -135,18 +132,18 @@ const Sidebar: FC<SidebarProps> = ({
 
     return (
         <Drawer
-            id={ id }
-            open={ open }
-            anchor={ anchor }
-            variant={ variant }
-            className={ className }
-            style={ { width, padding, margin, top, ...style } }
-            PaperProps={ {
-                className: `${docked ? classes.sidebar : '' } ${classes[color]}`,
+            id={id}
+            open={open}
+            anchor={anchor}
+            variant={variant}
+            className={className}
+            style={{ width, padding, margin, top, ...style }}
+            PaperProps={{
+                className: `${docked ? classes.sidebar : ''} ${classes[color]}`,
                 classes: paperClasses
-            } }>
-            { showButton && renderAction() }
-            { children }
+            }}>
+            {showButton && renderAction()}
+            {children}
         </Drawer>
     )
 }

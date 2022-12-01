@@ -97,3 +97,4 @@ Given('I render RadioGroup', () => Factory.RadioGroupFactory())
 Given('I render Select with {string} preset', (preset: SelectVariant) =>
     Factory.SelectFactory(preset)
 )
+Given('I render Sidebar', () => Factory.SidebarFactory())
