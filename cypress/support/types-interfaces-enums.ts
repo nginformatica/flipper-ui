@@ -112,6 +112,9 @@ export type SpyCats =
     | 'expansion-panel-on-confirm-click'
     | 'fab-onclick'
     | 'icon-button-onclick'
+    | 'pagination-prev-onclick'
+    | 'pagination-next-onclick'
+    | 'pagination-navigation-onclick'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',

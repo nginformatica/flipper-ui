@@ -335,3 +335,10 @@ Then('I expect to see all Node names from mocked values', () => {
         })
     })
 })
+
+Then(
+    'I expect spy {string} to have been called with {int}',
+    (spy: SpyCats, value: number) => {
+        cy.getSpy(spy).should('have.been.calledWith', value)
+    }
+)

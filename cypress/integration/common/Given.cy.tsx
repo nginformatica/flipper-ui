@@ -84,3 +84,5 @@ Given('I render MaskField with {string} preset', (preset: MaskFieldVariant) =>
 Given('I render Menu', () => Factory.MenuFactory())
 
 Given('I render Node', () => Factory.NodeFactory())
+
+Given('I render Pagination', () => Factory.PaginationFactory())
