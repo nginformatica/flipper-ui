@@ -90,3 +90,5 @@ Given('I render Pagination', () => Factory.PaginationFactory())
 Given('I render Paper', () => Factory.PaperFactory())
 
 Given('I render PinInput', () => Factory.PinInputFactory())
+
+Given('I render RadioGroup', () => Factory.RadioGroupFactory())

@@ -134,3 +134,9 @@ When('I expand all nodes', () => {
             cy.get('ul').should('have.length', initial)
         })
 })
+
+When('I click on {int}th option', (pos: number) => {
+    cy.get('[name=options]')
+        .eq(pos - 1)
+        .realClick()
+})

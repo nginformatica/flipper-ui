@@ -361,3 +361,15 @@ Then('I expect success when click to validate input', () => {
         expect(txt).to.contains('PIN is correct')
     })
 })
+
+Then('I expect {int}th option to be checked', (pos: number) => {
+    cy.get('[name=options]')
+        .eq(pos - 1)
+        .should('be.checked')
+})
+
+Then('I expect {int}th option to be unchecked', (pos: number) => {
+    cy.get('[name=options]')
+        .eq(pos - 1)
+        .should('not.be.checked')
+})
