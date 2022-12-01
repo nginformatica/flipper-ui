@@ -9,7 +9,8 @@ import {
     HeaderVariant,
     IconButtonVariant,
     MaskFieldVariant,
-    SelectVariant
+    SelectVariant,
+    SliderVariant
 } from '../../support/types-interfaces-enums'
 
 Given('I render Advertise', () => Factory.AdvertiseFactory())
@@ -100,3 +101,7 @@ Given('I render Select with {string} preset', (preset: SelectVariant) =>
 Given('I render Sidebar', () => Factory.SidebarFactory())
 
 Given('I render Slide', () => Factory.SlideFactory())
+
+Given('I render Slider with {string} preset', (preset: SliderVariant) => {
+    Factory.SliderFactory(preset)
+})

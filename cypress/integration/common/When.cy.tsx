@@ -152,3 +152,58 @@ When('I click in all list options', () => {
 When('I click on right Adornment from input', () => {
     cy.get(MuiSelectors.AdornmentEnd).first().click()
 })
+
+When(
+    'I pick the day {int} from {int}th datepicker',
+    (day: number, position: number) => {
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.get(MuiSelectors.TextField)
+            .eq(position - 1)
+            .find('button')
+            .first()
+            .wait(500)
+            .realClick()
+
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.get(MuiSelectors.PickersSlide)
+            .eq(1)
+            .get(MuiSelectors.PickerDays)
+            .not(MuiSelectors.PickerHiddenDays)
+            .eq(day - 1)
+            .wait(500)
+            .realClick()
+    }
+)
+
+When(
+    'I slide {int}% from the {int}th slider to {string}',
+    (percentage: number, position: number, direction: string) => {
+        let toBeInputted = ''
+
+        switch (direction) {
+            case 'left':
+                toBeInputted = '{leftArrow}'
+                break
+
+            case 'right':
+                toBeInputted = '{rightArrow}'
+                break
+
+            default:
+                toBeInputted = '{rightArrow}'
+                break
+        }
+
+        // Simulate slider
+        let desiredInput = ''
+        for (let i = 0; i < percentage; i++) {
+            desiredInput = desiredInput + toBeInputted
+        }
+
+        cy.get(MuiSelectors.SliderThumb)
+            .eq(position - 1)
+            .focus()
+            .realClick()
+            .type(desiredInput)
+    }
+)

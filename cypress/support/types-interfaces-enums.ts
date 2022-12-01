@@ -58,6 +58,13 @@ export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
 
 export type SelectVariant = 'default' | 'with-clear'
 
+export type SliderVariant =
+    | 'default'
+    | 'secondary'
+    | 'ranged'
+    | 'fixed-label'
+    | 'with-marks'
+
 export type CheckboxVariant =
     | 'default'
     | 'with-helper'
@@ -119,6 +126,7 @@ export type SpyCats =
     | 'pagination-prev-onclick'
     | 'pagination-next-onclick'
     | 'pagination-navigation-onclick'
+    | 'slider-percentage'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
@@ -156,7 +164,14 @@ export enum MuiSelectors {
     Paper = '.MuiPaper-root',
     Error = '.Mui-error',
     SelectRoot = '.MuiSelect-root',
-    AdornmentEnd = '.MuiInputAdornment-positionEnd'
+    AdornmentEnd = '.MuiInputAdornment-positionEnd',
+    TextField = '.MuiTextField-root',
+    PickersSlide = '.MuiPickersSlideTransition-transitionContainer',
+    PickerDays = '.MuiPickersDay-day',
+    PickerHiddenDays = '.MuiPickersDay-hidden',
+    SliderThumb = '.MuiSlider-thumb',
+    SliderPrimary = '.MuiSlider-colorPrimary',
+    SliderSecondary = '.MuiSlider-colorSecondary'
 }
 
 export type TMockOptions = {

@@ -392,3 +392,13 @@ Then('I expect all options spies to have been called', () => {
         }
     })
 })
+
+Then('I expect slider to have primary color', () => {
+    cy.get(MuiSelectors.SliderPrimary).should('exist')
+    cy.get(MuiSelectors.SliderSecondary).should('not.exist')
+})
+
+Then('I expect slider to have secondary color', () => {
+    cy.get(MuiSelectors.SliderSecondary).should('exist')
+    cy.get(MuiSelectors.SliderPrimary).should('not.exist')
+})
