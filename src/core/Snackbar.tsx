@@ -17,25 +17,27 @@ import React, { ReactNode, FC, FunctionComponent, MouseEvent } from 'react'
 import { DefaultProps } from './types'
 import { TransitionProps } from '@material-ui/core/transitions/transition'
 
-interface SnackBarProps extends DefaultProps {
-    autoHide?: number,
+export interface SnackBarProps extends DefaultProps {
+    autoHide?: number
     message: ReactNode
     open: boolean
     action?: ReactNode
     icon?: ReactNode
     variant?: 'success' | 'warning' | 'error' | 'info'
-    transitionDuration?: number | {
-        enter: number
-        exit: number
-    }
+    transitionDuration?:
+        | number
+        | {
+              enter: number
+              exit: number
+          }
     anchorOrigin?: {
-        horizontal: 'left' | 'center' | 'right',
+        horizontal: 'left' | 'center' | 'right'
         vertical: 'top' | 'bottom'
-   }
-   TransitionProps?: TransitionProps
-   TransitionComponent?: FunctionComponent<TransitionProps>
-   onClose?(): void
-   onClick?(): void
+    }
+    TransitionProps?: TransitionProps
+    TransitionComponent?: FunctionComponent<TransitionProps>
+    onClose?(): void
+    onClick?(): void
 }
 
 const variants = {
@@ -94,9 +96,7 @@ const SnackBar: FC<SnackBarProps> = props => {
     const Icon = variants[variant].icon
     const classes = useStyles()
 
-    const cursor = onClick
-        ? 'pointer'
-        : undefined
+    const cursor = onClick ? 'pointer' : undefined
 
     const handleClose = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -109,42 +109,41 @@ const SnackBar: FC<SnackBarProps> = props => {
 
     return (
         <MuiSnackbar
-            anchorOrigin={ anchorOrigin }
-            open={ open }
-            id={ id }
-            autoHideDuration={ autoHide }
-            style={ { cursor, padding, margin, ...style } }
-            className={ className }
-            TransitionComponent={ TransitionComponent }
-            TransitionProps={ TransitionProps }
-            onClick={ onClick }
-            onClose={ onClose }>
+            anchorOrigin={anchorOrigin}
+            open={open}
+            id={id}
+            autoHideDuration={autoHide}
+            style={{ cursor, padding, margin, ...style }}
+            className={className}
+            TransitionComponent={TransitionComponent}
+            TransitionProps={TransitionProps}
+            onClick={onClick}
+            onClose={onClose}>
             <MuiSnackbarContent
-                style={ {
+                style={{
                     backgroundColor: variants[variant].color,
                     flexWrap: 'nowrap',
                     cursor
-                } }
+                }}
                 aria-describedby='client-snackbar'
                 message={
-                    <span id='client-snackbar' className={ classes.message }>
-                        { icon || <Icon className={ classes.icon } /> }
-                        <div style={ { marginLeft: '10px' } } >
-                            { message }
-                        </div>
+                    <span id='client-snackbar' className={classes.message}>
+                        {icon || <Icon className={classes.icon} />}
+                        <div style={{ marginLeft: '10px' }}>{message}</div>
                     </span>
                 }
                 action={
-                    action ||
-                    <MuiIconButton
-                        key='close'
-                        aria-label='Close'
-                        color='inherit'
-                        onClick={ handleClose }>
-                        <IconClose />
-                    </MuiIconButton>
+                    action || (
+                        <MuiIconButton
+                            key='close'
+                            aria-label='Close'
+                            color='inherit'
+                            onClick={handleClose}>
+                            <IconClose />
+                        </MuiIconButton>
+                    )
                 }
-                { ...other }
+                {...other}
             />
         </MuiSnackbar>
     )

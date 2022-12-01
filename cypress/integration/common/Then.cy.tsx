@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { ButtonProps } from '@material-ui/core'
 import { Then } from 'cypress-cucumber-preprocessor/steps'
 import { pick } from 'ramda'
@@ -6,7 +7,7 @@ import {
     MuiSelectors,
     SpyCats
 } from '../../support/types-interfaces-enums'
-import { Utils } from '../../support'
+import { Conversor, Aliases } from '../../support/utils'
 
 Then('I should see {string}', (text: string) =>
     cy.waitUntil(() => cy.contains(text).should('exist'))
@@ -117,7 +118,7 @@ Then(
         cy.get(`button[id=${id}]`)
             .first()
             .then(btn => {
-                const list = Utils.colorMapValues.get(color) ?? []
+                const list = Aliases.colorMapValues.get(color) ?? []
                 const hasClass = list.some(val => btn.hasClass(val))
                 expect(hasClass).equal(true)
             })
@@ -130,7 +131,7 @@ Then(
         cy.get(`button[id=${id}]`)
             .first()
             .then(btn => {
-                const list = Utils.variantMapValues.get(variant) ?? []
+                const list = Aliases.variantMapValues.get(variant) ?? []
                 const hasClass = list.some(val => btn.hasClass(val))
                 expect(hasClass).equal(true)
             })
@@ -147,10 +148,10 @@ Then(
 Then(
     'I expect button {string} to have size {string}',
     (id: string, size: ButtonProps['size']) => {
-        Utils.sizeMapValues.get(size)
+        Aliases.sizeMapValues.get(size)
         cy.get(`button[id=${id}]`)
             .first()
-            .should('have.class', Utils.sizeMapValues.get(size))
+            .should('have.class', Aliases.sizeMapValues.get(size))
     }
 )
 
@@ -401,4 +402,14 @@ Then('I expect slider to have primary color', () => {
 Then('I expect slider to have secondary color', () => {
     cy.get(MuiSelectors.SliderSecondary).should('exist')
     cy.get(MuiSelectors.SliderPrimary).should('not.exist')
+})
+
+Then('The snackbar should have Mui background {string}', (bg: string) => {
+    const bgColor = Aliases.muiMessagesColors.get(bg) ?? ''
+    const { r, g, b } = Conversor.hex2rgb(bgColor)
+    cy.get(MuiSelectors.Snackbar).should(
+        'have.css',
+        'background-color',
+        `rgb(${r}, ${g}, ${b})`
+    )
 })

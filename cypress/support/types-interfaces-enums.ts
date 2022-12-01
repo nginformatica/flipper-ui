@@ -58,6 +58,8 @@ export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
 
 export type SelectVariant = 'default' | 'with-clear'
 
+export type SnackbarVariant = 'default' | 'success' | 'warning' | 'error'
+
 export type SliderVariant =
     | 'default'
     | 'secondary'
@@ -171,7 +173,8 @@ export enum MuiSelectors {
     PickerHiddenDays = '.MuiPickersDay-hidden',
     SliderThumb = '.MuiSlider-thumb',
     SliderPrimary = '.MuiSlider-colorPrimary',
-    SliderSecondary = '.MuiSlider-colorSecondary'
+    SliderSecondary = '.MuiSlider-colorSecondary',
+    Snackbar = '.MuiSnackbarContent-root'
 }
 
 export type TMockOptions = {
