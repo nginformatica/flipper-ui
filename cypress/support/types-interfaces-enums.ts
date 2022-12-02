@@ -144,6 +144,8 @@ export type SpyCats =
     | 'pagination-navigation-onclick'
     | 'slider-percentage'
     | 'text-field-helper'
+    | 'tooltip-onclose'
+    | 'tooltip-onopen'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',

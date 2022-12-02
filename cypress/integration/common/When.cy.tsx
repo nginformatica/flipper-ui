@@ -215,3 +215,15 @@ When('I clear input', () => {
 When('I select the last option from options', () => {
     cy.get('li').last().click()
 })
+
+When('I focus {int}th button', (pos: number) => {
+    cy.get('button')
+        .eq(pos - 1)
+        .focus()
+})
+
+When('I exit {int}th button', (pos: number) => {
+    cy.get('button')
+        .eq(pos - 1)
+        .trigger('blur')
+})

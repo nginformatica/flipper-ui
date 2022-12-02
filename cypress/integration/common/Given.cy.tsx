@@ -152,3 +152,5 @@ Given('I render Tabs', () => Factory.TabsFactory())
 Given('I render TextField with {string} preset', (preset: TextFieldVariant) => {
     Factory.TextFieldFactory(preset)
 })
+
+Given('I render Tooltip', () => Factory.ToolTipFactory())
