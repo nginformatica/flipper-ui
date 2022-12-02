@@ -142,3 +142,5 @@ Given('I render Stepper with {string} preset', (preset: StepperVariant) => {
         () => renderWithList(preset)
     )(preset)
 })
+
+Given('I render Table', () => Factory.TableFactory())

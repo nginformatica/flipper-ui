@@ -1,10 +1,17 @@
-import React from 'react'
-import faker from 'faker'
-import { Button, ListItem, Node } from '../../../../src'
-import { Backup as IconBackup } from '../../../../src/icons'
 import { Add } from '@material-ui/icons'
+import faker from 'faker'
 import { omit } from 'ramda'
+import React from 'react'
 import { v4 as uuid } from 'uuid'
+import {
+    Button,
+    ListItem,
+    Node,
+    TableBody,
+    TableCell,
+    TableRow
+} from '../../../../src'
+import { Backup as IconBackup } from '../../../../src/icons'
 import { generateGenericSpy } from '../../component'
 
 export const generateNumber = (min: number, max: number): number => {
@@ -139,4 +146,27 @@ export const generateFakeNodeTree = () => {
         elements,
         names: namesToMock
     }
+}
+
+export const generateFakeTableBody = () => {
+    const list: JSX.Element[] = []
+    const length = generateNumber(3, 10)
+
+    const elementsToMock = []
+
+    for (let i = 0; i < length; i++) {
+        const name = faker.name.firstName()
+        const email = faker.internet.email()
+        list.push(
+            <TableRow>
+                <TableCell>{name}</TableCell>
+                <TableCell>{email}</TableCell>
+            </TableRow>
+        )
+        elementsToMock.push(name, email)
+    }
+
+    cy.wrap(elementsToMock).as('table-elements-mock')
+
+    return <TableBody>{...list}</TableBody>
 }

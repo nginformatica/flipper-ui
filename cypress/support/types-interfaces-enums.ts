@@ -28,6 +28,7 @@ export type MockTypes =
     | 'GenericStyleParams'
     | 'ListOfChips'
     | 'ListOfItens'
+    | 'TableParams'
 
 export type AvatarVariant = 'default' | 'primary' | 'with-children'
 
@@ -114,7 +115,9 @@ export type MockCats =
     | 'paper-params'
     | 'slide-content'
     | 'stepper-steps-words'
-    | 'stepper-steps-obj'
+    | 'paper-params'
+    | 'table-params'
+    | 'table-elements'
 
 export type SpyCats =
     | 'badge-children'
