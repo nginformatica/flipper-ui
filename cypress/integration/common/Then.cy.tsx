@@ -385,6 +385,22 @@ Then('I should see all mocker options', () => {
     })
 })
 
+Then('I should see all mocked text fields options', () => {
+    cy.get('@list-of-text-fields').then(mockedData => {
+        for (let i = 0; i < mockedData.length; i++) {
+            cy.waitUntil(() => cy.contains(mockedData[i].label).should('exist'))
+        }
+    })
+})
+
+Then('I should not see mocked text fields options', () => {
+    cy.get('@list-of-text-fields').then(mockedData => {
+        for (let i = 0; i < mockedData.length; i++) {
+            cy.contains(mockedData[i].label).should('not.exist')
+        }
+    })
+})
+
 Then('I expect all options spies to have been called', () => {
     cy.get('@list-of-spied-items-length').then(mockedLength => {
         const length = Number(mockedLength)
@@ -431,4 +447,12 @@ Then('I expect {string} to be selected', (element: string) => {
     cy.get(`${MuiSelectors.Selected} > span`)
         .first()
         .should('have.text', element)
+})
+
+Then('The input should have value from last mocked options', () => {
+    cy.get('@list-of-text-fields').then(mockedData => {
+        const lastIndex = mockedData.length - 1
+        const value = mockedData[lastIndex].value
+        cy.get('input').first().should('have.value', value)
+    })
 })

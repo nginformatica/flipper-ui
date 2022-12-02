@@ -207,3 +207,11 @@ When(
             .type(desiredInput)
     }
 )
+
+When('I clear input', () => {
+    cy.get('input').first().clear()
+})
+
+When('I select the last option from options', () => {
+    cy.get('li').last().click()
+})

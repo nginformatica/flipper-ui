@@ -63,6 +63,13 @@ export type SelectVariant = 'default' | 'with-clear'
 
 export type SnackbarVariant = 'default' | 'success' | 'warning' | 'error'
 
+export type TextFieldVariant =
+    | 'default'
+    | 'with-adornment'
+    | 'with-helper'
+    | 'with-select'
+    | 'with-select-clear'
+
 export type SliderVariant =
     | 'default'
     | 'secondary'
@@ -136,6 +143,7 @@ export type SpyCats =
     | 'pagination-next-onclick'
     | 'pagination-navigation-onclick'
     | 'slider-percentage'
+    | 'text-field-helper'
 
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',

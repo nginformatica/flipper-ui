@@ -16,7 +16,8 @@ import {
     SelectVariant,
     SliderVariant,
     SnackbarVariant,
-    StepperVariant
+    StepperVariant,
+    TextFieldVariant
 } from '../../support/types-interfaces-enums'
 import { validator } from '../../support/utils'
 
@@ -116,6 +117,7 @@ Given('I render Slider with {string} preset', (preset: SliderVariant) => {
 Given('I render Snackbar with {string} preset', (preset: SnackbarVariant) => {
     Factory.SnackbarFactory(preset)
 })
+
 Given('I render Stepper with {string} preset', (preset: StepperVariant) => {
     const validate = (variant: StepperVariant) =>
         validator<StepperVariant>(variant)
@@ -146,3 +148,7 @@ Given('I render Stepper with {string} preset', (preset: StepperVariant) => {
 Given('I render Table', () => Factory.TableFactory())
 
 Given('I render Tabs', () => Factory.TabsFactory())
+
+Given('I render TextField with {string} preset', (preset: TextFieldVariant) => {
+    Factory.TextFieldFactory(preset)
+})

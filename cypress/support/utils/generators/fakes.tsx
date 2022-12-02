@@ -101,6 +101,18 @@ export const generateListOfSpiedItems = (maxItens?: number): JSX.Element[] => {
 
     return list
 }
+
+export const generateListOfMockedTextFields = (maxItens?: number): void => {
+    const length = generateNumber(2, maxItens ?? 10)
+    const list = []
+    for (let i = 0; i < length; i++) {
+        const word = faker.random.word().toLowerCase()
+        list.push({ label: word, value: word })
+    }
+
+    cy.wrap(list).as('list-of-text-fields')
+}
+
 export const generateFakeNodeTree = () => {
     const depth = generateNumber(1, 3)
     let level = 0
