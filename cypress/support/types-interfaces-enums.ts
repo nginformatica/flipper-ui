@@ -183,7 +183,8 @@ export enum MuiSelectors {
     SliderSecondary = '.MuiSlider-colorSecondary',
     Snackbar = '.MuiSnackbarContent-root',
     SteelPlate = '.MuiStepLabel-horizontal',
-    Disabled = 'Mui-disabled'
+    Disabled = 'Mui-disabled',
+    Selected = '.Mui-selected'
 }
 
 export type TMockOptions = {

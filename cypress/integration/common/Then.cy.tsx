@@ -426,3 +426,9 @@ Then('I expect {int} disabled itens on Stepper', (quantity: number) => {
             expect(disabledCount).to.equal(quantity)
         })
 })
+
+Then('I expect {string} to be selected', (element: string) => {
+    cy.get(`${MuiSelectors.Selected} > span`)
+        .first()
+        .should('have.text', element)
+})

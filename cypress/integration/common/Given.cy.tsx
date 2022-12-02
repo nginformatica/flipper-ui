@@ -144,3 +144,5 @@ Given('I render Stepper with {string} preset', (preset: StepperVariant) => {
 })
 
 Given('I render Table', () => Factory.TableFactory())
+
+Given('I render Tabs', () => Factory.TabsFactory())
