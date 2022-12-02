@@ -52,6 +52,8 @@ export type IconButtonVariant = 'default' | 'primary' | 'secondary' | 'disabled'
 
 export type MaskFieldVariant = 'default' | 'with-input-adornment'
 
+export type StepperVariant = 'default' | 'with-icon'
+
 export type HeaderVariant = 'default' | 'primary' | 'secondary' | 'inherit'
 
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
@@ -111,6 +113,8 @@ export type MockCats =
     | 'header-content'
     | 'paper-params'
     | 'slide-content'
+    | 'stepper-steps-words'
+    | 'stepper-steps-obj'
 
 export type SpyCats =
     | 'badge-children'
@@ -174,7 +178,9 @@ export enum MuiSelectors {
     SliderThumb = '.MuiSlider-thumb',
     SliderPrimary = '.MuiSlider-colorPrimary',
     SliderSecondary = '.MuiSlider-colorSecondary',
-    Snackbar = '.MuiSnackbarContent-root'
+    Snackbar = '.MuiSnackbarContent-root',
+    SteelPlate = '.MuiStepLabel-horizontal',
+    Disabled = 'Mui-disabled'
 }
 
 export type TMockOptions = {

@@ -413,3 +413,16 @@ Then('The snackbar should have Mui background {string}', (bg: string) => {
         `rgb(${r}, ${g}, ${b})`
     )
 })
+
+Then('I expect {int} disabled itens on Stepper', (quantity: number) => {
+    let disabledCount = 0
+    cy.get(MuiSelectors.SteelPlate)
+        .each(plate => {
+            if (plate.hasClass(MuiSelectors.Disabled)) {
+                disabledCount++
+            }
+        })
+        .then(() => {
+            expect(disabledCount).to.equal(quantity)
+        })
+})
