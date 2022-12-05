@@ -2,6 +2,7 @@ import { Add } from '@material-ui/icons'
 import faker from 'faker'
 import { omit } from 'ramda'
 import React from 'react'
+import { INode } from 'src/core/Tree'
 import { v4 as uuid } from 'uuid'
 import {
     Button,
@@ -111,6 +112,49 @@ export const generateListOfMockedTextFields = (maxItens?: number): void => {
     }
 
     cy.wrap(list).as('list-of-text-fields')
+}
+
+export const generateTreeWithNodes = () => {
+    const depth = generateNumber(1, 2)
+    let level = 0
+    const namesToMock: string[] = []
+
+    const generateNode = (): INode[] => {
+        if (level <= depth) {
+            level++
+
+            const size = generateNumber(1, 2)
+            const elements: INode[] = []
+
+            for (let i = 0; i < size; i++) {
+                const name = faker.random.word()
+                namesToMock.push(name)
+                const nodes: INode = { id: uuid(), name, nodes: generateNode() }
+                elements.push(nodes)
+            }
+
+            return elements
+        } else {
+            const size = generateNumber(1, 2)
+            const elements: INode[] = []
+
+            for (let i = 0; i < size; i++) {
+                const name = faker.random.word()
+                namesToMock.push(name)
+                const node: INode = { id: uuid(), name, nodes: undefined }
+                elements.push(node)
+            }
+
+            return elements
+        }
+    }
+
+    const elements = generateNode()
+
+    return {
+        elements,
+        names: namesToMock
+    }
 }
 
 export const generateFakeNodeTree = () => {

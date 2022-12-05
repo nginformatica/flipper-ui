@@ -154,3 +154,5 @@ Given('I render TextField with {string} preset', (preset: TextFieldVariant) => {
 })
 
 Given('I render Tooltip', () => Factory.ToolTipFactory())
+
+Given('I render Tree', () => Factory.TreeFactory())

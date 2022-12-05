@@ -1,3 +1,4 @@
+/* eslint-disable cypress/no-unnecessary-waiting */
 import { When } from 'cypress-cucumber-preprocessor/steps'
 import { MockCats, MuiSelectors } from '../../support/types-interfaces-enums'
 
@@ -110,13 +111,6 @@ When('I expand all nodes', () => {
             const clickMultiple = () => {
                 cy.get('ul').click({ multiple: true })
 
-                cy.on('fail', () => {
-                    console.log('FAIL')
-
-                    return false
-                })
-
-                // eslint-disable-next-line cypress/no-unnecessary-waiting
                 cy.wait(500)
 
                 cy.scrollTo('bottom', { ensureScrollable: false })
