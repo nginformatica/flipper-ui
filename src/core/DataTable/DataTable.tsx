@@ -160,23 +160,24 @@ export const DataTable = <D extends Data, V extends StackView>(
 
     useEffect(() => {
         const nextController: DataTableController<D, V> = {
-            editRow: id => {
+            editRow: (id: string) => {
                 setRowState(id, { mode: RowMode.Edit })
             },
-            viewRow: id => {
+            viewRow: (id: string) => {
                 setRowState(id, { mode: RowMode.View })
                 setNewRow(undefined)
             },
-            addRow: partial => {
+            addRow: (partial: PartialData<D>) => {
                 setPage(0)
                 setNewRow(partial)
             },
-            getEditedRowData: id => ({ id, ...getRowState(id)?.editableState }),
-            getRowData: id => {
+            getEditedRowData: (id: string) =>
+                ({ id, ...getRowState(id)?.editableState } as PartialData<D>),
+            getRowData: (id: string) => {
                 const raw = getRowState(id)
 
                 return {
-                    edited: { id, ...raw?.editableState },
+                    edited: { id, ...raw?.editableState } as PartialData<D>,
                     current: raw?.currentState
                 }
             },

@@ -119,7 +119,7 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
 
     const getErrors = (field: string) => contains(field, props.errors || [])
 
-    const renderMaskField = (item, error: boolean) => (
+    const renderMaskField = (item: any, error: boolean) => (
         <Wrapper>
             <MaskField
                 {...item}
@@ -153,7 +153,7 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
     const pagination = !props.paginationInfo
         ? { Pagination: () => null }
         : props.noRowsExpand && {
-              Pagination: item => (
+              Pagination: (item: any) => (
                   <RightPagination>
                       <MTablePagination
                           {...omit(['classes'], item)}
@@ -165,7 +165,7 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
 
     const toolbar = props.noHeader && { Toolbar: () => null }
 
-    const renderAutoComplete = inputProps => (
+    const renderAutoComplete = (inputProps: any) => (
         <AutoComplete
             openOnFocus
             selectTextOnFocus
@@ -258,9 +258,9 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                             />
                         )
 
-                        const hasData = localProps =>
+                        const hasData = (localProps: any) =>
                             !!localProps.action && size && data
-                        const isToolbar = localProps =>
+                        const isToolbar = (localProps: any) =>
                             localProps.action &&
                             'position' in localProps.action &&
                             localProps.action.position === 'toolbar'

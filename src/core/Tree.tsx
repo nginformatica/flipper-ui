@@ -12,7 +12,7 @@ interface TreeProps {
 }
 
 class Tree extends Component<TreeProps, {}> {
-    public renderNode(node, index, root = false) {
+    public renderNode(node: INode, index: string, root = false) {
         const { id, name, nodes } = node
 
         return (
@@ -28,7 +28,7 @@ class Tree extends Component<TreeProps, {}> {
 
     public render() {
         return (this.props.nodes || []).map((node, index) =>
-            this.renderNode(node, index, true)
+            this.renderNode(node, index.toString(), true)
         )
     }
 }

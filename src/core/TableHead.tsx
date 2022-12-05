@@ -24,7 +24,13 @@ interface ISort {
     onSort?(name: string): void
 }
 
-const styles = theme => ({
+const styles = (theme: {
+    palette: {
+        background: { default: string }
+        primary: { main: string }
+        secondary: { main: string }
+    }
+}) => ({
     default: {
         color: theme.palette.background.default
     },

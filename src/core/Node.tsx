@@ -51,7 +51,7 @@ const Li = styled.li<IListItem>`
 `
 
 class Node extends Component<NodeProps, IState> {
-    constructor(props) {
+    constructor(props: NodeProps) {
         super(props)
         this.state = { open: false }
     }

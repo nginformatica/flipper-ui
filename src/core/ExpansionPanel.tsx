@@ -21,7 +21,7 @@ interface ExpansionPanelProps extends PaperProps {
     helperIcon?: React.ReactNode
     helperButtonPosition?: 'left' | 'right'
     onHelperClick?: () => void
-    onChange?: (event?, expanded?) => void
+    onChange?: (event?: React.ChangeEvent<{}>, expanded?: boolean) => void
 }
 
 const ExpansionPanelHeaderWrapper = styled.div`
