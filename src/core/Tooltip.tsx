@@ -33,21 +33,20 @@ const Tooltip = ({
     enterDelay = 1000,
     title,
     ...otherProps
-}: TooltipProps) =>
-    <MuiTooltip title={ title || '' } enterDelay={ enterDelay } { ...otherProps }>
-        {
-            withWrapper
-                ? (
-                    <div
-                        style={ {
-                            display: 'inherit',
-                            ...wrapperStyle
-                        } }>
-                        { children }
-                    </div>
-                )
-                : children
-        }
+}: TooltipProps) => (
+    <MuiTooltip title={title || ''} enterDelay={enterDelay} {...otherProps}>
+        {withWrapper ? (
+            <div
+                style={{
+                    display: 'inherit',
+                    ...wrapperStyle
+                }}>
+                {children}
+            </div>
+        ) : (
+            children
+        )}
     </MuiTooltip>
+)
 
 export default Tooltip

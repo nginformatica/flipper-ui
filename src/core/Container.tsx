@@ -13,11 +13,10 @@ const Container: FC<DefaultProps> = ({
     margin,
     style = {},
     ...otherProps
-}) =>
-    <StyledContainer
-        style={ { padding, margin, ...style } }
-        { ...otherProps }>
-        { children }
+}) => (
+    <StyledContainer style={{ padding, margin, ...style }} {...otherProps}>
+        {children}
     </StyledContainer>
+)
 
 export default Container

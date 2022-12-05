@@ -16,7 +16,7 @@ const StyledLine = styled.hr<LineProps>`
     --color: ${props =>
         props.primary ? primaryColor.normal : background.normal};
     flex: 1;
-    min-height: .75px;
+    min-height: 0.75px;
     max-height: 3px;
     align-self: center;
     background-color: var(--color);
@@ -44,14 +44,14 @@ const Chapter: FC<LineProps> = ({
     ...otherProps
 }) => {
     const Line = () => (
-        <StyledLine style={ { padding, margin, ...style } } { ...otherProps } />
+        <StyledLine style={{ padding, margin, ...style }} {...otherProps} />
     )
 
     return (
         <Container>
             <Line />
-            <Typography variant={ variant } style={ { ...childrenStyle } }>
-                { children }
+            <Typography variant={variant} style={{ ...childrenStyle }}>
+                {children}
             </Typography>
             <Line />
         </Container>

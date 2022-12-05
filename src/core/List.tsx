@@ -13,8 +13,8 @@ interface ListProps extends DefaultProps {
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
 }
 
-const useStyles = makeStyles(
-    (theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
         default: {
             backgroundColor: theme.palette.background.default,
             color: theme.palette.text.primary
@@ -49,18 +49,16 @@ const List: FC<ListProps> = ({
     return (
         <MuiList
             subheader={
-                title
-                    ? (
-                        <MuiListHeader className={ classes ? classes[color] : '' }>
-                            { title }
-                        </MuiListHeader>
-                    )
-                    : undefined
+                title ? (
+                    <MuiListHeader className={classes ? classes[color] : ''}>
+                        {title}
+                    </MuiListHeader>
+                ) : undefined
             }
-            className={ classes ? `${classes[color]} ${className}` : '' }
-            style={ { padding, margin, ...style } }
-            { ...otherProps }>
-            { children }
+            className={classes ? `${classes[color]} ${className}` : ''}
+            style={{ padding, margin, ...style }}
+            {...otherProps}>
+            {children}
         </MuiList>
     )
 }

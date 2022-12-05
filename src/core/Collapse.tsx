@@ -5,7 +5,7 @@ import { DefaultProps } from './types'
 interface CollapseProps extends DefaultProps {
     collapsedHeight?: string
     in: boolean
-    timeout?: number | { enter?: number, exit?: number } | 'auto'
+    timeout?: number | { enter?: number; exit?: number } | 'auto'
 }
 
 const Collapse: FC<CollapseProps> = ({
@@ -14,11 +14,10 @@ const Collapse: FC<CollapseProps> = ({
     margin,
     style = {},
     ...otherProps
-}) =>
-    <MuiCollapse
-        style={ { padding, margin, ...style } }
-        { ...otherProps }>
-        { children }
+}) => (
+    <MuiCollapse style={{ padding, margin, ...style }} {...otherProps}>
+        {children}
     </MuiCollapse>
+)
 
 export default Collapse

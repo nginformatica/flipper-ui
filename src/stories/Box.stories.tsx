@@ -7,14 +7,11 @@ export default {
     component: Box
 } as ComponentMeta<typeof Box>
 
-const Template: ComponentStory<typeof Box> = args => (
-    <Box { ...args }/>
-)
+const Template: ComponentStory<typeof Box> = args => <Box {...args} />
 
 export const Default = Template.bind({})
 
 Default.args = {
     margin: 25,
-    children:
-        'Open the box and think outside of it.'
+    children: 'Open the box and think outside of it.'
 }

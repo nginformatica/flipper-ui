@@ -35,18 +35,16 @@ const Progress: FC<ProgressProps & ICircular & ILinear> = ({
     padding,
     ...otherProps
 }) =>
-    linear
-        ? (
-            <MuiLinearProgress
-                style={ { margin, padding, ...style } }
-                { ...otherProps }
-            />
-        )
-        : (
-            <MuiCircularProgress
-                style={ { margin, padding, ...style } }
-                { ...otherProps }
-            />
-        )
+    linear ? (
+        <MuiLinearProgress
+            style={{ margin, padding, ...style }}
+            {...otherProps}
+        />
+    ) : (
+        <MuiCircularProgress
+            style={{ margin, padding, ...style }}
+            {...otherProps}
+        />
+    )
 
 export default Progress

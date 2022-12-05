@@ -8,9 +8,7 @@ interface FabProps extends DefaultProps {
     color?: 'default' | 'primary' | 'inherit' | 'secondary'
     size?: 'small' | 'medium' | 'large'
     href?: string
-    variant?:
-        | 'round'
-        | 'extended'
+    variant?: 'round' | 'extended'
     onClick?: (event?: MouseEvent<HTMLElement>) => void
     children: React.ReactElement<{}>
 }
@@ -22,12 +20,13 @@ const Fab = ({
     style = {},
     variant,
     ...otherProps
-}: FabProps) =>
+}: FabProps) => (
     <MuiFab
-        { ...otherProps }
-        variant={ variant }
-        style={ { margin, padding, ...style } }>
-        { children }
+        {...otherProps}
+        variant={variant}
+        style={{ margin, padding, ...style }}>
+        {children}
     </MuiFab>
+)
 
 export default Fab

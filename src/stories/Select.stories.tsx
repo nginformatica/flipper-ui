@@ -18,7 +18,7 @@ export const Default = () => {
     }
 
     return (
-        <Select value={ select } onChange={ handleChange }>
+        <Select value={select} onChange={handleChange}>
             <ListItem value='0'>Option 0</ListItem>
             <ListItem value='1'>Option 1</ListItem>
             <ListItem value='2'>Option 2</ListItem>
@@ -46,10 +46,10 @@ export const WithClear = () => {
 
     return (
         <Select
-            hasClear={ true }
-            onClear={ handleClear }
-            value={ select }
-            onChange={ handleChange }>
+            hasClear={true}
+            onClear={handleClear}
+            value={select}
+            onChange={handleChange}>
             <ListItem value='' />
             <ListItem value='0'>Option 0</ListItem>
             <ListItem value='1'>Option 1</ListItem>

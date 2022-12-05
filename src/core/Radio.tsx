@@ -10,10 +10,8 @@ interface RadioProps extends DefaultProps {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Radio: FC<RadioProps> = ({ padding, margin, style, ...otherProps }) =>
-    <MuiRadio
-        { ...otherProps }
-        style={ { padding, margin, ...style } }
-    />
+const Radio: FC<RadioProps> = ({ padding, margin, style, ...otherProps }) => (
+    <MuiRadio {...otherProps} style={{ padding, margin, ...style }} />
+)
 
 export default Radio

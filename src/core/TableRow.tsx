@@ -19,17 +19,18 @@ const TableRow: FC<MuiTableRowProps & TableRowProps> = ({
     children,
     background,
     ...otherProps
-}) =>
+}) => (
     <MuiTableRow
-        { ...otherProps }
-        style={ {
+        {...otherProps}
+        style={{
             background,
             borderColor: backgroundColor.light,
             margin,
             padding,
             ...style
-        } }>
-        { children }
+        }}>
+        {children}
     </MuiTableRow>
+)
 
 export default TableRow

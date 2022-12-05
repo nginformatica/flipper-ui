@@ -8,11 +8,7 @@ import {
     Theme
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import React, {
-    Fragment,
-    MouseEvent,
-    FC
-} from 'react'
+import React, { Fragment, MouseEvent, FC } from 'react'
 import { DefaultProps } from './types'
 import { Omit } from 'ramda'
 
@@ -53,72 +49,58 @@ const ListItem: FC<ListItemProps> = props => {
 
         return (
             <Fragment>
-                {
-                    props.avatar && (
-                        <MuiListItemAvatar>
-                            { props.avatar }
-                        </MuiListItemAvatar>
-                    )
-                }
-                {
-                    props.icon && (
-                        <MuiListItemIcon
-                            className={ className }
-                            style={ { minWidth } }>
-                            { props.icon }
-                        </MuiListItemIcon>
-                    )
-                }
-                {
-                    (props.title || props.subtitle) && (
-                        <MuiListItemText
-                            primaryTypographyProps={ typographyProps }
-                            secondaryTypographyProps={ typographyProps }
-                            primary={ props.title }
-                            secondary={ props.subtitle }
-                            style={ props.action ? { marginRight: '36px' } : {} }
-                        />
-                    )
-                }
-                {
-                    props.action && (
-                        <MuiListItemSecondaryAction className={ className }>
-                            { props.action }
-                        </MuiListItemSecondaryAction>
-                    )
-                }
+                {props.avatar && (
+                    <MuiListItemAvatar>{props.avatar}</MuiListItemAvatar>
+                )}
+                {props.icon && (
+                    <MuiListItemIcon className={className} style={{ minWidth }}>
+                        {props.icon}
+                    </MuiListItemIcon>
+                )}
+                {(props.title || props.subtitle) && (
+                    <MuiListItemText
+                        primaryTypographyProps={typographyProps}
+                        secondaryTypographyProps={typographyProps}
+                        primary={props.title}
+                        secondary={props.subtitle}
+                        style={props.action ? { marginRight: '36px' } : {}}
+                    />
+                )}
+                {props.action && (
+                    <MuiListItemSecondaryAction className={className}>
+                        {props.action}
+                    </MuiListItemSecondaryAction>
+                )}
             </Fragment>
         )
     }
 
-    return props.children
-        ? (
-            <MenuItem
-                button
-                id={ props.id }
-                style={ { padding, margin, ...style } }
-                className={ className }
-                classes={ { root: classes.root } }
-                selected={ props.selected }
-                disabled={ props.disabled }
-                value={ props.value }
-                onClick={ props.onClick }>
-                { props.children }
-            </MenuItem>
-        )
-        : (
-            <MuiListItem
-                button
-                id={ props.id }
-                style={ { padding, margin, ...style } }
-                className={ className }
-                classes={ { root: classes.root } }
-                selected={ props.selected }
-                disabled={ props.disabled }
-                onClick={ props.onClick }>
-                { renderCustomItem() }
-            </MuiListItem>
-        )
+    return props.children ? (
+        <MenuItem
+            button
+            id={props.id}
+            style={{ padding, margin, ...style }}
+            className={className}
+            classes={{ root: classes.root }}
+            selected={props.selected}
+            disabled={props.disabled}
+            value={props.value}
+            onClick={props.onClick}>
+            {props.children}
+        </MenuItem>
+    ) : (
+        <MuiListItem
+            button
+            id={props.id}
+            style={{ padding, margin, ...style }}
+            className={className}
+            classes={{ root: classes.root }}
+            selected={props.selected}
+            disabled={props.disabled}
+            onClick={props.onClick}>
+            {renderCustomItem()}
+        </MuiListItem>
+    )
 }
 
 export default ListItem

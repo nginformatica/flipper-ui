@@ -10,7 +10,7 @@ export default {
     component: Sidebar
 } as ComponentMeta<typeof Sidebar>
 
-const Template: ComponentStory<typeof Sidebar> = args => <Sidebar { ...args } />
+const Template: ComponentStory<typeof Sidebar> = args => <Sidebar {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -18,10 +18,10 @@ Default.args = {
     children: (
         <>
             <List>
-                <ListItem icon={ <IconBackup /> } />
-                <ListItem icon={ <IconBackup /> } />
-                <ListItem icon={ <IconBackup /> } />
-                <ListItem icon={ <IconBackup /> } />
+                <ListItem icon={<IconBackup />} />
+                <ListItem icon={<IconBackup />} />
+                <ListItem icon={<IconBackup />} />
+                <ListItem icon={<IconBackup />} />
             </List>
         </>
     )

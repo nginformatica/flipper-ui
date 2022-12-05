@@ -7,7 +7,7 @@ export default {
     component: Paper
 } as ComponentMeta<typeof Paper>
 
-const Template: ComponentStory<typeof Paper> = args => <Paper { ...args } />
+const Template: ComponentStory<typeof Paper> = args => <Paper {...args} />
 
 const defaultArgs = {
     padding: 24,
@@ -20,9 +20,7 @@ const argsWithChildren = {
 }
 
 export const Default = () => (
-    <Paper style={ { ...defaultArgs } }>
-        I am a Paper.
-    </Paper>
+    <Paper style={{ ...defaultArgs }}>I am a Paper.</Paper>
 )
 
 export const Square = Template.bind({})

@@ -6,9 +6,10 @@ interface ThemeProviderProps {
     options?: ThemeOptions
 }
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ options = {}, children }) =>
-    <MuiThemeProvider theme={ createMuiTheme(options) }>
-        { children }
+const ThemeProvider: FC<ThemeProviderProps> = ({ options = {}, children }) => (
+    <MuiThemeProvider theme={createMuiTheme(options)}>
+        {children}
     </MuiThemeProvider>
+)
 
 export default ThemeProvider

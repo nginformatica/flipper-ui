@@ -13,13 +13,14 @@ const Box: FC<BoxProps> = ({
     style = {},
     minHeight = 400,
     ...otherProps
-}) =>
+}) => (
     <Paper
-        padding={ padding }
-        margin={ margin }
-        style={ { minHeight, ...style } }
-        { ...otherProps }>
-        { children }
+        padding={padding}
+        margin={margin}
+        style={{ minHeight, ...style }}
+        {...otherProps}>
+        {children}
     </Paper>
+)
 
 export default Box

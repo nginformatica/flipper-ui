@@ -6,9 +6,9 @@ export interface InputAdornmentProps extends DefaultProps {
     position: 'start' | 'end'
 }
 
-const InputAdornment: FC<InputAdornmentProps> = ({ children, ...otherProps }) =>
-    <MuiInputAdornment { ...otherProps }>
-        { children }
-    </MuiInputAdornment>
+const InputAdornment: FC<InputAdornmentProps> = ({
+    children,
+    ...otherProps
+}) => <MuiInputAdornment {...otherProps}>{children}</MuiInputAdornment>
 
 export default InputAdornment

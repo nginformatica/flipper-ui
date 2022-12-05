@@ -12,19 +12,17 @@ export interface ButtonProps extends DefaultProps {
     size?: 'small' | 'medium' | 'large'
     href?: string
     fullWidth?: boolean
-    variant?:
-        | 'text'
-        | 'outlined'
-        | 'contained'
-        | 'dashed'
+    variant?: 'text' | 'outlined' | 'contained' | 'dashed'
     target?: string
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-const StyledButton = styled(MuiButton)<ButtonProps & { dashed?: 'true' | 'false' }>`
-    border-style: ${props => props.dashed === 'true'
-        ? 'dashed !important' : 'initial'};
-    opacity: ${props => props.selected ? 0.5 : 1};
+const StyledButton = styled(MuiButton)<
+    ButtonProps & { dashed?: 'true' | 'false' }
+>`
+    border-style: ${props =>
+        props.dashed === 'true' ? 'dashed !important' : 'initial'};
+    opacity: ${props => (props.selected ? 0.5 : 1)};
 `
 
 const Button: FC<ButtonProps> = ({
@@ -34,13 +32,14 @@ const Button: FC<ButtonProps> = ({
     style = {},
     variant,
     ...otherProps
-}) =>
+}) => (
     <StyledButton
-        { ...otherProps }
-        dashed={ variant === 'dashed' ? 'true' : 'false' }
-        variant={ variant === 'dashed' ? 'outlined' : variant }
-        style={ { margin, padding, ...style } }>
-        { children }
+        {...otherProps}
+        dashed={variant === 'dashed' ? 'true' : 'false'}
+        variant={variant === 'dashed' ? 'outlined' : variant}
+        style={{ margin, padding, ...style }}>
+        {children}
     </StyledButton>
+)
 
 export default Button

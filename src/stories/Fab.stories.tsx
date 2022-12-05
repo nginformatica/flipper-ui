@@ -7,9 +7,7 @@ export default {
     component: Fab
 } as ComponentMeta<typeof Fab>
 
-const Template: ComponentStory<typeof Fab> = args => (
-    <Fab { ...args } />
-)
+const Template: ComponentStory<typeof Fab> = args => <Fab {...args} />
 export const Default = Template.bind({})
 
 Default.args = {

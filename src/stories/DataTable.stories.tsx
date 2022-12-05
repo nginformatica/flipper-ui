@@ -9,7 +9,8 @@ import { DataTableAction } from '../core/DataTable/DataTableAction'
 import {
     ColumnSpec,
     DataTableController,
-    Identifier, RowMode
+    Identifier,
+    RowMode
 } from '../core/DataTable/types'
 import {
     Delete as DeleteIcon,
@@ -110,12 +111,12 @@ export const Default = () => {
 
     return (
         <DataTable
-            data={ data }
-            pagination={ {
+            data={data}
+            pagination={{
                 rowsPerPage: 5,
                 labelRowsPerPage: 'Row per page'
-            } }
-            columns={ columns }
+            }}
+            columns={columns}
         />
     )
 }
@@ -146,7 +147,7 @@ export const Empty = () => {
     const componentForEmpty = (
         <tr>
             <td
-                style={ {
+                style={{
                     display: 'flex',
                     position: 'absolute',
                     height: '100%',
@@ -154,23 +155,25 @@ export const Empty = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     boxSizing: 'border-box'
-                } }>
-                <div><Typography>Empty DataTable</Typography></div>
+                }}>
+                <div>
+                    <Typography>Empty DataTable</Typography>
+                </div>
             </td>
         </tr>
     )
 
     return (
         <DataTable
-            data={ [] }
-            bodyStyle={ { position: 'relative' } }
-            hiddenRowHeight={ 53 }
-            componentForEmpty={ componentForEmpty }
-            pagination={ {
+            data={[]}
+            bodyStyle={{ position: 'relative' }}
+            hiddenRowHeight={53}
+            componentForEmpty={componentForEmpty}
+            pagination={{
                 rowsPerPage: 5,
                 labelRowsPerPage: 'Row per page'
-            } }
-            columns={ columns }
+            }}
+            columns={columns}
         />
     )
 }
@@ -243,14 +246,14 @@ export const NoHeader = () => {
 
     return (
         <DataTable
-            data={ data }
+            data={data}
             noHeader
-            hiddenRowHeight={ 53 }
-            pagination={ {
+            hiddenRowHeight={53}
+            pagination={{
                 rowsPerPage: 5,
                 labelRowsPerPage: 'Row per page'
-            } }
-            columns={ columns }
+            }}
+            columns={columns}
         />
     )
 }
@@ -323,12 +326,12 @@ export const NoPagination = () => {
 
     return (
         <DataTable
-            data={ data }
-            hiddenRowHeight={ 53 }
-            pagination={ {
+            data={data}
+            hiddenRowHeight={53}
+            pagination={{
                 disabled: true
-            } }
-            columns={ columns }
+            }}
+            columns={columns}
         />
     )
 }
@@ -350,10 +353,7 @@ export const Crud = () => {
     const controllerRef = useRef<DataTableController<Data, View>>()
     const [errors, setErrors] = useState({})
 
-    const randomId = () =>
-        Math.random()
-            .toString(36)
-            .substr(0, 12)
+    const randomId = () => Math.random().toString(36).substr(0, 12)
 
     const [data, setData] = useState<Data[]>([
         { id: 1, product: 'Magazine', price: 13.5, quantity: 12, date: date() },
@@ -394,7 +394,6 @@ export const Crud = () => {
     const isEmpty = x => x.trim().length === 0
 
     const handleErrors = (id, nextItem = {}, isPartial = false) => {
-
         const errorFields = [
             { field: 'quantity', isErrorIf: [isNaN, isNotPositive] },
             { field: 'date', isErrorIf: [isAfterNow] },
@@ -405,7 +404,9 @@ export const Crud = () => {
                 const value = nextItem[field]
 
                 if (isNullable(value)) {
-                    if (isPartial) {return false}
+                    if (isPartial) {
+                        return false
+                    }
 
                     return true
                 }
@@ -422,31 +423,35 @@ export const Crud = () => {
         return errorFields.length > 0
     }
 
-    const handleSave = (id: Identifier, isNew = false) => () => {
-        const nextItem = controllerRef.current.getEditedRowData(id)
+    const handleSave =
+        (id: Identifier, isNew = false) =>
+        () => {
+            const nextItem = controllerRef.current.getEditedRowData(id)
 
-        if (!nextItem) {return}
+            if (!nextItem) {
+                return
+            }
 
-        if (handleErrors(id, nextItem, !isNew)) {
-            return
+            if (handleErrors(id, nextItem, !isNew)) {
+                return
+            }
+
+            if (isNew) {
+                setData(data => [nextItem as Data, ...data])
+            } else {
+                setData(data =>
+                    data.map(item => {
+                        if (item.id === id) {
+                            return { ...item, ...nextItem }
+                        }
+
+                        return item
+                    })
+                )
+            }
+
+            controllerRef.current.viewRow(id)
         }
-
-        if (isNew) {
-            setData(data => [nextItem as Data, ...data])
-        } else {
-            setData(data =>
-                data.map(item => {
-                    if (item.id === id) {
-                        return { ...item, ...nextItem }
-                    }
-
-                    return item
-                })
-            )
-        }
-
-        controllerRef.current.viewRow(id)
-    }
 
     const columns: ColumnSpec<Data>[] = [
         {
@@ -494,15 +499,15 @@ export const Crud = () => {
             renderCell: ({ data: { id }, rowMode, isNew = false }) => {
                 if (rowMode === RowMode.View) {
                     return (
-                        <div style={ { display: 'flex' } }>
+                        <div style={{ display: 'flex' }}>
                             <DataTableAction
                                 label='Edit'
-                                onClick={ handleEdit(id) }>
+                                onClick={handleEdit(id)}>
                                 <EditIcon />
                             </DataTableAction>
                             <DataTableAction
                                 label='Delete'
-                                onClick={ handleDelete(id) }>
+                                onClick={handleDelete(id)}>
                                 <DeleteIcon />
                             </DataTableAction>
                         </div>
@@ -510,15 +515,15 @@ export const Crud = () => {
                 }
 
                 return (
-                    <div style={ { display: 'flex' } }>
+                    <div style={{ display: 'flex' }}>
                         <DataTableAction
                             label='Save'
-                            onClick={ handleSave(id, isNew) }>
+                            onClick={handleSave(id, isNew)}>
                             <SaveIcon />
                         </DataTableAction>
                         <DataTableAction
                             label='Cancel'
-                            onClick={ handleView(id) }>
+                            onClick={handleView(id)}>
                             <CancelIcon />
                         </DataTableAction>
                     </div>
@@ -530,32 +535,34 @@ export const Crud = () => {
     const rowViews = {
         confirmDelete: ({ data }) => {
             return (
-                <td colSpan={ 5 }>
+                <td colSpan={5}>
                     <div
-                        style={ {
+                        style={{
                             display: 'flex',
                             padding: '16px',
                             justifyContent: 'space-between'
-                        } }>
-                        <Typography>Confirm Delete "{ data.product }"?</Typography>
-                        <div style={ { display: 'flex' } }>
+                        }}>
+                        <Typography>
+                            Confirm Delete "{data.product}"?
+                        </Typography>
+                        <div style={{ display: 'flex' }}>
                             <DataTableAction
                                 label='CheckIcon'
-                                onClick={ () => {
+                                onClick={() => {
                                     controllerRef.current.popRowView(data.id)
                                     setData(dataList =>
                                         dataList.filter(
                                             item => item.id !== data.id
                                         )
                                     )
-                                } }>
+                                }}>
                                 <CheckIcon />
                             </DataTableAction>
                             <DataTableAction
                                 label='CancelIcon'
-                                onClick={ () => {
+                                onClick={() => {
                                     controllerRef.current.popRowView(data.id)
-                                } }>
+                                }}>
                                 <CancelIcon />
                             </DataTableAction>
                         </div>
@@ -567,12 +574,12 @@ export const Crud = () => {
 
     return (
         <>
-            <Button onClick={ handleAdd }>Add Row</Button>
+            <Button onClick={handleAdd}>Add Row</Button>
             <DataTable
-                data={ data }
-                controllerRef={ controllerRef }
-                errors={ errors }
-                pagination={ {
+                data={data}
+                controllerRef={controllerRef}
+                errors={errors}
+                pagination={{
                     rowsPerPage: 5,
                     showFirstButton: true,
                     showLastButton: true,
@@ -582,9 +589,9 @@ export const Crud = () => {
                             count !== -1 ? count : `more than ${to}`
                         }`
                     }
-                } }
-                rowViews={ rowViews }
-                columns={ columns }
+                }}
+                rowViews={rowViews}
+                columns={columns}
             />
         </>
     )

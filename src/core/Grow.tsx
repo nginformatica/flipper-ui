@@ -4,7 +4,7 @@ import { DefaultProps } from './types'
 
 interface GrowProps extends DefaultProps {
     in: boolean
-    timeout?: number | { enter?: number, exit?: number } | 'auto'
+    timeout?: number | { enter?: number; exit?: number } | 'auto'
     children?: React.ReactElement<{}>
 }
 
@@ -14,11 +14,10 @@ const Grow = ({
     margin,
     style = {},
     ...otherProps
-}: GrowProps) =>
-    <MuiGrow
-        style={ { padding, margin, ...style } }
-        { ...otherProps }>
-        { children }
+}: GrowProps) => (
+    <MuiGrow style={{ padding, margin, ...style }} {...otherProps}>
+        {children}
     </MuiGrow>
+)
 
 export default Grow

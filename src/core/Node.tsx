@@ -36,7 +36,7 @@ const Li = styled.li<IListItem>`
     margin: 12px;
     background: ${transparent};
     padding: 12px;
-    padding-left: ${props => props.inset ? '12px' : '48px'};
+    padding-left: ${props => (props.inset ? '12px' : '48px')};
     list-style: none;
     border-radius: 6px;
     border: 1px solid ${background.dark};
@@ -51,7 +51,7 @@ const Li = styled.li<IListItem>`
 `
 
 class Node extends Component<NodeProps, IState> {
-    constructor(props) {
+    constructor(props: NodeProps) {
         super(props)
         this.state = { open: false }
     }
@@ -61,9 +61,11 @@ class Node extends Component<NodeProps, IState> {
     }
 
     public renderDropdownIcon() {
-        return this.state.open
-            ? <IconArrowUp style={ styles.icon } />
-            : <IconArrowDown style={ styles.icon } />
+        return this.state.open ? (
+            <IconArrowUp style={styles.icon} />
+        ) : (
+            <IconArrowDown style={styles.icon} />
+        )
     }
 
     public render() {
@@ -71,17 +73,14 @@ class Node extends Component<NodeProps, IState> {
         const { id, name, children, style = {}, className } = this.props
 
         return (
-            <Ul
-                key={ id || name }
-                style={ style }
-                className={ className }>
+            <Ul key={id || name} style={style} className={className}>
                 <Li
-                    inset={ Boolean(children) }
-                    onClick={ this.handleToggleOpen.bind(this) }>
-                    { children && this.renderDropdownIcon() }
-                    { name }
+                    inset={Boolean(children)}
+                    onClick={this.handleToggleOpen.bind(this)}>
+                    {children && this.renderDropdownIcon()}
+                    {name}
                 </Li>
-                { open && children }
+                {open && children}
             </Ul>
         )
     }

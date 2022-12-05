@@ -13,10 +13,10 @@ export default {
 } as ComponentMeta<typeof MaskField>
 
 const Template: ComponentStory<typeof MaskField> = args => (
-    <MaskField { ...args } />
+    <MaskField {...args} />
 )
 
-export const Default = () => (<MaskField placeholder="Description"/>)
+export const Default = () => <MaskField placeholder='Description' />
 
 export const MaskFieldWithInputAdornment = Template.bind({})
 MaskFieldWithInputAdornment.args = {

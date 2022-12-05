@@ -8,7 +8,7 @@ export default {
     component: Collapse
 } as ComponentMeta<typeof Collapse>
 
-const Template: ComponentStory<typeof Collapse> = args => <Collapse { ...args } />
+const Template: ComponentStory<typeof Collapse> = args => <Collapse {...args} />
 
 export const Default = () => {
     const [open, setOpen] = useState(true)
@@ -21,13 +21,13 @@ export const Default = () => {
 
     return (
         <>
-            <Collapse in={ open }> I am open for discussions </Collapse>
+            <Collapse in={open}> I am open for discussions </Collapse>
             <Button
                 size='small'
                 color='primary'
-                style={ { marginTop: '3em' } }
-                onClick={ handleClick }>
-                { buttonLabel }
+                style={{ marginTop: '3em' }}
+                onClick={handleClick}>
+                {buttonLabel}
             </Button>
         </>
     )
@@ -42,5 +42,5 @@ Open.args = {
 export const Closed = Template.bind({})
 Closed.args = {
     in: false,
-    children: 'I\'m not open for discussions. Please don\'t insist.'
+    children: 'I am not open for discussions. Please do not insist.'
 }

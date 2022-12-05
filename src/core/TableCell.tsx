@@ -12,12 +12,7 @@ interface TableCellProps extends DefaultProps {
     variant?: 'head' | 'body' | 'footer'
     spacing?: MuiTableCellProps['padding']
     padding?: number | string
-    align?:
-        | 'inherit'
-        | 'left'
-        | 'center'
-        | 'right'
-        | 'justify'
+    align?: 'inherit' | 'left' | 'center' | 'right' | 'justify'
 }
 
 const TableCell: FC<Omit<MuiTableCellProps, 'padding'> & TableCellProps> = ({
@@ -38,21 +33,19 @@ const TableCell: FC<Omit<MuiTableCellProps, 'padding'> & TableCellProps> = ({
 
     return (
         <MuiTableCell
-            { ...otherProps }
-            style={ { padding, margin, ...style } }
-            padding={ spacing }>
-            {
-                onSort
-                    ? (
-                        <MuiTableSortLabel
-                            onClick={ handleSort }
-                            active={ otherProps.name === active }
-                            direction={ direction }>
-                            { children }
-                        </MuiTableSortLabel>
-                    )
-                    : children
-            }
+            {...otherProps}
+            style={{ padding, margin, ...style }}
+            padding={spacing}>
+            {onSort ? (
+                <MuiTableSortLabel
+                    onClick={handleSort}
+                    active={otherProps.name === active}
+                    direction={direction}>
+                    {children}
+                </MuiTableSortLabel>
+            ) : (
+                children
+            )}
         </MuiTableCell>
     )
 }

@@ -10,16 +10,12 @@ interface LineProps extends DefaultProps {
 
 const StyledLine = styled.hr<LineProps>`
     flex: 1;
-    border: 1px solid ${props => props.primary
-        ? primaryColor.normal
-        : background.normal
-};
+    border: 1px solid
+        ${props => (props.primary ? primaryColor.normal : background.normal)};
 `
 
-const Line: FC<LineProps> = ({ padding, margin, style, ...otherProps }) =>
-    <StyledLine
-        style={ { padding, margin, ...style } }
-        { ...otherProps }
-    />
+const Line: FC<LineProps> = ({ padding, margin, style, ...otherProps }) => (
+    <StyledLine style={{ padding, margin, ...style }} {...otherProps} />
+)
 
 export default Line

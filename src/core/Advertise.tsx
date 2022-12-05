@@ -30,23 +30,22 @@ const Advertise: FC<AdvertiseProps> = ({
     commentStyle = {},
     authorStyle = {},
     ...otherProps
-}) =>
-    <Paper
-        padding={ padding }
-        { ...otherProps }>
+}) => (
+    <Paper padding={padding} {...otherProps}>
         <Typography
             margin='0 12px'
             padding='6px 18px'
-            style={ { ...styles.border, ...commentStyle } }>
-            { comment }
+            style={{ ...styles.border, ...commentStyle }}>
+            {comment}
         </Typography>
         <Typography
             margin='0px 12px'
             padding='6px 18px'
             variant='caption'
-            style={ { ...styles.border, ...authorStyle } }>
-            { author }
+            style={{ ...styles.border, ...authorStyle }}>
+            {author}
         </Typography>
     </Paper>
+)
 
 export default Advertise

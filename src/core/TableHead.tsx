@@ -24,7 +24,13 @@ interface ISort {
     onSort?(name: string): void
 }
 
-const styles = theme => ({
+const styles = (theme: {
+    palette: {
+        background: { default: string }
+        primary: { main: string }
+        secondary: { main: string }
+    }
+}) => ({
     default: {
         color: theme.palette.background.default
     },
@@ -56,20 +62,21 @@ const TableHead: FC<TableHeadProps> = ({
     direction,
     onSort,
     ...otherProps
-}) =>
-    <SortContext.Provider value={ { active, direction, onSort } }>
+}) => (
+    <SortContext.Provider value={{ active, direction, onSort }}>
         <MuiTableHead
-            { ...otherProps }
-            style={ { padding, margin, ...style } }
+            {...otherProps}
+            style={{ padding, margin, ...style }}
             classes={
                 color
                     ? {
-                        root: classes[color]
-                    }
+                          root: classes[color]
+                      }
                     : {}
             }>
-            { children }
+            {children}
         </MuiTableHead>
     </SortContext.Provider>
+)
 
 export default withStyles(styles)(TableHead)

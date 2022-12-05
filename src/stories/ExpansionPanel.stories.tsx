@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof ExpansionPanel>
 
 const Template: ComponentStory<typeof ExpansionPanel> = args => (
-    <ExpansionPanel { ...args } />
+    <ExpansionPanel {...args} />
 )
 export const Default = Template.bind({})
 

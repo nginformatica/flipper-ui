@@ -7,10 +7,10 @@ const TestComponent = () => {
 
     return (
         <CheckBox
-            checked={ checked }
+            checked={checked}
             name='check-test'
             label='check it'
-            onChange={ () => setChecked(!checked) }
+            onChange={() => setChecked(!checked)}
         />
     )
 }

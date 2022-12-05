@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-    default as MuiAutocomplete
-} from '@material-ui/lab/Autocomplete'
+import { default as MuiAutocomplete } from '@material-ui/lab/Autocomplete'
 export {
     AutocompleteRenderInputParams,
     AutocompleteProps,
@@ -25,11 +23,11 @@ const Autocomplete: typeof MuiAutocomplete = props => {
 
     return (
         <MuiAutocomplete
-            { ...otherProps }
-            classes={ {
+            {...otherProps}
+            classes={{
                 inputRoot: styles.inputRoot,
                 ...classes
-            } }
+            }}
         />
     )
 }

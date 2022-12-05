@@ -22,11 +22,11 @@ export const Default = () => {
             <Button
                 color='primary'
                 variant='contained'
-                style={ { marginRight: '3em' } }
-                onClick={ handleClick }>
-                { btnLabel }
+                style={{ marginRight: '3em' }}
+                onClick={handleClick}>
+                {btnLabel}
             </Button>
-            <Zoom in={ open }>
+            <Zoom in={open}>
                 <span>I am open for discussions</span>
             </Zoom>
         </>

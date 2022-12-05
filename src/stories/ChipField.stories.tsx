@@ -17,10 +17,10 @@ const Template: ComponentStory<typeof ChipField> = args => {
 
     return (
         <ChipField
-            { ...args }
-            onDelete={ handleRemove }
-            values={ state }
-            onAdd={ handleAdd }
+            {...args}
+            onDelete={handleRemove}
+            values={state}
+            onAdd={handleAdd}
         />
     )
 }

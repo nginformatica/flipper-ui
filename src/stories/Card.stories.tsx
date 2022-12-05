@@ -16,16 +16,17 @@ export default {
     }
 } as ComponentMeta<typeof Card>
 
-const url = 'https://media2.s-nbcnews.com/j/newscms/2018_20/1339477'
-+ '/puppy-cute-today-180515-main_a936531048fdb698635dd1b418abdee9.fit-760w.jpg'
+const url =
+    'https://media2.s-nbcnews.com/j/newscms/2018_20/1339477' +
+    '/puppy-cute-today-180515-main_a936531048fdb698635dd1b418abdee9.fit-760w.jpg'
 
 export const Default = () => (
     <Card>
         <CardActionArea>
             <CardMedia
-                image= { url }
+                image={url}
                 title='Puppies'
-                style={ { height: '256px' } }
+                style={{ height: '256px' }}
             />
             <CardContent>...look, a beautiful person over here</CardContent>
         </CardActionArea>

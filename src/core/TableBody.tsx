@@ -8,11 +8,10 @@ const TableBody: FC<DefaultProps> = ({
     padding,
     children,
     ...otherProps
-}) =>
-    <MuiTableBody
-        { ...otherProps }
-        style={ { padding, margin, ...style } }>
-        { children }
+}) => (
+    <MuiTableBody {...otherProps} style={{ padding, margin, ...style }}>
+        {children}
     </MuiTableBody>
+)
 
 export default TableBody

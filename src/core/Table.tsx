@@ -7,18 +7,25 @@ interface TableProps extends DefaultProps {
     spacing?: MuiTableProps['padding']
 }
 
-const Table: FC<MuiTableProps & TableProps> =
-    ({ style, margin, padding, spacing, children, ...otherProps }) =>
-        <MuiTable
-            { ...otherProps }
-            padding={ spacing }
-            style={ {
-                border: `1px solid ${silver.light}`,
-                padding,
-                margin,
-                ...style
-            } }>
-            { children }
-        </MuiTable>
+const Table: FC<MuiTableProps & TableProps> = ({
+    style,
+    margin,
+    padding,
+    spacing,
+    children,
+    ...otherProps
+}) => (
+    <MuiTable
+        {...otherProps}
+        padding={spacing}
+        style={{
+            border: `1px solid ${silver.light}`,
+            padding,
+            margin,
+            ...style
+        }}>
+        {children}
+    </MuiTable>
+)
 
 export default Table

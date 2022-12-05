@@ -20,11 +20,13 @@ export const Default = () => {
 
     return (
         <>
-            <Button onClick={ handleClick } disabled={ open } >Open</Button>
-            <Drawer open={ open } onClick={ handleClick }>
+            <Button onClick={handleClick} disabled={open}>
+                Open
+            </Button>
+            <Drawer open={open} onClick={handleClick}>
                 <List>
-                    <ListItem icon={ <IconBackup /> } />
-                    <ListItem icon={ <IconBackup /> } />
+                    <ListItem icon={<IconBackup />} />
+                    <ListItem icon={<IconBackup />} />
                 </List>
             </Drawer>
         </>

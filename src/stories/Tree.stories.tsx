@@ -7,7 +7,7 @@ export default {
     component: Tree
 } as ComponentMeta<typeof Tree>
 
-const Template: ComponentStory<typeof Tree> = args => <Tree { ...args } />
+const Template: ComponentStory<typeof Tree> = args => <Tree {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

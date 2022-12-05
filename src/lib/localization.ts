@@ -1,14 +1,15 @@
 import ptBRLocale from 'date-fns/locale/pt-BR'
 
-export const getLocalization = (title: string = '') => ({
+export const getLocalization = (title = '') => ({
     body: {
         dateTimePickerLocalization: { locale: ptBRLocale },
         emptyDataSourceMessage: 'Não há dados para serem exibidos no momento',
         editRow: {
             saveTooltip: 'Salvar',
             cancelTooltip: 'Cancelar',
-            deleteText:
-                `Você tem certeza que deseja excluir esse ${title ?? 'item'}?`
+            deleteText: `Você tem certeza que deseja excluir esse ${
+                title ?? 'item'
+            }?`
         },
         addTooltip: `Adicionar ${title}`,
         deleteTooltip: `Remover ${title}`,
