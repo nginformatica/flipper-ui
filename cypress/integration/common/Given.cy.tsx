@@ -164,3 +164,5 @@ Given(
         Factory.TypographyFactory(preset)
     }
 )
+
+Given('I render Zoom', () => Factory.ZoomFactory())

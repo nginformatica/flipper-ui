@@ -145,6 +145,7 @@ export type MockCats =
     | 'paper-params'
     | 'table-params'
     | 'table-elements'
+    | 'zoom-content'
 
 export type SpyCats =
     | 'badge-children'
