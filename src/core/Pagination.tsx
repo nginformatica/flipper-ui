@@ -8,12 +8,12 @@ import {
 import { DefaultProps } from './types'
 import Button from './Button'
 
-interface PaginationProps extends DefaultProps {
+export interface PaginationProps extends DefaultProps {
     pages?: number
     active: number
-    onNext: () => {}
-    onPrevious: () => {}
-    onNavigate: (page) => {}
+    onNext: () => void
+    onPrevious: () => void
+    onNavigate: (page: number) => void
 }
 
 const Content = styled.div`
@@ -38,27 +38,28 @@ class Pagination extends Component<PaginationProps, {}> {
 
         return (
             <Content
-                className={ className }
-                style={ { padding, margin, ...style } }>
+                className={className}
+                style={{ padding, margin, ...style }}>
                 <Button
+                    id='prev-page-button'
                     size='small'
-                    onClick={ this.props.onPrevious }>
+                    onClick={this.props.onPrevious}>
                     <IconArrowLeft />
                 </Button>
-                {
-                    allPages.map(page =>
-                        <Button
-                            size='small'
-                            key={ page }
-                            color={ page === active ? 'primary' : 'default' }
-                            onClick={ () => this.props.onNavigate(page) }>
-                            { page }
-                        </Button>
-                    )
-                }
+                {allPages.map(page => (
+                    <Button
+                        size='small'
+                        key={page}
+                        id={`pagination-page-${page}`}
+                        color={page === active ? 'primary' : 'default'}
+                        onClick={() => this.props.onNavigate(page)}>
+                        {page}
+                    </Button>
+                ))}
                 <Button
+                    id='next-page-button'
                     size='small'
-                    onClick={ this.props.onNext }>
+                    onClick={this.props.onNext}>
                     <IconArrowRight />
                 </Button>
             </Content>

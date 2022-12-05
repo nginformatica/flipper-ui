@@ -2,22 +2,28 @@
     "compilerOptions": {
         "outDir": "./dist/", // path to output directory
         "sourceMap": true, // allow sourcemap support
-        "strictNullChecks": true, // enable strict null checks as a best practice
         "module": "commonjs", // specify module code generation
         "jsx": "react", // use typescript to transpile jsx to js
         "target": "es6", // specify ECMAScript target version
-        "esModuleInterop": true,
-        "declaration": true,
-        "skipLibCheck": true,
+        "types": ["node"],
         "moduleResolution": "node",
-        "types": [
-            "node"
-        ]
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters": true,
+        "strictNullChecks": true,
+        "rootDir": "src",
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "skipLibCheck": true
     },
-    "include": [
-        "./src/*",
-        "./src/core/**/*",
-        "./src/lab/*",
-        "./src/charts/*"
-    ]
+    "include": ["./src/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*"]
 }

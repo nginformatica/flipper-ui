@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Node from './Node'
 
-interface INode {
+export interface INode {
     id: string | number
     name: string
     nodes?: INode[]
@@ -17,11 +17,11 @@ class Tree extends Component<TreeProps, {}> {
 
         return (
             <Node
-                id={ index }
-                name={ name }
-                key={ id || index }
-                style={ root ? { padding: 0 } : {} }>
-                { nodes && nodes.map(this.renderNode.bind(this)) }
+                id={index}
+                name={name}
+                key={id || index}
+                style={root ? { padding: 0 } : {}}>
+                {nodes && nodes.map(this.renderNode.bind(this))}
             </Node>
         )
     }

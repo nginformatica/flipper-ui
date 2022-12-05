@@ -4,5 +4,7 @@
     "semi": false,
     "jsxBracketSameLine": true,
     "jsxSingleQuote": true,
-    "singleQuote": true
+    "singleQuote": true,
+    "parser": "typescript",
+    "arrowParens": "avoid"
 }
