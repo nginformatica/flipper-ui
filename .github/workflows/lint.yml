@@ -1,16 +1,15 @@
-name: Build
+name: Linter
 
 on:
   push:
     branches:
-      - '*'
-      - '!master'
+      - "*"
+      - "!master"
   pull_request:
     branches: ["master"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,7 +22,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn --frozen-lockfile
-      - run: yarn build
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run Linter
+        run: yarn lint
         env:
           CI: true
