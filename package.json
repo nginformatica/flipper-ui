@@ -61,6 +61,7 @@
         "@storybook/react": "6.5.13",
         "@testing-library/cypress": "8.0.3",
         "@testing-library/react": "9.3.2",
+        "@types/cypress-cucumber-preprocessor": "4.0.1",
         "@types/faker": "5.5.3",
         "@types/jest": "24.0.22",
         "@types/node": "10.9.4",
