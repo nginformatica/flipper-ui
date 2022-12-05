@@ -1,5 +1,9 @@
 import { ButtonProps } from '@material-ui/core'
-import { MuiSelectors } from '../types-interfaces-enums'
+import {
+    MuiSelectors,
+    MuiTypographySelectors,
+    TypographyVariant
+} from '../types-interfaces-enums'
 import { amber, blue, green, red } from '@material-ui/core/colors'
 
 const SUCCESS_COLOR = green[700]
@@ -43,4 +47,28 @@ export const muiMessagesColors = new Map<string, string>([
     ['warning', WARNING_COLOR],
     ['error', ERROR_COLOR],
     ['info', INFO_COLOR.toUpperCase()]
+])
+
+export const muiTypographyValues: Map<TypographyVariant, string> = new Map<
+    TypographyVariant,
+    string
+>([
+    ['body1', MuiTypographySelectors.Body1],
+    ['body2', MuiTypographySelectors.Body2],
+    ['error-text', MuiTypographySelectors.ColorError],
+    ['primary', MuiTypographySelectors.ColorPrimary],
+    ['secondary', MuiTypographySelectors.ColorSecondary],
+    ['text-primary', MuiTypographySelectors.ColorTextPrimary],
+    ['text-secondary', MuiTypographySelectors.ColorTextSecondary],
+    ['button', MuiTypographySelectors.Button],
+    ['caption', MuiTypographySelectors.Caption],
+    ['subtitle1', MuiTypographySelectors.Subtitle1],
+    ['subtitle2', MuiTypographySelectors.Subtitle2],
+    ['caption', MuiTypographySelectors.Caption],
+    ['h1', MuiTypographySelectors.H1],
+    ['h2', MuiTypographySelectors.H2],
+    ['h3', MuiTypographySelectors.H3],
+    ['h4', MuiTypographySelectors.H4],
+    ['h5', MuiTypographySelectors.H5],
+    ['h6', MuiTypographySelectors.H6]
 ])

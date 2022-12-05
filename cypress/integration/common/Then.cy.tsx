@@ -1,15 +1,16 @@
 /* eslint-disable max-lines */
 import { ButtonProps } from '@material-ui/core'
 import { Then } from 'cypress-cucumber-preprocessor/steps'
+import { muiTypographyValues } from '../../support/utils/aliases'
 import { pick } from 'ramda'
 import {
     MockCats,
+    MockedTextFieldsProps,
     MuiSelectors,
-    MuiTypographySelectors,
     SpyCats,
     TypographyVariant
 } from '../../support/types-interfaces-enums'
-import { Conversor, Aliases } from '../../support/utils'
+import { Aliases, Conversor } from '../../support/utils'
 
 Then('I should see {string}', (text: string) =>
     cy.waitUntil(() => cy.contains(text).should('exist'))
@@ -389,16 +390,20 @@ Then('I should see all mocker options', () => {
 
 Then('I should see all mocked text fields options', () => {
     cy.get('@list-of-text-fields').then(mockedData => {
-        for (let i = 0; i < mockedData.length; i++) {
-            cy.waitUntil(() => cy.contains(mockedData[i].label).should('exist'))
+        const data: MockedTextFieldsProps =
+            mockedData as unknown as MockedTextFieldsProps
+        for (let i = 0; i < data.length; i++) {
+            cy.waitUntil(() => cy.contains(data[i].label).should('exist'))
         }
     })
 })
 
 Then('I should not see mocked text fields options', () => {
     cy.get('@list-of-text-fields').then(mockedData => {
-        for (let i = 0; i < mockedData.length; i++) {
-            cy.contains(mockedData[i].label).should('not.exist')
+        const data: MockedTextFieldsProps =
+            mockedData as unknown as MockedTextFieldsProps
+        for (let i = 0; i < data.length; i++) {
+            cy.contains(data[i].label).should('not.exist')
         }
     })
 })
@@ -463,28 +468,8 @@ Then('The input should have value from last mocked options', () => {
 })
 
 Then('Text should have typography {string}', (typo: TypographyVariant) => {
-    const test: Map<TypographyVariant, string> = new Map<
-        TypographyVariant,
-        string
-    >([
-        ['body1', MuiTypographySelectors.Body1],
-        ['body2', MuiTypographySelectors.Body2],
-        ['error-text', MuiTypographySelectors.ColorError],
-        ['primary', MuiTypographySelectors.ColorPrimary],
-        ['secondary', MuiTypographySelectors.ColorSecondary],
-        ['text-primary', MuiTypographySelectors.ColorTextPrimary],
-        ['text-secondary', MuiTypographySelectors.ColorTextSecondary],
-        ['button', MuiTypographySelectors.Button],
-        ['caption', MuiTypographySelectors.Caption],
-        ['subtitle1', MuiTypographySelectors.Subtitle1],
-        ['subtitle2', MuiTypographySelectors.Subtitle2],
-        ['caption', MuiTypographySelectors.Caption],
-        ['h1', MuiTypographySelectors.H1],
-        ['h2', MuiTypographySelectors.H2],
-        ['h3', MuiTypographySelectors.H3],
-        ['h4', MuiTypographySelectors.H4],
-        ['h5', MuiTypographySelectors.H5],
-        ['h6', MuiTypographySelectors.H6]
-    ])
-    cy.get(MuiSelectors.Typography).should('have.class', test.get(typo))
+    cy.get(MuiSelectors.Typography).should(
+        'have.class',
+        muiTypographyValues.get(typo)
+    )
 })

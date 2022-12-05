@@ -168,6 +168,8 @@ export type SpyCats =
     | 'tooltip-onclose'
     | 'tooltip-onopen'
 
+export type MockedTextFieldsProps = { label: string; value: string }[]
+
 export enum MuiSelectors {
     BadgeDot = '.MuiBadge-dot',
     BtnBaseRoot = '.MuiButtonBase-root',
