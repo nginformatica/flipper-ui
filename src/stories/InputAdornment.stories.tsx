@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof InputAdornment>
 
 const Template: ComponentStory<typeof InputAdornment> = args => (
-    <InputAdornment { ...args } />
+    <InputAdornment {...args} />
 )
 export const Default = Template.bind({})
 

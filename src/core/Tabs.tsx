@@ -29,18 +29,17 @@ const Tabs: FC<TabsProps & IClasses> = ({
     style,
     margin,
     variant = 'standard',
-    indicatorColor= 'primary',
+    indicatorColor = 'primary',
     ...otherProps
 }) => {
-
     return (
         <MuiTabs
-            indicatorColor={ indicatorColor }
-            centered={ centered }
-            { ...otherProps }
-            variant={ variant }
-            style={ { padding, margin, ...style } }>
-            { children }
+            indicatorColor={indicatorColor}
+            centered={centered}
+            {...otherProps}
+            variant={variant}
+            style={{ padding, margin, ...style }}>
+            {children}
         </MuiTabs>
     )
 }

@@ -31,9 +31,9 @@ const Avatar: FC<AvatarProps> = ({
 
     return (
         <MuiAvatar
-            { ...otherProps }
-            className={ `${className} ${primary ? classes['primary'] : ''}` }>
-            { children }
+            {...otherProps}
+            className={`${className} ${primary ? classes['primary'] : ''}`}>
+            {children}
         </MuiAvatar>
     )
 }

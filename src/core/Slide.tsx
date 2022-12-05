@@ -5,7 +5,7 @@ import { DefaultProps } from './types'
 interface SlideProps extends DefaultProps {
     in: boolean
     direction: 'left' | 'right' | 'up' | 'down'
-    timeout?: number | { enter?: number, exit?: number }
+    timeout?: number | { enter?: number; exit?: number }
     children?: React.ReactElement<{}>
 }
 
@@ -16,12 +16,13 @@ const Slide = ({
     padding,
     style = {},
     ...otherProps
-}: SlideProps) =>
+}: SlideProps) => (
     <MuiSlide
-        direction={ direction as 'down' }
-        style={ { padding, margin, ...style } }
-        { ...otherProps }>
-        { children }
+        direction={direction as 'down'}
+        style={{ padding, margin, ...style }}
+        {...otherProps}>
+        {children}
     </MuiSlide>
+)
 
 export default Slide

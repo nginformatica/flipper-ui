@@ -7,7 +7,7 @@ export default {
     component: Chapter
 } as ComponentMeta<typeof Chapter>
 
-const Template: ComponentStory<typeof Chapter> = args => <Chapter { ...args } />
+const Template: ComponentStory<typeof Chapter> = args => <Chapter {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -19,6 +19,6 @@ export const WithCustomStyle = Template.bind({})
 WithCustomStyle.args = {
     style: { 'background-color': 'red' },
     variant: 'body1',
-    typoStyle: { 'color': 'blue' },
+    typoStyle: { color: 'blue' },
     children: 'Chapter'
 }

@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof TextField>
 
 const Template: ComponentStory<typeof TextField> = args => (
-    <TextField { ...args } />
+    <TextField {...args} />
 )
 
 export const Default = () => <TextField placeholder='Description' />
@@ -35,26 +35,26 @@ export const withSelect = () => {
     return (
         <div>
             <TextField select value='reais'>
-                { [
+                {[
                     { label: 'R$', value: 'reais' },
                     { label: '$', value: 'dollar' }
                 ].map(({ label, value }) => (
-                    <ListItem key={ value } value={ value }>
-                        { label }
+                    <ListItem key={value} value={value}>
+                        {label}
                     </ListItem>
-                )) }
+                ))}
             </TextField>
             <TextField select value='fable'>
-                { [
+                {[
                     { label: 'Elm', value: 'elm' },
                     { label: 'ReasonML', value: 'reasonml' },
                     { label: 'Purescript', value: 'purescript' },
                     { label: 'Fable', value: 'fable' }
                 ].map(({ label, value }) => (
-                    <ListItem key={ value } value={ value }>
-                        { label }
+                    <ListItem key={value} value={value}>
+                        {label}
                     </ListItem>
-                )) }
+                ))}
             </TextField>
         </div>
     )
@@ -77,21 +77,21 @@ export const withSelectAndClear = () => {
         <div>
             <TextField
                 select
-                value={ value }
+                value={value}
                 hasClear
-                onClear={ onClear }
-                onChange={ handleChange }>
-                { [
+                onClear={onClear}
+                onChange={handleChange}>
+                {[
                     { label: null, value: '' },
                     { label: 'Elm', value: 'elm' },
                     { label: 'ReasonML', value: 'reasonml' },
                     { label: 'Purescript', value: 'purescript' },
                     { label: 'Fable', value: 'fable' }
                 ].map(({ label, value }) => (
-                    <ListItem key={ value } value={ value }>
-                        { label }
+                    <ListItem key={value} value={value}>
+                        {label}
                     </ListItem>
-                )) }
+                ))}
             </TextField>
         </div>
     )

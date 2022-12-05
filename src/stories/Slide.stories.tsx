@@ -22,11 +22,11 @@ const Template: ComponentStory<typeof Slide> = args => {
             <Button
                 color='primary'
                 variant='contained'
-                style={ { marginRight: '3em' } }
-                onClick={ handleClick }>
-                { btnLabel }
+                style={{ marginRight: '3em' }}
+                onClick={handleClick}>
+                {btnLabel}
             </Button>
-            <Slide { ...args } in={ open } />
+            <Slide {...args} in={open} />
         </>
     )
 }

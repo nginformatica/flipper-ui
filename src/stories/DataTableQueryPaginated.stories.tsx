@@ -16,7 +16,8 @@ import {
 import { usePaginated } from '../core/DataTable/usePaginated'
 import {
     Cancel as CancelIcon,
-    Check as CheckIcon, Delete as DeleteIcon,
+    Check as CheckIcon,
+    Delete as DeleteIcon,
     Edit as EditIcon,
     Save as SaveIcon
 } from '../icons'
@@ -83,15 +84,15 @@ const generateSkeleton = (
 
     for (let i = 0; i < size; i++) {
         const table = (
-            <TableRow key={ `skeleton-${i}` } style={ { width: '10px' } }>
-                { columns.map(column => (
+            <TableRow key={`skeleton-${i}`} style={{ width: '10px' }}>
+                {columns.map(column => (
                     <TableCell
-                        align={ column.align }
-                        key={ column.title }
-                        style={ column.cellStyle }>
+                        align={column.align}
+                        key={column.title}
+                        style={column.cellStyle}>
                         <Skeleton />
                     </TableCell>
-                )) }
+                ))}
             </TableRow>
         )
         result.push(table)
@@ -118,19 +119,19 @@ export const Default = () => {
 
     return (
         <DataTableQueryPaginated
-            data={ data }
-            totalElements={ totalElements }
-            handleChangePage={ handleChangePage }
-            handleChangePerPage={ handleChangePerPage }
-            perPage={ size }
-            componentForEmpty={ LoadNode }
-            page={ actualPage }
-            pagination={ {
+            data={data}
+            totalElements={totalElements}
+            handleChangePage={handleChangePage}
+            handleChangePerPage={handleChangePerPage}
+            perPage={size}
+            componentForEmpty={LoadNode}
+            page={actualPage}
+            pagination={{
                 rowsPerPage: size,
                 labelRowsPerPage: 'Row per page ',
                 clickable: !loading
-            } }
-            columns={ columnsData }
+            }}
+            columns={columnsData}
         />
     )
 }
@@ -170,7 +171,7 @@ export const Empty = () => {
     const componentForEmpty = (
         <tr>
             <td
-                style={ {
+                style={{
                     display: 'flex',
                     position: 'absolute',
                     height: '100%',
@@ -178,7 +179,7 @@ export const Empty = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     boxSizing: 'border-box'
-                } }>
+                }}>
                 <div>
                     <Typography>Empty DataTable</Typography>
                 </div>
@@ -192,20 +193,20 @@ export const Empty = () => {
 
     return (
         <DataTableQueryPaginated
-            data={ [] }
-            bodyStyle={ { position: 'relative' } }
-            hiddenRowHeight={ 53 }
-            handleChangePage={ handleChangePage }
-            handleChangePerPage={ handleChangePerPage }
-            totalElements={ totalElements }
-            page={ actualPage }
-            perPage={ size }
-            componentForEmpty={ LoadNode }
-            pagination={ {
+            data={[]}
+            bodyStyle={{ position: 'relative' }}
+            hiddenRowHeight={53}
+            handleChangePage={handleChangePage}
+            handleChangePerPage={handleChangePerPage}
+            totalElements={totalElements}
+            page={actualPage}
+            perPage={size}
+            componentForEmpty={LoadNode}
+            pagination={{
                 rowsPerPage: 5,
                 labelRowsPerPage: 'Row per page'
-            } }
-            columns={ columns }
+            }}
+            columns={columns}
         />
     )
 }
@@ -269,21 +270,21 @@ export const NoHeader = () => {
 
     return (
         <DataTableQueryPaginated
-            data={ data }
-            handleChangePage={ handleChangePage }
-            handleChangePerPage={ handleChangePerPage }
-            totalElements={ totalElements }
-            page={ actualPage }
-            perPage={ size }
+            data={data}
+            handleChangePage={handleChangePage}
+            handleChangePerPage={handleChangePerPage}
+            totalElements={totalElements}
+            page={actualPage}
+            perPage={size}
             noHeader
-            hiddenRowHeight={ 53 }
-            componentForEmpty={ LoadNode }
-            pagination={ {
+            hiddenRowHeight={53}
+            componentForEmpty={LoadNode}
+            pagination={{
                 rowsPerPage: 5,
                 labelRowsPerPage: 'Row per page',
                 clickable: !loading
-            } }
-            columns={ columns }
+            }}
+            columns={columns}
         />
     )
 }
@@ -337,10 +338,7 @@ export const Crud = () => {
     const controllerRef = useRef<DataTableController<Data, View>>()
     const [errors, setErrors] = useState({})
 
-    const randomId = () =>
-        Math.random()
-            .toString(36)
-            .substr(0, 12)
+    const randomId = () => Math.random().toString(36).substr(0, 12)
 
     const handleAdd = () => {
         controllerRef.current.addRow({ id: randomId(), date: date() })
@@ -393,33 +391,35 @@ export const Crud = () => {
         return errorFields.length > 0
     }
 
-    const handleSave = (id: Identifier, isNew = false) => () => {
-        const nextItem = controllerRef.current.getEditedRowData(id)
+    const handleSave =
+        (id: Identifier, isNew = false) =>
+        () => {
+            const nextItem = controllerRef.current.getEditedRowData(id)
 
-        if (!nextItem) {
-            return
+            if (!nextItem) {
+                return
+            }
+
+            if (handleErrors(id, nextItem, !isNew)) {
+                return
+            }
+
+            if (isNew) {
+                setData([nextItem as Data, ...data])
+            } else {
+                setData(
+                    data.map(item => {
+                        if (item.id === id) {
+                            return { ...item, ...nextItem }
+                        }
+
+                        return item
+                    })
+                )
+            }
+
+            controllerRef.current.viewRow(id)
         }
-
-        if (handleErrors(id, nextItem, !isNew)) {
-            return
-        }
-
-        if (isNew) {
-            setData([nextItem as Data, ...data])
-        } else {
-            setData(
-                data.map(item => {
-                    if (item.id === id) {
-                        return { ...item, ...nextItem }
-                    }
-
-                    return item
-                })
-            )
-        }
-
-        controllerRef.current.viewRow(id)
-    }
 
     const columns: ColumnSpec<Data>[] = [
         {
@@ -467,15 +467,15 @@ export const Crud = () => {
             renderCell: ({ data: { id }, rowMode, isNew = false }) => {
                 if (rowMode === RowMode.View) {
                     return (
-                        <div style={ { display: 'flex' } }>
+                        <div style={{ display: 'flex' }}>
                             <DataTableAction
                                 label='Edit'
-                                onClick={ handleEdit(id) }>
+                                onClick={handleEdit(id)}>
                                 <EditIcon />
                             </DataTableAction>
                             <DataTableAction
                                 label='Delete'
-                                onClick={ handleDelete(id) }>
+                                onClick={handleDelete(id)}>
                                 <DeleteIcon />
                             </DataTableAction>
                         </div>
@@ -483,15 +483,15 @@ export const Crud = () => {
                 }
 
                 return (
-                    <div style={ { display: 'flex' } }>
+                    <div style={{ display: 'flex' }}>
                         <DataTableAction
                             label='Save'
-                            onClick={ handleSave(id, isNew) }>
+                            onClick={handleSave(id, isNew)}>
                             <SaveIcon />
                         </DataTableAction>
                         <DataTableAction
                             label='Cancel'
-                            onClick={ handleView(id) }>
+                            onClick={handleView(id)}>
                             <CancelIcon />
                         </DataTableAction>
                     </div>
@@ -503,34 +503,34 @@ export const Crud = () => {
     const rowViews = {
         confirmDelete: ({ data }) => {
             return (
-                <td colSpan={ 5 }>
+                <td colSpan={5}>
                     <div
-                        style={ {
+                        style={{
                             display: 'flex',
                             padding: '16px',
                             justifyContent: 'space-between'
-                        } }>
+                        }}>
                         <Typography>
-                            Confirm Delete "{ data.product }"?
+                            Confirm Delete "{data.product}"?
                         </Typography>
-                        <div style={ { display: 'flex' } }>
+                        <div style={{ display: 'flex' }}>
                             <DataTableAction
                                 label='CheckIcon'
-                                onClick={ () => {
+                                onClick={() => {
                                     controllerRef.current.popRowView(data.id)
                                     setData(dataList =>
                                         dataList.filter(
                                             item => item.id !== data.id
                                         )
                                     )
-                                } }>
+                                }}>
                                 <CheckIcon />
                             </DataTableAction>
                             <DataTableAction
                                 label='CancelIcon'
-                                onClick={ () => {
+                                onClick={() => {
                                     controllerRef.current.popRowView(data.id)
-                                } }>
+                                }}>
                                 <CancelIcon />
                             </DataTableAction>
                         </div>
@@ -542,18 +542,18 @@ export const Crud = () => {
 
     return (
         <>
-            <Button onClick={ handleAdd }>Add Row</Button>
+            <Button onClick={handleAdd}>Add Row</Button>
             <DataTableQueryPaginated
-                data={ data }
-                controllerRef={ controllerRef }
-                errors={ errors }
-                handleChangePage={ handleChangePage }
-                handleChangePerPage={ handleChangePerPage }
-                componentForEmpty={ LoadNode }
-                totalElements={ totalElements }
-                page={ actualPage }
-                perPage={ size }
-                pagination={ {
+                data={data}
+                controllerRef={controllerRef}
+                errors={errors}
+                handleChangePage={handleChangePage}
+                handleChangePerPage={handleChangePerPage}
+                componentForEmpty={LoadNode}
+                totalElements={totalElements}
+                page={actualPage}
+                perPage={size}
+                pagination={{
                     rowsPerPage: 5,
                     clickable: !loading,
                     showFirstButton: true,
@@ -564,9 +564,9 @@ export const Crud = () => {
                             count !== -1 ? count : `more than ${to}`
                         }`
                     }
-                } }
-                rowViews={ rowViews }
-                columns={ columns }
+                }}
+                rowViews={rowViews}
+                columns={columns}
             />
         </>
     )

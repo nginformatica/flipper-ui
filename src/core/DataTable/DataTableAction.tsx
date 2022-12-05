@@ -13,11 +13,8 @@ export const DataTableAction = ({
     children,
     color = 'default',
     onClick
-}: DataTableActionProps) =>
-    <IconButton
-        size='small'
-        color={ color }
-        aria-label={ label }
-        onClick={ onClick }>
-        { children }
+}: DataTableActionProps) => (
+    <IconButton size='small' color={color} aria-label={label} onClick={onClick}>
+        {children}
     </IconButton>
+)

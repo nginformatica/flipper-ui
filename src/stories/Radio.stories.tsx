@@ -7,7 +7,7 @@ export default {
     component: Radio
 } as ComponentMeta<typeof Radio>
 
-const Template: ComponentStory<typeof Radio> = args => <Radio { ...args } />
+const Template: ComponentStory<typeof Radio> = args => <Radio {...args} />
 
 const commonArgs = {
     value: 'first',

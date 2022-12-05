@@ -57,7 +57,7 @@ interface EditableTableProps<T extends object> {
     onClickAdd?(): void
 }
 
-export type TSuggestion = { label: string, value: string }
+export type TSuggestion = { label: string; value: string }
 
 const AddRowButton = styled.div`
     display: flex;
@@ -86,18 +86,18 @@ const CustomRows = styled(MTableBodyRow)`
     transition: opacity 200ms ease;
     button {
         display: none;
-    };
+    }
     &:hover {
-        background: -moz-linear-gradient(left,${DARK} 0%, ${GREY} 100%);
-        background: -webkit-linear-gradient(left,${DARK} 0%,${GREY} 100%);
-        background: linear-gradient(to right,${DARK} 0%,${GREY} 100%);
-    };
+        background: -moz-linear-gradient(left, ${DARK} 0%, ${GREY} 100%);
+        background: -webkit-linear-gradient(left, ${DARK} 0%, ${GREY} 100%);
+        background: linear-gradient(to right, ${DARK} 0%, ${GREY} 100%);
+    }
     &:hover button {
         display: inline-block !important;
-    };
+    }
     td {
         min-width: 64px;
-    };
+    }
 `
 
 const RightPagination = styled.div`
@@ -113,103 +113,108 @@ const Wrapper = styled.div`
     }
 `
 const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
-    const addButtonColor = (props.color !== 'disabled' && props.color) || 'primary'
+    const addButtonColor =
+        (props.color !== 'disabled' && props.color) || 'primary'
     const valueRef = useRef<string | number>()
 
     const getErrors = (field: string) => contains(field, props.errors || [])
 
-    const renderMaskField = (item, error: boolean) =>
+    const renderMaskField = (item, error: boolean) => (
         <Wrapper>
             <MaskField
-                { ...item }
+                {...item}
                 fixedDecimalScale
-                error={ props.errors ? error : item.error }
+                error={props.errors ? error : item.error}
                 type='text'
                 thousandSeparator='.'
                 decimalSeparator=','
-                decimalScale={ 0 }
+                decimalScale={0}
                 // This approach was necessary to fix the problem with the
                 // state values of the inputs
-                value={ error ? valueRef.current : item.value ?? valueRef.current }
-                name={ item.columnDef.field + '-input' }
-                onChange={ event => {
+                value={
+                    error ? valueRef.current : item.value ?? valueRef.current
+                }
+                name={item.columnDef.field + '-input'}
+                onChange={event => {
                     item.onChange(event.target.value)
                     valueRef.current = event.target.value
-                } }
+                }}
             />
         </Wrapper>
+    )
 
     const renderAddComponent = (
         <AddRowButton data-id='add-row'>
             <IconAdd />
-            <AddRowText> Adicionar { props.title } </AddRowText>
+            <AddRowText> Adicionar {props.title} </AddRowText>
         </AddRowButton>
     )
 
     const pagination = !props.paginationInfo
-        ? { Pagination: (() => null) }
+        ? { Pagination: () => null }
         : props.noRowsExpand && {
-            Pagination: item =>
-                <RightPagination>
-                    <MTablePagination
-                        { ...omit(['classes'], item) }
-                        localization={ getLocalization(props.title).pagination }
-                    />
-                </RightPagination>
-        }
+              Pagination: item => (
+                  <RightPagination>
+                      <MTablePagination
+                          {...omit(['classes'], item)}
+                          localization={getLocalization(props.title).pagination}
+                      />
+                  </RightPagination>
+              )
+          }
 
-    const toolbar = props.noHeader && { Toolbar: (() => null) }
+    const toolbar = props.noHeader && { Toolbar: () => null }
 
-    const renderAutoComplete = inputProps =>
+    const renderAutoComplete = inputProps => (
         <AutoComplete
             openOnFocus
             selectTextOnFocus
-            value={ inputProps.value }
-            onChange={ inputProps.onChange }
-            suggestions={ props.autoCompleteSuggestions || [] }
-            renderSuggestion={ (item: TSuggestion, props, selected) =>
-                <ListItem
-                    key={ item.value }
-                    selected={ selected }
-                    { ...props }>
-                    { item.label }
+            value={inputProps.value}
+            onChange={inputProps.onChange}
+            suggestions={props.autoCompleteSuggestions || []}
+            renderSuggestion={(item: TSuggestion, props, selected) => (
+                <ListItem key={item.value} selected={selected} {...props}>
+                    {item.label}
                 </ListItem>
-            }
-            renderInput={ itemProps =>
+            )}
+            renderInput={itemProps => (
                 <TextField
                     fullWidth
-                    error={ getErrors(inputProps.columnDef.field) }
-                    name={ inputProps.columnDef.field + '-input' }
-                    { ...itemProps }
+                    error={getErrors(inputProps.columnDef.field)}
+                    name={inputProps.columnDef.field + '-input'}
+                    {...itemProps}
                 />
+            )}
+            actions={
+                props.onClickAdd && (
+                    <FullWidthButton
+                        color={addButtonColor}
+                        name='dialog-add'
+                        variant='dashed'
+                        onClick={props.onClickAdd}>
+                        <IconAdd />
+                        Adicionar
+                    </FullWidthButton>
+                )
             }
-            actions={ props.onClickAdd && (
-                <FullWidthButton
-                    color={ addButtonColor }
-                    name='dialog-add'
-                    variant='dashed'
-                    onClick={ props.onClickAdd }>
-                    <IconAdd />
-                    Adicionar
-                </FullWidthButton>
-            ) }
         />
+    )
 
     return (
-        <div style={ { width: '100%' } } >
+        <div style={{ width: '100%' }}>
             <MaterialTable
-                onRowClick={ props.onRowClick }
-                components={ {
-                    EditRow: props => <CustomRemove { ...props } />,
-                    Row: props => <CustomRows { ...props } />,
+                onRowClick={props.onRowClick}
+                components={{
+                    EditRow: props => <CustomRemove {...props} />,
+                    Row: props => <CustomRows {...props} />,
                     Toolbar: props => {
                         const [actions] = props.actions
 
                         return (
                             <MTableActions
-                                { ...props }
-                                actions={ [actions] }
-                                components={ { Action: props.components.Action } }
+                                {...props}
+                                actions={[actions]}
+                                components={{ Action: props.components.Action }}
                             />
                         )
                     },
@@ -223,62 +228,65 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                             return (
                                 <Button
                                     fullWidth
-                                    disabled={ props.disableAddHeader }
+                                    disabled={props.disableAddHeader}
                                     variant='dashed'
-                                    color={ localProps.color || 'primary' }
-                                    onClick={ () => {
+                                    color={localProps.color || 'primary'}
+                                    onClick={() => {
                                         localProps.action.onClick()
                                         valueRef.current = ''
-                                    }
-                                    }>
+                                    }}>
                                     <ActionIcon />
                                 </Button>
                             )
                         }
 
-                        const renderActionButton = () => <MTableAction
-                        disabled={ isDisabled }
-                        size={ size }
-                        data={ data }
-                        action={ localProps.action }
-                        />
+                        const renderActionButton = () => (
+                            <MTableAction
+                                disabled={isDisabled}
+                                size={size}
+                                data={data}
+                                action={localProps.action}
+                            />
+                        )
 
-                        const renderDefault = () => <MTableAction
+                        const renderDefault = () => (
+                            <MTableAction
                                 disabled
-                                action={ () => {} }
-                                size={ 0 }
-                                data={ [] }
-                        />
+                                action={() => {}}
+                                size={0}
+                                data={[]}
+                            />
+                        )
 
-                        const hasData =
-                            localProps => !!localProps.action && size && data
-                        const isToolbar =
-                            localProps =>
-                                localProps.action
-                                && 'position' in localProps.action
-                                && localProps.action.position === 'toolbar'
+                        const hasData = localProps =>
+                            !!localProps.action && size && data
+                        const isToolbar = localProps =>
+                            localProps.action &&
+                            'position' in localProps.action &&
+                            localProps.action.position === 'toolbar'
 
                         return cond([
                             [isToolbar, renderToolbarButton],
                             [hasData, renderActionButton],
                             [T, renderDefault]
                         ])(localProps)
-
                     },
                     EditField: localProps => {
                         if (localProps.columnDef.type === 'datetime') {
-
                             return (
                                 <DateTime
-                                    error={ props.errors
-                                        ? getErrors(localProps.columnDef.field)
-                                        : localProps.error
+                                    error={
+                                        props.errors
+                                            ? getErrors(
+                                                  localProps.columnDef.field
+                                              )
+                                            : localProps.error
                                     }
-                                    name={ localProps.columnDef.field + '-input' }
-                                    type={ localProps.columnDef.type }
-                                    value={ localProps.value }
-                                    locale={ ptBRLocale }
-                                    onChange={ localProps.onChange }
+                                    name={localProps.columnDef.field + '-input'}
+                                    type={localProps.columnDef.type}
+                                    value={localProps.value}
+                                    locale={ptBRLocale}
+                                    onChange={localProps.onChange}
                                 />
                             )
                         }
@@ -290,71 +298,74 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                         }
 
                         if (
-                            localProps.columnDef.field === props.autoCompleteField &&
+                            localProps.columnDef.field ===
+                                props.autoCompleteField &&
                             props.autoCompleteSuggestions
                         ) {
-
                             return renderAutoComplete(localProps)
                         }
 
-                        return <MTableEditField
-                            name={ localProps.columnDef.field + '-input' }
-                            { ...localProps }
-                        />
+                        return (
+                            <MTableEditField
+                                name={localProps.columnDef.field + '-input'}
+                                {...localProps}
+                            />
+                        )
                     },
                     ...pagination,
                     ...toolbar
-                } }
-                localization={ getLocalization(props.title) }
-                icons={ {
+                }}
+                localization={getLocalization(props.title)}
+                icons={{
                     Add: forwardRef(() => renderAddComponent),
-                    Delete: forwardRef(() =>
+                    Delete: forwardRef(() => (
                         <IconRemove
                             name='row-remove'
-                            color={ props.color || 'primary' }
+                            color={props.color || 'primary'}
                         />
-                    ),
-                    Check: forwardRef(() =>
+                    )),
+                    Check: forwardRef(() => (
                         <IconDone
                             name='confirm-row-edit'
-                            color={ props.color || 'primary' }
+                            color={props.color || 'primary'}
                         />
-                    ),
-                    Clear: forwardRef(() =>
+                    )),
+                    Clear: forwardRef(() => (
                         <IconClear
                             name='cancel-row-edit'
-                            color={ props.color || 'primary' }
+                            color={props.color || 'primary'}
                         />
-                    ),
-                    Edit: forwardRef(() =>
+                    )),
+                    Edit: forwardRef(() => (
                         <IconEdit
                             name='row-edit'
-                            color={ props.color || 'primary' }
+                            color={props.color || 'primary'}
                         />
-                    ),
-                    FirstPage: forwardRef(() =>
-                        <IconFirstPage color={ props.color || 'primary' } />
-                    ),
-                    PreviousPage: forwardRef(() =>
-                        <IconChevronLeft color={ props.color || 'primary' } />
-                    ),
-                    LastPage: forwardRef(() =>
-                        <LastPage color={ props.color || 'primary' } />
-                    ),
-                    NextPage: forwardRef(() =>
-                        <IconChevronRight color={ props.color || 'primary' } />)
-                } }
-                style={ {
+                    )),
+                    FirstPage: forwardRef(() => (
+                        <IconFirstPage color={props.color || 'primary'} />
+                    )),
+                    PreviousPage: forwardRef(() => (
+                        <IconChevronLeft color={props.color || 'primary'} />
+                    )),
+                    LastPage: forwardRef(() => (
+                        <LastPage color={props.color || 'primary'} />
+                    )),
+                    NextPage: forwardRef(() => (
+                        <IconChevronRight color={props.color || 'primary'} />
+                    ))
+                }}
+                style={{
                     display: 'flex',
                     border: '1px solid #CED4DE',
                     boxShadow: 'none',
                     height: props.noRowsExpand ? '270px' : undefined,
                     justifyContent: 'space-between',
                     flexDirection: 'column'
-                } }
-                columns={ props.columns || [] }
-                data={ props.data ?? [] }
-                options={ {
+                }}
+                columns={props.columns || []}
+                data={props.data ?? []}
+                options={{
                     search: false,
                     draggable: false,
                     sorting: false,
@@ -364,18 +375,19 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                     toolbarButtonAlignment: 'left',
                     padding: 'dense',
                     rowStyle: {
-                        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif;'
+                        fontFamily:
+                            '"Roboto", "Helvetica", "Arial", sans-serif;'
                     },
                     headerStyle: { borderBottom: '2px #CED4DE solid' },
                     ...props.options
-                } }
-                editable={ {
+                }}
+                editable={{
                     onRowUpdate: props.onUpdateRow,
                     onRowAdd: props.onAddRow,
                     onRowDelete: props.onDeleteRow,
                     onRowAddCancelled: props.onRowAddCancelled,
                     onRowUpdateCancelled: props.onRowUpdateCancelled
-                } }
+                }}
             />
         </div>
     )

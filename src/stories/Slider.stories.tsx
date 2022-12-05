@@ -7,9 +7,9 @@ export default {
     component: Slider
 } as ComponentMeta<typeof Slider>
 
-const Template: ComponentStory<typeof Slider> = args => <Slider { ...args } />
+const Template: ComponentStory<typeof Slider> = args => <Slider {...args} />
 
-export const Default = () => (<Slider />)
+export const Default = () => <Slider />
 
 export const Primary = Template.bind({})
 Primary.args = {
@@ -37,16 +37,20 @@ FixedLabel.args = {
 
 export const WithMarks = Template.bind({})
 WithMarks.args = {
-    marks: [{
-        value: 0,
-        label: 'Start'
-    } , {
-        value: 50,
-        label: 'You\'re half way'
-    }, {
-        value: 100,
-        label: 'Finish'
-    }],
+    marks: [
+        {
+            value: 0,
+            label: 'Start'
+        },
+        {
+            value: 50,
+            label: 'You\'re half way'
+        },
+        {
+            value: 100,
+            label: 'Finish'
+        }
+    ],
     valueLabelDisplay: 'on',
     value: [20, 75],
     children: 'Slider'

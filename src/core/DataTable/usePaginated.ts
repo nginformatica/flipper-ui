@@ -50,9 +50,10 @@ export const usePaginated = () => {
     const [state, setState] = useState<IPaginated<IDataProps>>(INITIAL_STATE)
     const [loading, setLoading] = useState(true)
 
-    const splitData = useMemo(() => splitEvery(state.size, mockData), [
-        state.size
-    ])
+    const splitData = useMemo(
+        () => splitEvery(state.size, mockData),
+        [state.size]
+    )
 
     useEffect(() => {
         setState(prev => ({ ...prev, totalItens: mockData.length }))

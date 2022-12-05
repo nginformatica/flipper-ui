@@ -25,11 +25,11 @@ export const Default = () => {
             <Button
                 color='primary'
                 variant='contained'
-                onClick={ handleClick }
-                style={ { marginRight: '3em' } }>
-                { label }
+                onClick={handleClick}
+                style={{ marginRight: '3em' }}>
+                {label}
             </Button>
-            <Grow in={ open } timeout={ { enter: 500, exit: 500 } }>
+            <Grow in={open} timeout={{ enter: 500, exit: 500 }}>
                 <span>I am open for discussions</span>
             </Grow>
         </>

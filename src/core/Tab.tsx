@@ -17,19 +17,14 @@ class Tab extends Component<TabProps> {
     }
 
     public render() {
-        const {
-            style,
-            margin,
-            disableRipple,
-            padding,
-            ...otherProps
-        } = this.props
+        const { style, margin, disableRipple, padding, ...otherProps } =
+            this.props
 
         return (
             <MuiTab
                 disableRipple
-                style={ { margin, padding, ...style } }
-                { ...otherProps }
+                style={{ margin, padding, ...style }}
+                {...otherProps}
             />
         )
     }

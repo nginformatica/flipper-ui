@@ -11,24 +11,24 @@ export default {
 
 export const Default = () => (
     <Autocomplete
-        options={ [
+        options={[
             { label: 'Anemone', value: 'forget-me-not' },
             { label: 'Forget me not', value: 'anemone' },
             { label: 'Snapdragon', value: 'snapdragon' },
             { label: 'Sunflower', value: 'sunflower' },
             { label: 'Rose', value: 'rose' }
-        ] }
-        getOptionLabel={ option => option.label }
-        style={ { width: 300 } }
-        renderInput={ props => (
+        ]}
+        getOptionLabel={option => option.label}
+        style={{ width: 300 }}
+        renderInput={props => (
             <TextField
-                { ...props }
+                {...props}
                 label='Flowers'
                 placeholder='Flowers'
                 variant='outlined'
                 fullWidth
             />
-        ) }
-        onChange={ () => null }
+        )}
+        onChange={() => null}
     />
 )

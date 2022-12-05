@@ -7,10 +7,11 @@ interface DividerProps extends DefaultProps {
     light?: boolean
 }
 
-const Divider: FC<DividerProps> = ({ margin, padding, style = {}, ...otherProps }) =>
-    <MuiDivider
-        { ...otherProps }
-        style={ { margin, padding, ...style } }
-    />
+const Divider: FC<DividerProps> = ({
+    margin,
+    padding,
+    style = {},
+    ...otherProps
+}) => <MuiDivider {...otherProps} style={{ margin, padding, ...style }} />
 
 export default Divider

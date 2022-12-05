@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import type { CSSProperties, FunctionComponent } from 'react'
 
-type RecordUnknown = Record<string,unknown>
+type RecordUnknown = Record<string, unknown>
 export type StackView = RecordUnknown
 export type Identifier = string | number
 
@@ -59,14 +59,19 @@ interface ColumnSpecActions<D extends Data>
     renderCell: FunctionComponent<ActionsCellProps<D>>
 }
 
-export type ColumnSpec<D extends Data> = ColumnSpecDefault<D> | ColumnSpecActions<D>
+export type ColumnSpec<D extends Data> =
+    | ColumnSpecDefault<D>
+    | ColumnSpecActions<D>
 
 export type PaginationOptions = {
     rowsPerPage: number
     labelRowsPerPage: string
-    labelDisplayedRows:
-        (param: { from: number, to: number, count: number }) => string
-    rowsPerPageOptions: number[],
+    labelDisplayedRows: (param: {
+        from: number
+        to: number
+        count: number
+    }) => string
+    rowsPerPageOptions: number[]
     showFirstButton?: boolean
     showLastButton?: boolean
     disabled: boolean
@@ -74,7 +79,7 @@ export type PaginationOptions = {
 }
 
 export type RowAction<D> = {
-    type: 'add' | 'delete' | 'update',
+    type: 'add' | 'delete' | 'update'
     data: D
 }
 
@@ -90,8 +95,10 @@ export type RowState<D extends Data, S extends StackView> = {
     editableState: Partial<D>
 }
 
-export type RowViewComponent<D> =
-    FunctionComponent<{ popRowView?: () => void, data: D }>
+export type RowViewComponent<D> = FunctionComponent<{
+    popRowView?: () => void
+    data: D
+}>
 
 export type DataTableController<D extends Data, V extends StackView> = {
     /**
@@ -113,7 +120,7 @@ export type DataTableController<D extends Data, V extends StackView> = {
     /**
      * Returns the edited properties and the old data of a row in edit mode
      */
-    getRowData(id: Identifier): { edited: PartialData<D>, current?: D }
+    getRowData(id: Identifier): { edited: PartialData<D>; current?: D }
     pushRowView(id: Identifier, view: keyof V): void
     popRowView(id: Identifier): void
 }

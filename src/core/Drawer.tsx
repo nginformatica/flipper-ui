@@ -1,4 +1,6 @@
-import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@material-ui/core/Drawer'
+import MuiDrawer, {
+    DrawerProps as MuiDrawerProps
+} from '@material-ui/core/Drawer'
 import React, { FC } from 'react'
 import { DefaultProps } from './types'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
@@ -30,13 +32,13 @@ const Drawer: FC<DrawerProps> = props => {
 
     return (
         <MuiDrawer
-            { ...otherProps }
-            classes={ {
+            {...otherProps}
+            classes={{
                 root: classes.drawer,
                 paper: classes.drawerPaper
-            } }
-            style={ { margin, padding, ...style } }>
-            { props.children }
+            }}
+            style={{ margin, padding, ...style }}>
+            {props.children}
         </MuiDrawer>
     )
 }

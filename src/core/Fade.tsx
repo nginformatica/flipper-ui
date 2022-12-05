@@ -4,7 +4,7 @@ import { DefaultProps } from './types'
 
 interface FadeProps extends DefaultProps {
     in: boolean
-    timeout?: number | { enter?: number, exit?: number }
+    timeout?: number | { enter?: number; exit?: number }
     children?: React.ReactElement<{}>
 }
 
@@ -14,11 +14,10 @@ const Fade = ({
     margin,
     style = {},
     ...otherProps
-}: FadeProps) =>
-    <MuiFade
-        style={ { padding, margin, ...style } }
-        { ...otherProps }>
-        { children }
+}: FadeProps) => (
+    <MuiFade style={{ padding, margin, ...style }} {...otherProps}>
+        {children}
     </MuiFade>
+)
 
 export default Fade

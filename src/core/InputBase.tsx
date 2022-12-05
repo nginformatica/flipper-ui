@@ -31,11 +31,12 @@ const InputAdornment: FC<InputAdornmentProps> = ({
     style = {},
     autoComplete = 'off',
     ...otherProps
-}) =>
+}) => (
     <MuiInputBase
-        autoComplete={ autoComplete }
-        { ...otherProps }
-        style={ { padding, margin, ...style } }
+        autoComplete={autoComplete}
+        {...otherProps}
+        style={{ padding, margin, ...style }}
     />
+)
 
 export default InputAdornment

@@ -12,7 +12,7 @@ export default {
     }
 } as ComponentMeta<typeof Chip>
 
-const Template: ComponentStory<typeof Chip> = args => <Chip { ...args } />
+const Template: ComponentStory<typeof Chip> = args => <Chip {...args} />
 
 const commonArgs = {
     label: 'Hello darkness my old friend',
@@ -39,13 +39,17 @@ WithInitialsAvatar.args = {
 export const WithIconAvatar = Template.bind({})
 WithIconAvatar.args = {
     ...commonArgs,
-    avatar: <Avatar><FaceIcon /></Avatar>
+    avatar: (
+        <Avatar>
+            <FaceIcon />
+        </Avatar>
+    )
 }
 
 export const WithImageAvatar = Template.bind({})
 WithImageAvatar.args = {
     ...commonArgs,
-    avatar: <Avatar src='https://picsum.photos/40'/>
+    avatar: <Avatar src='https://picsum.photos/40' />
 }
 
 export const SecondaryColor = Template.bind({})

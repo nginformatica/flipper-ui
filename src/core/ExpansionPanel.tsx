@@ -29,7 +29,7 @@ const ExpansionPanelHeaderWrapper = styled.div`
     flex-direction: rows;
     align-items: center;
     button {
-        display: none;  
+        display: none;
     }
     :hover button {
         display: flex;
@@ -52,7 +52,6 @@ const ExpansionPanel: FC<ExpansionPanelProps> = ({
     helperButtonPosition = 'right',
     ...otherProps
 }) => {
-
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
         if (onHelperClick) {
             event.stopPropagation()
@@ -62,49 +61,41 @@ const ExpansionPanel: FC<ExpansionPanelProps> = ({
 
     const renderHelper = (
         <>
-            {
-                onHelperClick && (
-                    <HelperBox
-                        helperIcon={ helperIcon }
-                        onHelperClick={ handleClick }
-                    />
-                )
-            }
+            {onHelperClick && (
+                <HelperBox
+                    helperIcon={helperIcon}
+                    onHelperClick={handleClick}
+                />
+            )}
         </>
     )
 
     return (
         <MuiExpansionPanel
-            { ...otherProps }
-            style={ { margin, padding, ...style } }>
-            {
-                summary && (
-                    <MuiExpansionPanelSummary
-                        expandIcon={ expandIcon }
-                        style={ summaryStyle }>
-                        <ExpansionPanelHeaderWrapper>
-                            { helperButtonPosition === 'left' && renderHelper }
-                            { summary }
-                            { helperButtonPosition === 'right' && renderHelper }
-                        </ExpansionPanelHeaderWrapper>
-                    </MuiExpansionPanelSummary>
-                )
-            }
-            {
-                details && (
-                    <MuiExpansionPanelDetails style={ detailsStyle }>
-                        { details }
-                    </MuiExpansionPanelDetails>
-                )
-            }
-            {
-                actions && (
-                    <MuiExpansionPanelActions style={ actionsStyle }>
-                        { actions }
-                    </MuiExpansionPanelActions>
-                )
-            }
-        </MuiExpansionPanel >
+            {...otherProps}
+            style={{ margin, padding, ...style }}>
+            {summary && (
+                <MuiExpansionPanelSummary
+                    expandIcon={expandIcon}
+                    style={summaryStyle}>
+                    <ExpansionPanelHeaderWrapper>
+                        {helperButtonPosition === 'left' && renderHelper}
+                        {summary}
+                        {helperButtonPosition === 'right' && renderHelper}
+                    </ExpansionPanelHeaderWrapper>
+                </MuiExpansionPanelSummary>
+            )}
+            {details && (
+                <MuiExpansionPanelDetails style={detailsStyle}>
+                    {details}
+                </MuiExpansionPanelDetails>
+            )}
+            {actions && (
+                <MuiExpansionPanelActions style={actionsStyle}>
+                    {actions}
+                </MuiExpansionPanelActions>
+            )}
+        </MuiExpansionPanel>
     )
 }
 

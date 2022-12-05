@@ -13,10 +13,10 @@ export const Default = () => (
         paginationInfo
         noRowsExpand
         disableAddHeader
-        onAddRow={ item => Promise.resolve(console.log(item)) }
-        onRowClick={ () => window.alert('hello') }
+        onAddRow={item => Promise.resolve(console.log(item))}
+        onRowClick={() => window.alert('hello')}
         title='adicionar'
-        columns={ [
+        columns={[
             {
                 title: 'Leitura',
                 field: 'readAt',
@@ -36,20 +36,20 @@ export const Default = () => (
                 editable: 'never',
                 initialEditValue: 'Manual'
             }
-        ] }
-        data={ [
+        ]}
+        data={[
             {
                 readAt: new Date('07/01/2019 17:21'),
                 position: 7000,
                 origin: (
                     <div
-                        style={ {
+                        style={{
                             maxWidth: '100px',
                             width: '80%',
                             backgroundColor: 'green',
                             borderRadius: 10,
                             textAlign: 'center'
-                        } }>
+                        }}>
                         80%
                     </div>
                 )
@@ -79,7 +79,7 @@ export const Default = () => (
                 position: 8000,
                 origin: 'S.0. 018771'
             }
-        ] }
+        ]}
     />
 )
 
@@ -87,16 +87,16 @@ export const WithAutocomplete = () => (
     <EditableTable
         noHeader
         title='adicionar'
-        autoCompleteSuggestions={ [
+        autoCompleteSuggestions={[
             { label: 'other values', value: '123456' },
             { label: 'only values', value: '10000' },
             { label: 'some values', value: '5000' },
             { label: 'any values', value: '12' }
-        ] }
+        ]}
         autoCompleteField='listValues'
-        onUpdateRow={ () => Promise.resolve() }
-        onClickAdd={ () => window.alert('hello') }
-        columns={ [
+        onUpdateRow={() => Promise.resolve()}
+        onClickAdd={() => window.alert('hello')}
+        columns={[
             {
                 title: 'values',
                 field: 'listValues',
@@ -108,8 +108,8 @@ export const WithAutocomplete = () => (
                 field: 'position',
                 type: 'numeric'
             }
-        ] }
-        data={ [
+        ]}
+        data={[
             {
                 listValues: 'some values',
                 autoComplete: { value: '1', label: 'some values' },
@@ -120,6 +120,6 @@ export const WithAutocomplete = () => (
                 autoComplete: { value: '2', label: 'any values' },
                 position: 6740
             }
-        ] }
+        ]}
     />
 )

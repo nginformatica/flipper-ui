@@ -59,21 +59,19 @@ interface ISelected {
 
 type TSelected = ISelected | string
 
-const removeAccents = (text: string) => text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+const removeAccents = (text: string) =>
+    text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
 const AutoComplete: FC<AutoCompleteProps> = props => {
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const index = props.suggestions
-        .findIndex(suggestion => {
-            if (props.value && typeof props.value === 'object') {
-                return props.value.value === suggestion.value
-            }
+    const index = props.suggestions.findIndex(suggestion => {
+        if (props.value && typeof props.value === 'object') {
+            return props.value.value === suggestion.value
+        }
 
-            return false
-        })
+        return false
+    })
 
     const [highlighted, setHighlighted] = useState(Math.max(0, index))
     const [open, setOpen] = useState(Boolean(props.defaultIsOpen))
@@ -100,9 +98,8 @@ const AutoComplete: FC<AutoCompleteProps> = props => {
         }
     }, [])
 
-    const inputValue = typeof props.value === 'object'
-        ? props.value.label
-        : props.value || ''
+    const inputValue =
+        typeof props.value === 'object' ? props.value.label : props.value || ''
 
     const handleSelect = (item: TSelected) => {
         if (typeof item === 'object' && item.subheader) {
@@ -118,29 +115,26 @@ const AutoComplete: FC<AutoCompleteProps> = props => {
             return props.suggestions
         }
 
-        const items = value
-            ? props.suggestions
-            : []
+        const items = value ? props.suggestions : []
 
-        return items
-            .filter(item => {
-                if (!item.subheader) {
-                    return props.caseSensitive
-                        ? removeAccents(item.label)
-                            .includes(removeAccents(value))
-                        : removeAccents(item.label)
-                            .toLocaleLowerCase()
-                            .includes(removeAccents(value).toLocaleLowerCase())
-                }
+        return items.filter(item => {
+            if (!item.subheader) {
+                return props.caseSensitive
+                    ? removeAccents(item.label).includes(removeAccents(value))
+                    : removeAccents(item.label)
+                          .toLocaleLowerCase()
+                          .includes(removeAccents(value).toLocaleLowerCase())
+            }
 
-                return true
-            })
+            return true
+        })
     }
 
     useEffect(() => {
-        const isFocused = inputRef && inputRef.current
-            ? document.activeElement === inputRef.current
-            : false
+        const isFocused =
+            inputRef && inputRef.current
+                ? document.activeElement === inputRef.current
+                : false
 
         const isSearching = props.value && typeof props.value === 'string'
 
@@ -153,10 +147,10 @@ const AutoComplete: FC<AutoCompleteProps> = props => {
 
     const getPaperPosition = () => {
         if (inputRef.current !== null) {
-            const height = props.maxHeight || (getSuggestions().length * 48)
+            const height = props.maxHeight || getSuggestions().length * 48
             const { top } = inputRef.current.getBoundingClientRect()
 
-            if ((top + height) > window.innerHeight) {
+            if (top + height > window.innerHeight) {
                 return 'above'
             }
         }
@@ -208,44 +202,43 @@ const AutoComplete: FC<AutoCompleteProps> = props => {
         const paperStyle: CSSProperties = {
             position: 'absolute',
             width: inputRef.current ? inputRef.current.offsetWidth : 256,
-            bottom: getPaperPosition() === 'above' && inputRef.current
-                ? inputRef.current.getBoundingClientRect().height + 1
-                : undefined,
+            bottom:
+                getPaperPosition() === 'above' && inputRef.current
+                    ? inputRef.current.getBoundingClientRect().height + 1
+                    : undefined,
             zIndex: 1099
         }
 
         return (
-            <Paper square style={ paperStyle }>
-                <div style={ { overflow: 'auto', maxHeight: props.maxHeight } }>
-                    {
-                        getSuggestions().map((suggestion, index) =>
-                            <Fragment key={ index }>
-                                {
-                                    props.renderSuggestion(
-                                        suggestion,
-                                        getItemProps(suggestion),
-                                        highlighted === index
-                                    )
-                                }
-                            </Fragment>
-                        )
-                    }
+            <Paper square style={paperStyle}>
+                <div style={{ overflow: 'auto', maxHeight: props.maxHeight }}>
+                    {getSuggestions().map((suggestion, index) => (
+                        <Fragment key={index}>
+                            {props.renderSuggestion(
+                                suggestion,
+                                getItemProps(suggestion),
+                                highlighted === index
+                            )}
+                        </Fragment>
+                    ))}
                 </div>
-                { props.actions }
+                {props.actions}
             </Paper>
         )
     }
 
-    const renderPaper = () => props.fade
-        ? (
-            <Fade in={ open }>
-                { renderSuggestions() }
-            </Fade>
+    const renderPaper = () =>
+        props.fade ? (
+            <Fade in={open}>{renderSuggestions()}</Fade>
+        ) : (
+            renderSuggestions()
         )
-        : renderSuggestions()
 
     const handleNavigate = (event: KeyboardEvent) => {
-        if (event.key === 'ArrowDown' && highlighted < getSuggestions().length - 1) {
+        if (
+            event.key === 'ArrowDown' &&
+            highlighted < getSuggestions().length - 1
+        ) {
             setHighlighted(highlighted + 1)
         } else if (event.key === 'ArrowUp' && highlighted > 0) {
             setHighlighted(highlighted - 1)
@@ -259,23 +252,21 @@ const AutoComplete: FC<AutoCompleteProps> = props => {
 
     return (
         <div
-            style={ {
+            style={{
                 position: 'relative',
                 ...props.style
-            } }>
-            {
-                props.renderInput({
-                    value: inputValue,
-                    inputProps: {
-                        ref: inputRef
-                    },
-                    onChange: handleChange,
-                    onFocus: handleFocus,
-                    onBlur: handleBlur,
-                    onKeyDown: handleNavigate
-                })
-            }
-            { open && renderPaper() }
+            }}>
+            {props.renderInput({
+                value: inputValue,
+                inputProps: {
+                    ref: inputRef
+                },
+                onChange: handleChange,
+                onFocus: handleFocus,
+                onBlur: handleBlur,
+                onKeyDown: handleNavigate
+            })}
+            {open && renderPaper()}
         </div>
     )
 }

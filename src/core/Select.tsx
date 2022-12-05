@@ -27,8 +27,8 @@ const iconStyle = {
 
 const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end'>
-        <IconButton onClick={ onClear } size='small'>
-            <Clear style={ { fontSize: '15px' } } />
+        <IconButton onClick={onClear} size='small'>
+            <Clear style={{ fontSize: '15px' }} />
         </IconButton>
     </InputAdornment>
 )
@@ -62,15 +62,15 @@ const Select: FC<SelectProps> = ({
 
     return (
         <MuiSelect
-            { ...endAdornment }
-            variant={ variant as 'outlined' }
-            classes={ {
+            {...endAdornment}
+            variant={variant as 'outlined'}
+            classes={{
                 root: classes.root,
                 icon: classes.iconOutlined
-            } }
-            style={ { margin, padding, ...style } }
-            { ...otherProps }>
-            { children }
+            }}
+            style={{ margin, padding, ...style }}
+            {...otherProps}>
+            {children}
         </MuiSelect>
     )
 }

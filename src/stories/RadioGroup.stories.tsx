@@ -12,19 +12,20 @@ export const Default = () => {
 
     return (
         <RadioGroup
-            value= { option }
+            value={option}
             title='My options'
             name='options'
-            options={
-                [{
+            options={[
+                {
                     label: 'First option',
                     value: 'first'
-                }, {
+                },
+                {
                     label: 'Second Option',
                     value: 'second'
-                }]
-            }
-            onChange={ event => ( setOption(event.target.value) ) }
+                }
+            ]}
+            onChange={event => setOption(event.target.value)}
         />
     )
 }

@@ -107,16 +107,16 @@ export const useStyles = makeStyles({
 
 export const HelperBox = (props: IHelperProps) => (
     <Helper>
-        <IconButton padding='6px 2px' onClick={ props.onHelperClick }>
-            { props.helperIcon || <ContactSupportIcon color='primary' /> }
+        <IconButton padding='6px 2px' onClick={props.onHelperClick}>
+            {props.helperIcon || <ContactSupportIcon color='primary' />}
         </IconButton>
     </Helper>
 )
 
 const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end'>
-        <MuiButton onClick={ onClear } size='small'>
-            <Clear style={ { fontSize: '15px' } } />
+        <MuiButton onClick={onClear} size='small'>
+            <Clear style={{ fontSize: '15px' }} />
         </MuiButton>
     </InputAdornment>
 )
@@ -167,23 +167,23 @@ const TextField: FC<TextFieldProps> = ({
     return (
         <Wrapper>
             <MuiTextField
-                fullWidth={ fullWidth }
-                autoComplete={ autoComplete }
-                error={ error }
-                variant={ variant as 'outlined' }
-                style={ {
+                fullWidth={fullWidth}
+                autoComplete={autoComplete}
+                error={error}
+                variant={variant as 'outlined'}
+                style={{
                     margin,
                     padding,
                     ...style
-                } }
-                InputLabelProps={ {
+                }}
+                InputLabelProps={{
                     classes: {
                         outlined:
                             variant === 'outlined' ? classes.outlinedLabel : ''
                     },
                     ...InputLabelProps
-                } }
-                InputProps={ {
+                }}
+                InputProps={{
                     classes: {
                         input:
                             variant === 'outlined' ? classes.outlinedInput : '',
@@ -193,8 +193,8 @@ const TextField: FC<TextFieldProps> = ({
                                 : ''
                     },
                     ...InputProps
-                } }
-                SelectProps={ {
+                }}
+                SelectProps={{
                     classes: {
                         iconOutlined: hasClear
                             ? clearClass.iconOutlined
@@ -202,15 +202,15 @@ const TextField: FC<TextFieldProps> = ({
                     },
                     ...endAdornment,
                     ...SelectProps
-                } }
-                { ...otherProps }
+                }}
+                {...otherProps}
             />
-            { onHelperClick && (
+            {onHelperClick && (
                 <HelperBox
-                    helperIcon={ helperIcon }
-                    onHelperClick={ handleClick }
+                    helperIcon={helperIcon}
+                    onHelperClick={handleClick}
                 />
-            ) }
+            )}
         </Wrapper>
     )
 }

@@ -9,7 +9,6 @@ export default {
 } as ComponentMeta<typeof Snackbar>
 
 const Template: ComponentStory<typeof Snackbar> = args => {
-
     const [btnState, setBtnState] = useState(false)
     const [open, setOpen] = useState(false)
 
@@ -26,14 +25,14 @@ const Template: ComponentStory<typeof Snackbar> = args => {
     return (
         <>
             <Button
-                disabled={ btnState }
-                style={ { marginRight: '3em' } }
+                disabled={btnState}
+                style={{ marginRight: '3em' }}
                 variant='contained'
                 color='primary'
-                onClick={ handleClick }>
+                onClick={handleClick}>
                 Open
             </Button>
-            <Snackbar { ...args } open={ open } onClose={ handleClose } />
+            <Snackbar {...args} open={open} onClose={handleClose} />
         </>
     )
 }

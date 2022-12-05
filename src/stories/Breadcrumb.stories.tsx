@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof Breadcrumb>
 
 const Template: ComponentStory<typeof Breadcrumb> = args => (
-    <Breadcrumb { ...args } />
+    <Breadcrumb {...args} />
 )
 
 export const Default = Template.bind({})

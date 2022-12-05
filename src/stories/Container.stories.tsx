@@ -7,6 +7,4 @@ export default {
     component: Container
 } as ComponentMeta<typeof Container>
 
-export const Default = () => (
-    <Container>I am a Container</Container>
-)
+export const Default = () => <Container>I am a Container</Container>

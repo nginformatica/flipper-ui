@@ -19,8 +19,8 @@ const Template: ComponentStory<typeof Menu> = args => {
 
     return (
         <>
-            <Button onClick={ handleClick }>Menu</Button>
-            <Menu { ...args } open={ open } onClick={ handleClick } />
+            <Button onClick={handleClick}>Menu</Button>
+            <Menu {...args} open={open} onClick={handleClick} />
         </>
     )
 }
@@ -31,14 +31,14 @@ Default.args = {
     title: 'My beautiful Menu"',
     children: (
         <>
-            <ListItem icon={ <IconBackup /> } title='Menu 1' />
-            <ListItem icon={ <IconBackup /> } title='Menu 2' />
-            <ListItem icon={ <IconBackup /> } title='Menu 3' />
-            <ListItem icon={ <IconBackup /> } title='Menu 4' />
-            <ListItem icon={ <IconBackup /> } title='Menu 5' />
-            <ListItem icon={ <IconBackup /> } title='Menu 6' />
-            <ListItem icon={ <IconBackup /> } title='Menu 7' />
-            <ListItem icon={ <IconBackup /> } title='Menu 8' />
+            <ListItem icon={<IconBackup />} title='Menu 1' />
+            <ListItem icon={<IconBackup />} title='Menu 2' />
+            <ListItem icon={<IconBackup />} title='Menu 3' />
+            <ListItem icon={<IconBackup />} title='Menu 4' />
+            <ListItem icon={<IconBackup />} title='Menu 5' />
+            <ListItem icon={<IconBackup />} title='Menu 6' />
+            <ListItem icon={<IconBackup />} title='Menu 7' />
+            <ListItem icon={<IconBackup />} title='Menu 8' />
         </>
     )
 }

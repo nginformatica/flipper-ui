@@ -14,14 +14,14 @@ export const Default = () => {
 
     return (
         <>
-            <Button onClick={ () => setOpen(true) }>Open dialog</Button>
+            <Button onClick={() => setOpen(true)}>Open dialog</Button>
             <Dialog
-                open={ open }
+                open={open}
                 title='My beautiful Dialog'
-                text={ 'Isn\'t it?' }
-                onClose={ () => setOpen(false) }
+                text={'Isn\'t it?'}
+                onClose={() => setOpen(false)}
                 actions={
-                    <Button onClick={ () => setOpen(false) }>Close dialog</Button>
+                    <Button onClick={() => setOpen(false)}>Close dialog</Button>
                 }
             />
         </>
@@ -37,14 +37,14 @@ export const WithAlertOnClose = () => {
 
     return (
         <>
-            <Button onClick={ () => setOpen(true) }>Open dialog</Button>
+            <Button onClick={() => setOpen(true)}>Open dialog</Button>
             <Dialog
-                open={ open }
+                open={open}
                 title='My beautiful Dialog'
-                text={ 'Isn\'t it?' }
-                onClose={ handleClose }
+                text={'Isn\'t it?'}
+                onClose={handleClose}
                 actions={
-                    <Button onClick={ () => setOpen(false) }>Close dialog</Button>
+                    <Button onClick={() => setOpen(false)}>Close dialog</Button>
                 }
             />
         </>
@@ -56,18 +56,18 @@ export const WithTypography = () => {
 
     return (
         <>
-            <Button onClick={ () => setOpen(true) }>Open dialog</Button>
+            <Button onClick={() => setOpen(true)}>Open dialog</Button>
             <Dialog
-                open={ open }
+                open={open}
                 title={
                     <Typography color='primary'>
                         Title with Typography
                     </Typography>
                 }
                 text='Simple Text'
-                onClose={ () => setOpen(false) }
+                onClose={() => setOpen(false)}
                 actions={
-                    <Button onClick={ () => setOpen(false) }>Close dialog</Button>
+                    <Button onClick={() => setOpen(false)}>Close dialog</Button>
                 }
             />
         </>

@@ -19,7 +19,9 @@ interface IProps {
     type?: 'date' | 'time' | 'datetime'
     inputProps?: object
     onAuxClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
-    onAuxClickCapture?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
+    onAuxClickCapture?(
+        event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    ): void
     onChange(date: MaterialUiPickersDate | null, value?: string): void
 }
 
@@ -29,12 +31,11 @@ const DEFAULT_FORMATS = {
     datetime: 'dd/MM/yyyy HH:mm'
 }
 
-type DateTimeProps =
-    & Omit<KeyboardDatePickerProps, 'margin' | 'onChange'>
-    & Omit<KeyboardDateTimePickerProps, 'margin' | 'onChange'>
-    & Omit<KeyboardTimePickerProps, 'margin' | 'onChange'>
-    & IProps
-    & DefaultProps
+type DateTimeProps = Omit<KeyboardDatePickerProps, 'margin' | 'onChange'> &
+    Omit<KeyboardDateTimePickerProps, 'margin' | 'onChange'> &
+    Omit<KeyboardTimePickerProps, 'margin' | 'onChange'> &
+    IProps &
+    DefaultProps
 
 const DateTime: FC<DateTimeProps> = ({
     padding,
@@ -73,36 +74,32 @@ const DateTime: FC<DateTimeProps> = ({
         },
         InputLabelProps: {
             classes: {
-                outlined: inputVariant === 'outlined'
-                    ? classes.outlinedLabel
-                    : ''
+                outlined:
+                    inputVariant === 'outlined' ? classes.outlinedLabel : ''
             },
             ...otherProps.InputLabelProps
         },
         InputProps: {
             classes: {
-                input: inputVariant === 'outlined'
-                    ? classes.outlinedInput
-                    : '',
-                multiline: inputVariant === 'outlined'
-                    ? classes.outlinedMultiline
-                    : ''
+                input: inputVariant === 'outlined' ? classes.outlinedInput : '',
+                multiline:
+                    inputVariant === 'outlined' ? classes.outlinedMultiline : ''
             },
             ...otherProps.InputProps
         }
     }
 
-    const renderDatePicker = () => <KeyboardDatePicker { ...fieldProps } />
-    const renderTimePicker = () => <KeyboardTimePicker { ...fieldProps } />
-    const renderDateTimePicker = () => <KeyboardDateTimePicker { ...fieldProps } />
+    const renderDatePicker = () => <KeyboardDatePicker {...fieldProps} />
+    const renderTimePicker = () => <KeyboardTimePicker {...fieldProps} />
+    const renderDateTimePicker = () => (
+        <KeyboardDateTimePicker {...fieldProps} />
+    )
 
     return (
-        <MuiPickersUtilsProvider
-            utils={ DateFnsUtils }
-            locale={ locale }>
-            { type === 'date' && renderDatePicker() }
-            { type === 'time' && renderTimePicker() }
-            { type === 'datetime' && renderDateTimePicker() }
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={locale}>
+            {type === 'date' && renderDatePicker()}
+            {type === 'time' && renderTimePicker()}
+            {type === 'datetime' && renderDateTimePicker()}
         </MuiPickersUtilsProvider>
     )
 }

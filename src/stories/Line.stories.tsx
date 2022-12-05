@@ -7,7 +7,7 @@ export default {
     component: Line
 } as ComponentMeta<typeof Line>
 
-const Template: ComponentStory<typeof Line> = args => <Line { ...args } />
+const Template: ComponentStory<typeof Line> = args => <Line {...args} />
 
 export const Default = Template.bind({})
 

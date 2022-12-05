@@ -47,7 +47,7 @@ export type DataTableProps<D extends Data, V extends StackView = {}> = {
     /**
      * Per page value
      */
-     perPage: number
+    perPage: number
     /**
      * Change page handler
      */
@@ -101,12 +101,15 @@ export type DataTableProps<D extends Data, V extends StackView = {}> = {
     /**
      * A React MutableRefObject for the row controller
      */
-    controllerRef?: MutableRefObject<DataTableController<D,V>|undefined>
+    controllerRef?: MutableRefObject<DataTableController<D, V> | undefined>
     /**
      * Custom rowViews used as a Stac
      */
     rowViews?: Record<keyof V, RowViewComponent<D>>
-    onRowClick?: (event: React.MouseEvent<HTMLTableRowElement>, rowData: D) => void
+    onRowClick?: (
+        event: React.MouseEvent<HTMLTableRowElement>,
+        rowData: D
+    ) => void
 }
 
 const defaultPagination: PaginationOptions = {
@@ -123,7 +126,7 @@ const defaultPagination: PaginationOptions = {
 }
 
 export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
-    props: DataTableProps<D,V>
+    props: DataTableProps<D, V>
 ) => {
     const pagination = { ...defaultPagination, ...props.pagination }
     const {
@@ -147,7 +150,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         hiddenRowHeight
     } = props
 
-    const [newRow,setNewRow] = useState<PartialData<D> | undefined>()
+    const [newRow, setNewRow] = useState<PartialData<D> | undefined>()
 
     const rows = useMemo(() => {
         if (pagination.disabled) {
@@ -163,12 +166,12 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         setRowState,
         pushRowView,
         popRowView
-    } = useRowsState<D,V>(rows,newRow)
+    } = useRowsState<D, V>(rows, newRow)
 
-    const controller = useRef<DataTableController<D,V>>()
+    const controller = useRef<DataTableController<D, V>>()
 
     useEffect(() => {
-        const nextController: DataTableController<D,V> = {
+        const nextController: DataTableController<D, V> = {
             editRow: id => {
                 setRowState(id, { mode: RowMode.Edit })
             },
@@ -198,61 +201,61 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         if (controllerRef) {
             controllerRef.current = nextController
         }
-    },[setRowState, pushRowView, popRowView, getRowState, controllerRef])
+    }, [setRowState, pushRowView, popRowView, getRowState, controllerRef])
 
-    const rowsList = useMemo(() => (
-        rows.map(row => {
-            const rowState = getRowState(row.id)
-            const lastView =
-                rowState?.stackView && last(rowState.stackView)
-            const view = lastView && rowViews?.[lastView]
-            const mode = rowState?.mode || RowMode.View
+    const rowsList = useMemo(
+        () =>
+            rows.map(row => {
+                const rowState = getRowState(row.id)
+                const lastView = rowState?.stackView && last(rowState.stackView)
+                const view = lastView && rowViews?.[lastView]
+                const mode = rowState?.mode || RowMode.View
 
-            return (
-                <TableRow
-                    key={ row.id }
-                    data-id={ row.id }
-                    style={ bodyRowStyle }
-                    onClick={ event => onRowClick?.(event,row) } >
-                    { view
-                        ? view({ data: row })
-                        : (
+                return (
+                    <TableRow
+                        key={row.id}
+                        data-id={row.id}
+                        style={bodyRowStyle}
+                        onClick={event => onRowClick?.(event, row)}>
+                        {view ? (
+                            view({ data: row })
+                        ) : (
                             <StatefulRow
-                                columns={ columns }
-                                data={ row }
-                                errors={ errors }
-                                mode={ mode }
-                                onUpdate={
-                                    setEditableRowState(row.id)
-                                }
+                                columns={columns}
+                                data={row}
+                                errors={errors}
+                                mode={mode}
+                                onUpdate={setEditableRowState(row.id)}
                             />
-                        )
-                    }
-                </TableRow>
-            )
-        })
-    ),[
-        rows,
-        getRowState,
-        onRowClick,
-        setEditableRowState,
-        errors,
-        rowViews,
-        bodyRowStyle,
-        columns
-    ])
+                        )}
+                    </TableRow>
+                )
+            }),
+        [
+            rows,
+            getRowState,
+            onRowClick,
+            setEditableRowState,
+            errors,
+            rowViews,
+            bodyRowStyle,
+            columns
+        ]
+    )
 
-    const columnsList = useMemo(() => (
-        columns.map(column => (
-            <TableCell
-                key={ column.title }
-                variant='head'
-                style={ column.headerStyle }
-                align={ column.align }>
-                { column.title }
-            </TableCell>
-        ))
-    ), [columns])
+    const columnsList = useMemo(
+        () =>
+            columns.map(column => (
+                <TableCell
+                    key={column.title}
+                    variant='head'
+                    style={column.headerStyle}
+                    align={column.align}>
+                    {column.title}
+                </TableCell>
+            )),
+        [columns]
+    )
 
     const currentRowsNumber = rows.length + (newRow ? 1 : 0)
 
@@ -261,80 +264,87 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         : perPage - currentRowsNumber
 
     const hiddenRowFiller = hiddenRowsNumber !== 0 && (
-        <TableRow style={ bodyRowStyle }>
+        <TableRow style={bodyRowStyle}>
             <TableCell
-                colSpan={ columns.length }
+                colSpan={columns.length}
                 padding='none'
-                style={ {
+                style={{
                     height:
-                        hiddenRowHeight && `${hiddenRowHeight * hiddenRowsNumber}px`
-                } }>
-            </TableCell>
+                        hiddenRowHeight &&
+                        `${hiddenRowHeight * hiddenRowsNumber}px`
+                }}></TableCell>
         </TableRow>
     )
 
     const rowsElements = (
         <>
-            { newRow?.id && (
+            {newRow?.id && (
                 <NewRow
-                    data={ newRow }
-                    errors={ errors }
-                    columns={ columns }
-                    onUpdate={ setEditableRowState(newRow.id) }
+                    data={newRow}
+                    errors={errors}
+                    columns={columns}
+                    onUpdate={setEditableRowState(newRow.id)}
                 />
-            ) }
-            { rowsList }
+            )}
+            {rowsList}
         </>
     )
 
-    const paginationActionsComponent = useMemo(() =>
-        makeDataTablePaginationActions({
-            showFirstButton: pagination.showFirstButton,
-            showLastButton: pagination.showLastButton,
-            clickable: !pagination.clickable
-       })
-    , [pagination.showFirstButton, pagination.showLastButton, pagination.clickable])
+    const paginationActionsComponent = useMemo(
+        () =>
+            makeDataTablePaginationActions({
+                showFirstButton: pagination.showFirstButton,
+                showLastButton: pagination.showLastButton,
+                clickable: !pagination.clickable
+            }),
+        [
+            pagination.showFirstButton,
+            pagination.showLastButton,
+            pagination.clickable
+        ]
+    )
 
     return (
-        <TableContainer component={ Paper }>
+        <TableContainer component={Paper}>
             <Table>
-                { !noHeader && (
-                    <TableHead style={ headStyle }>
-                        <TableRow style={ headRowStyle }>{ columnsList }</TableRow>
+                {!noHeader && (
+                    <TableHead style={headStyle}>
+                        <TableRow style={headRowStyle}>{columnsList}</TableRow>
                     </TableHead>
-                ) }
-                <TableBody style={ bodyStyle }>
-                    {
-                        currentRowsNumber === 0
-                            || !pagination.clickable
-                            ? componentForEmpty
-                                : rowsElements }
-                    { hiddenRowFiller }
-
+                )}
+                <TableBody style={bodyStyle}>
+                    {currentRowsNumber === 0 || !pagination.clickable
+                        ? componentForEmpty
+                        : rowsElements}
+                    {hiddenRowFiller}
                 </TableBody>
-                { !pagination.disabled && (
+                {!pagination.disabled && (
                     <TableFooter>
                         <TableRow>
                             <TablePagination
-                                count={ totalElements }
-                                page={ page }
-                                rowsPerPageOptions={ pagination.rowsPerPageOptions }
-                                rowsPerPage={ perPage }
-                                labelRowsPerPage={ pagination.labelRowsPerPage }
-                                labelDisplayedRows={ pagination.labelDisplayedRows }
-                                onChangePage={ (_, page) => {
+                                count={totalElements}
+                                page={page}
+                                rowsPerPageOptions={
+                                    pagination.rowsPerPageOptions
+                                }
+                                rowsPerPage={perPage}
+                                labelRowsPerPage={pagination.labelRowsPerPage}
+                                labelDisplayedRows={
+                                    pagination.labelDisplayedRows
+                                }
+                                onChangePage={(_, page) => {
                                     handleChangePage(page)
-                                } }
-                                onChangeRowsPerPage={ event => {
+                                }}
+                                onChangeRowsPerPage={event => {
                                     handleChangePerPage(
                                         parseInt(event.target.value, 10)
                                     )
-                                } }
-                                ActionsComponent={ paginationActionsComponent }
+                                }}
+                                ActionsComponent={paginationActionsComponent}
                             />
                         </TableRow>
                     </TableFooter>
-                ) }
+                )}
             </Table>
         </TableContainer>
     )

@@ -6,7 +6,10 @@ import React, { ReactNode, useState, useCallback } from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 
-type RowStateUpdater = <D extends Data>(field: keyof D, value: D[keyof D]) => void
+type RowStateUpdater = <D extends Data>(
+    field: keyof D,
+    value: D[keyof D]
+) => void
 
 const isEditable = <D extends Data>(column: ColumnSpec<D>) =>
     column.type === 'actions' || column.editable
@@ -42,13 +45,13 @@ const renderEditMode = <D extends Data>(
         return (
             <DateTime
                 type='datetime'
-                value={ date }
+                value={date}
                 fullWidth
-                error={ hasError }
-                name={ column.field.toString() }
-                onChange={ value => {
+                error={hasError}
+                name={column.field.toString()}
+                onChange={value => {
                     updateRow(column.field, value as D[keyof D])
-                } }
+                }}
             />
         )
     }
@@ -63,15 +66,15 @@ const renderEditMode = <D extends Data>(
                 fixedDecimalScale
                 type='text'
                 fullWidth
-                error={ hasError }
+                error={hasError}
                 thousandSeparator='.'
                 decimalSeparator=','
-                decimalScale={ decimalScale }
-                value={ numeric }
-                name={ column.field.toString() }
-                onChange={ event => {
+                decimalScale={decimalScale}
+                value={numeric}
+                name={column.field.toString()}
+                onChange={event => {
                     updateRow(column.field, event.target.value as D[keyof D])
-                } }
+                }}
             />
         )
     }
@@ -81,12 +84,12 @@ const renderEditMode = <D extends Data>(
 
     return (
         <TextField
-            defaultValue={ value }
-            type={ type }
+            defaultValue={value}
+            type={type}
             fullWidth
-            error={ hasError }
-            name={ column.field.toString() }
-            onChange={ event =>
+            error={hasError}
+            name={column.field.toString()}
+            onChange={event =>
                 updateRow(column.field, event.target.value as D[keyof D])
             }
         />
@@ -111,7 +114,7 @@ const renderViewMode = <D extends Data>(
         })
     }
 
-    return column.getValue?.(rawValue) || rawValue as ReactNode
+    return column.getValue?.(rawValue) || (rawValue as ReactNode)
 }
 
 type StatefulRowProps<D extends Data> = {
@@ -131,28 +134,33 @@ export const StatefulRow = <D extends Data>({
 }: StatefulRowProps<D>) => {
     const [editableState, setEditableState] = useState(() => data)
 
-    const partialUpdate = useCallback(<D1 extends Data>(
-        field: keyof D1,
-        value: D1[keyof D1]
-    ) => {
-        setEditableState(values => ({ ...values, [`${field}`]: value }))
-        const patch: Partial<D1> = { }
-        patch[field] = value
-        onUpdate?.(patch)
-    }, [])
+    const partialUpdate = useCallback(
+        <D1 extends Data>(field: keyof D1, value: D1[keyof D1]) => {
+            setEditableState(values => ({ ...values, [`${field}`]: value }))
+            const patch: Partial<D1> = {}
+            patch[field] = value
+            onUpdate?.(patch)
+        },
+        []
+    )
 
-    return (<>
-        { columns.map(column =>
-            <TableCell
-                align={ column.align }
-                key={ column.title }
-                style={ column.cellStyle }>
-                { mode === RowMode.Edit && isEditable(column)
-                    ? renderEditMode(column, editableState, partialUpdate, errors)
-                    : renderViewMode(column, data)
-                }
-            </TableCell>
-        ) }
+    return (
+        <>
+            {columns.map(column => (
+                <TableCell
+                    align={column.align}
+                    key={column.title}
+                    style={column.cellStyle}>
+                    {mode === RowMode.Edit && isEditable(column)
+                        ? renderEditMode(
+                              column,
+                              editableState,
+                              partialUpdate,
+                              errors
+                          )
+                        : renderViewMode(column, data)}
+                </TableCell>
+            ))}
         </>
     )
 }
@@ -170,36 +178,34 @@ export const NewRow = <D extends Data>({
     errors,
     onUpdate
 }: NewRowProps<D>) => {
-    const [editableState,setEditableState] = useState(() => data)
+    const [editableState, setEditableState] = useState(() => data)
 
-    const partialUpdate = useCallback(<D1 extends Data>(
-        field: keyof D1,
-        value: D1[keyof D1]
-    ) => {
-        setEditableState(values => ({ ...values, [field]: value }))
-        onUpdate?.({ [field]: value })
-    }, [])
+    const partialUpdate = useCallback(
+        <D1 extends Data>(field: keyof D1, value: D1[keyof D1]) => {
+            setEditableState(values => ({ ...values, [field]: value }))
+            onUpdate?.({ [field]: value })
+        },
+        []
+    )
 
     return (
         <TableRow>
-            { columns.map(column =>
+            {columns.map(column => (
                 <TableCell
-                    style={ column.cellStyle }
-                    align={ column.align }
-                    key={ column.title }>
-                    {
-                        isEditable(column)
-                            ? renderEditMode(
-                                column,
-                                editableState,
-                                partialUpdate,
-                                errors,
-                                true
-                            )
-                            : renderViewMode(column, editableState)
-                    }
+                    style={column.cellStyle}
+                    align={column.align}
+                    key={column.title}>
+                    {isEditable(column)
+                        ? renderEditMode(
+                              column,
+                              editableState,
+                              partialUpdate,
+                              errors,
+                              true
+                          )
+                        : renderViewMode(column, editableState)}
                 </TableCell>
-            ) }
+            ))}
         </TableRow>
     )
 }

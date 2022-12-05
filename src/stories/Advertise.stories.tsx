@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Advertise>
 
 const Template: ComponentStory<typeof Advertise> = args => (
-    <Advertise { ...args } />
+    <Advertise {...args} />
 )
 
 export const Default = Template.bind({})

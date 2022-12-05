@@ -56,20 +56,20 @@ export const Default = () => {
                 <span>Valid pin: 123123</span>
             </ValidateContainer>
             <PinInput
-                pin={ pin }
-                setPin={ setPin }
-                onPinChanged={ onPinChanged }
-                pinLength={ PIN_LENGTH }
-                validationResult={ hasError }
-                isValidating={ isValidating }
+                pin={pin}
+                setPin={setPin}
+                onPinChanged={onPinChanged}
+                pinLength={PIN_LENGTH}
+                validationResult={hasError}
+                isValidating={isValidating}
                 size='small'
                 variant='outlined'
             />
             <ButtonContainer>
                 <Button
-                    onClick={ () => {
+                    onClick={() => {
                         handleValidation()
-                    } }>
+                    }}>
                     Validate
                 </Button>
             </ButtonContainer>
@@ -108,19 +108,19 @@ export const Large = () => {
                 <span>Valid pin: 123123</span>
             </ValidateContainer>
             <PinInput
-                pin={ pin }
-                setPin={ setPin }
-                onPinChanged={ onPinChanged }
-                pinLength={ PIN_LENGTH }
-                validationResult={ hasError }
-                isValidating={ isValidating }
+                pin={pin}
+                setPin={setPin}
+                onPinChanged={onPinChanged}
+                pinLength={PIN_LENGTH}
+                validationResult={hasError}
+                isValidating={isValidating}
                 size='large'
             />
             <ButtonContainer>
                 <Button
-                    onClick={ () => {
+                    onClick={() => {
                         handleValidation()
-                    } }>
+                    }}>
                     Validate
                 </Button>
             </ButtonContainer>

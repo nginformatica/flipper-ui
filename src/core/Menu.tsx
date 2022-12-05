@@ -16,11 +16,10 @@ const Menu: FC<MenuProps> = ({
     style = {},
     withWrapper,
     ...otherProps
-}) =>
-    <MuiMenu
-        { ...otherProps }
-        style={ { padding, margin, ...style } }>
-        { withWrapper ? <div>{ children }</div> : children }
+}) => (
+    <MuiMenu {...otherProps} style={{ padding, margin, ...style }}>
+        {withWrapper ? <div>{children}</div> : children}
     </MuiMenu>
+)
 
 export default Menu

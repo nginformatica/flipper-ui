@@ -13,11 +13,10 @@ const Paper: FC<PaperProps> = ({
     padding,
     margin,
     ...otherProps
-}) =>
-    <MuiPaper
-        { ...otherProps }
-        style={ { padding, margin, ...style } }>
-        { children }
+}) => (
+    <MuiPaper {...otherProps} style={{ padding, margin, ...style }}>
+        {children}
     </MuiPaper>
+)
 
 export default Paper

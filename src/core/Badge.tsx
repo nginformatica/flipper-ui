@@ -38,17 +38,17 @@ const Badge: FC<BadgeProps> = props => {
 
     const classes = useBadgeStyles(position)
 
-    return counter
-        ? (
-            <MuiBadge
-                badgeContent={ counter }
-                classes={ classes }
-                style={ { padding, margin, ...style } }
-                { ...otherProps }>
-                { children }
-            </MuiBadge>
-        )
-        : <>{ children }</>
+    return counter ? (
+        <MuiBadge
+            badgeContent={counter}
+            classes={classes}
+            style={{ padding, margin, ...style }}
+            {...otherProps}>
+            {children}
+        </MuiBadge>
+    ) : (
+        <>{children}</>
+    )
 }
 
 export default Badge

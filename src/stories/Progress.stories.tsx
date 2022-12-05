@@ -7,7 +7,7 @@ export default {
     component: Progress
 } as ComponentMeta<typeof Progress>
 
-const Template: ComponentStory<typeof Progress> = args => <Progress { ...args } />
+const Template: ComponentStory<typeof Progress> = args => <Progress {...args} />
 
 const commonArgs = {
     margin: 24,

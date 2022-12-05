@@ -20,13 +20,13 @@ export const Default = () => {
     return (
         <>
             <Button
-                style={ { marginRight: '3em' } }
+                style={{ marginRight: '3em' }}
                 variant='contained'
                 color='primary'
-                onClick={ handleClick }>
-                { label }
+                onClick={handleClick}>
+                {label}
             </Button>
-            <Fade in={ open }>
+            <Fade in={open}>
                 <span>I am open for discussions</span>
             </Fade>
         </>

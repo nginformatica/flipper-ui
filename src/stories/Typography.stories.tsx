@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Typography>
 
 const Template: ComponentStory<typeof Typography> = args => (
-    <Typography { ...args }> { args.children } </Typography>
+    <Typography {...args}> {args.children} </Typography>
 )
 
 export const Default = Template.bind({})

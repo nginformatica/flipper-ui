@@ -12,7 +12,7 @@ export default {
     }
 } as ComponentMeta<typeof Badge>
 
-const Template: ComponentStory<typeof Badge> = args => <Badge { ...args } />
+const Template: ComponentStory<typeof Badge> = args => <Badge {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -32,9 +32,7 @@ Secondary.args = {
     counter: 150,
     color: 'secondary',
     children: (
-        <Button variant='outlined'>
-            Try changing the counter to Zero
-        </Button>
+        <Button variant='outlined'>Try changing the counter to Zero</Button>
     )
 }
 

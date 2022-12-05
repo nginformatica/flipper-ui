@@ -8,7 +8,7 @@ export default {
     component: Stepper
 } as ComponentMeta<typeof Stepper>
 
-const Template: ComponentStory<typeof Stepper> = args => <Stepper { ...args } />
+const Template: ComponentStory<typeof Stepper> = args => <Stepper {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

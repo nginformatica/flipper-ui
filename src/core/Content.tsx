@@ -13,11 +13,10 @@ const Content: FC<DefaultProps> = ({
     margin,
     style = {},
     ...otherProps
-}) =>
-    <StyledContent
-        { ...otherProps }
-        style={ { padding, margin, ...style } }>
-        { children }
+}) => (
+    <StyledContent {...otherProps} style={{ padding, margin, ...style }}>
+        {children}
     </StyledContent>
+)
 
 export default Content

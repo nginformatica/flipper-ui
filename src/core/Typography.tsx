@@ -9,12 +9,13 @@ const Typography: FC<TypographyProps & DefaultProps> = ({
     style = {},
     variant = 'body2',
     ...otherProps
-}) =>
+}) => (
     <MuiTypography
-        { ...otherProps }
-        variant={ variant }
-        style={ { margin, padding, ...style } }>
-        { children }
+        {...otherProps}
+        variant={variant}
+        style={{ margin, padding, ...style }}>
+        {children}
     </MuiTypography>
+)
 
 export default Typography

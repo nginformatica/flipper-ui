@@ -15,7 +15,7 @@ interface DialogProps extends DefaultProps {
     title?: string | ReactNode
     titleAction?: string | ReactNode
     actions?: ReactNode
-    maxWidth?: 'xs'| 'sm'| 'md'| 'lg'
+    maxWidth?: 'xs' | 'sm' | 'md' | 'lg'
     content?: ReactNode
     text?: string
     snippet?: ReactNode | JSX.Element
@@ -54,7 +54,7 @@ const SnippetContent = styled.div`
 
 const useStyles = makeStyles({
     root: {
-        overflowY: 'unset' as 'unset'
+        overflowY: 'unset' as const
     }
 })
 
@@ -87,27 +87,22 @@ const Dialog: FC<DialogProps> = ({
     const classes = useStyles()
 
     const renderTitle = (title: DialogProps['title']) => {
-        return titleAction
-            ? (
-                <TitleWrapper style={ titleWrapperStyle }>
-                    <MuiDialogTitle
-                        style={ {
-                            flex: 1,
-                            ...titleStyle
-                        } }>
-                        { title }
-                    </MuiDialogTitle>
-                    <TitleAction
-                        style={ titleActionStyle }>
-                        { titleAction }
-                    </TitleAction>
-                </TitleWrapper>
-            )
-            : (
-                <MuiDialogTitle style={ titleStyle }>
-                    { title }
+        return titleAction ? (
+            <TitleWrapper style={titleWrapperStyle}>
+                <MuiDialogTitle
+                    style={{
+                        flex: 1,
+                        ...titleStyle
+                    }}>
+                    {title}
                 </MuiDialogTitle>
-            )
+                <TitleAction style={titleActionStyle}>
+                    {titleAction}
+                </TitleAction>
+            </TitleWrapper>
+        ) : (
+            <MuiDialogTitle style={titleStyle}>{title}</MuiDialogTitle>
+        )
     }
 
     const renderContent = (content: ReactNode) => {
@@ -118,17 +113,16 @@ const Dialog: FC<DialogProps> = ({
                         ? { root: classes.root }
                         : undefined
                 }
-                style={ contentStyle }>
-                { content }
+                style={contentStyle}>
+                {content}
             </MuiDialogContent>
         )
     }
 
     const renderText = (text: string) => {
         const content = (
-            <MuiDialogContentText
-                style={ contentTextStyle }>
-                { text }
+            <MuiDialogContentText style={contentTextStyle}>
+                {text}
             </MuiDialogContentText>
         )
 
@@ -137,55 +131,55 @@ const Dialog: FC<DialogProps> = ({
 
     const renderActions = (actions: ReactNode) => {
         return (
-            <MuiDialogActions style={ actionsStyle }>
-                { actions }
-            </MuiDialogActions>
+            <MuiDialogActions style={actionsStyle}>{actions}</MuiDialogActions>
         )
     }
 
     const renderPaperContent = () => {
         return (
             <>
-                { title && renderTitle(title) }
-                { text ? renderText(text) : renderContent(content) }
-                { actions && renderActions(actions) }
+                {title && renderTitle(title)}
+                {text ? renderText(text) : renderContent(content)}
+                {actions && renderActions(actions)}
             </>
         )
     }
 
     const renderSnippet = () => {
         return (
-            <Snippet style={ snippetStyle }>
-                <div>{ renderPaperContent() }</div>
-                <SnippetContent style={ snippetContentStyle }>
-                    { snippet }
+            <Snippet style={snippetStyle}>
+                <div>{renderPaperContent()}</div>
+                <SnippetContent style={snippetContentStyle}>
+                    {snippet}
                 </SnippetContent>
             </Snippet>
         )
     }
 
-    const scrollMode = scroll === 'unset-body'
-        ? 'body'
-        : scroll === 'unset-paper'
+    const scrollMode =
+        scroll === 'unset-body'
+            ? 'body'
+            : scroll === 'unset-paper'
             ? 'paper'
             : scroll
 
     return (
         <MuiDialog
-            open={ open }
-            fullScreen={ fullScreen }
-            fullWidth={ fullWidth }
-            maxWidth={ maxWidth }
-            scroll={ scrollMode }
-            PaperProps={ {
-                classes: scroll === 'unset-body' || scroll === 'unset-paper'
-                    ? { root: classes.root }
-                    : undefined,
+            open={open}
+            fullScreen={fullScreen}
+            fullWidth={fullWidth}
+            maxWidth={maxWidth}
+            scroll={scrollMode}
+            PaperProps={{
+                classes:
+                    scroll === 'unset-body' || scroll === 'unset-paper'
+                        ? { root: classes.root }
+                        : undefined,
                 ...PaperProps
-            } }
-            style={ { padding, margin, ...style } }
-            onClose={ onClose }>
-            { snippet ? renderSnippet() : renderPaperContent() }
+            }}
+            style={{ padding, margin, ...style }}
+            onClose={onClose}>
+            {snippet ? renderSnippet() : renderPaperContent()}
         </MuiDialog>
     )
 }
