@@ -17,7 +17,8 @@ import {
     SliderVariant,
     SnackbarVariant,
     StepperVariant,
-    TextFieldVariant
+    TextFieldVariant,
+    TypographyVariant
 } from '../../support/types-interfaces-enums'
 import { validator } from '../../support/utils'
 
@@ -156,3 +157,10 @@ Given('I render TextField with {string} preset', (preset: TextFieldVariant) => {
 Given('I render Tooltip', () => Factory.ToolTipFactory())
 
 Given('I render Tree', () => Factory.TreeFactory())
+
+Given(
+    'I render Typography with {string} preset',
+    (preset: TypographyVariant) => {
+        Factory.TypographyFactory(preset)
+    }
+)

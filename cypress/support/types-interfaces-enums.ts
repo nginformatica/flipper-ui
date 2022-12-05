@@ -63,6 +63,26 @@ export type SelectVariant = 'default' | 'with-clear'
 
 export type SnackbarVariant = 'default' | 'success' | 'warning' | 'error'
 
+export type TypographyVariant =
+    | 'default'
+    | 'error-text'
+    | 'primary'
+    | 'secondary'
+    | 'text-primary'
+    | 'text-secondary'
+    | 'button'
+    | 'caption'
+    | 'body1'
+    | 'body2'
+    | 'subtitle1'
+    | 'subtitle2'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+
 export type TextFieldVariant =
     | 'default'
     | 'with-adornment'
@@ -194,7 +214,28 @@ export enum MuiSelectors {
     Snackbar = '.MuiSnackbarContent-root',
     SteelPlate = '.MuiStepLabel-horizontal',
     Disabled = 'Mui-disabled',
-    Selected = '.Mui-selected'
+    Selected = '.Mui-selected',
+    Typography = '.MuiTypography-root'
+}
+
+export enum MuiTypographySelectors {
+    Body1 = 'MuiTypography-body1',
+    Body2 = 'MuiTypography-body2',
+    ColorError = 'MuiTypography-colorError',
+    ColorPrimary = 'MuiTypography-colorPrimary',
+    ColorSecondary = 'MuiTypography-colorSecondary',
+    ColorTextPrimary = 'MuiTypography-colorTextPrimary',
+    ColorTextSecondary = 'MuiTypography-colorTextSecondary',
+    Button = 'MuiTypography-button',
+    Caption = 'MuiTypography-caption',
+    Subtitle1 = 'MuiTypography-subtitle1',
+    Subtitle2 = 'MuiTypography-subtitle2',
+    H1 = 'MuiTypography-h1',
+    H2 = 'MuiTypography-h2',
+    H3 = 'MuiTypography-h3',
+    H4 = 'MuiTypography-h4',
+    H5 = 'MuiTypography-h5',
+    H6 = 'MuiTypography-h6'
 }
 
 export type TMockOptions = {

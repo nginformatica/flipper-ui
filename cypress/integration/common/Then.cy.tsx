@@ -5,7 +5,9 @@ import { pick } from 'ramda'
 import {
     MockCats,
     MuiSelectors,
-    SpyCats
+    MuiTypographySelectors,
+    SpyCats,
+    TypographyVariant
 } from '../../support/types-interfaces-enums'
 import { Conversor, Aliases } from '../../support/utils'
 
@@ -451,8 +453,38 @@ Then('I expect {string} to be selected', (element: string) => {
 
 Then('The input should have value from last mocked options', () => {
     cy.get('@list-of-text-fields').then(mockedData => {
-        const lastIndex = mockedData.length - 1
-        const value = mockedData[lastIndex].value
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const data = mockedData as HTMLInputElement[]
+        const lastIndex = data.length - 1
+        const value = data[lastIndex].value
         cy.get('input').first().should('have.value', value)
     })
+})
+
+Then('Text should have typography {string}', (typo: TypographyVariant) => {
+    const test: Map<TypographyVariant, string> = new Map<
+        TypographyVariant,
+        string
+    >([
+        ['body1', MuiTypographySelectors.Body1],
+        ['body2', MuiTypographySelectors.Body2],
+        ['error-text', MuiTypographySelectors.ColorError],
+        ['primary', MuiTypographySelectors.ColorPrimary],
+        ['secondary', MuiTypographySelectors.ColorSecondary],
+        ['text-primary', MuiTypographySelectors.ColorTextPrimary],
+        ['text-secondary', MuiTypographySelectors.ColorTextSecondary],
+        ['button', MuiTypographySelectors.Button],
+        ['caption', MuiTypographySelectors.Caption],
+        ['subtitle1', MuiTypographySelectors.Subtitle1],
+        ['subtitle2', MuiTypographySelectors.Subtitle2],
+        ['caption', MuiTypographySelectors.Caption],
+        ['h1', MuiTypographySelectors.H1],
+        ['h2', MuiTypographySelectors.H2],
+        ['h3', MuiTypographySelectors.H3],
+        ['h4', MuiTypographySelectors.H4],
+        ['h5', MuiTypographySelectors.H5],
+        ['h6', MuiTypographySelectors.H6]
+    ])
+    cy.get(MuiSelectors.Typography).should('have.class', test.get(typo))
 })
