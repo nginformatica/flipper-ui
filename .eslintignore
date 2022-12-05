@@ -1,1 +1,3 @@
 dist/*
+# FIXME: After project refactor EditableTable should not be ignored
+src/core/EditableTable.tsx

@@ -60,7 +60,7 @@ export const withSelect = () => {
     )
 }
 
-export const withSelectAndClear = () => {
+export const useWithSelectAndClear = () => {
     const [value, setValue] = useState('fable')
 
     const onClear = () => {

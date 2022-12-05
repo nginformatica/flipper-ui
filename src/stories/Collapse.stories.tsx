@@ -42,5 +42,5 @@ Open.args = {
 export const Closed = Template.bind({})
 Closed.args = {
     in: false,
-    children: 'I\'m not open for discussions. Please don\'t insist.'
+    children: 'I am not open for discussions. Please do not insist.'
 }

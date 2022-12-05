@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/interface-name-prefix */
 import React from 'react'
 import IconButton from '../IconButton'
 import FirstPageIcon from '@material-ui/icons/FirstPage'

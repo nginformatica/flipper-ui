@@ -341,19 +341,19 @@ export const Crud = () => {
     const randomId = () => Math.random().toString(36).substr(0, 12)
 
     const handleAdd = () => {
-        controllerRef.current.addRow({ id: randomId(), date: date() })
+        controllerRef.current?.addRow({ id: randomId(), date: date() })
     }
 
     const handleEdit = id => () => {
-        controllerRef.current.editRow(id)
+        controllerRef.current?.editRow(id)
     }
 
     const handleDelete = id => () => {
-        controllerRef.current.pushRowView(id, 'confirmDelete')
+        controllerRef.current?.pushRowView(id, 'confirmDelete')
     }
 
     const handleView = id => () => {
-        controllerRef.current.viewRow(id)
+        controllerRef.current?.viewRow(id)
     }
 
     const isNullable = x => x == null
@@ -394,7 +394,7 @@ export const Crud = () => {
     const handleSave =
         (id: Identifier, isNew = false) =>
         () => {
-            const nextItem = controllerRef.current.getEditedRowData(id)
+            const nextItem = controllerRef.current?.getEditedRowData(id)
 
             if (!nextItem) {
                 return
@@ -418,7 +418,7 @@ export const Crud = () => {
                 )
             }
 
-            controllerRef.current.viewRow(id)
+            controllerRef.current?.viewRow(id)
         }
 
     const columns: ColumnSpec<Data>[] = [
@@ -517,7 +517,7 @@ export const Crud = () => {
                             <DataTableAction
                                 label='CheckIcon'
                                 onClick={() => {
-                                    controllerRef.current.popRowView(data.id)
+                                    controllerRef.current?.popRowView(data.id)
                                     setData(dataList =>
                                         dataList.filter(
                                             item => item.id !== data.id
@@ -529,7 +529,7 @@ export const Crud = () => {
                             <DataTableAction
                                 label='CancelIcon'
                                 onClick={() => {
-                                    controllerRef.current.popRowView(data.id)
+                                    controllerRef.current?.popRowView(data.id)
                                 }}>
                                 <CancelIcon />
                             </DataTableAction>

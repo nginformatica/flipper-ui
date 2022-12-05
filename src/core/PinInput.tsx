@@ -112,7 +112,7 @@ const PinInput: React.FC<PinInputGridProps> = ({
         }
     }
 
-    const useStyleProps = (): React.CSSProperties => {
+    const getStyleProps = (): React.CSSProperties => {
         const style = {
             width: size === 'small' ? '40px' : '40px',
             height: size === 'small' ? '30px' : '40px',
@@ -123,7 +123,7 @@ const PinInput: React.FC<PinInputGridProps> = ({
         return style
     }
 
-    const useInputProps = (): React.CSSProperties => {
+    const getInputProps = (): React.CSSProperties => {
         const style = {
             width: size === 'small' ? '40px' : '45px',
             textAlign: 'center',
@@ -137,33 +137,31 @@ const PinInput: React.FC<PinInputGridProps> = ({
     }
 
     return (
-        <>
-            <Container>
-                {Array.from({ length: pinLength }, (_, index) => (
-                    <TextField
-                        disabled={isValidating}
-                        variant={variant || 'outlined'}
-                        onKeyDown={event => onKeyDown(event, index)}
-                        onPaste={onPaste}
-                        color='primary'
-                        className='pin-input-field'
-                        error={validationResult}
-                        style={useStyleProps()}
-                        InputProps={{
-                            style: useInputProps()
-                        }}
-                        inputRef={(el: HTMLInputElement) => {
-                            inputRefs.current[index] = el
-                        }}
-                        key={index}
-                        onChange={event => {
-                            onChange(event, index)
-                        }}
-                        value={pin[index] === 0 ? 0 : pin[index] || ''}
-                    />
-                ))}
-            </Container>
-        </>
+        <Container>
+            {Array.from({ length: pinLength }, (_, index) => (
+                <TextField
+                    disabled={isValidating}
+                    variant={variant || 'outlined'}
+                    onKeyDown={event => onKeyDown(event, index)}
+                    onPaste={onPaste}
+                    color='primary'
+                    className='pin-input-field'
+                    error={validationResult}
+                    style={getStyleProps()}
+                    InputProps={{
+                        style: getInputProps()
+                    }}
+                    inputRef={(el: HTMLInputElement) => {
+                        inputRefs.current[index] = el
+                    }}
+                    key={index}
+                    onChange={event => {
+                        onChange(event, index)
+                    }}
+                    value={pin[index] === 0 ? 0 : pin[index] || ''}
+                />
+            ))}
+        </Container>
     )
 }
 

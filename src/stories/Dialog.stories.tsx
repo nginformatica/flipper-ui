@@ -18,7 +18,7 @@ export const Default = () => {
             <Dialog
                 open={open}
                 title='My beautiful Dialog'
-                text={'Isn\'t it?'}
+                text={'Is not it?'}
                 onClose={() => setOpen(false)}
                 actions={
                     <Button onClick={() => setOpen(false)}>Close dialog</Button>
@@ -41,7 +41,7 @@ export const WithAlertOnClose = () => {
             <Dialog
                 open={open}
                 title='My beautiful Dialog'
-                text={'Isn\'t it?'}
+                text={'Is not it?'}
                 onClose={handleClose}
                 actions={
                     <Button onClick={() => setOpen(false)}>Close dialog</Button>

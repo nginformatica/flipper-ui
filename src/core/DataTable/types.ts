@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/interface-name-prefix */
 import type { CSSProperties, FunctionComponent } from 'react'
 
 type RecordUnknown = Record<string, unknown>

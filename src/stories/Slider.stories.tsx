@@ -44,7 +44,7 @@ WithMarks.args = {
         },
         {
             value: 50,
-            label: 'You\'re half way'
+            label: 'You are half way'
         },
         {
             value: 100,
