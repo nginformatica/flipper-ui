@@ -63,6 +63,13 @@ export type SelectVariant = 'default' | 'with-clear'
 
 export type SnackbarVariant = 'default' | 'success' | 'warning' | 'error'
 
+export type DataTableVariant =
+    | 'default'
+    | 'empty'
+    | 'no-header'
+    | 'no-pagination'
+    | 'crud'
+
 export type TypographyVariant =
     | 'default'
     | 'error-text'
@@ -218,7 +225,12 @@ export enum MuiSelectors {
     SteelPlate = '.MuiStepLabel-horizontal',
     Disabled = 'Mui-disabled',
     Selected = '.Mui-selected',
-    Typography = '.MuiTypography-root'
+    Typography = '.MuiTypography-root',
+    SelectInput = '.MuiSelect-nativeInput',
+    SelectPagination = '.MuiTablePagination-caption',
+    TableFooter = '.MuiTableFooter-root',
+    TableRow = '.MuiTableRow-root',
+    TableHeader = '.MuiTableHead-root'
 }
 
 export enum MuiTypographySelectors {

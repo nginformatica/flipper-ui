@@ -13,6 +13,17 @@ When('I click on {int}th button', (pos: number) =>
         .click({ force: true })
 )
 
+When(
+    'I click on {int}th button from {int}th row',
+    (btnPos: number, rowPos: number) => {
+        cy.get(`[data-id=${rowPos}]`)
+            .first()
+            .find('button')
+            .eq(btnPos - 1)
+            .click({ force: true })
+    }
+)
+
 When('I click on {int}th button should be disabled', (pos: number) =>
     cy
         .get('button')
@@ -82,6 +93,17 @@ When(
 
 When('I type {string} on input', (text: string) => {
     cy.get('input').first().focus().realType(text)
+})
+
+When(
+    'I type {string} into input name {string}',
+    (text: string, name: string) => {
+        cy.get(`input[name="${name}"]`).first().focus().realType(text)
+    }
+)
+
+When('I clear input name {string}', (name: string) => {
+    cy.get(`input[name="${name}"]`).first().clear()
 })
 
 When('I click on Mui ExpansionPanel', () => {
@@ -209,6 +231,13 @@ When('I clear input', () => {
 When('I select the last option from options', () => {
     cy.get('li').last().click()
 })
+
+When(
+    'I select the option with value {string} from options',
+    (value: string) => {
+        cy.get(`[data-value="${value}"]`).last().click()
+    }
+)
 
 When('I focus {int}th button', (pos: number) => {
     cy.get('button')
