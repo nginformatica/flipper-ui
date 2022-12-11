@@ -2,6 +2,7 @@ import faker from 'faker'
 import { splitEvery } from 'ramda'
 import { useState, useMemo, useEffect } from 'react'
 import { v4 as uuid } from 'uuid'
+import { Data } from './types'
 
 export interface IDataProps {
     id: string
@@ -18,8 +19,8 @@ interface IPaginated<T> {
     totalItens: number
 }
 
-export const generateRandomDate = (size: number): IDataProps[] => {
-    const content: Array<IDataProps> = []
+export const generateRandomDate = (size: number): Data[] => {
+    const content: Array<Data> = []
     for (let i = 0; i < size; i++) {
         content.push({
             id: uuid(),
@@ -39,7 +40,7 @@ const DEFAULT_MOCK_LENGTH = 35
 
 const mockData = generateRandomDate(DEFAULT_MOCK_LENGTH)
 
-const INITIAL_STATE: IPaginated<IDataProps> = {
+const INITIAL_STATE: IPaginated<Data> = {
     items: [],
     size: DEFAULT_PAGE_SIZE,
     actualPage: 0,
@@ -47,7 +48,7 @@ const INITIAL_STATE: IPaginated<IDataProps> = {
 }
 
 export const usePaginated = () => {
-    const [state, setState] = useState<IPaginated<IDataProps>>(INITIAL_STATE)
+    const [state, setState] = useState<IPaginated<Data>>(INITIAL_STATE)
     const [loading, setLoading] = useState(true)
 
     const splitData = useMemo(

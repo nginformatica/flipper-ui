@@ -1,16 +1,20 @@
+import { Skeleton } from '@material-ui/lab'
 import { mount } from 'cypress/react'
 import format from 'date-fns/format'
-import React, { useRef, useState } from 'react'
-import { Button, Typography } from '../../../src'
-import DataTable, {
+import React, { useMemo, useRef, useState } from 'react'
+import { Button, TableCell, TableRow, Typography } from '../../../src'
+import {
     DataTableAction,
-    DataTableController
+    DataTableController,
+    DataTableQueryPaginated
 } from '../../../src/core/DataTable'
 import {
     ColumnSpec,
+    Data,
     Identifier,
     RowMode
 } from '../../../src/core/DataTable/types'
+import { usePaginated } from '../../../src/core/DataTable/usePaginated'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -18,8 +22,72 @@ import {
     Edit as EditIcon,
     Save as SaveIcon
 } from '../../../src/icons'
+import { Generators } from '..'
 
-const CrudComponent: React.FC = () => {
+const generateSkeleton = (
+    size: number,
+    columns: ColumnSpec<Data>[]
+): Array<JSX.Element> => {
+    const result: Array<JSX.Element> = []
+
+    for (let i = 0; i < size; i++) {
+        const table = (
+            <TableRow
+                key={`skeleton-${i}`}
+                data-testid='table-skeletons'
+                style={{ width: '10px' }}>
+                {columns.map(column => (
+                    <TableCell
+                        align={column.align}
+                        key={column.title}
+                        style={column.cellStyle}>
+                        <Skeleton />
+                    </TableCell>
+                ))}
+            </TableRow>
+        )
+        result.push(table)
+    }
+
+    return result
+}
+interface IProps {
+    columnsData: ColumnSpec<Data>[]
+}
+
+const CrudComponent: React.FC<IProps> = props => {
+    const {
+        totalElements,
+        actualPage,
+        size,
+        handleChangePerPage,
+        handleChangePage,
+        loading,
+        data,
+        setData
+    } = usePaginated()
+
+    const newData = [
+        ...props.columnsData,
+        {
+            title: 'Actions',
+            type: 'text',
+            field: 'product',
+            cellStyle: {
+                maxWidth: '30px',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+            },
+            editable: true
+        }
+    ]
+
+    const LoadNode: React.ReactNode = useMemo(
+        () => generateSkeleton(size, newData),
+        [size]
+    )
+
     type Data = {
         id: Identifier
         product: string
@@ -37,23 +105,6 @@ const CrudComponent: React.FC = () => {
     const [errors, setErrors] = useState({})
 
     const randomId = () => Math.random().toString(36).substr(0, 12)
-
-    const [data, setData] = useState<Data[]>([
-        { id: 1, product: 'Magazine', price: 13.5, quantity: 12, date: date() },
-        { id: 2, product: 'Table', price: 200.49, quantity: 3, date: date() },
-        { id: 3, product: 'Chair', price: 53.5, quantity: 9, date: date() },
-        { id: 4, product: 'Keyboard', price: 53.29, quantity: 4, date: date() },
-        { id: 5, product: 'Mouse', price: 27.13, quantity: 16, date: date() },
-        {
-            id: 6,
-            product: 'Microphone',
-            price: 89.14,
-            quantity: 2,
-            date: date()
-        },
-        { id: 7, product: 'Headset', price: 117.85, quantity: 6, date: date() },
-        { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: date() }
-    ])
 
     const handleAdd = () => {
         controllerRef.current?.addRow({ id: randomId(), date: date() })
@@ -90,7 +141,7 @@ const CrudComponent: React.FC = () => {
             .filter(({ field, isErrorIf }) => {
                 const value: string | number | Date = nextItem[field]
 
-                if (typeof value !== 'object' && isNullable(value)) {
+                if (isNullable(Number(value))) {
                     if (isPartial) {
                         return false
                     }
@@ -124,9 +175,9 @@ const CrudComponent: React.FC = () => {
             }
 
             if (isNew) {
-                setData(data => [nextItem as Data, ...data])
+                setData([nextItem as Data, ...data])
             } else {
-                setData(data =>
+                setData(
                     data.map(item => {
                         if (item.id === id) {
                             return { ...item, ...nextItem }
@@ -262,12 +313,19 @@ const CrudComponent: React.FC = () => {
     return (
         <>
             <Button onClick={handleAdd}>Add Row</Button>
-            <DataTable
+            <DataTableQueryPaginated
                 data={data}
                 controllerRef={controllerRef}
                 errors={errors}
+                handleChangePage={handleChangePage}
+                handleChangePerPage={handleChangePerPage}
+                componentForEmpty={LoadNode}
+                totalElements={totalElements}
+                page={actualPage}
+                perPage={size}
                 pagination={{
                     rowsPerPage: 5,
+                    clickable: !loading,
                     showFirstButton: true,
                     showLastButton: true,
                     labelRowsPerPage: 'Rows per page:',
@@ -284,6 +342,8 @@ const CrudComponent: React.FC = () => {
     )
 }
 
-export const CrudDataTableFactory = () => {
-    mount(<CrudComponent />)
+export const QueryPaginatedCrudDataTableFactory = () => {
+    const { columns } = Generators.GenerateDataTableProps('default')
+    const columnsData = columns as ColumnSpec<Data>[]
+    mount(<CrudComponent columnsData={columnsData} />)
 }

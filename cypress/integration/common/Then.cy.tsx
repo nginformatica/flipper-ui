@@ -508,3 +508,11 @@ Then('I expect to see table header', () => {
 Then('I do not expect to see table header', () => {
     cy.get(MuiSelectors.TableHeader).should('not.exist')
 })
+
+Then('I should see skeletons on table', () => {
+    cy.get('[data-testid="table-skeletons"]').should('exist')
+})
+
+Then('I should not see skeletons on table', () => {
+    cy.get('[data-testid="table-skeletons"]').should('not.exist')
+})

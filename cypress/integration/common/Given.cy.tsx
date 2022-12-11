@@ -173,3 +173,9 @@ Given('I render DataTable with {string} preset', (preset: DataTableVariant) =>
         ? Factory.DataTableFactory(preset)
         : Factory.CrudDataTableFactory()
 )
+
+Given('I render QueyPaginatedDataTableFactory', (preset: DataTableVariant) =>
+    preset !== 'crud'
+        ? Factory.QueyPaginatedDataTableFactory(preset)
+        : Factory.QueryPaginatedCrudDataTableFactory()
+)
