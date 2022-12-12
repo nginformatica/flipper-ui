@@ -9,7 +9,6 @@ export const StepperFactory = (
     preset: StepperVariant,
     steps: StepperProps['steps']
 ) => {
-    console.log({ steps })
     const props = Generators.StepperPropsGenerator(preset, steps)
     mount(<Stepper {...props} />)
 }

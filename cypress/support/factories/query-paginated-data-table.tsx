@@ -1,10 +1,16 @@
 import { Skeleton } from '@material-ui/lab'
 import { mount } from 'cypress/react'
+import { omit } from 'ramda'
 import React, { useMemo } from 'react'
 import { Generators } from '..'
 import { TableCell, TableRow } from '../../../src'
 import { DataTableQueryPaginated } from '../../../src/core/DataTable'
-import { ColumnSpec, Data } from '../../../src/core/DataTable/types'
+import { DataTableProps } from '../../../src/core/DataTable/DataTableQueryPaginated'
+import {
+    ColumnSpec,
+    Data,
+    RecordUnknown
+} from '../../../src/core/DataTable/types'
 import { usePaginated } from '../../../src/core/DataTable/usePaginated'
 import { DataTableVariant } from '../types-interfaces-enums'
 
@@ -37,7 +43,9 @@ const generateSkeleton = (
 }
 
 interface IProps {
-    columnsData: ColumnSpec<Data>[]
+    preset: DataTableVariant
+    isEmpty?: boolean
+    isPaginateDisabled?: boolean
 }
 
 const Component: React.FC<IProps> = props => {
@@ -51,14 +59,49 @@ const Component: React.FC<IProps> = props => {
         loading
     } = usePaginated()
 
+    const generatedProps = Generators.GenerateDataTableProps(props.preset)
+
     const LoadNode: React.ReactNode = useMemo(
-        () => generateSkeleton(size, props.columnsData),
+        () =>
+            generateSkeleton(
+                size,
+                generatedProps.columns as ColumnSpec<Data>[]
+            ),
         [size]
     )
 
+    const treatedProps = omit(
+        [
+            'data',
+            'totalElements',
+            'handleChangePage',
+            'handleChangePerPage',
+            'perPage',
+            'page',
+            'pagination'
+        ],
+        generatedProps
+    ) as Omit<
+        DataTableProps<Data, RecordUnknown>,
+        | 'data'
+        | 'totalElements'
+        | 'handleChangePage'
+        | 'handleChangePerPage'
+        | 'perPage'
+        | 'page'
+    >
+
+    const curData = useMemo(() => {
+        if (props.isEmpty || loading) {
+            return []
+        }
+
+        return data
+    }, [data, loading, props.isEmpty])
+
     return (
         <DataTableQueryPaginated
-            data={data}
+            data={curData}
             totalElements={totalElements}
             handleChangePage={handleChangePage}
             handleChangePerPage={handleChangePerPage}
@@ -68,15 +111,20 @@ const Component: React.FC<IProps> = props => {
             pagination={{
                 rowsPerPage: size,
                 labelRowsPerPage: 'Row per page ',
-                clickable: !loading
+                clickable: !loading,
+                disabled: props.isPaginateDisabled
             }}
-            columns={props.columnsData}
+            {...treatedProps}
         />
     )
 }
 
 export const QueyPaginatedDataTableFactory = (preset: DataTableVariant) => {
-    const { columns, ...props } = Generators.GenerateDataTableProps(preset)
-    const columnsData = columns as ColumnSpec<Data>[]
-    mount(<Component columnsData={columnsData} {...props} />)
+    mount(
+        <Component
+            preset={preset}
+            isEmpty={preset === 'empty'}
+            isPaginateDisabled={preset === 'no-pagination'}
+        />
+    )
 }

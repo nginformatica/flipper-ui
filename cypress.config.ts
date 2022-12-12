@@ -13,5 +13,6 @@ export default defineConfig({
     env: {
         TAGS: '@focus'
     },
-    numTestsKeptInMemory: 0
+    numTestsKeptInMemory: 0,
+    viewportWidth: 850
 })

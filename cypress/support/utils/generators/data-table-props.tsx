@@ -44,7 +44,7 @@ const data: Data[] = [
     { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: date() }
 ]
 
-const columns: ColumnSpec<Data>[] = [
+const columnsData: ColumnSpec<Data>[] = [
     {
         title: 'Product',
         type: 'text',
@@ -87,7 +87,7 @@ const columns: ColumnSpec<Data>[] = [
 
 const defs = <D extends Data>() => ({
     data: data as D[],
-    columns: columns as ColumnSpec<D>[]
+    columns: columnsData as ColumnSpec<D>[]
 })
 
 const componentForEmpty = (

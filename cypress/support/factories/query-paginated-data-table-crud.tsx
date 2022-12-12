@@ -2,15 +2,15 @@ import { Skeleton } from '@material-ui/lab'
 import { mount } from 'cypress/react'
 import format from 'date-fns/format'
 import React, { useMemo, useRef, useState } from 'react'
+import { DataTableAction } from '../../../src/core/DataTable'
+import { Generators } from '..'
 import { Button, TableCell, TableRow, Typography } from '../../../src'
-import {
-    DataTableAction,
-    DataTableController,
-    DataTableQueryPaginated
-} from '../../../src/core/DataTable'
+// eslint-disable-next-line max-len
+import { DataTableQueryPaginated } from '../../../src/core/DataTable/DataTableQueryPaginated'
 import {
     ColumnSpec,
     Data,
+    DataTableController,
     Identifier,
     RowMode
 } from '../../../src/core/DataTable/types'
@@ -22,7 +22,6 @@ import {
     Edit as EditIcon,
     Save as SaveIcon
 } from '../../../src/icons'
-import { Generators } from '..'
 
 const generateSkeleton = (
     size: number,
@@ -70,9 +69,9 @@ const CrudComponent: React.FC<IProps> = props => {
     const newData = [
         ...props.columnsData,
         {
+            field: 'product',
             title: 'Actions',
             type: 'text',
-            field: 'product',
             cellStyle: {
                 maxWidth: '30px',
                 whiteSpace: 'nowrap',
@@ -81,7 +80,7 @@ const CrudComponent: React.FC<IProps> = props => {
             },
             editable: true
         }
-    ]
+    ] as ColumnSpec<Data>[]
 
     const LoadNode: React.ReactNode = useMemo(
         () => generateSkeleton(size, newData),
@@ -124,7 +123,7 @@ const CrudComponent: React.FC<IProps> = props => {
 
     const isNullable = (x: string | number) => x == null
     const isNotPositive = (x: string | number) => x <= 0
-    const isAfterNow = (x: string | number) => +x > +new Date()
+    const isAfterNow = (x: Date) => +x > +new Date()
     const isEmpty = (x: string) => x.trim().length === 0
 
     const handleErrors = (
@@ -141,7 +140,7 @@ const CrudComponent: React.FC<IProps> = props => {
             .filter(({ field, isErrorIf }) => {
                 const value: string | number | Date = nextItem[field]
 
-                if (isNullable(Number(value))) {
+                if (typeof value !== 'object' && isNullable(value)) {
                     if (isPartial) {
                         return false
                     }
@@ -271,7 +270,8 @@ const CrudComponent: React.FC<IProps> = props => {
     ]
 
     const rowViews = {
-        confirmDelete: ({ data }: { data: Data }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        confirmDelete: ({ data }: { data: any }) => {
             return (
                 <td colSpan={5}>
                     <div

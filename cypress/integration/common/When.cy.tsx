@@ -66,9 +66,7 @@ When('I hover mocked text {string}', (cat: MockCats) => {
         if (typeof mock === 'string') {
             cy.contains(mock).realHover()
         }
-        console.log({ mock })
     })
-    // cy.contains(text).realHover()
 })
 
 When('I click on delete icon', () => {
