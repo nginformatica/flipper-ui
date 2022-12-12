@@ -16,6 +16,10 @@ Then('I should see {string}', (text: string) =>
     cy.waitUntil(() => cy.contains(text).should('exist'))
 )
 
+Then('I should not see {string}', (text: string) =>
+    cy.contains(text).should('not.exist')
+)
+
 Then('I expect {string} mock to exist', (mockName: MockCats) => {
     cy.getMock(mockName).then(mock => {
         if (mock instanceof Array) {
@@ -467,9 +471,48 @@ Then('The input should have value from last mocked options', () => {
     })
 })
 
+Then(
+    'I expect input name {string} to be {string}',
+    (name: string, value: string) => {
+        cy.get(`input[name=${name}]`).should('have.value', value)
+    }
+)
+
 Then('Text should have typography {string}', (typo: TypographyVariant) => {
     cy.get(MuiSelectors.Typography).should(
         'have.class',
         muiTypographyValues.get(typo)
     )
+})
+
+Then('I expect DataTable pages per row to be {int}', (value: number) => {
+    cy.get(MuiSelectors.SelectInput).should('have.value', value)
+})
+
+Then('I expect DataTable caption to be {string}', (value: string) => {
+    cy.get(MuiSelectors.SelectPagination).last().should('have.text', value)
+})
+
+Then('I expect to see table footer', () => {
+    cy.get(MuiSelectors.TableFooter).should('exist')
+})
+
+Then('I do not expect to see table footer', () => {
+    cy.get(MuiSelectors.TableFooter).should('not.exist')
+})
+
+Then('I expect to see table header', () => {
+    cy.get(MuiSelectors.TableHeader).should('exist')
+})
+
+Then('I do not expect to see table header', () => {
+    cy.get(MuiSelectors.TableHeader).should('not.exist')
+})
+
+Then('I should see skeletons on table', () => {
+    cy.get('[data-testid="table-skeletons"]').should('exist')
+})
+
+Then('I should not see skeletons on table', () => {
+    cy.get('[data-testid="table-skeletons"]').should('not.exist')
 })

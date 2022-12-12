@@ -1,7 +1,8 @@
 import faker from 'faker'
 import { splitEvery } from 'ramda'
 import { useState, useMemo, useEffect } from 'react'
-import { v4 as uuid } from 'uuid'
+// import { v4 as uuid } from 'uuid'
+import { Data } from './types'
 
 export interface IDataProps {
     id: string
@@ -18,11 +19,11 @@ interface IPaginated<T> {
     totalItens: number
 }
 
-export const generateRandomDate = (size: number): IDataProps[] => {
-    const content: Array<IDataProps> = []
+export const generateRandomDate = (size: number): Data[] => {
+    const content: Array<Data> = []
     for (let i = 0; i < size; i++) {
         content.push({
-            id: uuid(),
+            id: i,
             product: faker.vehicle.model(),
             price: faker.datatype.float({ min: 0, max: 100000 }),
             quantity: faker.datatype.number({ min: 0, max: 30 }),
@@ -39,7 +40,7 @@ const DEFAULT_MOCK_LENGTH = 35
 
 const mockData = generateRandomDate(DEFAULT_MOCK_LENGTH)
 
-const INITIAL_STATE: IPaginated<IDataProps> = {
+const INITIAL_STATE: IPaginated<Data> = {
     items: [],
     size: DEFAULT_PAGE_SIZE,
     actualPage: 0,
@@ -47,7 +48,7 @@ const INITIAL_STATE: IPaginated<IDataProps> = {
 }
 
 export const usePaginated = () => {
-    const [state, setState] = useState<IPaginated<IDataProps>>(INITIAL_STATE)
+    const [state, setState] = useState<IPaginated<Data>>(INITIAL_STATE)
     const [loading, setLoading] = useState(true)
 
     const splitData = useMemo(
@@ -94,7 +95,9 @@ export const usePaginated = () => {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const setData = (data: any) => {
+    const setData: React.Dispatch<React.SetStateAction<Data[]>> = (
+        data: Data[]
+    ) => {
         setState(prev => ({ ...prev, items: data }))
     }
 
@@ -106,6 +109,7 @@ export const usePaginated = () => {
         size: state.size,
         handleChangePage,
         handleChangePerPage,
-        loading
+        loading,
+        mockData
     }
 }

@@ -1,6 +1,6 @@
 import type { CSSProperties, FunctionComponent } from 'react'
 
-type RecordUnknown = Record<string, unknown>
+export type RecordUnknown = Record<string, unknown>
 export type StackView = RecordUnknown
 export type Identifier = string | number
 

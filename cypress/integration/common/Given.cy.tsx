@@ -10,6 +10,7 @@ import {
     ButtonVariant,
     CheckboxVariant,
     ChipVariant,
+    DataTableVariant,
     HeaderVariant,
     IconButtonVariant,
     MaskFieldVariant,
@@ -166,3 +167,17 @@ Given(
 )
 
 Given('I render Zoom', () => Factory.ZoomFactory())
+
+Given('I render DataTable with {string} preset', (preset: DataTableVariant) =>
+    preset !== 'crud'
+        ? Factory.DataTableFactory(preset)
+        : Factory.CrudDataTableFactory()
+)
+
+Given(
+    'I render QueyPaginatedDataTableFactory with {string} preset',
+    (preset: DataTableVariant) =>
+        preset !== 'crud'
+            ? Factory.QueyPaginatedDataTableFactory(preset)
+            : Factory.QueryPaginatedCrudDataTableFactory()
+)

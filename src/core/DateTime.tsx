@@ -65,7 +65,7 @@ const DateTime: FC<DateTimeProps> = ({
         maxDateMessage,
         style: { margin, padding, ...style },
         inputProps: {
-            autocomplete: 'off',
+            autoComplete: 'off',
             ...otherProps.inputProps
         },
         InputAdornmentProps: {

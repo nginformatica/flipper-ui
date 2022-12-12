@@ -16,8 +16,6 @@ export const ButtonFactory = (
         const onClickSpy = generateSpy('button-onclick')
         const params = buttonPropsGenerator(preset)
 
-        console.log({ mock })
-
         mount(
             <Button {...params} id='button-test' onClick={onClickSpy}>
                 {mock}
