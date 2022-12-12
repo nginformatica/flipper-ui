@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import React, { FC } from 'react'
+import React from 'react'
 import { DefaultProps } from './types'
 
 interface ListProps extends DefaultProps {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const List: FC<ListProps> = ({
+const List = ({
     title,
     padding,
     margin,
@@ -43,7 +43,7 @@ const List: FC<ListProps> = ({
     className,
     color = 'default',
     ...otherProps
-}) => {
+}: ListProps) => {
     const classes = useStyles()
 
     return (

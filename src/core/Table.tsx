@@ -1,5 +1,5 @@
 import MuiTable, { TableProps as MuiTableProps } from '@material-ui/core/Table'
-import React, { FC } from 'react'
+import React from 'react'
 import { DefaultProps } from './types'
 import { silver } from '../colors'
 
@@ -7,14 +7,14 @@ interface TableProps extends DefaultProps {
     spacing?: MuiTableProps['padding']
 }
 
-const Table: FC<MuiTableProps & TableProps> = ({
+const Table = ({
     style,
     margin,
     padding,
     spacing,
     children,
     ...otherProps
-}) => (
+}: MuiTableProps & TableProps) => (
     <MuiTable
         {...otherProps}
         padding={spacing}

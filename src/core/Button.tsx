@@ -1,5 +1,5 @@
 import { Button as MuiButton } from '@material-ui/core'
-import React, { FC, ElementType, MouseEvent } from 'react'
+import React, { ElementType, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { DefaultProps } from './types'
 
@@ -14,6 +14,7 @@ export interface ButtonProps extends DefaultProps {
     fullWidth?: boolean
     variant?: 'text' | 'outlined' | 'contained' | 'dashed'
     target?: string
+    children?: React.ReactNode
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
@@ -25,14 +26,14 @@ const StyledButton = styled(MuiButton)<
     opacity: ${props => (props.selected ? 0.5 : 1)};
 `
 
-const Button: FC<ButtonProps> = ({
+const Button = ({
     children,
     margin,
     padding,
     style = {},
     variant,
     ...otherProps
-}) => (
+}: ButtonProps) => (
     <StyledButton
         {...otherProps}
         dashed={variant === 'dashed' ? 'true' : 'false'}

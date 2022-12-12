@@ -31,7 +31,10 @@ import { useRowsState } from './useRowsState'
 import { StatefulRow, NewRow } from './Rows'
 import { makeDataTablePaginationActions } from './DataTablePaginationActions'
 
-export type DataTableProps<D extends Data, V extends StackView = {}> = {
+export type DataTableProps<
+    D extends Data,
+    V extends StackView = Record<string, unknown>
+> = {
     /**
      * The data to be shown in the table
      */

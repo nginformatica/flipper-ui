@@ -5,7 +5,7 @@ import { DefaultProps } from './types'
 interface GrowProps extends DefaultProps {
     in: boolean
     timeout?: number | { enter?: number; exit?: number } | 'auto'
-    children?: React.ReactElement<{}>
+    children?: React.ReactElement<Record<string, unknown>>
 }
 
 const Grow = ({

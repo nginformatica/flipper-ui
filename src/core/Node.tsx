@@ -1,5 +1,4 @@
-import { evolve, not } from 'ramda'
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { background, primary, transparent } from '../colors'
 import {
@@ -10,10 +9,6 @@ import { DefaultProps } from './types'
 
 interface NodeProps extends DefaultProps {
     name: string
-}
-
-interface IState {
-    open: boolean
 }
 
 interface IListItem {
@@ -50,40 +45,31 @@ const Li = styled.li<IListItem>`
     }
 `
 
-class Node extends Component<NodeProps, IState> {
-    constructor(props: NodeProps) {
-        super(props)
-        this.state = { open: false }
+const Node = (props: NodeProps) => {
+    const [open, setOpen] = React.useState(false)
+    const { id, name, children, style = {}, className } = props
+
+    const handleToggleOpen = () => {
+        setOpen(!open)
     }
 
-    public handleToggleOpen() {
-        this.setState(evolve({ open: not }))
-    }
-
-    public renderDropdownIcon() {
-        return this.state.open ? (
+    const renderDropdownIcon = () => {
+        return open ? (
             <IconArrowUp style={styles.icon} />
         ) : (
             <IconArrowDown style={styles.icon} />
         )
     }
 
-    public render() {
-        const { open } = this.state
-        const { id, name, children, style = {}, className } = this.props
-
-        return (
-            <Ul key={id || name} style={style} className={className}>
-                <Li
-                    inset={Boolean(children)}
-                    onClick={this.handleToggleOpen.bind(this)}>
-                    {children && this.renderDropdownIcon()}
-                    {name}
-                </Li>
-                {open && children}
-            </Ul>
-        )
-    }
+    return (
+        <Ul key={id || name} style={style} className={className}>
+            <Li inset={Boolean(children)} onClick={handleToggleOpen}>
+                {children && renderDropdownIcon()}
+                {name}
+            </Li>
+            {open && children}
+        </Ul>
+    )
 }
 
 export default Node

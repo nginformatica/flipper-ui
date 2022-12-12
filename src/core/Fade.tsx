@@ -5,7 +5,7 @@ import { DefaultProps } from './types'
 interface FadeProps extends DefaultProps {
     in: boolean
     timeout?: number | { enter?: number; exit?: number }
-    children?: React.ReactElement<{}>
+    children: React.ReactElement<Record<string, unknown>>
 }
 
 const Fade = ({

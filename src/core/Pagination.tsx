@@ -1,5 +1,5 @@
 import { inc, times } from 'ramda'
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
     KeyboardArrowLeft as IconArrowLeft,
@@ -24,47 +24,33 @@ const Content = styled.div`
     margin: 0.75em;
 `
 
-class Pagination extends Component<PaginationProps, {}> {
-    public render() {
-        const {
-            active,
-            style,
-            padding,
-            margin,
-            pages = 1,
-            className
-        } = this.props
-        const allPages = times(inc, pages || 1)
+const Pagination = (props: PaginationProps) => {
+    const { active, style, padding, margin, pages = 1, className } = props
+    const allPages = times(inc, pages || 1)
 
-        return (
-            <Content
-                className={className}
-                style={{ padding, margin, ...style }}>
+    return (
+        <Content className={className} style={{ padding, margin, ...style }}>
+            <Button
+                id='prev-page-button'
+                size='small'
+                onClick={props.onPrevious}>
+                <IconArrowLeft />
+            </Button>
+            {allPages.map(page => (
                 <Button
-                    id='prev-page-button'
                     size='small'
-                    onClick={this.props.onPrevious}>
-                    <IconArrowLeft />
+                    key={page}
+                    id={`pagination-page-${page}`}
+                    color={page === active ? 'primary' : 'default'}
+                    onClick={() => props.onNavigate(page)}>
+                    {page}
                 </Button>
-                {allPages.map(page => (
-                    <Button
-                        size='small'
-                        key={page}
-                        id={`pagination-page-${page}`}
-                        color={page === active ? 'primary' : 'default'}
-                        onClick={() => this.props.onNavigate(page)}>
-                        {page}
-                    </Button>
-                ))}
-                <Button
-                    id='next-page-button'
-                    size='small'
-                    onClick={this.props.onNext}>
-                    <IconArrowRight />
-                </Button>
-            </Content>
-        )
-    }
+            ))}
+            <Button id='next-page-button' size='small' onClick={props.onNext}>
+                <IconArrowRight />
+            </Button>
+        </Content>
+    )
 }
 
 export default Pagination

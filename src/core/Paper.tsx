@@ -1,5 +1,5 @@
 import { Paper as MuiPaper } from '@material-ui/core'
-import React, { FC } from 'react'
+import React from 'react'
 import type { DefaultProps } from './types'
 
 export interface PaperProps extends DefaultProps {
@@ -7,13 +7,13 @@ export interface PaperProps extends DefaultProps {
     elevation?: number
 }
 
-const Paper: FC<PaperProps> = ({
+const Paper = ({
     children,
     style = {},
     padding,
     margin,
     ...otherProps
-}) => (
+}: PaperProps) => (
     <MuiPaper {...otherProps} style={{ padding, margin, ...style }}>
         {children}
     </MuiPaper>

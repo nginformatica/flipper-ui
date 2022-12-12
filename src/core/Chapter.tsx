@@ -1,15 +1,16 @@
-import React, { CSSProperties, FC } from 'react'
+import type { TypographyProps } from '@material-ui/core/Typography'
+import React, { CSSProperties } from 'react'
 import styled from 'styled-components'
 import { background, primary as primaryColor } from '../colors'
 import { DefaultProps } from './types'
 import Typography from './Typography'
-import type { TypographyProps } from '@material-ui/core/Typography'
 
 interface LineProps extends DefaultProps {
     primary?: boolean
     width?: string
     variant?: TypographyProps['variant']
     childrenStyle?: CSSProperties
+    children?: React.ReactNode
 }
 
 const StyledLine = styled.hr<LineProps>`
@@ -34,7 +35,7 @@ const Container = styled.div`
     }
 `
 
-const Chapter: FC<LineProps> = ({
+const Chapter = ({
     padding,
     margin,
     style,
@@ -42,7 +43,7 @@ const Chapter: FC<LineProps> = ({
     children,
     variant,
     ...otherProps
-}) => {
+}: LineProps) => {
     const Line = () => (
         <StyledLine style={{ padding, margin, ...style }} {...otherProps} />
     )

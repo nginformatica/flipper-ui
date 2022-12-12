@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import React, {
     ChangeEvent,
     KeyboardEvent,
-    FC,
     FocusEvent,
     ReactNode,
     MouseEvent
@@ -121,7 +120,7 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
-const TextField: FC<TextFieldProps> = ({
+const TextField = ({
     margin,
     padding,
     style = {},
@@ -137,7 +136,7 @@ const TextField: FC<TextFieldProps> = ({
     hasClear,
     onClear,
     ...otherProps
-}) => {
+}: TextFieldProps) => {
     const clearStyle = makeStyles({
         iconOutlined: {
             position: 'relative',

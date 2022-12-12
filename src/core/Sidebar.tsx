@@ -1,7 +1,7 @@
 import Drawer from '@material-ui/core/Drawer'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import React, { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
     KeyboardArrowLeft as IconArrowLeft,
@@ -81,7 +81,7 @@ const Action = styled.div<IAction>`
     padding: 4px;
 `
 
-const Sidebar: FC<SidebarProps> = ({
+const Sidebar = ({
     id,
     anchor = 'left',
     className,
@@ -102,7 +102,7 @@ const Sidebar: FC<SidebarProps> = ({
     onToggle,
     children,
     name
-}) => {
+}: SidebarProps) => {
     const classes = useStyles()
 
     const renderAction = () => {

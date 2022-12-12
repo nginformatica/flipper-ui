@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Clear } from '@material-ui/icons'
-import React, { ChangeEvent, FC } from 'react'
+import React, { ChangeEvent } from 'react'
 import { DefaultProps } from './types'
 
 interface SelectProps extends DefaultProps {
@@ -14,6 +14,7 @@ interface SelectProps extends DefaultProps {
     multiple?: boolean
     variant?: 'standard' | 'outlined' | 'filled'
     hasClear?: boolean
+    children: React.ReactNode
     onClear?: () => void
     onClose?: () => void
     onChange?: (
@@ -33,7 +34,7 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
-const Select: FC<SelectProps> = ({
+const Select = ({
     children,
     style = {},
     margin,
@@ -42,7 +43,7 @@ const Select: FC<SelectProps> = ({
     onClear,
     variant = 'outlined',
     ...otherProps
-}) => {
+}: SelectProps) => {
     const useStyles = makeStyles(() => ({
         root: {
             padding: `10px 24px 10px ${hasClear ? '20' : '12'}px`

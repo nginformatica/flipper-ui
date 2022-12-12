@@ -1,5 +1,5 @@
 import { AppBar, Toolbar } from '@material-ui/core'
-import React, { FC } from 'react'
+import React from 'react'
 import { PaperProps } from './Paper'
 
 export interface HeaderProps extends PaperProps {
@@ -7,14 +7,14 @@ export interface HeaderProps extends PaperProps {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }
 
-const Header: FC<HeaderProps> = ({
+const Header = ({
     children,
     padding,
     margin,
     style = {},
     elevation = 0,
     ...otherProps
-}) => (
+}: HeaderProps) => (
     <AppBar
         {...otherProps}
         elevation={elevation}

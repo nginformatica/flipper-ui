@@ -8,7 +8,7 @@ import {
     Theme
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import React, { Fragment, MouseEvent, FC } from 'react'
+import React, { Fragment, MouseEvent } from 'react'
 import { DefaultProps } from './types'
 import { Omit } from 'ramda'
 
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
 }))
 
-const ListItem: FC<ListItemProps> = props => {
+const ListItem = (props: ListItemProps) => {
     const { padding, margin, style } = props
     const classes = useStyles()
     const className = props.className
