@@ -2,7 +2,7 @@ Feature: Node
 
     I want to use Node
 
-    # @focus
+    @focus
     Scenario: I should render
         Given I render Node
         When I expand all nodes
