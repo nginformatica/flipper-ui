@@ -158,7 +158,7 @@ export const generateTreeWithNodes = () => {
 }
 
 export const generateFakeNodeTree = () => {
-    const depth = generateNumber(1, 3)
+    const depth = generateNumber(1, 2)
     let level = 0
     const namesToMock: string[] = []
 
@@ -166,7 +166,7 @@ export const generateFakeNodeTree = () => {
         if (level <= depth) {
             level++
 
-            const size = generateNumber(1, 3)
+            const size = generateNumber(1, 2)
             const elements: JSX.Element[] = []
 
             for (let i = 0; i < size; i++) {
@@ -182,7 +182,7 @@ export const generateFakeNodeTree = () => {
 
             return elements
         } else {
-            const size = generateNumber(1, 3)
+            const size = generateNumber(1, 2)
             const elements: JSX.Element[] = []
 
             for (let i = 0; i < size; i++) {

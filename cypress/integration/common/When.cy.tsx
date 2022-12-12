@@ -136,7 +136,7 @@ When('I expand all nodes', () => {
                 cy.scrollTo('bottom', { ensureScrollable: false })
 
                 cy.get('ul').then(size => {
-                    if (size.length > initial + 1) {
+                    if (size.length > initial) {
                         initial = size.length
                         clickMultiple()
                     }
