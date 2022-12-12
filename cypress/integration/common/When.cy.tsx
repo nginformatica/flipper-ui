@@ -243,8 +243,8 @@ When('I focus {int}th button', (pos: number) => {
         .focus()
 })
 
-When('I exit {int}th button', (pos: number) => {
-    cy.get('button')
-        .eq(pos - 1)
-        .trigger('blur')
+When('I exit focus', () => {
+    cy.get('[data-testid="testing-outside-click"]')
+        .first()
+        .click(-1050, -1000, { force: true })
 })

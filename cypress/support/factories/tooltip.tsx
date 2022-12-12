@@ -10,9 +10,15 @@ interface IProps {
 
 const Component: React.FC<IProps> = props => {
     return (
-        <Tooltip onClose={props.onClose} onOpen={props.onOpen} title='Tooltip'>
-            <Button variant='outlined'>Simple tooltip</Button>
-        </Tooltip>
+        <>
+            <Tooltip
+                onClose={props.onClose}
+                onOpen={props.onOpen}
+                title='Tooltip'>
+                <Button variant='outlined'>Simple tooltip</Button>
+            </Tooltip>
+            <div data-testid='testing-outside-click'></div>
+        </>
     )
 }
 
