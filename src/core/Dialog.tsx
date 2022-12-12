@@ -3,7 +3,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
-import React, { CSSProperties, ReactNode, FC } from 'react'
+import React, { CSSProperties, ReactNode } from 'react'
 import { DefaultProps } from './types'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     }
 })
 
-const Dialog: FC<DialogProps> = ({
+const Dialog = ({
     snippet,
     style,
     padding,
@@ -83,7 +83,7 @@ const Dialog: FC<DialogProps> = ({
     title,
     snippetStyle,
     snippetContentStyle
-}) => {
+}: DialogProps) => {
     const classes = useStyles()
 
     const renderTitle = (title: DialogProps['title']) => {

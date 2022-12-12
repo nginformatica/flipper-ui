@@ -31,7 +31,10 @@ import { useRowsState } from './useRowsState'
 import { StatefulRow, NewRow } from './Rows'
 import { makeDataTablePaginationActions } from './DataTablePaginationActions'
 
-export type DataTableProps<D extends Data, V extends StackView = {}> = {
+export type DataTableProps<
+    D extends Data,
+    V extends StackView = Record<string, unknown>
+> = {
     /**
      * The data to be shown in the table
      */
@@ -158,7 +161,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         }
 
         return data
-    }, [pagination.disabled, data, perPage, page, newRow])
+    }, [pagination.disabled, data])
 
     const {
         getRowState,

@@ -1,5 +1,5 @@
 import { Tabs as MuiTabs } from '@material-ui/core'
-import React, { FC, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { DefaultProps } from './types'
 
 interface TabsProps extends DefaultProps {
@@ -22,7 +22,7 @@ interface IClasses {
     }
 }
 
-const Tabs: FC<TabsProps & IClasses> = ({
+const Tabs = ({
     children,
     centered = true,
     padding = '6px 0 0',
@@ -31,7 +31,7 @@ const Tabs: FC<TabsProps & IClasses> = ({
     variant = 'standard',
     indicatorColor = 'primary',
     ...otherProps
-}) => {
+}: TabsProps & IClasses) => {
     return (
         <MuiTabs
             indicatorColor={indicatorColor}

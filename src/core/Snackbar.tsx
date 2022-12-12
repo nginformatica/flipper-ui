@@ -13,7 +13,7 @@ import {
     Info as IconInfo,
     Warning as IconWarning
 } from '@material-ui/icons'
-import React, { ReactNode, FC, FunctionComponent, MouseEvent } from 'react'
+import React, { ReactNode, FunctionComponent, MouseEvent } from 'react'
 import { DefaultProps } from './types'
 import { TransitionProps } from '@material-ui/core/transitions/transition'
 
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const SnackBar: FC<SnackBarProps> = props => {
+const SnackBar = (props: SnackBarProps) => {
     const {
         id,
         action,

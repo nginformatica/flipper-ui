@@ -2,7 +2,7 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import React, { ReactNode, FC, MouseEvent } from 'react'
+import React, { ReactNode, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { PaperProps } from './Paper'
 import { HelperBox } from './TextField'
@@ -21,7 +21,10 @@ interface ExpansionPanelProps extends PaperProps {
     helperIcon?: React.ReactNode
     helperButtonPosition?: 'left' | 'right'
     onHelperClick?: () => void
-    onChange?: (event?: React.ChangeEvent<{}>, expanded?: boolean) => void
+    onChange?: (
+        event?: React.ChangeEvent<Record<string, unknown>>,
+        expanded?: boolean
+    ) => void
 }
 
 const ExpansionPanelHeaderWrapper = styled.div`
@@ -36,7 +39,7 @@ const ExpansionPanelHeaderWrapper = styled.div`
     }
 `
 
-const ExpansionPanel: FC<ExpansionPanelProps> = ({
+const ExpansionPanel = ({
     actions,
     details,
     expandIcon,
@@ -51,7 +54,7 @@ const ExpansionPanel: FC<ExpansionPanelProps> = ({
     helperIcon,
     helperButtonPosition = 'right',
     ...otherProps
-}) => {
+}: ExpansionPanelProps) => {
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
         if (onHelperClick) {
             event.stopPropagation()

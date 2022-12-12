@@ -1,7 +1,7 @@
 import MuiTableRow, {
     TableRowProps as MuiTableRowProps
 } from '@material-ui/core/TableRow'
-import React, { FC, MouseEvent } from 'react'
+import React, { MouseEvent } from 'react'
 import { background as backgroundColor } from '../colors'
 import { DefaultProps } from './types'
 
@@ -12,14 +12,14 @@ interface TableRowProps extends DefaultProps {
     onClick?: (event: MouseEvent<HTMLTableRowElement>) => void
 }
 
-const TableRow: FC<MuiTableRowProps & TableRowProps> = ({
+const TableRow = ({
     style,
     margin,
     padding,
     children,
     background,
     ...otherProps
-}) => (
+}: MuiTableRowProps & TableRowProps) => (
     <MuiTableRow
         {...otherProps}
         style={{

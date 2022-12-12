@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import MuiSlider, { SliderProps } from '@material-ui/core/Slider'
 import { DefaultProps } from './types'
 
@@ -10,13 +10,13 @@ export type FlipperSliderProps = Omit<SliderProps, 'defaultValue'> &
     DefaultProps &
     ISliderProps
 
-const Slider: FC<FlipperSliderProps> = ({
+const Slider = ({
     padding,
     margin,
     style = {},
     defaultValue,
     ...otherProps
-}) => (
+}: FlipperSliderProps) => (
     <MuiSlider
         {...otherProps}
         defaultValue={defaultValue}

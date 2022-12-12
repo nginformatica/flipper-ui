@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { DefaultProps } from './types'
 
@@ -7,13 +7,13 @@ const StyledContent = styled.main`
     transition: all 500ms ease;
 `
 
-const Content: FC<DefaultProps> = ({
+const Content = ({
     children,
     padding,
     margin,
     style = {},
     ...otherProps
-}) => (
+}: DefaultProps) => (
     <StyledContent {...otherProps} style={{ padding, margin, ...style }}>
         {children}
     </StyledContent>

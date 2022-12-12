@@ -1,10 +1,11 @@
 import { Badge as MuiBadge } from '@material-ui/core'
-import React, { FC } from 'react'
+import React from 'react'
 import { BadgeProps as MuiBadgeProps } from '@material-ui/core/Badge'
 import { makeStyles } from '@material-ui/core/styles'
 import type { DefaultProps } from './types'
 
 export interface BadgeProps extends DefaultProps, MuiBadgeProps {
+    children: React.ReactNode
     max?: number
     counter: number | string
     position?: {
@@ -25,7 +26,7 @@ const useBadgeStyles = (position: BadgeProps['position']) => {
     return getStyles()
 }
 
-const Badge: FC<BadgeProps> = props => {
+const Badge = (props: BadgeProps) => {
     const {
         children,
         counter,

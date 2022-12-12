@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import {
     KeyboardTimePicker,
     KeyboardDatePicker,
@@ -37,7 +37,7 @@ type DateTimeProps = Omit<KeyboardDatePickerProps, 'margin' | 'onChange'> &
     IProps &
     DefaultProps
 
-const DateTime: FC<DateTimeProps> = ({
+const DateTime = ({
     padding,
     margin,
     style,
@@ -51,7 +51,7 @@ const DateTime: FC<DateTimeProps> = ({
     locale,
     type = 'date',
     ...otherProps
-}) => {
+}: DateTimeProps) => {
     const classes = useStyles()
 
     const fieldProps = {

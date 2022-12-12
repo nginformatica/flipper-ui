@@ -9,5 +9,5 @@ Feature: Tooltip
         Then I should see 'Tooltip'
         And I expect 'tooltip-onopen' spy to have been called 1 times
 
-        When I exit 1th button
+        When I exit focus
         Then I expect 'tooltip-onclose' spy to have been called 1 times

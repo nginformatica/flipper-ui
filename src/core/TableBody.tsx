@@ -1,14 +1,14 @@
 import MuiTableBody from '@material-ui/core/TableBody'
-import React, { FC } from 'react'
+import React from 'react'
 import { DefaultProps } from './types'
 
-const TableBody: FC<DefaultProps> = ({
+const TableBody = ({
     style,
     margin,
     padding,
     children,
     ...otherProps
-}) => (
+}: DefaultProps) => (
     <MuiTableBody {...otherProps} style={{ padding, margin, ...style }}>
         {children}
     </MuiTableBody>

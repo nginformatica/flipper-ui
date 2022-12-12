@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import { omit } from 'ramda'
+import React from 'react'
 import Node from './Node'
 
 export interface INode {
@@ -10,9 +11,12 @@ export interface INode {
 interface TreeProps {
     nodes?: INode[]
 }
-
-class Tree extends Component<TreeProps, {}> {
-    public renderNode(node: INode, index: string, root = false) {
+const Tree = ({ nodes = [] }: TreeProps): JSX.Element => {
+    const renderNode = (
+        node: INode,
+        index: string,
+        root = false
+    ): React.ReactNode => {
         const { id, name, nodes } = node
 
         return (
@@ -21,16 +25,24 @@ class Tree extends Component<TreeProps, {}> {
                 name={name}
                 key={id || index}
                 style={root ? { padding: 0 } : {}}>
-                {nodes && nodes.map(this.renderNode.bind(this))}
+                {nodes &&
+                    nodes.map(node => {
+                        return renderNode(
+                            omit(['array'], node),
+                            index.toString()
+                        )
+                    })}
             </Node>
         )
     }
 
-    public render() {
-        return (this.props.nodes || []).map((node, index) =>
-            this.renderNode(node, index.toString(), true)
-        )
-    }
+    return (
+        <Node name='root'>
+            {nodes.map((node, index) =>
+                renderNode(node, index.toString(), true)
+            )}
+        </Node>
+    )
 }
 
 export default Tree

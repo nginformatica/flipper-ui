@@ -5,7 +5,7 @@ import {
     Radio,
     RadioGroup as MuiRadioGroup
 } from '@material-ui/core'
-import React, { ChangeEvent, FC, ReactNode } from 'react'
+import React, { ChangeEvent, ReactNode } from 'react'
 import { DefaultProps } from './types'
 
 interface RadioGroupProps extends DefaultProps {
@@ -25,7 +25,7 @@ interface IOption {
     disabled?: boolean
 }
 
-const RadioGroup: FC<RadioGroupProps> = ({
+const RadioGroup = ({
     row,
     options = [],
     className,
@@ -38,7 +38,7 @@ const RadioGroup: FC<RadioGroupProps> = ({
     name,
     onChange,
     ...otherProps
-}) => (
+}: RadioGroupProps) => (
     <FormControl
         fullWidth
         className={className}

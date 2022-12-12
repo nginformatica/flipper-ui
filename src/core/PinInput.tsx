@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
 import { TextField } from '@material-ui/core'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 interface PinInputGridProps {
@@ -33,7 +33,7 @@ const PIN_MIN_VALUE = 0
 const PIN_MAX_VALUE = 9
 const BACKSPACE_KEY = 'Backspace'
 
-const PinInput: React.FC<PinInputGridProps> = ({
+const PinInput = ({
     pinLength,
     pin,
     setPin,
@@ -44,7 +44,7 @@ const PinInput: React.FC<PinInputGridProps> = ({
     style: styleProps,
     inputProps,
     variant
-}) => {
+}: PinInputGridProps) => {
     const inputRefs = useRef<HTMLInputElement[]>([])
 
     const changePinFocus = (pinIndex: number) => {

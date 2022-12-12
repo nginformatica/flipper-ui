@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core/styles'
 import MuiTableHead from '@material-ui/core/TableHead'
-import React, { FC, createContext } from 'react'
+import React, { createContext } from 'react'
 import { DefaultProps } from './types'
 
 interface TableHeadProps extends DefaultProps, ISort {
@@ -51,7 +51,7 @@ export const SortContext = createContext<ISort>({
     onSort: undefined
 })
 
-const TableHead: FC<TableHeadProps> = ({
+const TableHead = ({
     style,
     margin,
     padding,
@@ -62,7 +62,7 @@ const TableHead: FC<TableHeadProps> = ({
     direction,
     onSort,
     ...otherProps
-}) => (
+}: TableHeadProps) => (
     <SortContext.Provider value={{ active, direction, onSort }}>
         <MuiTableHead
             {...otherProps}

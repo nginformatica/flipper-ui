@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 
 export interface DefaultProps {
+    children?: React.ReactNode
     style?: CSSProperties
     className?: string
     margin?: number | string

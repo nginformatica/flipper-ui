@@ -1,5 +1,5 @@
 import { Tab as MuiTab } from '@material-ui/core'
-import React, { Component } from 'react'
+import React from 'react'
 import { DefaultProps } from './types'
 
 interface TabProps extends DefaultProps {
@@ -10,24 +10,18 @@ interface TabProps extends DefaultProps {
     disableRipple?: boolean
 }
 
-class Tab extends Component<TabProps> {
-    public static defaultProps = {
-        disabled: false,
-        margin: '0 4px'
-    }
-
-    public render() {
-        const { style, margin, disableRipple, padding, ...otherProps } =
-            this.props
-
-        return (
-            <MuiTab
-                disableRipple
-                style={{ margin, padding, ...style }}
-                {...otherProps}
-            />
-        )
-    }
-}
+const Tab = ({
+    style,
+    margin,
+    disableRipple,
+    padding,
+    ...otherProps
+}: TabProps) => (
+    <MuiTab
+        disableRipple
+        style={{ margin, padding, ...style }}
+        {...otherProps}
+    />
+)
 
 export default Tab

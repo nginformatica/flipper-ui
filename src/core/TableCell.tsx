@@ -2,7 +2,7 @@ import MuiTableCell, {
     TableCellProps as MuiTableCellProps
 } from '@material-ui/core/TableCell'
 import MuiTableSortLabel from '@material-ui/core/TableSortLabel'
-import React, { FC, useContext } from 'react'
+import React, { useContext } from 'react'
 import { DefaultProps } from './types'
 import { Omit } from 'ramda'
 import { SortContext } from './TableHead'
@@ -15,14 +15,14 @@ interface TableCellProps extends DefaultProps {
     align?: 'inherit' | 'left' | 'center' | 'right' | 'justify'
 }
 
-const TableCell: FC<Omit<MuiTableCellProps, 'padding'> & TableCellProps> = ({
+const TableCell = ({
     style,
     margin,
     padding,
     children,
     spacing,
     ...otherProps
-}) => {
+}: Omit<MuiTableCellProps, 'padding'> & TableCellProps) => {
     const { onSort, active, direction } = useContext(SortContext)
 
     const handleSort = () => {

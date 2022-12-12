@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { DefaultProps } from './types'
 import MuiCard, { CardProps } from '@material-ui/core/Card'
 import MuiCardActionArea, {
@@ -9,67 +9,67 @@ import MuiCardContent, { CardContentProps } from '@material-ui/core/CardContent'
 import MuiCardMedia, { CardMediaProps } from '@material-ui/core/CardMedia'
 import MuiCardHeader, { CardHeaderProps } from '@material-ui/core/CardHeader'
 
-export const CardActionArea: FC<DefaultProps & CardActionAreaProps> = ({
+export const CardActionArea = ({
     margin,
     padding,
     style,
     ...otherProps
-}) => (
+}: DefaultProps & CardActionAreaProps) => (
     <MuiCardActionArea {...otherProps} style={{ padding, margin, ...style }}>
         {otherProps.children}
     </MuiCardActionArea>
 )
 
-export const CardActions: FC<DefaultProps & CardActionsProps> = ({
+export const CardActions = ({
     margin,
     padding,
     style,
     ...otherProps
-}) => (
+}: DefaultProps & CardActionsProps) => (
     <MuiCardActions {...otherProps} style={{ padding, margin, ...style }}>
         {otherProps.children}
     </MuiCardActions>
 )
 
-export const CardContent: FC<DefaultProps & CardContentProps> = ({
+export const CardContent = ({
     margin,
     padding,
     style,
     ...otherProps
-}) => (
+}: DefaultProps & CardContentProps) => (
     <MuiCardContent {...otherProps} style={{ padding, margin, ...style }}>
         {otherProps.children}
     </MuiCardContent>
 )
 
-export const CardMedia: FC<DefaultProps & CardMediaProps> = ({
+export const CardMedia = ({
     margin,
     padding,
     style,
     ...otherProps
-}) => (
+}: DefaultProps & CardMediaProps) => (
     <MuiCardMedia {...otherProps} style={{ padding, margin, ...style }}>
         {otherProps.children}
     </MuiCardMedia>
 )
 
-export const CardHeader: FC<DefaultProps & CardHeaderProps> = ({
+export const CardHeader = ({
     margin,
     padding,
     style,
     ...otherProps
-}) => (
+}: DefaultProps & CardHeaderProps) => (
     <MuiCardHeader {...otherProps} style={{ padding, margin, ...style }}>
         {otherProps.children}
     </MuiCardHeader>
 )
 
-const Card: FC<DefaultProps & CardProps> = ({
+const Card = ({
     margin,
     padding,
     style,
     ...otherProps
-}) => (
+}: DefaultProps & CardProps) => (
     <MuiCard {...otherProps} style={{ padding, margin, ...style }}>
         {otherProps.children}
     </MuiCard>

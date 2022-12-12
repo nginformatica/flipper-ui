@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { background, primary as primaryColor } from '../colors'
 import { DefaultProps } from './types'
@@ -14,7 +14,7 @@ const StyledLine = styled.hr<LineProps>`
         ${props => (props.primary ? primaryColor.normal : background.normal)};
 `
 
-const Line: FC<LineProps> = ({ padding, margin, style, ...otherProps }) => (
+const Line = ({ padding, margin, style, ...otherProps }: LineProps) => (
     <StyledLine style={{ padding, margin, ...style }} {...otherProps} />
 )
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { background } from '../colors'
 import MuiPaper from './Paper'
 import Typography from './Typography'
@@ -23,14 +23,14 @@ const Paper = styled(MuiPaper)`
     flex-direction: column;
 `
 
-const Advertise: FC<AdvertiseProps> = ({
+const Advertise = ({
     comment,
     author,
     padding = 4,
     commentStyle = {},
     authorStyle = {},
     ...otherProps
-}) => (
+}: AdvertiseProps) => (
     <Paper padding={padding} {...otherProps}>
         <Typography
             margin='0 12px'

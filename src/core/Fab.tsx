@@ -10,7 +10,7 @@ interface FabProps extends DefaultProps {
     href?: string
     variant?: 'round' | 'extended'
     onClick?: (event?: MouseEvent<HTMLElement>) => void
-    children: React.ReactElement<{}>
+    children: React.ReactElement<Record<string, unknown>>
 }
 
 const Fab = ({
