@@ -11,7 +11,7 @@ interface AvatarProps extends DefaultProps {
     src?: string
     imgProps?: object
     primary?: boolean
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const useStyles = makeStyles((theme: Theme) =>
