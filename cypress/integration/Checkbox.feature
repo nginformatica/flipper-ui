@@ -68,6 +68,6 @@ Feature: Checkbox
         Then I expect 'checkbox-onHelper-click' spy to have been called 1 times
 
     @focus
-    Scenario: I should render default
+    Scenario: I should get element by cy selector
         Given I render Checkbox with 'default' preset
         Then I should find a cy selector named 'checkbox-container'

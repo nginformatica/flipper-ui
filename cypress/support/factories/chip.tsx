@@ -34,7 +34,7 @@ export const ChipFieldFactory = () => {
     }).then(chipsList => {
         mount(
             <ChipField
-                data-cy='chip-container'
+                data-cy='chip-field-container'
                 label='chips'
                 onAdd={onAddSpy}
                 onDelete={onDeleteSpy}
