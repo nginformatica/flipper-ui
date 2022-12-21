@@ -6,5 +6,5 @@ import { Generators } from '..'
 
 export const MaskFieldFactory = (preset: MaskFieldVariant) => {
     const props = Generators.MaskFieldPropsGenerator(preset)
-    mount(<MaskField {...props} />)
+    mount(<MaskField data-cy='mask-field' {...props} />)
 }

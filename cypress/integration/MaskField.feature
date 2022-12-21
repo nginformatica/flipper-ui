@@ -30,3 +30,8 @@ Feature: MaskField
 
         When I type '123,1' on input
         And I expect input to have value '123,10'
+
+    @focus
+    Scenario: I should render default and validate input
+        Given I render MaskField with 'default' preset
+        Then I should find a cy selector named 'mask-field'
