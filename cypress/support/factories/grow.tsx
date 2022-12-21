@@ -25,7 +25,7 @@ const Component: React.FC<IProps> = props => {
                 onClick={handleClick}>
                 {label}
             </Button>
-            <Grow in={open}>
+            <Grow data-cy='grow-container' in={open}>
                 <span id='grow-test-id'>{props.text}</span>
             </Grow>
         </>
