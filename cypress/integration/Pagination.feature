@@ -30,3 +30,8 @@ Feature: Pagination
         When I click on button 'pagination-page-5'
         Then I expect 'pagination-navigation-onclick' spy to have been called 1 times
         Then I expect spy 'pagination-navigation-onclick' to have been called with 5
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Pagination
+        Then I should find a cy selector named 'pagination-container'
