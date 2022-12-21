@@ -43,7 +43,8 @@ const PinInput = ({
     size,
     style: styleProps,
     inputProps,
-    variant
+    variant,
+    ...otherProps
 }: PinInputGridProps) => {
     const inputRefs = useRef<HTMLInputElement[]>([])
 
@@ -137,7 +138,7 @@ const PinInput = ({
     }
 
     return (
-        <Container>
+        <Container {...otherProps}>
             {Array.from({ length: pinLength }, (_, index) => (
                 <TextField
                     disabled={isValidating}

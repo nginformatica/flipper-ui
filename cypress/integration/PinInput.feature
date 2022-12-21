@@ -30,3 +30,8 @@ Feature: PinInput
         When I type '123123' on input
         And I click on button 'validate-pin-input'
         Then I expect success when click to validate input
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render PinInput
+        Then I should find a cy selector named 'pin-input-container'
