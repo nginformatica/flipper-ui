@@ -7,6 +7,7 @@ const Component: React.FC = () => {
 
     return (
         <RadioGroup
+            data-cy='radio-group-container'
             value={option}
             title='My options'
             name='options'
