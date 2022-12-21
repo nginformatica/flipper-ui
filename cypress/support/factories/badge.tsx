@@ -35,7 +35,7 @@ export const BadgeFactory = (preset: BadgeVariant) => {
                     params = {
                         counter,
                         color: 'secondary',
-                        children: mockChildren
+                        children: mockChildren as React.ReactNode
                     }
                     break
                 case 'with-dot':
@@ -50,7 +50,7 @@ export const BadgeFactory = (preset: BadgeVariant) => {
                     params = { children: 'Badge', counter }
                     break
             }
-            mount(<Badge {...params} />)
+            mount(<Badge data-cy='badge-container' {...params} />)
         })
     })
 }
