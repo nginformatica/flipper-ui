@@ -8,7 +8,7 @@ export const DividerFactory = () => {
             <ListItem>
                 <p>Banded penguin</p>
             </ListItem>
-            <Divider />
+            <Divider data-cy='divider-container' />
             <ListItem>
                 <p>Chinstrap penguin</p>
             </ListItem>
