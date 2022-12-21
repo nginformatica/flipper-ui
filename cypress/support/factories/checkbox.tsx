@@ -16,7 +16,10 @@ export const CheckboxFactory = (variant: CheckboxVariant) => {
     }).then(mockedList => {
         const defaultProps = {
             ...mockedList[1],
-            label: mockedList[0]
+            label: mockedList[0],
+            checkboxProps: {
+                'data-cy': 'checkbox-container'
+            }
         } as unknown as CheckboxProps
 
         const props = Generators.checkboxPropsGenerator(

@@ -1,5 +1,6 @@
 import {
     Checkbox as MuiCheckbox,
+    CheckboxProps as MuiCheckboxProps,
     FormControlLabel as MuiFormControlLabel,
     Switch as MuiSwitch,
     Typography
@@ -19,6 +20,7 @@ export interface CheckboxProps extends DefaultProps {
     helperIcon?: React.ReactNode
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLElement>) => void
+    checkboxProps?: MuiCheckboxProps
 }
 
 const DENSE = { padding: '2px', margin: '0px 7px' }
@@ -31,7 +33,7 @@ const Checkbox = (props: CheckboxProps) => {
         style,
         helperIcon,
         onHelperClick,
-        ...others
+        checkboxProps
     } = props
 
     const renderHelper = (
@@ -45,9 +47,9 @@ const Checkbox = (props: CheckboxProps) => {
         </>
     )
 
-    const renderCheckbox = () => (
+    const renderCheckbox = (checkboxProps?: MuiCheckboxProps) => (
         <MuiCheckbox
-            {...others}
+            {...checkboxProps}
             name={props.name}
             checked={props.checked}
             value={props.name}
@@ -58,9 +60,9 @@ const Checkbox = (props: CheckboxProps) => {
         />
     )
 
-    const renderSwitch = () => (
+    const renderSwitch = (checkboxProps?: MuiCheckboxProps) => (
         <MuiSwitch
-            {...others}
+            {...checkboxProps}
             name={props.name}
             checked={props.checked}
             value={props.name}
@@ -70,8 +72,8 @@ const Checkbox = (props: CheckboxProps) => {
         />
     )
 
-    const renderControl = () =>
-        type === 'checkbox' ? renderCheckbox() : renderSwitch()
+    const renderControl = (props?: MuiCheckboxProps) =>
+        type === 'checkbox' ? renderCheckbox(props) : renderSwitch()
 
     const renderLabel = () =>
         typeof props.label === 'string' && props.dense ? (
@@ -87,10 +89,10 @@ const Checkbox = (props: CheckboxProps) => {
                     style={{ padding, margin, ...style }}
                     className={props.className}
                     label={renderLabel()}
-                    control={renderControl()}
+                    control={renderControl(checkboxProps)}
                 />
             ) : (
-                renderControl()
+                renderControl(checkboxProps)
             )}
             {renderHelper}
         </CheckFieldsWrapper>
