@@ -14,3 +14,8 @@ Feature: Card
         When I click on 2th button
         Then I expect 'card-bottom' spy to have been called 1 times
 
+    @focus
+    Scenario:I should get element by cy selector
+        Given I render Card
+        Then I should find a cy selector named 'card-container'
+

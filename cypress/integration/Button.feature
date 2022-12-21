@@ -152,6 +152,6 @@ Feature: Button
         And I expect button 'button-test' to be disabled
 
     @focus
-    Scenario: I should render default
+    Scenario: I should get element by cy selector
         Given I render Button with 'default' preset
         Then I should find a cy selector named 'button-container'

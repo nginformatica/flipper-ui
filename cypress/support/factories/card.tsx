@@ -21,7 +21,10 @@ export const CardFactory = () => {
         params => {
             if (params instanceof Object && 'className' in params) {
                 mount(
-                    <Card {...params} id='generic-testing-id'>
+                    <Card
+                        {...params}
+                        data-cy='card-container'
+                        id='generic-testing-id'>
                         <CardActionArea onClick={onClickSpyTop}>
                             <CardMedia
                                 image={url}
