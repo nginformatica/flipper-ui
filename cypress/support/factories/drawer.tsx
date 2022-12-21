@@ -20,7 +20,10 @@ const Component: React.FC<IProps> = props => {
             <Button onClick={handleClick} disabled={open}>
                 Open
             </Button>
-            <Drawer open={open} onClick={handleClick}>
+            <Drawer
+                data-cy='drawer-container'
+                open={open}
+                onClick={handleClick}>
                 <List>{...props.list}</List>
             </Drawer>
         </>
