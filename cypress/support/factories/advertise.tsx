@@ -11,6 +11,14 @@ export const AdvertiseFactory = () => {
         author = typeof e === 'string' ? e : e.toString()
         generateMock({ value: 'advertise-comment', type: 'Words' })
             .then(e => (comment = typeof e === 'string' ? e : e.toString()))
-            .then(() => mount(<Advertise author={author} comment={comment} />))
+            .then(() =>
+                mount(
+                    <Advertise
+                        author={author}
+                        comment={comment}
+                        data-cy='advertise-container'
+                    />
+                )
+            )
     })
 }

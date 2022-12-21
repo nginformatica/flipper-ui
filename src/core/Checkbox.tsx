@@ -30,7 +30,8 @@ const Checkbox = (props: CheckboxProps) => {
         padding,
         style,
         helperIcon,
-        onHelperClick
+        onHelperClick,
+        ...others
     } = props
 
     const renderHelper = (
@@ -46,6 +47,7 @@ const Checkbox = (props: CheckboxProps) => {
 
     const renderCheckbox = () => (
         <MuiCheckbox
+            {...others}
             name={props.name}
             checked={props.checked}
             value={props.name}
@@ -58,6 +60,7 @@ const Checkbox = (props: CheckboxProps) => {
 
     const renderSwitch = () => (
         <MuiSwitch
+            {...others}
             name={props.name}
             checked={props.checked}
             value={props.name}

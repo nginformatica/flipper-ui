@@ -10,3 +10,7 @@ Feature: Advertise - Default
         Then I expect 'advertise-author' mock to exist
         And I expect 'advertise-comment' mock to exist
 
+    @focus
+    Scenario: I should get element by cy selector
+        Then I should find a cy selector named 'advertise-container'
+

@@ -248,3 +248,10 @@ When('I exit focus', () => {
         .first()
         .click(-1050, -1000, { force: true })
 })
+
+When('I click on cy {string}', (selector: string) => {
+    // NOTE - DO NOT use .first() here, if Cypress throws an error
+    // saying that multiple elements were found, it means that the
+    // element is not unique you should ensure cy selector is unique
+    cy.get(`[data-cy="${selector}"`).click()
+})
