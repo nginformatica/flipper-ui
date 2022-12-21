@@ -18,7 +18,10 @@ const Component: React.FC<TProps> = props => {
 
     return (
         <>
-            <Collapse in={open}> {props.colapseText} </Collapse>
+            <Collapse data-cy='collapse-container' in={open}>
+                {' '}
+                {props.colapseText}{' '}
+            </Collapse>
             <Button
                 size='small'
                 color='primary'
