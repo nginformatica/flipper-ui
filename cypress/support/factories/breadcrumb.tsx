@@ -22,7 +22,11 @@ export const BreadcrumbFactory = (size?: number) =>
                 )
             }
 
-            mount(<Breadcrumb>{...listOfLinks}</Breadcrumb>)
+            mount(
+                <Breadcrumb data-cy='breadcrumb-container'>
+                    {...listOfLinks}
+                </Breadcrumb>
+            )
         } else {
             throw new Error('Invalid mock generation')
         }
