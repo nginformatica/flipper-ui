@@ -17,8 +17,12 @@ export const ButtonFactory = (
         const params = buttonPropsGenerator(preset)
 
         mount(
-            <Button {...params} id='button-test' onClick={onClickSpy}>
-                {mock}
+            <Button
+                {...params}
+                data-cy='button-container'
+                id='button-test'
+                onClick={onClickSpy}>
+                {mock as string}
             </Button>
         )
     })
