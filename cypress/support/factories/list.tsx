@@ -5,5 +5,5 @@ import { generateListOfSpiedItems } from '../utils/generators'
 
 export const ListFactory = () => {
     const elements = generateListOfSpiedItems()
-    mount(<List>{...elements}</List>)
+    mount(<List data-cy='list-container'>{...elements}</List>)
 }
