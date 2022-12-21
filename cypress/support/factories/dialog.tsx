@@ -16,6 +16,7 @@ const Component: React.FC<IProps> = props => {
         <>
             <Button onClick={() => setOpen(true)}>Open dialog</Button>
             <Dialog
+                data-cy='dialog-container'
                 open={open}
                 title={props.title}
                 text={props.text}

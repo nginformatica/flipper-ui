@@ -11,3 +11,9 @@ Feature: Dialog
         When I click on first Mui Button
         Then I expect to see an Mui Dialog
         And I expect 'dialog-content' mock to exist
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Dialog
+        When I click on first Mui Button
+        Then I should find a cy selector named 'dialog-container'
