@@ -17,3 +17,8 @@ Feature: Avatar
         Given I render Avatar with 'with-children' preset
         Then I should not see any 'svg'
         And I expect 'avatar-children' mock to exist
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Avatar with 'default' preset
+        Then I should find a cy selector named 'avatar-container'
