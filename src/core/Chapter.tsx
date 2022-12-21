@@ -44,13 +44,13 @@ const Chapter = ({
     variant,
     ...otherProps
 }: LineProps) => {
-    const Line = () => (
-        <StyledLine style={{ padding, margin, ...style }} {...otherProps} />
+    const Line = (props: LineProps) => (
+        <StyledLine style={{ padding, margin, ...style }} {...props} />
     )
 
     return (
         <Container>
-            <Line />
+            <Line {...otherProps} />
             <Typography variant={variant} style={{ ...childrenStyle }}>
                 {children}
             </Typography>

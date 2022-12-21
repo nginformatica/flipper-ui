@@ -119,6 +119,16 @@ export const generateMock = ({ value, type, options }: GenerateMockProps) => {
     return cy.wrap(mockedValue).as(mock(value).original)
 }
 
+export function generateTypedMock<T>({
+    value,
+    type,
+    options
+}: GenerateMockProps) {
+    const mockedValue: mockType = getMockedValues(type, options)
+
+    return cy.wrap(mockedValue as T).as(mock(value).original)
+}
+
 export const generateMockList = ({
     value,
     type,

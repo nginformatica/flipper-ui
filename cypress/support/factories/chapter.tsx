@@ -1,12 +1,12 @@
 import React from 'react'
 import { mount } from 'cypress/react'
 import { Chapter } from '../../../src'
-import { generateMock } from '../component'
+import { generateTypedMock } from '../component'
 
 export const ChapterFactory = () => {
-    generateMock({ value: 'chapter-content', type: 'Word' }).then(
+    generateTypedMock<string>({ value: 'chapter-content', type: 'Word' }).then(
         mockedWord => {
-            mount(<Chapter>{mockedWord}</Chapter>)
+            mount(<Chapter data-cy='chapter-container'>{mockedWord}</Chapter>)
         }
     )
 }
