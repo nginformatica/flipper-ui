@@ -10,7 +10,8 @@ export const PaperFactory = () => {
         type: ['Word', 'GenericStyleParams']
     }).then(mockedList => {
         const defaultProps = {
-            ...mockedList[1]
+            ...mockedList[1],
+            'data-cy': 'paper-container'
         } as PaperProps
 
         mount(<Paper {...defaultProps}>{mockedList[0]}</Paper>)
