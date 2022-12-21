@@ -8,7 +8,11 @@ export const BoxFactory = () =>
         if (params instanceof Object && 'minHeight' in params) {
             generateMock({ value: 'box-children', type: 'Words' }).then(e => {
                 const child = typeof e === 'string' ? e : e.toString()
-                mount(<Box {...params}>{child}</Box>)
+                mount(
+                    <Box data-cy='box-container' {...params}>
+                        {child}
+                    </Box>
+                )
             })
         } else {
             throw new Error('Invalid mock generation')
