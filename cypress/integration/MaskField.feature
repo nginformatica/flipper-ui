@@ -32,6 +32,6 @@ Feature: MaskField
         And I expect input to have value '123,10'
 
     @focus
-    Scenario: I should render default and validate input
+    Scenario: I should get element by cy selector
         Given I render MaskField with 'default' preset
         Then I should find a cy selector named 'mask-field'

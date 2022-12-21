@@ -17,7 +17,7 @@ const Component: React.FC<IProps> = props => {
     return (
         <>
             <Button onClick={handleClick}>Menu</Button>
-            <Menu open={open} onClick={handleClick}>
+            <Menu data-cy='menu-container' open={open} onClick={handleClick}>
                 {...props.elements}
             </Menu>
         </>
