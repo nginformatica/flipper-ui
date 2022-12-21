@@ -62,7 +62,7 @@ const Node = (props: NodeProps) => {
     }
 
     return (
-        <Ul key={id || name} style={style} className={className}>
+        <Ul {...props} key={id || name} style={style} className={className}>
             <Li inset={Boolean(children)} onClick={handleToggleOpen}>
                 {children && renderDropdownIcon()}
                 {name}

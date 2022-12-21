@@ -157,12 +157,12 @@ export const generateTreeWithNodes = () => {
     }
 }
 
-export const generateFakeNodeTree = () => {
+export const generateFakeNodeTree = (cyTag?: string) => {
     const depth = generateNumber(1, 2)
     let level = 0
     const namesToMock: string[] = []
 
-    const generateNode = (): JSX.Element[] | JSX.Element[][] => {
+    const generateNode = (cyTag?: string): JSX.Element[] | JSX.Element[][] => {
         if (level <= depth) {
             level++
 
@@ -173,8 +173,12 @@ export const generateFakeNodeTree = () => {
                 const name = faker.random.word()
                 namesToMock.push(name)
                 const id = uuid()
+                const props = Object.assign(
+                    {},
+                    i === 0 ? { 'data-cy': cyTag } : {}
+                )
                 elements.push(
-                    <Node id={uuid()} key={id} name={name}>
+                    <Node {...props} id={uuid()} key={id} name={name}>
                         {generateNode()}
                     </Node>
                 )
@@ -196,7 +200,7 @@ export const generateFakeNodeTree = () => {
         }
     }
 
-    const elements = generateNode()
+    const elements = generateNode(cyTag)
 
     return {
         elements,
