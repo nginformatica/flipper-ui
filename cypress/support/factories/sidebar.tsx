@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { mount } from 'cypress/react'
 import { Sidebar } from '../../../src'
 import { Generators } from '..'
+import { omit } from 'ramda'
 
 interface IProps {
     children: JSX.Element[]
@@ -13,7 +14,10 @@ const Component: React.FC<IProps> = props => {
     const toggleOpen = () => setOpen(!open)
 
     return (
-        <Sidebar open={open} onToggle={toggleOpen}>
+        <Sidebar
+            {...omit(['children'], props)}
+            open={open}
+            onToggle={toggleOpen}>
             {props.children}
         </Sidebar>
     )
@@ -22,5 +26,5 @@ const Component: React.FC<IProps> = props => {
 export const SidebarFactory = () => {
     const elements = Generators.generateListOfSpiedItems(6)
 
-    mount(<Component>{...elements}</Component>)
+    mount(<Component data-cy='sidebar-container'>{...elements}</Component>)
 }
