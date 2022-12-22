@@ -34,3 +34,9 @@ Feature: Snackbar
         When I click on 1th button
         Then I should see 'This is an error message'
         And The snackbar should have Mui background 'error'
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Snackbar with 'default' preset
+        When I click on 1th button
+        Then I should find a cy selector named 'snackbar-container'

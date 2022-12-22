@@ -39,6 +39,10 @@ const Component: React.FC<IProps> = props => {
 }
 
 export const SnackbarFactory = (preset: SnackbarVariant) => {
-    const props = Generators.SnackbarPropsGenerator(preset)
+    const generatedProps = Generators.SnackbarPropsGenerator(preset)
+    const props = Object.assign({}, generatedProps, {
+        'data-cy': 'snackbar-container'
+    })
+
     mount(<Component args={props} />)
 }
