@@ -15,3 +15,8 @@ Feature: Tabs
 
         When I click on 1th button
         Then I expect 'Profile' to be selected
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Tabs
+        Then I should find a cy selector named 'tabs-container'
