@@ -8,5 +8,12 @@ import { SliderVariant } from '../types-interfaces-enums'
 export const SliderFactory = (preset: SliderVariant) => {
     const props = Generators.SliderPropsGenerator(preset)
     const onChangeSpy = generateSpy('slider-percentage')
-    mount(<Slider name='percentage-range' onChange={onChangeSpy} {...props} />)
+    mount(
+        <Slider
+            data-cy='slider-container'
+            name='percentage-range'
+            onChange={onChangeSpy}
+            {...props}
+        />
+    )
 }
