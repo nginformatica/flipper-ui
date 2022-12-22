@@ -69,3 +69,8 @@ Feature: TextField
 
         When I click on 1th button
         Then I expect input to have value ''
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render TextField with 'default' preset
+        Then I should find a cy selector named 'text-field-container'
