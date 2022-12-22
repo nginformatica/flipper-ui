@@ -7,14 +7,16 @@ export const TableFactory = () => {
     generateMock({ value: 'table-params', type: 'TableParams' }).then(
         mockedList => {
             mount(
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Email</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    {mockedList}
+                <Table data-cy='table-container'>
+                    <>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Email</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        {mockedList}
+                    </>
                 </Table>
             )
         }
