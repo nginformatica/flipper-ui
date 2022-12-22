@@ -60,3 +60,8 @@ Feature: Chip
 
         When I click on delete icon
         Then I expect 'checkbox-onchange' spy to have been called 1 times
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Chip with 'default' preset
+        Then I should find a cy selector named 'chip-container'

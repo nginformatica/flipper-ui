@@ -9,8 +9,11 @@ export const ContentFactory = () => {
             generateMock({
                 value: 'content-style',
                 type: 'GenericStyleParams'
-            }).then(props => {
-                if (props instanceof Object) {
+            }).then(mockedProps => {
+                if (mockedProps instanceof Object) {
+                    const props = Object.assign({}, mockedProps, {
+                        'data-cy': 'content-container'
+                    })
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     mount(<Content {...props}>{mockedWords}</Content>)

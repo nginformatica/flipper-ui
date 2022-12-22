@@ -19,6 +19,6 @@ export const ExpansionPanelFactory = () => {
             detailsFooter: typeof footer === 'string' ? footer : ''
         })
 
-        mount(<ExpansionPanel {...props} />)
+        mount(<ExpansionPanel data-cy='expansion-panel-container' {...props} />)
     })
 }

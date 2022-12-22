@@ -14,5 +14,5 @@ export const PaginationFactory = () => {
         onPreviousPageClick: onPrevSpy,
         onNextPageClick: onNextSpy
     })
-    mount(<Pagination {...props} />)
+    mount(<Pagination data-cy='pagination-container' {...props} />)
 }

@@ -27,3 +27,8 @@ Feature: Badge
         Given I render Badge with 'with-dot' preset
         Then I should see 1 BadgeDot
         And I should see 'Badge'
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Badge with 'default' preset
+        Then I should find a cy selector named 'badge-container'

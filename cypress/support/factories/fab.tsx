@@ -6,7 +6,7 @@ import { generateSpy } from '../component'
 export const FabFactory = () => {
     const onClickSpy = generateSpy('fab-onclick')
     mount(
-        <Fab onClick={onClickSpy}>
+        <Fab data-cy='fab-container' onClick={onClickSpy}>
             <span>Fab</span>
         </Fab>
     )

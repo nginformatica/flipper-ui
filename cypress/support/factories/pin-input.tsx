@@ -40,6 +40,7 @@ const Component: React.FC = () => {
     return (
         <>
             <PinInput
+                data-cy='pin-input-container'
                 pin={pin}
                 setPin={setPin}
                 onPinChanged={onPinChanged}

@@ -11,3 +11,8 @@ Feature: Tooltip
 
         When I exit focus
         Then I expect 'tooltip-onclose' spy to have been called 1 times
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Tooltip
+        Then I should find a cy selector named 'tooltip-container'

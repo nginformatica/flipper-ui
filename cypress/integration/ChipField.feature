@@ -23,3 +23,8 @@ Feature: ChipField
         When I click on 2th delete icon
         Then I expect 'chip-field-on-delete' spy to have been called 1 times
         And I expect spy 'chip-field-on-delete' to have been called with mocked 'chip-field-values' values at 1 pos
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render ChipField
+        Then I should find a cy selector named 'chip-field-container'

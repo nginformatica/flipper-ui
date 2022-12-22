@@ -25,7 +25,7 @@ const Component: React.FC<IProps> = props => {
                 onClick={handleClick}>
                 {label}
             </Button>
-            <Fade in={open}>
+            <Fade data-cy='fade-container' in={open}>
                 <span id='fade-test-id'>{props.text}</span>
             </Fade>
         </>

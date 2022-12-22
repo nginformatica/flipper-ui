@@ -82,7 +82,8 @@ const Dialog = ({
     text,
     title,
     snippetStyle,
-    snippetContentStyle
+    snippetContentStyle,
+    ...otherProps
 }: DialogProps) => {
     const classes = useStyles()
 
@@ -165,6 +166,7 @@ const Dialog = ({
 
     return (
         <MuiDialog
+            {...otherProps}
             open={open}
             fullScreen={fullScreen}
             fullWidth={fullWidth}

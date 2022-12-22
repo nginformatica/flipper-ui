@@ -101,7 +101,8 @@ const Sidebar = ({
     ButtonProps,
     onToggle,
     children,
-    name
+    name,
+    ...otherProps
 }: SidebarProps) => {
     const classes = useStyles()
 
@@ -132,6 +133,7 @@ const Sidebar = ({
 
     return (
         <Drawer
+            {...otherProps}
             id={id}
             open={open}
             anchor={anchor}

@@ -12,6 +12,7 @@ const Component: React.FC<IProps> = props => {
     return (
         <>
             <Tooltip
+                {...props}
                 onClose={props.onClose}
                 onOpen={props.onOpen}
                 title='Tooltip'>
@@ -25,5 +26,11 @@ const Component: React.FC<IProps> = props => {
 export const ToolTipFactory = () => {
     const onOpenSpy = generateSpy('tooltip-onopen')
     const onCloseSpy = generateSpy('tooltip-onclose')
-    mount(<Component onOpen={onOpenSpy} onClose={onCloseSpy} />)
+    mount(
+        <Component
+            data-cy='tooltip-container'
+            onOpen={onOpenSpy}
+            onClose={onCloseSpy}
+        />
+    )
 }

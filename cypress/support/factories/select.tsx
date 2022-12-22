@@ -4,7 +4,7 @@ import { Select } from '../../../src'
 import { Generators } from '../'
 import type { SelectVariant } from '../types-interfaces-enums'
 import { validator } from '../utils'
-import { ifElse } from 'ramda'
+import { ifElse, omit } from 'ramda'
 
 interface IProps {
     list: JSX.Element[]
@@ -20,7 +20,10 @@ const Component: React.FC<IProps> = props => {
     }
 
     return (
-        <Select value={select} onChange={handleChange}>
+        <Select
+            {...omit(['list'], props)}
+            value={select}
+            onChange={handleChange}>
             {...props.list}
         </Select>
     )
@@ -44,7 +47,8 @@ const ComponentWithClear: React.FC<IProps> = props => {
             hasClear={true}
             onClear={handleClear}
             value={select}
-            onChange={handleChange}>
+            onChange={handleChange}
+            {...omit(['list'], props)}>
             {...props.list}
         </Select>
     )
@@ -57,7 +61,10 @@ export const SelectFactory = (variant: SelectVariant) => {
 
     return ifElse(
         validate('with-clear'),
-        () => mount(<ComponentWithClear list={options} />),
-        () => mount(<Component list={options} />)
+        () =>
+            mount(
+                <ComponentWithClear data-cy='select-container' list={options} />
+            ),
+        () => mount(<Component data-cy='select-container' list={options} />)
     )(variant)
 }

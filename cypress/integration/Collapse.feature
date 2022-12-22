@@ -11,3 +11,8 @@ Feature: Collapse
 
         When I click on first Mui Button
         And I expect Collapse to be hidden
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Collapse
+        Then I should find a cy selector named 'collapse-container'

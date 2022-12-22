@@ -10,7 +10,7 @@ const Component: React.FC = () => {
     }
 
     return (
-        <Tabs onChange={handleChange} value={selected}>
+        <Tabs data-cy='tabs-container' onChange={handleChange} value={selected}>
             <Tab value={0} label='Profile' />
             <Tab value={1} label='Enterprise' />
             <Tab value={2} label='Billing' />

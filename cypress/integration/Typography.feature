@@ -96,3 +96,8 @@ Feature: Typography
     Scenario: I should render h6 preset
         Given I render Typography with 'h6' preset
         Then Text should have typography 'h6'
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Typography with 'default' preset
+        Then I should find a cy selector named 'typography-container'

@@ -19,3 +19,8 @@ Feature: ExpansionPanel
 
         When I click on Mui ExpansionPanel
         Then I expect Collapse to be hidden
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render ExpansionPanel
+        Then I should find a cy selector named 'expansion-panel-container'

@@ -66,25 +66,28 @@ const ComponentWithSelectAndClear: React.FC<IProps> = props => {
 
 export const TextFieldFactory = (preset: TextFieldVariant) => {
     const onHelpClickSpy = generateSpy('text-field-helper')
-    const props = Generators.TextFieldPropsGenerator(preset, onHelpClickSpy)
+    const generatedProps = Generators.TextFieldPropsGenerator(
+        preset,
+        onHelpClickSpy
+    )
+
+    const props = Object.assign({}, generatedProps, {
+        'data-cy': 'text-field-container'
+    })
 
     generateListOfMockedTextFields(6)
 
     const validate = (variant: TextFieldVariant) =>
         validator<TextFieldVariant>(variant)
 
-    cy.get('@list-of-text-fields').then(fields => {
+    cy.get<IProps['fields']>('@list-of-text-fields').then(fields => {
         return cond([
             [
                 validate('with-select'),
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 () => mount(<ComponentWithSelect fields={fields} />)
             ],
             [
                 validate('with-select-clear'),
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 () => mount(<ComponentWithSelectAndClear fields={fields} />)
             ],
             [T, () => mount(<TextField {...props} />)]

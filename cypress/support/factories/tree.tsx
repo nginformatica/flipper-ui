@@ -24,5 +24,5 @@ export const TreeFactory = () => {
 
     cy.wrap({ schema, names }).as('node-schema')
 
-    mount(<Tree nodes={elements} />)
+    mount(<Tree data-cy='tree-container' nodes={elements} />)
 }

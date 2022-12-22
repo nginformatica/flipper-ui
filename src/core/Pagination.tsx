@@ -29,7 +29,10 @@ const Pagination = (props: PaginationProps) => {
     const allPages = times(inc, pages || 1)
 
     return (
-        <Content className={className} style={{ padding, margin, ...style }}>
+        <Content
+            {...props}
+            className={className}
+            style={{ padding, margin, ...style }}>
             <Button
                 id='prev-page-button'
                 size='small'

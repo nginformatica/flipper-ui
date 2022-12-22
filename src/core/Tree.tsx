@@ -11,7 +11,7 @@ export interface INode {
 interface TreeProps {
     nodes?: INode[]
 }
-const Tree = ({ nodes = [] }: TreeProps): JSX.Element => {
+const Tree = ({ nodes = [], ...otherProps }: TreeProps): JSX.Element => {
     const renderNode = (
         node: INode,
         index: string,
@@ -37,7 +37,7 @@ const Tree = ({ nodes = [] }: TreeProps): JSX.Element => {
     }
 
     return (
-        <Node name='root'>
+        <Node {...otherProps} name='root'>
             {nodes.map((node, index) =>
                 renderNode(node, index.toString(), true)
             )}

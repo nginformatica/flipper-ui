@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { mount } from 'cypress/react'
 import { Button, Zoom } from '../../../src'
 import { generateMock } from '../component'
+import { omit } from 'ramda'
 
 interface IProps {
     text: string
@@ -25,7 +26,7 @@ const Component: React.FC<IProps> = props => {
                 onClick={handleClick}>
                 {label}
             </Button>
-            <Zoom in={open}>
+            <Zoom {...omit(['text'], props)} in={open}>
                 <span id='zoom-test-id'>{props.text}</span>
             </Zoom>
         </>
@@ -35,7 +36,7 @@ const Component: React.FC<IProps> = props => {
 export const ZoomFactory = () => {
     generateMock({ value: 'zoom-content', type: 'Words' }).then(mockedWords => {
         if (typeof mockedWords === 'string') {
-            mount(<Component text={mockedWords} />)
+            mount(<Component data-cy='zoom-container' text={mockedWords} />)
         }
     })
 }

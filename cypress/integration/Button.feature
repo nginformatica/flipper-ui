@@ -150,3 +150,8 @@ Feature: Button
         Then I expect 'button-label' mock to exist
         And I expect Button label to match with mock
         And I expect button 'button-test' to be disabled
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Button with 'default' preset
+        Then I should find a cy selector named 'button-container'

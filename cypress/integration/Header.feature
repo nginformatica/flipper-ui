@@ -25,3 +25,8 @@ Feature: Header
         Given I render Header with 'inherit' preset
         Then I expect 'header-content' mock to exist
         And I expect header to have Mui 'AppBarInheritColor' class
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Header with 'default' preset
+        Then I should find a cy selector named 'header-container'

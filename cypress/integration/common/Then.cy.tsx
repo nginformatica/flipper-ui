@@ -516,3 +516,10 @@ Then('I should see skeletons on table', () => {
 Then('I should not see skeletons on table', () => {
     cy.get('[data-testid="table-skeletons"]').should('not.exist')
 })
+
+Then('I should find a cy selector named {string}', (selector: string) => {
+    // NOTE - DO NOT use .first() here, if Cypress throws an error
+    // saying that multiple elements were found, it means that the
+    // element is not unique you should ensure cy selector is unique
+    cy.get(`[data-cy="${selector}"`).should('exist').should('have.length', 1)
+})

@@ -28,3 +28,8 @@ Feature: Slider
 
         When I slide 3% from the 2th slider to 'left'
         Then I expect input to have value '3'
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Slider with 'default' preset
+        Then I should find a cy selector named 'slider-container'

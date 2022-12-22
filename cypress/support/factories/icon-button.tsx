@@ -10,7 +10,7 @@ export const IconButtonFactory = (preset: IconButtonVariant) => {
     const props = Generators.IconButtonPropsGenerator(preset)
     const onClickSpy = generateSpy('icon-button-onclick')
     mount(
-        <IconButton {...props} onClick={onClickSpy}>
+        <IconButton data-cy='icon-button' {...props} onClick={onClickSpy}>
             <IconAdd />
         </IconButton>
     )

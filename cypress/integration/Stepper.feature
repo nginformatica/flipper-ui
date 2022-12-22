@@ -12,3 +12,8 @@ Feature: Stepper
     Scenario: I see a normal
         Given I render Stepper with 'with-icon' preset
         Then I should see 1 'svg'
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Stepper with 'default' preset
+        Then I should find a cy selector named 'stepper-container'

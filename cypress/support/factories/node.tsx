@@ -16,7 +16,7 @@ const getLength = (value: any | any[]): any => {
 }
 
 export const NodeFactory = () => {
-    const { elements, names } = generateFakeNodeTree()
+    const { elements, names } = generateFakeNodeTree('node-container')
 
     const schema = getLength(elements)
 

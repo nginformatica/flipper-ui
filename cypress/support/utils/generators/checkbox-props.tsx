@@ -1,4 +1,4 @@
-import { cond } from 'ramda'
+import { cond, T } from 'ramda'
 import { CheckboxProps } from '../../../../src/core/Checkbox'
 import { CheckboxVariant } from '../../types-interfaces-enums'
 import { validator } from '../validators'
@@ -43,7 +43,8 @@ export const checkboxPropsGenerator = (
         primary,
         'without-label': withoutLabel,
         switch: switchComponent,
-        'switch-with-helper': switchWithHelper
+        'switch-with-helper': switchWithHelper,
+        default: defProps
     } = generate(props, onHelperClick)
 
     return cond([
@@ -51,6 +52,7 @@ export const checkboxPropsGenerator = (
         [validate('primary'), () => primary],
         [validate('without-label'), () => withoutLabel],
         [validate('switch'), () => switchComponent],
-        [validate('switch-with-helper'), () => switchWithHelper]
+        [validate('switch-with-helper'), () => switchWithHelper],
+        [T, () => defProps]
     ])(preset)
 }

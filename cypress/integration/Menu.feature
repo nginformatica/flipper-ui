@@ -18,3 +18,9 @@ Feature: Menu
 
         When I click in all itens on the list
         Then I expect all spies to have been called on the list
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Menu
+        When I click on 1th button
+        Then I should find a cy selector named 'menu-container'
