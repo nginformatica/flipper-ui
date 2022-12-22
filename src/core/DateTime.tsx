@@ -31,7 +31,10 @@ const DEFAULT_FORMATS = {
     datetime: 'dd/MM/yyyy HH:mm'
 }
 
-type DateTimeProps = Omit<KeyboardDatePickerProps, 'margin' | 'onChange'> &
+export type DateTimeProps = Omit<
+    KeyboardDatePickerProps,
+    'margin' | 'onChange'
+> &
     Omit<KeyboardDateTimePickerProps, 'margin' | 'onChange'> &
     Omit<KeyboardTimePickerProps, 'margin' | 'onChange'> &
     IProps &
