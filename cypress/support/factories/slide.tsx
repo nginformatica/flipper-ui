@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { mount } from 'cypress/react'
 import { Button, Slide } from '../../../src'
 import { generateMock } from '../component'
+import { omit } from 'ramda'
 
 interface IProps {
     children: JSX.Element
@@ -25,7 +26,11 @@ const Component: React.FC<IProps> = props => {
                 onClick={handleClick}>
                 {btnLabel}
             </Button>
-            <Slide direction='left' timeout={300} in={open}>
+            <Slide
+                {...omit(['children'], props)}
+                direction='left'
+                timeout={300}
+                in={open}>
                 {props.children}
             </Slide>
         </>
@@ -37,7 +42,7 @@ export const SlideFactory = () => {
         mockedWords => {
             if (typeof mockedWords === 'string') {
                 mount(
-                    <Component>
+                    <Component data-cy='slide-container'>
                         <span id='slide-test-id'>{mockedWords}</span>
                     </Component>
                 )
