@@ -27,3 +27,8 @@ Feature: Select
 
         When I click on 1th button
         Then I expect input to have value ''
+
+    @focus
+    Scenario: I should get element by cy selector
+        Given I render Select with 'default' preset
+        Then I should find a cy selector named 'select-container'
