@@ -6,6 +6,9 @@ import { TypographyVariant } from '../types-interfaces-enums'
 import faker from 'faker'
 
 export const TypographyFactory = (preset: TypographyVariant) => {
-    const props = Generators.TypographyPropsGenerator(preset)
+    const generatedProps = Generators.TypographyPropsGenerator(preset)
+    const props = Object.assign({}, generatedProps, {
+        'data-cy': 'typography-container'
+    })
     mount(<Typography {...props}>{faker.random.word()}</Typography>)
 }
