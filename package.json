@@ -63,6 +63,7 @@
         "@testing-library/react": "9.3.2",
         "@types/cypress-cucumber-preprocessor": "4.0.1",
         "@types/faker": "5.5.3",
+        "@types/history": "4.7.11",
         "@types/jest": "24.0.22",
         "@types/node": "10.9.4",
         "@types/ramda": "0.25.36",
