@@ -5,7 +5,8 @@ Feature: Tooltip
     @focus
     Scenario: I see a Tooltip and its elements
         Given I render Tooltip
-        When I focus 1th button
+        When I wait for 1 seconds
+        And I focus 1th button
         Then I should see 'Tooltip'
         And I expect 'tooltip-onopen' spy to have been called 1 times
 
