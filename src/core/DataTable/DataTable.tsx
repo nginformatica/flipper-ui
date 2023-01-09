@@ -86,6 +86,10 @@ export type DataTableProps<
      */
     controllerRef?: MutableRefObject<DataTableController<D, V> | undefined>
     /**
+     * Initialize with hidden values
+     */
+    hidden?: boolean
+    /**
      * Custom rowViews used as a Stac
      */
     rowViews?: Record<keyof V, RowViewComponent<D>>
@@ -134,7 +138,8 @@ export const DataTable = <D extends Data, V extends StackView>(
         componentForEmpty,
         bodyStyle,
         headStyle,
-        hiddenRowHeight
+        hiddenRowHeight,
+        hidden
     } = props
 
     const [newRow, setNewRow] = useState<PartialData<D> | undefined>()
@@ -157,7 +162,7 @@ export const DataTable = <D extends Data, V extends StackView>(
         setRowState,
         pushRowView,
         popRowView
-    } = useRowsState<D, V>(rows, newRow)
+    } = useRowsState<D, V>(rows, hidden, newRow)
 
     const controller = useRef<DataTableController<D, V>>()
 
@@ -168,6 +173,10 @@ export const DataTable = <D extends Data, V extends StackView>(
             },
             viewRow: (id: string) => {
                 setRowState(id, { mode: RowMode.View })
+                setNewRow(undefined)
+            },
+            hideRow: (id: string) => {
+                setRowState(id, { mode: RowMode.Hide })
                 setNewRow(undefined)
             },
             addRow: (partial: PartialData<D>) => {
@@ -201,7 +210,8 @@ export const DataTable = <D extends Data, V extends StackView>(
                 const rowState = getRowState(row.id)
                 const lastView = rowState?.stackView && last(rowState.stackView)
                 const view = lastView && rowViews?.[lastView]
-                const mode = rowState?.mode || RowMode.View
+                const primaryView = hidden ? RowMode.Hide : RowMode.View
+                const mode = rowState?.mode || primaryView
 
                 return (
                     <TableRow
@@ -217,6 +227,7 @@ export const DataTable = <D extends Data, V extends StackView>(
                                 data={row}
                                 errors={errors}
                                 mode={mode}
+                                isHidden={hidden}
                                 onUpdate={setEditableRowState(row.id)}
                             />
                         )}
@@ -231,7 +242,8 @@ export const DataTable = <D extends Data, V extends StackView>(
             errors,
             rowViews,
             bodyRowStyle,
-            columns
+            columns,
+            hidden
         ]
     )
 

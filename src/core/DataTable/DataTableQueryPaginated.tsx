@@ -106,6 +106,10 @@ export type DataTableProps<
      */
     controllerRef?: MutableRefObject<DataTableController<D, V> | undefined>
     /**
+     * Initialize with hidden values
+     */
+    hidden?: boolean
+    /**
      * Custom rowViews used as a Stac
      */
     rowViews?: Record<keyof V, RowViewComponent<D>>
@@ -150,7 +154,8 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         componentForEmpty,
         bodyStyle,
         headStyle,
-        hiddenRowHeight
+        hiddenRowHeight,
+        hidden
     } = props
 
     const [newRow, setNewRow] = useState<PartialData<D> | undefined>()
@@ -169,7 +174,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         setRowState,
         pushRowView,
         popRowView
-    } = useRowsState<D, V>(rows, newRow)
+    } = useRowsState<D, V>(rows, hidden, newRow)
 
     const controller = useRef<DataTableController<D, V>>()
 
@@ -181,6 +186,9 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
             viewRow: (id: string) => {
                 setRowState(id, { mode: RowMode.View })
                 setNewRow(undefined)
+            },
+            hideRow: (id: string) => {
+                setRowState(id, { mode: RowMode.Hide })
             },
             addRow: (partial: PartialData<D>) => {
                 handleChangePerPage(0)

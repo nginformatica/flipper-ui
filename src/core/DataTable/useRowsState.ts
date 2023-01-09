@@ -3,6 +3,7 @@ import { Data, Identifier, RowState, StackView, RowMode } from './types'
 
 export const useRowsState = <D extends Data, V extends StackView>(
     rows: D[],
+    isHidden = false,
     newRow?: Partial<D>
 ) => {
     const [state, setState] = useState(() => ({
@@ -20,7 +21,7 @@ export const useRowsState = <D extends Data, V extends StackView>(
             } else {
                 nextState.set(row.id, {
                     editableState: {},
-                    mode: RowMode.View,
+                    mode: isHidden ? RowMode.Hide : RowMode.View,
                     stackView: [],
                     currentState: row
                 })

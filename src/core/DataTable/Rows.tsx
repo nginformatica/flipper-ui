@@ -29,6 +29,7 @@ const renderEditMode = <D extends Data>(
 
     if (column.renderCell) {
         const value = row[column.field]
+        console.log('renderCell', value)
 
         return column.renderCell({
             data: row,
@@ -96,12 +97,37 @@ const renderEditMode = <D extends Data>(
     )
 }
 
-const renderViewMode = <D extends Data>(
+const renderHidenMode = <D extends Data>(
     column: ColumnSpec<D>,
     row: PartialData<D>
 ) => {
     if (column.type === 'actions') {
         return column.renderCell({ data: row, rowMode: RowMode.View })
+    }
+
+    const rawValue = row[column.field]
+
+    if (column.renderCell) {
+        return column.renderCell({
+            data: row,
+            rowMode: RowMode.Hide,
+            value: rawValue
+        })
+    }
+
+    return column.getValue?.(rawValue) || (rawValue as ReactNode)
+}
+
+const renderViewMode = <D extends Data>(
+    column: ColumnSpec<D>,
+    row: PartialData<D>,
+    isHidden = false
+) => {
+    if (column.type === 'actions') {
+        return column.renderCell({
+            data: row,
+            rowMode: isHidden ? RowMode.Hide : RowMode.View
+        })
     }
 
     const rawValue = row[column.field]
@@ -122,6 +148,7 @@ type StatefulRowProps<D extends Data> = {
     mode: RowMode
     errors?: Errors<D>
     columns: ColumnSpec<D>[]
+    isHidden?: boolean
     onUpdate?(partial: Partial<Data>): void
 }
 
@@ -130,7 +157,8 @@ export const StatefulRow = <D extends Data>({
     mode,
     errors,
     columns,
-    onUpdate
+    onUpdate,
+    isHidden
 }: StatefulRowProps<D>) => {
     const [editableState, setEditableState] = useState(() => data)
 
@@ -144,6 +172,22 @@ export const StatefulRow = <D extends Data>({
         []
     )
 
+    const getCorrectViewMode = (
+        column: ColumnSpec<D>,
+        mode: RowMode,
+        isEditable: boolean | undefined
+    ) => {
+        if (mode === RowMode.Edit && isEditable) {
+            return renderEditMode(column, editableState, partialUpdate, errors)
+        }
+
+        if (mode === RowMode.View) {
+            return renderViewMode(column, data, isHidden)
+        }
+
+        return renderHidenMode(column, data)
+    }
+
     return (
         <>
             {columns.map(column => (
@@ -151,14 +195,7 @@ export const StatefulRow = <D extends Data>({
                     align={column.align}
                     key={column.title}
                     style={column.cellStyle}>
-                    {mode === RowMode.Edit && isEditable(column)
-                        ? renderEditMode(
-                              column,
-                              editableState,
-                              partialUpdate,
-                              errors
-                          )
-                        : renderViewMode(column, data)}
+                    {getCorrectViewMode(column, mode, isEditable(column))}
                 </TableCell>
             ))}
         </>
