@@ -2,6 +2,8 @@
 import { When } from 'cypress-cucumber-preprocessor/steps'
 import { MockCats, MuiSelectors } from '../../support/types-interfaces-enums'
 
+When('I wait for {int} seconds', (seconds: number) => cy.wait(seconds * 1000))
+
 When('I click on button {string}', (button: string) =>
     cy.get(`button[id=${button}]`).click({ force: true })
 )

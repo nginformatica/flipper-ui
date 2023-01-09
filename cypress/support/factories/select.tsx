@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Select } from '../../../src'
 import { Generators } from '../'
 import type { SelectVariant } from '../types-interfaces-enums'

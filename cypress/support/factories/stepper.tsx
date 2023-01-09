@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Stepper } from '../../../src'
 import { Generators } from '..'
 import { StepperVariant } from '../types-interfaces-enums'

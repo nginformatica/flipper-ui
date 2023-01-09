@@ -1,5 +1,5 @@
 import { ListItemProps } from '@material-ui/core'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import React, { useState } from 'react'
 import { Button, Drawer, List } from '../../../src'
 import { generateMock } from '../component'

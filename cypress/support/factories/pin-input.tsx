@@ -1,4 +1,4 @@
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button, PinInput } from '../../../src'

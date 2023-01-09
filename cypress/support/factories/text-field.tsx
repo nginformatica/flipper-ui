@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import { TextFieldVariant } from '../types-interfaces-enums'
 import { Generators } from '..'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { ListItem, TextField } from '../../../src'
 import { generateSpy } from '../component'
 import { generateListOfMockedTextFields } from '../utils/generators'

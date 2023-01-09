@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Header } from '../../../src'
 import { generateTypedMock } from '../component'
 import { Generators } from '../'

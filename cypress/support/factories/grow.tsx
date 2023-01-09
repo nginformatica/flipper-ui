@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Button, Grow } from '../../../src'
 import { generateMock } from '../component'
 

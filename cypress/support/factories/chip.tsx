@@ -1,5 +1,5 @@
 import { ChipProps } from '@material-ui/core'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import React from 'react'
 import { IChipProps } from 'src/core/Chip'
 import { TChipValues } from 'src/core/ChipField'

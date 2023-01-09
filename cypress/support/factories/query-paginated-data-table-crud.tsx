@@ -1,5 +1,5 @@
 import { Skeleton } from '@material-ui/lab'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import format from 'date-fns/format'
 import React, { useMemo, useRef, useState } from 'react'
 import { DataTableAction } from '../../../src/core/DataTable'
