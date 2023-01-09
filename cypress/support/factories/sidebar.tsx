@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Sidebar } from '../../../src'
 import { Generators } from '..'
 import { omit } from 'ramda'

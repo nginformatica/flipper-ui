@@ -1,4 +1,4 @@
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { generateFakeNodeTree } from '../utils/generators'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

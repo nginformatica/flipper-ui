@@ -1,4 +1,4 @@
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import React from 'react'
 import { CheckboxProps } from 'src/core/Checkbox'
 import { Checkbox } from '../../../src'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Typography } from '../../../src'
 import { Generators } from '..'
 import { TypographyVariant } from '../types-interfaces-enums'

@@ -83,6 +83,7 @@ export type RowAction<D> = {
 }
 
 export enum RowMode {
+    Hide,
     View,
     Edit
 }
@@ -108,6 +109,10 @@ export type DataTableController<D extends Data, V extends StackView> = {
      * Actives the view mode for a row
      */
     viewRow(id: Identifier): void
+    /**
+     * Hides the view mode for a row
+     */
+    hideRow(id: Identifier): void
     /**
      * Adds a new row on the DataTable
      */

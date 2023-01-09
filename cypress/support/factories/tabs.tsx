@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Tabs, Tab } from '../../../src'
 
 const Component: React.FC = () => {

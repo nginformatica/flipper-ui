@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Slider } from '../../../src'
 import { generateSpy } from '../component'
 import { Generators } from '..'

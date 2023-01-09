@@ -1,5 +1,5 @@
 import { Skeleton } from '@material-ui/lab'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { omit } from 'ramda'
 import React, { useMemo } from 'react'
 import { Generators } from '..'

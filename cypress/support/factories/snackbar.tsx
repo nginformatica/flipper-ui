@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Snackbar, Button } from '../../../src'
 import { SnackBarProps } from '../../../src/core/Snackbar'
 import { Generators } from '..'

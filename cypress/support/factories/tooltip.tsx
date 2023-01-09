@@ -1,7 +1,13 @@
 import React from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { Tooltip, Button } from '../../../src'
 import { generateSpy } from '../component'
+import style from 'styled-components'
+
+const OutsideBox = style.div`
+    width: 100%;
+    height: 350px;
+`
 
 interface IProps {
     onOpen: () => void
@@ -18,7 +24,7 @@ const Component: React.FC<IProps> = props => {
                 title='Tooltip'>
                 <Button variant='outlined'>Simple tooltip</Button>
             </Tooltip>
-            <div data-testid='testing-outside-click'></div>
+            <OutsideBox data-testid='testing-outside-click'></OutsideBox>
         </>
     )
 }

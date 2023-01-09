@@ -1,4 +1,4 @@
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import format from 'date-fns/format'
 import React, { useRef, useState } from 'react'
 import { Button, Typography } from '../../../src'

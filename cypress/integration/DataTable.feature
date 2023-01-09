@@ -49,6 +49,7 @@ Feature: DataTable
     Scenario: I should render with crud preset
         Given I render DataTable with 'crud' preset
         Then I should see 'Magazine'
+        And I wait for 1 seconds
 
         When I click on 1th button from 1th row
         And I clear input name 'product'

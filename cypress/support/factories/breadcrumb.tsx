@@ -1,6 +1,6 @@
 import React from 'react'
 import { Breadcrumb, Link } from '../../../src'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { generateMock } from '../component'
 
 const DEFAULT_LIST_ITENS = 2

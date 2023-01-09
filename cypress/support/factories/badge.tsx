@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { generateSpy, generateMock } from '../component'
 import { Badge } from '../../../src'
 import { BadgeVariant } from '../types-interfaces-enums'

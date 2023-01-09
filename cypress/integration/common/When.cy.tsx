@@ -2,15 +2,17 @@
 import { When } from 'cypress-cucumber-preprocessor/steps'
 import { MockCats, MuiSelectors } from '../../support/types-interfaces-enums'
 
+When('I wait for {int} seconds', (seconds: number) => cy.wait(seconds * 1000))
+
 When('I click on button {string}', (button: string) =>
-    cy.get(`button[id=${button}]`).click({ force: true })
+    cy.get(`button[id=${button}]`).click()
 )
 
 When('I click on {int}th button', (pos: number) =>
     cy
         .get('button')
         .eq(pos - 1)
-        .click({ force: true })
+        .click()
 )
 
 When(
@@ -20,7 +22,7 @@ When(
             .first()
             .find('button')
             .eq(btnPos - 1)
-            .click({ force: true })
+            .click()
     }
 )
 
@@ -42,7 +44,7 @@ When('I click on {int}th checkbox', (pos: number) =>
     cy
         .get('input[type=checkbox]')
         .eq(pos - 1)
-        .click({ force: true })
+        .click()
 )
 
 When('I click on text {string}', (text: string) => cy.contains(text).click())
@@ -56,6 +58,7 @@ When('I hover mocked text {string}', (cat: MockCats) => {
         if (mock instanceof Array) {
             mock.forEach(item => {
                 if (typeof item === 'string') {
+                    console.log('Array', item)
                     cy.contains(item).realHover()
 
                     return
@@ -64,9 +67,31 @@ When('I hover mocked text {string}', (cat: MockCats) => {
         }
 
         if (typeof mock === 'string') {
+            console.log('string', mock)
             cy.contains(mock).realHover()
         }
     })
+})
+
+When(
+    'I hover mocked text {string} on pos {int}',
+    (cat: MockCats, pos: number) => {
+        cy.getMock(cat).then(mock => {
+            if (mock instanceof Array) {
+                cy.contains(mock[pos]).realHover()
+            } else {
+                cy.emit('fail', new Error('Mock is not an array'))
+            }
+        })
+    }
+)
+
+When('I hover input', () => {
+    cy.get('input').first().realHover()
+})
+
+When('I hover cy {string}', (selector: string) => {
+    cy.get(`[data-cy=${selector}]`).first().realHover()
 })
 
 When('I click on delete icon', () => {

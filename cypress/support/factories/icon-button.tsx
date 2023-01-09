@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import { IconButton } from '../../../src'
 import { Add as IconAdd } from '../../../src/icons'
 import { Generators } from '..'

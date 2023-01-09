@@ -1,4 +1,4 @@
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import React from 'react'
 import { Button } from '../../../src'
 import { generateMock, generateSpy } from '../../support/component'

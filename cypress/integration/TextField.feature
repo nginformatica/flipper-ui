@@ -45,7 +45,8 @@ Feature: TextField
         Then I expect input not to be empty
         And I expect input to have value '123'
 
-        When I click on 1th button
+        When I hover input
+        And I click on 1th button
         Then I expect 'text-field-helper' spy to have been called 1 times
 
     @focus

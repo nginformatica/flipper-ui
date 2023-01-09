@@ -1,4 +1,4 @@
-import { mount } from 'cypress/react'
+import { mount } from 'cypress/react18'
 import React, { useState } from 'react'
 import { Menu, Button } from '../../../src'
 import { generateListOfSpiedItems } from '../utils/generators'
