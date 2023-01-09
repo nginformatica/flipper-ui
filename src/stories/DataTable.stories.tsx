@@ -663,8 +663,6 @@ export const CrudWithHidden = () => {
     }
 
     const isNullable = x => x == null
-    // const isNotPositive = x => x <= 0
-    const isAfterNow = x => +x > +new Date()
     const isEmpty = x => x.trim().length === 0
 
     const handleErrors = (id, nextItem = {}, isPartial = false) => {
