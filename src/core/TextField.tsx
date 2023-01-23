@@ -11,8 +11,13 @@ import React, {
     ReactNode,
     MouseEvent
 } from 'react'
-import { DefaultProps } from './types'
-import { Clear, Help as ContactSupportIcon } from '@material-ui/icons'
+import { DefaultProps, HTMLElementWithDataCy } from './types'
+import {
+    Clear,
+    Help as ContactSupportIcon,
+    Edit,
+    Save
+} from '@material-ui/icons'
 import IconButton from './IconButton'
 import styled from 'styled-components'
 
@@ -42,6 +47,7 @@ export interface TextFieldProps extends DefaultProps {
     rowsMax?: string | number
     helperText?: ReactNode
     helperIcon?: ReactNode
+    showEdit?: boolean
     hasClear?: boolean
     onClear?: () => void
     onHelperClick?: () => void
@@ -54,6 +60,18 @@ export interface TextFieldProps extends DefaultProps {
 
 interface IHelperProps extends Pick<TextFieldProps, 'helperIcon'> {
     onHelperClick: (event: MouseEvent<HTMLButtonElement>) => void
+}
+
+interface IEditProps extends Pick<TextFieldProps, 'showEdit' | 'style'> {
+    editing: boolean
+    onEditClick: (event: MouseEvent<HTMLButtonElement>) => void
+    onSaveClick: (event: MouseEvent<HTMLButtonElement>) => void
+    editButtonProps?: Partial<
+        Omit<HTMLElementWithDataCy<HTMLButtonElement>, 'color'>
+    >
+    saveButtonProps?: Partial<
+        Omit<HTMLElementWithDataCy<HTMLButtonElement>, 'color'>
+    >
 }
 
 const Helper = styled.div`
@@ -111,6 +129,28 @@ export const HelperBox = (props: IHelperProps) => (
         </IconButton>
     </Helper>
 )
+
+export const EditBox = (props: IEditProps) => {
+    if (props.editing) {
+        return (
+            <IconButton
+                {...props.saveButtonProps}
+                padding='6px 2px'
+                onClick={props.onSaveClick}>
+                {<Save fontSize='small' />}
+            </IconButton>
+        )
+    } else {
+        return (
+            <IconButton
+                {...props.editButtonProps}
+                padding='6px 2px'
+                onClick={props.onEditClick}>
+                {<Edit fontSize='small' />}
+            </IconButton>
+        )
+    }
+}
 
 const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end'>

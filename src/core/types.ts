@@ -9,3 +9,7 @@ export interface DefaultProps {
     name?: string
     id?: string
 }
+
+export interface HTMLElementWithDataCy<T> extends React.HTMLAttributes<T> {
+    'data-cy': string
+}
