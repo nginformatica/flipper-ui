@@ -104,6 +104,14 @@ When('I click on {int}th delete icon', (pos: number) => {
         .click()
 })
 
+When('I press enter', () => {
+    cy.get('input').first().focus().realType('{enter}')
+})
+
+When('I press esc', () => {
+    cy.get('input').first().focus().realType('{esc}')
+})
+
 When(
     'I type {string} on {string} and press enter',
     (text: string, input: string) => {

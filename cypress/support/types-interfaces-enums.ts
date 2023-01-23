@@ -53,6 +53,8 @@ export type StepperVariant = 'default' | 'with-icon'
 
 export type HeaderVariant = 'default' | 'primary' | 'secondary' | 'inherit'
 
+export type ExpansionPanelVariant = 'default' | 'with-editable'
+
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'with-dot'
 
 export type SelectVariant = 'default' | 'with-clear'

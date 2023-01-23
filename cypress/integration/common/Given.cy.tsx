@@ -11,6 +11,7 @@ import {
     CheckboxVariant,
     ChipVariant,
     DataTableVariant,
+    ExpansionPanelVariant,
     HeaderVariant,
     IconButtonVariant,
     MaskFieldVariant,
@@ -71,7 +72,10 @@ Given('I render Divider', () => Factory.DividerFactory())
 
 Given('I render Drawer', () => Factory.DrawerFactory())
 
-Given('I render ExpansionPanel', () => Factory.ExpansionPanelFactory())
+Given(
+    'I render ExpansionPanel with {string} preset',
+    (preset: ExpansionPanelVariant) => Factory.ExpansionPanelFactory(preset)
+)
 
 Given('I render Fab', () => Factory.FabFactory())
 
