@@ -71,3 +71,8 @@ Feature: Checkbox
     Scenario: I should get element by cy selector
         Given I render Checkbox with 'default' preset
         Then I should find a cy selector named 'checkbox-container'
+
+    @focus
+    Scenario: I should get switch by cy selector
+        Given I render Checkbox with 'switch' preset
+        Then I should find a cy selector named 'checkbox-container'

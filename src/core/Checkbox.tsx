@@ -73,7 +73,7 @@ const Checkbox = (props: CheckboxProps) => {
     )
 
     const renderControl = (props?: MuiCheckboxProps) =>
-        type === 'checkbox' ? renderCheckbox(props) : renderSwitch()
+        type === 'checkbox' ? renderCheckbox(props) : renderSwitch(props)
 
     const renderLabel = () =>
         typeof props.label === 'string' && props.dense ? (
