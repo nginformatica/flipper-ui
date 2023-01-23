@@ -5,9 +5,10 @@ import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import React, { ReactNode, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { PaperProps } from './Paper'
-import { HelperBox } from './TextField'
+import { EditBox, HelperBox } from './TextField'
+import { HTMLElementWithDataCy } from './types'
 
-interface ExpansionPanelProps extends PaperProps {
+export interface ExpansionPanelProps extends PaperProps {
     actions?: ReactNode
     defaultExpanded?: boolean
     details?: ReactNode
@@ -18,9 +19,15 @@ interface ExpansionPanelProps extends PaperProps {
     summaryStyle?: object
     detailsStyle?: object
     actionsStyle?: object
+    editStyle?: React.CSSProperties
+    headerProps?: HTMLElementWithDataCy<HTMLDivElement>
     helperIcon?: React.ReactNode
+    editable?: boolean
+    editing?: boolean
     helperButtonPosition?: 'left' | 'right'
     onHelperClick?: () => void
+    onEditClick?: () => void
+    onSaveClick?: () => void
     onChange?: (
         event?: React.ChangeEvent<Record<string, unknown>>,
         expanded?: boolean
@@ -50,15 +57,45 @@ const ExpansionPanel = ({
     summaryStyle,
     detailsStyle,
     actionsStyle,
+    editStyle,
     onHelperClick,
+    onEditClick,
+    onSaveClick,
     helperIcon,
+    editable,
+    editing,
+    headerProps,
     helperButtonPosition = 'right',
     ...otherProps
 }: ExpansionPanelProps) => {
+    if (editable) {
+        if (!onSaveClick) {
+            throw new Error('onSaveClick is required when editable is true')
+        }
+
+        if (!onEditClick) {
+            throw new Error('onEditClick is required when editable is true')
+        }
+    }
+
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
         if (onHelperClick) {
             event.stopPropagation()
             onHelperClick()
+        }
+    }
+
+    const handleEditClick = (event: MouseEvent<HTMLButtonElement>) => {
+        if (onEditClick) {
+            event.stopPropagation()
+            onEditClick()
+        }
+    }
+
+    const handleSaveClick = (event: MouseEvent<HTMLButtonElement>) => {
+        if (onSaveClick) {
+            event.stopPropagation()
+            onSaveClick()
         }
     }
 
@@ -73,6 +110,21 @@ const ExpansionPanel = ({
         </>
     )
 
+    const renderEdit = (
+        <>
+            {editable && (
+                <EditBox
+                    editing={!!editing}
+                    style={editStyle}
+                    onEditClick={handleEditClick}
+                    onSaveClick={handleSaveClick}
+                    saveButtonProps={{ 'data-cy': 'save-button' }}
+                    editButtonProps={{ 'data-cy': 'edit-button' }}
+                />
+            )}
+        </>
+    )
+
     return (
         <MuiExpansionPanel
             {...otherProps}
@@ -81,9 +133,10 @@ const ExpansionPanel = ({
                 <MuiExpansionPanelSummary
                     expandIcon={expandIcon}
                     style={summaryStyle}>
-                    <ExpansionPanelHeaderWrapper>
+                    <ExpansionPanelHeaderWrapper {...headerProps}>
                         {helperButtonPosition === 'left' && renderHelper}
                         {summary}
+                        {renderEdit}
                         {helperButtonPosition === 'right' && renderHelper}
                     </ExpansionPanelHeaderWrapper>
                 </MuiExpansionPanelSummary>
