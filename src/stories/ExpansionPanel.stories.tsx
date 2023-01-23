@@ -53,7 +53,6 @@ const Template: ComponentStory<typeof ExpansionPanel> = args => {
         <ExpansionPanel
             {...args}
             editing={editing}
-            editStyle={{ backgroundColor: 'red', width: '40px' }}
             onEditClick={handleEditClick}
             onSaveClick={handleSaveClick}
             details={renderDetails()}
