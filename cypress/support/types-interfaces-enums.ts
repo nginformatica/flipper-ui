@@ -61,6 +61,8 @@ export type SelectVariant = 'default' | 'with-clear'
 
 export type SnackbarVariant = 'default' | 'success' | 'warning' | 'error'
 
+export type StepCardVariant = 'default' | 'without-expansion'
+
 export type DataTableVariant =
     | 'default'
     | 'empty'

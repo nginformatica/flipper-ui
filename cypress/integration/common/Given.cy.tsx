@@ -18,6 +18,7 @@ import {
     SelectVariant,
     SliderVariant,
     SnackbarVariant,
+    StepCardVariant,
     StepperVariant,
     TextFieldVariant,
     TypographyVariant
@@ -184,4 +185,8 @@ Given(
         preset !== 'crud'
             ? Factory.QueyPaginatedDataTableFactory(preset)
             : Factory.QueryPaginatedCrudDataTableFactory()
+)
+
+Given('I render StepCard with {string} preset', (preset: StepCardVariant) =>
+    Factory.StepCardFactory(preset)
 )
