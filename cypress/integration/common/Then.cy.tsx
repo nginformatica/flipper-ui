@@ -20,6 +20,12 @@ Then('I should see cy {string}', (selector: string) =>
     cy.waitUntil(() => cy.get(`[data-cy=${selector}]`).should('exist'))
 )
 
+Then('I should not see cy {string}', (selector: string) =>
+    cy.get(`[data-cy=${selector}]`).should($el => {
+        expect($el).to.not.exist
+    })
+)
+
 Then('I should not see {string}', (text: string) =>
     cy.contains(text).should('not.exist')
 )

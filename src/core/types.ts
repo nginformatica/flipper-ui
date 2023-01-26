@@ -13,3 +13,4 @@ export interface DefaultProps {
 export interface HTMLElementWithDataCy<T> extends React.HTMLAttributes<T> {
     'data-cy': string
 }
+export type PropWithDataCy<T> = Partial<T> & { 'data-cy': string }

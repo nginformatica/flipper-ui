@@ -14,5 +14,5 @@ export default defineConfig({
         TAGS: '@focus'
     },
     numTestsKeptInMemory: 0,
-    viewportWidth: 850
+    viewportWidth: 1000
 })

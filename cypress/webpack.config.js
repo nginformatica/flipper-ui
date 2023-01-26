@@ -4,9 +4,7 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.jsx', '.ts', '.js']
     },
-    plugins: [
-        new NodePolyfillPlugin()
-    ],
+    plugins: [new NodePolyfillPlugin()],
     module: {
         rules: [
             {
@@ -19,7 +17,6 @@ module.exports = {
                         }
                     }
                 ]
-
             },
             {
                 test: /\.ts$/,
@@ -37,6 +34,10 @@ module.exports = {
                         loader: 'cypress-cucumber-preprocessor/loader'
                     }
                 ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     }
