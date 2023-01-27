@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core'
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import { Skeleton } from '@material-ui/lab'
-import React, { useCallback } from 'react'
+import React from 'react'
 import './colors.css'
 import {
     Container,
@@ -22,80 +22,21 @@ interface IStepCardPanelProps {
 const StepCardSkeleton = (props: IStepCardPanelProps) => {
     const { expandable, showBottomPercentage, showIcon, subTitle } = props
 
-    const TitleIcon = useCallback(
-        () => <Skeleton variant='circle' width={40} height={40} />,
-        []
+    const TextSkeleton = () => (
+        <Skeleton variant='text' style={{ minWidth: '400px' }} height={40} />
     )
 
-    const Title = useCallback(
-        () => (
+    const NormalProgress = () => (
+        <NormalProgressContainer>
             <Skeleton
                 variant='text'
-                style={{ minWidth: '400px' }}
                 height={40}
+                style={{ minWidth: '100px', margin: '4px 0px' }}
             />
-        ),
-        []
-    )
-
-    const SubTitle = useCallback(
-        () => (
-            <Skeleton
-                variant='text'
-                style={{ minWidth: '400px' }}
-                height={40}
-            />
-        ),
-        []
-    )
-
-    const TitleColumn = useCallback(
-        () => (
-            <>
-                {showIcon && <TitleIcon />}
-                <TitleContainer>
-                    <Title />
-                    {subTitle && <SubTitle />}
-                </TitleContainer>
-            </>
-        ),
-        [showIcon, TitleIcon, Title, subTitle, SubTitle]
-    )
-
-    const Summary = useCallback(
-        () => (
-            <Skeleton
-                variant='text'
-                style={{ minWidth: '400px' }}
-                height={40}
-            />
-        ),
-        []
-    )
-    const SummaryLinearProgress = useCallback(
-        () => <Skeleton variant='text' />,
-        []
-    )
-
-    const NormalProgress = useCallback(
-        () => (
-            <NormalProgressContainer>
-                <Skeleton
-                    variant='text'
-                    height={40}
-                    style={{ minWidth: '100px', margin: '4px 0px' }}
-                />
-                <Box style={{ width: '100%' }}>
-                    <SummaryLinearProgress />
-                </Box>
-            </NormalProgressContainer>
-        ),
-        [SummaryLinearProgress]
-    )
-
-    const BottomLineProgress = useCallback(
-        () => <Skeleton variant='text' />,
-        []
+            <Box style={{ width: '100%' }}>
+                <Skeleton variant='text' />
+            </Box>
+        </NormalProgressContainer>
     )
 
     return (
@@ -104,16 +45,26 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                 <StepContainer withPadding={!expandable}>
                     <StepCardRow height={expandable ? '100px' : '100%'}>
                         <StepCardColumn justifyContent='start'>
-                            <TitleColumn />
+                            {showIcon && (
+                                <Skeleton
+                                    variant='circle'
+                                    width={40}
+                                    height={40}
+                                />
+                            )}
+                            <TitleContainer>
+                                <TextSkeleton />
+                                {subTitle && <TextSkeleton />}
+                            </TitleContainer>
                         </StepCardColumn>
                         <StepCardColumn justifyContent='end'>
-                            {expandable ? <Summary /> : <NormalProgress />}
+                            {expandable ? <TextSkeleton /> : <NormalProgress />}
                         </StepCardColumn>
                     </StepCardRow>
                     {showBottomPercentage && (
                         <StepCardRow height='15px'>
                             <Box style={{ width: '100%' }}>
-                                <BottomLineProgress />
+                                <Skeleton variant='text' />
                             </Box>
                         </StepCardRow>
                     )}
