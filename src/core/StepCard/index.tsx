@@ -1,35 +1,14 @@
-/* eslint-disable max-lines */
-import { Box, LinearProgress, List, ListItemText } from '@material-ui/core'
+import { LinearProgress } from '@material-ui/core'
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import { theme } from 'nginformatica-styleguide'
-import React, { useMemo } from 'react'
-import {
-    CheckCircle as CheckCircleIcon,
-    ExpandMore as ExpandMoreIcon,
-    Help as HelpIcon
-} from '../../icons'
+import React from 'react'
 import Typography from '../Typography'
-import './colors.css'
-import {
-    ListItemContainer,
-    StepCardColumn,
-    StepCardRow,
-    StepContainer,
-    Container,
-    NormalProgressContainer,
-    TitleContainer
-} from './styles'
-import IconButton from '../IconButton'
 import { PropWithDataCy } from '../types'
-
-const { feedback, grays } = theme.colors
-const DONE_COLOR = feedback.success
-const UNDONE_COLOR = grays.g3
-const UNDONE_FONT_COLOR = grays.g2
-const UNDONE_TITLE_COLOR = grays.g1
-const UNDONE_PROGRESS_COLOR = grays.g5
+import StepCardSkeleton from './Skeleton'
+import { StepCardDetails } from './StepCardDetails'
+import { StepCardPanel } from './StepCardPanel'
+import './colors.css'
+import { Container } from './styles'
 
 /**
  * Props for the StepCard component
@@ -38,19 +17,39 @@ const UNDONE_PROGRESS_COLOR = grays.g5
  */
 export interface IStepCardProps {
     /**
+     * Whether the step card are loading
+     * @type {boolean}
+     * @memberof IStepCardProps
+     * @default false
+     */
+    loading?: boolean
+
+    /**
+     * The percentage of the progress bar
+     * @type {number}
+     * @memberof IStepCardProps
+     */
+    percentage: number
+
+    /**
      * Whether to show the percentage on the expansion panel summary
      * Defaults to true
      * @type {boolean}
      * @memberof IStepCardProps
      * @default true
      */
-    showBottomPercentage: boolean
+    showBottomPercentage?: boolean
 
     /**
      * A text to be displayed on the expansion panel summary
      *
      * @type {string}
      * @memberof IStepCardProps
+     * @example using literals
+     * summary: '%i items remaining - %i minute(s)'
+     *
+     * @example using string
+     * summary: 'Your progress'
      */
     summary: string
 
@@ -79,20 +78,18 @@ export interface IStepCardProps {
     image?: string
 
     /**
-     * The total number of steps
-     *
+     * The number of remaining steps
      * @type {number}
      * @memberof IStepCardProps
      */
-    totalSteps: number
+    remainingSteps: number
 
     /**
-     * The number of completed steps
-     *
+     * The time in seconds to be displayed on the expansion panel summary
      * @type {number}
      * @memberof IStepCardProps
      */
-    doneSteps: number
+    time: number
 
     /**
      * An array of steps, each with a title, a done flag and an optional url
@@ -161,7 +158,7 @@ export interface IStepCardProps {
      * @memberof IStepCardProps
      * @default true
      */
-    expandable: boolean
+    expandable?: boolean
 
     /**
      * Whether to show the icon on the expansion panel summary
@@ -169,7 +166,7 @@ export interface IStepCardProps {
      * @memberof IStepCardProps
      * @default true
      */
-    showIcon: boolean
+    showIcon?: boolean
 
     /**
      * Callback to be called when the user clicks on a step url
@@ -208,10 +205,13 @@ export interface IStepCardProps {
  *   defaultExpanded={false}
  * />
  */
-
 const StepCard = (props: IStepCardProps) => {
     const {
+        loading = false,
+        percentage,
+        time,
         steps,
+        remainingSteps,
         title,
         titleProps,
         subTitle,
@@ -219,208 +219,48 @@ const StepCard = (props: IStepCardProps) => {
         showBottomPercentage = true,
         expandable = true,
         showIcon = true,
-        doneSteps,
-        totalSteps,
         summary,
         summaryProps,
         expansionPanelDetailsProps,
         linearProgressBarProps,
+        summaryLinearProgressBarProps,
         rootProps,
         onStepUrlClick
     } = props
-    const percentage = Math.round((doneSteps / totalSteps) * 100)
 
-    const renderTitleColumn = useMemo(
-        () => (
-            <>
-                {showIcon && (
-                    <CheckCircleIcon
-                        style={{
-                            fontSize: 40,
-                            color:
-                                percentage === 100 ? DONE_COLOR : UNDONE_COLOR
-                        }}
-                    />
-                )}
-                <TitleContainer>
-                    <Typography
-                        variant='h6'
-                        style={{
-                            color: UNDONE_TITLE_COLOR,
-                            fontSize: 24,
-                            textAlign: 'center'
-                        }}
-                        {...titleProps}>
-                        {title}
-                    </Typography>
-                    {subTitle && (
-                        <Typography
-                            variant='h6'
-                            style={{
-                                color: UNDONE_COLOR,
-                                textAlign: 'center'
-                            }}
-                            {...titleProps}>
-                            {subTitle}
-                        </Typography>
-                    )}
-                </TitleContainer>
-            </>
-        ),
-        [showIcon, percentage, titleProps, title, subTitle]
-    )
-
-    const renderSummaryColumn = useMemo(
-        () => (
-            <>
-                <MuiExpansionPanelSummary
-                    style={{ textAlign: 'center' }}
-                    expandIcon={<ExpandMoreIcon fontSize='large' />}>
-                    <Typography variant='h6' {...summaryProps}>
-                        {summary}
-                    </Typography>
-                </MuiExpansionPanelSummary>
-            </>
-        ),
-        [summary, summaryProps]
-    )
-
-    const renderStepsList = useMemo(
-        () => (
-            <List>
-                {steps.map((step, index) => {
-                    const handleOnClickStepUrl = () => {
-                        if (onStepUrlClick && step.url) {
-                            onStepUrlClick(step.url)
-                        }
-                    }
-
-                    return (
-                        <ListItemText
-                            key={index}
-                            primary={
-                                <ListItemContainer>
-                                    <CheckCircleIcon
-                                        style={{
-                                            color: step.done
-                                                ? DONE_COLOR
-                                                : UNDONE_COLOR
-                                        }}
-                                    />
-                                    <Typography
-                                        variant='body1'
-                                        style={{
-                                            color: UNDONE_FONT_COLOR,
-                                            fontWeight: 600
-                                        }}>
-                                        {step.title}
-                                    </Typography>
-                                    {step.url && onStepUrlClick && (
-                                        <>
-                                            <IconButton
-                                                style={{
-                                                    backgroundColor: 'unset'
-                                                }}
-                                                onClick={handleOnClickStepUrl}>
-                                                <HelpIcon
-                                                    fontSize='small'
-                                                    style={{ margin: '0px' }}
-                                                />
-                                            </IconButton>
-                                        </>
-                                    )}
-                                </ListItemContainer>
-                            }
-                        />
-                    )
-                })}
-            </List>
-        ),
-        [onStepUrlClick, steps]
-    )
-
-    const renderNormalProgress = useMemo(
-        () => (
-            <NormalProgressContainer>
-                <Typography variant='h6' {...summaryProps}>
-                    {summary}
-                </Typography>
-                <Typography
-                    variant='subtitle2'
-                    style={{
-                        position: 'absolute',
-                        right: 8
-                    }}>{`${percentage}%`}</Typography>
-                <Box style={{ width: '100%' }}>
-                    <LinearProgress
-                        variant='determinate'
-                        value={percentage}
-                        color='primary'
-                        classes={{
-                            barColorPrimary: 'barColorPrimary'
-                        }}
-                        style={{
-                            borderRadius: 10,
-                            height: '16px',
-                            backgroundColor: UNDONE_PROGRESS_COLOR
-                        }}
-                    />
-                </Box>
-            </NormalProgressContainer>
-        ),
-        [percentage, summary, summaryProps]
-    )
-
-    return (
+    return loading ? (
+        <StepCardSkeleton
+            expandable={expandable}
+            showIcon={showIcon}
+            showBottomPercentage={showBottomPercentage}
+        />
+    ) : (
         <Container {...rootProps}>
             <MuiExpansionPanel>
-                <StepContainer>
-                    <StepCardRow height={expandable ? '100px' : '100%'}>
-                        <StepCardColumn justifyContent='start'>
-                            {renderTitleColumn}
-                        </StepCardColumn>
-                        <StepCardColumn justifyContent='end'>
-                            {expandable
-                                ? renderSummaryColumn
-                                : renderNormalProgress}
-                        </StepCardColumn>
-                    </StepCardRow>
-                    {showBottomPercentage && (
-                        <StepCardRow height='15px'>
-                            <Box style={{ width: '100%' }}>
-                                <LinearProgress
-                                    variant='determinate'
-                                    value={percentage}
-                                    color='primary'
-                                    classes={{
-                                        barColorPrimary: 'barColorPrimary'
-                                    }}
-                                    style={{
-                                        height: '16px',
-                                        backgroundColor: UNDONE_PROGRESS_COLOR
-                                    }}
-                                    {...linearProgressBarProps}
-                                />
-                            </Box>
-                        </StepCardRow>
-                    )}
-                </StepContainer>
+                <StepCardPanel
+                    title={title}
+                    summary={summary}
+                    expandable={expandable}
+                    remainingSteps={remainingSteps}
+                    time={time}
+                    showIcon={showIcon}
+                    showBottomPercentage={showBottomPercentage}
+                    subTitle={subTitle}
+                    percentage={percentage}
+                    titleProps={titleProps}
+                    summaryProps={summaryProps}
+                    summaryLinearProgressBarProps={
+                        summaryLinearProgressBarProps
+                    }
+                    linearProgressBarProps={linearProgressBarProps}
+                />
                 {expandable && (
-                    <MuiExpansionPanelDetails
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between'
-                        }}
-                        {...expansionPanelDetailsProps}>
-                        <StepCardColumn justifyContent='start'>
-                            {renderStepsList}
-                        </StepCardColumn>
-                        {image && (
-                            <StepCardColumn justifyContent='end'>
-                                <img src={image} alt='Step Icon' />
-                            </StepCardColumn>
-                        )}
-                    </MuiExpansionPanelDetails>
+                    <StepCardDetails
+                        steps={steps}
+                        image={image}
+                        expansionPanelDetailsProps={expansionPanelDetailsProps}
+                        onStepUrlClick={onStepUrlClick}
+                    />
                 )}
             </MuiExpansionPanel>
         </Container>

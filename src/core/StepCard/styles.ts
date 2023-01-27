@@ -1,5 +1,9 @@
 import style from 'styled-components'
 
+interface IStepContainerProps {
+    withPadding?: boolean
+}
+
 interface IRowProps {
     height: React.CSSProperties['maxHeight']
 }
@@ -22,9 +26,18 @@ export const StepCardRow = style.div<IRowProps>`
     height: ${props => props.height};
 `
 
-export const StepContainer = style.div`
+export const StepContainer = style.div<IStepContainerProps>`
     display: flex;
     flex-direction: column;
+     ${props => {
+         if (props.withPadding) {
+             return `
+                padding: 20px;
+            `
+         } else {
+             return ''
+         }
+     }}
     `
 
 export const StepCardColumn = style.div<IColumnProps>`
@@ -62,6 +75,10 @@ export const ListItemContainer = style.p`
 export const TitleContainer = style.div`
     h6:first-child {
         padding-inline: 20px;
+    }
+
+    span:first-child {
+        margin-left: 20px;
     }
 `
 

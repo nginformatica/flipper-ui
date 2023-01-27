@@ -21,15 +21,13 @@ const generate = (
 })
 
 const DEFAULT: IStepCardProps = {
-    showBottomPercentage: true,
-    summary: 'Configurar a organização e filial',
+    summary: '%i passos restantes - Leva %i minuto(s)',
+    time: 2,
+    percentage: 50,
+    remainingSteps: 3,
     title: 'Configurar a organização e filial',
-    totalSteps: 3,
-    doneSteps: 2,
     image: 'https://dummyimage.com/130x124/000/fff',
     onStepUrlClick: (url: string) => alert(url),
-    expandable: true,
-    showIcon: true,
     steps: [
         {
             title: 'Informar Razão social',

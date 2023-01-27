@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import StepCard from '../core/StepCard'
-import { sprintf } from 'sprintf-js'
-
-const STEM_TIME_MULTIPLIER = 0.5
+import Button from '../core/Button'
 
 export default {
     title: 'StepCard',
@@ -11,31 +9,32 @@ export default {
 } as ComponentMeta<typeof StepCard>
 
 const Template: ComponentStory<typeof StepCard> = args => {
-    const total = args.steps.length
-    const done = args.steps.filter(step => step.done).length
-    const remaining = total - done
+    return <StepCard {...args} />
+}
 
-    const summary =
-        args.summary ||
-        sprintf(
-            '%i passos restantes - Leva %i minuto(s)',
-            remaining,
-            remaining * STEM_TIME_MULTIPLIER
-        )
+const TemplateWithLoading: ComponentStory<typeof StepCard> = args => {
+    const [loading, setLoading] = useState(true)
+
+    setTimeout(() => {
+        setLoading(false)
+    }, 1500)
 
     return (
-        <StepCard
-            {...args}
-            summary={summary}
-            totalSteps={total}
-            doneSteps={done}
-        />
+        <>
+            <Button />
+            <StepCard {...args} loading={loading} />
+        </>
     )
 }
 
 export const Default = Template.bind({})
 
 Default.args = {
+    summary: '%i passos restantes - Leva %i minuto(s)',
+    time: 2,
+    totalSteps: 6,
+    doneSteps: 3,
+    remainingSteps: 3,
     title: 'Configurar a organização e filial',
     image: 'https://dummyimage.com/130x124/000/fff',
     onStepUrlClick: (url: string) => alert(url),
@@ -61,6 +60,7 @@ Default.args = {
 export const WithoutExpandable = Template.bind({})
 
 WithoutExpandable.args = {
+    loading: false,
     showBottomPercentage: false,
     expandable: false,
     showIcon: false,
@@ -69,6 +69,35 @@ WithoutExpandable.args = {
         'Siga os passos recomendados para uma melhor experiência ' +
         'dentro da plataforma.',
     summary: 'Seu progresso',
+    steps: [
+        {
+            title: 'Informar Razão social',
+            done: true,
+            url: 'https://www.google.com'
+        },
+        {
+            title: 'Informar dados do eSocial',
+            done: true,
+            url: 'https://www.google.com'
+        },
+        {
+            title: 'Informar dados da filial(CNAE, CNPJ)',
+            done: false,
+            url: 'https://www.google.com'
+        }
+    ]
+}
+export const WithLoading = TemplateWithLoading.bind({})
+
+WithLoading.args = {
+    summary: '%i passos restantes - Leva %i minuto(s)',
+    time: 2,
+    totalSteps: 6,
+    doneSteps: 3,
+    remainingSteps: 3,
+    title: 'Configurar a organização e filial',
+    image: 'https://dummyimage.com/130x124/000/fff',
+    onStepUrlClick: (url: string) => alert(url),
     steps: [
         {
             title: 'Informar Razão social',
