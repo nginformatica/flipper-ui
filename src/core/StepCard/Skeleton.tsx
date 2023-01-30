@@ -2,7 +2,6 @@ import { Box } from '@material-ui/core'
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import { Skeleton } from '@material-ui/lab'
 import React from 'react'
-import './colors.css'
 import {
     Container,
     NormalProgressContainer,

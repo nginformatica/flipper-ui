@@ -7,7 +7,6 @@ import { PropWithDataCy } from '../types'
 import StepCardSkeleton from './Skeleton'
 import { StepCardDetails } from './StepCardDetails'
 import { StepCardPanel } from './StepCardPanel'
-import './colors.css'
 import { Container } from './styles'
 
 /**

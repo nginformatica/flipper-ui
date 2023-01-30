@@ -1,7 +1,7 @@
-import { Box, LinearProgress } from '@material-ui/core'
+import { LinearProgress } from '@material-ui/core'
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import { theme } from 'nginformatica-styleguide'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { sprintf } from 'sprintf-js'
 import { IStepCardProps } from '.'
 import {
@@ -9,8 +9,8 @@ import {
     ExpandMore as ExpandMoreIcon
 } from '../../icons'
 import Typography from '../Typography'
-import './colors.css'
 import {
+    BarWrapper,
     NormalProgressContainer,
     StepCardColumn,
     StepCardRow,
@@ -57,7 +57,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
         titleProps
     } = props
 
-    const TitleIcon = useCallback(() => {
+    const TitleIcon = () => {
         return (
             <CheckCircleIcon
                 style={{
@@ -66,9 +66,9 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 }}
             />
         )
-    }, [percentage])
+    }
 
-    const Title = useCallback(() => {
+    const Title = () => {
         return (
             <Typography
                 variant='h6'
@@ -81,9 +81,9 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 {title}
             </Typography>
         )
-    }, [titleProps, title])
+    }
 
-    const SubTitle = useCallback(() => {
+    const SubTitle = () => {
         return (
             <Typography
                 variant='h6'
@@ -95,22 +95,19 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 {subTitle}
             </Typography>
         )
-    }, [titleProps, subTitle])
+    }
 
-    const TitleColumn = useCallback(
-        () => (
-            <>
-                {showIcon && <TitleIcon />}
-                <TitleContainer>
-                    <Title />
-                    {subTitle && <SubTitle />}
-                </TitleContainer>
-            </>
-        ),
-        [showIcon, TitleIcon, Title, subTitle, SubTitle]
+    const TitleColumn = () => (
+        <>
+            {showIcon && <TitleIcon />}
+            <TitleContainer>
+                <Title />
+                {subTitle && <SubTitle />}
+            </TitleContainer>
+        </>
     )
 
-    const Summary = useCallback(() => {
+    const Summary = () => {
         return (
             <MuiExpansionPanelSummary
                 style={{ textAlign: 'center' }}
@@ -120,8 +117,9 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 </Typography>
             </MuiExpansionPanelSummary>
         )
-    }, [remainingSteps, summary, summaryProps, time])
-    const SummaryLinearProgress = useCallback(() => {
+    }
+
+    const SummaryLinearProgress = () => {
         return (
             <LinearProgress
                 variant='determinate'
@@ -138,29 +136,26 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 {...summaryLinearProgressBarProps}
             />
         )
-    }, [summaryLinearProgressBarProps, percentage])
+    }
 
-    const NormalProgress = useCallback(
-        () => (
-            <NormalProgressContainer>
-                <Typography variant='h6' {...summaryProps}>
-                    {summary}
-                </Typography>
-                <Typography
-                    variant='subtitle2'
-                    style={{
-                        position: 'absolute',
-                        right: 8
-                    }}>{`${percentage}%`}</Typography>
-                <Box style={{ width: '100%' }}>
-                    <SummaryLinearProgress />
-                </Box>
-            </NormalProgressContainer>
-        ),
-        [summaryProps, summary, percentage, SummaryLinearProgress]
+    const NormalProgress = () => (
+        <NormalProgressContainer>
+            <Typography variant='h6' {...summaryProps}>
+                {summary}
+            </Typography>
+            <Typography
+                variant='subtitle2'
+                style={{
+                    position: 'absolute',
+                    right: 8
+                }}>{`${percentage}%`}</Typography>
+            <BarWrapper>
+                <SummaryLinearProgress />
+            </BarWrapper>
+        </NormalProgressContainer>
     )
 
-    const BottomLineProgress = useCallback(() => {
+    const BottomLineProgress = () => {
         return (
             <LinearProgress
                 variant='determinate'
@@ -176,7 +171,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 {...linearProgressBarProps}
             />
         )
-    }, [percentage, linearProgressBarProps])
+    }
 
     return (
         <StepContainer withPadding={!expandable}>
@@ -190,9 +185,9 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
             </StepCardRow>
             {showBottomPercentage && (
                 <StepCardRow height='15px'>
-                    <Box style={{ width: '100%' }}>
+                    <BarWrapper>
                         <BottomLineProgress />
-                    </Box>
+                    </BarWrapper>
                 </StepCardRow>
             )}
         </StepContainer>

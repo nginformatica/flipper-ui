@@ -25,5 +25,5 @@
         "baseUrl": ".",
         "skipLibCheck": true
     },
-    "include": ["./src/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", "./src/custom.d.ts"]
+    "include": ["./src/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*"]
 }

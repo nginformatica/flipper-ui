@@ -32,6 +32,7 @@ export const Default = Template.bind({})
 Default.args = {
     summary: '%i passos restantes - Leva %i minuto(s)',
     time: 2,
+    percentage: 75,
     totalSteps: 6,
     doneSteps: 3,
     remainingSteps: 3,
@@ -61,6 +62,7 @@ export const WithoutExpandable = Template.bind({})
 
 WithoutExpandable.args = {
     loading: false,
+    percentage: 75,
     showBottomPercentage: false,
     expandable: false,
     showIcon: false,
