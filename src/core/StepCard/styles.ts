@@ -1,4 +1,6 @@
-import style from 'styled-components'
+import { Box } from '@material-ui/core'
+import { theme } from 'nginformatica-styleguide'
+import styled from 'styled-components'
 
 interface IStepContainerProps {
     withPadding?: boolean
@@ -12,12 +14,12 @@ interface IColumnProps {
     justifyContent: React.CSSProperties['justifyContent']
 }
 
-export const Container = style.div`
+export const Container = styled.div`
     width: 100%;
     max-width: 1100px;
 `
 
-export const StepCardRow = style.div<IRowProps>`
+export const StepCardRow = styled.div<IRowProps>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,21 +28,21 @@ export const StepCardRow = style.div<IRowProps>`
     height: ${props => props.height};
 `
 
-export const StepContainer = style.div<IStepContainerProps>`
+export const StepContainer = styled.div<IStepContainerProps>`
     display: flex;
     flex-direction: column;
-     ${props => {
-         if (props.withPadding) {
-             return `
+    ${props => {
+        if (props.withPadding) {
+            return `
                 padding: 20px;
             `
-         } else {
-             return ''
-         }
-     }}
-    `
+        } else {
+            return ''
+        }
+    }}
+`
 
-export const StepCardColumn = style.div<IColumnProps>`
+export const StepCardColumn = styled.div<IColumnProps>`
     padding-inline: 30px;
     display: flex;
     flex-direction: row;
@@ -61,7 +63,7 @@ export const StepCardColumn = style.div<IColumnProps>`
     }}
 `
 
-export const ListItemContainer = style.p`
+export const ListItemContainer = styled.p`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -72,7 +74,7 @@ export const ListItemContainer = style.p`
     }
 `
 
-export const TitleContainer = style.div`
+export const TitleContainer = styled.div`
     h6:first-child {
         padding-inline: 20px;
     }
@@ -82,7 +84,7 @@ export const TitleContainer = style.div`
     }
 `
 
-export const NormalProgressContainer = style.div`
+export const NormalProgressContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -92,5 +94,13 @@ export const NormalProgressContainer = style.div`
 
     h6:first-child {
         margin-bottom: 8px;
+    }
+`
+
+export const BarWrapper = styled(Box)`
+    width: 100%;
+
+    & .barColorPrimary {
+        background-color: ${theme.colors.feedback.success};
     }
 `
