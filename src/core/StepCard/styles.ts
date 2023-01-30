@@ -8,15 +8,20 @@ interface IStepContainerProps {
 
 interface IRowProps {
     height: React.CSSProperties['maxHeight']
+    fullWidth?: boolean
+}
+
+interface IContainerProps {
+    fullWidth?: boolean
 }
 
 interface IColumnProps {
     justifyContent: React.CSSProperties['justifyContent']
 }
 
-export const Container = styled.div`
+export const Container = styled.div<IContainerProps>`
     width: 100%;
-    max-width: 1100px;
+    max-width: ${props => (props.fullWidth ? '100%' : '1100px')};
 `
 
 export const StepCardRow = styled.div<IRowProps>`
@@ -24,7 +29,7 @@ export const StepCardRow = styled.div<IRowProps>`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    max-width: 1100px;
+    max-width: ${props => (props.fullWidth ? '100%' : '1100px')};
     height: ${props => props.height};
 `
 

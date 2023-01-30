@@ -38,6 +38,7 @@ interface IStepCardPanelProps {
     time: number
     showIcon: boolean
     subTitle?: string
+    fullWidth?: boolean
 }
 
 export const StepCardPanel = (props: IStepCardPanelProps) => {
@@ -54,7 +55,8 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
         time,
         showIcon,
         subTitle,
-        titleProps
+        titleProps,
+        fullWidth
     } = props
 
     const TitleIcon = () => {
@@ -175,7 +177,9 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
 
     return (
         <StepContainer withPadding={!expandable}>
-            <StepCardRow height={expandable ? '100px' : '100%'}>
+            <StepCardRow
+                fullWidth={fullWidth}
+                height={expandable ? '100px' : '100%'}>
                 <StepCardColumn justifyContent='start'>
                     <TitleColumn />
                 </StepCardColumn>
@@ -184,7 +188,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 </StepCardColumn>
             </StepCardRow>
             {showBottomPercentage && (
-                <StepCardRow height='15px'>
+                <StepCardRow fullWidth={fullWidth} height='15px'>
                     <BarWrapper>
                         <BottomLineProgress />
                     </BarWrapper>

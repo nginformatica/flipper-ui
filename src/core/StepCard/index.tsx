@@ -16,6 +16,14 @@ import { Container } from './styles'
  */
 export interface IStepCardProps {
     /**
+     * Whether the step card is full width
+     * @type {boolean}
+     * @memberof IStepCardProps
+     * @default false
+     */
+    fullWidth?: boolean
+
+    /**
      * Whether the step card are loading
      * @type {boolean}
      * @memberof IStepCardProps
@@ -224,7 +232,8 @@ const StepCard = (props: IStepCardProps) => {
         linearProgressBarProps,
         summaryLinearProgressBarProps,
         rootProps,
-        onStepUrlClick
+        onStepUrlClick,
+        fullWidth
     } = props
 
     return loading ? (
@@ -234,9 +243,10 @@ const StepCard = (props: IStepCardProps) => {
             showBottomPercentage={showBottomPercentage}
         />
     ) : (
-        <Container {...rootProps}>
+        <Container fullWidth={fullWidth} {...rootProps}>
             <MuiExpansionPanel>
                 <StepCardPanel
+                    fullWidth={fullWidth}
                     title={title}
                     summary={summary}
                     expandable={expandable}
