@@ -39,6 +39,7 @@ interface IStepCardPanelProps {
     showIcon: boolean
     subTitle?: string
     fullWidth?: boolean
+    padding?: React.CSSProperties['padding']
 }
 
 export const StepCardPanel = (props: IStepCardPanelProps) => {
@@ -56,7 +57,8 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
         showIcon,
         subTitle,
         titleProps,
-        fullWidth
+        fullWidth,
+        padding
     } = props
 
     const TitleIcon = () => {
@@ -176,10 +178,10 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
     }
 
     return (
-        <StepContainer withPadding={!expandable}>
+        <StepContainer padding={padding}>
             <StepCardRow
                 fullWidth={fullWidth}
-                height={expandable ? '100px' : '100%'}>
+                minHeight={expandable ? '100px' : '100%'}>
                 <StepCardColumn justifyContent='start'>
                     <TitleColumn />
                 </StepCardColumn>
@@ -188,7 +190,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 </StepCardColumn>
             </StepCardRow>
             {showBottomPercentage && (
-                <StepCardRow fullWidth={fullWidth} height='15px'>
+                <StepCardRow fullWidth={fullWidth} minHeight='15px'>
                     <BarWrapper>
                         <BottomLineProgress />
                     </BarWrapper>

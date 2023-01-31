@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import StepCard from '../core/StepCard'
 import Button from '../core/Button'
+import { stepCardImageUrl } from '../lib/images'
 
 export default {
     title: 'StepCard',
@@ -33,11 +34,9 @@ Default.args = {
     summary: '%i passos restantes - Leva %i minuto(s)',
     time: 2,
     percentage: 75,
-    totalSteps: 6,
-    doneSteps: 3,
     remainingSteps: 3,
     title: 'Configurar a organização e filial',
-    image: 'https://dummyimage.com/130x124/000/fff',
+    image: stepCardImageUrl,
     onStepUrlClick: (url: string) => alert(url),
     steps: [
         {
@@ -62,6 +61,7 @@ export const WithoutExpandable = Template.bind({})
 
 WithoutExpandable.args = {
     loading: false,
+    padding: '30px',
     percentage: 75,
     showBottomPercentage: false,
     expandable: false,
@@ -94,11 +94,9 @@ export const WithLoading = TemplateWithLoading.bind({})
 WithLoading.args = {
     summary: '%i passos restantes - Leva %i minuto(s)',
     time: 2,
-    totalSteps: 6,
-    doneSteps: 3,
     remainingSteps: 3,
     title: 'Configurar a organização e filial',
-    image: 'https://dummyimage.com/130x124/000/fff',
+    image: stepCardImageUrl,
     onStepUrlClick: (url: string) => alert(url),
     steps: [
         {

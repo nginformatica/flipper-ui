@@ -2,9 +2,9 @@ import { LinearProgress } from '@material-ui/core'
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import React from 'react'
+import StepCardSkeleton from '../StepCardSkeleton'
 import Typography from '../Typography'
 import { PropWithDataCy } from '../types'
-import StepCardSkeleton from './Skeleton'
 import { StepCardDetails } from './StepCardDetails'
 import { StepCardPanel } from './StepCardPanel'
 import { Container } from './styles'
@@ -89,14 +89,14 @@ export interface IStepCardProps {
      * @type {number}
      * @memberof IStepCardProps
      */
-    remainingSteps: number
+    remainingSteps?: number
 
     /**
      * The time in seconds to be displayed on the expansion panel summary
      * @type {number}
      * @memberof IStepCardProps
      */
-    time: number
+    time?: number
 
     /**
      * An array of steps, each with a title, a done flag and an optional url
@@ -108,7 +108,7 @@ export interface IStepCardProps {
      *     }]
      * @memberof IStepCardProps
      */
-    steps: {
+    steps?: {
         title: string
         done: boolean
         url?: string
@@ -139,7 +139,7 @@ export interface IStepCardProps {
     summaryProps?: PropWithDataCy<typeof Typography>
 
     /**
-     * Props to be passed to the expansion panel
+     * Props to be passed to the expansion panel details
      * @type {(typeof MuiExpansionPanel | undefined)}
      * @memberof IStepCardProps
      */
@@ -176,6 +176,20 @@ export interface IStepCardProps {
     showIcon?: boolean
 
     /**
+     * Padding applied to the root element
+     * @type {React.CSSProperties['padding']}
+     * @memberof IStepCardProps
+     */
+    padding?: React.CSSProperties['padding']
+
+    /**
+     * Margin applied to the root element
+     * @type {React.CSSProperties['margin']}
+     * @memberof IStepCardProps
+     */
+    margin?: React.CSSProperties['margin']
+
+    /**
      * Callback to be called when the user clicks on a step url
      * @memberof IStepCardProps
      * @default undefined
@@ -189,6 +203,11 @@ export interface IStepCardProps {
  * an expandable panel, and a progress bar.
  * The expandable panel displays a list of steps, each with a title, a done flag,
  * and an optional url.
+ *
+ * @Storybook https://flipper-ui.ngi.com.br/?path=/story/stepcard--default
+ *
+ * @Source
+ * https://github.com/nginformatica/flipper-ui/blob/master/src/core/StepCard
  *
  * @example
  * <StepCard
@@ -233,7 +252,9 @@ const StepCard = (props: IStepCardProps) => {
         summaryLinearProgressBarProps,
         rootProps,
         onStepUrlClick,
-        fullWidth
+        fullWidth,
+        padding,
+        margin
     } = props
 
     return loading ? (
@@ -243,15 +264,16 @@ const StepCard = (props: IStepCardProps) => {
             showBottomPercentage={showBottomPercentage}
         />
     ) : (
-        <Container fullWidth={fullWidth} {...rootProps}>
+        <Container margin={margin} fullWidth={fullWidth} {...rootProps}>
             <MuiExpansionPanel>
                 <StepCardPanel
                     fullWidth={fullWidth}
                     title={title}
+                    padding={padding}
                     summary={summary}
                     expandable={expandable}
-                    remainingSteps={remainingSteps}
-                    time={time}
+                    remainingSteps={remainingSteps || 0}
+                    time={time || 0}
                     showIcon={showIcon}
                     showBottomPercentage={showBottomPercentage}
                     subTitle={subTitle}
