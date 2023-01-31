@@ -16,6 +16,32 @@ import { Container } from './styles'
  */
 export interface IStepCardProps {
     /**
+     * Whether the step card expansion panel is initially expanded or not
+     * @type {boolean}
+     * @memberof IStepCardProps
+     * @default false
+     */
+    expanded?: boolean
+
+    /**
+     * Callback fired when the expansion state changes
+     * @type {(event: React.ChangeEvent<{}>, expanded: boolean) => void}
+     * @memberof IStepCardProps
+     * @default undefined
+     * @example
+     * const handleChange = (event: React.ChangeEvent<{}>, expanded: boolean) => {
+     *    setExpanded(expanded)
+     * }
+     * <StepCard onChange={handleChange} />
+     * @example
+     * <StepCard onChange={(event, expanded) => setExpanded(expanded)} />
+     */
+    onChange?: (
+        event: React.ChangeEvent<Record<string, unknown>>,
+        expanded: boolean
+    ) => void
+
+    /**
      * Whether the step card is full width
      * @type {boolean}
      * @memberof IStepCardProps
@@ -233,6 +259,7 @@ export interface IStepCardProps {
  */
 const StepCard = (props: IStepCardProps) => {
     const {
+        expanded,
         loading = false,
         percentage,
         time,
@@ -254,7 +281,8 @@ const StepCard = (props: IStepCardProps) => {
         onStepUrlClick,
         fullWidth,
         padding,
-        margin
+        margin,
+        onChange
     } = props
 
     return loading ? (
@@ -266,7 +294,9 @@ const StepCard = (props: IStepCardProps) => {
         />
     ) : (
         <Container margin={margin} fullWidth={fullWidth} {...rootProps}>
-            <MuiExpansionPanel>
+            <MuiExpansionPanel
+                {...(expanded ? { expanded } : {})}
+                onChange={onChange}>
                 <StepCardPanel
                     fullWidth={fullWidth}
                     title={title}
