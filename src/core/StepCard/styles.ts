@@ -3,16 +3,17 @@ import { theme } from 'nginformatica-styleguide'
 import styled from 'styled-components'
 
 interface IStepContainerProps {
-    withPadding?: boolean
+    padding?: React.CSSProperties['padding']
 }
 
 interface IRowProps {
-    height: React.CSSProperties['maxHeight']
+    minHeight: React.CSSProperties['minHeight']
     fullWidth?: boolean
 }
 
 interface IContainerProps {
     fullWidth?: boolean
+    margin?: React.CSSProperties['margin']
 }
 
 interface IColumnProps {
@@ -22,6 +23,7 @@ interface IColumnProps {
 export const Container = styled.div<IContainerProps>`
     width: 100%;
     max-width: ${props => (props.fullWidth ? '100%' : '1100px')};
+    ${props => (props.margin ? `margin: ${props.margin};` : '')}
 `
 
 export const StepCardRow = styled.div<IRowProps>`
@@ -30,21 +32,13 @@ export const StepCardRow = styled.div<IRowProps>`
     justify-content: space-between;
     width: 100%;
     max-width: ${props => (props.fullWidth ? '100%' : '1100px')};
-    height: ${props => props.height};
+    min-height: ${props => props.minHeight};
 `
 
 export const StepContainer = styled.div<IStepContainerProps>`
     display: flex;
     flex-direction: column;
-    ${props => {
-        if (props.withPadding) {
-            return `
-                padding: 20px;
-            `
-        } else {
-            return ''
-        }
-    }}
+    ${props => (props.padding ? `padding: ${props.padding};` : '')}
 `
 
 export const StepCardColumn = styled.div<IColumnProps>`

@@ -9,17 +9,26 @@ import {
     StepCardRow,
     StepContainer,
     TitleContainer
-} from './styles'
+} from './StepCard/styles'
 
 interface IStepCardPanelProps {
     expandable: boolean
     showBottomPercentage: boolean
     showIcon: boolean
     subTitle?: boolean
+    padding?: React.CSSProperties['padding']
+    margin?: React.CSSProperties['margin']
 }
 
 const StepCardSkeleton = (props: IStepCardPanelProps) => {
-    const { expandable, showBottomPercentage, showIcon, subTitle } = props
+    const {
+        expandable,
+        showBottomPercentage,
+        showIcon,
+        subTitle,
+        padding,
+        margin
+    } = props
 
     const TextSkeleton = () => (
         <Skeleton variant='text' style={{ minWidth: '400px' }} height={40} />
@@ -39,10 +48,10 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
     )
 
     return (
-        <Container>
+        <Container margin={margin}>
             <MuiExpansionPanel>
-                <StepContainer withPadding={!expandable}>
-                    <StepCardRow height={expandable ? '100px' : '100%'}>
+                <StepContainer padding={padding}>
+                    <StepCardRow minHeight={expandable ? '100px' : '100%'}>
                         <StepCardColumn justifyContent='start'>
                             {showIcon && (
                                 <Skeleton
@@ -61,7 +70,7 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                         </StepCardColumn>
                     </StepCardRow>
                     {showBottomPercentage && (
-                        <StepCardRow height='15px'>
+                        <StepCardRow minHeight='15px'>
                             <Box style={{ width: '100%' }}>
                                 <Skeleton variant='text' />
                             </Box>

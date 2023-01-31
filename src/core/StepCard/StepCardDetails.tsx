@@ -25,7 +25,7 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
 
     const StepsList = () => (
         <List>
-            {steps.map((step, index) => {
+            {(steps || []).map((step, index) => {
                 const handleOnClickStepUrl = () => {
                     if (onStepUrlClick && step.url) {
                         onStepUrlClick(step.url)
