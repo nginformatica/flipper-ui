@@ -257,35 +257,33 @@ export interface IStepCardProps {
  *   defaultExpanded={false}
  * />
  */
-const StepCard = (props: IStepCardProps) => {
-    const {
-        expanded,
-        loading = false,
-        percentage,
-        time,
-        steps,
-        remainingSteps,
-        title,
-        titleProps,
-        subTitle,
-        image,
-        showBottomPercentage = true,
-        expandable = true,
-        showIcon = true,
-        summary,
-        summaryProps,
-        expansionPanelDetailsProps,
-        linearProgressBarProps,
-        summaryLinearProgressBarProps,
-        rootProps,
-        onStepUrlClick,
-        fullWidth,
-        padding,
-        margin,
-        onChange
-    } = props
-
-    return loading ? (
+const StepCard = ({
+    expanded,
+    loading = false,
+    percentage,
+    time = 0,
+    steps,
+    remainingSteps = 0,
+    title,
+    titleProps,
+    subTitle,
+    image,
+    showBottomPercentage = true,
+    expandable = true,
+    showIcon = true,
+    summary,
+    summaryProps,
+    expansionPanelDetailsProps,
+    linearProgressBarProps,
+    summaryLinearProgressBarProps,
+    rootProps,
+    onStepUrlClick,
+    fullWidth,
+    padding,
+    margin,
+    onChange
+}: IStepCardProps) =>
+    loading ? (
         <StepCardSkeleton
             expandable={expandable}
             showIcon={showIcon}
@@ -303,8 +301,8 @@ const StepCard = (props: IStepCardProps) => {
                     padding={padding}
                     summary={summary}
                     expandable={expandable}
-                    remainingSteps={remainingSteps || 0}
-                    time={time || 0}
+                    remainingSteps={remainingSteps}
+                    time={time}
                     showIcon={showIcon}
                     showBottomPercentage={showBottomPercentage}
                     subTitle={subTitle}
@@ -327,6 +325,5 @@ const StepCard = (props: IStepCardProps) => {
             </MuiExpansionPanel>
         </Container>
     )
-}
 
 export default StepCard
