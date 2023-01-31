@@ -19,7 +19,7 @@ export interface IStepCardProps {
      * Whether the step card expansion panel is initially expanded or not
      * @type {boolean}
      * @memberof IStepCardProps
-     * @default false
+     * @default undefined
      */
     expanded?: boolean
 
