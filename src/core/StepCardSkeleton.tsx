@@ -18,6 +18,7 @@ interface IStepCardPanelProps {
     subTitle?: boolean
     padding?: React.CSSProperties['padding']
     margin?: React.CSSProperties['margin']
+    fullWidth?: boolean
 }
 
 const StepCardSkeleton = (props: IStepCardPanelProps) => {
@@ -27,7 +28,8 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
         showIcon,
         subTitle,
         padding,
-        margin
+        margin,
+        fullWidth
     } = props
 
     const TextSkeleton = () => (
@@ -48,10 +50,12 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
     )
 
     return (
-        <Container margin={margin}>
+        <Container margin={margin} fullWidth={fullWidth}>
             <MuiExpansionPanel>
                 <StepContainer padding={padding}>
-                    <StepCardRow minHeight={expandable ? '100px' : '100%'}>
+                    <StepCardRow
+                        fullWidth={fullWidth}
+                        minHeight={expandable ? '100px' : '100%'}>
                         <StepCardColumn justifyContent='start'>
                             {showIcon && (
                                 <Skeleton
@@ -70,7 +74,7 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                         </StepCardColumn>
                     </StepCardRow>
                     {showBottomPercentage && (
-                        <StepCardRow minHeight='15px'>
+                        <StepCardRow minHeight='15px' fullWidth={fullWidth}>
                             <Box style={{ width: '100%' }}>
                                 <Skeleton variant='text' />
                             </Box>

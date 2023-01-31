@@ -16,6 +16,32 @@ import { Container } from './styles'
  */
 export interface IStepCardProps {
     /**
+     * Whether the step card expansion panel is initially expanded or not
+     * @type {boolean}
+     * @memberof IStepCardProps
+     * @default undefined
+     */
+    expanded?: boolean
+
+    /**
+     * Callback fired when the expansion state changes
+     * @type {(event: React.ChangeEvent<{}>, expanded: boolean) => void}
+     * @memberof IStepCardProps
+     * @default undefined
+     * @example
+     * const handleChange = (event: React.ChangeEvent<{}>, expanded: boolean) => {
+     *    setExpanded(expanded)
+     * }
+     * <StepCard onChange={handleChange} />
+     * @example
+     * <StepCard onChange={(event, expanded) => setExpanded(expanded)} />
+     */
+    onChange?: (
+        event: React.ChangeEvent<Record<string, unknown>>,
+        expanded: boolean
+    ) => void
+
+    /**
      * Whether the step card is full width
      * @type {boolean}
      * @memberof IStepCardProps
@@ -231,49 +257,52 @@ export interface IStepCardProps {
  *   defaultExpanded={false}
  * />
  */
-const StepCard = (props: IStepCardProps) => {
-    const {
-        loading = false,
-        percentage,
-        time,
-        steps,
-        remainingSteps,
-        title,
-        titleProps,
-        subTitle,
-        image,
-        showBottomPercentage = true,
-        expandable = true,
-        showIcon = true,
-        summary,
-        summaryProps,
-        expansionPanelDetailsProps,
-        linearProgressBarProps,
-        summaryLinearProgressBarProps,
-        rootProps,
-        onStepUrlClick,
-        fullWidth,
-        padding,
-        margin
-    } = props
-
-    return loading ? (
+const StepCard = ({
+    expanded,
+    loading = false,
+    percentage,
+    time = 0,
+    steps,
+    remainingSteps = 0,
+    title,
+    titleProps,
+    subTitle,
+    image,
+    showBottomPercentage = true,
+    expandable = true,
+    showIcon = true,
+    summary,
+    summaryProps,
+    expansionPanelDetailsProps,
+    linearProgressBarProps,
+    summaryLinearProgressBarProps,
+    rootProps,
+    onStepUrlClick,
+    fullWidth,
+    padding,
+    margin,
+    onChange
+}: IStepCardProps) =>
+    loading ? (
         <StepCardSkeleton
             expandable={expandable}
             showIcon={showIcon}
             showBottomPercentage={showBottomPercentage}
+            fullWidth={fullWidth}
         />
     ) : (
         <Container margin={margin} fullWidth={fullWidth} {...rootProps}>
-            <MuiExpansionPanel>
+            <MuiExpansionPanel
+                {...(expanded ? { expanded } : {})}
+                onChange={onChange}>
                 <StepCardPanel
                     fullWidth={fullWidth}
                     title={title}
                     padding={padding}
                     summary={summary}
                     expandable={expandable}
-                    remainingSteps={remainingSteps || 0}
-                    time={time || 0}
+                    remainingSteps={remainingSteps}
+                    time={time}
                     showIcon={showIcon}
                     showBottomPercentage={showBottomPercentage}
                     subTitle={subTitle}
@@ -296,6 +325,5 @@ const StepCard = (props: IStepCardProps) => {
             </MuiExpansionPanel>
         </Container>
     )
-}
 
 export default StepCard
