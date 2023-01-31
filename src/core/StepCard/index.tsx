@@ -262,6 +262,7 @@ const StepCard = (props: IStepCardProps) => {
             expandable={expandable}
             showIcon={showIcon}
             showBottomPercentage={showBottomPercentage}
+            fullWidth={fullWidth}
         />
     ) : (
         <Container margin={margin} fullWidth={fullWidth} {...rootProps}>
