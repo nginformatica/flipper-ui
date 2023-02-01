@@ -61,7 +61,7 @@ const PinInput = ({
 
     const onPaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
         const pastedValue = event.clipboardData.getData('text/plain')
-        const splitValues = pastedValue.split('')
+        const splitValues = pastedValue.trim().split('')
         const intValues: number[] = []
         for (const value of splitValues) {
             intValues.push(parseInt(value))
