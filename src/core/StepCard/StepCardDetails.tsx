@@ -86,7 +86,11 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
             </StepCardColumn>
             {image && (
                 <StepCardColumn justifyContent='end'>
-                    <img src={image} alt='Step Icon' />
+                    {typeof image === 'string' ? (
+                        <img src={image} alt='Step Icon' />
+                    ) : (
+                        image
+                    )}
                 </StepCardColumn>
             )}
         </MuiExpansionPanelDetails>
