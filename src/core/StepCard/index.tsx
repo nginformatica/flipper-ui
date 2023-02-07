@@ -104,11 +104,18 @@ export interface IStepCardProps {
 
     /**
      * The image to be displayed on the expansion panel details
+     * Accepts a string or a JSX.Element
      *
-     * @type {string}
+     * @type {string | JSX.Element}
+     * @example
+     * <StepCard image={<img src="https://picsum.photos/200" />} />
+     * @example
+     * <StepCard image="https://picsum.photos/200" />
+     * @example
+     * <StepCard image={<Image />} />
      * @memberof IStepCardProps
      */
-    image?: string
+    image?: string | JSX.Element
 
     /**
      * The number of remaining steps

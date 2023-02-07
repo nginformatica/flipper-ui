@@ -16,3 +16,8 @@ Feature: StepCard
         Given I render StepCard with 'without-expansion' preset
         Then I should not see cy 'linear-progress-bar-container'
 
+    @focus
+    Scenario: Ensure JSX image is rendered
+        Given I render StepCard with 'with-svg-image' preset
+        And I click on cy 'summary-text'
+        Then I should see cy 'step-card-jsx-img'
