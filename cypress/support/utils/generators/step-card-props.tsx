@@ -1,4 +1,5 @@
-import { ifElse } from 'ramda'
+import React from 'react'
+import { T, cond } from 'ramda'
 import { IStepCardProps } from '../../../../src/core/StepCard'
 import { StepCardVariant } from '../../types-interfaces-enums'
 import { validator } from '../validators'
@@ -17,6 +18,16 @@ const generate = (
             'Siga os passos recomendados para uma melhor experiência ' +
             'dentro da plataforma.',
         summary: 'Seu progresso'
+    },
+    'with-svg-image': {
+        ...props,
+        image: (
+            <img
+                src='https://dummyimage.com/130x124/000/fff'
+                id='asd'
+                data-cy='step-card-jsx-img'
+            />
+        )
     }
 })
 
@@ -47,8 +58,11 @@ const DEFAULT: IStepCardProps = {
     ]
 }
 
-const { default: defProps, 'without-expansion': withoutExpansion } =
-    generate(DEFAULT)
+const {
+    default: defProps,
+    'without-expansion': withoutExpansion,
+    'with-svg-image': withSvgImage
+} = generate(DEFAULT)
 
 export const StepCardPropsGenerator = (
     preset: StepCardVariant
@@ -56,9 +70,9 @@ export const StepCardPropsGenerator = (
     const validate = (variant: StepCardVariant) =>
         validator<StepCardVariant>(variant)
 
-    return ifElse(
-        validate('without-expansion'),
-        () => withoutExpansion,
-        () => defProps
-    )(preset)
+    return cond([
+        [validate('without-expansion'), () => withoutExpansion],
+        [validate('with-svg-image'), () => withSvgImage],
+        [T, () => defProps]
+    ])(preset)
 }
