@@ -24,7 +24,6 @@ const generate = (
         image: (
             <img
                 src='https://dummyimage.com/130x124/000/fff'
-                id='asd'
                 data-cy='step-card-jsx-img'
             />
         )
