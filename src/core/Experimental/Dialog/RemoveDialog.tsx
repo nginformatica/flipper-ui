@@ -6,6 +6,7 @@ export interface IProps {
     open: boolean
     title?: string
     text: string
+    disableBackdropClick?: boolean
     labels?: {
         cancel?: string
         confirm?: string
@@ -15,8 +16,16 @@ export interface IProps {
 }
 
 const RemoveDialog = (props: IProps) => {
-    const { open, onCancel, onConfirm, title, text, labels, ...otherProps } =
-        props
+    const {
+        open,
+        onCancel,
+        onConfirm,
+        title,
+        text,
+        labels,
+        disableBackdropClick,
+        ...otherProps
+    } = props
 
     return (
         <DialogV2
@@ -31,7 +40,7 @@ const RemoveDialog = (props: IProps) => {
             secondaryButtonAction={onCancel}
             secondaryButtonName='cancel-delete'
             secondaryButtonText={labels?.cancel || 'Cancelar'}
-            onClose={onCancel}
+            onClose={disableBackdropClick ? undefined : onCancel}
         />
     )
 }

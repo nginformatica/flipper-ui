@@ -5,6 +5,7 @@ export interface IProps {
     open: boolean
     title: string
     text: string
+    disableBackdropClick?: boolean
     labels?: {
         cancel?: string
         confirm?: string
@@ -14,8 +15,16 @@ export interface IProps {
 }
 
 const ConfirmDialog = (props: IProps) => {
-    const { open, title, text, labels, onCancel, onConfirm, ...otherProps } =
-        props
+    const {
+        open,
+        title,
+        text,
+        labels,
+        onCancel,
+        onConfirm,
+        disableBackdropClick,
+        ...otherProps
+    } = props
 
     return (
         <DialogV2
@@ -28,7 +37,7 @@ const ConfirmDialog = (props: IProps) => {
             secondaryButtonText={(labels && labels.cancel) || 'Voltar'}
             primaryButtonColor='primary'
             secondaryButtonAction={onCancel}
-            onClose={onCancel}
+            onClose={disableBackdropClick ? undefined : onCancel}
         />
     )
 }

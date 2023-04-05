@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import RemoveDialog from '../RemoveDialog'
+import ConfirmDialog from '../ConfirmDialog'
 
-describe('RemoveDialog', () => {
+describe('ConfirmDialog', () => {
     const TITLE = 'dialog title'
     const TEXT = 'Dialog text'
     const LABELS = {
@@ -16,7 +16,7 @@ describe('RemoveDialog', () => {
         const onConfirmSpy = jest.fn()
 
         render(
-            <RemoveDialog
+            <ConfirmDialog
                 open
                 title={TITLE}
                 text={TEXT}
@@ -26,7 +26,7 @@ describe('RemoveDialog', () => {
             />
         )
 
-        const title = screen.getByText(TITLE.toUpperCase())
+        const title = screen.getByText(TITLE)
         const text = screen.getByText(TEXT)
         const confirmButton = screen.getByText(LABELS.confirm)
         const cancelButton = screen.getByText(LABELS.cancel)
@@ -42,18 +42,19 @@ describe('RemoveDialog', () => {
         const onConfirmSpy = jest.fn()
 
         render(
-            <RemoveDialog
+            <ConfirmDialog
                 open
+                title={TITLE}
                 text={TEXT}
                 onCancel={onCancelSpy}
                 onConfirm={onConfirmSpy}
             />
         )
 
-        const title = screen.getByText('EXCLUIR')
+        const title = screen.getByText(TITLE)
         const text = screen.getByText(TEXT)
-        const confirmButton = screen.getByText('Excluir')
-        const cancelButton = screen.getByText('Cancelar')
+        const confirmButton = screen.getByText('Sim')
+        const cancelButton = screen.getByText('Voltar')
 
         expect(title).toBeDefined()
         expect(text).toBeDefined()
@@ -66,7 +67,7 @@ describe('RemoveDialog', () => {
         const onConfirmSpy = jest.fn()
 
         render(
-            <RemoveDialog
+            <ConfirmDialog
                 open
                 title={TITLE}
                 text={TEXT}
@@ -90,7 +91,7 @@ describe('RemoveDialog', () => {
         const onConfirmSpy = jest.fn()
 
         render(
-            <RemoveDialog
+            <ConfirmDialog
                 open
                 title={TITLE}
                 text={TEXT}
@@ -114,7 +115,7 @@ describe('RemoveDialog', () => {
         const onConfirmSpy = jest.fn()
 
         render(
-            <RemoveDialog
+            <ConfirmDialog
                 open
                 title={TITLE}
                 text={TEXT}
@@ -124,12 +125,37 @@ describe('RemoveDialog', () => {
             />
         )
 
-        const title = screen.getByText(TITLE.toUpperCase())
+        const title = screen.getByText(TITLE)
 
         fireEvent.keyDown(title, { key: 'Escape', keyCode: 27 })
 
         waitFor(() => {
             expect(onCancelSpy).toHaveBeenCalled()
+        })
+    })
+
+    it('Should not call onCancel when disableBackdropClick', () => {
+        const onCancelSpy = jest.fn()
+        const onConfirmSpy = jest.fn()
+
+        render(
+            <ConfirmDialog
+                open
+                disableBackdropClick
+                title={TITLE}
+                text={TEXT}
+                labels={LABELS}
+                onCancel={onCancelSpy}
+                onConfirm={onConfirmSpy}
+            />
+        )
+
+        const title = screen.getByText(TITLE)
+
+        fireEvent.keyDown(title, { key: 'Escape', keyCode: 27 })
+
+        waitFor(() => {
+            expect(onCancelSpy).not.toHaveBeenCalled()
         })
     })
 })
