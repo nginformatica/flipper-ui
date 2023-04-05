@@ -164,7 +164,10 @@ export const StatefulRow = <D extends Data>({
 
     const partialUpdate = useCallback(
         <D1 extends Data>(field: keyof D1, value: D1[keyof D1]) => {
-            setEditableState(values => ({ ...values, [`${field}`]: value }))
+            setEditableState(values => ({
+                ...values,
+                [`${String(field)}`]: value
+            }))
             const patch: Partial<D1> = {}
             patch[field] = value
             onUpdate?.(patch)

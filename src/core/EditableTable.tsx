@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import React, { forwardRef, useRef } from 'react'
-import MaterialTable, {
+import MaterialTable from 'material-table'
+import {
     Column,
     Options,
     MTableEditRow,

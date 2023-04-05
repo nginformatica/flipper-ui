@@ -15,13 +15,14 @@ const Template: ComponentStory<typeof Sidebar> = args => <Sidebar {...args} />
 export const Default = Template.bind({})
 Default.args = {
     title: 'My beautiful Sidebar"',
+    expanded: false,
     children: (
         <>
             <List>
-                <ListItem icon={<IconBackup />} />
-                <ListItem icon={<IconBackup />} />
-                <ListItem icon={<IconBackup />} />
-                <ListItem icon={<IconBackup />} />
+                <ListItem title='Item 1' icon={<IconBackup />} />
+                <ListItem title='Item 2' icon={<IconBackup />} />
+                <ListItem title='Item 3' icon={<IconBackup />} />
+                <ListItem title='Item 4' icon={<IconBackup />} />
             </List>
         </>
     )

@@ -115,6 +115,7 @@ const Sidebar = ({
                 <Button
                     name={`button-${name || 'sidebar'}`}
                     color={color}
+                    data-testid='sidebar-button'
                     variant='contained'
                     className={classes.button}
                     style={{ maxWidth: minWidth }}

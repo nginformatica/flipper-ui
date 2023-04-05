@@ -61,6 +61,7 @@ const ListItem = (props: ListItemProps) => {
                     <MuiListItemText
                         primaryTypographyProps={typographyProps}
                         secondaryTypographyProps={typographyProps}
+                        data-testid={`list-item-${props.subtitle}`}
                         primary={props.title}
                         secondary={props.subtitle}
                         style={props.action ? { marginRight: '36px' } : {}}
