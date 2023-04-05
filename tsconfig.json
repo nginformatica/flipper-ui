@@ -5,7 +5,7 @@
         "module": "commonjs", // specify module code generation
         "jsx": "react", // use typescript to transpile jsx to js
         "target": "es6", // specify ECMAScript target version
-        "types": ["node"],
+        "types": ["node", "jest"],
         "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
@@ -23,7 +23,7 @@
         "emitDecoratorMetadata": true,
         "esModuleInterop": true,
         "baseUrl": ".",
-        "skipLibCheck": true
+        "skipLibCheck": true,
     },
     "include": ["./src/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", ".src/*.d.ts", "./src/lib/**/*"]
 }
