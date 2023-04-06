@@ -10,7 +10,7 @@ export const fab = () => (
 )
 
 export default {
-    title: 'V2/Fab',
+    title: 'experimental/Fab',
     component: FabV2,
     subcomponents: {
         FabWrapper

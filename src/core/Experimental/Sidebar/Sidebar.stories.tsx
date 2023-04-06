@@ -39,6 +39,6 @@ export const sidebar = () => {
 }
 
 export default {
-    title: 'v2/Sidebar',
+    title: 'experimental/Sidebar',
     component: Sidebar
 }

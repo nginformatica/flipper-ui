@@ -54,7 +54,7 @@ export const ConfirmDialog = () => {
 }
 
 export default {
-    title: 'V2/Dialog',
+    title: 'experimental/Dialog',
     component: DialogV2,
     subcomponents: { ConfirmDialog, RemoveDialog }
 }

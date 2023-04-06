@@ -6,6 +6,6 @@ export const button = () => {
 }
 
 export default {
-    title: 'v2/Button',
+    title: 'experimental/Button',
     component: Button
 }
