@@ -3,5 +3,8 @@ module.exports = {
     testEnvironment: 'jsdom',
     transform: {
         '.+\\.(ts|tsx)$': 'ts-jest'
+    },
+    moduleNameMapper: {
+        '\\.(scss|sass|css)$': 'identity-obj-proxy'
     }
 }
