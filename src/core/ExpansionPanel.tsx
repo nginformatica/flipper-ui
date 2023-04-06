@@ -1,7 +1,7 @@
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
+import MuiExpansionPanel from '@material-ui/core/Accordion'
 import MuiExpansionPanelActions from '@material-ui/core/ExpansionPanelActions'
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import MuiExpansionPanelDetails from '@material-ui/core/AccordionDetails'
+import MuiExpansionPanelSummary from '@material-ui/core/AccordionSummary'
 import React, { ReactNode, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { PaperProps } from './Paper'
@@ -32,6 +32,7 @@ export interface ExpansionPanelProps extends PaperProps {
         event?: React.ChangeEvent<Record<string, unknown>>,
         expanded?: boolean
     ) => void
+    onClick?: (event: MouseEvent<HTMLDivElement>) => void
 }
 
 const ExpansionPanelHeaderWrapper = styled.div`
@@ -61,6 +62,7 @@ const ExpansionPanel = ({
     onHelperClick,
     onEditClick,
     onSaveClick,
+    onClick,
     helperIcon,
     editable,
     editing,
@@ -131,6 +133,7 @@ const ExpansionPanel = ({
             style={{ margin, padding, ...style }}>
             {summary && (
                 <MuiExpansionPanelSummary
+                    onClick={onClick}
                     expandIcon={expandIcon}
                     style={summaryStyle}>
                     <ExpansionPanelHeaderWrapper {...headerProps}>
