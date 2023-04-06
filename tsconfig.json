@@ -4,7 +4,7 @@
         "sourceMap": true, // allow sourcemap support
         "module": "commonjs", // specify module code generation
         "jsx": "react", // use typescript to transpile jsx to js
-        "target": "es6", // specify ECMAScript target version
+        "target": "es2016", // specify ECMAScript target version
         "types": ["node", "jest"],
         "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
