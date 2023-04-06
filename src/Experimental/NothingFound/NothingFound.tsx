@@ -1,4 +1,4 @@
-import Typography from '../../Typography'
+import Typography from '@core/Typography'
 import React from 'react'
 
 export interface IProps {

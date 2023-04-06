@@ -1,5 +1,5 @@
-import Button from '../../Button'
-import { NoteAdd as IconAdd } from '../../../icons'
+import Button from '@core/Button'
+import { NoteAdd as IconAdd } from '@/icons'
 import React from 'react'
 import styled from 'styled-components'
 

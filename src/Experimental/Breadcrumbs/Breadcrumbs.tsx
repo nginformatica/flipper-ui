@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react'
 import { addIndex, map } from 'ramda'
-import { ChevronRight as IconChevronRight } from '../../../icons'
+import { ChevronRight as IconChevronRight } from '@/icons'
 import { theme } from 'nginformatica-styleguide'
 import styled from 'styled-components'
-import Typography from '../../Typography'
-import Breadcrumb from '../../Breadcrumb'
+import Typography from '@core/Typography'
+import Breadcrumb from '@core/Breadcrumb'
 
 const imap = addIndex(map)
 

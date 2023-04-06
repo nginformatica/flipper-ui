@@ -1,7 +1,7 @@
 import * as React from 'react'
-import MFab from '../../Fab'
+import MFab from '@core/Fab'
 import type { MouseEvent, CSSProperties } from 'react'
-import Tooltip from '../../Tooltip'
+import Tooltip from '@core/Tooltip'
 
 export interface IProps {
     mini?: boolean

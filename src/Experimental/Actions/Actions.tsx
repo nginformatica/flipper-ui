@@ -1,5 +1,5 @@
 import { ButtonProps } from '@material-ui/core'
-import Button from '../../Button'
+import Button from '@core/Button'
 import React from 'react'
 import styled from 'styled-components'
 

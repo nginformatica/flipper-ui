@@ -1,10 +1,10 @@
-const toKebabCase = (str) =>
-  str.replace(
-    /([a-z])?([A-Z])/g,
-    (m, g1, g2) => (g1 ? g1 + '-' : '') + g2.toLowerCase()
-  )
+const toKebabCase = str =>
+    str.replace(
+        /([a-z])?([A-Z])/g,
+        (m, g1, g2) => (g1 ? g1 + '-' : '') + g2.toLowerCase()
+    )
 
-const reactVisModules = { 
+const reactVisModules = {
     AbstractSeries: 'plot/series/abstract-series',
     ArcSeries: 'plot/series/arc-series',
     AreaSeries: 'plot/series/area-series',
@@ -67,53 +67,56 @@ const reactVisModules = {
 }
 
 module.exports = {
-  "plugins": [
-    [
-      "transform-imports", {
-        "@material-ui/icons": {
-          "transform": "@material-ui/icons/${member}",
-          "preventFullImport": true
-        },
-        "@material-ui/core": {
-          "transform": "@material-ui/core/${member}",
-          "preventFullImport": true
-        },
-        "@material-ui/styles": {
-          "transform": "@material-ui/styles/${member}",
-          "preventFullImport": true
-        },
-        "../icons": {
-          "transform": "@material-ui/icons/${member}",
-          "preventFullImport": true
-        },
-        "../charts": {
-          "transform": "flipper-ui/charts/${member}",
-          "preventFullImport": true
-        },
-        "react-vis": {
-          "transform": importName => `react-vis/es/${reactVisModules[importName]}`,
-          "preventFullImport": true
-        },
-        "date-fns/locale": {
-          "transform": importName =>`date-fns/locale/${toKebabCase(importName)}`,
-          "preventFullImport": true 
-        },
-        "date-fns": {
-          "transform": "date-fns/${member}",
-          "preventFullImport": true
-        },
-        "ramda": {
-          "transform": "ramda/es/${member}",
-          "preventFullImport": true
-        },
-      }
+    plugins: [
+        [
+            'transform-imports',
+            {
+                '@core/*': {
+                    transform: './src/core/*',
+                    preventFullImport: true
+                },
+                '@material-ui/icons': {
+                    transform: '@material-ui/icons/${member}',
+                    preventFullImport: true
+                },
+                '@material-ui/core': {
+                    transform: '@material-ui/core/${member}',
+                    preventFullImport: true
+                },
+                '@material-ui/styles': {
+                    transform: '@material-ui/styles/${member}',
+                    preventFullImport: true
+                },
+                '../icons': {
+                    transform: '@material-ui/icons/${member}',
+                    preventFullImport: true
+                },
+                '../charts': {
+                    transform: 'flipper-ui/charts/${member}',
+                    preventFullImport: true
+                },
+                'react-vis': {
+                    transform: importName =>
+                        `react-vis/es/${reactVisModules[importName]}`,
+                    preventFullImport: true
+                },
+                'date-fns/locale': {
+                    transform: importName =>
+                        `date-fns/locale/${toKebabCase(importName)}`,
+                    preventFullImport: true
+                },
+                'date-fns': {
+                    transform: 'date-fns/${member}',
+                    preventFullImport: true
+                },
+                ramda: {
+                    transform: 'ramda/es/${member}',
+                    preventFullImport: true
+                }
+            }
+        ],
+        '@babel/plugin-transform-runtime',
+        'transform-class-properties'
     ],
-    "@babel/plugin-transform-runtime",
-    "transform-class-properties"
-  ],
-  "presets": [
-    "@babel/env",
-    "@babel/react",
-    "@babel/typescript"
-  ]
+    presets: ['@babel/env', '@babel/react', '@babel/typescript']
 }

@@ -1,4 +1,4 @@
-import Progress from '../../Progress'
+import Progress from '@core/Progress'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 

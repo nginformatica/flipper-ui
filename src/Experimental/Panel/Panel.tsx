@@ -1,9 +1,9 @@
 import { defaultTo } from 'ramda'
 import React, { CSSProperties, ChangeEvent, ReactNode } from 'react'
 import styled from 'styled-components'
-import { ExpandMore as IconExpand } from '../../../icons'
-import ExpansionPanel from '../../ExpansionPanel'
-import Typography from '../../Typography'
+import { ExpandMore as IconExpand } from '@/icons'
+import ExpansionPanel from '@core/ExpansionPanel'
+import Typography from '@core/Typography'
 
 const Paper = styled(ExpansionPanel)`
     && {

@@ -24,6 +24,11 @@
         "esModuleInterop": true,
         "baseUrl": ".",
         "skipLibCheck": true,
+        "paths": {
+            "@/*": ["./src/*"],
+            "@core/*": ["./src/core/*"],
+            "@experimental/*": ["./src/Experimental/*"],
+        },
     },
-    "include": ["./src/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", ".src/*.d.ts", "./src/lib/**/*"]
+    "include": ["./src/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", ".src/*.d.ts", "./src/lib/**/*", "./src/Experimental/**/*.stories.tsx"],
 }

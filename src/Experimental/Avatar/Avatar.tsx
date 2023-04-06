@@ -1,4 +1,4 @@
-import FlipperAvatar from '../../Avatar'
+import FlipperAvatar from '@core/Avatar'
 import { take } from 'ramda'
 import React, { CSSProperties, ReactNode } from 'react'
 

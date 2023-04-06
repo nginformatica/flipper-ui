@@ -1,8 +1,8 @@
-import DialogFlipper from '../../Dialog'
+import DialogFlipper from '@core/Dialog'
 import React, { MouseEvent, ReactNode } from 'react'
 import { theme as Theme } from 'nginformatica-styleguide'
-import Button from '../../Button'
-import ThemeProvider from '../../ThemeProvider'
+import Button from '@core/Button'
+import ThemeProvider from '@core/ThemeProvider'
 
 const ACTION_REMOVE = Theme.colors.action.cancel
 const PRIMARY_DARK = Theme.colors.primary.main

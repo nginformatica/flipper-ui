@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './Card'
-import Typography from '../../Typography'
+import Typography from '@core/Typography'
 
 export const card = () => {
     return (

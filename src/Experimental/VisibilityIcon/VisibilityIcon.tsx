@@ -1,8 +1,8 @@
-import IconButton from '../../IconButton'
+import IconButton from '@core/IconButton'
 import {
     Visibility as IconVisibility,
     VisibilityOff as IconVisibilityOff
-} from '../../../icons'
+} from '@/icons'
 import React from 'react'
 import styled from 'styled-components'
 

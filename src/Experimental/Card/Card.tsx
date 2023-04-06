@@ -1,11 +1,11 @@
-import { Close as IconClose, Edit as IconEdit } from '../../../icons'
+import { Close as IconClose, Edit as IconEdit } from '@/icons'
 import React, { CSSProperties } from 'react'
-import Typography from '../../Typography'
+import Typography from '@core/Typography'
 import styled from 'styled-components'
-import IconButton from '../../IconButton'
-import Paper from '../../Paper'
-import Line from '../../Line'
-import AddButton from '../../Button'
+import IconButton from '@core/IconButton'
+import Paper from '@core/Paper'
+import Line from '@core/Line'
+import AddButton from '@core/Button'
 
 export interface IProps {
     children: React.ReactNode
