@@ -1,5 +1,5 @@
 import React from 'react'
-import VisibilityIconComponent from './VisibilityIcon'
+import VisibilityIconComponent from '.'
 
 export const VisibilityIcon = () => {
     const [show, setShow] = React.useState(false)

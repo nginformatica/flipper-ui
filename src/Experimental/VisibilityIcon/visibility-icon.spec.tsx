@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import VisibilityIcon from './VisibilityIcon'
+import VisibilityIcon from '.'
 
 describe('VisibilityIcon', () => {
     it('should render visible', () => {

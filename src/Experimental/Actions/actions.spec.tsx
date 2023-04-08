@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import Actions from './Actions'
+import Actions from '.'
 
 describe('Actions', () => {
     it('should render', () => {

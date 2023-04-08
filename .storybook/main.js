@@ -9,16 +9,9 @@ module.exports = {
         builder: 'webpack5'
     },
     addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
-    webpackFinal: async config => ({
-        ...config,
-        resolve: {
-            ...config.resolve,
-            alias: {
-                ...config.resolve?.alias,
-                '@': path.resolve(__dirname, '../src/'),
-                '@core': path.resolve(__dirname, '../src/core/'),
-                '@experimental': path.resolve(__dirname, '../src/Experimental/')
-            }
-        }
-    })
+    webpackFinal: async config => {
+        config.resolve.alias['@'] = path.resolve(__dirname, '../src')
+
+        return config
+    }
 }

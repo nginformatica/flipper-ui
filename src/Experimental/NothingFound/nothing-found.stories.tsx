@@ -1,5 +1,5 @@
 import React from 'react'
-import NothingFound from './NothingFound'
+import NothingFound from '.'
 
 export const Default = () => {
     return <NothingFound show />

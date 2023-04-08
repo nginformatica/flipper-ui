@@ -71,8 +71,8 @@ module.exports = {
         [
             'transform-imports',
             {
-                '@core/*': {
-                    transform: './src/core/*',
+                '@': {
+                    transform: './src',
                     preventFullImport: true
                 },
                 '@material-ui/icons': {

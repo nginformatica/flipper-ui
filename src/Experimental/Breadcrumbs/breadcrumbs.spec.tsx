@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Breadcrumbs from './Breadcrumbs'
+import Breadcrumbs from '.'
 
 describe('Breadcrumbs', () => {
     it('should render', () => {

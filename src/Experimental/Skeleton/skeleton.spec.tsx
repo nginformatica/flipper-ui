@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Skeleton from './Skeleton'
+import Skeleton from '.'
 
 const Simple = () => <Skeleton />
 const WithCustomHeight = () => <Skeleton width={64} height={64} />

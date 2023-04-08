@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from './SidebarV2'
+import Sidebar from '.'
 import { Home, Computer, Edit } from '@material-ui/icons'
 
 export const loading = () => {

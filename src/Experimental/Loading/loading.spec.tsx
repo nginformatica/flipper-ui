@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Loading from './Loading'
+import Loading from '.'
 
 export const DefaultLoading = () => <Loading />
 export const CustomSizeLoading = () => <Loading size={32} />

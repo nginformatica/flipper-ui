@@ -1,5 +1,5 @@
 import React from 'react'
-import PanelComponent from './Panel'
+import PanelComponent from '.'
 
 export const Panel = () => {
     const [open, setOpen] = React.useState(true)

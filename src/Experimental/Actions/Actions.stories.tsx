@@ -1,5 +1,5 @@
 import React from 'react'
-import Actions from './Actions'
+import Actions from '.'
 
 export const actions = () => <Actions onConfirm={() => alert('foo')} />
 

@@ -6,7 +6,7 @@ exports[`Loading should match snapshot - CustomMarginLoading 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="sc-AykKC hGWuP"
+        class="sc-fzXfOt boHMKx"
         data-testid="loading-component"
         style="margin: 32px; padding: 24px;"
       >
@@ -34,7 +34,7 @@ exports[`Loading should match snapshot - CustomMarginLoading 1`] = `
   </body>,
   "container": <div>
     <div
-      class="sc-AykKC hGWuP"
+      class="sc-fzXfOt boHMKx"
       data-testid="loading-component"
       style="margin: 32px; padding: 24px;"
     >
@@ -119,7 +119,7 @@ exports[`Loading should match snapshot - CustomSizeLoading 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="sc-AykKC hGWuP"
+        class="sc-fzXfOt boHMKx"
         data-testid="loading-component"
         style="margin: 48px; padding: 24px;"
       >
@@ -147,7 +147,7 @@ exports[`Loading should match snapshot - CustomSizeLoading 1`] = `
   </body>,
   "container": <div>
     <div
-      class="sc-AykKC hGWuP"
+      class="sc-fzXfOt boHMKx"
       data-testid="loading-component"
       style="margin: 48px; padding: 24px;"
     >
@@ -232,7 +232,7 @@ exports[`Loading should match snapshot - DefaultLoading 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="sc-AykKC hGWuP"
+        class="sc-fzXfOt boHMKx"
         data-testid="loading-component"
         style="margin: 48px; padding: 24px;"
       >
@@ -260,7 +260,7 @@ exports[`Loading should match snapshot - DefaultLoading 1`] = `
   </body>,
   "container": <div>
     <div
-      class="sc-AykKC hGWuP"
+      class="sc-fzXfOt boHMKx"
       data-testid="loading-component"
       style="margin: 48px; padding: 24px;"
     >

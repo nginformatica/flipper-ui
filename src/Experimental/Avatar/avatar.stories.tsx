@@ -1,5 +1,5 @@
 import React from 'react'
-import Avatar from './Avatar'
+import Avatar from '.'
 
 export default {
     title: 'experimental/Avatar',

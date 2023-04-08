@@ -1,5 +1,5 @@
 import React from 'react'
-import SkeletonComponent from './Skeleton'
+import SkeletonComponent from '.'
 
 export const Simple = () => <SkeletonComponent />
 
