@@ -1,8 +1,12 @@
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+const path = require('path')
 
 module.exports = {
     resolve: {
-        extensions: ['.tsx', '.jsx', '.ts', '.js']
+        extensions: ['.tsx', '.jsx', '.ts', '.js'],
+        alias: {
+            '@': path.resolve(__dirname, '../src')
+        }
     },
     plugins: [new NodePolyfillPlugin()],
     module: {
