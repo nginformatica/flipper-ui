@@ -204,7 +204,7 @@ export enum MuiSelectors {
     Divider = '.MuiDivider-root',
     Drawer = '.MuiDrawer-paper',
     ListItem = '.MuiListItem-root',
-    ExpansionPanel = '.MuiExpansionPanelSummary-root',
+    ExpansionPanel = '.MuiAccordionSummary-root',
     Icon = '.MuiIconButton-label',
     AppBarDefaultColor = '.MuiAppBar-colorDefault',
     AppBarPrimaryColor = '.MuiAppBar-colorPrimary',
