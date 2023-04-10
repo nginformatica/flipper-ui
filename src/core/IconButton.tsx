@@ -5,6 +5,7 @@ import { DefaultProps } from './types'
 export interface IconButtonProps extends DefaultProps {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
     disabled?: boolean
+    'data-testid'?: string
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
@@ -14,10 +15,14 @@ const IconButton = ({
     margin,
     style,
     ...otherProps
-}: IconButtonProps) => (
-    <MuiIconButton {...otherProps} style={{ margin, padding, ...style }}>
-        {children}
-    </MuiIconButton>
-)
+}: IconButtonProps) => {
+    console.log({ otherProps })
+
+    return (
+        <MuiIconButton {...otherProps} style={{ margin, padding, ...style }}>
+            {children}
+        </MuiIconButton>
+    )
+}
 
 export default IconButton

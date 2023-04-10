@@ -8,6 +8,8 @@ import {
     IconButton
 } from '@/index'
 import styled from 'styled-components'
+import { ButtonProps } from '@/core/Button'
+import { IconButtonProps } from '@/core/IconButton'
 
 export interface IProps {
     children: React.ReactNode
@@ -18,6 +20,8 @@ export interface IProps {
     id?: string
     editing?: boolean
     action?: JSX.Element | null
+    onAddProps?: Partial<ButtonProps>
+    onEditProps?: Partial<IconButtonProps>
     onClickAdd?(): void
     onToggleEdit?(): void
 }
@@ -65,6 +69,8 @@ const Card = (props: IProps) => {
         label,
         children,
         onClickAdd,
+        onAddProps,
+        onEditProps,
         ...otherProps
     } = props
 
@@ -91,6 +97,7 @@ const Card = (props: IProps) => {
                         {action}
                         {onToggleEdit && (
                             <EditButton
+                                {...onEditProps}
                                 className={editing ? '' : 'showable-target'}
                                 name={`${editing ? 'cancel' : 'edit'}-${name}`}
                                 margin='-10px'
@@ -105,7 +112,7 @@ const Card = (props: IProps) => {
                     </div>
                 </>
             )}
-            {onClickAdd && <AddButton onClick={onClickAdd} />}
+            {onClickAdd && <AddButton {...onAddProps} onClick={onClickAdd} />}
             <div>{children}</div>
         </Paper>
     )

@@ -9,7 +9,8 @@
         "url": "https://github.com/nginformatica/flipper-ui.git"
     },
     "scripts": {
-        "test": "jest --coverage",
+        "test": "jest --silent --passWithNoTests --noStackTrace --runInBand",
+        "test:ci": "yarn test --coverage",
         "start": "start-storybook -p 6006",
         "clean": "rm -rf ./dist/*",
         "copy:package": "cp package.json dist/",

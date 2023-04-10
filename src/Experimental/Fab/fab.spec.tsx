@@ -3,9 +3,10 @@ import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Fab from './Fab'
+import FabWrapper from './FabWrapper'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 
-describe('Sidebar', () => {
+describe('Fab', () => {
     it('Should call onClick', () => {
         const onClickSpy = jest.fn()
         render(
@@ -194,5 +195,16 @@ describe('Sidebar', () => {
               "unmount": [Function],
             }
         `)
+    })
+})
+
+describe('FabWrapper', () => {
+    it('should render correctly', () => {
+        const { container } = render(
+            <FabWrapper>
+                <FileCopyIcon />
+            </FabWrapper>
+        )
+        expect(container).toMatchSnapshot()
     })
 })
