@@ -15,6 +15,7 @@ export interface ButtonProps extends DefaultProps {
     variant?: 'text' | 'outlined' | 'contained' | 'dashed'
     target?: string
     children?: React.ReactNode
+    'data-testid'?: string
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 

@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
     stories: [
         '../src/**/*.stories.mdx',
@@ -6,5 +8,10 @@ module.exports = {
     core: {
         builder: 'webpack5'
     },
-    addons: ['@storybook/addon-links', '@storybook/addon-essentials']
+    addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+    webpackFinal: async config => {
+        config.resolve.alias['@'] = path.resolve(__dirname, '../src')
+
+        return config
+    }
 }

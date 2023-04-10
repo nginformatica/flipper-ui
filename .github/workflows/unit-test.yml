@@ -27,3 +27,6 @@ jobs:
 
         env:
           CI: true
+
+      - name: Run Jest Code Coverage on Node ${{ matrix.node-version }}
+        run: yarn test:ci
