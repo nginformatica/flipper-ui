@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Chip from '../core/Chip'
-import Avatar from '../core/Avatar'
+import Chip from '.'
+import Avatar from '../Avatar'
 import FaceIcon from '@material-ui/icons/Face'
 
 export default {

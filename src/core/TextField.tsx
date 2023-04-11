@@ -123,7 +123,7 @@ export const useStyles = makeStyles({
 })
 
 export const HelperBox = (props: IHelperProps) => (
-    <Helper>
+    <Helper role='helper-box'>
         <IconButton padding='6px 2px' onClick={props.onHelperClick}>
             {props.helperIcon || <ContactSupportIcon color='primary' />}
         </IconButton>

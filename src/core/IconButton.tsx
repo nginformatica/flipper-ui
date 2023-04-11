@@ -16,8 +16,6 @@ const IconButton = ({
     style,
     ...otherProps
 }: IconButtonProps) => {
-    console.log({ otherProps })
-
     return (
         <MuiIconButton {...otherProps} style={{ margin, padding, ...style }}>
             {children}

@@ -6,8 +6,8 @@ import {
     Typography
 } from '@material-ui/core'
 import React, { ChangeEvent, ReactNode } from 'react'
-import { DefaultProps } from './types'
-import { HelperBox, TextFieldWrapper as CheckFieldsWrapper } from './TextField'
+import { DefaultProps } from '../types'
+import { HelperBox, TextFieldWrapper as CheckFieldsWrapper } from '../TextField'
 export interface CheckboxProps extends DefaultProps {
     name: string
     label?: ReactNode
@@ -67,6 +67,7 @@ const Checkbox = (props: CheckboxProps) => {
             checked={props.checked}
             value={props.name}
             color={props.color}
+            role='switch'
             disabled={props.disabled}
             onChange={props.onChange}
         />

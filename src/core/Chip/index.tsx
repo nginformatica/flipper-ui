@@ -1,7 +1,7 @@
 import { Chip as MuiChip } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 import { ChipProps } from '@material-ui/core/Chip'
 
 export interface IChipProps extends DefaultProps {
