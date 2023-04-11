@@ -1,12 +1,7 @@
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Card, {
-    CardActions,
-    CardContent,
-    CardMedia,
-    CardActionArea
-} from '../core/Card'
-import Button from '../core/Button'
+import Card, { CardActions, CardContent, CardMedia, CardActionArea } from '.'
+import Button from '../Button'
 
 export default {
     title: 'Card',

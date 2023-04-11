@@ -3,7 +3,7 @@ import { Fab as MFab, Tooltip } from '@/index'
 import type { MouseEvent, CSSProperties } from 'react'
 
 export interface IProps {
-    mini?: boolean
+    large?: boolean
     className?: string
     name?: string
     tooltip?: string
@@ -16,19 +16,12 @@ export interface IProps {
 
 const FabV2 = (props: IProps) => {
     const renderButton = () => {
-        const {
-            mini = true,
-            children,
-            padding,
-            name,
-            margin,
-            style,
-            ...otherProps
-        } = props
+        const { large, children, padding, name, margin, style, ...otherProps } =
+            props
 
         return (
             <MFab
-                size={mini ? 'small' : 'medium'}
+                size={large ? 'medium' : 'small'}
                 name={name || 'action-button'}
                 data-testid='fab-button'
                 {...otherProps}

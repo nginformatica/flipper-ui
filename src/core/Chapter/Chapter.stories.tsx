@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Chapter from '../core/Chapter'
+import Chapter from '.'
 
 export default {
     title: 'Chapter',

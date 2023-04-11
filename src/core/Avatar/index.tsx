@@ -2,7 +2,7 @@ import { Avatar as MuiAvatar } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import React from 'react'
-import type { DefaultProps } from './types'
+import type { DefaultProps } from '../types'
 
 interface AvatarProps extends DefaultProps {
     name?: string
@@ -12,15 +12,16 @@ interface AvatarProps extends DefaultProps {
     imgProps?: object
     primary?: boolean
     children?: React.ReactNode
+    'data-testid'?: string
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles((theme: Theme) => {
+    return createStyles({
         primary: {
             backgroundColor: theme.palette.primary.main
         }
     })
-)
+})
 
 const Avatar = ({
     children,
@@ -33,7 +34,9 @@ const Avatar = ({
     return (
         <MuiAvatar
             {...otherProps}
-            className={`${className} ${primary ? classes['primary'] : ''}`}>
+            className={`${className ? className : ''} ${
+                primary ? classes['primary'] : ''
+            }`}>
             {children}
         </MuiAvatar>
     )

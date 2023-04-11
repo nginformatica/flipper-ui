@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advertise should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root sc-AykKC dDyXna MuiPaper-elevation1 MuiPaper-rounded"
+    style="padding: 4px;"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body2"
+      style="margin: 0px 12px; padding: 6px 18px; border-left: 1px solid #BDBDBD;"
+    >
+      comment
+    </p>
+    <span
+      class="MuiTypography-root MuiTypography-caption"
+      style="margin: 0px 12px; padding: 6px 18px; border-left: 1px solid #BDBDBD;"
+    >
+      author
+    </span>
+  </div>
+</div>
+`;

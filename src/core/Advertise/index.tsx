@@ -1,9 +1,9 @@
 import React from 'react'
-import { background } from '../colors'
-import MuiPaper from './Paper'
-import Typography from './Typography'
+import { background } from '../../colors'
+import MuiPaper from '../Paper'
+import Typography from '../Typography'
 import styled from 'styled-components'
-import type { DefaultProps } from './types'
+import type { DefaultProps } from '../types'
 
 interface AdvertiseProps extends DefaultProps {
     comment: string

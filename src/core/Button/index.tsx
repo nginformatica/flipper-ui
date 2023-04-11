@@ -1,7 +1,6 @@
 import { Button as MuiButton } from '@material-ui/core'
 import React, { ElementType, MouseEvent } from 'react'
-import styled from 'styled-components'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
 export interface ButtonProps extends DefaultProps {
     disabled?: boolean
@@ -19,14 +18,6 @@ export interface ButtonProps extends DefaultProps {
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-const StyledButton = styled(MuiButton)<
-    ButtonProps & { dashed?: 'true' | 'false' }
->`
-    border-style: ${props =>
-        props.dashed === 'true' ? 'dashed !important' : 'initial'};
-    opacity: ${props => (props.selected ? 0.5 : 1)};
-`
-
 const Button = ({
     children,
     margin,
@@ -35,13 +26,18 @@ const Button = ({
     variant,
     ...otherProps
 }: ButtonProps) => (
-    <StyledButton
+    <MuiButton
         {...otherProps}
-        dashed={variant === 'dashed' ? 'true' : 'false'}
         variant={variant === 'dashed' ? 'outlined' : variant}
-        style={{ margin, padding, ...style }}>
+        style={{
+            ...style,
+            margin,
+            padding,
+            opacity: otherProps.selected ? 0.5 : 1,
+            borderStyle: variant === 'dashed' ? 'dashed' : 'initial'
+        }}>
         {children}
-    </StyledButton>
+    </MuiButton>
 )
 
 export default Button

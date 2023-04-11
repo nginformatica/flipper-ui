@@ -1,5 +1,5 @@
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 import MuiCard, { CardProps } from '@material-ui/core/Card'
 import MuiCardActionArea, {
     CardActionAreaProps
