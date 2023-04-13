@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Line from '../core/Line'
+import Line from '.'
 
 export default {
     title: 'Line',

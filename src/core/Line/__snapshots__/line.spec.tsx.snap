@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Line should match snapshot 1`] = `
+<div>
+  <div
+    style="flex: 1; border: 1px solid #e5e5e5;"
+  />
+</div>
+`;
