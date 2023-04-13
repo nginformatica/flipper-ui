@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, screen, act, waitFor } from '@testing-library/react'
+import { render, screen, act, waitFor, fireEvent } from '@testing-library/react'
 import Checkbox from '.'
 
 describe('Checkbox', () => {
@@ -115,7 +115,7 @@ describe('Checkbox', () => {
         expect(onChange).toHaveBeenCalled()
     })
 
-    it('should call onHelperClick', () => {
+    it('should call onHelperClick', async () => {
         const onHelperClick = jest.fn()
 
         render(
@@ -128,12 +128,11 @@ describe('Checkbox', () => {
         )
 
         const helper = screen.getByRole('helper-box')
+        const button = helper.querySelector('svg')
 
-        act(() => {
-            helper.click()
-        })
+        fireEvent.click(button || helper)
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onHelperClick).toHaveBeenCalled()
         })
     })

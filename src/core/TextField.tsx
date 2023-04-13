@@ -131,25 +131,25 @@ export const HelperBox = (props: IHelperProps) => (
 )
 
 export const EditBox = (props: IEditProps) => {
-    if (props.editing) {
-        return (
-            <IconButton
-                {...props.saveButtonProps}
-                padding='6px 2px'
-                onClick={props.onSaveClick}>
-                {<Save fontSize='small' />}
-            </IconButton>
-        )
-    } else {
-        return (
-            <IconButton
-                {...props.editButtonProps}
-                padding='6px 2px'
-                onClick={props.onEditClick}>
-                {<Edit fontSize='small' />}
-            </IconButton>
-        )
-    }
+    return (
+        <div role='edit-box'>
+            {props.editing ? (
+                <IconButton
+                    {...props.saveButtonProps}
+                    padding='6px 2px'
+                    onClick={props.onSaveClick}>
+                    {<Save fontSize='small' />}
+                </IconButton>
+            ) : (
+                <IconButton
+                    {...props.editButtonProps}
+                    padding='6px 2px'
+                    onClick={props.onEditClick}>
+                    {<Edit fontSize='small' />}
+                </IconButton>
+            )}
+        </div>
+    )
 }
 
 const renderEndAdornment = (onClear?: () => void) => (

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Actions from '.'
 
 describe('Actions', () => {
@@ -28,17 +28,14 @@ describe('Actions', () => {
         expect(actionConfirm).toBeDefined()
     })
 
-    it('should render only confirm', () => {
+    it('should render only confirm', async () => {
         render(<Actions buttons={['confirm']} onConfirm={jest.fn()} />)
 
         const actionConfirm = screen.getByText('Confirmar')
+        const actionCancel = screen.queryByText('Cancelar')
 
-        waitFor(() => {
-            const actionCancel = screen.getByText('Cancelar')
-
-            expect(actionConfirm).toBeDefined()
-            expect(actionCancel).not.toBeDefined()
-        })
+        expect(actionConfirm).toBeDefined()
+        expect(actionCancel).toBeNull()
     })
 
     it('should render with custom names', () => {

@@ -14,7 +14,10 @@ const Paper = ({
     margin,
     ...otherProps
 }: PaperProps) => (
-    <MuiPaper {...otherProps} style={{ padding, margin, ...style }}>
+    <MuiPaper
+        {...otherProps}
+        role='mui-paper-container'
+        style={{ padding, margin, ...style }}>
         {children}
     </MuiPaper>
 )

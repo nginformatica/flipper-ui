@@ -20,9 +20,9 @@ const StyledButton = styled(IconButton)`
 const VisibilityIcon = ({ show, onToggle, name, ...otherProps }: IProps) => (
     <StyledButton {...otherProps} padding='0px' name={name} onClick={onToggle}>
         {show ? (
-            <IconVisibilityOff role='icon-off' />
+            <IconVisibilityOff data-testid='icon-off' />
         ) : (
-            <IconVisibility role='icon-on' />
+            <IconVisibility data-testid='icon-on' />
         )}
     </StyledButton>
 )

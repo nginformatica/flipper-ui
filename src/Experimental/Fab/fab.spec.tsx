@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
@@ -31,7 +30,7 @@ describe('Fab', () => {
         expect(container.classList).toContain('MuiFab-sizeMedium')
     })
 
-    it('Should call onClick', () => {
+    it('Should call onClick', async () => {
         const onClickSpy = jest.fn()
         render(
             <Fab onClick={onClickSpy}>
@@ -43,12 +42,12 @@ describe('Fab', () => {
 
         userEvent.click(btn)
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onClickSpy).toHaveBeenCalled()
         })
     })
 
-    it('Should show tooltip', () => {
+    it('Should show tooltip', async () => {
         const onClickSpy = jest.fn()
         render(
             <Fab onClick={onClickSpy} tooltip='tooltip-test'>
@@ -58,12 +57,9 @@ describe('Fab', () => {
 
         const btn = screen.getByTestId('fab-button')
 
-        userEvent.hover(btn)
-
-        waitFor(() => {
-            const tooltipMessage = screen.getByText('tooltip-test')
-            expect(tooltipMessage).toBeDefined()
-        })
+        await waitFor(() => userEvent.hover(btn))
+        const tooltip = await waitFor(() => screen.getByText('tooltip-test'))
+        expect(tooltip).toBeDefined()
     })
 })
 

@@ -5,7 +5,7 @@ import Typography from '../Typography'
 import styled from 'styled-components'
 import type { DefaultProps } from '../types'
 
-interface AdvertiseProps extends DefaultProps {
+export interface AdvertiseProps extends DefaultProps {
     comment: string
     author: string
     commentStyle?: object

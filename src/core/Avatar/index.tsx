@@ -4,7 +4,7 @@ import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import React from 'react'
 import type { DefaultProps } from '../types'
 
-interface AvatarProps extends DefaultProps {
+export interface AvatarProps extends DefaultProps {
     name?: string
     id?: string
     sizes?: string

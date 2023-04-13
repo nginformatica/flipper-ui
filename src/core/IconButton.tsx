@@ -6,6 +6,7 @@ export interface IconButtonProps extends DefaultProps {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
     disabled?: boolean
     'data-testid'?: string
+    role?: string
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
