@@ -1,6 +1,6 @@
 import { InputBase as MuiInputBase } from '@material-ui/core'
 import React, { ChangeEvent, ReactNode } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
 export interface InputAdornmentProps extends DefaultProps {
     autoComplete?: string

@@ -1,6 +1,6 @@
 import { InputAdornment as MuiInputAdornment } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
 export interface InputAdornmentProps extends DefaultProps {
     position: 'start' | 'end'

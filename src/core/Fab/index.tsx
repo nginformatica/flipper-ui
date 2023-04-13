@@ -1,8 +1,8 @@
 import { Fab as MuiFab } from '@material-ui/core'
 import React, { MouseEvent } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
-interface FabProps extends DefaultProps {
+export interface FabProps extends DefaultProps {
     disabled?: boolean
     component?: string
     color?: 'default' | 'primary' | 'inherit' | 'secondary'

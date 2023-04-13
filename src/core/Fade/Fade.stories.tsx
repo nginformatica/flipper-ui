@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Fade from '../core/Fade'
-import Button from '../core/Button'
+import Fade from '.'
+import Button from '../Button'
 
 export default {
     title: 'Fade',

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import InputAdornment from '../core/InputAdornment'
+import InputAdornment from '.'
 
 export default {
     title: 'InputAdornment',

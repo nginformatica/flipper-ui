@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Grow from '../core/Grow'
-import Button from '../core/Button'
+import Grow from '.'
+import Button from '../Button'
 
 export default {
     title: 'Grow',

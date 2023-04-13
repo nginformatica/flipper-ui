@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import InputBase from '../core/InputBase'
+import InputBase from '.'
 
 export default {
     title: 'InputBase',

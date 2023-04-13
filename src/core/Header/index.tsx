@@ -1,6 +1,6 @@
 import { AppBar, Toolbar } from '@material-ui/core'
 import React from 'react'
-import { PaperProps } from './Paper'
+import { PaperProps } from '../Paper'
 
 export interface HeaderProps extends PaperProps {
     position?: 'absolute' | 'fixed' | 'static' | 'sticky'

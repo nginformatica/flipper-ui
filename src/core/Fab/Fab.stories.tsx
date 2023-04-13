@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Fab from '../core/Fab'
+import Fab from '.'
 
 export default {
     title: 'Fab',
