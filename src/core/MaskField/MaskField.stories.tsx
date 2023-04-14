@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import InputAdornment from '../core/InputAdornment'
-import MaskField from '../core/MaskField'
+import InputAdornment from '../InputAdornment'
+import MaskField from '.'
 
 export default {
     title: 'MaskField',

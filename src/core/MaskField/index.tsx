@@ -1,5 +1,5 @@
 import React from 'react'
-import TextField, { TextFieldProps } from './TextField'
+import TextField, { TextFieldProps } from '../TextField'
 import NumberFormat from 'react-number-format'
 
 export interface MaskFieldProps {

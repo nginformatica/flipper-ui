@@ -1,9 +1,9 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import List from '../core/List'
-import ListItem from '../core/ListItem'
+import List from '../List'
+import ListItem from '../ListItem'
 import IconBackup from '@material-ui/icons/Backup'
-import Avatar from '../core/Avatar'
+import Avatar from '../Avatar'
 
 export default {
     title: 'List',

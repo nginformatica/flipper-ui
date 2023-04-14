@@ -5,9 +5,9 @@ import {
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
-interface ListProps extends DefaultProps {
+export interface ListProps extends DefaultProps {
     title?: string
     dense?: boolean
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
@@ -50,12 +50,12 @@ const List = ({
         <MuiList
             subheader={
                 title ? (
-                    <MuiListHeader className={classes ? classes[color] : ''}>
+                    <MuiListHeader className={classes[color]}>
                         {title}
                     </MuiListHeader>
                 ) : undefined
             }
-            className={classes ? `${classes[color]} ${className}` : ''}
+            className={`${classes[color]} ${className}`}
             style={{ padding, margin, ...style }}
             {...otherProps}>
             {children}
