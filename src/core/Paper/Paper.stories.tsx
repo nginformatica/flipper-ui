@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Paper from '../core/Paper'
+import Paper from '.'
 
 export default {
     title: 'Paper',

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Node from '../core/Node'
+import Node from '.'
 
 export default {
     title: 'Node',

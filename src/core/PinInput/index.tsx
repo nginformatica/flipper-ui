@@ -2,7 +2,7 @@ import { TextField } from '@material-ui/core'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-interface PinInputGridProps {
+export interface PinInputGridProps {
     pin: Array<number | undefined>
     setPin: (pin: Array<number | undefined>) => void
     onPinChanged: (pinEntry: number | undefined, index: number) => void
@@ -20,14 +20,6 @@ const Container = styled.div`
     width: auto;
     justify-content: center;
 `
-
-const removeValuesFromArray = (valuesArray: string[], value: string) => {
-    const valueIndex = valuesArray.findIndex(entry => entry === value)
-    if (valueIndex === -1) {
-        return
-    }
-    valuesArray.splice(valueIndex, 1)
-}
 
 const PIN_MIN_VALUE = 0
 const PIN_MAX_VALUE = 9
@@ -77,9 +69,7 @@ const PinInput = ({
         if (event.target.value.length > 1) {
             return
         }
-        const previousValue = event.target.defaultValue
         const valuesArray = event.target.value.split('')
-        removeValuesFromArray(valuesArray, previousValue)
         const value = valuesArray.pop()
         if (!value || value === ' ' || value === '') {
             return
@@ -150,7 +140,8 @@ const PinInput = ({
                     error={validationResult}
                     style={getStyleProps()}
                     InputProps={{
-                        style: getInputProps()
+                        style: getInputProps(),
+                        role: 'pin-input-field'
                     }}
                     inputRef={(el: HTMLInputElement) => {
                         inputRefs.current[index] = el

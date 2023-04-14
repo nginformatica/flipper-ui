@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import PinInput from '../core/PinInput'
+import PinInput from '.'
 import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 

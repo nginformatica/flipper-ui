@@ -1,6 +1,6 @@
 import { Paper as MuiPaper } from '@material-ui/core'
 import React from 'react'
-import type { DefaultProps } from './types'
+import type { DefaultProps } from '../types'
 
 export interface PaperProps extends DefaultProps {
     square?: boolean

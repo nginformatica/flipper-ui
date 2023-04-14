@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
-} from '../icons'
-import { DefaultProps } from './types'
-import Button from './Button'
+} from '../../icons'
+import { DefaultProps } from '../types'
+import Button from '../Button'
 
 export interface PaginationProps extends DefaultProps {
     pages?: number
@@ -25,31 +25,48 @@ const Content = styled.div`
 `
 
 const Pagination = (props: PaginationProps) => {
-    const { active, style, padding, margin, pages = 1, className } = props
-    const allPages = times(inc, pages || 1)
+    const {
+        active,
+        style,
+        padding,
+        margin,
+        pages = 1,
+        className,
+        onNavigate,
+        onNext,
+        onPrevious,
+        ...rest
+    } = props
+    const allPages = times(inc, pages)
 
     return (
         <Content
-            {...props}
+            {...rest}
             className={className}
             style={{ padding, margin, ...style }}>
             <Button
                 id='prev-page-button'
+                data-testid='prev-page-button'
                 size='small'
-                onClick={props.onPrevious}>
+                onClick={onPrevious}>
                 <IconArrowLeft />
             </Button>
             {allPages.map(page => (
                 <Button
                     size='small'
+                    data-testid={`pagination-page-${page}`}
                     key={page}
                     id={`pagination-page-${page}`}
                     color={page === active ? 'primary' : 'default'}
-                    onClick={() => props.onNavigate(page)}>
+                    onClick={() => onNavigate(page)}>
                     {page}
                 </Button>
             ))}
-            <Button id='next-page-button' size='small' onClick={props.onNext}>
+            <Button
+                id='next-page-button'
+                data-testid='next-page-button'
+                size='small'
+                onClick={onNext}>
                 <IconArrowRight />
             </Button>
         </Content>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Pagination from '../core/Pagination'
+import Pagination from '.'
 
 export default {
     title: 'Pagination',
@@ -17,6 +17,7 @@ Default.args = {
     active: 3,
     onNext: () => alert('Next page'),
     onPrevious: () => alert('Previous page'),
-    onNavigate: page => alert('You tried to navigate to page ' + page),
+    onNavigate: (page: number) =>
+        alert('You tried to navigate to page ' + page),
     children: 'Pagination'
 }

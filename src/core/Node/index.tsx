@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { background, primary, transparent } from '../colors'
+import { background, primary, transparent } from '../../colors'
 import {
     KeyboardArrowDown as IconArrowDown,
     KeyboardArrowUp as IconArrowUp
-} from '../icons'
-import { DefaultProps } from './types'
+} from '../../icons'
+import { DefaultProps } from '../types'
 
-interface NodeProps extends DefaultProps {
+export interface NodeProps extends DefaultProps {
     name: string
 }
 
