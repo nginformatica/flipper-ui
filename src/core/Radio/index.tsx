@@ -1,8 +1,8 @@
 import { Radio as MuiRadio } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
-interface RadioProps extends DefaultProps {
+export interface RadioProps extends DefaultProps {
     checked?: boolean
     color?: 'primary' | 'secondary' | 'default'
     value?: string

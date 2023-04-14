@@ -3,9 +3,9 @@ import {
     LinearProgress as MuiLinearProgress
 } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
-interface ILinear {
+export interface ILinear {
     color?: 'primary' | 'secondary'
     valueBuffer?: number
     variant?: 'determinate' | 'indeterminate' | 'buffer' | 'query'
@@ -17,13 +17,13 @@ interface ILinear {
     }
 }
 
-interface ICircular {
+export interface ICircular {
     size?: string | number
     color?: 'primary' | 'secondary' | 'inherit'
     variant?: 'determinate' | 'indeterminate' | 'static'
 }
 
-interface ProgressProps extends DefaultProps {
+export interface ProgressProps extends DefaultProps {
     value?: number
     linear?: boolean
 }

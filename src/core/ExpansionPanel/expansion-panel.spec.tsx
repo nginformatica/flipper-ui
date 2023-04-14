@@ -66,7 +66,7 @@ describe('ExpansionPanel', () => {
         )
     })
 
-    it('should render helper box on left', async () => {
+    it('should render helper box on left', () => {
         const onHelperClick = jest.fn()
         render(
             <ExpansionPanel

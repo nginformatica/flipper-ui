@@ -459,7 +459,7 @@ describe('AutoComplete', () => {
         jest.useRealTimers()
     })
 
-    it('should render suggestions with fade', async () => {
+    it('should render suggestions with fade', () => {
         render(
             <AutoComplete
                 openOnFocus

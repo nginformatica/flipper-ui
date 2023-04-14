@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import RadioGroup from '../core/RadioGroup'
+import RadioGroup from '.'
 
 export default {
     title: 'RadioGroup',

@@ -28,5 +28,5 @@
             "@/*": ["./src/*"],
         },
     },
-    "include": ["./src/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", ".src/*.d.ts", "./src/lib/**/*"],
+    "include": ["./src/*","./src/test/**/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", ".src/*.d.ts", "./src/lib/**/*"],
 }

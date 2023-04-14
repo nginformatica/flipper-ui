@@ -252,9 +252,8 @@ describe('PinInput', () => {
         expect(pin).toEqual('123456')
     })
 
-    it('should render on large size', async () => {
+    it('should render on large size', () => {
         render(<MockedComponent pinInputProps={{ size: 'large' }} />)
-        // screen.debug(container.container)
 
         const pinInput = screen.getAllByRole('pin-input-field')[0]
         const container = pinInput.parentElement

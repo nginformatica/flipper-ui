@@ -6,9 +6,9 @@ import {
     RadioGroup as MuiRadioGroup
 } from '@material-ui/core'
 import React, { ChangeEvent, ReactNode } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
-interface RadioGroupProps extends DefaultProps {
+export interface RadioGroupProps extends DefaultProps {
     row?: boolean
     title?: ReactNode
     name: string

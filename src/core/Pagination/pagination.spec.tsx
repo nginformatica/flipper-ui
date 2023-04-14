@@ -34,7 +34,7 @@ describe('Pagination', () => {
         expect(onNavigateSpy).toHaveBeenCalledWith(3)
     })
 
-    it('should render only one page if pages not provided', async () => {
+    it('should render only one page if pages not provided', () => {
         render(
             <Pagination
                 active={1}

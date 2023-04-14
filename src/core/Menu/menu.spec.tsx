@@ -4,7 +4,7 @@ import Menu from '.'
 import ListItem from '../ListItem'
 import IconBackup from '@material-ui/icons/Backup'
 describe('Menu', () => {
-    it('should render opened', async () => {
+    it('should render opened', () => {
         render(
             <Menu open>
                 <ListItem icon={<IconBackup />} title='Menu 1' />
@@ -19,7 +19,7 @@ describe('Menu', () => {
         expect(element2).toBeDefined()
     })
 
-    it('should render closed', async () => {
+    it('should render closed', () => {
         render(
             <Menu open={false}>
                 <ListItem icon={<IconBackup />} title='Menu 1' />

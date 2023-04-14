@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Progress from '../core/Progress'
+import Progress from '.'
 
 export default {
     title: 'Progress',

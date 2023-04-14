@@ -28,7 +28,7 @@ describe('Actions', () => {
         expect(actionConfirm).toBeDefined()
     })
 
-    it('should render only confirm', async () => {
+    it('should render only confirm', () => {
         render(<Actions buttons={['confirm']} onConfirm={jest.fn()} />)
 
         const actionConfirm = screen.getByText('Confirmar')
