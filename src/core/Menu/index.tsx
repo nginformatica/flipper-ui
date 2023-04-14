@@ -1,9 +1,9 @@
 import { Menu as MuiMenu } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 import { MenuProps as MuiMenuProps } from '@material-ui/core/Menu'
 
-interface MenuProps extends DefaultProps, MuiMenuProps {
+export interface MenuProps extends DefaultProps, MuiMenuProps {
     open: boolean
     anchorEl?: HTMLElement
     withWrapper?: boolean
@@ -18,7 +18,11 @@ const Menu = ({
     ...otherProps
 }: MenuProps) => (
     <MuiMenu {...otherProps} style={{ padding, margin, ...style }}>
-        {withWrapper ? <div>{children}</div> : children}
+        {withWrapper ? (
+            <div role='menu-wrapper-container'>{children}</div>
+        ) : (
+            children
+        )}
     </MuiMenu>
 )
 

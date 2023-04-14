@@ -4,7 +4,7 @@ module.exports = {
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: ['stories.(ts|tsx)'],
     collectCoverageFrom: [
-        '<rootDir>/src/Experimental/**/*.(ts|tsx)',
+        '<rootDir>/src/**/*.(ts|tsx)',
         '!<rootDir>/src/Experimental/index.ts',
         '!<rootDir>/src/Experimental/Dialog/index.ts',
         '!<rootDir>/src/Experimental/Fab/index.ts'

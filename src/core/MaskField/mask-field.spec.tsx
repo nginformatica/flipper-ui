@@ -7,7 +7,6 @@ import { act } from 'react-dom/test-utils'
 describe('MaskField', () => {
     it('should render', async () => {
         render(<MaskField placeholder='Description' />)
-        screen.debug()
 
         const input = screen.getByPlaceholderText(
             'Description'

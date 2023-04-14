@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Menu from '../core/Menu'
-import Button from '../core/Button'
-import ListItem from '../core/ListItem'
+import Menu from '.'
+import Button from '../Button'
+import ListItem from '../ListItem'
 import IconBackup from '@material-ui/icons/Backup'
 
 export default {

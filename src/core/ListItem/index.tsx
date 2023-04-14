@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import React, { Fragment, MouseEvent } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 import { Omit } from 'ramda'
 
 interface ListItemProps extends Omit<DefaultProps, 'name'> {
