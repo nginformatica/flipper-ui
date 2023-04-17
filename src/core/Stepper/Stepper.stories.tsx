@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Stepper from '../core/Stepper'
-import { Delete } from '../icons'
+import Stepper from '.'
+import { Delete } from '../../icons'
 
 export default {
     title: 'Stepper',
@@ -20,7 +20,11 @@ Default.args = {
 export const WithIcon = Template.bind({})
 WithIcon.args = {
     bottomLabel: true,
-    active: 2,
-    steps: [{ label: 'Name', icon: <Delete /> }],
+    active: 1,
+    steps: [
+        { label: 'Name', icon: <Delete /> },
+        { label: 'Name', icon: <Delete /> },
+        { label: 'Name', icon: <Delete /> }
+    ],
     children: 'Stepper'
 }

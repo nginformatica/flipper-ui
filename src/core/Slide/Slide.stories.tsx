@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Slide from '../core/Slide'
-import Button from '../core/Button'
+import Slide from '.'
+import Button from '../Button'
 
 export default {
     title: 'Slide',

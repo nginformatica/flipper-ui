@@ -1,8 +1,8 @@
 import { Tooltip as MuiTooltip } from '@material-ui/core'
 import React, { ReactElement, CSSProperties } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
-interface TooltipProps extends DefaultProps {
+export interface TooltipProps extends DefaultProps {
     placement?:
         | 'bottom-end'
         | 'bottom-start'
@@ -22,7 +22,7 @@ interface TooltipProps extends DefaultProps {
     onClose?: () => void
     onOpen?: () => void
     open?: boolean
-    children: ReactElement<{}>
+    children: ReactElement<Record<string, unknown>>
     enterDelay?: number
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Slider from '../core/Slider'
+import Slider from '.'
 
 export default {
     title: 'Slider',

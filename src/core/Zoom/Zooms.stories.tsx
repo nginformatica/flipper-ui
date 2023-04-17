@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Zoom from '../core/Zoom'
-import Button from '../core/Button'
+import Zoom from '.'
+import Button from '../Button'
 
 export default {
     title: 'Zoom',

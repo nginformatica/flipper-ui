@@ -1,44 +1,42 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Grow from '.'
+import Slide from '.'
 
-describe('Grow', () => {
+describe('Slide', () => {
     it('should render closed', () => {
         render(
-            <Grow in={false}>
-                <span>Grow Text</span>
-            </Grow>
+            <Slide direction='left' in={false}>
+                <span>Slide Text</span>
+            </Slide>
         )
-        const element = screen.getByText('Grow Text')
+        const element = screen.getByText('Slide Text')
 
         expect(element).toHaveProperty('style.visibility', 'hidden')
-        expect(element).toHaveProperty('style.opacity', '0')
     })
 
     it('should render opened', () => {
         render(
-            <Grow in>
-                <span>Grow Text</span>
-            </Grow>
+            <Slide direction='left' in>
+                <span>Slide Text</span>
+            </Slide>
         )
 
-        const element = screen.getByText('Grow Text')
+        const element = screen.getByText('Slide Text')
 
         expect(element).not.toHaveProperty('style.visibility', 'hidden')
-        expect(element).toHaveProperty('style.opacity', '1')
     })
 
     it('should match snapshot', () => {
         const { container: opened } = render(
-            <Grow in>
-                <span>Grow Text</span>
-            </Grow>
+            <Slide direction='left' in>
+                <span>Slide Text</span>
+            </Slide>
         )
 
         const { container: closed } = render(
-            <Grow in={false}>
-                <span>Grow Text</span>
-            </Grow>
+            <Slide direction='left' in={false}>
+                <span>Slide Text</span>
+            </Slide>
         )
 
         expect(opened).toMatchSnapshot()

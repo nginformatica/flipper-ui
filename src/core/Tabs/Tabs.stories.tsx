@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Tabs from '../core/Tabs'
-import Tab from '../core/Tab'
+import Tabs from '.'
+import Tab from '../Tab'
 
 export default {
     title: 'Tabs',

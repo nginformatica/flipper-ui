@@ -1,5 +1,5 @@
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 import MuiTypography, { TypographyProps } from '@material-ui/core/Typography'
 
 const Typography = ({

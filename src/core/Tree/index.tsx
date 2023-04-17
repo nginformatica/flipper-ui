@@ -1,6 +1,6 @@
 import { omit } from 'ramda'
 import React from 'react'
-import Node from './Node'
+import Node from '../Node'
 
 export interface INode {
     id: string | number
@@ -8,9 +8,10 @@ export interface INode {
     nodes?: INode[]
 }
 
-interface TreeProps {
+export interface TreeProps {
     nodes?: INode[]
 }
+
 const Tree = ({ nodes = [], ...otherProps }: TreeProps): JSX.Element => {
     const renderNode = (
         node: INode,

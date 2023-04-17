@@ -1,8 +1,8 @@
 import { Tabs as MuiTabs } from '@material-ui/core'
 import React, { ReactNode } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
-interface TabsProps extends DefaultProps {
+export interface TabsProps extends DefaultProps {
     centered?: boolean
     value: string | number
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
@@ -12,7 +12,7 @@ interface TabsProps extends DefaultProps {
     onChange?: (event: object, value: number) => void
 }
 
-interface IClasses {
+export interface IClasses {
     classes?: {
         default: string
         inherit: string

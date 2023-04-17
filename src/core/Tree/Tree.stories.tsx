@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Tree from '../core/Tree'
+import Tree from '.'
 
 export default {
     title: 'Tree',

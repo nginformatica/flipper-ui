@@ -1,6 +1,6 @@
 import { Step, StepLabel, Stepper as MuiStepper } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
 export interface StepperProps extends DefaultProps {
     active?: number
@@ -17,6 +17,22 @@ type TStep = {
 const isActive = (index: number, active: StepperProps['active']) =>
     active !== undefined ? active >= index : undefined
 
+interface StepIconProps {
+    icon: TStep['icon']
+    active?: boolean
+}
+
+const StepIcon = ({ icon, active }: StepIconProps) => {
+    if (typeof icon === 'function') {
+        return icon(active)
+    }
+
+    return React.cloneElement(icon, {
+        active: String(active),
+        color: active ? 'primary' : 'disabled'
+    })
+}
+
 const Stepper = ({
     active,
     bottomLabel,
@@ -27,6 +43,7 @@ const Stepper = ({
     ...otherProps
 }: StepperProps) => (
     <MuiStepper
+        role='stepper-container'
         alternativeLabel={bottomLabel}
         activeStep={active}
         style={{ padding, margin, ...style }}
@@ -35,16 +52,14 @@ const Stepper = ({
             <Step key={index}>
                 <StepLabel
                     icon={
-                        typeof step === 'object'
-                            ? typeof step.icon === 'function'
-                                ? step.icon(isActive(index, active))
-                                : React.cloneElement(step.icon, {
-                                      active: isActive(index, active),
-                                      color: isActive(index, active)
-                                          ? 'primary'
-                                          : 'default'
-                                  })
-                            : index + 1
+                        typeof step === 'object' ? (
+                            <StepIcon
+                                icon={step.icon}
+                                active={!!isActive(index, active)}
+                            />
+                        ) : (
+                            index + 1
+                        )
                     }>
                     {typeof step === 'object' ? step.label : step}
                 </StepLabel>
