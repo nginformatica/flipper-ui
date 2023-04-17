@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Table from '../core/Table'
-import TableHead from '../core/TableHead'
-import TableBody from '../core/TableBody'
-import TableRow from '../core/TableRow'
-import TableCell from '../core/TableCell'
+import Table from '.'
+import TableHead from './TableHead'
+import TableBody from './TableBody'
+import TableRow from './TableRow'
+import TableCell from './TableCell'
 
 export default {
     title: 'Table',

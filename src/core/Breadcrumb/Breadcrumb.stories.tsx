@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Link from '../core/Link'
-import Breadcrumb from '../core/Breadcrumb'
+import Link from '../Link'
+import Breadcrumb from '@/core/Breadcrumb'
 
 export default {
     title: 'Breadcrumb',

@@ -1,6 +1,6 @@
 import MuiTableBody from '@material-ui/core/TableBody'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
 const TableBody = ({
     style,

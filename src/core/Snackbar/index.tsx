@@ -14,7 +14,7 @@ import {
     Warning as IconWarning
 } from '@material-ui/icons'
 import React, { ReactNode, FunctionComponent, MouseEvent } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 import { TransitionProps } from '@material-ui/core/transitions/transition'
 
 export interface SnackBarProps extends DefaultProps {
@@ -136,6 +136,7 @@ const SnackBar = (props: SnackBarProps) => {
                     action || (
                         <MuiIconButton
                             key='close'
+                            role='close-icon-button'
                             aria-label='Close'
                             color='inherit'
                             onClick={handleClose}>

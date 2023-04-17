@@ -1,8 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Sidebar from '../core/Sidebar'
-import List from '../core/List'
-import ListItem from '../core/ListItem'
+import Sidebar from '.'
+import List from '../List'
+import ListItem from '../ListItem'
 import IconBackup from '@material-ui/icons/Backup'
 
 export default {

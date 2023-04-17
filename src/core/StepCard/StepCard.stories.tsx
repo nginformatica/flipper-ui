@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import StepCard from '../core/StepCard'
-import Button from '../core/Button'
-import { stepCardImageUrl } from '../lib/images'
+import StepCard from '.'
+import Button from '../Button'
+import { stepCardImageUrl } from '../../lib/images'
 
 export default {
     title: 'StepCard',

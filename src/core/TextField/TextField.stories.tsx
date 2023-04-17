@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import TextField from '../core/TextField'
-import ListItem from '../core/ListItem'
-import InputAdornment from '../core/InputAdornment'
+import TextField from '.'
+import ListItem from '../ListItem'
+import InputAdornment from '../InputAdornment'
 
 export default {
     title: 'TextField',

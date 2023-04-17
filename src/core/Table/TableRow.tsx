@@ -2,8 +2,8 @@ import MuiTableRow, {
     TableRowProps as MuiTableRowProps
 } from '@material-ui/core/TableRow'
 import React, { MouseEvent } from 'react'
-import { background as backgroundColor } from '../colors'
-import { DefaultProps } from './types'
+import { background as backgroundColor } from '../../colors'
+import { DefaultProps } from '../types'
 
 interface TableRowProps extends DefaultProps {
     selected?: boolean

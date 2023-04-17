@@ -6,8 +6,8 @@ import {
     MuiPickersUtilsProvider
 } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
-import { DefaultProps } from './types'
-import { useStyles } from './TextField'
+import { DefaultProps } from '../types'
+import { useStyles } from '../TextField'
 import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
@@ -69,6 +69,7 @@ const DateTime = ({
         style: { margin, padding, ...style },
         inputProps: {
             autoComplete: 'off',
+            role: 'date-picker',
             ...otherProps.inputProps
         },
         InputAdornmentProps: {
@@ -91,18 +92,27 @@ const DateTime = ({
             ...otherProps.InputProps
         }
     }
-
     const renderDatePicker = () => <KeyboardDatePicker {...fieldProps} />
     const renderTimePicker = () => <KeyboardTimePicker {...fieldProps} />
     const renderDateTimePicker = () => (
         <KeyboardDateTimePicker {...fieldProps} />
     )
 
+    const renderChildren = () => {
+        if (type === 'date') {
+            return renderDatePicker()
+        }
+
+        if (type === 'time') {
+            return renderTimePicker()
+        }
+
+        return renderDateTimePicker()
+    }
+
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={locale}>
-            {type === 'date' && renderDatePicker()}
-            {type === 'time' && renderTimePicker()}
-            {type === 'datetime' && renderDateTimePicker()}
+            {renderChildren()}
         </MuiPickersUtilsProvider>
     )
 }

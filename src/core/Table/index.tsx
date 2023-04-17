@@ -1,9 +1,9 @@
 import MuiTable, { TableProps as MuiTableProps } from '@material-ui/core/Table'
 import React from 'react'
-import { DefaultProps } from './types'
-import { silver } from '../colors'
+import { DefaultProps } from '../types'
+import { silver } from '../../colors'
 
-interface TableProps extends DefaultProps {
+export interface TableProps extends DefaultProps {
     spacing?: MuiTableProps['padding']
 }
 

@@ -9,7 +9,7 @@ import {
     StepCardRow,
     StepContainer,
     TitleContainer
-} from './StepCard/styles'
+} from './styles'
 
 interface IStepCardPanelProps {
     expandable: boolean

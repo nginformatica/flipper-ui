@@ -1,6 +1,6 @@
 import { Tab as MuiTab } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
 interface TabProps extends DefaultProps {
     disabled?: boolean

@@ -6,9 +6,9 @@ import styled from 'styled-components'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
-} from '../icons'
-import { DefaultProps } from './types'
-import Button, { ButtonProps } from './Button'
+} from '../../icons'
+import { DefaultProps } from '../types'
+import Button, { ButtonProps } from '../Button'
 
 export interface SidebarProps extends DefaultProps {
     open: boolean

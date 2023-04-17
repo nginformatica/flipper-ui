@@ -2,16 +2,11 @@
 import React, { useState, useRef } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import format from 'date-fns/format'
-import DataTable from '../core/DataTable/DataTable'
-import Button from '../core/Button'
-import Typography from '../core/Typography'
-import { DataTableAction } from '../core/DataTable/DataTableAction'
-import {
-    ColumnSpec,
-    DataTableController,
-    Identifier,
-    RowMode
-} from '../core/DataTable/types'
+import DataTable from './DataTable'
+import Button from '../Button'
+import Typography from '../Typography'
+import { DataTableAction } from './DataTableAction'
+import { ColumnSpec, DataTableController, Identifier, RowMode } from './types'
 import {
     Delete as DeleteIcon,
     Edit as EditIcon,
@@ -20,7 +15,7 @@ import {
     Check as CheckIcon,
     Visibility as VisibilityIcon,
     VisibilityOff as VisibilityOffIcon
-} from '../icons'
+} from '../../icons'
 import { v4 as uuid } from 'uuid'
 
 export default {
@@ -379,24 +374,28 @@ export const Crud = () => {
         controllerRef.current?.addRow({ id: randomId(), date: date() })
     }
 
-    const handleEdit = id => () => {
+    const handleEdit = (id: string | number) => () => {
         controllerRef.current?.editRow(id)
     }
 
-    const handleDelete = id => () => {
+    const handleDelete = (id: string | number) => () => {
         controllerRef.current?.pushRowView(id, 'confirmDelete')
     }
 
-    const handleView = id => () => {
+    const handleView = (id: string | number) => () => {
         controllerRef.current?.viewRow(id)
     }
 
-    const isNullable = x => x == null
-    const isNotPositive = x => x <= 0
-    const isAfterNow = x => +x > +new Date()
-    const isEmpty = x => x.trim().length === 0
+    const isNullable = (x: unknown) => x == null
+    const isNotPositive = (x: number) => x <= 0
+    const isAfterNow = (x: Date) => +x > +new Date()
+    const isEmpty = (x: string) => x.trim().length === 0
 
-    const handleErrors = (id, nextItem = {}, isPartial = false) => {
+    const handleErrors = (
+        id: string | number,
+        nextItem = {},
+        isPartial = false
+    ) => {
         const errorFields = [
             { field: 'quantity', isErrorIf: [isNaN, isNotPositive] },
             { field: 'date', isErrorIf: [isAfterNow] },
@@ -414,7 +413,7 @@ export const Crud = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond(value))
+                return isErrorIf.some(cond => cond)
             })
             .map(({ field }) => field)
 
@@ -536,7 +535,7 @@ export const Crud = () => {
     ]
 
     const rowViews = {
-        confirmDelete: ({ data }) => {
+        confirmDelete: ({ data }: { data: Data }) => {
             return (
                 <td colSpan={5}>
                     <div
@@ -662,10 +661,14 @@ export const CrudWithHidden = () => {
         controllerRef.current?.viewRow(id)
     }
 
-    const isNullable = x => x == null
-    const isEmpty = x => x.trim().length === 0
+    const isNullable = (x: unknown) => x == null
+    const isEmpty = (x: string) => x.trim().length === 0
 
-    const handleErrors = (id, nextItem = {}, isPartial = false) => {
+    const handleErrors = (
+        id: string | number,
+        nextItem = {},
+        isPartial = false
+    ) => {
         const errorFields = [{ field: 'name', isErrorIf: [isEmpty] }]
             .filter(({ field, isErrorIf }) => {
                 const value = nextItem[field]
@@ -837,7 +840,7 @@ export const CrudWithHidden = () => {
     ]
 
     const rowViews = {
-        confirmDelete: ({ data }) => {
+        confirmDelete: ({ data }: { data: Data }) => {
             return (
                 <td colSpan={5}>
                     <div
@@ -846,9 +849,7 @@ export const CrudWithHidden = () => {
                             padding: '16px',
                             justifyContent: 'space-between'
                         }}>
-                        <Typography>
-                            Confirm Delete "{data.product}"?
-                        </Typography>
+                        <Typography>Confirm Delete "{data.name}"?</Typography>
                         <div style={{ display: 'flex' }}>
                             <DataTableAction
                                 label='CheckIcon'

@@ -1,5 +1,5 @@
 import { LinearProgress } from '@material-ui/core'
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import { theme } from 'nginformatica-styleguide'
 import React from 'react'
 import { sprintf } from 'sprintf-js'
@@ -113,13 +113,13 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
 
     const Summary = () => {
         return (
-            <MuiExpansionPanelSummary
+            <MuiAccordionSummary
                 style={{ textAlign: 'center' }}
                 expandIcon={<ExpandMoreIcon fontSize='large' />}>
                 <Typography variant='h6' {...summaryProps}>
                     {sprintf(summary, remainingSteps, time)}
                 </Typography>
-            </MuiExpansionPanelSummary>
+            </MuiAccordionSummary>
         )
     }
 

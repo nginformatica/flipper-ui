@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles'
 import MuiTableHead from '@material-ui/core/TableHead'
 import React, { createContext } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 
 interface TableHeadProps extends DefaultProps, ISort {
     color?: 'primary' | 'secondary' | 'default' | 'inherit'

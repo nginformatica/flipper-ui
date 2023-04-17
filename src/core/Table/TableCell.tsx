@@ -3,7 +3,7 @@ import MuiTableCell, {
 } from '@material-ui/core/TableCell'
 import MuiTableSortLabel from '@material-ui/core/TableSortLabel'
 import React, { useContext } from 'react'
-import { DefaultProps } from './types'
+import { DefaultProps } from '../types'
 import { Omit } from 'ramda'
 import { SortContext } from './TableHead'
 

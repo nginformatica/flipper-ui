@@ -11,14 +11,14 @@ import React, {
     ReactNode,
     MouseEvent
 } from 'react'
-import { DefaultProps, HTMLElementWithDataCy } from './types'
+import { DefaultProps, HTMLElementWithDataCy } from '../types'
 import {
     Clear,
     Help as ContactSupportIcon,
     Edit,
     Save
 } from '@material-ui/icons'
-import IconButton from './IconButton'
+import IconButton from '../IconButton'
 import styled from 'styled-components'
 
 export interface TextFieldProps extends DefaultProps {
@@ -154,7 +154,7 @@ export const EditBox = (props: IEditProps) => {
 
 const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end'>
-        <MuiButton onClick={onClear} size='small'>
+        <MuiButton role='clear-button' onClick={onClear} size='small'>
             <Clear style={{ fontSize: '15px' }} />
         </MuiButton>
     </InputAdornment>

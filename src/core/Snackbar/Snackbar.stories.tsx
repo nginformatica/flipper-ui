@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Snackbar from '../core/Snackbar'
-import Button from '../core/Button'
+import Snackbar from '.'
+import Button from '../Button'
 
 export default {
     title: 'Snackbar',

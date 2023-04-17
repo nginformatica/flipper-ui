@@ -1,5 +1,5 @@
 import { List, ListItemText } from '@material-ui/core'
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
 import { theme } from 'nginformatica-styleguide'
 import React from 'react'
 import { IStepCardProps } from '.'
@@ -75,7 +75,7 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
     )
 
     return (
-        <MuiExpansionPanelDetails
+        <MuiAccordionDetails
             style={{
                 display: 'flex',
                 justifyContent: 'space-between'
@@ -93,6 +93,6 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
                     )}
                 </StepCardColumn>
             )}
-        </MuiExpansionPanelDetails>
+        </MuiAccordionDetails>
     )
 }

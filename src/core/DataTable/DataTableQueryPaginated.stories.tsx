@@ -3,31 +3,26 @@ import { TableCell, TableRow, Typography } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
 import { ComponentMeta } from '@storybook/react'
 import format from 'date-fns/format'
-import React, { useMemo, useRef, useState } from 'react'
-import Button from '../core/Button'
-import { DataTableAction } from '../core/DataTable/DataTableAction'
-import DataTableQueryPaginated from '../core/DataTable/DataTableQueryPaginated'
-import {
-    ColumnSpec,
-    DataTableController,
-    Identifier,
-    RowMode
-} from '../core/DataTable/types'
-import { usePaginated } from '../core/DataTable/usePaginated'
+import React, { ReactNode, useMemo, useRef, useState } from 'react'
+import Button from '../Button'
+import { DataTableAction } from './DataTableAction'
+import DataTableQueryPaginated from './DataTableQueryPaginated'
+import { ColumnSpec, DataTableController, Identifier, RowMode } from './types'
+import { usePaginated } from './usePaginated'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
     Delete as DeleteIcon,
     Edit as EditIcon,
     Save as SaveIcon
-} from '../icons'
+} from '../../icons'
 
 export default {
     title: 'DataTableQueryPaginated',
     component: DataTableQueryPaginated
 } as ComponentMeta<typeof DataTableQueryPaginated>
 
-type Data = {
+type DataActual = {
     id: number
     product: string
     price: number
@@ -35,7 +30,7 @@ type Data = {
     date: Date
 }
 
-const columnsData: ColumnSpec<Data>[] = [
+const columnsData: ColumnSpec<DataActual>[] = [
     {
         title: 'Product',
         type: 'text',
@@ -78,7 +73,7 @@ const columnsData: ColumnSpec<Data>[] = [
 
 const generateSkeleton = (
     size: number,
-    columns: ColumnSpec<Data>[]
+    columns: ColumnSpec<DataActual>[]
 ): Array<JSX.Element> => {
     const result: Array<JSX.Element> = []
 
@@ -146,7 +141,7 @@ export const Empty = () => {
         loading
     } = usePaginated()
 
-    const columns: ColumnSpec<Data>[] = [
+    const columns: ColumnSpec<DataActual>[] = [
         {
             title: 'Product',
             field: 'product',
@@ -168,7 +163,7 @@ export const Empty = () => {
         }
     ]
 
-    const componentForEmpty = (
+    const componentForEmpty: ReactNode = (
         <tr>
             <td
                 style={{
@@ -188,7 +183,7 @@ export const Empty = () => {
     )
 
     const LoadNode: React.ReactNode = loading
-        ? generateSkeleton
+        ? generateSkeleton(size, columnsData)
         : componentForEmpty
 
     return (
@@ -227,7 +222,7 @@ export const NoHeader = () => {
         [size]
     )
 
-    const columns: ColumnSpec<Data>[] = [
+    const columns: ColumnSpec<DataActual>[] = [
         {
             title: 'Product',
             field: 'product',
@@ -301,7 +296,7 @@ export const Crud = () => {
         setData
     } = usePaginated()
 
-    const newData = [
+    const newData: ColumnSpec<DataActual>[] = [
         ...columnsData,
         {
             title: 'Actions',
@@ -344,24 +339,28 @@ export const Crud = () => {
         controllerRef.current?.addRow({ id: randomId(), date: date() })
     }
 
-    const handleEdit = id => () => {
+    const handleEdit = (id: string | number) => () => {
         controllerRef.current?.editRow(id)
     }
 
-    const handleDelete = id => () => {
+    const handleDelete = (id: string | number) => () => {
         controllerRef.current?.pushRowView(id, 'confirmDelete')
     }
 
-    const handleView = id => () => {
+    const handleView = (id: string | number) => () => {
         controllerRef.current?.viewRow(id)
     }
 
-    const isNullable = x => x == null
-    const isNotPositive = x => x <= 0
-    const isAfterNow = x => +x > +new Date()
-    const isEmpty = x => x.trim().length === 0
+    const isNullable = (x: unknown) => x == null
+    const isNotPositive = (x: number) => x <= 0
+    const isAfterNow = (x: Date) => +x > +new Date()
+    const isEmpty = (x: string) => x.trim().length === 0
 
-    const handleErrors = (id, nextItem = {}, isPartial = false) => {
+    const handleErrors = (
+        id: string | number,
+        nextItem = {},
+        isPartial = false
+    ) => {
         const errorFields = [
             { field: 'quantity', isErrorIf: [isNaN, isNotPositive] },
             { field: 'date', isErrorIf: [isAfterNow] },
@@ -379,7 +378,7 @@ export const Crud = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond(value))
+                return isErrorIf.some(cond => cond)
             })
             .map(({ field }) => field)
 
@@ -501,7 +500,7 @@ export const Crud = () => {
     ]
 
     const rowViews = {
-        confirmDelete: ({ data }) => {
+        confirmDelete: ({ data }: { data: Data }) => {
             return (
                 <td colSpan={5}>
                     <div

@@ -1,8 +1,10 @@
-import { LinearProgress } from '@material-ui/core'
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import {
+    LinearProgress,
+    Accordion as MuiAccordion,
+    AccordionDetails as MuiAccordionDetails
+} from '@material-ui/core'
 import React from 'react'
-import StepCardSkeleton from '../StepCardSkeleton'
+import StepCardSkeleton from './StepCardSkeleton'
 import Typography from '../Typography'
 import { PropWithDataCy } from '../types'
 import { StepCardDetails } from './StepCardDetails'
@@ -176,7 +178,7 @@ export interface IStepCardProps {
      * @type {(typeof MuiExpansionPanel | undefined)}
      * @memberof IStepCardProps
      */
-    expansionPanelDetailsProps?: PropWithDataCy<typeof MuiExpansionPanelDetails>
+    expansionPanelDetailsProps?: PropWithDataCy<typeof MuiAccordionDetails>
 
     /**
      * Props to be passed to the linear progress bar
@@ -299,7 +301,7 @@ const StepCard = ({
         />
     ) : (
         <Container margin={margin} fullWidth={fullWidth} {...rootProps}>
-            <MuiExpansionPanel
+            <MuiAccordion
                 {...(expanded ? { expanded } : {})}
                 onChange={onChange}>
                 <StepCardPanel
@@ -329,7 +331,7 @@ const StepCard = ({
                         onStepUrlClick={onStepUrlClick}
                     />
                 )}
-            </MuiExpansionPanel>
+            </MuiAccordion>
         </Container>
     )
 
