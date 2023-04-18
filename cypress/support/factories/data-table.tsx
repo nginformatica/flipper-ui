@@ -6,6 +6,5 @@ import { Generators } from '..'
 
 export const DataTableFactory = (preset: DataTableVariant) => {
     const props = Generators.GenerateDataTableProps(preset)
-    console.log('props', props)
     mount(<DataTable {...props} />)
 }

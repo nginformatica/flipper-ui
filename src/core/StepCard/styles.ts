@@ -62,11 +62,12 @@ export const StepCardColumn = styled.div<IColumnProps>`
     }}
 `
 
-export const ListItemContainer = styled.p`
+export const ListItemContainer = styled.li`
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 30px;
+    margin: 16px 0;
 
     svg:first-child {
         margin-right: 16px;
@@ -78,7 +79,7 @@ export const TitleContainer = styled.div`
         padding-inline: 20px;
     }
 
-    span:first-child {
+    span {
         margin-left: 20px;
     }
 `

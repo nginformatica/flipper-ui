@@ -3,10 +3,15 @@ import * as React from 'react'
 
 interface IProps {
     initialLoading?: boolean
+    blockInitialLoading?: boolean
     stepProps: Partial<IStepCardProps>
 }
 
-const Default = ({ stepProps, initialLoading }: IProps) => {
+const Default = ({
+    stepProps,
+    initialLoading,
+    blockInitialLoading
+}: IProps) => {
     const { percentage, summary, title, ...rest } = stepProps
     const [loading, setLoading] = React.useState(initialLoading ?? false)
 
@@ -19,7 +24,7 @@ const Default = ({ stepProps, initialLoading }: IProps) => {
             percentage={percentage || 0}
             summary={summary || ''}
             title={title || ''}
-            loading={loading}
+            loading={blockInitialLoading ? undefined : loading}
             {...rest}
         />
     )

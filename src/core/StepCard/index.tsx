@@ -225,6 +225,14 @@ export interface IStepCardProps {
     margin?: React.CSSProperties['margin']
 
     /**
+     * Whether to show the sub title skeleton
+     * @type {boolean}
+     * @memberof IStepCardProps
+     * @default false
+     */
+    showSubTitleSkeleton?: boolean
+
+    /**
      * Callback to be called when the user clicks on a step url
      * @memberof IStepCardProps
      * @default undefined
@@ -290,11 +298,13 @@ const StepCard = ({
     fullWidth,
     padding,
     margin,
+    showSubTitleSkeleton = false,
     onChange
 }: IStepCardProps) =>
     loading ? (
         <StepCardSkeleton
             expandable={expandable}
+            subTitleSkeleton={showSubTitleSkeleton}
             showIcon={showIcon}
             showBottomPercentage={showBottomPercentage}
             fullWidth={fullWidth}

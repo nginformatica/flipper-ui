@@ -1,12 +1,11 @@
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Avatar from '../core/Avatar'
-import EditableTable from '../core/EditableTable'
+import EditableTable from '.'
 
 export default {
     title: 'EditTable',
-    component: Avatar
-} as ComponentMeta<typeof Avatar>
+    component: EditableTable
+} as ComponentMeta<typeof EditableTable>
 
 export const Default = () => (
     <EditableTable
@@ -15,6 +14,7 @@ export const Default = () => (
         disableAddHeader
         onAddRow={item => Promise.resolve(console.log(item))}
         onRowClick={() => window.alert('hello')}
+        onDeleteRow={item => Promise.resolve(console.log(item))}
         title='adicionar'
         columns={[
             {
@@ -87,12 +87,6 @@ export const WithAutocomplete = () => (
     <EditableTable
         noHeader
         title='adicionar'
-        autoCompleteSuggestions={[
-            { label: 'other values', value: '123456' },
-            { label: 'only values', value: '10000' },
-            { label: 'some values', value: '5000' },
-            { label: 'any values', value: '12' }
-        ]}
         autoCompleteField='listValues'
         onUpdateRow={() => Promise.resolve()}
         onClickAdd={() => window.alert('hello')}

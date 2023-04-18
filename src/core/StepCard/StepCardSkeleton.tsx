@@ -1,5 +1,5 @@
 import { Box } from '@material-ui/core'
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel'
+import MuiAccordion from '@material-ui/core/Accordion'
 import { Skeleton } from '@material-ui/lab'
 import React from 'react'
 import {
@@ -19,6 +19,7 @@ interface IStepCardPanelProps {
     padding?: React.CSSProperties['padding']
     margin?: React.CSSProperties['margin']
     fullWidth?: boolean
+    subTitleSkeleton?: boolean
 }
 
 const StepCardSkeleton = (props: IStepCardPanelProps) => {
@@ -26,7 +27,7 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
         expandable,
         showBottomPercentage,
         showIcon,
-        subTitle,
+        subTitleSkeleton,
         padding,
         margin,
         fullWidth
@@ -50,8 +51,11 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
     )
 
     return (
-        <Container margin={margin} fullWidth={fullWidth}>
-            <MuiExpansionPanel>
+        <Container
+            data-testid='skeleton-container'
+            margin={margin}
+            fullWidth={fullWidth}>
+            <MuiAccordion>
                 <StepContainer padding={padding}>
                     <StepCardRow
                         fullWidth={fullWidth}
@@ -66,7 +70,7 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                             )}
                             <TitleContainer>
                                 <TextSkeleton />
-                                {subTitle && <TextSkeleton />}
+                                {subTitleSkeleton && <TextSkeleton />}
                             </TitleContainer>
                         </StepCardColumn>
                         <StepCardColumn justifyContent='end'>
@@ -81,7 +85,7 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                         </StepCardRow>
                     )}
                 </StepContainer>
-            </MuiExpansionPanel>
+            </MuiAccordion>
         </Container>
     )
 }

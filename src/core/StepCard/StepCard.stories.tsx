@@ -18,12 +18,12 @@ const TemplateWithLoading: ComponentStory<typeof StepCard> = args => {
 
     setTimeout(() => {
         setLoading(false)
-    }, 1500)
+    }, 22500)
 
     return (
         <>
             <Button />
-            <StepCard {...args} loading={loading} />
+            <StepCard {...args} loading={loading} subTitle='asd' />
         </>
     )
 }

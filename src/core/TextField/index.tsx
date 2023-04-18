@@ -223,6 +223,9 @@ const TextField = ({
                     ...InputLabelProps
                 }}
                 InputProps={{
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    'data-testid': 'text-field',
                     classes: {
                         input:
                             variant === 'outlined' ? classes.outlinedInput : '',

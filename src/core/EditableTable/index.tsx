@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-lines */
 import React, { forwardRef, useRef } from 'react'
-import MaterialTable from 'material-table'
-import {
+import MaterialTable, {
     Column,
     Options,
     MTableEditRow,
@@ -21,21 +21,21 @@ import {
     ChevronRight as IconChevronRight,
     FirstPage as IconFirstPage,
     LastPage
-} from '../icons'
-import Typography from './Typography'
-import { omit, contains, cond, T } from 'ramda'
+} from '../../icons'
+import Typography from '../Typography'
+import { omit, contains, propOr } from 'ramda'
 import styled from 'styled-components'
-import Button from './Button'
-import DateTime from './DateTime'
+import Button from '../Button'
+import DateTime from '../DateTime'
 import ptBRLocale from 'date-fns/locale/pt-BR'
-import AutoComplete from './AutoComplete'
-import ListItem from './ListItem'
-import TextField from './TextField'
-import MaskField from './MaskField'
-import { DARK, GREY } from '../colors'
-import { getLocalization } from '../lib/localization'
+import AutoComplete from '../AutoComplete'
+import ListItem from '../ListItem'
+import TextField from '../TextField'
+import MaskField from '../MaskField'
+import { DARK, GREY } from '../../colors'
+import { getLocalization } from '../../lib/localization'
 
-interface EditableTableProps<T extends object> {
+export interface EditableTableProps<T extends object> {
     title?: string
     color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
     columns?: Column<object>[]
@@ -155,7 +155,7 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
         ? { Pagination: () => null }
         : props.noRowsExpand && {
               Pagination: (item: any) => (
-                  <RightPagination>
+                  <RightPagination data-id='pagination'>
                       <MTablePagination
                           {...omit(['classes'], item)}
                           localization={getLocalization(props.title).pagination}
@@ -170,9 +170,10 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
         <AutoComplete
             openOnFocus
             selectTextOnFocus
+            data-testid='autocomplete-container'
             value={inputProps.value}
             onChange={inputProps.onChange}
-            suggestions={props.autoCompleteSuggestions || []}
+            suggestions={propOr([], 'autoCompleteSuggestions', props)}
             renderSuggestion={(item: TSuggestion, props, selected) => (
                 <ListItem key={item.value} selected={selected} {...props}>
                     {item.label}
@@ -191,6 +192,7 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                     <FullWidthButton
                         color={addButtonColor}
                         name='dialog-add'
+                        data-testid='dialog-add'
                         variant='dashed'
                         onClick={props.onClickAdd}>
                         <IconAdd />
@@ -250,27 +252,32 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                             />
                         )
 
-                        const renderDefault = () => (
-                            <MTableAction
-                                disabled
-                                action={() => {}}
-                                size={0}
-                                data={[]}
-                            />
-                        )
+                        // const renderDefault = () => (
+                        //     <MTableAction
+                        //         disabled
+                        //         action={() => {}}
+                        //         size={0}
+                        //         data={[]}
+                        //     />
+                        // )
 
-                        const hasData = (localProps: any) =>
-                            !!localProps.action && size && data
-                        const isToolbar = (localProps: any) =>
+                        // const hasData = !!localProps.action && size && data
+                        const isToolbar =
                             localProps.action &&
                             'position' in localProps.action &&
                             localProps.action.position === 'toolbar'
 
-                        return cond([
-                            [isToolbar, renderToolbarButton],
-                            [hasData, renderActionButton],
-                            [T, renderDefault]
-                        ])(localProps)
+                        if (isToolbar) {
+                            return renderToolbarButton()
+                        }
+
+                        return renderActionButton()
+
+                        // return cond([
+                        //     [isToolbar, renderToolbarButton],
+                        //     [hasData, renderActionButton],
+                        //     [T, renderDefault]
+                        // ])(localProps)
                     },
                     EditField: localProps => {
                         if (localProps.columnDef.type === 'datetime') {
@@ -308,6 +315,8 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
 
                         return (
                             <MTableEditField
+                                data-testid='mui-input'
+                                role={`${localProps.columnDef.field}-input`}
                                 name={localProps.columnDef.field + '-input'}
                                 {...localProps}
                             />
@@ -353,7 +362,10 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                         <LastPage color={props.color || 'primary'} />
                     )),
                     NextPage: forwardRef(() => (
-                        <IconChevronRight color={props.color || 'primary'} />
+                        <IconChevronRight
+                            data-testid='next-page'
+                            color={props.color || 'primary'}
+                        />
                     ))
                 }}
                 style={{
@@ -376,8 +388,7 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                     toolbarButtonAlignment: 'left',
                     padding: 'dense',
                     rowStyle: {
-                        fontFamily:
-                            '"Roboto", "Helvetica", "Arial", sans-serif;'
+                        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'
                     },
                     headerStyle: { borderBottom: '2px #CED4DE solid' },
                     ...props.options
