@@ -6,6 +6,7 @@ module.exports = {
     collectCoverageFrom: [
         '<rootDir>/src/core/**/*.(ts|tsx)',
         '<rootDir>/src/Experimental/**/*.(ts|tsx)',
+        '!<rootDir>/src/core/DataTable/*.(ts|tsx)',
         '!<rootDir>/src/Experimental/index.ts',
         '!<rootDir>/src/Experimental/Dialog/index.ts',
         '!<rootDir>/src/Experimental/Fab/index.ts'

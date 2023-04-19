@@ -13,7 +13,7 @@ export default {
 
 export const Default = () => (
     <Table>
-        <TableHead>
+        <TableHead color='default'>
             <TableRow>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>

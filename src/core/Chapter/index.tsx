@@ -1,9 +1,11 @@
 import type { TypographyProps } from '@material-ui/core/Typography'
 import React, { CSSProperties } from 'react'
 import styled from 'styled-components'
-import { background, primary as primaryColor } from '../../colors'
 import { DefaultProps } from '../types'
 import Typography from '../Typography'
+import { theme } from 'nginformatica-styleguide'
+
+const { grays } = theme.colors
 
 export interface LineProps extends DefaultProps {
     primary?: boolean
@@ -14,24 +16,23 @@ export interface LineProps extends DefaultProps {
     'data-testid'?: string
 }
 
-const StyledLine = styled.hr<LineProps>`
-    --color: ${props =>
-        props.primary ? primaryColor.normal : background.normal};
+const StyledLine = styled.div<LineProps>`
+    height: 1px;
     flex: 1;
     min-height: 0.75px;
     max-height: 3px;
     align-self: center;
-    background-color: var(--color);
+    background-color: ${props => (props.primary ? grays.g4 : grays.g6)}; ;
 `
 
 const Container = styled.div`
     display: flex;
 
-    & hr:first-child {
+    & div:first-child {
         margin-right: 10px;
     }
 
-    & hr:last-child {
+    & div:last-child {
         margin-left: 10px;
     }
 `
@@ -43,19 +44,20 @@ const Chapter = ({
     childrenStyle,
     children,
     variant,
+    primary,
     ...otherProps
 }: LineProps) => {
     const Line = (props: LineProps) => (
-        <StyledLine style={{ padding, margin, ...style }} {...props} />
+        <StyledLine {...props} style={{ padding, margin, ...style }} />
     )
 
     return (
         <Container {...otherProps}>
-            <Line />
+            <Line primary={primary} />
             <Typography variant={variant} style={{ ...childrenStyle }}>
                 {children}
             </Typography>
-            <Line />
+            <Line primary={primary} />
         </Container>
     )
 }

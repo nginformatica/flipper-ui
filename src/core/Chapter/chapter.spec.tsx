@@ -10,7 +10,11 @@ describe('Chapter', () => {
     })
 
     it('should spread props', () => {
-        render(<Chapter data-testid='chapter-container'>Chapter</Chapter>)
+        render(
+            <Chapter primary data-testid='chapter-container'>
+                Chapter
+            </Chapter>
+        )
         const chapter = screen.getByTestId('chapter-container')
         expect(chapter).toBeDefined()
     })

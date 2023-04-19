@@ -304,7 +304,7 @@ export const DataTable = <D extends Data, V extends StackView>(
     )
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer role='data-table-container' component={Paper}>
             <Table>
                 {!noHeader && (
                     <TableHead style={headStyle}>
