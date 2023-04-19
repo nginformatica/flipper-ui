@@ -29,7 +29,6 @@ const renderEditMode = <D extends Data>(
 
     if (column.renderCell) {
         const value = row[column.field]
-        console.log('renderCell', value)
 
         return column.renderCell({
             data: row,
@@ -229,7 +228,7 @@ export const NewRow = <D extends Data>({
     )
 
     return (
-        <TableRow>
+        <TableRow data-testid='table-row'>
             {columns.map(column => (
                 <TableCell
                     style={column.cellStyle}

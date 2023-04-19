@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slide should match snapshot 1`] = `
+<div>
+  <span
+    style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+  >
+    Slide Text
+  </span>
+</div>
+`;
+
+exports[`Slide should match snapshot 2`] = `
+<div>
+  <span
+    style="visibility: hidden; webkit-transform: translateX(1024px) translateX(0px); transform: translateX(1024px) translateX(0px);"
+  >
+    Slide Text
+  </span>
+</div>
+`;

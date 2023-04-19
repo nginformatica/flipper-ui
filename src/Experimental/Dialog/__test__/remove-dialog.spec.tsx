@@ -61,7 +61,7 @@ describe('RemoveDialog', () => {
         expect(cancelButton).toBeDefined()
     })
 
-    it('Should call primaryButtonAction', () => {
+    it('Should call primaryButtonAction', async () => {
         const onCancelSpy = jest.fn()
         const onConfirmSpy = jest.fn()
 
@@ -80,12 +80,12 @@ describe('RemoveDialog', () => {
 
         userEvent.click(confirmButton)
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onConfirmSpy).toHaveBeenCalled()
         })
     })
 
-    it('Should call secondaryButtonAction', () => {
+    it('Should call secondaryButtonAction', async () => {
         const onCancelSpy = jest.fn()
         const onConfirmSpy = jest.fn()
 
@@ -104,12 +104,12 @@ describe('RemoveDialog', () => {
 
         userEvent.click(cancelButton)
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onCancelSpy).toHaveBeenCalled()
         })
     })
 
-    it('Should call onCancel', () => {
+    it('Should call onCancel', async () => {
         const onCancelSpy = jest.fn()
         const onConfirmSpy = jest.fn()
 
@@ -128,12 +128,12 @@ describe('RemoveDialog', () => {
 
         fireEvent.keyDown(title, { key: 'Escape', keyCode: 27 })
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onCancelSpy).toHaveBeenCalled()
         })
     })
 
-    it('Should not call onCancel when disableBackdropClick', () => {
+    it('Should not call onCancel when disableBackdropClick', async () => {
         const onCancelSpy = jest.fn()
         const onConfirmSpy = jest.fn()
 
@@ -153,7 +153,7 @@ describe('RemoveDialog', () => {
 
         fireEvent.keyDown(title, { key: 'Escape', keyCode: 27 })
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onCancelSpy).not.toHaveBeenCalled()
         })
     })

@@ -1,5 +1,5 @@
-import { List, ListItemText } from '@material-ui/core'
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import { List } from '@material-ui/core'
+import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
 import { theme } from 'nginformatica-styleguide'
 import React from 'react'
 import { IStepCardProps } from '.'
@@ -33,49 +33,43 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
                 }
 
                 return (
-                    <ListItemText
-                        key={index}
-                        primary={
-                            <ListItemContainer>
-                                <CheckCircleIcon
+                    <ListItemContainer key={index}>
+                        <CheckCircleIcon
+                            style={{
+                                color: step.done ? DONE_COLOR : UNDONE_COLOR
+                            }}
+                        />
+                        <Typography
+                            variant='body1'
+                            style={{
+                                color: UNDONE_FONT_COLOR,
+                                fontWeight: 600
+                            }}>
+                            {step.title}
+                        </Typography>
+                        {step.url && onStepUrlClick && (
+                            <>
+                                <IconButton
+                                    data-testid={`step-card-button-${index}`}
                                     style={{
-                                        color: step.done
-                                            ? DONE_COLOR
-                                            : UNDONE_COLOR
+                                        backgroundColor: 'unset'
                                     }}
-                                />
-                                <Typography
-                                    variant='body1'
-                                    style={{
-                                        color: UNDONE_FONT_COLOR,
-                                        fontWeight: 600
-                                    }}>
-                                    {step.title}
-                                </Typography>
-                                {step.url && onStepUrlClick && (
-                                    <>
-                                        <IconButton
-                                            style={{
-                                                backgroundColor: 'unset'
-                                            }}
-                                            onClick={handleOnClickStepUrl}>
-                                            <HelpIcon
-                                                fontSize='small'
-                                                style={{ margin: '0px' }}
-                                            />
-                                        </IconButton>
-                                    </>
-                                )}
-                            </ListItemContainer>
-                        }
-                    />
+                                    onClick={handleOnClickStepUrl}>
+                                    <HelpIcon
+                                        fontSize='small'
+                                        style={{ margin: '0px' }}
+                                    />
+                                </IconButton>
+                            </>
+                        )}
+                    </ListItemContainer>
                 )
             })}
         </List>
     )
 
     return (
-        <MuiExpansionPanelDetails
+        <MuiAccordionDetails
             style={{
                 display: 'flex',
                 justifyContent: 'space-between'
@@ -93,6 +87,6 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
                     )}
                 </StepCardColumn>
             )}
-        </MuiExpansionPanelDetails>
+        </MuiAccordionDetails>
     )
 }

@@ -1,45 +1,40 @@
 import * as React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import VisibilityIcon from '.'
 
 describe('VisibilityIcon', () => {
     it('should render visible', () => {
         render(<VisibilityIcon show onToggle={jest.fn()} />)
 
-        waitFor(() => {
-            const svg = screen.getByRole('icon-off')
-            expect(svg).toBeDefined()
-        })
+        const svg = screen.getByTestId('icon-off')
+        expect(svg).toBeDefined()
     })
 
     it('should render hidden', () => {
         render(<VisibilityIcon show={false} onToggle={jest.fn()} />)
 
-        waitFor(() => {
-            const svg = screen.getByRole('icon-on')
-            expect(svg).toBeDefined()
-        })
+        const svg = screen.getByTestId('icon-on')
+        expect(svg).toBeDefined()
     })
 
     it('should call onClick', () => {
         const onClick = jest.fn()
-        render(<VisibilityIcon show onToggle={onClick} />)
+        const container = render(<VisibilityIcon show onToggle={onClick} />)
+        const button = container.container.querySelector('button')
 
-        waitFor(() => {
-            const button = screen.getByRole('icon-off')
-            button.click()
+        fireEvent.click(button || container.container)
 
-            expect(onClick).toHaveBeenCalled()
-        })
+        expect(onClick).toHaveBeenCalled()
     })
 
     it('should have name', () => {
         const NAME = 'show'
-        render(<VisibilityIcon show name={NAME} onToggle={jest.fn()} />)
+        const container = render(
+            <VisibilityIcon show name={NAME} onToggle={jest.fn()} />
+        )
 
-        waitFor(() => {
-            const svg = screen.getByRole('icon-off')
-            expect(svg).toHaveProperty('name', NAME)
-        })
+        const button = container.container.querySelector('button')
+
+        expect(button).toHaveProperty('name', NAME)
     })
 })

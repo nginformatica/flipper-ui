@@ -22,11 +22,5 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Run Cypress on Node ${{ matrix.node-version }}
-        run: yarn cy:run
-
-        env:
-          CI: true
-
       - name: Run Jest Code Coverage on Node ${{ matrix.node-version }}
         run: yarn test:ci

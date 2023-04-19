@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton should match snapshot 1`] = `
+<div>
+  <button
+    class="MuiButtonBase-root MuiIconButton-root"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiIconButton-label"
+    >
+      IconButton
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;

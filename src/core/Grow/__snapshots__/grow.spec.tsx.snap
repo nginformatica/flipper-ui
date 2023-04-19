@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grow should match snapshot 1`] = `
+<div>
+  <span
+    style="opacity: 1; transform: scale(1, 1); transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+  >
+    Grow Text
+  </span>
+</div>
+`;
+
+exports[`Grow should match snapshot 2`] = `
+<div>
+  <span
+    style="opacity: 0; transform: scale(0.75, 0.5625); visibility: hidden;"
+  >
+    Grow Text
+  </span>
+</div>
+`;

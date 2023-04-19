@@ -30,7 +30,7 @@ describe('Dialog', () => {
         expect(primaryButton).toBeDefined()
     })
 
-    it('Should call primaryButtonAction', () => {
+    it('Should call primaryButtonAction', async () => {
         const onClickSpy = jest.fn()
 
         render(
@@ -47,12 +47,12 @@ describe('Dialog', () => {
 
         userEvent.click(primaryButton)
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onClickSpy).toHaveBeenCalled()
         })
     })
 
-    it('Should call secondaryButtonAction', () => {
+    it('Should call secondaryButtonAction', async () => {
         const onClickSpy = jest.fn()
 
         render(
@@ -71,7 +71,7 @@ describe('Dialog', () => {
 
         userEvent.click(secondaryButton)
 
-        waitFor(() => {
+        await waitFor(() => {
             expect(onClickSpy).toHaveBeenCalled()
         })
     })

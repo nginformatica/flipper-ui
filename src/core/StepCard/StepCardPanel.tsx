@@ -1,5 +1,5 @@
 import { LinearProgress } from '@material-ui/core'
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import { theme } from 'nginformatica-styleguide'
 import React from 'react'
 import { sprintf } from 'sprintf-js'
@@ -64,6 +64,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
     const TitleIcon = () => {
         return (
             <CheckCircleIcon
+                data-testid='step-card-title-icon'
                 style={{
                     fontSize: 40,
                     color: percentage === 100 ? DONE_COLOR : UNDONE_COLOR
@@ -113,13 +114,13 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
 
     const Summary = () => {
         return (
-            <MuiExpansionPanelSummary
+            <MuiAccordionSummary
                 style={{ textAlign: 'center' }}
                 expandIcon={<ExpandMoreIcon fontSize='large' />}>
                 <Typography variant='h6' {...summaryProps}>
                     {sprintf(summary, remainingSteps, time)}
                 </Typography>
-            </MuiExpansionPanelSummary>
+            </MuiAccordionSummary>
         )
     }
 
@@ -143,7 +144,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
     }
 
     const NormalProgress = () => (
-        <NormalProgressContainer>
+        <NormalProgressContainer data-testid='normal-progress'>
             <Typography variant='h6' {...summaryProps}>
                 {summary}
             </Typography>

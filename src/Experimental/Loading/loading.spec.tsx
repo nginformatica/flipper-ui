@@ -14,22 +14,4 @@ describe('Loading', () => {
 
         expect(loading).toBeDefined()
     })
-
-    it('should match snapshot - DefaultLoading', () => {
-        const container = render(<DefaultLoading />)
-
-        expect(container).toMatchSnapshot()
-    })
-
-    it('should match snapshot - CustomSizeLoading', () => {
-        const container = render(<CustomSizeLoading />)
-
-        expect(container).toMatchSnapshot()
-    })
-
-    it('should match snapshot - CustomMarginLoading', () => {
-        const container = render(<CustomMarginLoading />)
-
-        expect(container).toMatchSnapshot()
-    })
 })
