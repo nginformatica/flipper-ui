@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Button from '@/core/Button'
 import { DataTableAction, DataTableController } from '@/core/DataTable'
 import DataTable from '@/core/DataTable/DataTable'
@@ -82,6 +83,7 @@ const Default = () => {
             { field: 'price', isErrorIf: [isNaN, isNotPositive] }
         ]
             .filter(({ field, isErrorIf }) => {
+                // @ts-ignore
                 const value = nextItem[field]
 
                 if (isNullable(value)) {

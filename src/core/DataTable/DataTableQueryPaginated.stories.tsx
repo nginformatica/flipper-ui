@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
 import { TableCell, TableRow, Typography } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
@@ -368,6 +369,7 @@ export const Crud = () => {
             { field: 'price', isErrorIf: [isNaN, isNotPositive] }
         ]
             .filter(({ field, isErrorIf }) => {
+                // @ts-ignore
                 const value = nextItem[field]
 
                 if (isNullable(value)) {

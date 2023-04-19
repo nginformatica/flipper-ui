@@ -29,7 +29,7 @@ export const Default = () => (
                 />
             )
         }}
-        renderSuggestion={(suggestion, itemProps, selected) => {
+        renderSuggestion={(suggestion, _, selected) => {
             const label =
                 typeof suggestion === 'string' ? suggestion : suggestion.label
 

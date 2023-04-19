@@ -15,7 +15,6 @@
         "noUnusedParameters": true,
         "strictNullChecks": true,
         "rootDir": "src",
-        "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
         "declaration": true,
         "allowSyntheticDefaultImports": true,
@@ -29,4 +28,5 @@
         },
     },
     "include": ["./src/*","./src/test/**/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", ".src/*.d.ts", "./src/lib/**/*"],
+    "exclude": ["./src/**/*.spec.tsx", "./src/**/*.stories.*"]
 }

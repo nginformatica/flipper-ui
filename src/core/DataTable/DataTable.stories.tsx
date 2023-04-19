@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
 import React, { useState, useRef } from 'react'
 import { ComponentMeta } from '@storybook/react'
@@ -393,7 +394,7 @@ export const Crud = () => {
 
     const handleErrors = (
         id: string | number,
-        nextItem = {},
+        nextItem: { [key: string]: unknown } = {},
         isPartial = false
     ) => {
         const errorFields = [
@@ -671,6 +672,7 @@ export const CrudWithHidden = () => {
     ) => {
         const errorFields = [{ field: 'name', isErrorIf: [isEmpty] }]
             .filter(({ field, isErrorIf }) => {
+                // @ts-ignore
                 const value = nextItem[field]
 
                 if (isNullable(value)) {
