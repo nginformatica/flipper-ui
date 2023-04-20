@@ -31,7 +31,7 @@ const Loading = (props: IProps) => {
                 {renderLoading}
             </LoadingContainer>
         ),
-        [margin, padding]
+        [margin, padding, renderLoading]
     )
 }
 

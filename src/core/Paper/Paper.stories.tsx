@@ -1,13 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Paper from '.'
 
 export default {
     title: 'Paper',
     component: Paper
-} as ComponentMeta<typeof Paper>
+} as Meta<typeof Paper>
 
-const Template: ComponentStory<typeof Paper> = args => <Paper {...args} />
+const Template: StoryFn<typeof Paper> = args => <Paper {...args} />
 
 const defaultArgs = {
     padding: 24,

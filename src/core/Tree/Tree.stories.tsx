@@ -1,13 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Tree from '.'
 
 export default {
     title: 'Tree',
     component: Tree
-} as ComponentMeta<typeof Tree>
+} as Meta<typeof Tree>
 
-const Template: ComponentStory<typeof Tree> = args => <Tree {...args} />
+const Template: StoryFn<typeof Tree> = args => <Tree {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

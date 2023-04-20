@@ -14,7 +14,7 @@ import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 import { Omit } from 'ramda'
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 
-interface IProps {
+export interface IProps {
     locale?: DateFnsUtils['locale']
     type?: 'date' | 'time' | 'datetime'
     inputProps?: object

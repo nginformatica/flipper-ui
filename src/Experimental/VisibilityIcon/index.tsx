@@ -6,7 +6,7 @@ import {
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps {
+export interface IProps {
     name?: string
     show: boolean
     onToggle(): void

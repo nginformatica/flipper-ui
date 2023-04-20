@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Chip from '.'
 import Avatar from '../Avatar'
 import FaceIcon from '@material-ui/icons/Face'
@@ -10,9 +10,9 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' }
     }
-} as ComponentMeta<typeof Chip>
+} as Meta<typeof Chip>
 
-const Template: ComponentStory<typeof Chip> = args => <Chip {...args} />
+const Template: StoryFn<typeof Chip> = args => <Chip {...args} />
 
 const commonArgs = {
     label: 'Hello darkness my old friend',

@@ -1,15 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Advertise from '.'
 
 export default {
     title: 'Advertise',
     component: Advertise
-} as ComponentMeta<typeof Advertise>
+} as Meta<typeof Advertise>
 
-const Template: ComponentStory<typeof Advertise> = args => (
-    <Advertise {...args} />
-)
+const Template: StoryFn<typeof Advertise> = args => <Advertise {...args} />
 
 export const Default = Template.bind({})
 

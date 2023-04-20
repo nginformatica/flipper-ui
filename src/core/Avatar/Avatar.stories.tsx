@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Avatar from '.'
 
 export default {
@@ -9,9 +9,9 @@ export default {
         backgroundColor: { control: 'color' },
         children: { control: 'text' }
     }
-} as ComponentMeta<typeof Avatar>
+} as Meta<typeof Avatar>
 
-const Template: ComponentStory<typeof Avatar> = args => <Avatar {...args} />
+const Template: StoryFn<typeof Avatar> = args => <Avatar {...args} />
 
 export const Default = Template.bind({})
 
@@ -20,8 +20,8 @@ Primary.args = {
     primary: true
 }
 
-export const WithChuildren = Template.bind({})
-WithChuildren.args = {
+export const WithChildren = Template.bind({})
+WithChildren.args = {
     children: 'W',
     primary: true
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import InputBase from '.'
 
 export default {
@@ -15,11 +15,9 @@ export default {
         inputProps: { control: 'object' },
         readonly: { control: 'boolean' }
     }
-} as ComponentMeta<typeof InputBase>
+} as Meta<typeof InputBase>
 
-const Template: ComponentStory<typeof InputBase> = args => (
-    <InputBase {...args} />
-)
+const Template: StoryFn<typeof InputBase> = args => <InputBase {...args} />
 export const Default = Template.bind({})
 
 Default.args = {

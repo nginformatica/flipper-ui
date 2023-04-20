@@ -1,7 +1,7 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Button from '.'
-import { Add as IconAdd } from '../../icons'
+import { Add as IconAdd } from '@/icons'
 
 export default {
     title: 'Button',
@@ -9,9 +9,9 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' }
     }
-} as ComponentMeta<typeof Button>
+} as Meta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = args => <Button {...args} />
+const Template: StoryFn<typeof Button> = args => <Button {...args} />
 
 const commonArgs = {
     margin: 12,

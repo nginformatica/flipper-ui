@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Zoom from '.'
 import Button from '../Button'
 
 export default {
     title: 'Zoom',
     component: Zoom
-} as ComponentMeta<typeof Zoom>
+} as Meta<typeof Zoom>
 
 export const Default = () => {
     const [open, setOpen] = useState(true)

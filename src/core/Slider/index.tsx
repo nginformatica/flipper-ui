@@ -2,7 +2,7 @@ import React from 'react'
 import MuiSlider, { SliderProps } from '@material-ui/core/Slider'
 import { DefaultProps } from '../types'
 
-interface ISliderProps {
+export interface ISliderProps {
     defaultValue?: number | number[]
 }
 

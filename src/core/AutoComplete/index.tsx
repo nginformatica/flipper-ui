@@ -31,7 +31,7 @@ export interface AutoCompleteProps {
     renderSuggestion: (
         suggestion: TSelected,
         itemProps: {
-            onClick: (event: MouseEvent) => void
+            onClick: (event?: MouseEvent) => void
         },
         selected: boolean
     ) => ReactNode

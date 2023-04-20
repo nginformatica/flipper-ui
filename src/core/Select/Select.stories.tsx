@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Select from '.'
 import ListItem from '../ListItem'
 
 export default {
     title: 'Select',
     component: Select
-} as ComponentMeta<typeof Select>
+} as Meta<typeof Select>
 
 export const Default = () => {
     const [select, setSelect] = useState('3')

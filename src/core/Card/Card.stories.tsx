@@ -1,6 +1,6 @@
+import { Meta } from '@storybook/react'
 import React from 'react'
-import { ComponentMeta } from '@storybook/react'
-import Card, { CardActions, CardContent, CardMedia, CardActionArea } from '.'
+import Card, { CardActionArea, CardActions, CardContent, CardMedia } from '.'
 import Button from '../Button'
 
 export default {
@@ -9,7 +9,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' }
     }
-} as ComponentMeta<typeof Card>
+} as Meta<typeof Card>
 
 const url =
     'https://media2.s-nbcnews.com/j/newscms/2018_20/1339477' +

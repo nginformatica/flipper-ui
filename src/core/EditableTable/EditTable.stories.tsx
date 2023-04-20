@@ -1,11 +1,11 @@
 import React from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import EditableTable from '.'
 
 export default {
     title: 'EditTable',
     component: EditableTable
-} as ComponentMeta<typeof EditableTable>
+} as Meta<typeof EditableTable>
 
 export const Default = () => (
     <EditableTable

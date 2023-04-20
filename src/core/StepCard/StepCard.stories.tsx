@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import StepCard from '.'
 import Button from '../Button'
 import { stepCardImageUrl } from '../../lib/images'
@@ -7,13 +7,13 @@ import { stepCardImageUrl } from '../../lib/images'
 export default {
     title: 'StepCard',
     component: StepCard
-} as ComponentMeta<typeof StepCard>
+} as Meta<typeof StepCard>
 
-const Template: ComponentStory<typeof StepCard> = args => {
+const Template: StoryFn<typeof StepCard> = args => {
     return <StepCard {...args} />
 }
 
-const TemplateWithLoading: ComponentStory<typeof StepCard> = args => {
+const TemplateWithLoading: StoryFn<typeof StepCard> = args => {
     const [loading, setLoading] = useState(true)
 
     setTimeout(() => {

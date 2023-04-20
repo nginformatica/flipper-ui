@@ -1,19 +1,18 @@
 import React from 'react'
-import VisibilityIconComponent from '.'
-
-export const VisibilityIcon = () => {
-    const [show, setShow] = React.useState(false)
-
-    return (
-        <VisibilityIconComponent
-            name='show'
-            show={show}
-            onToggle={() => setShow(!show)}
-        />
-    )
-}
+import VisibilityIcon from '.'
+import { Meta, StoryFn } from '@storybook/react'
 
 export default {
     title: 'experimental/VisibilityIcon',
-    component: VisibilityIcon
-}
+    component: VisibilityIcon,
+    args: {
+        show: false,
+        name: 'show'
+    }
+} as Meta<typeof VisibilityIcon>
+
+const Template: StoryFn<typeof VisibilityIcon> = args => (
+    <VisibilityIcon {...args} />
+)
+
+export const Default = Template.bind({})

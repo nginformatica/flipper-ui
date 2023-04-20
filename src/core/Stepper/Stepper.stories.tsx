@@ -1,14 +1,14 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Stepper from '.'
 import { Delete } from '../../icons'
 
 export default {
     title: 'Stepper',
     component: Stepper
-} as ComponentMeta<typeof Stepper>
+} as Meta<typeof Stepper>
 
-const Template: ComponentStory<typeof Stepper> = args => <Stepper {...args} />
+const Template: StoryFn<typeof Stepper> = args => <Stepper {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

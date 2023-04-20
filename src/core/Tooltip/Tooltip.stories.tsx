@@ -1,14 +1,14 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Tooltip from '.'
 import Button from '../Button'
 
 export default {
     title: 'Tooltip',
     component: Tooltip
-} as ComponentMeta<typeof Tooltip>
+} as Meta<typeof Tooltip>
 
-const Template: ComponentStory<typeof Tooltip> = args => <Tooltip {...args} />
+const Template: StoryFn<typeof Tooltip> = args => <Tooltip {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

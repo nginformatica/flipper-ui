@@ -6,10 +6,24 @@ import styled from 'styled-components'
 import type { DefaultProps } from '../types'
 
 export interface AdvertiseProps extends DefaultProps {
+    /**
+     * The comment to be displayed
+     */
     comment: string
+    /**
+     * The author of the comment
+     */
     author: string
-    commentStyle?: object
-    authorStyle?: object
+    /**
+     * The style of the comment
+     * @optional
+     */
+    commentStyle?: React.CSSProperties
+    /**
+     * The style of the author
+     * @optional
+     */
+    authorStyle?: React.CSSProperties
 }
 
 const styles = {

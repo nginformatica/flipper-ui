@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
 import React, { useState, useRef } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import format from 'date-fns/format'
 import DataTable from './DataTable'
 import Button from '../Button'
@@ -22,7 +22,7 @@ import { v4 as uuid } from 'uuid'
 export default {
     title: 'DataTable',
     component: DataTable
-} as ComponentMeta<typeof DataTable>
+} as Meta<typeof DataTable>
 
 type Data = {
     id: number

@@ -11,7 +11,7 @@ import React, {
     ReactNode,
     MouseEvent
 } from 'react'
-import { DefaultProps, HTMLElementWithDataCy } from '../types'
+import { DefaultProps } from '../types'
 import {
     Clear,
     Help as ContactSupportIcon,
@@ -67,10 +67,10 @@ interface IEditProps extends Pick<TextFieldProps, 'showEdit' | 'style'> {
     onEditClick: (event: MouseEvent<HTMLButtonElement>) => void
     onSaveClick: (event: MouseEvent<HTMLButtonElement>) => void
     editButtonProps?: Partial<
-        Omit<HTMLElementWithDataCy<HTMLButtonElement>, 'color'>
+        Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>
     >
     saveButtonProps?: Partial<
-        Omit<HTMLElementWithDataCy<HTMLButtonElement>, 'color'>
+        Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>
     >
 }
 

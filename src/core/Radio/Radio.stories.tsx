@@ -1,13 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Radio from '.'
 
 export default {
     title: 'Radio',
     component: Radio
-} as ComponentMeta<typeof Radio>
+} as Meta<typeof Radio>
 
-const Template: ComponentStory<typeof Radio> = args => <Radio {...args} />
+const Template: StoryFn<typeof Radio> = args => <Radio {...args} />
 
 const commonArgs = {
     value: 'first',

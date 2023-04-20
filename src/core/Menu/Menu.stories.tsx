@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Menu from '.'
 import Button from '../Button'
 import ListItem from '../ListItem'
@@ -8,9 +8,9 @@ import IconBackup from '@material-ui/icons/Backup'
 export default {
     title: 'Menu',
     component: Menu
-} as ComponentMeta<typeof Menu>
+} as Meta<typeof Menu>
 
-const Template: ComponentStory<typeof Menu> = args => {
+const Template: StoryFn<typeof Menu> = args => {
     const [open, setOpen] = useState(false)
 
     function handleClick() {

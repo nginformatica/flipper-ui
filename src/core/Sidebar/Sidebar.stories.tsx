@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Sidebar from '.'
 import List from '../List'
 import ListItem from '../ListItem'
@@ -8,9 +8,9 @@ import IconBackup from '@material-ui/icons/Backup'
 export default {
     title: 'Sidebar',
     component: Sidebar
-} as ComponentMeta<typeof Sidebar>
+} as Meta<typeof Sidebar>
 
-const Template: ComponentStory<typeof Sidebar> = args => <Sidebar {...args} />
+const Template: StoryFn<typeof Sidebar> = args => <Sidebar {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

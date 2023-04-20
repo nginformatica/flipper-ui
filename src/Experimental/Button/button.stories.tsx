@@ -1,11 +1,18 @@
 import React from 'react'
 import Button from '.'
-
-export const button = () => {
-    return <Button name='AddFoo' label='Add Foo' />
-}
+import { Meta, StoryFn } from '@storybook/react'
 
 export default {
     title: 'experimental/Button',
     component: Button
+} as Meta<typeof Button>
+
+const Template: StoryFn<typeof Button> = args => {
+    return <Button {...args} />
+}
+
+export const Default = Template.bind({})
+Default.args = {
+    name: 'AddFoo',
+    label: 'Add Foo'
 }

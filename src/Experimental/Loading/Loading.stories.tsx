@@ -1,13 +1,22 @@
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 import Loading from '.'
-
-export const defaultLoading = () => <Loading />
-
-export const customSize = () => <Loading size={32} />
-
-export const customMargin = () => <Loading margin={32} />
 
 export default {
     title: 'Experimental/Loading',
     component: Loading
+} as Meta<typeof Loading>
+
+const Template: StoryFn<typeof Loading> = args => <Loading {...args} />
+
+export const Default = Template.bind({})
+
+export const CustomSize = Template.bind({})
+CustomSize.args = {
+    size: 32
+}
+
+export const CustomMargin = Template.bind({})
+CustomMargin.args = {
+    margin: 32
 }

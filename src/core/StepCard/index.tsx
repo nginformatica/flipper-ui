@@ -6,7 +6,6 @@ import {
 import React from 'react'
 import StepCardSkeleton from './StepCardSkeleton'
 import Typography from '../Typography'
-import { PropWithDataCy } from '../types'
 import { StepCardDetails } from './StepCardDetails'
 import { StepCardPanel } from './StepCardPanel'
 import { Container } from './styles'
@@ -163,7 +162,7 @@ export interface IStepCardProps {
      * @type {(typeof Typography | undefined)}
      * @memberof IStepCardProps
      */
-    titleProps?: PropWithDataCy<typeof Typography>
+    titleProps?: typeof Typography
 
     /**
      * Props to be passed to the summary typography
@@ -171,28 +170,28 @@ export interface IStepCardProps {
      * @type {(typeof Typography | undefined)}
      * @memberof IStepCardProps
      */
-    summaryProps?: PropWithDataCy<typeof Typography>
+    summaryProps?: typeof Typography
 
     /**
      * Props to be passed to the expansion panel details
      * @type {(typeof MuiExpansionPanel | undefined)}
      * @memberof IStepCardProps
      */
-    expansionPanelDetailsProps?: PropWithDataCy<typeof MuiAccordionDetails>
+    expansionPanelDetailsProps?: typeof MuiAccordionDetails
 
     /**
      * Props to be passed to the linear progress bar
      * @type {(typeof LinearProgress | undefined)}
      * @memberof IStepCardProps
      */
-    linearProgressBarProps?: PropWithDataCy<typeof LinearProgress>
+    linearProgressBarProps?: typeof LinearProgress
 
     /**
      * Props to be passed to the expansion panel summary linear progress bar
      * @type {(typeof LinearProgress | undefined)}
      * @memberof IStepCardProps
      */
-    summaryLinearProgressBarProps?: PropWithDataCy<typeof LinearProgress>
+    summaryLinearProgressBarProps?: typeof LinearProgress
 
     /**
      * Whether the expansion panel is expandable

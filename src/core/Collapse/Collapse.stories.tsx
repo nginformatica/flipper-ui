@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Collapse from '.'
 import Button from '../Button'
 
 export default {
     title: 'Collapse',
     component: Collapse
-} as ComponentMeta<typeof Collapse>
+} as Meta<typeof Collapse>
 
-const Template: ComponentStory<typeof Collapse> = args => <Collapse {...args} />
+const Template: StoryFn<typeof Collapse> = args => <Collapse {...args} />
 
 export const Default = () => {
     const [open, setOpen] = useState(true)

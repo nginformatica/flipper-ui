@@ -1,13 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import InputAdornment from '.'
 
 export default {
     title: 'InputAdornment',
     component: InputAdornment
-} as ComponentMeta<typeof InputAdornment>
+} as Meta<typeof InputAdornment>
 
-const Template: ComponentStory<typeof InputAdornment> = args => (
+const Template: StoryFn<typeof InputAdornment> = args => (
     <InputAdornment {...args} />
 )
 export const Default = Template.bind({})

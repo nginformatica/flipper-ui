@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Divider from '.'
 import List from '../List'
 import ListItem from '../ListItem'
@@ -7,7 +7,7 @@ import ListItem from '../ListItem'
 export default {
     title: 'Divider',
     component: Divider
-} as ComponentMeta<typeof Divider>
+} as Meta<typeof Divider>
 
 export const Default = () => (
     <List>

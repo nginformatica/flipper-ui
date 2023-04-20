@@ -1,13 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import DateTime from '.'
 
 export default {
     title: 'DateTime',
     component: DateTime
-} as ComponentMeta<typeof DateTime>
+} as Meta<typeof DateTime>
 
-const Template: ComponentStory<typeof DateTime> = args => <DateTime {...args} />
+const Template: StoryFn<typeof DateTime> = args => <DateTime {...args} />
 
 export const Default = Template.bind({})
 

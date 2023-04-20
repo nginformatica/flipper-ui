@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import TextField from '.'
 import ListItem from '../ListItem'
 import InputAdornment from '../InputAdornment'
@@ -7,11 +7,9 @@ import InputAdornment from '../InputAdornment'
 export default {
     title: 'TextField',
     component: TextField
-} as ComponentMeta<typeof TextField>
+} as Meta<typeof TextField>
 
-const Template: ComponentStory<typeof TextField> = args => (
-    <TextField {...args} />
-)
+const Template: StoryFn<typeof TextField> = args => <TextField {...args} />
 
 export const Default = () => <TextField placeholder='Description' />
 

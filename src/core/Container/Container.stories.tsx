@@ -1,10 +1,15 @@
 import React from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Container from '.'
 
 export default {
     title: 'Container',
     component: Container
-} as ComponentMeta<typeof Container>
+} as Meta<typeof Container>
 
-export const Default = () => <Container>I am a Container</Container>
+const Template: StoryFn<typeof Container> = args => <Container {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+    children: 'I am a Container'
+}

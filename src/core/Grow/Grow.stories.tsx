@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Grow from '.'
 import Button from '../Button'
 
@@ -9,7 +9,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' }
     }
-} as ComponentMeta<typeof Grow>
+} as Meta<typeof Grow>
 
 export const Default = () => {
     const [open, setOpen] = useState(true)

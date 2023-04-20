@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import InputAdornment from '../InputAdornment'
 import MaskField from '.'
 
@@ -10,11 +10,9 @@ export default {
         helperText: { control: 'text' },
         value: { control: 'text' || 'number' }
     }
-} as ComponentMeta<typeof MaskField>
+} as Meta<typeof MaskField>
 
-const Template: ComponentStory<typeof MaskField> = args => (
-    <MaskField {...args} />
-)
+const Template: StoryFn<typeof MaskField> = args => <MaskField {...args} />
 
 export const Default = () => <MaskField placeholder='Description' />
 

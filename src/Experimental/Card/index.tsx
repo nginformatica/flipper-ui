@@ -12,9 +12,19 @@ import { ButtonProps } from '@/core/Button'
 import { IconButtonProps } from '@/core/IconButton'
 
 export interface IProps {
+    /**
+     * Children to be rendered inside the card.
+     */
     children: React.ReactNode
-    label?: string
+    /**
+     * If `true`, the card will be rendered with a nested style.
+     * @default false
+     */
     nested?: boolean
+    /**
+     * Title of the card.
+     * @default undefined
+     */
     title?: string
     name: string
     id?: string
@@ -66,7 +76,6 @@ const Card = (props: IProps) => {
         action,
         onToggleEdit,
         editing,
-        label,
         children,
         onClickAdd,
         onAddProps,

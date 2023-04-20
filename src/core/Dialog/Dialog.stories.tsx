@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Dialog from '.'
 import Button from '../Button'
 import Typography from '../Typography'
@@ -7,7 +7,7 @@ import Typography from '../Typography'
 export default {
     title: 'Dialog',
     component: Dialog
-} as ComponentMeta<typeof Dialog>
+} as Meta<typeof Dialog>
 
 export const Default = () => {
     const [open, setOpen] = useState(false)

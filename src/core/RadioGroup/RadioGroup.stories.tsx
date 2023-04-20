@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import RadioGroup from '.'
 
 export default {
     title: 'RadioGroup',
     component: RadioGroup
-} as ComponentMeta<typeof RadioGroup>
+} as Meta<typeof RadioGroup>
 
 export const Default = () => {
     const [option, setOption] = useState('first')

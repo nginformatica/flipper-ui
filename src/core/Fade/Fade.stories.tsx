@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Fade from '.'
 import Button from '../Button'
 
 export default {
     title: 'Fade',
     component: Fade
-} as ComponentMeta<typeof Fade>
+} as Meta<typeof Fade>
 
 export const Default = () => {
     const [open, setOpen] = useState(true)

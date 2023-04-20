@@ -2,33 +2,34 @@ import React from 'react'
 import DialogV2 from './Dialog'
 import ConfirmDialogComponent from './ConfirmDialog'
 import RemoveDialogComponent from './RemoveDialog'
+import { Meta, StoryFn } from '@storybook/react'
 
-export const Dialog = () => {
+const Template: StoryFn<typeof DialogV2> = args => {
     const [open, setOpen] = React.useState(false)
 
     return (
         <>
             <button onClick={() => setOpen(true)}>open dialog</button>
             <DialogV2
+                {...args}
                 open={open}
-                title='dialog title'
-                primaryButtonText='Close'
                 primaryButtonAction={() => setOpen(!open)}
-                text={'A content here!'}
             />
         </>
     )
 }
 
-export const RemoveDialog = () => {
+const TemplateWithRemoveDialog: StoryFn<
+    typeof RemoveDialogComponent
+> = args => {
     const [open, setOpen] = React.useState(false)
 
     return (
         <>
             <button onClick={() => setOpen(true)}>open dialog</button>
             <RemoveDialogComponent
+                {...args}
                 open={open}
-                text='COD123'
                 onCancel={() => setOpen(false)}
                 onConfirm={() => setOpen(false)}
             />
@@ -36,16 +37,17 @@ export const RemoveDialog = () => {
     )
 }
 
-export const ConfirmDialog = () => {
+const TemplateWithConfirmDialog: StoryFn<
+    typeof ConfirmDialogComponent
+> = args => {
     const [open, setOpen] = React.useState(false)
 
     return (
         <>
             <button onClick={() => setOpen(true)}>open dialog</button>
             <ConfirmDialogComponent
+                {...args}
                 open={open}
-                title='dialog title'
-                text='A content here!'
                 onCancel={() => setOpen(false)}
                 onConfirm={() => setOpen(false)}
             />
@@ -53,8 +55,21 @@ export const ConfirmDialog = () => {
     )
 }
 
+export const Default = Template.bind({})
+Default.args = {
+    primaryButtonText: 'Close'
+}
+
+export const RemoveDialog = TemplateWithRemoveDialog.bind({})
+export const ConfirmDialog = TemplateWithConfirmDialog.bind({})
+
 export default {
     title: 'experimental/Dialog',
     component: DialogV2,
-    subcomponents: { ConfirmDialog, RemoveDialog }
-}
+    subcomponents: { ConfirmDialog, RemoveDialog },
+    args: {
+        title: 'dialog title',
+        text: 'A content here!',
+        open: false
+    }
+} as Meta<typeof DialogV2>

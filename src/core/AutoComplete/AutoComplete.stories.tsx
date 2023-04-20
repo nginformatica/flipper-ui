@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import AutoComplete, { TSelected } from '.'
 import ListItem from '../ListItem'
@@ -8,7 +8,7 @@ import Typography from '../Typography'
 export default {
     title: 'AutoComplete',
     component: AutoComplete
-} as ComponentMeta<typeof AutoComplete>
+} as Meta<typeof AutoComplete>
 
 export const Default = () => (
     <AutoComplete

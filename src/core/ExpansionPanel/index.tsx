@@ -6,7 +6,6 @@ import React, { ReactNode, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { PaperProps } from '../Paper'
 import { EditBox, HelperBox } from '../TextField'
-import { HTMLElementWithDataCy } from '../types'
 
 export interface ExpansionPanelProps extends PaperProps {
     actions?: ReactNode
@@ -20,7 +19,7 @@ export interface ExpansionPanelProps extends PaperProps {
     detailsStyle?: object
     actionsStyle?: object
     editStyle?: React.CSSProperties
-    headerProps?: HTMLElementWithDataCy<HTMLDivElement>
+    headerProps?: React.HTMLAttributes<HTMLDivElement>
     helperIcon?: React.ReactNode
     editable?: boolean
     editing?: boolean

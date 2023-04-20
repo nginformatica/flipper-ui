@@ -1,13 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Box from '.'
 
 export default {
     title: 'Box',
     component: Box
-} as ComponentMeta<typeof Box>
+} as Meta<typeof Box>
 
-const Template: ComponentStory<typeof Box> = args => <Box {...args} />
+const Template: StoryFn<typeof Box> = args => <Box {...args} />
 
 export const Default = Template.bind({})
 

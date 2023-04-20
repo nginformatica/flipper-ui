@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import ChipField from '.'
 
 export default {
     title: 'ChipField',
     component: ChipField
-} as ComponentMeta<typeof ChipField>
+} as Meta<typeof ChipField>
 
-const Template: ComponentStory<typeof ChipField> = args => {
+const Template: StoryFn<typeof ChipField> = args => {
     const [state, setState] = useState([{ value: 'alpha' }])
 
     const handleRemove = (value: string) =>

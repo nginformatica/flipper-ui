@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Snackbar from '.'
 import Button from '../Button'
 
 export default {
     title: 'Snackbar',
     component: Snackbar
-} as ComponentMeta<typeof Snackbar>
+} as Meta<typeof Snackbar>
 
-const Template: ComponentStory<typeof Snackbar> = args => {
+const Template: StoryFn<typeof Snackbar> = args => {
     const [btnState, setBtnState] = useState(false)
     const [open, setOpen] = useState(false)
 

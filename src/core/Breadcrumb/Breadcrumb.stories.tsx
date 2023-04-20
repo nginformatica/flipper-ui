@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Link from '../Link'
 import Breadcrumb from '@/core/Breadcrumb'
 
@@ -9,11 +9,9 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' }
     }
-} as ComponentMeta<typeof Breadcrumb>
+} as Meta<typeof Breadcrumb>
 
-const Template: ComponentStory<typeof Breadcrumb> = args => (
-    <Breadcrumb {...args} />
-)
+const Template: StoryFn<typeof Breadcrumb> = args => <Breadcrumb {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

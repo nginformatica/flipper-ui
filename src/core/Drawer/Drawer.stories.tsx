@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Drawer from '.'
 import List from '../List'
 import ListItem from '../ListItem'
@@ -9,7 +9,7 @@ import Button from '../Button'
 export default {
     title: 'Drawer',
     component: Drawer
-} as ComponentMeta<typeof Drawer>
+} as Meta<typeof Drawer>
 
 export const Default = () => {
     const [open, SetOpen] = useState(false)

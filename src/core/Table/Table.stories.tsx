@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import Table from '.'
 import TableHead from './TableHead'
 import TableBody from './TableBody'
@@ -9,7 +9,7 @@ import TableCell from './TableCell'
 export default {
     title: 'Table',
     component: Table
-} as ComponentMeta<typeof Table>
+} as Meta<typeof Table>
 
 export const Default = () => (
     <Table>

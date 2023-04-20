@@ -1,13 +1,13 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Progress from '.'
 
 export default {
     title: 'Progress',
     component: Progress
-} as ComponentMeta<typeof Progress>
+} as Meta<typeof Progress>
 
-const Template: ComponentStory<typeof Progress> = args => <Progress {...args} />
+const Template: StoryFn<typeof Progress> = args => <Progress {...args} />
 
 const commonArgs = {
     margin: 24,

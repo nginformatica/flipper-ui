@@ -2,7 +2,7 @@
 /* eslint-disable max-lines */
 import { TableCell, TableRow, Typography } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import format from 'date-fns/format'
 import React, { ReactNode, useMemo, useRef, useState } from 'react'
 import Button from '../Button'
@@ -21,7 +21,7 @@ import {
 export default {
     title: 'DataTableQueryPaginated',
     component: DataTableQueryPaginated
-} as ComponentMeta<typeof DataTableQueryPaginated>
+} as Meta<typeof DataTableQueryPaginated>
 
 type DataActual = {
     id: number

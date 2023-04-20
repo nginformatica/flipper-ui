@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import List from '../List'
 import ListItem from '../ListItem'
 import IconBackup from '@material-ui/icons/Backup'
@@ -8,9 +8,9 @@ import Avatar from '../Avatar'
 export default {
     title: 'List',
     component: List
-} as ComponentMeta<typeof List>
+} as Meta<typeof List>
 
-const Template: ComponentStory<typeof List> = args => <List {...args} />
+const Template: StoryFn<typeof List> = args => <List {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

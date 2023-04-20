@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Badge from '.'
 import Button from '../Button'
 
@@ -10,9 +10,9 @@ export default {
         backgroundColor: { control: 'color' },
         counter: { control: 'number' }
     }
-} as ComponentMeta<typeof Badge>
+} as Meta<typeof Badge>
 
-const Template: ComponentStory<typeof Badge> = args => <Badge {...args} />
+const Template: StoryFn<typeof Badge> = args => <Badge {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

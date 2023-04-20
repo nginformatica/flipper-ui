@@ -1,13 +1,16 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Chapter from '.'
 
 export default {
     title: 'Chapter',
-    component: Chapter
-} as ComponentMeta<typeof Chapter>
+    component: Chapter,
+    argTypes: {
+        'data-testid': { table: { disable: true } }
+    }
+} as Meta<typeof Chapter>
 
-const Template: ComponentStory<typeof Chapter> = args => <Chapter {...args} />
+const Template: StoryFn<typeof Chapter> = args => <Chapter {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import ExpansionPanel from '.'
 import Typography from '../Typography'
 import ExpandMore from '@material-ui/icons/ExpandMore'
@@ -9,9 +9,9 @@ import TextField from '../TextField'
 export default {
     title: 'ExpansionPanel',
     component: ExpansionPanel
-} as ComponentMeta<typeof ExpansionPanel>
+} as Meta<typeof ExpansionPanel>
 
-const Template: ComponentStory<typeof ExpansionPanel> = args => {
+const Template: StoryFn<typeof ExpansionPanel> = args => {
     const [editing, setEditing] = React.useState(args.editing)
     const [details, setDetails] = React.useState(args.details)
     const inputRef = React.useRef<HTMLInputElement>(null)

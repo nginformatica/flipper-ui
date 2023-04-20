@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import Slide from '.'
 import Button from '../Button'
 
 export default {
     title: 'Slide',
     component: Slide
-} as ComponentMeta<typeof Slide>
+} as Meta<typeof Slide>
 
-const Template: ComponentStory<typeof Slide> = args => {
+const Template: StoryFn<typeof Slide> = args => {
     const [open, setOpen] = useState(true)
     const [btnLabel, setBtnLabel] = useState('Close')
 
