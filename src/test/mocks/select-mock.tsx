@@ -1,5 +1,5 @@
-import ListItem from '@/core/data-display/ListItem'
-import Select, { SelectProps } from '@/core/inputs/Select'
+import ListItem from '@/core/data-display/list-item'
+import Select, { SelectProps } from '@/core/inputs/select'
 import * as React from 'react'
 
 interface IProps {
