@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PinInput, { PinInputGridProps } from '../../core/PinInput'
+import PinInput, { PinInputGridProps } from '../../core/inputs/PinInput'
 import { Button } from '@material-ui/core'
 const PIN_LENGTH = 6
 

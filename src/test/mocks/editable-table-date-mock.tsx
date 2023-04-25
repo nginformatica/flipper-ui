@@ -1,5 +1,7 @@
 import * as React from 'react'
-import EditableTable, { EditableTableProps } from '@/core/EditableTable'
+import EditableTable, {
+    EditableTableProps
+} from '@/core/data-display/EditableTable'
 
 interface IProps<T extends object> {
     tableProps?: Partial<EditableTableProps<T>>

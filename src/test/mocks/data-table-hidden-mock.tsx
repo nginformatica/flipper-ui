@@ -1,9 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import Button from '@/core/Button'
-import { DataTableAction, DataTableController } from '@/core/DataTable'
-import DataTable from '@/core/DataTable/DataTable'
-import { ColumnSpec, Identifier, RowMode } from '@/core/DataTable/types'
-import Typography from '@/core/Typography'
+import Button from '@/core/inputs/Button'
+import {
+    DataTableAction,
+    DataTableController
+} from '@/core/data-display/DataTable'
+import DataTable from '@/core/data-display/DataTable/DataTable'
+import {
+    ColumnSpec,
+    Identifier,
+    RowMode
+} from '@/core/data-display/DataTable/types'
+import Typography from '@/core/data-display/Typography'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,

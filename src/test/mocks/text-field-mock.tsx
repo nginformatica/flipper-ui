@@ -1,5 +1,5 @@
-import ListItem from '@/core/ListItem'
-import TextField, { TextFieldProps } from '@/core/TextField'
+import ListItem from '@/core/data-display/ListItem'
+import TextField, { TextFieldProps } from '@/core/inputs/TextField'
 import * as React from 'react'
 
 interface IProps {

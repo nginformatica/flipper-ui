@@ -1,5 +1,5 @@
 import * as React from 'react'
-import RadioGroup, { RadioGroupProps } from '@/core/RadioGroup'
+import RadioGroup, { RadioGroupProps } from '@/core/inputs/RadioGroup'
 
 interface IProps {
     radioGroupProps?: Partial<RadioGroupProps>
