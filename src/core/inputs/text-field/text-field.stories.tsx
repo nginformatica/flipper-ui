@@ -65,9 +65,7 @@ export const useWithSelectAndClear = () => {
         setValue('')
     }
 
-    const handleChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-    ) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
     }
 

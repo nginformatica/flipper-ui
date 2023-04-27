@@ -177,7 +177,7 @@ export const TextField = ({
     hasClear,
     onClear,
     ...otherProps
-}: TextFieldProps & MuiTextFieldProps) => {
+}: TextFieldProps & Omit<MuiTextFieldProps, 'margin' | 'variant'>) => {
     const clearStyle = makeStyles({
         iconOutlined: {
             position: 'relative',
