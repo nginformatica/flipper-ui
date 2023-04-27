@@ -7,6 +7,7 @@ module.exports = {
         '<rootDir>/src/core/**/*.(ts|tsx)',
         '<rootDir>/src/experimental/**/*.(ts|tsx)',
         '!<rootDir>/src/core/data-display/data-table/*.(ts|tsx)',
+        '!<rootDir>/src/experimental/auto-complete-lab/*.(ts|tsx)',
         '!<rootDir>/src/experimental/index.ts',
         '!<rootDir>/src/experimental/dialog/index.ts',
         '!<rootDir>/src/experimental/fab/index.ts'
