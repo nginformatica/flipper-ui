@@ -1,3 +1,3 @@
-import stepCardImage from '../images/stepCardImage.svg'
+import stepCardImage from '../images/step-card-image.svg'
 
 export const stepCardImageUrl = stepCardImage

@@ -1,4 +1,4 @@
-import StepCard, { IStepCardProps } from '@/core/StepCard'
+import StepCard, { IStepCardProps } from '@/core/surfaces/step-card'
 import * as React from 'react'
 
 interface IProps {

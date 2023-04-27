@@ -5,7 +5,10 @@
         "module": "commonjs", // specify module code generation
         "jsx": "react", // use typescript to transpile jsx to js
         "target": "es2016", // specify ECMAScript target version
-        "types": ["node", "jest"],
+        "types": [
+            "node",
+            "jest"
+        ],
         "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
@@ -24,9 +27,16 @@
         "baseUrl": ".",
         "skipLibCheck": true,
         "paths": {
-            "@/*": ["./src/*"],
+            "@/*": [
+                "./src/*"
+            ],
         },
     },
-    "include": ["./src/*","./src/test/**/*", "./src/core/**/*", "./src/lab/*", "./src/charts/*", ".src/*.d.ts", "./src/lib/**/*"],
-    "exclude": ["./src/**/*.spec.tsx", "./src/**/*.stories.*"]
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/*.tsx",
+        "./src/*.d.ts",
+        "./src/lib/**/*"
+    ],
+    // "exclude": ["./src/**/*.spec.tsx"]
 }

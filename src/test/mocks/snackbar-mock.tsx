@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Snackbar } from '@/index'
-import { SnackBarProps } from '@/core/Snackbar'
+import { SnackBarProps } from '@/core/feedback/snackbar'
 import { IconButton as MuiIconButton } from '@material-ui/core'
 import { Close as IconClose } from '@material-ui/icons'
 
