@@ -18,7 +18,19 @@ const config: StorybookConfig = {
         name: '@storybook/react-webpack5',
         options: {}
     },
-
+    typescript: {
+        check: false,
+        checkOptions: {},
+        reactDocgen: 'react-docgen-typescript',
+        reactDocgenTypescriptOptions: {
+            shouldExtractLiteralValuesFromEnum: true,
+            shouldRemoveUndefinedFromOptional: true,
+            propFilter: prop =>
+                prop.parent
+                    ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName)
+                    : true
+        }
+    },
     webpackFinal: async config => {
         if (config.resolve?.alias) {
             config.resolve.alias['@'] = path.resolve(__dirname, '../src')

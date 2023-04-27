@@ -22,7 +22,7 @@ export interface IClasses {
     }
 }
 
-const Tabs = ({
+export const Tabs = ({
     children,
     centered = true,
     padding = '6px 0 0',

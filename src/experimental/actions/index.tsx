@@ -39,7 +39,7 @@ export const Wrapper = styled.div<IWrapper>`
     margin: ${props => props.margin};
 `
 
-const Actions = (props: IProps) => {
+export const Actions = (props: IProps) => {
     const showButton =
         !props.readonly && (!props.buttons || props.buttons.includes('confirm'))
 

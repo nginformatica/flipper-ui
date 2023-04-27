@@ -1,6 +1,7 @@
 import {
     InputAdornment,
     TextField as MuiTextField,
+    TextFieldProps as MuiTextFieldProps,
     IconButton as MuiButton
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -160,7 +161,7 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
-const TextField = ({
+export const TextField = ({
     margin,
     padding,
     style = {},
@@ -176,7 +177,7 @@ const TextField = ({
     hasClear,
     onClear,
     ...otherProps
-}: TextFieldProps) => {
+}: TextFieldProps & MuiTextFieldProps) => {
     const clearStyle = makeStyles({
         iconOutlined: {
             position: 'relative',

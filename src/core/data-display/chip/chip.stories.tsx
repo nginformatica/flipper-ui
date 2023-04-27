@@ -6,17 +6,13 @@ import FaceIcon from '@material-ui/icons/Face'
 
 export default {
     title: 'DataDisplay/Chip',
-    component: Chip,
-    argTypes: {
-        backgroundColor: { control: 'color' }
-    }
+    component: Chip
 } as Meta<typeof Chip>
 
 const Template: StoryFn<typeof Chip> = args => <Chip {...args} />
 
 const commonArgs = {
-    label: 'Hello darkness my old friend',
-    children: 'Chip'
+    label: 'Hello darkness my old friend'
 }
 
 export const Default = Template.bind({})

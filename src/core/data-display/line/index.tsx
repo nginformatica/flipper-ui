@@ -3,12 +3,14 @@ import { background, primary as primaryColor } from '@/colors'
 import { DefaultProps } from '../../types'
 
 export interface LineProps extends DefaultProps {
+    /**
+     * If true, the line will use the primary color.
+     */
     primary?: boolean
-    width?: string
     'data-testid'?: string
 }
 
-const Line = ({
+export const Line = ({
     padding,
     margin,
     style,

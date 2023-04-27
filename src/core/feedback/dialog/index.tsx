@@ -1,4 +1,5 @@
 import MuiDialog from '@material-ui/core/Dialog'
+import { DialogProps as MuiDialogProps } from '@material-ui/core'
 import MuiDialogActions from '@material-ui/core/DialogActions'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogContentText from '@material-ui/core/DialogContentText'
@@ -8,7 +9,9 @@ import { DefaultProps } from '../../types'
 import { makeStyles } from '@material-ui/core/styles'
 import styled from 'styled-components'
 
-export interface DialogProps extends DefaultProps {
+export interface DialogProps
+    extends DefaultProps,
+        Omit<MuiDialogProps, 'scroll' | 'title'> {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
@@ -58,7 +61,7 @@ const useStyles = makeStyles({
     }
 })
 
-const Dialog = ({
+export const Dialog = ({
     snippet,
     style,
     padding,

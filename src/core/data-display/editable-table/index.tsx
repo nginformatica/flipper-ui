@@ -36,18 +36,57 @@ import { DARK, GREY } from '@/colors'
 import { getLocalization } from '@/lib/localization'
 
 export interface EditableTableProps<T extends object> {
+    /**
+     * The title of the table
+     */
     title?: string
+    /**
+     * The color of the add button
+     */
     color?: 'primary' | 'inherit' | 'secondary' | 'disabled'
+    /**
+     * The columns of the table
+     */
     columns?: Column<object>[]
+    /**
+     * The data of the table
+     */
     data?: T[]
+    /**
+     * The options of the table
+     */
     options?: Options<T>
+    /**
+     * Show the pagination info
+     */
     paginationInfo?: boolean
+    /**
+     * If 'true', the rows wont expand
+     */
     noRowsExpand?: boolean
+    /**
+     * If 'true', the table will have no header
+     */
     noHeader?: boolean
+    /**
+     * List of suggestions for the autocomplete field
+     */
     autoCompleteSuggestions?: TSuggestion[]
+    /**
+     * The field to be used as the autocomplete field
+     */
     autoCompleteField?: string
+    /**
+     * If 'true', the add button will be disabled
+     */
     disableAddHeader?: boolean
+    /**
+     * The error message to be displayed
+     */
     errors?: string[]
+    /**
+     * The input value
+     */
     value?: string
     onRowClick?: (event?: React.MouseEvent, rowData?: T) => void
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
@@ -113,7 +152,9 @@ const Wrapper = styled.div`
         justify-content: flex-end;
     }
 `
-const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
+export const EditableTable = <T extends object>(
+    props: EditableTableProps<T>
+) => {
     const addButtonColor =
         (props.color !== 'disabled' && props.color) || 'primary'
     const valueRef = useRef<string | number>()

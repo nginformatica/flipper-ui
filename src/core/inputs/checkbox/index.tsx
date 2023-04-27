@@ -28,7 +28,7 @@ export interface CheckboxProps extends DefaultProps {
 
 const DENSE = { padding: '2px', margin: '0px 7px' }
 
-const Checkbox = (props: CheckboxProps) => {
+export const Checkbox = (props: CheckboxProps) => {
     const {
         type = 'checkbox',
         margin,

@@ -25,7 +25,7 @@ const PIN_MIN_VALUE = 0
 const PIN_MAX_VALUE = 9
 const BACKSPACE_KEY = 'Backspace'
 
-const PinInput = ({
+export const PinInput = ({
     pinLength,
     pin,
     setPin,

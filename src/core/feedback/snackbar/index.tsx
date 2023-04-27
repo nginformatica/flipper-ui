@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const SnackBar = (props: SnackBarProps) => {
+export const SnackBar = (props: SnackBarProps) => {
     const {
         id,
         action,

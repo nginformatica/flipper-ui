@@ -45,7 +45,7 @@ const Li = styled.li<IListItem>`
     }
 `
 
-const Node = (props: NodeProps) => {
+export const Node = (props: NodeProps) => {
     const [open, setOpen] = React.useState(false)
     const { id, name, children, style = {}, className } = props
 

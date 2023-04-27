@@ -67,7 +67,7 @@ const paperStyle: CSSProperties = {
     flexDirection: 'column'
 }
 
-const Card = (props: IProps) => {
+export const Card = (props: IProps) => {
     const {
         id,
         name,

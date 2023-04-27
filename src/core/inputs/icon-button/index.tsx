@@ -10,7 +10,7 @@ export interface IconButtonProps extends DefaultProps {
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-const IconButton = ({
+export const IconButton = ({
     children,
     padding,
     margin,

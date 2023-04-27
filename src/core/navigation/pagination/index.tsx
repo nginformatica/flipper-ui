@@ -24,7 +24,7 @@ const Content = styled.div`
     margin: 0.75em;
 `
 
-const Pagination = (props: PaginationProps) => {
+export const Pagination = (props: PaginationProps) => {
     const {
         active,
         style,

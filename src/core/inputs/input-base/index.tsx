@@ -1,8 +1,13 @@
-import { InputBase as MuiInputBase } from '@material-ui/core'
+import {
+    InputBase as MuiInputBase,
+    InputBaseProps as MuiInputBaseProps
+} from '@material-ui/core'
 import React, { ChangeEvent, ReactNode } from 'react'
 import { DefaultProps } from '../../types'
 
-export interface InputAdornmentProps extends DefaultProps {
+export interface InputAdornmentProps
+    extends DefaultProps,
+        Omit<MuiInputBaseProps, 'margin'> {
     autoComplete?: string
     autoFocus?: boolean
     classes?: object
@@ -25,7 +30,7 @@ export interface InputAdornmentProps extends DefaultProps {
     value?: string | number | boolean
 }
 
-const InputAdornment = ({
+export const InputBase = ({
     margin,
     padding,
     style = {},
@@ -39,4 +44,4 @@ const InputAdornment = ({
     />
 )
 
-export default InputAdornment
+export default InputBase

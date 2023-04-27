@@ -5,7 +5,14 @@ import IconButton from '.'
 
 export default {
     title: 'Inputs/IconButton',
-    component: IconButton
+    component: IconButton,
+    argTypes: {
+        'data-testid': {
+            table: {
+                disable: true
+            }
+        }
+    }
 } as Meta<typeof IconButton>
 
 const Template: StoryFn<typeof IconButton> = args => <IconButton {...args} />

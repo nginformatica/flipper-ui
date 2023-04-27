@@ -81,7 +81,7 @@ const Action = styled.div<IAction>`
     padding: 4px;
 `
 
-const Sidebar = ({
+export const Sidebar = ({
     id,
     anchor = 'left',
     className,

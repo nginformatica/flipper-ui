@@ -12,7 +12,7 @@ export interface TreeProps {
     nodes?: INode[]
 }
 
-const Tree = ({ nodes = [], ...otherProps }: TreeProps): JSX.Element => {
+export const Tree = ({ nodes = [], ...otherProps }: TreeProps): JSX.Element => {
     const renderNode = (
         node: INode,
         index: string,

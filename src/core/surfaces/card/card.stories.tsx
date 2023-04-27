@@ -5,10 +5,7 @@ import Button from '@/core/inputs/button'
 
 export default {
     title: 'Surfaces/Card',
-    component: Card,
-    argTypes: {
-        backgroundColor: { control: 'color' }
-    }
+    component: Card
 } as Meta<typeof Card>
 
 const url =

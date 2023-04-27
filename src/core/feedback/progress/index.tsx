@@ -28,7 +28,7 @@ export interface ProgressProps extends DefaultProps {
     linear?: boolean
 }
 
-const Progress = ({
+export const Progress = ({
     linear,
     style = {},
     margin,

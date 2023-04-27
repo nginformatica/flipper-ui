@@ -17,7 +17,12 @@ const StyledButton = styled(IconButton)`
     height: 36px !important;
 `
 
-const VisibilityIcon = ({ show, onToggle, name, ...otherProps }: IProps) => (
+export const VisibilityIcon = ({
+    show,
+    onToggle,
+    name,
+    ...otherProps
+}: IProps) => (
     <StyledButton {...otherProps} padding='0px' name={name} onClick={onToggle}>
         {show ? (
             <IconVisibilityOff data-testid='icon-off' />

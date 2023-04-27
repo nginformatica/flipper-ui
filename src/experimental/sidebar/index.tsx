@@ -85,7 +85,7 @@ const emptyList: ISidebarOption[] = []
 /**
  * Sidebar component V2
  */
-const Sidebar = (props: IProps) => {
+export const Sidebar = (props: IProps) => {
     const {
         options,
         loading,

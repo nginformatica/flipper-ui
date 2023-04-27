@@ -38,8 +38,7 @@ const theme = {
     }
 }
 
-const DialogV2 = (props: IProps) => {
-    // extract all itens from props
+export const DialogV2 = (props: IProps) => {
     const {
         open,
         title,

@@ -6,7 +6,7 @@ const ContainerStyles: React.CSSProperties = {
     flex: 1
 }
 
-const Container = ({
+export const Container = ({
     children,
     padding,
     margin,

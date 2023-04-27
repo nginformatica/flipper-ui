@@ -8,10 +8,25 @@ import { theme } from 'nginformatica-styleguide'
 const { grays } = theme.colors
 
 export interface LineProps extends DefaultProps {
+    /**
+     * If true, the avatar will have a primary color background.
+     */
     primary?: boolean
+    /**
+     * The width of the component container.
+     */
     width?: string
+    /**
+     * The variant to use.
+     */
     variant?: TypographyProps['variant']
+    /**
+     * The style applied to the children Typography component.
+     */
     childrenStyle?: CSSProperties
+    /**
+     * The children of the component.
+     */
     children?: React.ReactNode
     'data-testid'?: string
 }
@@ -37,7 +52,7 @@ const Container = styled.div`
     }
 `
 
-const Chapter = ({
+export const Chapter = ({
     padding,
     margin,
     style,

@@ -1,14 +1,17 @@
 import {
     IconButton,
     InputAdornment,
-    Select as MuiSelect
+    Select as MuiSelect,
+    SelectProps as MuiSelectProps
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Clear } from '@material-ui/icons'
 import React, { ChangeEvent } from 'react'
 import { DefaultProps } from '../../types'
 
-export interface SelectProps extends DefaultProps {
+export interface SelectProps
+    extends DefaultProps,
+        Omit<MuiSelectProps, 'margin' | 'value' | 'event' | 'onChange'> {
     autoWidth?: boolean
     value?: string | number
     multiple?: boolean
@@ -35,7 +38,7 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
-const Select = ({
+export const Select = ({
     children,
     style = {},
     margin,

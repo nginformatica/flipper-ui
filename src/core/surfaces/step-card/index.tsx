@@ -273,7 +273,7 @@ export interface IStepCardProps {
  *   defaultExpanded={false}
  * />
  */
-const StepCard = ({
+export const StepCard = ({
     expanded,
     loading = false,
     percentage,

@@ -1,13 +1,13 @@
-import { AppBar, Toolbar } from '@material-ui/core'
+import { AppBar, Toolbar, AppBarProps } from '@material-ui/core'
 import React from 'react'
 import { PaperProps } from '@/core/surfaces/paper'
 
-export interface HeaderProps extends PaperProps {
+export interface HeaderProps extends Omit<PaperProps, 'classes'>, AppBarProps {
     position?: 'absolute' | 'fixed' | 'static' | 'sticky'
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }
 
-const Header = ({
+export const Header = ({
     children,
     padding,
     margin,

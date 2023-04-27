@@ -5,10 +5,7 @@ import Breadcrumb from '.'
 
 export default {
     title: 'Navigation/Breadcrumb',
-    component: Breadcrumb,
-    argTypes: {
-        backgroundColor: { control: 'color' }
-    }
+    component: Breadcrumb
 } as Meta<typeof Breadcrumb>
 
 const Template: StoryFn<typeof Breadcrumb> = args => <Breadcrumb {...args} />

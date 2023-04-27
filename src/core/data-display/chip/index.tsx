@@ -1,10 +1,14 @@
-import { Chip as MuiChip } from '@material-ui/core'
+import { Chip as MuiChip, ChipProps as MuiChipProps } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 import { DefaultProps } from '../../types'
-import { ChipProps } from '@material-ui/core/Chip'
 
-export interface IChipProps extends DefaultProps {
+export interface IChipProps
+    extends MuiChipProps,
+        Omit<DefaultProps, 'children'> {
+    /**
+     * If `true`, the chip will be squared.
+     */
     square?: boolean
 }
 
@@ -17,13 +21,13 @@ const useStyles = makeStyles({
     }
 })
 
-const Chip = ({
+export const Chip = ({
     square,
     padding,
     margin,
     style = {},
     ...otherProps
-}: ChipProps & IChipProps) => {
+}: IChipProps) => {
     const classes = useStyles()
 
     return (

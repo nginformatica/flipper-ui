@@ -44,7 +44,7 @@ const StyledChipInput = styled(ChipInput)`
     }
 `
 
-const ChipField = <T extends TChipValues>(props: ChipFieldProps<T>) => {
+export const ChipField = <T extends TChipValues>(props: ChipFieldProps<T>) => {
     const values = useMemo(
         () => props.values.map(item => item.value),
         [props.values]

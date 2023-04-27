@@ -64,7 +64,7 @@ export const CardHeader = ({
     </MuiCardHeader>
 )
 
-const Card = ({
+export const Card = ({
     margin,
     padding,
     style,

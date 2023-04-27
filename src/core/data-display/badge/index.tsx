@@ -6,8 +6,13 @@ import type { DefaultProps } from '../../types'
 
 export interface BadgeProps extends DefaultProps, MuiBadgeProps {
     children: React.ReactNode
-    max?: number
+    /**
+     * The number to display in the badge.
+     */
     counter: number | string
+    /**
+     * The position of the badge.
+     */
     position?: {
         top?: number
         bottom?: number
@@ -26,7 +31,7 @@ const useBadgeStyles = (position: BadgeProps['position']) => {
     return getStyles()
 }
 
-const Badge = (props: BadgeProps) => {
+export const Badge = (props: BadgeProps) => {
     const {
         children,
         counter,

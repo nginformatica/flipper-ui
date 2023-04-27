@@ -9,7 +9,7 @@ export interface CollapseProps extends DefaultProps {
     children?: React.ReactNode
 }
 
-const Collapse = ({
+export const Collapse = ({
     children,
     padding,
     margin,

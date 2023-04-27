@@ -64,7 +64,7 @@ export type TSelected = ISelected | string
 const removeAccents = (text: string) =>
     text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
-const AutoComplete = (props: AutoCompleteProps) => {
+export const AutoComplete = (props: AutoCompleteProps) => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const index = props.suggestions.findIndex(suggestion => {

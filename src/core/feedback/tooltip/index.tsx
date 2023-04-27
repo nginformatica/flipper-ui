@@ -26,7 +26,7 @@ export interface TooltipProps extends DefaultProps {
     enterDelay?: number
 }
 
-const Tooltip = ({
+export const Tooltip = ({
     children,
     withWrapper,
     wrapperStyle,

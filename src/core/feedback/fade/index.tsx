@@ -8,7 +8,7 @@ export interface FadeProps extends DefaultProps {
     children: React.ReactElement<Record<string, unknown>>
 }
 
-const Fade = ({
+export const Fade = ({
     children,
     padding,
     margin,

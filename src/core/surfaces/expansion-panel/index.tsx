@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { PaperProps } from '@/core/surfaces/paper'
 import { EditBox, HelperBox } from '@/core/inputs/text-field'
 
-export interface ExpansionPanelProps extends PaperProps {
+export interface ExpansionPanelProps extends Omit<PaperProps, 'onChange'> {
     actions?: ReactNode
     defaultExpanded?: boolean
     details?: ReactNode
@@ -47,7 +47,7 @@ const ExpansionPanelHeaderWrapper = styled.div`
     }
 `
 
-const ExpansionPanel = ({
+export const ExpansionPanel = ({
     actions,
     details,
     expandIcon,

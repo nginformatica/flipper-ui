@@ -9,7 +9,7 @@ export interface SlideProps extends DefaultProps {
     children?: React.ReactElement<Record<string, unknown>>
 }
 
-const Slide = ({
+export const Slide = ({
     children,
     direction,
     margin,

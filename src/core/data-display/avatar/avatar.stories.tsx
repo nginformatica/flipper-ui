@@ -6,8 +6,11 @@ export default {
     title: 'DataDisplay/Avatar',
     component: Avatar,
     argTypes: {
-        backgroundColor: { control: 'color' },
-        children: { control: 'text' }
+        'data-testid': {
+            table: {
+                disable: true
+            }
+        }
     }
 } as Meta<typeof Avatar>
 

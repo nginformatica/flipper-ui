@@ -5,7 +5,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 const mainColor = theme.colors.grays.g7
 const subColor = '#CFCFCF'
-const Skeleton = (props: SkeletonProps) => (
+
+export const Skeleton = (props: SkeletonProps) => (
     <SkeletonLoading
         containerTestId='skeleton-container'
         baseColor={mainColor}

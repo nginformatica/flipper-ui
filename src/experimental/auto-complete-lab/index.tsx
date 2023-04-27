@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     }
 })
 
-const Autocomplete: typeof MuiAutocomplete = props => {
+export const Autocomplete: typeof MuiAutocomplete = props => {
     const { classes, ...otherProps } = props
     const styles = useStyles(props)
 

@@ -3,6 +3,7 @@ import React, { CSSProperties, ChangeEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 import { ExpandMore as IconExpand } from '@/icons'
 import { ExpansionPanel, Typography } from '@/index'
+import { PaperProps as FlipperPaperProps } from '@/core/surfaces/paper'
 
 const Paper = styled(ExpansionPanel)`
     && {
@@ -14,7 +15,8 @@ const Paper = styled(ExpansionPanel)`
     }
 `
 
-export interface IProps {
+export interface PaperProps
+    extends Omit<FlipperPaperProps, 'title' | 'onChange'> {
     expanded?: boolean
     defaultExpanded?: boolean
     hideSummary?: boolean
@@ -52,7 +54,7 @@ const Title = styled(Typography)`
 const NESTED_ELEVATION = 0
 const DEFAULT_ELEVATION = 2
 
-const Panel = (props: IProps) => {
+export const Panel = (props: PaperProps) => {
     const {
         hideExpansionIcon,
         expanded,

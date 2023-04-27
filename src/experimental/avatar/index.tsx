@@ -15,7 +15,7 @@ export interface IProps {
 
 const FIRST_LETTER = 1
 
-const Avatar = (props: IProps) => {
+export const Avatar = (props: IProps) => {
     const getChild = () => {
         if (props.name) {
             return take(FIRST_LETTER, props.name.toUpperCase())

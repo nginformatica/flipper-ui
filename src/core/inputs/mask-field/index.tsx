@@ -1,8 +1,8 @@
 import React from 'react'
 import TextField, { TextFieldProps } from '@/core/inputs/text-field'
-import NumberFormat from 'react-number-format'
+import NumberFormat, { NumberFormatProps } from 'react-number-format'
 
-export interface MaskFieldProps {
+export interface MaskFieldProps extends NumberFormatProps {
     mask?: string
     type?: 'text' | 'tel' | 'password'
     decimalSeparator?: string
@@ -13,7 +13,7 @@ export interface MaskFieldProps {
     customInput?: React.ComponentType<TextFieldProps>
 }
 
-const MaskField = (props: TextFieldProps & MaskFieldProps) => {
+export const MaskField = (props: TextFieldProps & MaskFieldProps) => {
     const { customInput, ...otherProps } = props
 
     return (

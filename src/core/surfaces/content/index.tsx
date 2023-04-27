@@ -12,7 +12,7 @@ const ContainerStyles: React.CSSProperties = {
     transition: 'all 500ms ease'
 }
 
-const Content = ({
+export const Content = ({
     children,
     padding,
     margin,

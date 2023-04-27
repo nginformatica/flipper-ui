@@ -3,11 +3,13 @@ import React from 'react'
 import { DefaultProps } from '../../types'
 import { silver } from '@/colors'
 
-export interface TableProps extends DefaultProps {
+export interface TableProps
+    extends DefaultProps,
+        Omit<MuiTableProps, 'padding'> {
     spacing?: MuiTableProps['padding']
 }
 
-const Table = ({
+export const Table = ({
     style,
     margin,
     padding,

@@ -8,8 +8,14 @@ import React from 'react'
 import { DefaultProps } from '../../types'
 
 export interface ListProps extends DefaultProps {
+    /**
+     * The title of the list
+     */
     title?: string
     dense?: boolean
+    /**
+     * The color of the list
+     */
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
 }
 
@@ -34,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const List = ({
+export const List = ({
     title,
     padding,
     margin,

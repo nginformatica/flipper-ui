@@ -4,7 +4,14 @@ import Line from '.'
 
 export default {
     title: 'DataDisplay/Line',
-    component: Line
+    component: Line,
+    argTypes: {
+        'data-testid': {
+            table: {
+                disable: true
+            }
+        }
+    }
 } as Meta<typeof Line>
 
 const Template: StoryFn<typeof Line> = args => <Line {...args} />

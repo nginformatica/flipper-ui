@@ -1,8 +1,11 @@
-import { Radio as MuiRadio } from '@material-ui/core'
+import {
+    Radio as MuiRadio,
+    RadioProps as MuiRadioProps
+} from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
 import { DefaultProps } from '../../types'
 
-export interface RadioProps extends DefaultProps {
+export interface RadioProps extends DefaultProps, MuiRadioProps {
     checked?: boolean
     color?: 'primary' | 'secondary' | 'default'
     value?: string
@@ -10,7 +13,12 @@ export interface RadioProps extends DefaultProps {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Radio = ({ padding, margin, style, ...otherProps }: RadioProps) => (
+export const Radio = ({
+    padding,
+    margin,
+    style,
+    ...otherProps
+}: RadioProps) => (
     <MuiRadio {...otherProps} style={{ padding, margin, ...style }} />
 )
 

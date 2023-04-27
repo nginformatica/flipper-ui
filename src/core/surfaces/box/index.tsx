@@ -8,7 +8,7 @@ export interface BoxProps extends DefaultProps {
     'data-testid'?: string
 }
 
-const Box = ({
+export const Box = ({
     children,
     margin,
     padding = 18,

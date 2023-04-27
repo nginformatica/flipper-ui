@@ -1,9 +1,9 @@
-import { Button } from '@/index'
 import { NoteAdd as IconAdd } from '@/icons'
 import React from 'react'
 import styled from 'styled-components'
+import Button, { ButtonProps } from '@/core/inputs/button'
 
-export type Props = {
+export interface Props extends ButtonProps {
     label?: string
     name: string
     margin?: string | number
@@ -18,7 +18,7 @@ const ButtonStyled = styled(Button)`
     justify-content: center;
 `
 
-const AddButton = (props: Props) => (
+export const AddButton = (props: Props) => (
     <ButtonStyled
         {...props}
         variant='dashed'

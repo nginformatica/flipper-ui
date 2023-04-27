@@ -6,7 +6,14 @@ import ListItem from '@/core/data-display/list-item'
 
 export default {
     title: 'DataDisplay/Divider',
-    component: Divider
+    component: Divider,
+    argTypes: {
+        'data-testid': {
+            table: {
+                disable: true
+            }
+        }
+    }
 } as Meta<typeof Divider>
 
 export const Default = () => (
