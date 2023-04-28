@@ -22,7 +22,9 @@ import {
 import IconButton from '../icon-button'
 import styled from 'styled-components'
 
-export interface TextFieldProps extends DefaultProps {
+export interface TextFieldProps
+    extends DefaultProps,
+        Omit<MuiTextFieldProps, 'margin' | 'variant'> {
     autoComplete?: string
     autoFocus?: boolean
     defaultValue?: string | number
@@ -177,7 +179,7 @@ export const TextField = ({
     hasClear,
     onClear,
     ...otherProps
-}: TextFieldProps & Omit<MuiTextFieldProps, 'margin' | 'variant'>) => {
+}: TextFieldProps) => {
     const clearStyle = makeStyles({
         iconOutlined: {
             position: 'relative',
