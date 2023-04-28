@@ -10,8 +10,10 @@ interface IProps {
 const Default = (props: IProps) => {
     const [select, setSelect] = React.useState(props.initialValue || '')
 
-    function handleChange(value: string) {
-        setSelect(value)
+    function handleChange(
+        event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+    ) {
+        setSelect(event.target.value)
     }
 
     const handleClear = () => {

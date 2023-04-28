@@ -20,7 +20,7 @@ export interface SelectProps
     children: React.ReactNode
     onClear?: () => void
     onClose?: () => void
-    onChange: (value: string) => void
+    onChange: (event: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void
 }
 
 const iconStyle = {
@@ -62,7 +62,7 @@ export const Select = ({
     const handleChange = (
         event: ChangeEvent<HTMLSelectElement | HTMLInputElement>
     ) => {
-        onChange(event.target.value)
+        onChange(event)
     }
     const hasValue = !!otherProps.value
 

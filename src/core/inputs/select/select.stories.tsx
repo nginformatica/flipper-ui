@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { Meta } from '@storybook/react'
 import Select from '.'
 import ListItem from '@/core/data-display/list-item'
@@ -11,8 +11,10 @@ export default {
 export const Default = () => {
     const [select, setSelect] = useState('3')
 
-    function handleChange(value: string) {
-        setSelect(value)
+    function handleChange(
+        event: ChangeEvent<HTMLSelectElement | HTMLInputElement>
+    ) {
+        setSelect(event.target.value)
     }
 
     return (
@@ -32,8 +34,10 @@ export const Default = () => {
 export const WithClear = () => {
     const [select, setSelect] = useState('3')
 
-    function handleChange(value: string) {
-        setSelect(value)
+    function handleChange(
+        event: ChangeEvent<HTMLSelectElement | HTMLInputElement>
+    ) {
+        setSelect(event.target.value)
     }
 
     const handleClear = () => {
