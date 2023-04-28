@@ -115,6 +115,14 @@ module.exports = {
                 }
             }
         ],
+        [
+            'module-resolver',
+            {
+                alias: {
+                    '@': './src'
+                }
+            }
+        ],
         '@babel/plugin-transform-runtime',
         'transform-class-properties'
     ],
