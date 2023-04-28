@@ -42,7 +42,11 @@ describe('Select', () => {
         const option = screen.getByText('Option 1')
         await act(async () => await userEvent.click(option))
 
-        expect(onChangeSpy).toBeCalledWith('1')
+        expect(onChangeSpy).toBeCalledWith(
+            expect.objectContaining({
+                target: { value: '1', name: undefined }
+            })
+        )
     })
 
     it('should render with clear button', async () => {
