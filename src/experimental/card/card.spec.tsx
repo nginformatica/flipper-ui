@@ -36,6 +36,22 @@ describe('Card', () => {
         expect(title).toBeDefined()
     })
 
+    it('should render add button with label', () => {
+        const onAddClickSpy = jest.fn()
+        render(
+            <Card
+                name='test'
+                title='test-title'
+                onAddBtnLabel='add button'
+                onClickAdd={onAddClickSpy}>
+                <h1>test</h1>
+            </Card>
+        )
+        const addBtn = screen.getByText('add button')
+
+        expect(addBtn).toBeDefined()
+    })
+
     it('should render edit button with editing state', () => {
         const onToggleEdit = jest.fn()
         const onEditProps: Partial<IconButtonProps> = {
