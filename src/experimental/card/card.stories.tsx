@@ -37,3 +37,11 @@ Editing.args = {
     onToggleEdit: () => alert('onToggleEdit'),
     children: <Typography>Dummy content</Typography>
 }
+
+export const WithOnClickAdd = Template.bind({})
+WithOnClickAdd.args = {
+    readonly: false,
+    onAddBtnLabel: 'Add',
+    onClickAdd: () => alert('onToggleEdit'),
+    children: <Typography>Dummy content</Typography>
+}
