@@ -27,6 +27,11 @@ export interface IProps {
      */
     title?: string
     name: string
+    /**
+     * Label to be displayed on the add button.
+     * @default undefined
+     */
+    onAddBtnLabel?: string
     id?: string
     editing?: boolean
     action?: JSX.Element | null
@@ -71,6 +76,7 @@ export const Card = (props: IProps) => {
     const {
         id,
         name,
+        onAddBtnLabel,
         nested,
         title,
         action,
@@ -121,7 +127,12 @@ export const Card = (props: IProps) => {
                     </div>
                 </>
             )}
-            {onClickAdd && <AddButton {...onAddProps} onClick={onClickAdd} />}
+
+            {onClickAdd && (
+                <AddButton {...onAddProps} onClick={onClickAdd}>
+                    {onAddBtnLabel}
+                </AddButton>
+            )}
             <div>{children}</div>
         </Paper>
     )
