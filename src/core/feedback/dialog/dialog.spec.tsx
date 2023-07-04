@@ -94,6 +94,7 @@ describe('Dialog', () => {
         render(
             <Dialog
                 open
+                aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
                 onClose={jest.fn()}
@@ -114,6 +115,7 @@ describe('Dialog', () => {
         render(
             <Dialog
                 open
+                aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
                 onClose={jest.fn()}
@@ -134,6 +136,7 @@ describe('Dialog', () => {
         render(
             <Dialog
                 open
+                aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
                 onClose={jest.fn()}
@@ -154,6 +157,7 @@ describe('Dialog', () => {
         render(
             <Dialog
                 open
+                aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
                 onClose={jest.fn()}

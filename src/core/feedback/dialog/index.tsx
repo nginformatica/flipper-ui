@@ -32,6 +32,7 @@ export interface DialogProps
     snippetContentStyle?: CSSProperties
     contentTextStyle?: CSSProperties
     scroll?: 'body' | 'paper' | 'unset-paper' | 'unset-body'
+    'aria-title'?: string
     onClose?: (event: Event) => void
 }
 
@@ -86,6 +87,7 @@ export const Dialog = ({
     title,
     snippetStyle,
     snippetContentStyle,
+    'aria-title': ariaTitle,
     ...otherProps
 }: DialogProps) => {
     const classes = useStyles()
@@ -176,7 +178,7 @@ export const Dialog = ({
             maxWidth={maxWidth}
             scroll={scrollMode}
             PaperProps={{
-                title: 'dialog-paper',
+                ...(ariaTitle ? { title: ariaTitle } : {}),
                 classes:
                     scroll === 'unset-body' || scroll === 'unset-paper'
                         ? { root: classes.root }
