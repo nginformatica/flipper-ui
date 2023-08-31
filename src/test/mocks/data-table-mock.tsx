@@ -85,6 +85,7 @@ const Default = () => {
     ) => {
         const errorFields = [
             { field: 'quantity', isErrorIf: [isNaN, isNotPositive] },
+            { field: 'combobox', isErrorIf: [] },
             { field: 'date', isErrorIf: [isAfterNow] },
             { field: 'product', isErrorIf: [isEmpty] },
             { field: 'price', isErrorIf: [isNaN, isNotPositive] }
@@ -115,33 +116,33 @@ const Default = () => {
 
     const handleSave =
         (id: Identifier, isNew = false) =>
-        () => {
-            const nextItem = controllerRef.current?.getEditedRowData(id)
+            () => {
+                const nextItem = controllerRef.current?.getEditedRowData(id)
 
-            if (!nextItem) {
-                return
+                if (!nextItem) {
+                    return
+                }
+
+                if (handleErrors(id, nextItem, !isNew)) {
+                    return
+                }
+
+                if (isNew) {
+                    setData(data => [nextItem as Data, ...data])
+                } else {
+                    setData(data =>
+                        data.map(item => {
+                            if (item.id === id) {
+                                return { ...item, ...nextItem }
+                            }
+
+                            return item
+                        })
+                    )
+                }
+
+                controllerRef.current?.viewRow(id)
             }
-
-            if (handleErrors(id, nextItem, !isNew)) {
-                return
-            }
-
-            if (isNew) {
-                setData(data => [nextItem as Data, ...data])
-            } else {
-                setData(data =>
-                    data.map(item => {
-                        if (item.id === id) {
-                            return { ...item, ...nextItem }
-                        }
-
-                        return item
-                    })
-                )
-            }
-
-            controllerRef.current?.viewRow(id)
-        }
 
     const columns: ColumnSpec<Data>[] = [
         {
@@ -275,9 +276,8 @@ const Default = () => {
                     showLastButton: true,
                     labelRowsPerPage: 'Rows per page:',
                     labelDisplayedRows: ({ from, to, count }) => {
-                        return `${from}-${to} of ${
-                            count !== -1 ? count : `more than ${to}`
-                        }`
+                        return `${from}-${to} of ${count !== -1 ? count : `more than ${to}`
+                            }`
                     }
                 }}
                 rowViews={rowViews}

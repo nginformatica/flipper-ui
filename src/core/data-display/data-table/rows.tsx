@@ -5,6 +5,7 @@ import DateTime from '@/core/inputs/date-time'
 import React, { ReactNode, useState, useCallback } from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
+import { Input } from '@material-ui/core'
 
 type RowStateUpdater = <D extends Data>(
     field: keyof D,
@@ -52,6 +53,17 @@ const renderEditMode = <D extends Data>(
                 onChange={value => {
                     updateRow(column.field, value as D[keyof D])
                 }}
+            />
+        )
+    }
+
+    if (column.type === 'combobox') {
+        return (
+            <Input
+                type='combobox'
+                fullWidth
+                error={hasError}
+                name={column.field.toString()}
             />
         )
     }
@@ -236,12 +248,12 @@ export const NewRow = <D extends Data>({
                     key={column.title}>
                     {isEditable(column)
                         ? renderEditMode(
-                              column,
-                              editableState,
-                              partialUpdate,
-                              errors,
-                              true
-                          )
+                            column,
+                            editableState,
+                            partialUpdate,
+                            errors,
+                            true
+                        )
                         : renderViewMode(column, editableState)}
                 </TableCell>
             ))}

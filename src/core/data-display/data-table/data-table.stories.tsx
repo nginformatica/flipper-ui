@@ -18,6 +18,7 @@ import {
     VisibilityOff as VisibilityOffIcon
 } from '@/icons'
 import { v4 as uuid } from 'uuid'
+import { Input } from '@material-ui/core'
 
 export default {
     title: 'DataDisplay/DataTable',
@@ -39,6 +40,7 @@ export const Default = () => {
     type Data = {
         id: number
         product: string
+        combobox: string
         price: number
         quantity: number
         date: Date
@@ -48,30 +50,74 @@ export const Default = () => {
         {
             id: 1,
             product: 'Magazine Magazine Magazine',
+            combobox: <Input></Input>,
             price: 13.5,
             quantity: 12,
             date: date()
         },
-        { id: 2, product: 'Table', price: 200.49, quantity: 3, date: date() },
-        { id: 3, product: 'Chair', price: 53.5, quantity: 9, date: date() },
-        { id: 4, product: 'Keyboard', price: 53.29, quantity: 4, date: date() },
-        { id: 5, product: 'Mouse', price: 27.13, quantity: 16, date: date() },
+        {
+            id: 2,
+            product: 'Table',
+            combobox: <Input></Input>,
+            price: 200.49,
+            quantity: 3,
+            date: date()
+        },
+        {
+            id: 3,
+            product: 'Chair',
+            combobox: <Input></Input>,
+            price: 53.5,
+            quantity: 9,
+            date: date()
+        },
+        {
+            id: 4,
+            product: 'Keyboard',
+            combobox: <Input></Input>,
+            price: 53.29,
+            quantity: 4,
+            date: date()
+        },
+        {
+            id: 5,
+            product: 'Mouse',
+            combobox: <Input></Input>,
+            price: 27.13,
+            quantity: 16,
+            date: date()
+        },
         {
             id: 6,
             product: 'Microphone',
+            combobox: <Input></Input>,
             price: 89.14,
             quantity: 2,
             date: date()
         },
-        { id: 7, product: 'Headset', price: 117.85, quantity: 6, date: date() },
-        { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: date() }
+        {
+            id: 7,
+            product: 'Headset',
+            combobox: 'combobox',
+            price: 117.85,
+            quantity: 6,
+            date: date()
+        },
+        {
+            id: 8,
+            product: 'Pencil',
+            combobox: <Input></Input>,
+            price: 1.5,
+            quantity: 11,
+            date: date()
+        }
     ]
 
     const columns: ColumnSpec<Data>[] = [
         {
             title: 'Product',
             type: 'text',
-            field: 'product',
+            field: 'combobox',
             cellStyle: {
                 maxWidth: '72px',
                 whiteSpace: 'nowrap',
@@ -79,6 +125,15 @@ export const Default = () => {
                 textOverflow: 'ellipsis'
             },
             editable: true
+        },
+        {
+            title: 'Combo Box',
+            field: 'id',
+            type: 'combobox',
+            editable: true,
+            cellStyle: {
+                width: '200px'
+            }
         },
         {
             title: 'Price (R$)',
@@ -428,33 +483,33 @@ export const Crud = () => {
 
     const handleSave =
         (id: Identifier, isNew = false) =>
-        () => {
-            const nextItem = controllerRef.current?.getEditedRowData(id)
+            () => {
+                const nextItem = controllerRef.current?.getEditedRowData(id)
 
-            if (!nextItem) {
-                return
+                if (!nextItem) {
+                    return
+                }
+
+                if (handleErrors(id, nextItem, !isNew)) {
+                    return
+                }
+
+                if (isNew) {
+                    setData(data => [nextItem as Data, ...data])
+                } else {
+                    setData(data =>
+                        data.map(item => {
+                            if (item.id === id) {
+                                return { ...item, ...nextItem }
+                            }
+
+                            return item
+                        })
+                    )
+                }
+
+                controllerRef.current?.viewRow(id)
             }
-
-            if (handleErrors(id, nextItem, !isNew)) {
-                return
-            }
-
-            if (isNew) {
-                setData(data => [nextItem as Data, ...data])
-            } else {
-                setData(data =>
-                    data.map(item => {
-                        if (item.id === id) {
-                            return { ...item, ...nextItem }
-                        }
-
-                        return item
-                    })
-                )
-            }
-
-            controllerRef.current?.viewRow(id)
-        }
 
     const columns: ColumnSpec<Data>[] = [
         {
@@ -588,9 +643,8 @@ export const Crud = () => {
                     showLastButton: true,
                     labelRowsPerPage: 'Rows per page:',
                     labelDisplayedRows: ({ from, to, count }) => {
-                        return `${from}-${to} of ${
-                            count !== -1 ? count : `more than ${to}`
-                        }`
+                        return `${from}-${to} of ${count !== -1 ? count : `more than ${to}`
+                            }`
                     }
                 }}
                 rowViews={rowViews}
@@ -697,38 +751,38 @@ export const CrudWithHidden = () => {
 
     const handleSave =
         (id: Identifier, isNew = false) =>
-        () => {
-            const nextItem = controllerRef.current?.getEditedRowData(id)
-            if (!nextItem) {
-                return
-            }
+            () => {
+                const nextItem = controllerRef.current?.getEditedRowData(id)
+                if (!nextItem) {
+                    return
+                }
 
-            if (handleErrors(id, nextItem, !isNew)) {
-                return
-            }
+                if (handleErrors(id, nextItem, !isNew)) {
+                    return
+                }
 
-            if (isNew) {
-                setData(data => [
-                    { ...nextItem, key: uuid(), secret: uuid() } as Data,
-                    ...data
-                ])
-            } else {
-                setData(data =>
-                    data.map(item => {
-                        if (item.id === id) {
-                            return {
-                                ...item,
-                                ...nextItem
+                if (isNew) {
+                    setData(data => [
+                        { ...nextItem, key: uuid(), secret: uuid() } as Data,
+                        ...data
+                    ])
+                } else {
+                    setData(data =>
+                        data.map(item => {
+                            if (item.id === id) {
+                                return {
+                                    ...item,
+                                    ...nextItem
+                                }
                             }
-                        }
 
-                        return item
-                    })
-                )
+                            return item
+                        })
+                    )
+                }
+
+                controllerRef.current?.viewRow(id)
             }
-
-            controllerRef.current?.viewRow(id)
-        }
 
     const columns: ColumnSpec<Data>[] = [
         {

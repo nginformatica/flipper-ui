@@ -18,6 +18,7 @@ export type ColumnType =
     | 'number'
     | 'numeric-float'
     | 'numeric-int'
+    | 'combobox'
 
 export type Align = 'right' | 'left' | 'center' | 'justify' | 'inherit'
 
