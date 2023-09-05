@@ -2,7 +2,8 @@ import {
     InputAdornment,
     TextField as MuiTextField,
     TextFieldProps as MuiTextFieldProps,
-    IconButton as MuiButton
+    IconButton as MuiButton,
+    ListItem
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import React, {
@@ -21,11 +22,21 @@ import {
 } from '@material-ui/icons'
 import IconButton from '../icon-button'
 import styled from 'styled-components'
+import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
+
+export interface IOption {
+    label: string
+    name?: string
+    disabled?: boolean
+    value: string | number
+    options?: IOption[]
+}
 
 export interface TextFieldProps
     extends DefaultProps,
-        Omit<MuiTextFieldProps, 'margin' | 'variant'> {
+    Omit<MuiTextFieldProps, 'margin' | 'variant'> {
     autoComplete?: string
+    options?: IOption[]
     autoFocus?: boolean
     defaultValue?: string | number
     disabled?: boolean
@@ -125,6 +136,23 @@ export const useStyles = makeStyles({
     }
 })
 
+export const coerceComboOptions: (input: string) => IOption[] = when(
+    is(String),
+    pipe<string, string[], object, IOption[]>(
+        split(';'),
+        map(pipe(split('='), zipObj(['value', 'label']))),
+        reject(propEq('value', ''))
+    )
+)
+
+export const toLispCase = (name: string) =>
+    name
+        .replace(
+            /([a-z])([A-Z])/g,
+            (_, first: string, second: string) => first + '-' + second
+        )
+        .toLowerCase()
+
 export const HelperBox = (props: IHelperProps) => (
     <Helper role='helper-box'>
         <IconButton padding='6px 2px' onClick={props.onHelperClick}>
@@ -132,6 +160,25 @@ export const HelperBox = (props: IHelperProps) => (
         </IconButton>
     </Helper>
 )
+export const renderOptions = (options: IOption['options']) => {
+    const comboOptions =
+        typeof options === 'string'
+            ? coerceComboOptions(options) || []
+            : options || []
+
+    return (
+        options &&
+        comboOptions.map((option: IOption) => (
+            <ListItem
+                id={toLispCase(`option-${option.value}`)}
+                key={option.value}
+                disabled={option.disabled}
+                value={option.value}>
+                {option.label}
+            </ListItem>
+        ))
+    )
+}
 
 export const EditBox = (props: IEditProps) => {
     return (
@@ -164,6 +211,7 @@ const renderEndAdornment = (onClear?: () => void) => (
 )
 
 export const TextField = ({
+    options,
     margin,
     padding,
     style = {},
@@ -178,6 +226,7 @@ export const TextField = ({
     fullWidth,
     hasClear,
     onClear,
+    children,
     ...otherProps
 }: TextFieldProps) => {
     const clearStyle = makeStyles({
@@ -209,6 +258,7 @@ export const TextField = ({
     return (
         <Wrapper>
             <MuiTextField
+                select={!!options?.length}
                 fullWidth={fullWidth}
                 autoComplete={autoComplete}
                 error={error}
@@ -248,8 +298,9 @@ export const TextField = ({
                     ...endAdornment,
                     ...SelectProps
                 }}
-                {...otherProps}
-            />
+                {...otherProps}>
+                {options ? renderOptions(options) : children}
+            </MuiTextField>
             {onHelperClick && (
                 <HelperBox
                     helperIcon={helperIcon}
