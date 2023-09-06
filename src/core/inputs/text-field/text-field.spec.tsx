@@ -1,8 +1,16 @@
 import * as React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import TextField from '@/test/mocks/text-field-mock'
+import TextFieldOptions from '@/test/mocks/text-field-options-mock'
 import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
+
+const LIST = [
+    { label: 'Elm', value: 'elm' },
+    { label: 'ReasonML', value: 'reasonml' },
+    { label: 'Purescript', value: 'purescript' },
+    { label: 'Fable', value: 'fable' }
+]
 
 describe('TextField', () => {
     it('should render', () => {
@@ -91,5 +99,37 @@ describe('TextField', () => {
         fireEvent.change(textField, { target: { value: 'Hello' } })
 
         expect(textField.value).toBe('Hello')
+    })
+
+    it('should update on type', () => {
+        render(
+            <TextFieldOptions
+                inputProps={{ placeholder: 'Description' }}
+                options={LIST}
+            />
+        )
+        const textField = screen.getByPlaceholderText(
+            'Description'
+        ) as HTMLInputElement
+
+        fireEvent.change(textField, { target: { value: '' } })
+
+        expect(textField.value).toBe('')
+    })
+
+    it('should update on type', () => {
+        render(
+            <TextFieldOptions
+                inputProps={{ placeholder: 'Description' }}
+                options={JSON.stringify(LIST)}
+            />
+        )
+        const textField = screen.getByPlaceholderText(
+            'Description'
+        ) as HTMLInputElement
+
+        fireEvent.change(textField, { target: { value: '' } })
+
+        expect(textField.value).toBe('')
     })
 })

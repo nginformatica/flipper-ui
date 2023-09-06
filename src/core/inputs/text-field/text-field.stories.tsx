@@ -10,6 +10,12 @@ export default {
 } as Meta<typeof TextField>
 
 const Template: StoryFn<typeof TextField> = args => <TextField {...args} />
+const LIST = [
+    { label: 'Elm', value: 'elm' },
+    { label: 'ReasonML', value: 'reasonml' },
+    { label: 'Purescript', value: 'purescript' },
+    { label: 'Fable', value: 'fable' }
+]
 
 export const Default = () => <TextField placeholder='Description' />
 
@@ -89,6 +95,37 @@ export const useWithSelectAndClear = () => {
                     </ListItem>
                 ))}
             </TextField>
+        </div>
+    )
+}
+
+export const combobox = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [value, setValue] = useState('fable')
+
+    const onClear = () => {
+        setValue('')
+    }
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value)
+    }
+
+    return (
+        <div>
+            <TextField
+                options={LIST}
+                value={value}
+                hasClear
+                onClear={onClear}
+                onChange={handleChange}
+            />
+            <TextField
+                value={value}
+                hasClear
+                onClear={onClear}
+                onChange={handleChange}
+            />
         </div>
     )
 }
