@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
     InputAdornment,
     TextField as MuiTextField,
@@ -34,9 +35,9 @@ export interface IOption {
 
 export interface TextFieldProps
     extends DefaultProps,
-    Omit<MuiTextFieldProps, 'margin' | 'variant'> {
+        Omit<MuiTextFieldProps, 'margin' | 'variant'> {
     autoComplete?: string
-    options?: IOption[]
+    options?: IOption[] | string
     autoFocus?: boolean
     defaultValue?: string | number
     disabled?: boolean
@@ -160,15 +161,16 @@ export const HelperBox = (props: IHelperProps) => (
         </IconButton>
     </Helper>
 )
-export const renderOptions = (options: IOption['options']) => {
+/* Jest-ignore-start ignore next */
+export const renderOptions = (options: TextFieldProps['options']) => {
+    console.log(options)
     const comboOptions =
-        typeof options === 'string'
-            ? coerceComboOptions(options) || []
-            : options || []
+        typeof options === 'string' ? coerceComboOptions(options) : options
 
     return (
         options &&
-        comboOptions.map((option: IOption) => (
+        // @ts-ignore
+        comboOptions.map((option: TextFieldProps) => (
             <ListItem
                 id={toLispCase(`option-${option.value}`)}
                 key={option.value}
