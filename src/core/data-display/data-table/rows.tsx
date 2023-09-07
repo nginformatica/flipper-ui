@@ -84,6 +84,7 @@ const renderEditMode = <D extends Data>(
 
     return (
         <TextField
+            options={column.options}
             defaultValue={value}
             type={type}
             fullWidth
