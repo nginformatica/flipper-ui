@@ -30,7 +30,6 @@ export interface IOption {
     name?: string
     disabled?: boolean
     value: string | number
-    options?: IOption[]
 }
 
 export interface TextFieldProps

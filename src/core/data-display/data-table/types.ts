@@ -1,3 +1,4 @@
+import { IOption } from '@/core/inputs/text-field'
 import type { CSSProperties, FunctionComponent } from 'react'
 
 export type RecordUnknown = Record<string, unknown>
@@ -43,6 +44,7 @@ interface ColumnSpecDefault<D extends Data>
     type: ColumnType
     field: keyof D
     editable?: boolean
+    options?: string | IOption[]
     getValue?(value: unknown): string
 }
 
