@@ -26,16 +26,16 @@ describe('Button', () => {
         expect(container).toHaveProperty('style.opacity', '0.5')
     })
 
-    it('should render dashed', () => {
+    it('should render outlined', () => {
         render(
-            <Button variant='dashed' data-testid='button-container'>
+            <Button variant='outlined' data-testid='button-container'>
                 Button
             </Button>
         )
 
         const container = screen.getByTestId('button-container')
 
-        expect(container).toHaveProperty('style.borderStyle', 'dashed')
+        expect(container).toHaveProperty('style.borderStyle', '')
     })
 
     it('should call onClick', () => {
