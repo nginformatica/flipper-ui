@@ -34,7 +34,8 @@ export const Button = ({
             margin,
             padding,
             opacity: otherProps.selected ? 0.5 : 1,
-            borderStyle: variant === 'dashed' ? 'dashed' : 'initial'
+            borderStyle:
+                variant === 'outlined' ? 'outlined !important' : 'initial'
         }}>
         {children}
     </MuiButton>
