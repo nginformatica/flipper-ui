@@ -291,6 +291,14 @@ export const TextField = ({
                     ...InputProps
                 }}
                 SelectProps={{
+                    MenuProps: {
+                        PaperProps: {
+                            style: {
+                                fontFamily:
+                                    '"Roboto", "Helvetica", "Arial", sans- serif'
+                            }
+                        }
+                    },
                     classes: {
                         iconOutlined: hasClear
                             ? clearClass.iconOutlined
