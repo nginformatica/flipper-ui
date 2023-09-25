@@ -34,7 +34,7 @@ export interface IOption {
 
 export interface TextFieldProps
     extends DefaultProps,
-    Omit<MuiTextFieldProps, 'margin' | 'variant'> {
+        Omit<MuiTextFieldProps, 'margin' | 'variant'> {
     autoComplete?: string
     options?: IOption[] | string
     autoFocus?: boolean
