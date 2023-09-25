@@ -34,7 +34,7 @@ export interface IOption {
 
 export interface TextFieldProps
     extends DefaultProps,
-        Omit<MuiTextFieldProps, 'margin' | 'variant'> {
+    Omit<MuiTextFieldProps, 'margin' | 'variant'> {
     autoComplete?: string
     options?: IOption[] | string
     autoFocus?: boolean
@@ -162,7 +162,6 @@ export const HelperBox = (props: IHelperProps) => (
 )
 /* Jest-ignore-start ignore next */
 export const renderOptions = (options: TextFieldProps['options']) => {
-    console.log(options)
     const comboOptions =
         typeof options === 'string' ? coerceComboOptions(options) : options
 
