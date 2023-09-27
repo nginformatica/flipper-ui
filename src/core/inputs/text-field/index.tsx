@@ -114,6 +114,14 @@ export const StaticTextFieldWrapper = styled.div`
 `
 
 export const useStyles = makeStyles({
+    listOptions: {
+        outline: 'none',
+        cursor: 'pointer',
+        fontFamily: '"Roboto", "Helvetica", "Arial", sans- serif',
+        '&:hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.04)'
+        }
+    },
     input: {
         fontSize: '14px',
         padding: '10px',
@@ -161,8 +169,10 @@ export const HelperBox = (props: IHelperProps) => (
     </Helper>
 )
 /* Jest-ignore-start ignore next */
-export const renderOptions = (options: TextFieldProps['options']) => {
-    console.log(options)
+export const renderOptions = (
+    options: TextFieldProps['options'],
+    classes: Record<string, string>
+) => {
     const comboOptions =
         typeof options === 'string' ? coerceComboOptions(options) : options
 
@@ -174,7 +184,8 @@ export const renderOptions = (options: TextFieldProps['options']) => {
                 id={toLispCase(`option-${option.value}`)}
                 key={option.value}
                 disabled={option.disabled}
-                value={option.value}>
+                value={option.value}
+                classes={{ root: classes.listOptions }}>
                 {option.label}
             </ListItem>
         ))
@@ -291,14 +302,6 @@ export const TextField = ({
                     ...InputProps
                 }}
                 SelectProps={{
-                    MenuProps: {
-                        PaperProps: {
-                            style: {
-                                fontFamily:
-                                    '"Roboto", "Helvetica", "Arial", sans- serif'
-                            }
-                        }
-                    },
                     classes: {
                         iconOutlined: hasClear
                             ? clearClass.iconOutlined
@@ -308,7 +311,7 @@ export const TextField = ({
                     ...SelectProps
                 }}
                 {...otherProps}>
-                {options ? renderOptions(options) : children}
+                {options ? renderOptions(options, classes) : children}
             </MuiTextField>
             {onHelperClick && (
                 <HelperBox
