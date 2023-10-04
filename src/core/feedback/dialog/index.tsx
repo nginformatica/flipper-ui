@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 export interface DialogProps
     extends DefaultProps,
-    Omit<MuiDialogProps, 'scroll' | 'title' | 'content'> {
+        Omit<MuiDialogProps, 'scroll' | 'title' | 'content'> {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
