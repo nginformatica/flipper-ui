@@ -198,7 +198,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                 ({
                     id,
                     ...getRowState(id)?.editableState
-                } as PartialData<D>),
+                }) as PartialData<D>,
             getRowData: (id: string) => {
                 const raw = getRowState(id)
 
@@ -347,10 +347,10 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                                 labelDisplayedRows={
                                     pagination.labelDisplayedRows
                                 }
-                                onChangePage={(_, page) => {
+                                onPageChange={(_, page) => {
                                     handleChangePage(page)
                                 }}
-                                onChangeRowsPerPage={event => {
+                                onRowsPerPageChange={event => {
                                     handleChangePerPage(
                                         parseInt(event.target.value, 10)
                                     )
