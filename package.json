@@ -67,7 +67,7 @@
     "@types/jest": "^29.5.5",
     "@types/node": "^20.8.4",
     "@types/ramda": "0.25.36",
-    "@types/react": "^18.2.27",
+    "@types/react": "^18.2.28",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "@types/sprintf-js": "1.1.2",
