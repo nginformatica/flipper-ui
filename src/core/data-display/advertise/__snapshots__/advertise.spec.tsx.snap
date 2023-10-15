@@ -3,7 +3,7 @@
 exports[`Advertise should match snapshot 1`] = `
 <div>
   <div
-    class="MuiPaper-root sc-beqWul jMoZer MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root sc-bdnyFh hJlQyE MuiPaper-elevation1 MuiPaper-rounded"
     role="mui-paper-container"
     style="padding: 4px;"
   >
