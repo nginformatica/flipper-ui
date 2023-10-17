@@ -37,7 +37,7 @@ const StyledLine = styled.div<LineProps>`
     min-height: 0.75px;
     max-height: 3px;
     align-self: center;
-    background-color: ${props => (props.primary ? grays.g4 : grays.g6)}; ;
+    background-color: ${props => (props.primary ? grays.g4 : grays.g6)};
 `
 
 const Container = styled.div`

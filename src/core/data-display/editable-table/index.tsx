@@ -193,15 +193,15 @@ export const EditableTable = <T extends object>(
     const pagination = !props.paginationInfo
         ? { Pagination: () => null }
         : props.noRowsExpand && {
-            Pagination: (item: any) => (
-                <RightPagination data-id='pagination'>
-                    <MTablePagination
-                        {...omit(['classes'], item)}
-                        localization={getLocalization(props.title).pagination}
-                    />
-                </RightPagination>
-            )
-        }
+              Pagination: (item: any) => (
+                  <RightPagination data-id='pagination'>
+                      <MTablePagination
+                          {...omit(['classes'], item)}
+                          localization={getLocalization(props.title).pagination}
+                      />
+                  </RightPagination>
+              )
+          }
 
     const toolbar = props.noHeader && { Toolbar: () => null }
 
@@ -325,8 +325,8 @@ export const EditableTable = <T extends object>(
                                     error={
                                         props.errors
                                             ? getErrors(
-                                                localProps.columnDef.field
-                                            )
+                                                  localProps.columnDef.field
+                                              )
                                             : localProps.error
                                     }
                                     name={localProps.columnDef.field + '-input'}
@@ -346,7 +346,7 @@ export const EditableTable = <T extends object>(
 
                         if (
                             localProps.columnDef.field ===
-                            props.autoCompleteField &&
+                                props.autoCompleteField &&
                             props.autoCompleteSuggestions
                         ) {
                             return renderAutoComplete(localProps)
