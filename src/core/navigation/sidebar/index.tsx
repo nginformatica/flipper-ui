@@ -1,6 +1,5 @@
 import Drawer from '@material-ui/core/Drawer'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import React from 'react'
 import styled from 'styled-components'
 import {

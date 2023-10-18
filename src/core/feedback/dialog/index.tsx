@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 export interface DialogProps
     extends DefaultProps,
-        Omit<MuiDialogProps, 'scroll' | 'title'> {
+        Omit<MuiDialogProps, 'scroll' | 'title' | 'content'> {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
@@ -19,7 +19,7 @@ export interface DialogProps
     titleAction?: string | ReactNode
     actions?: ReactNode
     maxWidth?: 'xs' | 'sm' | 'md' | 'lg'
-    content?: ReactNode
+    content?: ReactNode | string
     text?: string
     snippet?: ReactNode | JSX.Element
     PaperProps?: object

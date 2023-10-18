@@ -65,8 +65,13 @@ const renderEditMode = <D extends Data>(
             <MaskField
                 fixedDecimalScale
                 type='text'
-                fullWidth
-                error={hasError}
+                onError={
+                    hasError
+                        ? () => {
+                              hasError
+                          }
+                        : undefined
+                }
                 thousandSeparator='.'
                 decimalSeparator=','
                 decimalScale={decimalScale}

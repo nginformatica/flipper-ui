@@ -115,10 +115,8 @@ const FullWidthButton = styled(Button)`
 `
 
 const CustomRemove = styled(MTableEditRow)({
-    '&': {
-        '& h6': {
-            fontSize: '0.85em'
-        }
+    '& h6': {
+        fontSize: '0.85em'
     }
 })
 
