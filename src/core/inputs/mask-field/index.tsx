@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import TextField from '@/core/inputs/text-field'
 import { NumericFormatProps, NumberFormatBase } from 'react-number-format'
-import { InputProps } from '@material-ui/core'
 import { FormatInputValueFunction } from 'react-number-format/types/types'
 
-// Interface para as propriedades de entrada específicas do MaskField
-interface MaskFieldInputProps extends InputProps {
-    // Adicione aqui quaisquer propriedades adicionais necessárias para o TextField
-}
-
 export interface MaskFieldProps extends NumericFormatProps {
+    children?: React.ReactNode
+    error?: boolean
+    value?: number | string
+    style?: React.CSSProperties
+    margin?: string
+    id?: string
+    autoFocus?: boolean
+    fullWidth?: boolean
+    required?: boolean
+    disabled?: boolean
+    InputProps?: object
+    inputProps?: object
+    InputLabelProps?: object
+    placeholder?: string
+    label?: string
+    defaultValue?: string | number
+    name?: string
     mask?: string
     type?: 'text' | 'tel' | 'password'
     decimalSeparator?: string
@@ -18,8 +29,10 @@ export interface MaskFieldProps extends NumericFormatProps {
     thousandSeparator?: boolean | string
     fixedDecimalScale?: boolean
     color?: 'primary' | 'secondary' | undefined
-    // eslint-disable-next-line max-len
-    customInput?: React.ComponentType<MaskFieldInputProps> // Use a nova interface aqui
+    onBlur?: () => void
+    onHelperClick?: () => void
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    customInput?: React.ComponentType
 }
 
 export const MaskField = (props: MaskFieldProps) => {
@@ -31,10 +44,7 @@ export const MaskField = (props: MaskFieldProps) => {
         // actually on flipper-ui. (e.g. errors treatment
         <NumberFormatBase
             {...otherProps}
-            customInput={
-                customInput ||
-                (TextField as React.ComponentType<MaskFieldInputProps>)
-            }
+            customInput={customInput || TextField}
             format={
                 typeof otherProps.format === 'string'
                     ? undefined
