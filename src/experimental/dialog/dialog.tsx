@@ -1,4 +1,4 @@
-import { Dialog as DialogFlipper, Button, ThemeProvider } from '@/index'
+import { Dialog as DialogFlipper, Button, ThemeProviderFlipper } from '@/index'
 import React, { MouseEvent, ReactNode } from 'react'
 import { theme as Theme } from 'nginformatica-styleguide'
 
@@ -62,7 +62,7 @@ export const DialogV2 = (props: IProps) => {
     const haveSecondaryButton = secondaryButtonText && secondaryButtonAction
 
     return (
-        <ThemeProvider options={theme}>
+        <ThemeProviderFlipper options={theme}>
             <DialogFlipper
                 {...otherProps}
                 open={open}
@@ -99,7 +99,7 @@ export const DialogV2 = (props: IProps) => {
                 }
                 onClose={onClose}
             />
-        </ThemeProvider>
+        </ThemeProviderFlipper>
     )
 }
 

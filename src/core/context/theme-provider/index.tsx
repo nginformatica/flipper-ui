@@ -1,7 +1,7 @@
 import {
-    MuiThemeProvider,
+    createTheme,
     ThemeOptions,
-    createTheme
+    ThemeProvider
 } from '@material-ui/core/styles'
 import React from 'react'
 
@@ -10,8 +10,11 @@ interface ThemeProviderProps {
     children: React.ReactNode
 }
 
-const ThemeProvider = ({ options = {}, children }: ThemeProviderProps) => (
-    <MuiThemeProvider theme={createTheme(options)}>{children}</MuiThemeProvider>
+const ThemeProviderFlipper = ({
+    options = {},
+    children
+}: ThemeProviderProps) => (
+    <ThemeProvider theme={createTheme(options)}>{children}</ThemeProvider>
 )
 
-export default ThemeProvider
+export default ThemeProviderFlipper
