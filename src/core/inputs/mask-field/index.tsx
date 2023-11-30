@@ -1,9 +1,10 @@
 import React, { ChangeEvent } from 'react'
-import TextField, { IOption } from '@/core/inputs/text-field'
-import { NumericFormatProps, NumberFormatBase } from 'react-number-format'
+import TextField, { IOption, TextFieldProps } from '@/core/inputs/text-field'
+import { NumericFormat } from 'react-number-format'
 import { FormatInputValueFunction } from 'react-number-format/types/types'
 
-export interface MaskFieldProps extends NumericFormatProps {
+export interface MaskFieldProps
+    extends Omit<TextFieldProps, 'format' | 'size'> {
     error?: boolean
     showEdit?: boolean
     hasClear?: boolean
@@ -52,22 +53,18 @@ export interface MaskFieldProps extends NumericFormatProps {
     onPaste?: (event: React.ClipboardEvent<HTMLInputElement>) => void
 }
 
-export const MaskField = (props: MaskFieldProps) => {
-    const { customInput, ...otherProps } = props
+const MaskField: React.FC<MaskFieldProps> = ({
+    customInput = TextField,
+    format,
+    ...otherProps
+}) => {
+    const formattedProps = {
+        ...otherProps,
+        customInput,
+        format: format !== undefined ? format : undefined
+    }
 
-    return (
-        // Although react-number-format allow use of additional props,
-        // shows problem with some props like have been do this
-        // actually on flipper-ui. (e.g. errors treatment
-        <NumberFormatBase
-            {...otherProps}
-            customInput={customInput || TextField}
-            format={
-                typeof otherProps.format === 'string'
-                    ? undefined
-                    : otherProps.format
-            }></NumberFormatBase>
-    )
+    return <NumericFormat {...formattedProps} />
 }
 
 export default MaskField
