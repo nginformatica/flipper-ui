@@ -5,7 +5,7 @@ import React, { MouseEvent } from 'react'
 import { background as backgroundColor } from '@/colors'
 import { DefaultProps } from '../../types'
 
-interface TableRowProps extends DefaultProps {
+export interface TableRowProps extends DefaultProps {
     selected?: boolean
     hover?: boolean
     background?: string

@@ -19,7 +19,7 @@ export interface RadioGroupProps extends DefaultProps {
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-interface IOption {
+export interface IOption {
     value: string
     label?: ReactNode
     disabled?: boolean
