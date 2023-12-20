@@ -2,9 +2,9 @@
     "compilerOptions": {
         "outDir": "./dist/", // path to output directory
         "sourceMap": true, // allow sourcemap support
-        "module": "commonjs", // specify module code generation
+        "module": "esnext", // specify module code generation
         "jsx": "react", // use typescript to transpile jsx to js
-        "target": "es2016", // specify ECMAScript target version
+        "target": "esnext", // specify ECMAScript target version
         "types": [
             "node",
             "jest"
@@ -37,6 +37,5 @@
         "./src/**/*.tsx",
         "./src/*.d.ts",
         "./src/lib/**/*"
-    ],
-    // "exclude": ["./src/**/*.spec.tsx"]
+    ]
 }
