@@ -166,8 +166,8 @@ export const Dialog = ({
         scroll === 'unset-body'
             ? 'body'
             : scroll === 'unset-paper'
-            ? 'paper'
-            : scroll
+              ? 'paper'
+              : scroll
 
     return (
         <MuiDialog
