@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/nginformatica/flipper-ui.git"
   },
+  "resolutions": {
+    "wrap-ansi": "7.0.0"
+  },
   "scripts": {
     "test": "jest --silent --passWithNoTests --noStackTrace --runInBand",
     "test:ci": "yarn test --coverage",
