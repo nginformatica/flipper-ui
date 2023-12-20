@@ -79,7 +79,6 @@
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-imports": "2.0.0",
     "canvas": "2.11.2",
-    "date-fns": "2.30.0",
     "eslint": "8.51.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-import": "2.28.1",
