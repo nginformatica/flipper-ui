@@ -1,21 +1,18 @@
 import type { StorybookConfig } from '@storybook/react-webpack5'
 import path from 'path'
+
 const config: StorybookConfig = {
+    framework: '@storybook/react-webpack5',
     stories: [
         '../src/**/*.stories.mdx',
         '../src/**/*.stories.@(js|jsx|ts|tsx)'
     ],
-    addons: [
-        '@storybook/addon-links',
-        '@storybook/addon-essentials',
-        '@storybook/addon-interactions'
-    ],
+    features: {
+        storyStoreV7: false
+    },
+    addons: ['@storybook/addon-essentials', '@storybook/addon-styling-webpack'],
     docs: {
         autodocs: true
-    },
-    framework: {
-        name: '@storybook/react-webpack5',
-        options: {}
     },
     typescript: {
         check: false,
@@ -31,10 +28,14 @@ const config: StorybookConfig = {
         }
     },
     webpackFinal: async config => {
-        if (config.resolve?.alias) {
-            config.resolve.alias['@'] = path.resolve(__dirname, '../src')
+        if (config.resolve) {
+            config.resolve.alias = {
+                ...config.resolve.alias,
+                '@': path.resolve(__dirname, '../src')
+            }
         }
         return config
     }
 }
+
 export default config
