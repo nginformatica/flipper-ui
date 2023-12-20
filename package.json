@@ -75,7 +75,6 @@
     "babel-plugin-module-resolver": "5.0.0",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-imports": "2.0.0",
-    "canvas": "2.11.2",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
