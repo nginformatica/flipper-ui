@@ -75,8 +75,8 @@ module.exports = {
                     transform: './src',
                     preventFullImport: true
                 },
-                '@material-ui/icons': {
-                    transform: '@material-ui/icons/${member}',
+                '@mui/icons-material': {
+                    transform: '@mui/icons-material/${member}',
                     preventFullImport: true
                 },
                 '@material-ui/core': {
@@ -88,7 +88,7 @@ module.exports = {
                     preventFullImport: true
                 },
                 '../icons': {
-                    transform: '@material-ui/icons/${member}',
+                    transform: '@mui/icons-material/${member}',
                     preventFullImport: true
                 },
                 '../charts': {

@@ -3,15 +3,15 @@ import { render, screen } from '@testing-library/react'
 import Sidebar from '.'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import IconBackup from '@material-ui/icons/Backup'
+import { Backup } from '../../../icons'
 
 describe('Sidebar', () => {
     it('should render', () => {
         render(
             <Sidebar open onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<IconBackup />} />
-                    <ListItem title='Item 2' icon={<IconBackup />} />
+                    <ListItem title='Item 1' icon={<Backup />} />
+                    <ListItem title='Item 2' icon={<Backup />} />
                 </List>
             </Sidebar>
         )
@@ -27,8 +27,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar open={false} onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<IconBackup />} />
-                    <ListItem title='Item 2' icon={<IconBackup />} />
+                    <ListItem title='Item 1' icon={<Backup />} />
+                    <ListItem title='Item 2' icon={<Backup />} />
                 </List>
             </Sidebar>
         )
@@ -44,8 +44,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar expanded={false} open onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<IconBackup />} />
-                    <ListItem title='Item 2' icon={<IconBackup />} />
+                    <ListItem title='Item 1' icon={<Backup />} />
+                    <ListItem title='Item 2' icon={<Backup />} />
                 </List>
             </Sidebar>
         )
@@ -61,8 +61,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar anchor='right' open onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<IconBackup />} />
-                    <ListItem title='Item 2' icon={<IconBackup />} />
+                    <ListItem title='Item 1' icon={<Backup />} />
+                    <ListItem title='Item 2' icon={<Backup />} />
                 </List>
             </Sidebar>
         )

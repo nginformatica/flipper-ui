@@ -1,1 +1,1 @@
-export * from '@material-ui/icons'
+export * from '@mui/icons-material'

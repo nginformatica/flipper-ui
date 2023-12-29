@@ -11,7 +11,7 @@ import {
     Error as IconError,
     Info as IconInfo,
     Warning as IconWarning
-} from '@material-ui/icons'
+} from '../../../icons'
 import React, { ReactNode, FunctionComponent, MouseEvent } from 'react'
 import { DefaultProps } from '../../types'
 import { TransitionProps } from '@material-ui/core/transitions/transition'

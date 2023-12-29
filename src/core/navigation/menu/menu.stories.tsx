@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import Menu from '.'
 import Button from '@/core/inputs/button'
 import ListItem from '@/core/data-display/list-item'
-import IconBackup from '@material-ui/icons/Backup'
+import { Backup } from '../../../icons'
 
 export default {
     title: 'Navigation/Menu',
@@ -31,14 +31,14 @@ Default.args = {
     title: 'My beautiful Menu"',
     children: (
         <>
-            <ListItem icon={<IconBackup />} title='Menu 1' />
-            <ListItem icon={<IconBackup />} title='Menu 2' />
-            <ListItem icon={<IconBackup />} title='Menu 3' />
-            <ListItem icon={<IconBackup />} title='Menu 4' />
-            <ListItem icon={<IconBackup />} title='Menu 5' />
-            <ListItem icon={<IconBackup />} title='Menu 6' />
-            <ListItem icon={<IconBackup />} title='Menu 7' />
-            <ListItem icon={<IconBackup />} title='Menu 8' />
+            <ListItem icon={<Backup />} title='Menu 1' />
+            <ListItem icon={<Backup />} title='Menu 2' />
+            <ListItem icon={<Backup />} title='Menu 3' />
+            <ListItem icon={<Backup />} title='Menu 4' />
+            <ListItem icon={<Backup />} title='Menu 5' />
+            <ListItem icon={<Backup />} title='Menu 6' />
+            <ListItem icon={<Backup />} title='Menu 7' />
+            <ListItem icon={<Backup />} title='Menu 8' />
         </>
     )
 }

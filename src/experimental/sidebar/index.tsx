@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { theme } from 'nginformatica-styleguide'
 import { times, map } from 'ramda'
-import { Skeleton } from '@material-ui/lab'
+import { Skeleton } from '@mui/material'
 
 export interface ISidebarOption {
     icon: React.ReactElement
