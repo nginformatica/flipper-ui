@@ -19,7 +19,7 @@ export interface IValidateProps {
     }
     onClose(): void
     onCancel(): void
-    handleCreateConfirm(): void
+    handleCreate(): void
 }
 
 export interface ITitles {
@@ -81,7 +81,7 @@ const ValidationDialog: React.FC<IValidateProps> = ({
     icons,
     onClose,
     onCancel,
-    handleCreateConfirm
+    handleCreate
 }) => {
     const renderTitle = (stepsTitle: ITitles, responses: string[]) => {
         if (responses.every(item => item === 'Success')) {
@@ -171,7 +171,7 @@ const ValidationDialog: React.FC<IValidateProps> = ({
                         margin='0 10px 10px'
                         actionButtonColor='secondary'
                         onCancel={onCancel}
-                        onConfirm={handleCreateConfirm}
+                        onConfirm={handleCreate}
                     />
                 )
             }

@@ -1,17 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import ValidationDialog, { ValidationStatus } from '.'
+import { ThemeProvider } from 'styled-components'
+import { muiThemeOptions, theme } from '../../../theme'
+import ThemeProviderFlipper from '../../context/theme-provider'
 import CircularProgress from '@mui/material/CircularProgress'
-import { CheckCircleOutline, CancelOutlined } from '../../../icons'
 import Button from '@/core/inputs/button'
+import ValidationDialog, { ValidationStatus } from '.'
+import { CheckCircleOutline, CancelOutlined } from '../../../icons'
 
 const meta: Meta<typeof ValidationDialog> = {
     title: 'Feedback/Validation Dialog',
     component: ValidationDialog,
     argTypes: {
         title: {
-            control: 'text',
-            description: 'The dialog title.'
+            control: 'object',
+            description: `The dialog title.
+            An object with the three possible scenarios, Loading, Success or Error.`
+        },
+        validations: {
+            control: 'array',
+            description: `The dialog validation phrases.
+            An array of objects with the three possible scenarios,
+            Loading, Success or Error.`
+        },
+        icons: {
+            control: 'object',
+            description: `The dialog icons.
+            An object with the three possible scenarios, Loading, Success or Error.
+            The icon accepts a ReactNode child.`
         }
     }
 }
@@ -22,7 +38,7 @@ type Story = StoryObj<typeof ValidationDialog>
 
 const ValidationDialogStorie = () => {
     const [open, setOpen] = useState(false)
-    const [responses, setResponses] = useState<string[]>([])
+    const [validationResponses, setValidationResponses] = useState<string[]>([])
 
     const stepsTitle = {
         success: 'Sua configuração foi validada com sucesso!',
@@ -36,14 +52,14 @@ const ValidationDialogStorie = () => {
         loading: <CircularProgress size={20} color='inherit' />
     }
 
-    const stepsValidations = [
+    const validationSteps = [
         {
             description: {
                 loading: 'Validando URL, Porta e Forma de Autenticação',
                 success: 'URL, Porta e Forma de Autenticação válidas',
                 error: 'URL, Porta e Forma de Autenticação inválidas'
             },
-            status: responses[0]
+            status: validationResponses[0]
         },
         {
             description: {
@@ -51,7 +67,7 @@ const ValidationDialogStorie = () => {
                 success: 'Usuário e Senha válidas',
                 error: 'Usuário e Senha inválidas'
             },
-            status: responses[1]
+            status: validationResponses[1]
         },
         {
             description: {
@@ -59,7 +75,7 @@ const ValidationDialogStorie = () => {
                 success: 'Tipos de Integração válidas',
                 error: 'Tipos de Integração inválidas'
             },
-            status: responses[2]
+            status: validationResponses[2]
         },
         {
             description: {
@@ -67,12 +83,44 @@ const ValidationDialogStorie = () => {
                 success: 'Filiais válidas',
                 error: 'Filiais inválidas'
             },
-            status: responses[3]
+            status: validationResponses[3]
         }
     ]
 
+    const useSubscriptionValidationState = () => {
+        const initLoading = useCallback((condition: boolean = true) => {
+            if (condition) {
+                setValidationResponses(
+                    Array(validationSteps.length).fill(ValidationStatus.Loading)
+                )
+            }
+        }, [])
+
+        const stepState = useCallback(
+            (condition: boolean = true, step: number, value: string) => {
+                if (condition) {
+                    setValidationResponses(prevResponses => {
+                        const newResponses = [...prevResponses]
+                        newResponses[step] = value
+
+                        return newResponses
+                    })
+                }
+            },
+            []
+        )
+
+        return {
+            initLoading,
+            stepState
+        }
+    }
+
+    const validationStatus = useSubscriptionValidationState()
+
     const handleClose = () => {
         setOpen(false)
+        setValidationResponses([])
     }
 
     const handleConfirm = () => {
@@ -81,37 +129,54 @@ const ValidationDialogStorie = () => {
 
     const openDialog = () => {
         setOpen(true)
+        validationStatus.initLoading()
+
+        setTimeout(() => {
+            validationStatus.stepState(true, 0, 'Success')
+
+            setTimeout(() => {
+                validationStatus.stepState(true, 1, 'Error')
+
+                setTimeout(() => {
+                    validationStatus.stepState(true, 2, 'Success')
+
+                    setTimeout(() => {
+                        validationStatus.stepState(true, 3, 'Success')
+                    }, 2000)
+                }, 2000)
+            }, 2000)
+        }, 3000)
     }
 
-    useEffect(() => {
-        return setResponses(
-            Array(stepsValidations.length).fill(ValidationStatus.Loading)
-        )
-    }, [stepsValidations.length])
-
     return (
-        <>
-            <Button onClick={openDialog}>Open dialog</Button>
+        <ThemeProvider theme={theme}>
+            <ThemeProviderFlipper options={muiThemeOptions}>
+                <Button onClick={openDialog}>Open dialog</Button>
 
-            <ValidationDialog
-                open={open}
-                title={stepsTitle}
-                responses={responses}
-                validations={stepsValidations}
-                icons={stepsIcons}
-                failed={
-                    !responses.includes('Loading') &&
-                    responses.includes('Error')
-                }
-                success={responses.every(item => item === 'Success')}
-                onCancel={handleClose}
-                onClose={handleClose}
-                handleCreateConfirm={handleConfirm}
-            />
-        </>
+                <ValidationDialog
+                    open={open}
+                    title={stepsTitle}
+                    icons={stepsIcons}
+                    validations={validationSteps}
+                    responses={validationResponses}
+                    failed={
+                        !validationResponses.includes('Loading') &&
+                        validationResponses.includes('Error')
+                    }
+                    success={validationResponses.every(
+                        item => item === 'Success'
+                    )}
+                    onCancel={handleClose}
+                    onClose={handleClose}
+                    handleCreate={handleConfirm}
+                />
+            </ThemeProviderFlipper>
+        </ThemeProvider>
     )
 }
 
 export const validationDialog: Story = {
-    render: () => <ValidationDialogStorie />
+    render: () => {
+        return <ValidationDialogStorie />
+    }
 }
