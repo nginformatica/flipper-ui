@@ -150,7 +150,6 @@ const ValidationDialog: React.FC<IValidateProps> = ({
 
     return (
         <MuiDialog
-            // open
             fullWidth
             open={open}
             title={renderTitle(title, responses)}
@@ -159,7 +158,7 @@ const ValidationDialog: React.FC<IValidateProps> = ({
             actions={
                 failed ? (
                     <Button
-                        color='secondary'
+                        color='primary'
                         variant='contained'
                         margin='0 12px 12px 0'
                         padding='6px 31.1px'
