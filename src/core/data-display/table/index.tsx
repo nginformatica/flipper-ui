@@ -1,7 +1,9 @@
 import MuiTable, { TableProps as MuiTableProps } from '@material-ui/core/Table'
 import React from 'react'
 import { DefaultProps } from '../../types'
-import { silver } from '@/colors'
+import { theme } from '@/theme'
+
+const { grays } = theme.colors
 
 export interface TableProps
     extends DefaultProps,
@@ -21,7 +23,7 @@ export const Table = ({
         {...otherProps}
         padding={spacing}
         style={{
-            border: `1px solid ${silver.light}`,
+            border: `1px solid ${grays.g6}`,
             padding,
             margin,
             ...style

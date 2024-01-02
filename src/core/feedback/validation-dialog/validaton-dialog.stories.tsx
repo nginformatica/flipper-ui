@@ -8,6 +8,8 @@ import Button from '@/core/inputs/button'
 import ValidationDialog, { ValidationStatus } from '.'
 import { CheckCircleOutline, CancelOutlined } from '../../../icons'
 
+const { action, secondary } = theme.colors
+
 const meta: Meta<typeof ValidationDialog> = {
     title: 'Feedback/Validation Dialog',
     component: ValidationDialog,
@@ -47,8 +49,8 @@ const ValidationDialogStorie = () => {
     }
 
     const stepsIcons = {
-        success: <CheckCircleOutline htmlColor='#118D16' />,
-        error: <CancelOutlined htmlColor='#D84315' />,
+        success: <CheckCircleOutline htmlColor={secondary.main} />,
+        error: <CancelOutlined htmlColor={action.cancel} />,
         loading: <CircularProgress size={20} color='inherit' />
     }
 

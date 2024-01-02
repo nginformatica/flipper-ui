@@ -1,16 +1,15 @@
-import { theme } from 'nginformatica-styleguide'
 import React from 'react'
 import SkeletonLoading, { SkeletonProps } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { theme } from '@/theme'
 
-const mainColor = theme.colors.grays.g7
-const subColor = '#CFCFCF'
+const { grays } = theme.colors
 
 export const Skeleton = (props: SkeletonProps) => (
     <SkeletonLoading
         containerTestId='skeleton-container'
-        baseColor={mainColor}
-        highlightColor={subColor}
+        baseColor={grays.g7}
+        highlightColor={grays.g6}
         {...props}
     />
 )

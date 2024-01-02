@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
 import Line from '.'
-import { background, primary as primaryColor } from '@/colors'
+import { theme } from '@/theme'
+
+const { grays, secondary } = theme.colors
 
 describe('Line', () => {
     it('should render closed', () => {
@@ -30,7 +32,7 @@ describe('Line', () => {
         expect(element).toHaveProperty('style.padding', '5px')
         expect(element).toHaveProperty(
             'style.border',
-            `1px solid ${background.normal.toLowerCase()}`
+            `1px solid ${grays.g6.toLowerCase()}`
         )
     })
 
@@ -41,7 +43,7 @@ describe('Line', () => {
 
         expect(element).toHaveProperty(
             'style.border',
-            `1px solid ${primaryColor.normal}`
+            `1px solid ${secondary.light}`
         )
     })
 

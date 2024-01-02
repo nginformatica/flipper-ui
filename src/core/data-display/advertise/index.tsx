@@ -1,9 +1,11 @@
 import React from 'react'
-import { background } from '@/colors'
+import styled from 'styled-components'
 import MuiPaper from '@/core/surfaces/paper'
 import Typography from '@/core/data-display/typography'
-import styled from 'styled-components'
 import type { DefaultProps } from '../../types'
+import { theme } from '@/theme'
+
+const { grays } = theme.colors
 
 export interface AdvertiseProps extends DefaultProps {
     /**
@@ -28,7 +30,7 @@ export interface AdvertiseProps extends DefaultProps {
 
 const styles = {
     border: {
-        borderLeft: `1px solid ${background.dark}`
+        borderLeft: `1px solid ${grays.g5}`
     }
 }
 
