@@ -27,6 +27,16 @@ const App = () => (
 
 <ColorPalette>
     <ColorItem
+        title="theme.colors.neutral.(black|white|transparent)"
+        subtitle="Neutral"
+        colors={{
+            black: '#000000',
+            white: '#FFFFFF',
+            transparent: 'rgba(0, 0, 0, 0)'
+        }}
+    />
+
+    <ColorItem
         title="theme.colors.primary.(main|dark|light|contrast)"
         subtitle="Primary"
         colors={{
@@ -143,6 +153,16 @@ const App = () => (
             low: '#E9F4DD',
             minimal: '#DAF2FD',
             neutral: '#F5F5F5'
+        }} 
+    />
+
+    <ColorItem 
+        title="theme.color.criticality.(high|medium|low)" 
+        subtitle="Criticality" 
+        colors={{
+            high: '#FF9900',
+            medium: '#E7BF11',
+            low: '#8BC34A'
         }} 
     />
 

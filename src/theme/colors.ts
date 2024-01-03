@@ -20,6 +20,19 @@ const secondary = {
     contrast: neutral.white
 }
 
+const feedback: Record<Feedback, string> = {
+    danger: '#D84315',
+    warning: '#FFA000',
+    success: '#0E9043',
+    info: '#2F80ED'
+}
+
+const action = {
+    confirm: '#118D16',
+    cancel: '#D84315',
+    neutral: primary.main
+}
+
 const grays = {
     g0: '#212121',
     g1: '#424242',
@@ -31,47 +44,6 @@ const grays = {
     g7: '#eeeeee',
     g8: '#f5f5f5',
     g9: '#fafafa'
-}
-
-// Actions
-const action = {
-    confirm: '#118D16',
-    cancel: '#D84315',
-    neutral: primary.main
-}
-
-const feedback: Record<Feedback, string> = {
-    danger: '#D84315',
-    warning: '#FFA000',
-    success: '#0E9043',
-    info: '#2F80ED'
-}
-
-const priority: Record<Priority, { main: string; light: string }> = {
-    critical: {
-        main: '#D84315',
-        light: '#FFCDBE'
-    },
-    high: {
-        main: '#FF9900',
-        light: '#FFE1B4'
-    },
-    medium: {
-        main: '#E7BF11',
-        light: '#FFF7D5'
-    },
-    low: {
-        main: '#8BC34A',
-        light: '#E9F4DD'
-    },
-    minimal: {
-        main: '#56CCF2',
-        light: '#DAF2FD'
-    },
-    neutral: {
-        main: grays.g5,
-        light: grays.g8
-    }
 }
 
 const graphic: Record<Graphically, { main: string; light: string }> = {
@@ -112,6 +84,33 @@ const graphic: Record<Graphically, { main: string; light: string }> = {
         light: '#DAF2FD'
     },
     gray: {
+        main: grays.g5,
+        light: grays.g8
+    }
+}
+
+const priority: Record<Priority, { main: string; light: string }> = {
+    critical: {
+        main: '#D84315',
+        light: '#FFCDBE'
+    },
+    high: {
+        main: '#FF9900',
+        light: '#FFE1B4'
+    },
+    medium: {
+        main: '#E7BF11',
+        light: '#FFF7D5'
+    },
+    low: {
+        main: '#8BC34A',
+        light: '#E9F4DD'
+    },
+    minimal: {
+        main: '#56CCF2',
+        light: '#DAF2FD'
+    },
+    neutral: {
         main: grays.g5,
         light: grays.g8
     }
