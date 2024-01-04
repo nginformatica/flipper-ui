@@ -6,7 +6,7 @@ describe('MenuItem', () => {
     it('should render', () => {
         render(<MenuItem title='Item 1' />)
 
-        const menuItem = screen.getByText('Item 1')
+        const menuItem = screen.getByRole('menuitem', { name: 'Item 1' })
 
         expect(menuItem).toBeDefined()
     })

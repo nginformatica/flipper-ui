@@ -35,6 +35,7 @@ const MenuItem = (props: ListItemProps) => {
     return (
         <MenuItems
             id={props.id}
+            title={props.title}
             style={{ padding, margin, ...style }}
             selected={props.selected}
             disabled={props.disabled}

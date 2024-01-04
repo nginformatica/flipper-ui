@@ -43,7 +43,7 @@ describe('Line', () => {
 
         expect(element).toHaveProperty(
             'style.border',
-            `1px solid ${secondary.light}`
+            `1px solid ${secondary.light.toLowerCase()}`
         )
     })
 
