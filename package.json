@@ -40,9 +40,9 @@
     "@material-ui/icons": "4.11.3",
     "@material-ui/lab": "4.0.0-alpha.61",
     "@material-ui/pickers": "3.3.11",
-    "@mui/icons-material": "5.15.2",
-    "@mui/material": "5.15.2",
-    "@mui/styles": "5.15.2",
+    "@mui/icons-material": "5.15.3",
+    "@mui/material": "5.15.3",
+    "@mui/styles": "5.15.3",
     "date-fns": "2.30.0",
     "faker": "5.5.3",
     "material-table": "1.69.3",
@@ -62,7 +62,7 @@
     "@babel/preset-env": "7.23.7",
     "@babel/preset-typescript": "7.23.3",
     "@storybook/addon-essentials": "7.6.7",
-    "@storybook/addon-styling-webpack": "0.0.5",
+    "@storybook/addon-styling-webpack": "0.0.6",
     "@storybook/react": "7.6.7",
     "@storybook/react-webpack5": "7.6.7",
     "@testing-library/react": "14.1.2",
@@ -112,8 +112,8 @@
   },
   "peerDependencies": {
     "date-fns": "^2.30.0",
-    "react": "^16.8.0",
-    "styled-components": "^5.0.0"
+    "react": "16.x || 17.x || 18.x",
+    "styled-components": "5.x || 6.x"
   },
   "publishConfig": {
     "ignore": [
