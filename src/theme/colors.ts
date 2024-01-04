@@ -1,8 +1,8 @@
 import { Priority, Feedback, Criticality, Graphically } from './presets'
 
 const neutral = {
-    black: '#000',
-    white: '#FFF',
+    black: '#000000',
+    white: '#FFFFFF',
     transparent: 'rgba(0, 0, 0, 0)'
 }
 
