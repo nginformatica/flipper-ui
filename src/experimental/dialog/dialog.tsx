@@ -1,9 +1,8 @@
-import { Dialog as DialogFlipper, Button, ThemeProviderFlipper } from '@/index'
 import React, { MouseEvent, ReactNode } from 'react'
-import { theme as Theme } from 'nginformatica-styleguide'
+import { Dialog as DialogFlipper, Button, ThemeProviderFlipper } from '@/index'
+import { theme } from '@theme'
 
-const ACTION_REMOVE = Theme.colors.action.cancel
-const PRIMARY_DARK = Theme.colors.primary.main
+const { action, primary } = theme.colors
 
 export interface IProps {
     open: boolean
@@ -24,13 +23,13 @@ export interface IProps {
     onClose?(): void
 }
 
-const theme = {
+const themeDialog = {
     palette: {
         primary: {
-            main: PRIMARY_DARK
+            main: primary.main
         },
         secondary: {
-            main: ACTION_REMOVE
+            main: action.cancel
         },
         typography: {
             useNextVariants: true
@@ -62,7 +61,7 @@ export const DialogV2 = (props: IProps) => {
     const haveSecondaryButton = secondaryButtonText && secondaryButtonAction
 
     return (
-        <ThemeProviderFlipper options={theme}>
+        <ThemeProviderFlipper options={themeDialog}>
             <DialogFlipper
                 {...otherProps}
                 open={open}

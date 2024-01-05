@@ -1,9 +1,9 @@
-import { Sidebar as FlipperSidebar, Tooltip, List, ListItem } from '@/index'
 import React, { useEffect, useState, useCallback } from 'react'
-import styled from 'styled-components'
-import { theme } from 'nginformatica-styleguide'
+import { Sidebar as FlipperSidebar, Tooltip, List, ListItem } from '@/index'
 import { times, map } from 'ramda'
+import styled from 'styled-components'
 import { Skeleton } from '@mui/material'
+import { theme } from '@theme'
 
 export interface ISidebarOption {
     icon: React.ReactElement

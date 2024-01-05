@@ -1,12 +1,12 @@
+import React from 'react'
 import { List } from '@material-ui/core'
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
-import { theme } from 'nginformatica-styleguide'
-import React from 'react'
-import { IStepCardProps } from '.'
 import { CheckCircle as CheckCircleIcon, Help as HelpIcon } from '@/icons'
 import IconButton from '@/core/inputs/icon-button'
 import Typography from '@/core/data-display/typography'
+import { IStepCardProps } from '.'
 import { ListItemContainer, StepCardColumn } from './styles'
+import { theme } from '@theme'
 
 const { feedback, grays } = theme.colors
 const DONE_COLOR = feedback.success

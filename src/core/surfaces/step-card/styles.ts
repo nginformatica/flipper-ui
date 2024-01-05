@@ -1,6 +1,6 @@
-import { Box } from '@material-ui/core'
-import { theme } from 'nginformatica-styleguide'
 import styled from 'styled-components'
+import { Box } from '@material-ui/core'
+import { theme } from '@theme'
 
 interface IStepContainerProps {
     padding?: React.CSSProperties['padding']
