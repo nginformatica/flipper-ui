@@ -8373,11 +8373,6 @@ neo-async@^2.5.0, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nginformatica-styleguide@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/nginformatica-styleguide/-/nginformatica-styleguide-1.0.2.tgz#84aa46f1bdc95f87ea08942aa3de2918b02bc225"
-  integrity sha512-ZTEkmkuDeE0GiA0Gfx5frwzYsbwoqFyC6N04MSkkSg0E7qEVH86IA8Jo6Uke8heBiBNqgQTLN2fgqKwtXdWMoQ==
-
 no-case@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-3.0.4.tgz#d361fd5c9800f558551a8369fc0dcd4662b6124d"

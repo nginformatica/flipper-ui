@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
-import { muiThemeOptions, theme } from '../../../theme'
 import ThemeProviderFlipper from '../../context/theme-provider'
 import CircularProgress from '@mui/material/CircularProgress'
 import Button from '@/core/inputs/button'
 import ValidationDialog, { ValidationStatus } from '.'
 import { CheckCircleOutline, CancelOutlined } from '../../../icons'
+import { muiThemeOptions, theme } from '@/theme'
 
 const { action, secondary } = theme.colors
 

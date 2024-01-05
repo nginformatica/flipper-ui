@@ -1,7 +1,6 @@
+import React from 'react'
 import { LinearProgress } from '@material-ui/core'
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
-import { theme } from 'nginformatica-styleguide'
-import React from 'react'
 import { sprintf } from 'sprintf-js'
 import { IStepCardProps } from '.'
 import {
@@ -17,6 +16,7 @@ import {
     StepContainer,
     TitleContainer
 } from './styles'
+import { theme } from '@/theme'
 
 const { feedback, grays } = theme.colors
 const DONE_COLOR = feedback.success
