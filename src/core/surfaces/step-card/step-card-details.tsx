@@ -6,7 +6,7 @@ import IconButton from '@/core/inputs/icon-button'
 import Typography from '@/core/data-display/typography'
 import { IStepCardProps } from '.'
 import { ListItemContainer, StepCardColumn } from './styles'
-import { theme } from '@theme'
+import { theme } from '@/theme'
 
 const { feedback, grays } = theme.colors
 const DONE_COLOR = feedback.success

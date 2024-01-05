@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { addIndex, map } from 'ramda'
 import { ChevronRight as IconChevronRight } from '@/icons'
 import { Typography, Breadcrumb } from '@/index'
-import { theme } from '@theme'
+import { theme } from '@/theme'
 
 const imap = addIndex(map)
 

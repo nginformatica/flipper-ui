@@ -29,8 +29,7 @@
         "paths": {
             "@/*": [
                 "./src/*"
-            ],
-            "@theme": ["./src/theme"]
+            ]
         },
     },
     "include": [

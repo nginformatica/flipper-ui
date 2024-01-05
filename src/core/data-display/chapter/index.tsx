@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { DefaultProps } from '../../types'
 import Typography from '@/core/data-display/typography'
 import type { TypographyProps } from '@material-ui/core/Typography'
-import { theme } from '@theme'
+import { theme } from '@/theme'
 
 const { grays } = theme.colors
 

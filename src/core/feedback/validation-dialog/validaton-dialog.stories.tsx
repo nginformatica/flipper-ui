@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Button from '@/core/inputs/button'
 import ValidationDialog, { ValidationStatus } from '.'
 import { CheckCircleOutline, CancelOutlined } from '../../../icons'
-import { muiThemeOptions, theme } from '@theme'
+import { muiThemeOptions, theme } from '@/theme'
 
 const { action, secondary } = theme.colors
 

@@ -16,7 +16,7 @@ import {
     StepContainer,
     TitleContainer
 } from './styles'
-import { theme } from '@theme'
+import { theme } from '@/theme'
 
 const { feedback, grays } = theme.colors
 const DONE_COLOR = feedback.success

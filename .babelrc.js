@@ -119,8 +119,7 @@ module.exports = {
             'module-resolver',
             {
                 alias: {
-                    '@': './src',
-                    '@theme': './src/theme'
+                    '@': './src'
                 }
             }
         ],
