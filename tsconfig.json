@@ -30,6 +30,7 @@
             "@/*": [
                 "./src/*"
             ],
+            "@theme": ["./src/theme"]
         },
     },
     "include": [
