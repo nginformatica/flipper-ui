@@ -2,13 +2,14 @@ import * as React from 'react'
 import { render, screen } from '@testing-library/react'
 import Menu from '.'
 import ListItem from '@/core/data-display/list-item'
-import IconBackup from '@material-ui/icons/Backup'
+import { Backup } from '../../../icons'
+
 describe('Menu', () => {
     it('should render opened', () => {
         render(
             <Menu open>
-                <ListItem icon={<IconBackup />} title='Menu 1' />
-                <ListItem icon={<IconBackup />} title='Menu 2' />
+                <ListItem icon={<Backup />} title='Menu 1' />
+                <ListItem icon={<Backup />} title='Menu 2' />
             </Menu>
         )
 
@@ -22,8 +23,8 @@ describe('Menu', () => {
     it('should render closed', () => {
         render(
             <Menu open={false}>
-                <ListItem icon={<IconBackup />} title='Menu 1' />
-                <ListItem icon={<IconBackup />} title='Menu 2' />
+                <ListItem icon={<Backup />} title='Menu 1' />
+                <ListItem icon={<Backup />} title='Menu 2' />
             </Menu>
         )
 

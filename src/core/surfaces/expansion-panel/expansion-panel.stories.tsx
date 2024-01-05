@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import ExpansionPanel from '.'
 import Typography from '@/core/data-display/typography'
-import ExpandMore from '@material-ui/icons/ExpandMore'
+import { ExpandMore } from '../../../icons'
 import Button from '@/core/inputs/button'
 import TextField from '@/core/inputs/text-field'
 

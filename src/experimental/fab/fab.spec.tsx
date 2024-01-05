@@ -3,13 +3,13 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Fab from './fab'
 import FabWrapper from './fab-wrapper'
-import FileCopyIcon from '@material-ui/icons/FileCopy'
+import { FileCopy } from '../../icons'
 
 describe('Fab', () => {
     it('should render correctly', () => {
         render(
             <Fab onClick={jest.fn()}>
-                <FileCopyIcon />
+                <FileCopy />
             </Fab>
         )
 
@@ -21,7 +21,7 @@ describe('Fab', () => {
     it('should render large correctly', () => {
         render(
             <Fab large onClick={jest.fn()}>
-                <FileCopyIcon />
+                <FileCopy />
             </Fab>
         )
 
@@ -34,7 +34,7 @@ describe('Fab', () => {
         const onClickSpy = jest.fn()
         render(
             <Fab onClick={onClickSpy}>
-                <FileCopyIcon />
+                <FileCopy />
             </Fab>
         )
 
@@ -51,7 +51,7 @@ describe('Fab', () => {
         const onClickSpy = jest.fn()
         render(
             <Fab onClick={onClickSpy} tooltip='tooltip-test'>
-                <FileCopyIcon />
+                <FileCopy />
             </Fab>
         )
 

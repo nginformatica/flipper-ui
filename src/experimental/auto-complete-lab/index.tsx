@@ -1,13 +1,15 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import { default as MuiAutocomplete } from '@material-ui/lab/Autocomplete'
 export {
     AutocompleteRenderInputParams,
     AutocompleteProps,
     AutocompleteCloseReason,
     AutocompleteChangeReason,
-    AutocompleteInputChangeReason
+    AutocompleteInputChangeReason,
+    AutocompleteGetTagProps,
+    AutocompleteRenderOptionState
 } from '@material-ui/lab/Autocomplete'
-import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
     inputRoot: {

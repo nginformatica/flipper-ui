@@ -1,6 +1,6 @@
 import { Box } from '@material-ui/core'
 import MuiAccordion from '@material-ui/core/Accordion'
-import { Skeleton } from '@material-ui/lab'
+import { Skeleton } from '@mui/material'
 import React from 'react'
 import {
     Container,
@@ -63,7 +63,7 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                         <StepCardColumn justifyContent='start'>
                             {showIcon && (
                                 <Skeleton
-                                    variant='circle'
+                                    variant='circular'
                                     width={40}
                                     height={40}
                                 />

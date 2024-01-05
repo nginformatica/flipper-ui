@@ -15,12 +15,7 @@ import React, {
     MouseEvent
 } from 'react'
 import { DefaultProps } from '../../types'
-import {
-    Clear,
-    Help as ContactSupportIcon,
-    Edit,
-    Save
-} from '@material-ui/icons'
+import { Clear, Help as ContactSupportIcon, Edit, Save } from '../../../icons'
 import IconButton from '../icon-button'
 import styled from 'styled-components'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'

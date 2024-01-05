@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '.'
-import { Home, Computer, Edit } from '@material-ui/icons'
+import { Home, Computer, Edit } from '../../icons'
 import { Meta, StoryFn } from '@storybook/react'
 
 export default {

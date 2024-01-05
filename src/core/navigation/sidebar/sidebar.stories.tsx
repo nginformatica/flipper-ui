@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import Sidebar from '.'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import IconBackup from '@material-ui/icons/Backup'
+import { Backup } from '../../../icons'
 
 export default {
     title: 'Navigation/Sidebar',
@@ -19,10 +19,10 @@ Default.args = {
     children: (
         <>
             <List>
-                <ListItem title='Item 1' icon={<IconBackup />} />
-                <ListItem title='Item 2' icon={<IconBackup />} />
-                <ListItem title='Item 3' icon={<IconBackup />} />
-                <ListItem title='Item 4' icon={<IconBackup />} />
+                <ListItem title='Item 1' icon={<Backup />} />
+                <ListItem title='Item 2' icon={<Backup />} />
+                <ListItem title='Item 3' icon={<Backup />} />
+                <ListItem title='Item 4' icon={<Backup />} />
             </List>
         </>
     )

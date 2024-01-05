@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
 import { TableCell, TableRow, Typography } from '@material-ui/core'
-import { Skeleton } from '@material-ui/lab'
+import { Skeleton } from '@mui/material'
 import { Meta } from '@storybook/react'
 import format from 'date-fns/format'
 import React, { ReactNode, useMemo, useRef, useState } from 'react'

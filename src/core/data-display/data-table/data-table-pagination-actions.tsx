@@ -1,9 +1,11 @@
 import React from 'react'
 import IconButton from '@/core/inputs/icon-button'
-import FirstPageIcon from '@material-ui/icons/FirstPage'
-import LastPageIcon from '@material-ui/icons/LastPage'
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
+import {
+    FirstPage,
+    LastPage,
+    KeyboardArrowLeft,
+    KeyboardArrowRight
+} from '../../../icons'
 
 interface DataTablePaginationActionsProps {
     count: number
@@ -68,7 +70,7 @@ export const makeDataTablePaginationActions =
                         onClick={handleFirstPageButtonClick}
                         disabled={page === 0 || clickable}
                         aria-label='first page'>
-                        <FirstPageIcon />
+                        <FirstPage />
                     </IconButton>
                 )}
                 <IconButton
@@ -88,7 +90,7 @@ export const makeDataTablePaginationActions =
                         onClick={handleLastPageButtonClick}
                         disabled={page >= totalPages || clickable}
                         aria-label='last page'>
-                        <LastPageIcon />
+                        <LastPage />
                     </IconButton>
                 )}
             </div>

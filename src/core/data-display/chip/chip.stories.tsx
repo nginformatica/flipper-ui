@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import Chip from '.'
 import Avatar from '@/core/data-display/avatar'
-import FaceIcon from '@material-ui/icons/Face'
+import { Face } from '../../../icons'
 
 export default {
     title: 'DataDisplay/Chip',
@@ -37,7 +37,7 @@ WithIconAvatar.args = {
     ...commonArgs,
     avatar: (
         <Avatar>
-            <FaceIcon />
+            <Face />
         </Avatar>
     )
 }

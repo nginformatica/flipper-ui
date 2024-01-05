@@ -1,14 +1,14 @@
 import React from 'react'
 import FabV2 from './fab'
 import FabWrapper from './fab-wrapper'
-import FileCopyIcon from '@material-ui/icons/FileCopy'
+import { FileCopy } from '../../icons'
 import { Meta, StoryFn } from '@storybook/react'
 
 const Template: StoryFn<typeof FabV2> = args => <FabV2 {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-    children: <FileCopyIcon />
+    children: <FileCopy />
 }
 
 export default {

@@ -32,7 +32,6 @@ import AutoComplete from '@/core/inputs/auto-complete'
 import ListItem from '@/core/data-display/list-item'
 import TextField from '@/core/inputs/text-field'
 import MaskField from '@/core/inputs/mask-field'
-import { DARK, GREY } from '@/colors'
 import { getLocalization } from '@/lib/localization'
 
 export interface EditableTableProps<T extends object> {
@@ -98,6 +97,9 @@ export interface EditableTableProps<T extends object> {
 }
 
 export type TSuggestion = { label: string; value: string }
+
+export const DARK = 'rgba(189,189,189,0)'
+export const GREY = 'rgba(189,189,189,1)'
 
 const AddRowButton = styled.div`
     display: flex;

@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import List from '.'
 import ListItem from '@/core/data-display/list-item'
-import IconBackup from '@material-ui/icons/Backup'
+import { Backup } from '../../../icons'
 import Avatar from '../avatar'
 
 export default {
@@ -34,14 +34,14 @@ WithIcons.args = {
     title: 'My beautiful list"',
     children: (
         <>
-            <ListItem icon={<IconBackup />} title='Item 1' />
-            <ListItem icon={<IconBackup />} title='Item 2' />
-            <ListItem icon={<IconBackup />} title='Item 3' />
-            <ListItem icon={<IconBackup />} title='Item 4' />
-            <ListItem icon={<IconBackup />} title='Item 5' />
-            <ListItem icon={<IconBackup />} title='Item 6' />
-            <ListItem icon={<IconBackup />} title='Item 7' />
-            <ListItem icon={<IconBackup />} title='Item 8' />
+            <ListItem icon={<Backup />} title='Item 1' />
+            <ListItem icon={<Backup />} title='Item 2' />
+            <ListItem icon={<Backup />} title='Item 3' />
+            <ListItem icon={<Backup />} title='Item 4' />
+            <ListItem icon={<Backup />} title='Item 5' />
+            <ListItem icon={<Backup />} title='Item 6' />
+            <ListItem icon={<Backup />} title='Item 7' />
+            <ListItem icon={<Backup />} title='Item 8' />
         </>
     )
 }

@@ -1,6 +1,8 @@
 import React from 'react'
-import { background, primary as primaryColor } from '@/colors'
 import { DefaultProps } from '../../types'
+import { theme } from '@/theme'
+
+const { grays, secondary } = theme.colors
 
 export interface LineProps extends DefaultProps {
     /**
@@ -22,9 +24,7 @@ export const Line = ({
             flex: 1,
             padding,
             margin,
-            border: `1px solid ${
-                primary ? primaryColor.normal : background.normal
-            }`,
+            border: `1px solid ${primary ? secondary.light : grays.g6}`,
             ...style
         }}
         {...otherProps}
