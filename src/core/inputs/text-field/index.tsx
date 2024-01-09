@@ -19,6 +19,9 @@ import { Clear, Help as ContactSupportIcon, Edit, Save } from '../../../icons'
 import IconButton from '../icon-button'
 import styled from 'styled-components'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
+import { theme } from '@/theme'
+
+const { primary } = theme.colors
 
 export interface IOption {
     label: string
@@ -159,10 +162,13 @@ export const toLispCase = (name: string) =>
 export const HelperBox = (props: IHelperProps) => (
     <Helper role='helper-box'>
         <IconButton padding='6px 2px' onClick={props.onHelperClick}>
-            {props.helperIcon || <ContactSupportIcon color='primary' />}
+            {props.helperIcon || (
+                <ContactSupportIcon htmlColor={primary.main} />
+            )}
         </IconButton>
     </Helper>
 )
+
 /* Jest-ignore-start ignore next */
 export const renderOptions = (
     options: TextFieldProps['options'],
