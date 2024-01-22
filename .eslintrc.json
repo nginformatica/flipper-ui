@@ -10,8 +10,7 @@
         "plugin:react-hooks/recommended",
         "plugin:prettier/recommended",
         "eslint:recommended",
-        "prettier",
-        "plugin:ramda/recommended"
+        "prettier"
     ],
     "rules": {
         "@typescript-eslint/ban-types": 1,
@@ -163,7 +162,7 @@
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/explicit-function-return-type": "off"
     },
-    "plugins": ["react", "prefer-arrow", "@typescript-eslint", "ramda", "eslint-plugin-prettier"],
+    "plugins": ["react", "prefer-arrow", "@typescript-eslint", "eslint-plugin-prettier"],
     "settings": {
         "react": {
             "pragma": "React",
