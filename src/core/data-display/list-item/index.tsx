@@ -12,7 +12,7 @@ import React, { Fragment, MouseEvent } from 'react'
 import { DefaultProps } from '../../types'
 import { Omit } from 'ramda'
 
-interface ListItemProps extends Omit<DefaultProps, 'name'> {
+export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     avatar?: JSX.Element
     icon?: JSX.Element
     action?: JSX.Element

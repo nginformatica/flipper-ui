@@ -22,7 +22,7 @@ export type ColumnType =
 
 export type Align = 'right' | 'left' | 'center' | 'justify' | 'inherit'
 
-type ColumnSpecBase<F = {}> = {
+type ColumnSpecBase<F = object> = {
     title: string
     type: string
     cellStyle?: CSSProperties
