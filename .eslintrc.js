@@ -96,16 +96,6 @@ const rulesImport = {
                     position: 'before'
                 },
                 {
-                    pattern: 'react-router',
-                    group: 'external',
-                    position: 'before'
-                },
-                {
-                    pattern: 'react-router-dom',
-                    group: 'external',
-                    position: 'before'
-                },
-                {
                     pattern: '../styles',
                     group: 'index',
                     position: 'after'
