@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import { Close as IconClose, Edit as IconEdit } from '@/icons'

@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
 import { defaultTo } from 'ramda'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { PaperProps as FlipperPaperProps } from '@/core/surfaces/paper'
 import { ExpandMore as IconExpand } from '@/icons'
 import { ExpansionPanel, Typography } from '@/index'

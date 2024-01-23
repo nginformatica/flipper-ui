@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import type { ReactElement } from 'react'
 import { Skeleton } from '@mui/material'
 import { times, map } from 'ramda'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import { Sidebar as FlipperSidebar, Tooltip, List, ListItem } from '@/index'
 import { theme } from '@/theme'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { FC, ReactNode } from 'react'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import { Typography } from '@/core/data-display/typography'
 import { Button } from '@/core/inputs/button'
 import { Actions } from '@/experimental/actions'

@@ -12,7 +12,7 @@ import MaterialTable, {
     MTableActions
 } from 'material-table'
 import { omit, contains, propOr } from 'ramda'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { Column, Options } from 'material-table'
 import ListItem from '@/core/data-display/list-item'
 import { Typography } from '@/core/data-display/typography'

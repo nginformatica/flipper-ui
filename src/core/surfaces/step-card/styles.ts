@@ -1,5 +1,5 @@
 import { Box } from '@material-ui/core'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import { theme } from '@/theme'
 
 interface IStepContainerProps {

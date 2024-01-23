@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import React from 'react'
 import { addIndex, map } from 'ramda'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import { ChevronRight as IconChevronRight } from '@/icons'
 import { Typography, Breadcrumb } from '@/index'
 import { theme } from '@/theme'

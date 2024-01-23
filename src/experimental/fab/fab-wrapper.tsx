@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 import React from 'react'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 
 export interface IProps {
     padding?: number | string

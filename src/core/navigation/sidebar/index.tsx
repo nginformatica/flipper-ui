@@ -1,9 +1,9 @@
 import React from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { styled } from 'styled-components'
-import type { ButtonProps } from '@/core/inputs/button'
+import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
+import type { ButtonProps } from '@/core/inputs/button'
 import type { Theme } from '@material-ui/core/styles'
 import { Button } from '@/core/inputs/button'
 import {

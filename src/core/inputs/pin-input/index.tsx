@@ -6,7 +6,7 @@ import type {
     KeyboardEvent
 } from 'react'
 import { TextField } from '@material-ui/core'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 
 export interface PinInputGridProps {
     pin: Array<number | undefined>

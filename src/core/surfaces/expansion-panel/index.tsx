@@ -10,7 +10,7 @@ import MuiExpansionPanel from '@material-ui/core/Accordion'
 import MuiExpansionPanelActions from '@material-ui/core/AccordionActions'
 import MuiExpansionPanelDetails from '@material-ui/core/AccordionDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/AccordionSummary'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { PaperProps } from '@/core/surfaces/paper'
 import { EditBox, HelperBox } from '@/core/inputs/text-field'
 

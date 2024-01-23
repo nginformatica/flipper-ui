@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import {
     KeyboardArrowDown as IconArrowDown,

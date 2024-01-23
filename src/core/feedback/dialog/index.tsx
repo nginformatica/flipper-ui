@@ -6,7 +6,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import { makeStyles } from '@material-ui/core/styles'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import type { DialogProps as MuiDialogProps } from '@material-ui/core'
 

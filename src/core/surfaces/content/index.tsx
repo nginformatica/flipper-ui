@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 
 const StyledContent = styled.main`

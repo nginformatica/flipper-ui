@@ -1,7 +1,7 @@
 import React from 'react'
 import type { MouseEvent, MutableRefObject } from 'react'
 import { MenuItem as MuiMenuItem } from '@mui/material'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import type { MenuItemClassKey } from '@material-ui/core/MenuItem'
 import type { ClassNameMap } from '@material-ui/core/styles/withStyles'

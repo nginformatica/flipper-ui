@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import type { ReactNode } from 'react'
 import ChipInput from 'material-ui-chip-input'
-import { styled } from 'styled-components'
+import { default as styled } from 'styled-components'
 import type { InputLabelProps } from '@material-ui/core'
 import type { ChipRenderer } from 'material-ui-chip-input'
 
