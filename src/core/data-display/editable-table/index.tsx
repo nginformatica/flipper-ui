@@ -87,7 +87,7 @@ export interface EditableTableProps<T extends object> {
      * The input value
      */
     value?: string
-    onRowClick?: (event?: MouseEvent<HTMLElement>, rowData?: T) => void
+    onRowClick?: (event?: MouseEvent, rowData?: T) => void
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
