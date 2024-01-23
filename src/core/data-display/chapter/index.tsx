@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import { styled } from 'styled-components'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { TypographyProps } from '@material-ui/core/Typography'
 import { Typography } from '@/core/data-display/typography'
 import { theme } from '@/theme'

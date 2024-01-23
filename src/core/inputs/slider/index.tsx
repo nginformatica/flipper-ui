@@ -1,6 +1,6 @@
 import React from 'react'
 import MuiSlider from '@material-ui/core/Slider'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { SliderProps } from '@material-ui/core/Slider'
 
 export interface ISliderProps {

@@ -1,7 +1,7 @@
 import type { ChangeEvent, ReactNode } from 'react'
 import React from 'react'
 import { InputBase as MuiInputBase } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { InputBaseProps as MuiInputBaseProps } from '@material-ui/core'
 
 export interface InputAdornmentProps

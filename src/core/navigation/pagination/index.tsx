@@ -1,7 +1,7 @@
 import React from 'react'
 import { inc, times } from 'ramda'
 import { styled } from 'styled-components'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import { Button } from '@/core/inputs/button'
 import {
     KeyboardArrowLeft as IconArrowLeft,

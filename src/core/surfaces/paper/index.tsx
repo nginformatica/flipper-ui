@@ -1,6 +1,6 @@
 import React from 'react'
 import { Paper as MuiPaper } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { PaperProps as MuiPaperProps } from '@material-ui/core'
 
 export interface PaperProps extends DefaultProps, MuiPaperProps {

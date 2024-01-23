@@ -6,7 +6,7 @@ import {
     Switch as MuiSwitch,
     Typography
 } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { CheckboxProps as MuiCheckboxProps } from '@material-ui/core'
 import {
     HelperBox,

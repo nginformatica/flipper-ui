@@ -1,6 +1,6 @@
 import React from 'react'
 import { InputAdornment as MuiInputAdornment } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { InputAdornmentProps as MuiInputProps } from '@material-ui/core'
 
 export interface InputAdornmentProps extends DefaultProps, MuiInputProps {

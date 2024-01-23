@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 import { Fade as MuiFade } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface FadeProps extends DefaultProps {
     in: boolean

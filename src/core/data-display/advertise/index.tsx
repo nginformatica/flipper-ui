@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
 import { styled } from 'styled-components'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import { Typography } from '@/core/data-display/typography'
 import MuiPaper from '@/core/surfaces/paper'
 import { theme } from '@/theme'

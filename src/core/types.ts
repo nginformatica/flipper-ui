@@ -1,11 +1,11 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 export interface DefaultProps {
     /**
      * The children of the component.
      * @optional
      */
-    children?: React.ReactNode
+    children?: ReactNode
     /**
      * The style of the component.
      * @optional

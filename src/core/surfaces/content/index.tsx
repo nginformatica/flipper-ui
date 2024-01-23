@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
 import { styled } from 'styled-components'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 const StyledContent = styled.main`
     flex: 1;

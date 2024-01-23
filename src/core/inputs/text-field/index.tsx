@@ -19,7 +19,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
 import { styled } from 'styled-components'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { TextFieldProps as MuiTextFieldProps } from '@material-ui/core'
 import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import { IconButton } from '../icon-button'

@@ -1,6 +1,6 @@
 import React from 'react'
 import MuiTable from '@material-ui/core/Table'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { TableProps as MuiTableProps } from '@material-ui/core/Table'
 import { theme } from '@/theme'
 

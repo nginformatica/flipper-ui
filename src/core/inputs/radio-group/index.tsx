@@ -7,7 +7,7 @@ import {
     Radio,
     RadioGroup as MuiRadioGroup
 } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface RadioGroupProps extends DefaultProps {
     row?: boolean

@@ -1,6 +1,6 @@
 import React from 'react'
 import MuiTypography from '@material-ui/core/Typography'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { TypographyProps } from '@material-ui/core/Typography'
 
 export const Typography = ({

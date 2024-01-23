@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactNode } from 'react'
 import { Collapse as MuiCollapse } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface CollapseProps extends DefaultProps {
     collapsedHeight?: string

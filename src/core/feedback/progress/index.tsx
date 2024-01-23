@@ -3,7 +3,7 @@ import {
     CircularProgress as MuiCircularProgress,
     LinearProgress as MuiLinearProgress
 } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface ILinear {
     color?: 'primary' | 'secondary'
