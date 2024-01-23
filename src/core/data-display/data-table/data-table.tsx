@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, {
     useMemo,
     useState,
@@ -30,6 +31,7 @@ import {
 import { useRowsState } from './use-rows-state'
 import { StatefulRow, NewRow } from './rows'
 import { makeDataTablePaginationActions } from './data-table-pagination-actions'
+import { Checkbox } from '@material-ui/core'
 
 export type DataTableProps<
     D extends Data,
@@ -93,6 +95,19 @@ export type DataTableProps<
      * Custom rowViews used as a Stac
      */
     rowViews?: Record<keyof V, RowViewComponent<D>>
+    /**
+     * Hide or show the checkbox
+     */
+    checkbox?: boolean
+    /**
+     * Handle the selected states and values
+     */
+    checkboxProps?: {
+        checkRow?: boolean[]
+        checkAllRows?: boolean
+        setSelectedRow?: React.Dispatch<React.SetStateAction<boolean[]>>
+        setSelectedAllRows?: React.Dispatch<React.SetStateAction<boolean>>
+    }
     onRowClick?: (
         event: React.MouseEvent<HTMLTableRowElement>,
         rowData: D
@@ -139,7 +154,9 @@ export const DataTable = <D extends Data, V extends StackView>(
         bodyStyle,
         headStyle,
         hiddenRowHeight,
-        hidden
+        hidden,
+        checkbox,
+        checkboxProps
     } = props
 
     const [newRow, setNewRow] = useState<PartialData<D> | undefined>()
@@ -204,9 +221,45 @@ export const DataTable = <D extends Data, V extends StackView>(
         }
     }, [setRowState, pushRowView, popRowView, getRowState, controllerRef])
 
+    const handleSelectCheckbox = (
+        index: number,
+        setSelected: React.Dispatch<React.SetStateAction<boolean[]>>,
+        setSelectedAll: React.Dispatch<React.SetStateAction<boolean>>
+    ) => {
+        setSelected(state => {
+            const newState = state.map((row, i: number) =>
+                index === i ? !row : row
+            )
+
+            if (newState.includes(false)) {
+                setSelectedAll(false)
+            }
+
+            if (newState.every(item => item === true)) {
+                setSelectedAll(true)
+            }
+
+            return newState
+        })
+    }
+
+    const handleSelectAllCheckbox = (
+        setSelected: React.Dispatch<React.SetStateAction<boolean[]>>,
+        setSelectedAll: React.Dispatch<React.SetStateAction<boolean>>
+    ) => {
+        setSelectedAll(selectedAll => !selectedAll)
+        setSelected(state =>
+            state.map(() =>
+                checkboxProps !== undefined
+                    ? !checkboxProps.checkAllRows
+                    : false
+            )
+        )
+    }
+
     const rowsList = useMemo(
         () =>
-            rows.map(row => {
+            rows.map((row, index) => {
                 const rowState = getRowState(row.id)
                 const lastView = rowState?.stackView && last(rowState.stackView)
                 const view = lastView && rowViews?.[lastView]
@@ -219,6 +272,33 @@ export const DataTable = <D extends Data, V extends StackView>(
                         data-id={row.id}
                         style={bodyRowStyle}
                         onClick={event => onRowClick?.(event, row)}>
+                        {checkbox && (
+                            <TableCell padding='checkbox'>
+                                <Checkbox
+                                    color='primary'
+                                    checked={
+                                        checkboxProps?.checkRow &&
+                                        checkboxProps.checkRow[index] !==
+                                            undefined
+                                            ? checkboxProps.checkRow[index]
+                                            : false
+                                    }
+                                    onChange={() => {
+                                        if (
+                                            checkboxProps &&
+                                            checkboxProps.setSelectedRow &&
+                                            checkboxProps.setSelectedAllRows
+                                        ) {
+                                            handleSelectCheckbox(
+                                                index,
+                                                checkboxProps.setSelectedRow,
+                                                checkboxProps.setSelectedAllRows
+                                            )
+                                        }
+                                    }}
+                                />
+                            </TableCell>
+                        )}
                         {view ? (
                             view({ data: row })
                         ) : (
@@ -237,13 +317,15 @@ export const DataTable = <D extends Data, V extends StackView>(
         [
             rows,
             getRowState,
-            onRowClick,
-            setEditableRowState,
-            errors,
             rowViews,
+            hidden,
             bodyRowStyle,
+            checkbox,
             columns,
-            hidden
+            errors,
+            setEditableRowState,
+            onRowClick,
+            checkboxProps
         ]
     )
 
@@ -308,7 +390,34 @@ export const DataTable = <D extends Data, V extends StackView>(
             <Table>
                 {!noHeader && (
                     <TableHead style={headStyle}>
-                        <TableRow style={headRowStyle}>{columnsList}</TableRow>
+                        <TableRow style={headRowStyle}>
+                            {checkbox && (
+                                <TableCell padding='checkbox'>
+                                    <Checkbox
+                                        color='primary'
+                                        checked={
+                                            checkboxProps?.checkAllRows !==
+                                            undefined
+                                                ? checkboxProps.checkAllRows
+                                                : false
+                                        }
+                                        onChange={() => {
+                                            if (
+                                                checkboxProps &&
+                                                checkboxProps.setSelectedRow &&
+                                                checkboxProps.setSelectedAllRows
+                                            ) {
+                                                handleSelectAllCheckbox(
+                                                    checkboxProps.setSelectedRow,
+                                                    checkboxProps.setSelectedAllRows
+                                                )
+                                            }
+                                        }}
+                                    />
+                                </TableCell>
+                            )}
+                            {columnsList}
+                        </TableRow>
                     </TableHead>
                 )}
                 <TableBody style={bodyStyle}>

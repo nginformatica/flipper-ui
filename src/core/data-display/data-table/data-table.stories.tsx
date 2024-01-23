@@ -32,9 +32,6 @@ type Data = {
     date: Date
 }
 
-// const Template: ComponentStory<typeof DataTable> = args =>
-// <DataTable { ...args } />
-
 export const Default = () => {
     type Data = {
         id: number
@@ -894,5 +891,123 @@ export const CrudWithHidden = () => {
                 columns={columns}
             />
         </>
+    )
+}
+
+type DataCheckbox = {
+    id: number
+    product: string
+    price: number
+    quantity: number
+    date: Date
+}
+
+const checkboxColumns: ColumnSpec<DataCheckbox>[] = [
+    {
+        title: 'Product',
+        type: 'text',
+        field: 'product',
+        cellStyle: {
+            maxWidth: '72px',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+        },
+        editable: true
+    },
+    {
+        title: 'Price (R$)',
+        field: 'price',
+        type: 'numeric-float',
+        editable: false,
+        getValue: (value: number) => value.toFixed(2).replace('.', ',')
+    },
+    {
+        title: 'Quantity',
+        field: 'quantity',
+        type: 'numeric-int',
+        editable: true,
+        cellStyle: {
+            width: '82px'
+        }
+    },
+    {
+        title: 'Date',
+        field: 'date',
+        type: 'datetime',
+        editable: true,
+        getValue: (value: Date) => format(value, 'dd/MM/yyyy HH:mm'),
+        cellStyle: {
+            width: '200px'
+        }
+    }
+]
+
+const data = [
+    {
+        id: 1,
+        product: 'Magazine',
+        price: 13.5,
+        quantity: 12,
+        date: new Date()
+    },
+    {
+        id: 2,
+        product: 'Table',
+        price: 200.49,
+        quantity: 3,
+        date: new Date()
+    },
+    { id: 3, product: 'Chair', price: 53.5, quantity: 9, date: new Date() },
+    {
+        id: 4,
+        product: 'Keyboard',
+        price: 53.29,
+        quantity: 4,
+        date: new Date()
+    },
+    {
+        id: 5,
+        product: 'Mouse',
+        price: 27.13,
+        quantity: 16,
+        date: new Date()
+    },
+    {
+        id: 6,
+        product: 'Microphone',
+        price: 89.14,
+        quantity: 2,
+        date: new Date()
+    },
+    {
+        id: 7,
+        product: 'Headset',
+        price: 117.85,
+        quantity: 6,
+        date: new Date()
+    },
+    { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: new Date() }
+]
+
+export const DataTableCheckbox = () => {
+    const [selectedAll, setSelectedAll] = useState(false)
+    const [selected, setSelected] = useState(Array(data.length).fill(false))
+
+    return (
+        <DataTable
+            checkbox
+            checkboxProps={{
+                checkRow: selected,
+                checkAllRows: selectedAll,
+                setSelectedRow: setSelected,
+                setSelectedAllRows: setSelectedAll
+            }}
+            data={data}
+            columns={checkboxColumns}
+            pagination={{
+                disabled: true
+            }}
+        />
     )
 }
