@@ -1,0 +1,11 @@
+singleQuote:        true
+semi:               false
+trailingComma:      none
+bracketSameLine:    true
+jsxSingleQuote:     true
+tabWidth:           4
+arrowParens:        avoid
+printWidth:         80
+parser:             typescript
+bracketSpacing:     true
+useTabs:            false
