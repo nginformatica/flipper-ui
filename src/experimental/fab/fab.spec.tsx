@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
+import { FileCopy } from '@/icons'
 import Fab from './fab'
 import FabWrapper from './fab-wrapper'
-import { FileCopy } from '../../icons'
 
 describe('Fab', () => {
     it('should render correctly', () => {
@@ -32,6 +32,7 @@ describe('Fab', () => {
 
     it('Should call onClick', async () => {
         const onClickSpy = jest.fn()
+
         render(
             <Fab onClick={onClickSpy}>
                 <FileCopy />
@@ -49,8 +50,9 @@ describe('Fab', () => {
 
     it('Should show tooltip', async () => {
         const onClickSpy = jest.fn()
+
         render(
-            <Fab onClick={onClickSpy} tooltip='tooltip-test'>
+            <Fab tooltip='tooltip-test' onClick={onClickSpy}>
                 <FileCopy />
             </Fab>
         )
@@ -59,6 +61,7 @@ describe('Fab', () => {
 
         await waitFor(() => userEvent.hover(btn))
         const tooltip = await waitFor(() => screen.getByText('tooltip-test'))
+
         expect(tooltip).toBeDefined()
     })
 })

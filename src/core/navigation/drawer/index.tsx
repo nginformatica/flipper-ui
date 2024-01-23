@@ -1,9 +1,8 @@
-import MuiDrawer, {
-    DrawerProps as MuiDrawerProps
-} from '@material-ui/core/Drawer'
 import React from 'react'
-import { DefaultProps } from '../../types'
+import MuiDrawer from '@material-ui/core/Drawer'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
+import type { DefaultProps } from '@/core/types'
+import type { DrawerProps as MuiDrawerProps } from '@material-ui/core/Drawer'
 
 export interface DrawerProps extends MuiDrawerProps, DefaultProps {
     top?: number

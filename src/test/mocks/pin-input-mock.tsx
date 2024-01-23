@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import PinInput, { PinInputGridProps } from '../../core/inputs/pin-input'
 import { Button } from '@material-ui/core'
+import type { PinInputGridProps } from '@/core/inputs/pin-input'
+import { PinInput } from '@/core/inputs/pin-input'
+
 const PIN_LENGTH = 6
 
 interface IProps {
@@ -14,6 +16,7 @@ const Mock = ({ pinInputProps }: IProps) => {
 
     const onPinChanged = (pinEntry: number | undefined, index: number) => {
         const newPin = [...pin]
+
         newPin[index] = pinEntry
         setPin(newPin)
     }
@@ -37,12 +40,12 @@ const Mock = ({ pinInputProps }: IProps) => {
             <PinInput
                 pin={pin}
                 setPin={setPin}
-                onPinChanged={onPinChanged}
                 pinLength={PIN_LENGTH}
                 validationResult={hasError}
                 isValidating={isValidating}
                 size={`${pinInputProps?.size || 'small'}`}
                 variant='outlined'
+                onPinChanged={onPinChanged}
             />
             <Button
                 onClick={() => {

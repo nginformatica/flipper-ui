@@ -1,7 +1,8 @@
-import { NoteAdd as IconAdd } from '@/icons'
 import React from 'react'
-import styled from 'styled-components'
-import Button, { ButtonProps } from '@/core/inputs/button'
+import { styled } from 'styled-components'
+import type { ButtonProps } from '@/core/inputs/button'
+import { Button } from '@/core/inputs/button'
+import { NoteAdd as IconAdd } from '@/icons'
 
 export interface Props extends ButtonProps {
     label?: string

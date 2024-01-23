@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import DataTable from '.'
-import DataTableWithCrud from '@/test/mocks/data-table-mock'
-import DataTableWithHidden from '@/test/mocks/data-table-hidden-mock'
-import { ColumnSpec } from './types'
-import format from 'date-fns/format'
-import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import format from 'date-fns/format'
+import type { ColumnSpec } from './types'
+import DataTableWithHidden from '@/test/mocks/data-table-hidden-mock'
+import DataTableWithCrud from '@/test/mocks/data-table-mock'
+import DataTable from '.'
 
 type Data = {
     id: number

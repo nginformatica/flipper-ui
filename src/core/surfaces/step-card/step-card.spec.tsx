@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event/'
 import StepCard from '@/test/mocks/step-card-mock'
-import userEvent from '@testing-library/user-event/'
 
 describe('StepCard', () => {
     it('should render', () => {
@@ -273,6 +273,7 @@ describe('StepCard', () => {
 
     it('should call onStepUrlClick with correct values', async () => {
         const onStepUrlClickSpy = jest.fn()
+
         render(
             <StepCard
                 stepProps={{

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Actions from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Actions } from '.'
 
 export default {
     title: 'Experimental/Actions',

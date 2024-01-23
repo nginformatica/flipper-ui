@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
+import React, { useMemo, useRef, useState } from 'react'
+import type { ReactNode } from 'react'
 import { TableCell, TableRow, Typography } from '@material-ui/core'
 import { Skeleton } from '@mui/material'
-import { Meta } from '@storybook/react'
 import format from 'date-fns/format'
-import React, { ReactNode, useMemo, useRef, useState } from 'react'
-import Button from '@/core/inputs/button'
-import { DataTableAction } from './data-table-action'
-import DataTableQueryPaginated from './data-table-query-paginated'
-import { ColumnSpec, DataTableController, Identifier, RowMode } from './types'
-import { usePaginated } from './use-paginated'
+import type { ColumnSpec, DataTableController, Identifier } from './types'
+import type { Meta } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -17,6 +15,10 @@ import {
     Edit as EditIcon,
     Save as SaveIcon
 } from '@/icons'
+import { DataTableAction } from './data-table-action'
+import { DataTableQueryPaginated } from './data-table-query-paginated'
+import { RowMode } from './types'
+import { usePaginated } from './use-paginated'
 
 export default {
     title: 'DataDisplay/DataTableQueryPaginated',
@@ -91,6 +93,7 @@ const generateSkeleton = (
                 ))}
             </TableRow>
         )
+
         result.push(table)
     }
 
@@ -108,7 +111,7 @@ export const Default = () => {
         loading
     } = usePaginated()
 
-    const LoadNode: React.ReactNode = useMemo(
+    const LoadNode: ReactNode = useMemo(
         () => generateSkeleton(size, columnsData),
         [size]
     )
@@ -132,6 +135,28 @@ export const Default = () => {
     )
 }
 
+const columnsEmpty: ColumnSpec<DataActual>[] = [
+    {
+        title: 'Product',
+        field: 'product',
+        type: 'text',
+        cellStyle: {
+            maxWidth: '72px',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+        },
+        editable: true
+    },
+    {
+        title: 'Price (R$)',
+        field: 'price',
+        type: 'numeric-float',
+        editable: false,
+        getValue: (value: number) => value.toFixed(2).replace('.', ',')
+    }
+]
+
 export const Empty = () => {
     const {
         totalElements,
@@ -141,28 +166,6 @@ export const Empty = () => {
         handleChangePage,
         loading
     } = usePaginated()
-
-    const columns: ColumnSpec<DataActual>[] = [
-        {
-            title: 'Product',
-            field: 'product',
-            type: 'text',
-            cellStyle: {
-                maxWidth: '72px',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis'
-            },
-            editable: true
-        },
-        {
-            title: 'Price (R$)',
-            field: 'price',
-            type: 'numeric-float',
-            editable: false,
-            getValue: (value: number) => value.toFixed(2).replace('.', ',')
-        }
-    ]
 
     const componentForEmpty: ReactNode = (
         <tr>
@@ -183,7 +186,7 @@ export const Empty = () => {
         </tr>
     )
 
-    const LoadNode: React.ReactNode = loading
+    const LoadNode: ReactNode = loading
         ? generateSkeleton(size, columnsData)
         : componentForEmpty
 
@@ -202,10 +205,51 @@ export const Empty = () => {
                 rowsPerPage: 5,
                 labelRowsPerPage: 'Row per page'
             }}
-            columns={columns}
+            columns={columnsEmpty}
         />
     )
 }
+
+const columnsNoHeader: ColumnSpec<DataActual>[] = [
+    {
+        title: 'Product',
+        field: 'product',
+        type: 'text',
+        cellStyle: {
+            maxWidth: '72px',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+        },
+        editable: true
+    },
+    {
+        title: 'Price (R$)',
+        field: 'price',
+        type: 'numeric-float',
+        editable: false,
+        getValue: (value: number) => value.toFixed(2).replace('.', ',')
+    },
+    {
+        title: 'Quantity',
+        field: 'quantity',
+        type: 'numeric-int',
+        editable: true,
+        cellStyle: {
+            width: '82px'
+        }
+    },
+    {
+        title: 'Date',
+        field: 'date',
+        type: 'datetime',
+        editable: true,
+        getValue: (value: Date) => format(value, 'dd/MM/yyyy HH:mm'),
+        cellStyle: {
+            width: '200px'
+        }
+    }
+]
 
 export const NoHeader = () => {
     const {
@@ -218,61 +262,20 @@ export const NoHeader = () => {
         data
     } = usePaginated()
 
-    const LoadNode: React.ReactNode = useMemo(
+    const LoadNode: ReactNode = useMemo(
         () => generateSkeleton(size, columnsData),
         [size]
     )
 
-    const columns: ColumnSpec<DataActual>[] = [
-        {
-            title: 'Product',
-            field: 'product',
-            type: 'text',
-            cellStyle: {
-                maxWidth: '72px',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis'
-            },
-            editable: true
-        },
-        {
-            title: 'Price (R$)',
-            field: 'price',
-            type: 'numeric-float',
-            editable: false,
-            getValue: (value: number) => value.toFixed(2).replace('.', ',')
-        },
-        {
-            title: 'Quantity',
-            field: 'quantity',
-            type: 'numeric-int',
-            editable: true,
-            cellStyle: {
-                width: '82px'
-            }
-        },
-        {
-            title: 'Date',
-            field: 'date',
-            type: 'datetime',
-            editable: true,
-            getValue: (value: Date) => format(value, 'dd/MM/yyyy HH:mm'),
-            cellStyle: {
-                width: '200px'
-            }
-        }
-    ]
-
     return (
         <DataTableQueryPaginated
+            noHeader
             data={data}
             handleChangePage={handleChangePage}
             handleChangePerPage={handleChangePerPage}
             totalElements={totalElements}
             page={actualPage}
             perPage={size}
-            noHeader
             hiddenRowHeight={53}
             componentForEmpty={LoadNode}
             pagination={{
@@ -280,7 +283,7 @@ export const NoHeader = () => {
                 labelRowsPerPage: 'Row per page',
                 clickable: !loading
             }}
-            columns={columns}
+            columns={columnsNoHeader}
         />
     )
 }
@@ -313,7 +316,7 @@ export const Crud = () => {
         }
     ]
 
-    const LoadNode: React.ReactNode = useMemo(
+    const LoadNode: ReactNode = useMemo(
         () => generateSkeleton(size, newData),
         [size]
     )

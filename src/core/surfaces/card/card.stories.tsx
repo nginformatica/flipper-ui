@@ -1,7 +1,7 @@
-import { Meta } from '@storybook/react'
 import React from 'react'
-import Card, { CardActionArea, CardActions, CardContent, CardMedia } from '.'
-import Button from '@/core/inputs/button'
+import type { Meta } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
+import { Card, CardActionArea, CardActions, CardContent, CardMedia } from '.'
 
 export default {
     title: 'Surfaces/Card',

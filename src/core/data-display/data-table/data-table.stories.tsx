@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
 import React, { useState, useRef } from 'react'
-import { Meta } from '@storybook/react'
 import format from 'date-fns/format'
-import DataTable from './data-table'
-import Button from '@/core/inputs/button'
-import Typography from '@/core/data-display/typography'
-import { DataTableAction } from './data-table-action'
-import { ColumnSpec, DataTableController, Identifier, RowMode } from './types'
+import { v4 as uuid } from 'uuid'
+import type { ColumnSpec, DataTableController, Identifier } from './types'
+import type { Meta } from '@storybook/react'
+import { Typography } from '@/core/data-display/typography'
+import { Button } from '@/core/inputs/button'
 import {
     Delete as DeleteIcon,
     Edit as EditIcon,
@@ -17,7 +16,9 @@ import {
     Visibility as VisibilityIcon,
     VisibilityOff as VisibilityOffIcon
 } from '@/icons'
-import { v4 as uuid } from 'uuid'
+import { DataTable } from './data-table'
+import { DataTableAction } from './data-table-action'
+import { RowMode } from './types'
 
 export default {
     title: 'DataDisplay/DataTable',
@@ -242,8 +243,8 @@ export const NoHeader = () => {
 
     return (
         <DataTable
-            data={data}
             noHeader
+            data={data}
             hiddenRowHeight={53}
             pagination={{
                 rowsPerPage: 5,
@@ -696,6 +697,7 @@ export const CrudWithHidden = () => {
         (id: Identifier, isNew = false) =>
         () => {
             const nextItem = controllerRef.current?.getEditedRowData(id)
+
             if (!nextItem) {
                 return
             }

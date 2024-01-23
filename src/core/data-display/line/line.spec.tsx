@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Line from '.'
+import { Line } from '.'
 import { theme } from '@/theme'
 
 const { grays, secondary } = theme.colors
@@ -37,7 +37,7 @@ describe('Line', () => {
     })
 
     it('should render with color primary', () => {
-        render(<Line data-testid='line-component' primary />)
+        render(<Line primary data-testid='line-component' />)
 
         const element = screen.getByTestId('line-component')
 
@@ -49,6 +49,7 @@ describe('Line', () => {
 
     it('should match snapshot', () => {
         const { container } = render(<Line />)
+
         expect(container).toMatchSnapshot()
     })
 })

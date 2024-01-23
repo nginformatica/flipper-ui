@@ -1,6 +1,9 @@
 import React from 'react'
-import TextField, { TextFieldProps } from '@/core/inputs/text-field'
-import NumberFormat, { NumberFormatProps } from 'react-number-format'
+import type { ComponentType } from 'react'
+import type { NumberFormatProps } from 'react-number-format'
+import NumberFormat from 'react-number-format'
+import type { TextFieldProps } from '@/core/inputs/text-field'
+import { TextField } from '@/core/inputs/text-field'
 
 export interface MaskFieldProps extends NumberFormatProps {
     mask?: string
@@ -10,7 +13,7 @@ export interface MaskFieldProps extends NumberFormatProps {
     decimalScale?: number
     thousandSeparator?: boolean | string
     fixedDecimalScale?: boolean
-    customInput?: React.ComponentType<TextFieldProps>
+    customInput?: ComponentType<TextFieldProps>
 }
 
 export const MaskField = (props: MaskFieldProps) => {
@@ -20,9 +23,7 @@ export const MaskField = (props: MaskFieldProps) => {
         // Although react-number-format allow use of additional props,
         // shows problem with some props like have been do this
         // actually on flipper-ui. (e.g. errors treatment)
-        <NumberFormat
-            {...otherProps}
-            customInput={customInput || TextField}></NumberFormat>
+        <NumberFormat {...otherProps} customInput={customInput || TextField} />
     )
 }
 

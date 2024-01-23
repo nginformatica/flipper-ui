@@ -1,6 +1,12 @@
-import { TextField } from '@material-ui/core'
 import React, { useEffect, useRef } from 'react'
-import styled from 'styled-components'
+import type {
+    ChangeEvent,
+    ClipboardEvent,
+    CSSProperties,
+    KeyboardEvent
+} from 'react'
+import { TextField } from '@material-ui/core'
+import { styled } from 'styled-components'
 
 export interface PinInputGridProps {
     pin: Array<number | undefined>
@@ -10,8 +16,8 @@ export interface PinInputGridProps {
     validationResult: boolean | undefined
     isValidating: boolean
     size: 'small' | 'large'
-    style?: React.CSSProperties
-    inputProps?: React.CSSProperties
+    style?: CSSProperties
+    inputProps?: CSSProperties
     variant?: 'outlined' | 'standard'
 }
 
@@ -42,6 +48,7 @@ export const PinInput = ({
 
     const changePinFocus = (pinIndex: number) => {
         const ref = inputRefs.current[pinIndex]
+
         if (ref) {
             ref.focus()
         }
@@ -51,10 +58,11 @@ export const PinInput = ({
         changePinFocus(0)
     }, [isValidating])
 
-    const onPaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
+    const onPaste = (event: ClipboardEvent<HTMLInputElement>) => {
         const pastedValue = event.clipboardData.getData('text/plain')
         const splitValues = pastedValue.trim().split('')
         const intValues: number[] = []
+
         for (const value of splitValues) {
             intValues.push(parseInt(value))
         }
@@ -63,7 +71,7 @@ export const PinInput = ({
     }
 
     const onChange = (
-        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index: number
     ) => {
         if (event.target.value.length > 1) {
@@ -71,10 +79,12 @@ export const PinInput = ({
         }
         const valuesArray = event.target.value.split('')
         const value = valuesArray.pop()
+
         if (!value || value === ' ' || value === '') {
             return
         }
         const pinNumber = Number(value.trim())
+
         if (isNaN(pinNumber) || value.length === 0) {
             return
         }
@@ -87,11 +97,9 @@ export const PinInput = ({
         }
     }
 
-    const onKeyDown = (
-        event: React.KeyboardEvent<HTMLDivElement>,
-        index: number
-    ) => {
+    const onKeyDown = (event: KeyboardEvent<HTMLDivElement>, index: number) => {
         const keyboardKeyCode = event.nativeEvent.code
+
         if (keyboardKeyCode !== BACKSPACE_KEY) {
             return
         }
@@ -103,18 +111,18 @@ export const PinInput = ({
         }
     }
 
-    const getStyleProps = (): React.CSSProperties => {
+    const getStyleProps = (): CSSProperties => {
         const style = {
             width: size === 'small' ? '40px' : '40px',
             height: size === 'small' ? '30px' : '40px',
             marginInline: size === 'small' ? '5px' : '10px',
             ...styleProps
-        } as React.CSSProperties
+        } as CSSProperties
 
         return style
     }
 
-    const getInputProps = (): React.CSSProperties => {
+    const getInputProps = (): CSSProperties => {
         const style = {
             width: size === 'small' ? '40px' : '45px',
             textAlign: 'center',
@@ -122,7 +130,7 @@ export const PinInput = ({
             fontSize: size === 'small' ? '16px' : '20px',
             padding: 'auto',
             ...inputProps
-        } as React.CSSProperties
+        } as CSSProperties
 
         return style
     }
@@ -133,8 +141,6 @@ export const PinInput = ({
                 <TextField
                     disabled={isValidating}
                     variant={variant || 'outlined'}
-                    onKeyDown={event => onKeyDown(event, index)}
-                    onPaste={onPaste}
                     color='primary'
                     className='pin-input-field'
                     error={validationResult}
@@ -147,10 +153,12 @@ export const PinInput = ({
                         inputRefs.current[index] = el
                     }}
                     key={index}
+                    value={pin[index] === 0 ? 0 : pin[index] || ''}
+                    onKeyDown={event => onKeyDown(event, index)}
+                    onPaste={onPaste}
                     onChange={event => {
                         onChange(event, index)
                     }}
-                    value={pin[index] === 0 ? 0 : pin[index] || ''}
                 />
             ))}
         </Container>

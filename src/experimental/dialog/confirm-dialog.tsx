@@ -1,5 +1,5 @@
 import React from 'react'
-import DialogV2 from './dialog'
+import { DialogV2 } from './dialog'
 
 export interface IProps {
     open: boolean
@@ -33,8 +33,8 @@ const ConfirmDialog = (props: IProps) => {
             title={title}
             text={text}
             primaryButtonAction={onConfirm}
-            primaryButtonText={(labels && labels.confirm) || 'Sim'}
-            secondaryButtonText={(labels && labels.cancel) || 'Voltar'}
+            primaryButtonText={labels?.confirm || 'Sim'}
+            secondaryButtonText={labels?.cancel || 'Voltar'}
             primaryButtonColor='primary'
             secondaryButtonAction={onCancel}
             onClose={disableBackdropClick ? undefined : onCancel}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import ChipField from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { ChipField } from '.'
 
 export default {
     title: 'Inputs/ChipField',
@@ -18,8 +18,8 @@ const Template: StoryFn<typeof ChipField> = args => {
     return (
         <ChipField
             {...args}
-            onDelete={handleRemove}
             values={state}
+            onDelete={handleRemove}
             onAdd={handleAdd}
         />
     )

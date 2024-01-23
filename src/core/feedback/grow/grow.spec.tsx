@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Grow from '.'
+import { Grow } from '.'
 
 describe('Grow', () => {
     it('should render closed', () => {

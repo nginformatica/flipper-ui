@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import List from '.'
 import ListItem from '@/core/data-display/list-item'
+import { List } from '.'
 
 describe('List', () => {
     it('should render', () => {

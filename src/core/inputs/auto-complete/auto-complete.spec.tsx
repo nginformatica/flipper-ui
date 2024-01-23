@@ -1,12 +1,13 @@
 /* eslint-disable max-lines */
 import * as React from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import AutoComplete, { ISelected, TSelected } from '.'
-import ListItem from '@/core/data-display/list-item'
-import TextField from '../text-field'
-import Typography from '@/core/data-display/typography'
 import { act } from 'react-dom/test-utils'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import type { ISelected, TSelected } from '.'
+import ListItem from '@/core/data-display/list-item'
+import { Typography } from '@/core/data-display/typography'
+import { TextField } from '../text-field'
+import { AutoComplete } from '.'
 
 interface MockProps {
     initialValue?: TSelected
@@ -53,7 +54,7 @@ const MockAtuoComplete = (props: MockProps) => {
                         <Typography variant='caption'>{item.label}</Typography>
                     </ListItem>
                 ) : (
-                    <ListItem onClick={props.onClick} selected={selected}>
+                    <ListItem selected={selected} onClick={props.onClick}>
                         {label}
                     </ListItem>
                 )
@@ -75,6 +76,7 @@ describe('AutoComplete', () => {
         { label: 'Genres', subheader: true },
         ...SUGGESTIONS
     ]
+
     it('should render suggestions', () => {
         render(
             <MockAtuoComplete
@@ -150,6 +152,7 @@ describe('AutoComplete', () => {
 
     it('should select suggestions', async () => {
         const onChangeSpy = jest.fn()
+
         render(
             <MockAtuoComplete
                 openOnFocus
@@ -174,6 +177,7 @@ describe('AutoComplete', () => {
 
     it('should call onChange with first suggestion for default', () => {
         const onChangeSpy = jest.fn()
+
         render(
             <AutoComplete
                 openOnFocus
@@ -219,6 +223,7 @@ describe('AutoComplete', () => {
 
     it('should navigate suggestions with arrow key down', () => {
         const onChangeSpy = jest.fn()
+
         render(
             <AutoComplete
                 openOnFocus
@@ -266,6 +271,7 @@ describe('AutoComplete', () => {
 
     it('should navigate suggestions with arrow key down and up', () => {
         const onChangeSpy = jest.fn()
+
         render(
             <AutoComplete
                 openOnFocus
@@ -369,6 +375,7 @@ describe('AutoComplete', () => {
 
     it('when typing should call onChange with correct values', async () => {
         const onChangeSpy = jest.fn()
+
         render(
             <AutoComplete
                 openOnFocus
@@ -413,6 +420,7 @@ describe('AutoComplete', () => {
     it('should call onBlur on leave focus', () => {
         jest.useFakeTimers()
         const onBlurSpy = jest.fn()
+
         render(
             <AutoComplete
                 openOnFocus
@@ -601,10 +609,11 @@ describe('AutoComplete', () => {
 
     it('should call onFocus', () => {
         const onFocusSpy = jest.fn()
+
         render(
             <MockAtuoComplete
-                onFocus={onFocusSpy}
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
+                onFocus={onFocusSpy}
             />
         )
 
@@ -619,6 +628,7 @@ describe('AutoComplete', () => {
 
     it('should selects a suggestion when clicking on it', () => {
         const onChangeSpy = jest.fn()
+
         render(
             <AutoComplete
                 openOnFocus
@@ -679,6 +689,7 @@ describe('AutoComplete', () => {
         })
 
         const item = await waitFor(() => screen.findByText('Rock'))
+
         expect(input.value).toBe('R')
         expect(item).toBeTruthy()
     })
@@ -709,8 +720,8 @@ describe('AutoComplete', () => {
     it('should select when selectTextOnFocus', async () => {
         render(
             <MockAtuoComplete
-                suggestions={SUGGESTIONS_WITH_SUBHEADER}
                 selectTextOnFocus
+                suggestions={SUGGESTIONS_WITH_SUBHEADER}
             />
         )
 

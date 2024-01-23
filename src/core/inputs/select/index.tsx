@@ -1,13 +1,14 @@
+import React from 'react'
+import type { ChangeEvent, ReactNode } from 'react'
 import {
     IconButton,
     InputAdornment,
-    Select as MuiSelect,
-    SelectProps as MuiSelectProps
+    Select as MuiSelect
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Clear } from '../../../icons'
-import React, { ChangeEvent } from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
+import type { SelectProps as MuiSelectProps } from '@material-ui/core'
+import { Clear } from '@/icons'
 
 export interface SelectProps
     extends DefaultProps,
@@ -17,7 +18,7 @@ export interface SelectProps
     multiple?: boolean
     variant?: 'standard' | 'outlined' | 'filled'
     hasClear?: boolean
-    children: React.ReactNode
+    children: ReactNode
     onClear?: () => void
     onClose?: () => void
     onChange: (event: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void
@@ -31,8 +32,8 @@ const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end'>
         <IconButton
             role='end-adornment-component'
-            onClick={onClear}
-            size='small'>
+            size='small'
+            onClick={onClear}>
             <Clear style={{ fontSize: '15px' }} />
         </IconButton>
     </InputAdornment>
@@ -74,7 +75,6 @@ export const Select = ({
     return (
         <MuiSelect
             {...endAdornment}
-            onChange={handleChange}
             inputProps={{ 'data-testid': 'select-input' }}
             variant={variant as 'outlined'}
             classes={{
@@ -82,6 +82,7 @@ export const Select = ({
                 icon: classes.iconOutlined
             }}
             style={{ margin, padding, ...style }}
+            onChange={handleChange}
             {...otherProps}>
             {children}
         </MuiSelect>

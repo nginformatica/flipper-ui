@@ -3,6 +3,9 @@ import { render, screen } from '@testing-library/react'
 import Advertise from '.'
 
 describe('Advertise', () => {
+    const newPadding = '10px 10px'
+    const CUSTOM = { padding: newPadding }
+
     it('should render', () => {
         render(<Advertise comment='comment' author='author' />)
 
@@ -17,12 +20,9 @@ describe('Advertise', () => {
 
     it('should render with custom author style', () => {
         const newPadding = '10px 10px'
+
         render(
-            <Advertise
-                comment='comment'
-                author='author'
-                authorStyle={{ padding: newPadding }}
-            />
+            <Advertise comment='comment' author='author' authorStyle={CUSTOM} />
         )
 
         const author = screen.getByText('author')
@@ -33,11 +33,12 @@ describe('Advertise', () => {
 
     it('should render with custom comment style', () => {
         const newPadding = '10px 10px'
+
         render(
             <Advertise
                 comment='comment'
                 author='author'
-                commentStyle={{ padding: newPadding }}
+                commentStyle={CUSTOM}
             />
         )
 
@@ -51,6 +52,7 @@ describe('Advertise', () => {
         const { container } = render(
             <Advertise comment='comment' author='author' />
         )
+
         expect(container).toMatchSnapshot()
     })
 })

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { act, render, screen } from '@testing-library/react'
-import Pagination from '.'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
+import { Pagination } from '.'
 
 describe('Pagination', () => {
     it('should call navigation with correct values', async () => {
@@ -22,6 +22,7 @@ describe('Pagination', () => {
         const prevButton = screen.getByTestId('prev-page-button')
         const nextButton = screen.getByTestId('next-page-button')
         const page3Button = screen.getByTestId('pagination-page-3')
+
         await act(async () => {
             await userEvent.click(prevButton)
             await userEvent.click(nextButton)

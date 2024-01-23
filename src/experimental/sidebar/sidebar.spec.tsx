@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import Sidebar, { ISidebarOption } from '.'
+import { userEvent } from '@testing-library/user-event'
+import type { ISidebarOption } from '.'
+import { Sidebar } from '.'
 
 const options: ISidebarOption[] = [
     {
@@ -29,8 +30,10 @@ describe('Sidebar', () => {
 
     it('calls handleGoTo when an option is clicked', () => {
         const handleGoTo = jest.fn()
+
         render(<Sidebar options={options} handleGoTo={handleGoTo} />)
         const expandBtn = screen.getByTestId('sidebar-option-option1')
+
         expandBtn.addEventListener(
             'click',
             event => event.preventDefault(),
@@ -56,6 +59,7 @@ describe('Sidebar', () => {
                 route: '/extraOption2'
             }
         ]
+
         render(<Sidebar options={options} extraOptions={extraOptions} />)
         extraOptions.forEach(option => {
             expect(screen.getByTitle(option.label)).toBeDefined()
@@ -63,32 +67,37 @@ describe('Sidebar', () => {
     })
 
     it('renders a skeleton when loading', () => {
-        render(<Sidebar options={options} loading={true} />)
+        render(<Sidebar loading options={options} />)
         expect(screen.queryAllByRole('skeleton')).toHaveLength(6)
     })
 
     it('should show labels when expanded', async () => {
         const handleGoTo = jest.fn()
+
         render(<Sidebar options={options} handleGoTo={handleGoTo} />)
         const expandBtn = screen.getByTestId('sidebar-button')
+
         userEvent.click(expandBtn)
 
         await waitFor(() => {
             const labels = options.map(option =>
                 screen.getByTestId(`list-item-${option.label}`)
             )
+
             labels.forEach(label => expect(label).toBeDefined())
         })
     })
 
     it('should now show labels when collapsed', async () => {
         const handleGoTo = jest.fn()
+
         render(<Sidebar options={options} handleGoTo={handleGoTo} />)
 
         await waitFor(() => {
             const labels = options.map(option =>
                 screen.queryByTestId(`list-item-${option.label}`)
             )
+
             labels.forEach(label => expect(label).toBeNull())
         })
     })

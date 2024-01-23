@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Snackbar } from '@/index'
-import { SnackBarProps } from '@/core/feedback/snackbar'
 import { IconButton as MuiIconButton } from '@material-ui/core'
-import { Close as IconClose } from '../../icons'
+import type { SnackBarProps } from '@/core/feedback/snackbar'
+import { Close as IconClose } from '@/icons'
+import { Button, Snackbar } from '@/index'
 
 interface IProps {
     withAction?: boolean

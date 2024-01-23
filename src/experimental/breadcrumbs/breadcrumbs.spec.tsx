@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Breadcrumbs from '.'
+import { Breadcrumbs } from '.'
 
 describe('Breadcrumbs', () => {
     it('should render', () => {
@@ -17,6 +17,7 @@ describe('Breadcrumbs', () => {
         )
 
         const breadcrumbs = screen.getByText('Home')
+
         expect(breadcrumbs).toBeDefined()
     })
 
@@ -33,6 +34,7 @@ describe('Breadcrumbs', () => {
         )
 
         const breadcrumbs = screen.getByText('Home')
+
         expect(breadcrumbs).toBeDefined()
     })
 })

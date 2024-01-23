@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { ptBR } from 'date-fns/locale'
-import { render, screen } from '@testing-library/react'
-import DateTime from '@/test/mocks/date-time-mock'
-import userEvent from '@testing-library/user-event/'
 import { act } from 'react-dom/test-utils'
+import { render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event/'
+import { ptBR } from 'date-fns/locale'
+import DateTime from '@/test/mocks/date-time-mock'
 
 describe('DateTime', () => {
     it('should render with variant', async () => {

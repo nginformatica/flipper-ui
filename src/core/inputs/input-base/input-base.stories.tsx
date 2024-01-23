@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import InputBase from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { InputBase } from '.'
 
 export default {
     title: 'Inputs/InputBase',
@@ -18,6 +18,7 @@ export default {
 } as Meta<typeof InputBase>
 
 const Template: StoryFn<typeof InputBase> = args => <InputBase {...args} />
+
 export const Default = Template.bind({})
 
 Default.args = {

@@ -1,35 +1,34 @@
-import React, {
-    useMemo,
-    useState,
-    useRef,
-    useEffect,
+import React, { useMemo, useState, useRef, useEffect } from 'react'
+import type {
+    MouseEvent,
     MutableRefObject,
-    CSSProperties
+    CSSProperties,
+    ReactNode
 } from 'react'
-import { last } from 'ramda'
+import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
-import TablePagination from '@material-ui/core/TablePagination'
 import TableFooter from '@material-ui/core/TableFooter'
-import {
+import TableHead from '@material-ui/core/TableHead'
+import TablePagination from '@material-ui/core/TablePagination'
+import TableRow from '@material-ui/core/TableRow'
+import { last } from 'ramda'
+import type {
     ColumnSpec,
     Data,
     DataTableController,
     Errors,
     PaginationOptions,
-    RowMode,
     RowViewComponent,
     StackView,
     PartialData
 } from './types'
-import { useRowsState } from './use-rows-state'
-import { StatefulRow, NewRow } from './rows'
 import { makeDataTablePaginationActions } from './data-table-pagination-actions'
+import { StatefulRow, NewRow } from './rows'
+import { RowMode } from './types'
+import { useRowsState } from './use-rows-state'
 
 export type DataTableProps<
     D extends Data,
@@ -75,7 +74,7 @@ export type DataTableProps<
     /**
      * Component to show when there are no data
      */
-    componentForEmpty?: React.ReactNode
+    componentForEmpty?: ReactNode
     /**
      * Custom style to be applied to the table body
      */
@@ -113,10 +112,7 @@ export type DataTableProps<
      * Custom rowViews used as a Stac
      */
     rowViews?: Record<keyof V, RowViewComponent<D>>
-    onRowClick?: (
-        event: React.MouseEvent<HTMLTableRowElement>,
-        rowData: D
-    ) => void
+    onRowClick?: (event: MouseEvent<HTMLTableRowElement>, rowData: D) => void
 }
 
 const defaultPagination: PaginationOptions = {
@@ -287,7 +283,8 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                     height:
                         hiddenRowHeight &&
                         `${hiddenRowHeight * hiddenRowsNumber}px`
-                }}></TableCell>
+                }}
+            />
         </TableRow>
     )
 
@@ -347,6 +344,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                                 labelDisplayedRows={
                                     pagination.labelDisplayedRows
                                 }
+                                ActionsComponent={paginationActionsComponent}
                                 onPageChange={(_, page) => {
                                     handleChangePage(page)
                                 }}
@@ -355,7 +353,6 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                                         parseInt(event.target.value, 10)
                                     )
                                 }}
-                                ActionsComponent={paginationActionsComponent}
                             />
                         </TableRow>
                     </TableFooter>

@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import Button from '@/core/inputs/button'
-import {
-    DataTableAction,
-    DataTableController
-} from '@/core/data-display/data-table'
-import DataTable from '@/core/data-display/data-table/data-table'
-import {
+import React, { useRef, useState } from 'react'
+import { v4 as uuid } from 'uuid'
+import type { DataTableController } from '@/core/data-display/data-table'
+import type {
     ColumnSpec,
-    Identifier,
-    RowMode
+    Identifier
 } from '@/core/data-display/data-table/types'
-import Typography from '@/core/data-display/typography'
+import { DataTableAction } from '@/core/data-display/data-table'
+import { DataTable } from '@/core/data-display/data-table/data-table'
+import { RowMode } from '@/core/data-display/data-table/types'
+import { Typography } from '@/core/data-display/typography'
+import { Button } from '@/core/inputs/button'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -20,8 +20,6 @@ import {
     Visibility as VisibilityIcon,
     VisibilityOff as VisibilityOffIcon
 } from '@/icons'
-import React, { useRef, useState } from 'react'
-import { v4 as uuid } from 'uuid'
 
 const Default = () => {
     type Data = {
@@ -122,6 +120,7 @@ const Default = () => {
         (id: Identifier, isNew = false) =>
         () => {
             const nextItem = controllerRef.current?.getEditedRowData(id)
+
             if (!nextItem) {
                 return
             }

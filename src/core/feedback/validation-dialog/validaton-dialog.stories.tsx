@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeProvider } from 'styled-components'
-import ThemeProviderFlipper from '../../context/theme-provider'
 import CircularProgress from '@mui/material/CircularProgress'
-import Button from '@/core/inputs/button'
+import { ThemeProvider } from 'styled-components'
+import type { Meta, StoryObj } from '@storybook/react'
+import ThemeProviderFlipper from '@/core/context/theme-provider'
+import { Button } from '@/core/inputs/button'
+import { CheckCircleOutline, CancelOutlined } from '@/icons'
 import ValidationDialog, { ValidationStatus } from '.'
-import { CheckCircleOutline, CancelOutlined } from '../../../icons'
 import { muiThemeOptions, theme } from '@/theme'
 
 const { action, secondary } = theme.colors
@@ -99,10 +99,11 @@ const ValidationDialogStorie = () => {
         }, [])
 
         const stepState = useCallback(
-            (condition: boolean = true, step: number, value: string) => {
+            (step: number, value: string, condition: boolean = true) => {
                 if (condition) {
                     setValidationResponses(prevResponses => {
                         const newResponses = [...prevResponses]
+
                         newResponses[step] = value
 
                         return newResponses
@@ -134,16 +135,16 @@ const ValidationDialogStorie = () => {
         validationStatus.initLoading()
 
         setTimeout(() => {
-            validationStatus.stepState(true, 0, 'Success')
+            validationStatus.stepState(0, 'Success', true)
 
             setTimeout(() => {
-                validationStatus.stepState(true, 1, 'Error')
+                validationStatus.stepState(1, 'Error', true)
 
                 setTimeout(() => {
-                    validationStatus.stepState(true, 2, 'Success')
+                    validationStatus.stepState(2, 'Success', true)
 
                     setTimeout(() => {
-                        validationStatus.stepState(true, 3, 'Success')
+                        validationStatus.stepState(3, 'Success', true)
                     }, 2000)
                 }, 2000)
             }, 2000)
@@ -168,9 +169,9 @@ const ValidationDialogStorie = () => {
                     success={validationResponses.every(
                         item => item === 'Success'
                     )}
+                    handleCreate={handleConfirm}
                     onCancel={handleClose}
                     onClose={handleClose}
-                    handleCreate={handleConfirm}
                 />
             </ThemeProviderFlipper>
         </ThemeProvider>

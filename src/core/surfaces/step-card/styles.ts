@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { Box } from '@material-ui/core'
+import { styled } from 'styled-components'
 import { theme } from '@/theme'
 
 interface IStepContainerProps {
@@ -56,9 +56,9 @@ export const StepCardColumn = styled.div<IColumnProps>`
                     margin-right: 40px;
                 }
                 `
-        } else {
-            return ''
         }
+
+        return ''
     }}
 `
 

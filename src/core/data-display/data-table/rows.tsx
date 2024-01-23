@@ -1,10 +1,12 @@
-import { ColumnSpec, Data, Errors, PartialData, RowMode } from './types'
-import TextField from '@/core/inputs/text-field'
-import MaskField from '@/core/inputs/mask-field'
-import DateTime from '@/core/inputs/date-time'
-import React, { ReactNode, useState, useCallback } from 'react'
+import type { ReactNode } from 'react'
+import React, { useState, useCallback } from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
+import type { ColumnSpec, Data, Errors, PartialData } from './types'
+import { DateTime } from '@/core/inputs/date-time'
+import { MaskField } from '@/core/inputs/mask-field'
+import { TextField } from '@/core/inputs/text-field'
+import { RowMode } from './types'
 
 type RowStateUpdater = <D extends Data>(
     field: keyof D,
@@ -44,9 +46,9 @@ const renderEditMode = <D extends Data>(
 
         return (
             <DateTime
+                fullWidth
                 type='datetime'
                 value={date}
-                fullWidth
                 error={hasError}
                 name={column.field.toString()}
                 onChange={value => {
@@ -56,7 +58,7 @@ const renderEditMode = <D extends Data>(
         )
     }
 
-    if (column.type?.includes('numeric')) {
+    if (column.type.includes('numeric')) {
         const decimalScale = column.type === 'numeric-int' ? 0 : 2
 
         const numeric = row[column.field] as number
@@ -64,8 +66,8 @@ const renderEditMode = <D extends Data>(
         return (
             <MaskField
                 fixedDecimalScale
-                type='text'
                 fullWidth
+                type='text'
                 error={hasError}
                 thousandSeparator='.'
                 decimalSeparator=','
@@ -84,10 +86,10 @@ const renderEditMode = <D extends Data>(
 
     return (
         <TextField
+            fullWidth
             options={column.options}
             defaultValue={value}
             type={type}
-            fullWidth
             error={hasError}
             name={column.field.toString()}
             onChange={event =>
@@ -169,6 +171,7 @@ export const StatefulRow = <D extends Data>({
                 [`${String(field)}`]: value
             }))
             const patch: Partial<D1> = {}
+
             patch[field] = value
             onUpdate?.(patch)
         },

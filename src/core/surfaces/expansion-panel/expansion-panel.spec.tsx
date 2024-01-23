@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import ExpansionPanel from '.'
+import { ExpansionPanel } from '.'
 
 const expectToThrow = (fn: () => void, message: string) => {
     // Even though the error is caught, it still gets printed to the console
     // so we mock that out to avoid the wall of red text.
     const spy = jest.spyOn(console, 'error')
+
     spy.mockImplementation(jest.fn())
     expect(fn).toThrow(message)
     spy.mockRestore()
@@ -24,6 +25,7 @@ describe('ExpansionPanel', () => {
         )
 
         const expansionPanel = screen.getByRole('mui-expansion-panel')
+
         expect(expansionPanel.lastChild).toHaveProperty(
             'className',
             'MuiCollapse-root MuiCollapse-hidden'
@@ -42,6 +44,7 @@ describe('ExpansionPanel', () => {
         )
 
         const expansionPanel = screen.getByRole('mui-expansion-panel')
+
         expect(expansionPanel.lastChild).toHaveProperty(
             'className',
             'MuiCollapse-root MuiCollapse-entered'
@@ -55,12 +58,13 @@ describe('ExpansionPanel', () => {
                 editing={false}
                 summary='Expansion Panel'
                 role='mui-expansion-panel'
-                onClick={jest.fn()}
                 actions={<button role='action-button'>Confirm</button>}
+                onClick={jest.fn()}
             />
         )
 
         const expansionPanel = screen.getByRole('action-button')
+
         expect(expansionPanel.parentElement?.classList).toContain(
             'MuiAccordionActions-root'
         )
@@ -68,6 +72,7 @@ describe('ExpansionPanel', () => {
 
     it('should render helper box on left', () => {
         const onHelperClick = jest.fn()
+
         render(
             <ExpansionPanel
                 expanded
@@ -87,6 +92,7 @@ describe('ExpansionPanel', () => {
 
     it('should call onHelperClick', async () => {
         const onHelperClick = jest.fn()
+
         render(
             <ExpansionPanel
                 expanded
@@ -107,6 +113,7 @@ describe('ExpansionPanel', () => {
 
     it('should call onEditClick', async () => {
         const onEditClick = jest.fn()
+
         render(
             <ExpansionPanel
                 expanded
@@ -130,11 +137,12 @@ describe('ExpansionPanel', () => {
 
     it('should call onSaveClick', async () => {
         const onSaveClick = jest.fn()
+
         render(
             <ExpansionPanel
                 expanded
                 editable
-                editing={true}
+                editing
                 summary='Expansion Panel'
                 role='mui-expansion-panel'
                 onEditClick={jest.fn()}
@@ -157,11 +165,11 @@ describe('ExpansionPanel', () => {
                 <ExpansionPanel
                     expanded
                     editing
+                    editable
                     summary='Expansion Panel'
                     role='mui-expansion-panel'
-                    onClick={jest.fn()}
                     actions={<button role='action-button'>Confirm</button>}
-                    editable
+                    onClick={jest.fn()}
                 />
             )
         }, 'onSaveClick is required when editable is true')
@@ -173,12 +181,12 @@ describe('ExpansionPanel', () => {
                 <ExpansionPanel
                     expanded
                     editing
+                    editable
                     summary='Expansion Panel'
                     role='mui-expansion-panel'
+                    actions={<button role='action-button'>Confirm</button>}
                     onSaveClick={jest.fn()}
                     onClick={jest.fn()}
-                    actions={<button role='action-button'>Confirm</button>}
-                    editable
                 />
             )
         }, 'onEditClick is required when editable is true')

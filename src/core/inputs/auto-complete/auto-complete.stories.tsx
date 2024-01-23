@@ -1,9 +1,10 @@
-import { Meta } from '@storybook/react'
-import React from 'react'
-import AutoComplete, { TSelected } from '.'
+import React, { useState } from 'react'
+import type { TSelected } from '.'
+import type { Meta } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import TextField from '@/core/inputs/text-field'
-import Typography from '@/core/data-display/typography'
+import { Typography } from '@/core/data-display/typography'
+import { TextField } from '@/core/inputs/text-field'
+import { AutoComplete } from '.'
 
 export default {
     title: 'Inputs/AutoComplete',
@@ -94,11 +95,12 @@ export const WithSubheader = () => (
                 </ListItem>
             )
         }}
+        // eslint-disable-next-line no-console
         onChange={e => console.log('onChange', e)}
     />
 )
 export const MockAtuoComplete = () => {
-    const [value, setValue] = React.useState<TSelected>()
+    const [value, setValue] = useState<TSelected>()
 
     const handleChange = (newValue: TSelected) => {
         setValue(newValue)
@@ -134,7 +136,7 @@ export const MockAtuoComplete = () => {
                         <Typography variant='caption'>{item.label}</Typography>
                     </ListItem>
                 ) : (
-                    <ListItem onClick={props.onClick} selected={selected}>
+                    <ListItem selected={selected} onClick={props.onClick}>
                         {label}
                     </ListItem>
                 )

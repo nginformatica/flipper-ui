@@ -1,12 +1,13 @@
 import * as React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import VisibilityIcon from '.'
+import { VisibilityIcon } from '.'
 
 describe('VisibilityIcon', () => {
     it('should render visible', () => {
         render(<VisibilityIcon show onToggle={jest.fn()} />)
 
         const svg = screen.getByTestId('icon-off')
+
         expect(svg).toBeDefined()
     })
 
@@ -14,6 +15,7 @@ describe('VisibilityIcon', () => {
         render(<VisibilityIcon show={false} onToggle={jest.fn()} />)
 
         const svg = screen.getByTestId('icon-on')
+
         expect(svg).toBeDefined()
     })
 

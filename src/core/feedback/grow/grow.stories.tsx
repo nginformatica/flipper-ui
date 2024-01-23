@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Meta } from '@storybook/react'
-import Grow from '.'
-import Button from '@/core/inputs/button'
+import type { Meta } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
+import { Grow } from '.'
 
 export default {
     title: 'Feedback/Grow',
@@ -25,8 +25,8 @@ export const Default = () => {
             <Button
                 color='primary'
                 variant='contained'
-                onClick={handleClick}
-                style={{ marginRight: '3em' }}>
+                style={{ marginRight: '3em' }}
+                onClick={handleClick}>
                 {label}
             </Button>
             <Grow in={open} timeout={{ enter: 500, exit: 500 }}>

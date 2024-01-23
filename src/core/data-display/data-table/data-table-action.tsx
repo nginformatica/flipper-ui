@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 import IconButton from '@material-ui/core/IconButton'
 
 export type DataTableActionProps = {

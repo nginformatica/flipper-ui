@@ -1,6 +1,7 @@
 import React from 'react'
-import MuiSlider, { SliderProps } from '@material-ui/core/Slider'
-import { DefaultProps } from '../../types'
+import MuiSlider from '@material-ui/core/Slider'
+import type { DefaultProps } from '@/core/types'
+import type { SliderProps } from '@material-ui/core/Slider'
 
 export interface ISliderProps {
     defaultValue?: number | number[]

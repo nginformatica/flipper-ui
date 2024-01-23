@@ -1,13 +1,11 @@
-import {
-    createTheme,
-    ThemeOptions,
-    ThemeProvider
-} from '@material-ui/core/styles'
 import React from 'react'
+import type { ReactNode } from 'react'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
+import type { ThemeOptions } from '@material-ui/core/styles'
 
 interface ThemeProviderProps {
     options?: ThemeOptions
-    children: React.ReactNode
+    children: ReactNode
 }
 
 const ThemeProviderFlipper = ({

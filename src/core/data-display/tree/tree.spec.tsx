@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
-import Tree from '.'
-import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
+import { render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import { Tree } from '.'
 
 describe('Tree', () => {
     const NODES = [

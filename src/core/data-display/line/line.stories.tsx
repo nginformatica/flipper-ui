@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Line from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Line } from '.'
 
 export default {
     title: 'DataDisplay/Line',

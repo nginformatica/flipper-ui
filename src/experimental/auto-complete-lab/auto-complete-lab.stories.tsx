@@ -1,8 +1,8 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
-import AutoComplete from '@/core/inputs/auto-complete'
-import TextField from '@/core/inputs/text-field'
-import { Autocomplete } from '@material-ui/lab'
+import { Autocomplete as AutocompleteLab } from '@material-ui/lab'
+import type { Meta } from '@storybook/react'
+import { AutoComplete } from '@/core/inputs/auto-complete'
+import { TextField } from '@/core/inputs/text-field'
 
 export default {
     title: 'Experimental/AutoCompleteLab',
@@ -10,7 +10,7 @@ export default {
 } as Meta<typeof AutoComplete>
 
 export const Default = () => (
-    <Autocomplete
+    <AutocompleteLab
         options={[
             { label: 'Anemone', value: 'forget-me-not' },
             { label: 'Forget me not', value: 'anemone' },
@@ -23,10 +23,10 @@ export const Default = () => (
         renderInput={props => (
             <TextField
                 {...props}
+                fullWidth
                 label='Flowers'
                 placeholder='Flowers'
                 variant='outlined'
-                fullWidth
             />
         )}
         onChange={() => null}

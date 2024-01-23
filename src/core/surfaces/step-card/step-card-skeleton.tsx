@@ -1,7 +1,8 @@
+import React from 'react'
+import type { CSSProperties } from 'react'
 import { Box } from '@material-ui/core'
 import MuiAccordion from '@material-ui/core/Accordion'
 import { Skeleton } from '@mui/material'
-import React from 'react'
 import {
     Container,
     NormalProgressContainer,
@@ -16,8 +17,8 @@ interface IStepCardPanelProps {
     showBottomPercentage: boolean
     showIcon: boolean
     subTitle?: boolean
-    padding?: React.CSSProperties['padding']
-    margin?: React.CSSProperties['margin']
+    padding?: CSSProperties['padding']
+    margin?: CSSProperties['margin']
     fullWidth?: boolean
     subTitleSkeleton?: boolean
 }

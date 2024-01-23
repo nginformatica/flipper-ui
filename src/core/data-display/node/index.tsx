@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import { DefaultProps } from '../../types'
+import React, { useState } from 'react'
+import { styled } from 'styled-components'
+import type { DefaultProps } from '@/core/types'
 import {
     KeyboardArrowDown as IconArrowDown,
     KeyboardArrowUp as IconArrowUp
@@ -48,7 +48,7 @@ const Li = styled.li<IListItem>`
 `
 
 export const Node = (props: NodeProps) => {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
     const { id, name, children, style = {}, className } = props
 
     const handleToggleOpen = () => {

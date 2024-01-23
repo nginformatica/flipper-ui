@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Avatar from '.'
-import Typography from '@/core/data-display/typography'
+import { Typography } from '@/core/data-display/typography'
+import { Avatar } from '.'
 
 describe('Avatar', () => {
     it('should render first letter', () => {
@@ -30,6 +30,7 @@ describe('Avatar', () => {
 
     it('should render with custom className', () => {
         const customClass = 'custom-class'
+
         render(
             <Avatar
                 primary

@@ -1,7 +1,7 @@
 import React from 'react'
-import Sidebar from '.'
-import { Home, Computer, Edit } from '../../icons'
-import { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Home, Computer, Edit } from '@/icons'
+import { Sidebar } from '.'
 
 export default {
     title: 'Experimental/Sidebar',

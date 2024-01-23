@@ -1,7 +1,7 @@
-import { Add as IconAdd } from '@/icons'
-import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
-import IconButton from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Add as IconAdd } from '@/icons'
+import { IconButton } from '.'
 
 export default {
     title: 'Inputs/IconButton',

@@ -1,15 +1,17 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Card, {
+import { Button } from '@/core/inputs/button'
+import {
+    Card,
     CardActionArea,
     CardActions,
     CardContent,
     CardMedia,
     CardHeader
 } from '.'
-import Button from '@/core/inputs/button'
 
 const url = 'valid_url'
+
 describe('Card', () => {
     it('should render', () => {
         render(
@@ -30,12 +32,14 @@ describe('Card', () => {
             </Card>
         )
         const card = screen.getByText('Content')
+
         expect(card).toBeDefined()
     })
 
     it('card header should spread props', () => {
         const title = 'This is a title'
         const subheader = 'This is a subheader'
+
         render(<CardHeader title={title} subheader={subheader} />)
 
         const cardHeader = screen.getByText(title)

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Actions from '.'
+import { Actions } from '.'
 
 describe('Actions', () => {
     it('should render', () => {

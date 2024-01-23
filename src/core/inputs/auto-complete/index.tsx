@@ -1,18 +1,16 @@
-import React, {
-    Fragment,
+import React, { Fragment, useState, useRef, useEffect } from 'react'
+import type {
     ReactNode,
-    useState,
-    useRef,
     ChangeEvent,
     KeyboardEvent,
     CSSProperties,
     Ref,
     FocusEvent,
-    useEffect,
-    MouseEvent
+    MouseEvent,
+    ReactElement
 } from 'react'
-import Paper from '@/core/surfaces/paper'
-import Fade from '@/core/feedback/fade'
+import { Fade } from '@/core/feedback/fade'
+import { Paper } from '@/core/surfaces/paper'
 
 export interface AutoCompleteProps {
     autoFocus?: boolean
@@ -38,7 +36,7 @@ export interface AutoCompleteProps {
     onChange: (value: TSelected) => void
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
-    renderInput(props: IInputProps): React.ReactElement
+    renderInput(props: IInputProps): ReactElement
 }
 
 export interface IInputProps {
@@ -81,6 +79,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
     useEffect(() => {
         if (props.autoFocus) {
             const current = inputRef.current
+
             if (current) {
                 current!.focus()
 
@@ -90,6 +89,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
             }
         } else if (props.focusDelay) {
             const current = inputRef.current
+
             setTimeout(() => {
                 if (current) {
                     current.focus()
@@ -174,6 +174,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         if (props.openOnFocus) {
             setOpen(true)
         }
+
         if (props.selectTextOnFocus) {
             const input = event.target
 
@@ -249,6 +250,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
             setOpen(false)
         } else if (event.key === 'Enter') {
             const item = getSuggestions()[highlighted]
+
             handleSelect(item)
         }
     }

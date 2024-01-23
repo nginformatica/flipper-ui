@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Divider from '.'
+import { Divider } from '.'
 
 describe('Divider', () => {
     it('should render', () => {
         render(<Divider data-testid='divider' />)
         const divider = screen.getByTestId('divider')
+
         expect(divider).toBeDefined()
     })
 
@@ -27,6 +28,7 @@ describe('Divider', () => {
 
     it('should match snapshot', () => {
         const { container } = render(<Divider />)
+
         expect(container).toMatchSnapshot()
     })
 })

@@ -1,10 +1,10 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Table from '.'
-import TableHead from './table-head'
+import type { Meta, StoryFn } from '@storybook/react'
 import TableBody from './table-body'
-import TableRow from './table-row'
 import TableCell from './table-cell'
+import TableHead from './table-head'
+import TableRow from './table-row'
+import { Table } from '.'
 
 export default {
     title: 'DataDisplay/Table',

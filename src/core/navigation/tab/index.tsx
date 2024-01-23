@@ -1,6 +1,6 @@
-import { Tab as MuiTab } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from '../../types'
+import { Tab as MuiTab } from '@material-ui/core'
+import type { DefaultProps } from '@/core/types'
 
 interface TabProps extends DefaultProps {
     disabled?: boolean
@@ -18,7 +18,7 @@ const Tab = ({
     ...otherProps
 }: TabProps) => (
     <MuiTab
-        disableRipple
+        disableRipple={disableRipple}
         style={{ margin, padding, ...style }}
         {...otherProps}
     />

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
-import Divider from '.'
-import List from '@/core/data-display/list'
+import type { Meta } from '@storybook/react'
+import { List } from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
+import { Divider } from '.'
 
 export default {
     title: 'DataDisplay/Divider',

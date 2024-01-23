@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Menu from '.'
 import ListItem from '@/core/data-display/list-item'
-import { Backup } from '../../../icons'
+import { Backup } from '@/icons'
+import { Menu } from '.'
 
 describe('Menu', () => {
     it('should render opened', () => {
@@ -41,6 +41,7 @@ describe('Menu', () => {
         // over it. We are just ignoring it for now since it is not a problem with
         // our code and do not affect the component behavior.
         const spy = jest.spyOn(console, 'error')
+
         spy.mockImplementation(jest.fn())
 
         render(
@@ -62,6 +63,7 @@ describe('Menu', () => {
         // over it. We are just ignoring it for now since it is not a problem with
         // our code and do not affect the component behavior
         const spy = jest.spyOn(console, 'error')
+
         spy.mockImplementation(jest.fn())
 
         render(

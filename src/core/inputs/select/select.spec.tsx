@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
-import Select from '@/test/mocks/select-mock'
-import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
+import { render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import Select from '@/test/mocks/select-mock'
 
 describe('Select', () => {
     it('should render', async () => {
@@ -21,9 +21,11 @@ describe('Select', () => {
         render(<Select initialValue='0' />)
 
         const container = screen.getByText('Option 0')
+
         await act(async () => await userEvent.click(container))
 
         const option = screen.getByText('Option 1')
+
         await act(async () => await userEvent.click(option))
 
         expect((container as HTMLDivElement).innerHTML).toBe('Option 1')
@@ -37,9 +39,11 @@ describe('Select', () => {
         )
 
         const container = screen.getByText('Option 0')
+
         await act(async () => await userEvent.click(container))
 
         const option = screen.getByText('Option 1')
+
         await act(async () => await userEvent.click(option))
 
         expect(onChangeSpy).toBeCalledWith(
@@ -55,6 +59,7 @@ describe('Select', () => {
         screen.getByText('Option 1')
 
         const clearButton = screen.getByRole('end-adornment-component')
+
         await act(async () => await userEvent.click(clearButton))
 
         const input = screen.getByTestId('select-input') as HTMLInputElement

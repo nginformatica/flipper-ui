@@ -1,5 +1,6 @@
 import React from 'react'
-import SkeletonLoading, { SkeletonProps } from 'react-loading-skeleton'
+import type { SkeletonProps } from 'react-loading-skeleton'
+import SkeletonLoading from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { theme } from '@/theme'
 

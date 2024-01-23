@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Meta } from '@storybook/react'
-import Dialog from '.'
-import Button from '@/core/inputs/button'
-import Typography from '@/core/data-display/typography'
+import type { Meta } from '@storybook/react'
+import { Typography } from '@/core/data-display/typography'
+import { Button } from '@/core/inputs/button'
+import { Dialog } from '.'
 
 export default {
     title: 'Feedback/Dialog',
@@ -19,10 +19,10 @@ export const Default = () => {
                 open={open}
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={() => setOpen(false)}
                 actions={
                     <Button onClick={() => setOpen(false)}>Close dialog</Button>
                 }
+                onClose={() => setOpen(false)}
             />
         </>
     )
@@ -42,10 +42,10 @@ export const WithAlertOnClose = () => {
                 open={open}
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={handleClose}
                 actions={
                     <Button onClick={() => setOpen(false)}>Close dialog</Button>
                 }
+                onClose={handleClose}
             />
         </>
     )
@@ -65,10 +65,10 @@ export const WithTypography = () => {
                     </Typography>
                 }
                 text='Simple Text'
-                onClose={() => setOpen(false)}
                 actions={
                     <Button onClick={() => setOpen(false)}>Close dialog</Button>
                 }
+                onClose={() => setOpen(false)}
             />
         </>
     )
@@ -84,11 +84,11 @@ export const WithSnippet = () => {
                 open={open}
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={() => setOpen(false)}
                 actions={
                     <Button onClick={() => setOpen(false)}>Close dialog</Button>
                 }
                 snippet='const a = 1'
+                onClose={() => setOpen(false)}
             />
         </>
     )

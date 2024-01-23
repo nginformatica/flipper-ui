@@ -1,7 +1,7 @@
-import { Menu as MuiMenu } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from '../../types'
-import { MenuProps as MuiMenuProps } from '@material-ui/core/Menu'
+import { Menu as MuiMenu } from '@material-ui/core'
+import type { DefaultProps } from '@/core/types'
+import type { MenuProps as MuiMenuProps } from '@material-ui/core/Menu'
 
 export interface MenuProps extends DefaultProps, MuiMenuProps {
     open: boolean

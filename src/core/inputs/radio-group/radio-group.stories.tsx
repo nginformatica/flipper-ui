@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Meta } from '@storybook/react'
-import RadioGroup from '.'
+import type { Meta } from '@storybook/react'
+import { RadioGroup } from '.'
 
 export default {
     title: 'Inputs/RadioGroup',

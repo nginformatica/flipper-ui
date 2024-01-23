@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
-import MaskField from '.'
-import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
+import { render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import { MaskField } from '.'
 
 describe('MaskField', () => {
-    // eslint-disable-next-line max-len
-    it('should render with default TextField if customInput is not provided', async () => {
+    it('should render with default TextField without customInput', async () => {
         render(<MaskField placeholder='Description' />)
 
         const input = screen.getByPlaceholderText(

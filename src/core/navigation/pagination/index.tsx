@@ -1,12 +1,12 @@
-import { inc, times } from 'ramda'
 import React from 'react'
-import styled from 'styled-components'
+import { inc, times } from 'ramda'
+import { styled } from 'styled-components'
+import type { DefaultProps } from '@/core/types'
+import { Button } from '@/core/inputs/button'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
 } from '@/icons'
-import { DefaultProps } from '../../types'
-import Button from '@/core/inputs/button'
 
 export interface PaginationProps extends DefaultProps {
     pages?: number

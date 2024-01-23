@@ -1,13 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
-import { DefaultProps } from '../../types'
+import type { CSSProperties } from 'react'
+import { styled } from 'styled-components'
+import type { DefaultProps } from '@/core/types'
 
 const StyledContent = styled.main`
     flex: 1;
     transition: all 500ms ease;
 `
 
-const ContainerStyles: React.CSSProperties = {
+const ContainerStyles: CSSProperties = {
     flex: 1,
     transition: 'all 500ms ease'
 }
@@ -19,7 +20,7 @@ export const Content = ({
     style = {},
     ...otherProps
 }: DefaultProps) => {
-    const componentStyle: React.CSSProperties = Object.assign(
+    const componentStyle: CSSProperties = Object.assign(
         {},
         ContainerStyles,
         padding,

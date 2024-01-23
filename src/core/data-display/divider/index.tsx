@@ -1,9 +1,7 @@
-import {
-    Divider as MuiDivider,
-    DividerProps as MuiDividerProps
-} from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from '../../types'
+import { Divider as MuiDivider } from '@material-ui/core'
+import type { DefaultProps } from '@/core/types'
+import type { DividerProps as MuiDividerProps } from '@material-ui/core'
 
 export interface DividerProps extends DefaultProps, MuiDividerProps {
     'data-testid'?: string

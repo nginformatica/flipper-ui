@@ -1,16 +1,17 @@
 import * as React from 'react'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
-import ChipField from '.'
+import { ChipField } from '.'
 
 describe('ChipField', () => {
     const values = [{ value: 'alpha' }, { value: 'beta' }, { value: 'gamma' }]
+
     it('should render', () => {
         render(
             <ChipField
                 data-testid='chip-field-container'
+                values={[]}
                 onAdd={jest.fn}
                 onDelete={jest.fn}
-                values={[]}
             />
         )
 
@@ -23,9 +24,9 @@ describe('ChipField', () => {
         render(
             <ChipField
                 data-testid='chip-field-container'
+                values={values}
                 onAdd={jest.fn}
                 onDelete={jest.fn}
-                values={values}
             />
         )
 
@@ -36,12 +37,13 @@ describe('ChipField', () => {
 
     it('should remove from values', async () => {
         const onDelete = jest.fn()
+
         render(
             <ChipField
                 data-testid='chip-field-container'
+                values={values}
                 onAdd={jest.fn}
                 onDelete={onDelete}
-                values={values}
             />
         )
 

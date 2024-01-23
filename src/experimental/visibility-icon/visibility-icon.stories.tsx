@@ -1,6 +1,6 @@
 import React from 'react'
-import VisibilityIcon from '.'
-import { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
+import { VisibilityIcon } from '.'
 
 export default {
     title: 'Experimental/VisibilityIcon',

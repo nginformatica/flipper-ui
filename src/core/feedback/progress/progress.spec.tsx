@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Progress from '.'
+import { Progress } from '.'
 
 describe('Progress', () => {
     it('should render circular', () => {

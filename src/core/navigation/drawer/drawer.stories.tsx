@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Meta } from '@storybook/react'
-import Drawer from '.'
-import List from '@/core/data-display/list'
+import type { Meta } from '@storybook/react'
+import { List } from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
+import { Button } from '@/core/inputs/button'
 import { Backup as IconBackup } from '@/icons'
-import Button from '@/core/inputs/button'
+import { Drawer } from '.'
 
 export default {
     title: 'Navigation/Drawer',
@@ -20,7 +20,7 @@ export const Default = () => {
 
     return (
         <>
-            <Button onClick={handleClick} disabled={open}>
+            <Button disabled={open} onClick={handleClick}>
                 Open
             </Button>
             <Drawer open={open} onClick={handleClick}>

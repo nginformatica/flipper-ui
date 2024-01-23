@@ -1,9 +1,9 @@
+import React from 'react'
 import {
     CircularProgress as MuiCircularProgress,
     LinearProgress as MuiLinearProgress
 } from '@material-ui/core'
-import React from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 
 export interface ILinear {
     color?: 'primary' | 'secondary'

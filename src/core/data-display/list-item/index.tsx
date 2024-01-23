@@ -1,16 +1,17 @@
+import type { MouseEvent } from 'react'
+import React, { Fragment } from 'react'
 import {
     ListItem as MuiListItem,
     ListItemAvatar as MuiListItemAvatar,
     ListItemIcon as MuiListItemIcon,
     ListItemSecondaryAction as MuiListItemSecondaryAction,
     ListItemText as MuiListItemText,
-    MenuItem,
-    Theme
+    MenuItem
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import React, { Fragment, MouseEvent } from 'react'
-import { DefaultProps } from '../../types'
-import { Omit } from 'ramda'
+import type { DefaultProps } from '@/core/types'
+import type { Theme } from '@material-ui/core'
+import type { Omit } from 'ramda'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     avatar?: JSX.Element

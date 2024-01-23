@@ -1,9 +1,10 @@
+import React from 'react'
+import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
 import { defaultTo } from 'ramda'
-import React, { CSSProperties, ChangeEvent, ReactNode } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
+import type { PaperProps as FlipperPaperProps } from '@/core/surfaces/paper'
 import { ExpandMore as IconExpand } from '@/icons'
 import { ExpansionPanel, Typography } from '@/index'
-import { PaperProps as FlipperPaperProps } from '@/core/surfaces/paper'
 
 const Paper = styled(ExpansionPanel)`
     && {
@@ -36,7 +37,7 @@ export interface PaperProps
         event?: ChangeEvent<Record<string, unknown>>,
         expanded?: boolean
     ): void
-    onClick?(event: React.MouseEvent<HTMLDivElement>): void
+    onClick?(event: MouseEvent<HTMLDivElement>): void
 }
 
 const Summary = styled.div`

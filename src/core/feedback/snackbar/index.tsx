@@ -1,20 +1,22 @@
+import type { ReactNode, FunctionComponent, MouseEvent } from 'react'
+import React from 'react'
 import {
     IconButton as MuiIconButton,
     Snackbar as MuiSnackbar,
     SnackbarContent as MuiSnackbarContent
 } from '@material-ui/core'
 import { amber, blue, green, red } from '@material-ui/core/colors'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
+import type { DefaultProps } from '@/core/types'
+import type { Theme } from '@material-ui/core/styles'
+import type { TransitionProps } from '@material-ui/core/transitions/transition'
 import {
     CheckCircle as IconCheck,
     Close as IconClose,
     Error as IconError,
     Info as IconInfo,
     Warning as IconWarning
-} from '../../../icons'
-import React, { ReactNode, FunctionComponent, MouseEvent } from 'react'
-import { DefaultProps } from '../../types'
-import { TransitionProps } from '@material-ui/core/transitions/transition'
+} from '@/icons'
 
 export interface SnackBarProps extends DefaultProps {
     autoHide?: number

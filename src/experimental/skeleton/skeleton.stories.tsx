@@ -1,6 +1,6 @@
 import React from 'react'
-import Skeleton from '.'
-import { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Skeleton } from '.'
 
 export default {
     title: 'Experimental/Skeleton',

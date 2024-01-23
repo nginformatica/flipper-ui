@@ -1,11 +1,11 @@
-import React from 'react'
-import DialogV2 from './dialog'
+import React, { useState } from 'react'
+import type { Meta, StoryFn } from '@storybook/react'
 import ConfirmDialogComponent from './confirm-dialog'
+import { DialogV2 } from './dialog'
 import RemoveDialogComponent from './remove-dialog'
-import { Meta, StoryFn } from '@storybook/react'
 
 const Template: StoryFn<typeof DialogV2> = args => {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
 
     return (
         <>
@@ -22,7 +22,7 @@ const Template: StoryFn<typeof DialogV2> = args => {
 const TemplateWithRemoveDialog: StoryFn<
     typeof RemoveDialogComponent
 > = args => {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
 
     return (
         <>
@@ -40,7 +40,7 @@ const TemplateWithRemoveDialog: StoryFn<
 const TemplateWithConfirmDialog: StoryFn<
     typeof ConfirmDialogComponent
 > = args => {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
 
     return (
         <>

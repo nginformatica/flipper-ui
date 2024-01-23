@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Fab from '.'
+import { Fab } from '.'
 
 describe('Fab', () => {
     it('should render', () => {
@@ -41,6 +41,7 @@ describe('Fab', () => {
                 <>Fab</>
             </Fab>
         )
+
         expect(container).toMatchSnapshot()
     })
 })

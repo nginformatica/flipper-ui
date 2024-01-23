@@ -1,27 +1,27 @@
 import React from 'react'
+import type { MouseEvent } from 'react'
+import DateFnsUtils from '@date-io/date-fns'
 import {
     KeyboardTimePicker,
     KeyboardDatePicker,
     KeyboardDateTimePicker,
     MuiPickersUtilsProvider
 } from '@material-ui/pickers'
-import DateFnsUtils from '@date-io/date-fns'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
+import type { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
+// eslint-disable-next-line @stylistic/max-len
+import type { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
+import type { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
+import type { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
+import type { Omit } from 'ramda'
 import { useStyles } from '@/core/inputs/text-field'
-import { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
-import { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
-import { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
-import { Omit } from 'ramda'
-import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 
 export interface IProps {
     locale?: DateFnsUtils['locale']
     type?: 'date' | 'time' | 'datetime'
     inputProps?: object
-    onAuxClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void
-    onAuxClickCapture?(
-        event: React.MouseEvent<HTMLDivElement, MouseEvent>
-    ): void
+    onAuxClick?(event: MouseEvent<HTMLDivElement, MouseEvent>): void
+    onAuxClickCapture?(event: MouseEvent<HTMLDivElement, MouseEvent>): void
     onChange(date: MaterialUiPickersDate | null, value?: string): void
 }
 
