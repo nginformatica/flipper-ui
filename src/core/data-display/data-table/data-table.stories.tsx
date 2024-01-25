@@ -1,3 +1,4 @@
+/* eslint-disable react-perf/jsx-no-new-array-as-prop */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
 import React, { useState, useRef } from 'react'
@@ -18,6 +19,7 @@ import {
 } from '@/icons'
 import { DataTable } from './data-table'
 import { DataTableAction } from './data-table-action'
+import { DataTableField } from './data-table-field'
 import { RowMode } from './types'
 
 export default {
@@ -896,119 +898,100 @@ export const CrudWithHidden = () => {
     )
 }
 
-type DataCheckbox = {
-    id: number
-    product: string
-    price: number
-    quantity: number
-    date: Date
-}
-
-const checkboxColumns: ColumnSpec<DataCheckbox>[] = [
+const dataInput = [
     {
-        title: 'Product',
-        type: 'text',
-        field: 'product',
-        cellStyle: {
-            maxWidth: '72px',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis'
-        },
-        editable: true
+        branch: 'Keepfy Joinville',
+        local: 'Joiville',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
     },
     {
-        title: 'Price (R$)',
-        field: 'price',
-        type: 'numeric-float',
-        editable: false,
-        getValue: (value: number) => value.toFixed(2).replace('.', ',')
+        branch: 'Keepfy São Paulo',
+        local: 'São Paulo',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
     },
     {
-        title: 'Quantity',
-        field: 'quantity',
-        type: 'numeric-int',
-        editable: true,
-        cellStyle: {
-            width: '82px'
-        }
+        branch: 'Keepfy Rio Grande do Sul',
+        local: 'Rio Grande do Sul',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
     },
     {
-        title: 'Date',
-        field: 'date',
-        type: 'datetime',
-        editable: true,
-        getValue: (value: Date) => format(value, 'dd/MM/yyyy HH:mm'),
-        cellStyle: {
-            width: '200px'
-        }
+        branch: 'Keepfy Rio de Janeiro',
+        local: 'Rio de Janeiro',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    },
+    {
+        branch: 'Keepfy Curitiba',
+        local: 'Curitiba',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    },
+    {
+        branch: 'Keepfy Teresópolis',
+        local: 'Teresópolis',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
     }
 ]
 
-const data = [
+const tableHead = [
     {
-        id: 1,
-        product: 'Magazine',
-        price: 13.5,
-        quantity: 12,
-        date: new Date()
+        title: 'Nome da Filial',
+        field: 'branch',
+        type: 'text',
+        editable: false
     },
     {
-        id: 2,
-        product: 'Table',
-        price: 200.49,
-        quantity: 3,
-        date: new Date()
-    },
-    { id: 3, product: 'Chair', price: 53.5, quantity: 9, date: new Date() },
-    {
-        id: 4,
-        product: 'Keyboard',
-        price: 53.29,
-        quantity: 4,
-        date: new Date()
+        title: 'Localidade',
+        field: 'local',
+        type: 'text',
+        editable: false
     },
     {
-        id: 5,
-        product: 'Mouse',
-        price: 27.13,
-        quantity: 16,
-        date: new Date()
+        title: 'Status',
+        field: 'status',
+        type: 'text',
+        editable: false
     },
     {
-        id: 6,
-        product: 'Microphone',
-        price: 89.14,
-        quantity: 2,
-        date: new Date()
+        title: 'Código da Empresa',
+        field: 'companyCode',
+        type: 'number',
+        editable: true
     },
     {
-        id: 7,
-        product: 'Headset',
-        price: 117.85,
-        quantity: 6,
-        date: new Date()
-    },
-    { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: new Date() }
+        title: 'Código da Filial',
+        field: 'branchCode',
+        type: 'text',
+        editable: true
+    }
 ]
 
-export const DataTableCheckbox = () => {
+export const WithField = () => {
+    const [data, setData] = useState(() => dataInput)
     const [selectedAll, setSelectedAll] = useState(false)
     const [selected, setSelected] = useState(Array(data.length).fill(false))
 
     return (
-        <DataTable
+        <DataTableField
             checkbox
+            rows={data}
+            setRows={setData}
+            header={tableHead}
             checkboxProps={{
                 checkRow: selected,
                 checkAllRows: selectedAll,
                 setSelectedRow: setSelected,
                 setSelectedAllRows: setSelectedAll
-            }}
-            data={data}
-            columns={checkboxColumns}
-            pagination={{
-                disabled: true
             }}
         />
     )
