@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import React from 'react'
 import type { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import {
@@ -8,6 +9,7 @@ import {
     TableHead,
     TableRow
 } from '@mui/material'
+import { default as styled } from 'styled-components'
 import { TextField } from '@/index'
 
 interface IHeader {
@@ -30,10 +32,69 @@ interface ITable<D extends Record<string, unknown>> {
     }
 }
 
+const TableCellRows = styled(TableCell)`
+    && {
+        width: 400px;
+        height: 60px;
+        padding: 0 10px;
+    }
+`
+
+const RowTable = styled(TableRow)`
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+        background: -moz-linear-gradient(
+            left,
+            rgba(189, 189, 189, 0) 0%,
+            rgba(189, 189, 189, 1) 100%
+        );
+        background: -webkit-linear-gradient(
+            left,
+            rgba(189, 189, 189, 0) 0%,
+            rgba(189, 189, 189, 1) 100%
+        );
+        background: linear-gradient(
+            to right,
+            rgba(189, 189, 189, 0) 0%,
+            rgba(189, 189, 189, 1) 100%
+        );
+    }
+
+    &.no-hover {
+        background: none;
+    }
+`
+
 export const DataTableField = <D extends Record<string, unknown>>(
     props: ITable<D>
 ) => {
     const { rows, header, checkbox, checkboxProps, setRows } = props
+
+    const handleFieldChange = (
+        event: ChangeEvent<HTMLInputElement>,
+        fieldName: keyof D,
+        rowIndex: number,
+        setRows: Dispatch<SetStateAction<D[]>>
+    ) => {
+        const { value } = event.target
+
+        setRows(prevRows => {
+            const updatedRows = prevRows.map((row, i) => {
+                if (i === rowIndex) {
+                    return {
+                        ...row,
+                        [fieldName]: value
+                    }
+                }
+
+                return row
+            })
+
+            return updatedRows as D[]
+        })
+    }
 
     const handleSelectCheckbox = (
         index: number,
@@ -71,28 +132,30 @@ export const DataTableField = <D extends Record<string, unknown>>(
         )
     }
 
-    const handleFieldChange = (
-        event: ChangeEvent<HTMLInputElement>,
-        fieldName: keyof D,
-        rowIndex: number,
-        setRows: Dispatch<SetStateAction<D[]>>
+    const handleSelect = (index: number) => {
+        if (checkboxProps?.setSelectedRow && checkboxProps.setSelectedAllRows) {
+            handleSelectCheckbox(
+                index,
+                checkboxProps.setSelectedRow,
+                checkboxProps.setSelectedAllRows
+            )
+        }
+    }
+
+    const handleTableRow = (
+        event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
+        index: number
     ) => {
-        const { value } = event.target
+        const isCheckboxClick =
+            (event.target as HTMLElement).closest('input[type="checkbox"]') !==
+            null
 
-        setRows(prevRows => {
-            const updatedRows = prevRows.map((row, i) => {
-                if (i === rowIndex) {
-                    return {
-                        ...row,
-                        [fieldName]: value
-                    }
-                }
-
-                return row
-            })
-
-            return updatedRows as D[]
-        })
+        if (
+            !isCheckboxClick &&
+            (!checkboxProps?.checkRow || !checkboxProps.checkRow[index])
+        ) {
+            handleSelect(index)
+        }
     }
 
     const tableBody = (rows: D[], header: IHeader[]) =>
@@ -100,8 +163,10 @@ export const DataTableField = <D extends Record<string, unknown>>(
             const columns = header.map((column, i) => {
                 if (Object.keys(row).includes(column.field)) {
                     return (
-                        <TableCell key={i} align='center'>
-                            {column.editable ? (
+                        <TableCellRows key={i} align='center'>
+                            {column.editable &&
+                            checkboxProps?.checkRow &&
+                            checkboxProps.checkRow[index] ? (
                                 <TextField
                                     fullWidth
                                     key={`${column.field}-${i}`}
@@ -111,6 +176,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
                                             | string
                                             | number) || ''
                                     }
+                                    onClick={event => event.stopPropagation()}
                                     onChange={event =>
                                         handleFieldChange(
                                             event,
@@ -121,9 +187,15 @@ export const DataTableField = <D extends Record<string, unknown>>(
                                     }
                                 />
                             ) : (
-                                <span>{row[column.field] as string}</span>
+                                <span>
+                                    {column.editable
+                                        ? checkboxProps?.checkRow?.[index]
+                                            ? (row[column.field] as string)
+                                            : ''
+                                        : (row[column.field] as string)}
+                                </span>
                             )}
-                        </TableCell>
+                        </TableCellRows>
                     )
                 }
 
@@ -131,7 +203,14 @@ export const DataTableField = <D extends Record<string, unknown>>(
             })
 
             return (
-                <TableRow key={index}>
+                <RowTable
+                    key={index}
+                    className={
+                        checkboxProps?.checkRow && checkboxProps.checkRow[index]
+                            ? 'no-hover'
+                            : ''
+                    }
+                    onClick={event => handleTableRow(event, index)}>
                     {checkbox && (
                         <TableCell padding='checkbox'>
                             <Checkbox
@@ -142,23 +221,12 @@ export const DataTableField = <D extends Record<string, unknown>>(
                                         ? checkboxProps.checkRow[index]
                                         : false
                                 }
-                                onChange={() => {
-                                    if (
-                                        checkboxProps?.setSelectedRow &&
-                                        checkboxProps.setSelectedAllRows
-                                    ) {
-                                        handleSelectCheckbox(
-                                            index,
-                                            checkboxProps.setSelectedRow,
-                                            checkboxProps.setSelectedAllRows
-                                        )
-                                    }
-                                }}
+                                onChange={() => handleSelect(index)}
                             />
                         </TableCell>
                     )}
                     {columns}
-                </TableRow>
+                </RowTable>
             )
         })
 
