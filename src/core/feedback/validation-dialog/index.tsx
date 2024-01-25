@@ -1,9 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
-import Dialog from '../dialog'
-import Button from '@/core/inputs/button'
-import Actions from '../../../experimental/actions'
-import Typography from '../../data-display/typography'
+import type { FC, ReactNode } from 'react'
+import { default as styled } from 'styled-components'
+import { Typography } from '@/core/data-display/typography'
+import { Button } from '@/core/inputs/button'
+import { Actions } from '@/experimental/actions'
+import { Dialog } from '../dialog'
 
 export interface IValidateProps {
     open: boolean
@@ -13,9 +14,9 @@ export interface IValidateProps {
     responses: string[]
     validations: IValidations[]
     icons: {
-        success: React.ReactNode
-        error: React.ReactNode
-        loading: React.ReactNode
+        success: ReactNode
+        error: ReactNode
+        loading: ReactNode
     }
     onClose(): void
     onCancel(): void
@@ -40,9 +41,9 @@ export interface IValidations {
 interface IIcon {
     status: string
     icons: {
-        success: React.ReactNode
-        error: React.ReactNode
-        loading: React.ReactNode
+        success: ReactNode
+        error: ReactNode
+        loading: ReactNode
     }
 }
 
@@ -71,7 +72,7 @@ const ValidationWrapper = styled.div`
     gap: 15px;
 `
 
-const ValidationDialog: React.FC<IValidateProps> = ({
+const ValidationDialog: FC<IValidateProps> = ({
     open,
     failed,
     success,
@@ -133,9 +134,9 @@ const ValidationDialog: React.FC<IValidateProps> = ({
     const renderContent = (
         validations: IValidations[],
         icons: {
-            success: React.ReactNode
-            error: React.ReactNode
-            loading: React.ReactNode
+            success: ReactNode
+            error: ReactNode
+            loading: ReactNode
         }
     ) => {
         return validations.map((item, i) => {

@@ -1,10 +1,12 @@
-import { Fab as MuiFab, FabProps as MuiFabProps } from '@material-ui/core'
-import React, { MouseEvent } from 'react'
-import { DefaultProps } from '../../types'
+import React from 'react'
+import type { MouseEvent, ReactElement } from 'react'
+import { Fab as MuiFab } from '@material-ui/core'
+import type { DefaultProps } from '../../types'
+import type { FabProps as MuiFabProps } from '@material-ui/core'
 
 export interface FabProps extends DefaultProps, MuiFabProps {
     onClick?: (event?: MouseEvent<HTMLElement>) => void
-    children: React.ReactElement<Record<string, unknown>>
+    children: ReactElement<Record<string, unknown>>
 }
 
 export const Fab = ({

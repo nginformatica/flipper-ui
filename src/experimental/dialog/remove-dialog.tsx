@@ -1,6 +1,6 @@
-import { toUpper } from 'ramda'
 import React from 'react'
-import DialogV2 from './dialog'
+import { toUpper } from 'ramda'
+import { DialogV2 } from './dialog'
 
 export interface IProps {
     open: boolean

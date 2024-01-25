@@ -1,11 +1,11 @@
 /* eslint-disable max-lines */
+import * as React from 'react'
+import { act } from 'react-dom/test-utils'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event/'
+import type { Column } from 'material-table'
 import WithDate from '@/test/mocks/editable-table-date-mock'
 import EditableTable from '@/test/mocks/editable-table-mock'
-import { fireEvent, render, screen } from '@testing-library/react'
-import { Column } from 'material-table'
-import * as React from 'react'
-import userEvent from '@testing-library/user-event/'
-import { act } from 'react-dom/test-utils'
 
 const COLUMNS: Column<object>[] = [
     {
@@ -94,9 +94,11 @@ const AUTO_COMPLETE_SUGGESTIONS = [
     { label: 'some values', value: '5000' },
     { label: 'any values', value: '12' }
 ]
+
 beforeEach(() => {
     // prevent <div> cannot appear as a child of <tr> warning on console
     const spy = jest.spyOn(console, 'error')
+
     spy.mockImplementation(jest.fn())
 })
 
@@ -475,8 +477,7 @@ describe('EditableTable', () => {
         expect(onClickAddSpy).toHaveBeenCalled()
     })
 
-    // eslint-disable-next-line max-len
-    it('should render with no autoCompleteSuggestions not have add button', async () => {
+    it('should render with no autoCompleteSuggestions no add button', async () => {
         const onClickAddSpy = jest
             .fn()
             .mockImplementation(() => Promise.resolve())
@@ -544,6 +545,6 @@ describe('EditableTable', () => {
         const textInput = screen.getAllByTestId('text-field')[0]
 
         expect(dateInput.parentElement?.classList).toContain('Mui-error')
-        expect(textInput?.classList).toContain('Mui-error')
+        expect(textInput.classList).toContain('Mui-error')
     })
 })

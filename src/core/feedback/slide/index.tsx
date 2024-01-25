@@ -1,12 +1,13 @@
-import { Slide as MuiSlide } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from '../../types'
+import type { ReactElement } from 'react'
+import { Slide as MuiSlide } from '@material-ui/core'
+import type { DefaultProps } from '../../types'
 
 export interface SlideProps extends DefaultProps {
     in: boolean
     direction: 'left' | 'right' | 'up' | 'down'
     timeout?: number | { enter?: number; exit?: number }
-    children?: React.ReactElement<Record<string, unknown>>
+    children?: ReactElement<Record<string, unknown>>
 }
 
 export const Slide = ({

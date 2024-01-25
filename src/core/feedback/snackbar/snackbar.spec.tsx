@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
-import Snackbar from '@/test/mocks/snackbar-mock'
 import { act } from 'react-dom/test-utils'
-import userEvent from '@testing-library/user-event'
+import { render, screen, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import Snackbar from '@/test/mocks/snackbar-mock'
 
 describe('Snackbar', () => {
     it('should render a Snackbar', async () => {
@@ -15,11 +15,13 @@ describe('Snackbar', () => {
         })
 
         const message = screen.getByText('Snackbar Message')
+
         expect(message).toBeDefined()
     })
 
     it('should render with action', async () => {
         const onClose = jest.fn()
+
         render(
             <Snackbar
                 withAction
@@ -44,6 +46,7 @@ describe('Snackbar', () => {
 
     it('should call onClick', async () => {
         const onClick = jest.fn()
+
         render(
             <Snackbar
                 snackProps={{
@@ -70,6 +73,7 @@ describe('Snackbar', () => {
     })
     it('should call onClose', async () => {
         const onClose = jest.fn()
+
         render(
             <Snackbar
                 snackProps={{

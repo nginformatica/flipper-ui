@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Dialog from '.'
-import Button from '@/core/inputs/button'
+import { Button } from '@/core/inputs/button'
+import { Dialog } from '.'
 
 describe('Dialog', () => {
     it('should render opened', () => {
@@ -10,8 +10,8 @@ describe('Dialog', () => {
                 open
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
+                onClose={jest.fn()}
             />
         )
 
@@ -30,9 +30,9 @@ describe('Dialog', () => {
                 open
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
                 snippet='Snippet'
+                onClose={jest.fn()}
             />
         )
 
@@ -53,7 +53,6 @@ describe('Dialog', () => {
                 open
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
                 titleAction={
                     <Button
@@ -62,6 +61,7 @@ describe('Dialog', () => {
                         Title action
                     </Button>
                 }
+                onClose={jest.fn()}
             />
         )
 
@@ -75,9 +75,9 @@ describe('Dialog', () => {
             <Dialog
                 open
                 title='My beautiful Dialog'
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
                 content={<div>Content</div>}
+                onClose={jest.fn()}
             />
         )
 
@@ -97,9 +97,9 @@ describe('Dialog', () => {
                 aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
                 scroll='body'
+                onClose={jest.fn()}
             />
         )
 
@@ -118,9 +118,9 @@ describe('Dialog', () => {
                 aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
                 scroll='unset-body'
+                onClose={jest.fn()}
             />
         )
 
@@ -139,9 +139,9 @@ describe('Dialog', () => {
                 aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
                 scroll='paper'
+                onClose={jest.fn()}
             />
         )
 
@@ -160,9 +160,9 @@ describe('Dialog', () => {
                 aria-title='dialog-paper'
                 title='My beautiful Dialog'
                 text={'Is not it?'}
-                onClose={jest.fn()}
                 actions={<Button onClick={jest.fn()}>Close</Button>}
                 scroll='unset-paper'
+                onClose={jest.fn()}
             />
         )
 

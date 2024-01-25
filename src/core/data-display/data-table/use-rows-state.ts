@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Data, Identifier, RowState, StackView, RowMode } from './types'
+import type { Data, Identifier, RowState, StackView } from './types'
+import { RowMode } from './types'
 
 export const useRowsState = <D extends Data, V extends StackView>(
     rows: D[],
@@ -16,6 +17,7 @@ export const useRowsState = <D extends Data, V extends StackView>(
 
         for (const row of rows) {
             const elem = state.internal.get(row.id)
+
             if (elem) {
                 nextState.set(row.id, elem)
             } else {
@@ -43,6 +45,7 @@ export const useRowsState = <D extends Data, V extends StackView>(
         (id: Identifier, partial: Partial<RowState<D, V>>) => {
             setState(state => {
                 const elem = state.internal.get(id)
+
                 if (elem) {
                     state.internal.set(id, { ...elem, ...partial })
                 }
@@ -56,6 +59,7 @@ export const useRowsState = <D extends Data, V extends StackView>(
     const pushRowView = useCallback((id: Identifier, view: keyof V) => {
         setState(state => {
             const elem = state.internal.get(id)
+
             if (elem) {
                 elem.stackView.push(view)
                 state.internal.set(id, elem)
@@ -70,7 +74,7 @@ export const useRowsState = <D extends Data, V extends StackView>(
             const elem = state.internal.get(id)
 
             if (elem) {
-                elem?.stackView.pop()
+                elem.stackView.pop()
                 state.internal.set(id, elem)
             }
 

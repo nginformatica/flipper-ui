@@ -1,22 +1,23 @@
 import * as React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
-import PinInput from '.'
-import MockedComponent from '@/test/mocks/pin-input-mock'
-import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import MockedComponent from '@/test/mocks/pin-input-mock'
+import { PinInput } from '.'
 
 describe('PinInput', () => {
     it('should render', () => {
         const PIN_LENGTH = 6
+
         render(
             <PinInput
                 isValidating={false}
                 pin={[]}
-                onPinChanged={jest.fn()}
                 pinLength={PIN_LENGTH}
                 setPin={jest.fn()}
                 size='small'
                 validationResult={false}
+                onPinChanged={jest.fn()}
             />
         )
 

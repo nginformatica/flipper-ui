@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Node from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Node } from '.'
 
 export default {
     title: 'DataDisplay/Node',

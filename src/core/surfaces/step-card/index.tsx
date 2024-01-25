@@ -1,13 +1,14 @@
-import {
+import React from 'react'
+import type { CSSProperties, ChangeEvent, HTMLAttributes } from 'react'
+import { Accordion as MuiAccordion } from '@material-ui/core'
+import type { Typography } from '@/core/data-display/typography'
+import type {
     LinearProgress,
-    Accordion as MuiAccordion,
     AccordionDetails as MuiAccordionDetails
 } from '@material-ui/core'
-import React from 'react'
-import StepCardSkeleton from './step-card-skeleton'
-import Typography from '@/core/data-display/typography'
 import { StepCardDetails } from './step-card-details'
 import { StepCardPanel } from './step-card-panel'
+import StepCardSkeleton from './step-card-skeleton'
 import { Container } from './styles'
 
 /**
@@ -26,11 +27,11 @@ export interface IStepCardProps {
 
     /**
      * Callback fired when the expansion state changes
-     * @type {(event: React.ChangeEvent<{}>, expanded: boolean) => void}
+     * @type {(event: ChangeEvent<{}>, expanded: boolean) => void}
      * @memberof IStepCardProps
      * @default undefined
      * @example
-     * const handleChange = (event: React.ChangeEvent<{}>, expanded: boolean) => {
+     * const handleChange = (event: ChangeEvent<{}>, expanded: boolean) => {
      *    setExpanded(expanded)
      * }
      * <StepCard onChange={handleChange} />
@@ -38,7 +39,7 @@ export interface IStepCardProps {
      * <StepCard onChange={(event, expanded) => setExpanded(expanded)} />
      */
     onChange?: (
-        event: React.ChangeEvent<Record<string, unknown>>,
+        event: ChangeEvent<Record<string, unknown>>,
         expanded: boolean
     ) => void
 
@@ -151,10 +152,10 @@ export interface IStepCardProps {
     /**
      * Props to be passed to the root element
      *
-     * @type {(React.HTMLAttributes<HTMLDivElement> | undefined)}
+     * @type {(HTMLAttributes<HTMLDivElement> | undefined)}
      * @memberof IStepCardProps
      */
-    rootProps?: React.HTMLAttributes<HTMLDivElement>
+    rootProps?: HTMLAttributes<HTMLDivElement>
 
     /**
      * Props to be passed to the title typography
@@ -211,17 +212,17 @@ export interface IStepCardProps {
 
     /**
      * Padding applied to the root element
-     * @type {React.CSSProperties['padding']}
+     * @type {CSSProperties['padding']}
      * @memberof IStepCardProps
      */
-    padding?: React.CSSProperties['padding']
+    padding?: CSSProperties['padding']
 
     /**
      * Margin applied to the root element
-     * @type {React.CSSProperties['margin']}
+     * @type {CSSProperties['margin']}
      * @memberof IStepCardProps
      */
-    margin?: React.CSSProperties['margin']
+    margin?: CSSProperties['margin']
 
     /**
      * Whether to show the sub title skeleton

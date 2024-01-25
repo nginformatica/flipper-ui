@@ -1,9 +1,9 @@
 import * as React from 'react'
+import { act } from 'react-dom/test-utils'
 import { fireEvent, render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import TextField from '@/test/mocks/text-field-mock'
 import TextFieldOptions from '@/test/mocks/text-field-options-mock'
-import userEvent from '@testing-library/user-event'
-import { act } from 'react-dom/test-utils'
 
 const LIST = [
     { label: 'Elm', value: 'elm' },
@@ -16,6 +16,7 @@ describe('TextField', () => {
     it('should render', () => {
         render(<TextField inputProps={{ placeholder: 'Description' }} />)
         const textField = screen.getByPlaceholderText('Description')
+
         expect(textField).toBeDefined()
     })
 
@@ -43,6 +44,7 @@ describe('TextField', () => {
 
     it('should render with helper', async () => {
         const onHelperClick = jest.fn()
+
         render(
             <TextField
                 inputProps={{

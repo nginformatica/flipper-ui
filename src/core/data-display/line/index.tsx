@@ -1,5 +1,5 @@
 import React from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '../../types'
 import { theme } from '@/theme'
 
 const { grays, secondary } = theme.colors

@@ -1,7 +1,8 @@
 import React from 'react'
-import { DefaultProps } from '../../types'
+import type { CSSProperties } from 'react'
+import type { DefaultProps } from '../../types'
 
-const ContainerStyles: React.CSSProperties = {
+const ContainerStyles: CSSProperties = {
     display: 'flex',
     flex: 1
 }
@@ -13,7 +14,7 @@ export const Container = ({
     style = {},
     ...otherProps
 }: DefaultProps) => {
-    const componentStyle: React.CSSProperties = Object.assign(
+    const componentStyle: CSSProperties = Object.assign(
         {},
         ContainerStyles,
         padding,

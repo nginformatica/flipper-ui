@@ -1,8 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
-import MuiPaper from '@/core/surfaces/paper'
-import Typography from '@/core/data-display/typography'
+import type { CSSProperties } from 'react'
+import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
+import { Typography } from '@/core/data-display/typography'
+import MuiPaper from '@/core/surfaces/paper'
 import { theme } from '@/theme'
 
 const { grays } = theme.colors
@@ -20,12 +21,12 @@ export interface AdvertiseProps extends DefaultProps {
      * The style of the comment
      * @optional
      */
-    commentStyle?: React.CSSProperties
+    commentStyle?: CSSProperties
     /**
      * The style of the author
      * @optional
      */
-    authorStyle?: React.CSSProperties
+    authorStyle?: CSSProperties
 }
 
 const styles = {

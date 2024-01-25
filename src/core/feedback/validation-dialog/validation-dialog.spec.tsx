@@ -1,8 +1,9 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import ValidationDialog, { ITitles, ValidationStatus } from '.'
 import CircularProgress from '@mui/material/CircularProgress'
-import { CheckCircleOutline, CancelOutlined } from '../../../icons'
+import { render, screen, fireEvent } from '@testing-library/react'
+import type { ITitles } from '.'
+import { CheckCircleOutline, CancelOutlined } from '@/icons'
+import ValidationDialog, { ValidationStatus } from '.'
 import { theme } from '@/theme'
 
 const { action, secondary } = theme.colors
@@ -43,7 +44,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={
                     !responses.includes('Loading') &&
                     responses.includes('Error')
@@ -52,12 +52,14 @@ describe('ValidationDialog', () => {
                 responses={responses}
                 validations={[]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const result = renderTitle(stepsTitle, responses)
+
         expect(result).toBe(stepsTitle.loading)
     })
 
@@ -68,7 +70,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={
                     !responses.includes('Loading') &&
                     responses.includes('Error')
@@ -77,12 +78,14 @@ describe('ValidationDialog', () => {
                 responses={responses}
                 validations={[]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const result = renderTitle(stepsTitle, responses)
+
         expect(result).toBe(stepsTitle.success)
     })
 
@@ -93,7 +96,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={
                     !responses.includes('Loading') &&
                     responses.includes('Error')
@@ -102,12 +104,14 @@ describe('ValidationDialog', () => {
                 responses={responses}
                 validations={[]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const result = renderTitle(stepsTitle, responses)
+
         expect(result).toBe(stepsTitle.loading)
     })
 
@@ -118,7 +122,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={
                     !responses.includes('Loading') &&
                     responses.includes('Error')
@@ -127,12 +130,14 @@ describe('ValidationDialog', () => {
                 responses={responses}
                 validations={[]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const result = renderTitle(stepsTitle, responses)
+
         expect(result).toBe(stepsTitle.error)
     })
 
@@ -143,7 +148,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={
                     !responses.includes('Loading') &&
                     responses.includes('Error')
@@ -152,12 +156,14 @@ describe('ValidationDialog', () => {
                 responses={responses}
                 validations={[]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const closeButton = screen.getByRole('button', { name: 'Cancelar' })
+
         fireEvent.click(closeButton)
 
         expect(closeButton).toBeDefined()
@@ -168,7 +174,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={false}
                 success={false}
                 responses={[]}
@@ -183,12 +188,14 @@ describe('ValidationDialog', () => {
                     }
                 ]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const successDescription = screen.getByText('Success description')
+
         expect(successDescription).toBeDefined()
     })
 
@@ -197,7 +204,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={false}
                 success={false}
                 responses={[]}
@@ -212,12 +218,14 @@ describe('ValidationDialog', () => {
                     }
                 ]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const errorDescription = screen.getByText('Error description')
+
         expect(errorDescription).toBeDefined()
     })
 
@@ -226,7 +234,6 @@ describe('ValidationDialog', () => {
             <ValidationDialog
                 open
                 title={stepsTitle}
-                onClose={jest.fn()}
                 failed={false}
                 success={false}
                 responses={[]}
@@ -241,12 +248,14 @@ describe('ValidationDialog', () => {
                     }
                 ]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const loadingDescription = screen.getByText('Loading description')
+
         expect(loadingDescription).toBeDefined()
     })
 
@@ -257,19 +266,20 @@ describe('ValidationDialog', () => {
         render(
             <ValidationDialog
                 open
-                title={stepsTitle}
-                onClose={jest.fn()}
-                failed={false}
                 success
+                title={stepsTitle}
+                failed={false}
                 responses={responses}
                 validations={[]}
                 icons={stepsIcons}
-                onCancel={jest.fn()}
                 handleCreate={handleCreateMock}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
             />
         )
 
         const createButton = screen.getByRole('button', { name: 'Confirmar' })
+
         fireEvent.click(createButton)
 
         expect(handleCreateMock).toHaveBeenCalled()

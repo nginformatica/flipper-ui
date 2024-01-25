@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import InputAdornment from '.'
+import { InputAdornment } from '.'
 
 describe('InputAdornment', () => {
     it('should render on start position', () => {

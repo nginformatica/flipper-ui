@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import Chip from '.'
+import { Chip } from '.'
 
 describe('Chip', () => {
     it('should render', () => {
@@ -27,6 +27,7 @@ describe('Chip', () => {
 
     it('should call onDelete', () => {
         const onDelete = jest.fn()
+
         render(<Chip label='chip-label' onDelete={onDelete} />)
 
         const svg = screen.getByRole('button')

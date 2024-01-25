@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react'
-import ChipInput, { ChipRenderer } from 'material-ui-chip-input'
-import { InputLabelProps } from '@material-ui/core'
-import styled from 'styled-components'
+import type { ReactNode } from 'react'
+import ChipInput from 'material-ui-chip-input'
+import { default as styled } from 'styled-components'
+import type { InputLabelProps } from '@material-ui/core'
+import type { ChipRenderer } from 'material-ui-chip-input'
 
 export interface ChipFieldProps<T extends TChipValues> {
     allowDuplicates?: boolean
@@ -11,7 +13,7 @@ export interface ChipFieldProps<T extends TChipValues> {
     fullWidth?: boolean
     fullWidthInput?: boolean
     InputLabelProps?: InputLabelProps
-    label?: React.ReactNode
+    label?: ReactNode
     placeholder?: string
     readOnly?: boolean
     error?: boolean
@@ -53,8 +55,8 @@ export const ChipField = <T extends TChipValues>(props: ChipFieldProps<T>) => {
     return (
         <StyledChipInput
             {...props}
-            id='chip-field-root'
             alwaysShowPlaceholder
+            id='chip-field-root'
             value={values}
         />
     )

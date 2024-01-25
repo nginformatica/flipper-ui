@@ -1,6 +1,6 @@
+import React, { cloneElement } from 'react'
 import { Step, StepLabel, Stepper as MuiStepper } from '@material-ui/core'
-import React from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '../../types'
 
 export interface StepperProps extends DefaultProps {
     active?: number
@@ -27,7 +27,7 @@ const StepIcon = ({ icon, active }: StepIconProps) => {
         return icon(active)
     }
 
-    return React.cloneElement(icon, {
+    return cloneElement(icon, {
         active: String(active),
         color: active ? 'primary' : 'disabled'
     })

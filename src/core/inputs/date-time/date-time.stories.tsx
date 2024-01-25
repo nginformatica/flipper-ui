@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import DateTime from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { DateTime } from '.'
 
 export default {
     title: 'Inputs/DateTime',

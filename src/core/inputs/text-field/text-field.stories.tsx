@@ -1,8 +1,9 @@
-import React, { ChangeEvent, useState } from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import TextField from '.'
+import type { ChangeEvent } from 'react'
+import React, { useState } from 'react'
+import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import InputAdornment from '@/core/inputs/input-adornment'
+import { InputAdornment } from '@/core/inputs/input-adornment'
+import { TextField } from '.'
 
 export default {
     title: 'Inputs/TextField',
@@ -79,8 +80,8 @@ export const useWithSelectAndClear = () => {
         <div>
             <TextField
                 select
-                value={value}
                 hasClear
+                value={value}
                 onClear={onClear}
                 onChange={handleChange}>
                 {[
@@ -114,15 +115,15 @@ export const combobox = () => {
     return (
         <div>
             <TextField
+                hasClear
                 options={LIST}
                 value={value}
-                hasClear
                 onClear={onClear}
                 onChange={handleChange}
             />
             <TextField
-                value={value}
                 hasClear
+                value={value}
                 onClear={onClear}
                 onChange={handleChange}
             />

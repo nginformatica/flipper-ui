@@ -1,8 +1,8 @@
+import { useState, useMemo, useEffect } from 'react'
 import faker from 'faker'
 import { splitEvery } from 'ramda'
-import { useState, useMemo, useEffect } from 'react'
 // import { v4 as uuid } from 'uuid'
-import { Data } from './types'
+import type { Data } from './types'
 
 export interface IDataProps {
     id: string
@@ -21,6 +21,7 @@ interface IPaginated<T> {
 
 export const generateRandomDate = (size: number): Data[] => {
     const content: Array<Data> = []
+
     for (let i = 0; i < size; i++) {
         content.push({
             id: i,

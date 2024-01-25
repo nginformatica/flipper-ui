@@ -1,10 +1,10 @@
 /* eslint-disable max-lines */
-import WithDate from '@/test/mocks/editable-table-date-mock'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event/'
-import { Column } from 'material-table'
 import * as React from 'react'
 import { act } from 'react-dom/test-utils'
+import { render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event/'
+import type { Column } from 'material-table'
+import WithDate from '@/test/mocks/editable-table-date-mock'
 const COLUMNS_WITH_DATE: Column<object>[] = [
     {
         title: 'Data',
@@ -52,9 +52,11 @@ const AUTO_COMPLETE_SUGGESTIONS = [
     { label: 'some values', value: '5000' },
     { label: 'any values', value: '12' }
 ]
+
 beforeEach(() => {
     // prevent <div> cannot appear as a child of <tr> warning on console
     const spy = jest.spyOn(console, 'error')
+
     spy.mockImplementation(jest.fn())
 })
 

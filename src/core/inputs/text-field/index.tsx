@@ -1,24 +1,28 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import React from 'react'
+import type {
+    ChangeEvent,
+    ClipboardEvent,
+    KeyboardEvent,
+    FocusEvent,
+    ReactNode,
+    MouseEvent,
+    Ref,
+    HTMLAttributes
+} from 'react'
 import {
     InputAdornment,
     TextField as MuiTextField,
-    TextFieldProps as MuiTextFieldProps,
     IconButton as MuiButton,
     ListItem
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import React, {
-    ChangeEvent,
-    KeyboardEvent,
-    FocusEvent,
-    ReactNode,
-    MouseEvent
-} from 'react'
-import { DefaultProps } from '../../types'
-import { Clear, Help as ContactSupportIcon, Edit, Save } from '../../../icons'
-import IconButton from '../icon-button'
-import styled from 'styled-components'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
+import { default as styled } from 'styled-components'
+import type { DefaultProps } from '../../types'
+import type { TextFieldProps as MuiTextFieldProps } from '@material-ui/core'
+import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
+import { IconButton } from '../icon-button'
 import { theme } from '@/theme'
 
 const { primary } = theme.colors
@@ -50,7 +54,7 @@ export interface TextFieldProps
     type?: string
     value?: string | number
     variant?: 'standard' | 'outlined' | 'filled'
-    inputRef?: React.Ref<HTMLInputElement>
+    inputRef?: Ref<HTMLInputElement>
     inputProps?: object
     InputProps?: object
     InputLabelProps?: object
@@ -64,7 +68,7 @@ export interface TextFieldProps
     onClear?: () => void
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-    onPaste?: (event: React.ClipboardEvent<HTMLInputElement>) => void
+    onPaste?: (event: ClipboardEvent<HTMLInputElement>) => void
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     onKeyUp?: (event: KeyboardEvent) => void
     onKeyDown?: (event: KeyboardEvent) => void
@@ -78,12 +82,8 @@ interface IEditProps extends Pick<TextFieldProps, 'showEdit' | 'style'> {
     editing: boolean
     onEditClick: (event: MouseEvent<HTMLButtonElement>) => void
     onSaveClick: (event: MouseEvent<HTMLButtonElement>) => void
-    editButtonProps?: Partial<
-        Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>
-    >
-    saveButtonProps?: Partial<
-        Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>
-    >
+    editButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
+    saveButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
 }
 
 const Helper = styled.div`
@@ -217,7 +217,7 @@ export const EditBox = (props: IEditProps) => {
 
 const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end'>
-        <MuiButton role='clear-button' onClick={onClear} size='small'>
+        <MuiButton role='clear-button' size='small' onClick={onClear}>
             <Clear style={{ fontSize: '15px' }} />
         </MuiButton>
     </InputAdornment>

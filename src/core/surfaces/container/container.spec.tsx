@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Container from '.'
+import { Container } from '.'
 
 describe('Container', () => {
     it('should render', () => {
@@ -17,6 +17,7 @@ describe('Container', () => {
         const { container } = render(
             <Container data-testid='container'>I am a container</Container>
         )
+
         expect(container).toMatchSnapshot()
     })
 })

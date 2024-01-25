@@ -1,5 +1,6 @@
-import TextField, { IOption, TextFieldProps } from '@/core/inputs/text-field'
 import * as React from 'react'
+import type { IOption, TextFieldProps } from '@/core/inputs/text-field'
+import { TextField } from '@/core/inputs/text-field'
 
 interface IProps {
     initialOption?: string

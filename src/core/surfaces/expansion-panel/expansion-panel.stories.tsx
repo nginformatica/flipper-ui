@@ -1,10 +1,11 @@
-import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import ExpansionPanel from '.'
-import Typography from '@/core/data-display/typography'
-import { ExpandMore } from '../../../icons'
-import Button from '@/core/inputs/button'
-import TextField from '@/core/inputs/text-field'
+import React, { useRef, useState } from 'react'
+import type { KeyboardEvent } from 'react'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Typography } from '@/core/data-display/typography'
+import { Button } from '@/core/inputs/button'
+import { TextField } from '@/core/inputs/text-field'
+import { ExpandMore } from '@/icons'
+import { ExpansionPanel } from '.'
 
 export default {
     title: 'Surfaces/ExpansionPanel',
@@ -12,9 +13,9 @@ export default {
 } as Meta<typeof ExpansionPanel>
 
 const Template: StoryFn<typeof ExpansionPanel> = args => {
-    const [editing, setEditing] = React.useState(args.editing)
-    const [details, setDetails] = React.useState(args.details)
-    const inputRef = React.useRef<HTMLInputElement>(null)
+    const [editing, setEditing] = useState(args.editing)
+    const [details, setDetails] = useState(args.details)
+    const inputRef = useRef<HTMLInputElement>(null)
 
     const handleEditClick = () => {
         setEditing(true)
@@ -25,7 +26,7 @@ const Template: StoryFn<typeof ExpansionPanel> = args => {
         setEditing(false)
     }
 
-    const handleKeyDown = (event: React.KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
             handleSaveClick()
         }
@@ -53,12 +54,13 @@ const Template: StoryFn<typeof ExpansionPanel> = args => {
         <ExpansionPanel
             {...args}
             editing={editing}
+            details={renderDetails()}
             onEditClick={handleEditClick}
             onSaveClick={handleSaveClick}
-            details={renderDetails()}
         />
     )
 }
+
 export const Default = Template.bind({})
 
 Default.args = {

@@ -6,6 +6,7 @@ function isElement(obj: any): obj is Element {
         return false
     }
     let prototypeStr: string, prototype: object | null
+
     do {
         prototype = Object.getPrototypeOf(obj)
         // to work in iframe

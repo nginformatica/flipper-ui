@@ -1,8 +1,9 @@
-import React, { CSSProperties } from 'react'
-import styled from 'styled-components'
-import { DefaultProps } from '../../types'
-import Typography from '@/core/data-display/typography'
+import React from 'react'
+import type { CSSProperties, ReactNode } from 'react'
+import { default as styled } from 'styled-components'
+import type { DefaultProps } from '../../types'
 import type { TypographyProps } from '@material-ui/core/Typography'
+import { Typography } from '@/core/data-display/typography'
 import { theme } from '@/theme'
 
 const { grays } = theme.colors
@@ -27,7 +28,7 @@ export interface LineProps extends DefaultProps {
     /**
      * The children of the component.
      */
-    children?: React.ReactNode
+    children?: ReactNode
     'data-testid'?: string
 }
 

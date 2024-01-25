@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 export { default as Advertise } from './core/data-display/advertise'
 export { default as AutoComplete } from './core/inputs/auto-complete'
 export { default as Avatar } from './core/data-display/avatar'
@@ -63,6 +62,7 @@ export { default as PinInput } from './core/inputs/pin-input'
 export { default as Chapter } from './core/data-display/chapter'
 export { default as DataTable } from './core/data-display/data-table'
 export { default as StepCard } from './core/surfaces/step-card'
+// eslint-disable-next-line @stylistic/max-len
 export { default as StepCardSkeleton } from './core/surfaces/step-card/step-card-skeleton'
 export { default as ValidationDialog } from './core/feedback/validation-dialog/'
 export * as Experimental from './experimental'

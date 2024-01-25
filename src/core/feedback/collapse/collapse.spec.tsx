@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Collapse from '.'
+import { Collapse } from '.'
 
 describe('Collapse', () => {
     it('should render opened', () => {
         render(
-            <Collapse data-testid='collapse-container' in={true}>
+            <Collapse in data-testid='collapse-container'>
                 I am open for discussions
             </Collapse>
         )

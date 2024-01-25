@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import InputBase from '.'
+import { InputBase } from '.'
 
 describe('InputBase', () => {
     it('should render', () => {
@@ -42,6 +42,7 @@ describe('InputBase', () => {
 
     it('should match snapshot', () => {
         const { container } = render(<InputBase />)
+
         expect(container).toMatchSnapshot()
     })
 })

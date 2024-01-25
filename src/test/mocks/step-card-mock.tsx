@@ -1,5 +1,6 @@
-import StepCard, { IStepCardProps } from '@/core/surfaces/step-card'
 import * as React from 'react'
+import type { IStepCardProps } from '@/core/surfaces/step-card'
+import { StepCard } from '@/core/surfaces/step-card'
 
 interface IProps {
     initialLoading?: boolean

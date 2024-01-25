@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import Button from '@/core/inputs/button'
-import {
-    DataTableAction,
-    DataTableController
-} from '@/core/data-display/data-table'
-import DataTable from '@/core/data-display/data-table/data-table'
-import {
+import React, { useRef, useState } from 'react'
+import { format } from 'date-fns'
+import type { DataTableController } from '@/core/data-display/data-table'
+import type {
     ColumnSpec,
-    Identifier,
-    RowMode
+    Identifier
 } from '@/core/data-display/data-table/types'
-import Typography from '@/core/data-display/typography'
+import { DataTableAction } from '@/core/data-display/data-table'
+import { DataTable } from '@/core/data-display/data-table/data-table'
+import { RowMode } from '@/core/data-display/data-table/types'
+import { Typography } from '@/core/data-display/typography'
+import { Button } from '@/core/inputs/button'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -18,8 +18,6 @@ import {
     Edit as EditIcon,
     Save as SaveIcon
 } from '@/icons'
-import { format } from 'date-fns'
-import React, { useRef, useState } from 'react'
 
 const Default = () => {
     type Data = {

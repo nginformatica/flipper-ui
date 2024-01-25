@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Chapter from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Chapter } from '.'
 
 export default {
     title: 'DataDisplay/Chapter',

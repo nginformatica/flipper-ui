@@ -1,5 +1,9 @@
+import React from 'react'
+import type { CSSProperties, ReactNode } from 'react'
+import { default as styled } from 'styled-components'
+import type { ButtonProps } from '@/core/inputs/button'
+import type { IconButtonProps } from '@/core/inputs/icon-button'
 import { Close as IconClose, Edit as IconEdit } from '@/icons'
-import React, { CSSProperties } from 'react'
 import {
     Typography,
     Paper,
@@ -7,15 +11,12 @@ import {
     Button as AddButton,
     IconButton
 } from '@/index'
-import styled from 'styled-components'
-import { ButtonProps } from '@/core/inputs/button'
-import { IconButtonProps } from '@/core/inputs/icon-button'
 
 export interface IProps {
     /**
      * Children to be rendered inside the card.
      */
-    children: React.ReactNode
+    children: ReactNode
     /**
      * If `true`, the card will be rendered with a nested style.
      * @default false

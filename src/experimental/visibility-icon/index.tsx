@@ -1,10 +1,10 @@
-import { IconButton } from '@/index'
+import React from 'react'
+import { default as styled } from 'styled-components'
 import {
     Visibility as IconVisibility,
     VisibilityOff as IconVisibilityOff
 } from '@/icons'
-import React from 'react'
-import styled from 'styled-components'
+import { IconButton } from '@/index'
 
 export interface IProps {
     name?: string

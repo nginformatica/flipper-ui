@@ -1,9 +1,9 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Sidebar from '.'
-import List from '@/core/data-display/list'
+import type { Meta, StoryFn } from '@storybook/react'
+import { List } from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import { Backup } from '../../../icons'
+import { Backup } from '@/icons'
+import { Sidebar } from '.'
 
 export default {
     title: 'Navigation/Sidebar',

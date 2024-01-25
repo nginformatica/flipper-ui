@@ -33,6 +33,7 @@ describe('RadioGroup', () => {
     it('should render with no options', () => {
         render(<RadioGroup />)
         const container = screen.getByTestId('radio-group-container')
+
         expect(container).toBeDefined()
     })
 
@@ -56,6 +57,7 @@ describe('RadioGroup', () => {
         )
 
         const container = screen.getByRole('radiogroup').firstElementChild
+
         expect(container).toHaveProperty('style.flex', '1')
     })
 })

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Badge from '.'
-import Button from '@/core/inputs/button'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
+import { Badge } from '.'
 
 export default {
     title: 'DataDisplay/Badge',

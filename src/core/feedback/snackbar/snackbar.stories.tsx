@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
 import Snackbar from '.'
-import Button from '@/core/inputs/button'
 
 export default {
     title: 'Feedback/Snackbar',

@@ -1,5 +1,5 @@
-import { IOption } from '@/core/inputs/text-field'
 import type { CSSProperties, FunctionComponent } from 'react'
+import type { IOption } from '@/core/inputs/text-field'
 
 export type RecordUnknown = Record<string, unknown>
 export type StackView = RecordUnknown
@@ -22,7 +22,7 @@ export type ColumnType =
 
 export type Align = 'right' | 'left' | 'center' | 'justify' | 'inherit'
 
-type ColumnSpecBase<F = {}> = {
+type ColumnSpecBase<F = object> = {
     title: string
     type: string
     cellStyle?: CSSProperties

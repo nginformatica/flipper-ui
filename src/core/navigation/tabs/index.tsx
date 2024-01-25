@@ -1,6 +1,7 @@
+import type { ReactNode } from 'react'
+import React from 'react'
 import { Tabs as MuiTabs } from '@material-ui/core'
-import React, { ReactNode } from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '../../types'
 
 export interface TabsProps extends DefaultProps {
     centered?: boolean

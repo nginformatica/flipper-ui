@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import DialogV2 from '../dialog'
+import { userEvent } from '@testing-library/user-event'
+import { DialogV2 } from '../dialog'
 
 describe('Dialog', () => {
     const TITLE = 'dialog title'

@@ -10,6 +10,7 @@ describe('ThemeProvider', () => {
             </ThemeProvider>
         )
         const child = screen.getByText('Test')
+
         expect(child).toBeDefined()
     })
 })

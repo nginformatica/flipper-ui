@@ -1,7 +1,7 @@
-import { ButtonProps } from '@material-ui/core'
-import { Button } from '@/index'
 import React from 'react'
-import styled from 'styled-components'
+import { default as styled } from 'styled-components'
+import type { ButtonProps } from '@material-ui/core'
+import { Button } from '@/index'
 
 export interface IProps {
     padding?: number | string

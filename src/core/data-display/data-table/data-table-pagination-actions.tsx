@@ -1,20 +1,18 @@
 import React from 'react'
-import IconButton from '@/core/inputs/icon-button'
+import type { MouseEvent } from 'react'
+import { IconButton } from '@/core/inputs/icon-button'
 import {
     FirstPage,
     LastPage,
     KeyboardArrowLeft,
     KeyboardArrowRight
-} from '../../../icons'
+} from '@/icons'
 
 interface DataTablePaginationActionsProps {
     count: number
     page: number
     rowsPerPage: number
-    onPageChange(
-        event: React.MouseEvent<HTMLButtonElement>,
-        newPage: number
-    ): void
+    onPageChange(event: MouseEvent<HTMLButtonElement>, newPage: number): void
 }
 
 interface DataTablePaginationActionsBuilder {
@@ -40,25 +38,25 @@ export const makeDataTablePaginationActions =
         const totalPages = Math.ceil(count / rowsPerPage) - 1
 
         const handleFirstPageButtonClick = (
-            event: React.MouseEvent<HTMLButtonElement>
+            event: MouseEvent<HTMLButtonElement>
         ) => {
             onPageChange(event, 0)
         }
 
         const handleBackButtonClick = (
-            event: React.MouseEvent<HTMLButtonElement>
+            event: MouseEvent<HTMLButtonElement>
         ) => {
             onPageChange(event, page - 1)
         }
 
         const handleNextButtonClick = (
-            event: React.MouseEvent<HTMLButtonElement>
+            event: MouseEvent<HTMLButtonElement>
         ) => {
             onPageChange(event, page + 1)
         }
 
         const handleLastPageButtonClick = (
-            event: React.MouseEvent<HTMLButtonElement>
+            event: MouseEvent<HTMLButtonElement>
         ) => {
             onPageChange(event, Math.max(0, totalPages))
         }
@@ -67,29 +65,29 @@ export const makeDataTablePaginationActions =
             <div style={PAGINATION_WRAPPER_STYLE}>
                 {showFirstButton && (
                     <IconButton
-                        onClick={handleFirstPageButtonClick}
                         disabled={page === 0 || clickable}
-                        aria-label='first page'>
+                        aria-label='first page'
+                        onClick={handleFirstPageButtonClick}>
                         <FirstPage />
                     </IconButton>
                 )}
                 <IconButton
-                    onClick={handleBackButtonClick}
                     disabled={page === 0 || clickable}
-                    aria-label='previous page'>
+                    aria-label='previous page'
+                    onClick={handleBackButtonClick}>
                     <KeyboardArrowLeft />
                 </IconButton>
                 <IconButton
-                    onClick={handleNextButtonClick}
                     disabled={page >= totalPages || clickable}
-                    aria-label='next page'>
+                    aria-label='next page'
+                    onClick={handleNextButtonClick}>
                     <KeyboardArrowRight />
                 </IconButton>
                 {showLastButton && (
                     <IconButton
-                        onClick={handleLastPageButtonClick}
                         disabled={page >= totalPages || clickable}
-                        aria-label='last page'>
+                        aria-label='last page'
+                        onClick={handleLastPageButtonClick}>
                         <LastPage />
                     </IconButton>
                 )}

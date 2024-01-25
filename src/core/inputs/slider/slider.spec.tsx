@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
-import Slider from '.'
-import drag from '../../../test/util'
 import { act } from 'react-dom/test-utils'
+import { render, screen } from '@testing-library/react'
+import drag from '@/test/util'
+import { Slider } from '.'
 
 describe('Slider', () => {
     it('should render and slide', async () => {

@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/", // path to output directory
-        "sourceMap": true, // allow sourcemap support
-        "module": "esnext", // specify module code generation
-        "jsx": "react", // use typescript to transpile jsx to js
-        "target": "esnext", // specify ECMAScript target version
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "module": "esnext",
+        "jsx": "react",
+        "target": "esnext",
         "types": [
             "node",
             "jest"

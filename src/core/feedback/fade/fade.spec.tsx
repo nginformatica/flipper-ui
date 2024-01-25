@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Fade from '.'
+import { Fade } from '.'
 
 describe('Fade', () => {
     it('should render closed', () => {

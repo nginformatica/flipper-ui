@@ -1,7 +1,8 @@
-import React, { ChangeEvent, useState } from 'react'
-import { Meta } from '@storybook/react'
-import Select from '.'
+import type { ChangeEvent } from 'react'
+import React, { useState } from 'react'
+import type { Meta } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
+import { Select } from '.'
 
 export default {
     title: 'Inputs/Select',
@@ -46,9 +47,9 @@ export const WithClear = () => {
 
     return (
         <Select
-            hasClear={true}
-            onClear={handleClear}
+            hasClear
             value={select}
+            onClear={handleClear}
             onChange={handleChange}>
             <ListItem value='' />
             <ListItem value='0'>Option 0</ListItem>

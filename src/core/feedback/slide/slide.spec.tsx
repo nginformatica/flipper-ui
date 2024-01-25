@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Slide from '.'
+import { Slide } from '.'
 
 describe('Slide', () => {
     it('should render closed', () => {
@@ -16,7 +16,7 @@ describe('Slide', () => {
 
     it('should render opened', () => {
         render(
-            <Slide direction='left' in>
+            <Slide in direction='left'>
                 <span>Slide Text</span>
             </Slide>
         )
@@ -28,7 +28,7 @@ describe('Slide', () => {
 
     it('should match snapshot', () => {
         const { container: opened } = render(
-            <Slide direction='left' in>
+            <Slide in direction='left'>
                 <span>Slide Text</span>
             </Slide>
         )

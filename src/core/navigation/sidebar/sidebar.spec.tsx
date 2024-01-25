@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Sidebar from '.'
-import List from '@/core/data-display/list'
+import { List } from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import { Backup } from '../../../icons'
+import { Backup } from '@/icons'
+import { Sidebar } from '.'
 
 describe('Sidebar', () => {
     it('should render', () => {
@@ -42,7 +42,7 @@ describe('Sidebar', () => {
 
     it('should render unExpanded', () => {
         render(
-            <Sidebar expanded={false} open onToggle={jest.fn()}>
+            <Sidebar open expanded={false} onToggle={jest.fn()}>
                 <List>
                     <ListItem title='Item 1' icon={<Backup />} />
                     <ListItem title='Item 2' icon={<Backup />} />
@@ -59,7 +59,7 @@ describe('Sidebar', () => {
 
     it('should render with anchor right', () => {
         render(
-            <Sidebar anchor='right' open onToggle={jest.fn()}>
+            <Sidebar open anchor='right' onToggle={jest.fn()}>
                 <List>
                     <ListItem title='Item 1' icon={<Backup />} />
                     <ListItem title='Item 2' icon={<Backup />} />

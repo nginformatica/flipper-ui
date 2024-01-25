@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import NothingFound from '.'
+import { NothingFound } from '.'
 
 const Default = ({ show = true }: { show?: boolean }) => {
     return <NothingFound show={show} />
@@ -41,6 +41,7 @@ describe('NothingFound', () => {
 
     it('should render - WithCustomTest', () => {
         const TEXT = 'Custom text'
+
         render(<WithCustomTest text={TEXT} />)
 
         const label = screen.getByText(TEXT)

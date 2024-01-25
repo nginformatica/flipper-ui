@@ -1,13 +1,14 @@
 import React from 'react'
+import type { CSSProperties } from 'react'
 import { LinearProgress } from '@material-ui/core'
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import { sprintf } from 'sprintf-js'
-import { IStepCardProps } from '.'
+import type { IStepCardProps } from '.'
+import { Typography } from '@/core/data-display/typography'
 import {
     CheckCircle as CheckCircleIcon,
     ExpandMore as ExpandMoreIcon
 } from '@/icons'
-import Typography from '@/core/data-display/typography'
 import {
     BarWrapper,
     NormalProgressContainer,
@@ -39,7 +40,7 @@ interface IStepCardPanelProps {
     showIcon: boolean
     subTitle?: string
     fullWidth?: boolean
-    padding?: React.CSSProperties['padding']
+    padding?: CSSProperties['padding']
 }
 
 export const StepCardPanel = (props: IStepCardPanelProps) => {

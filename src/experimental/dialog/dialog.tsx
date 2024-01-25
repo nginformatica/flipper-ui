@@ -1,4 +1,5 @@
-import React, { MouseEvent, ReactNode } from 'react'
+import type { MouseEvent, ReactNode } from 'react'
+import React from 'react'
 import { Dialog as DialogFlipper, Button, ThemeProviderFlipper } from '@/index'
 import { theme } from '@/theme'
 

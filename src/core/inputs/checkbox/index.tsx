@@ -1,12 +1,13 @@
+import React from 'react'
+import type { ChangeEvent, ReactNode } from 'react'
 import {
     Checkbox as MuiCheckbox,
-    CheckboxProps as MuiCheckboxProps,
     FormControlLabel as MuiFormControlLabel,
     Switch as MuiSwitch,
     Typography
 } from '@material-ui/core'
-import React, { ChangeEvent, ReactNode } from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '../../types'
+import type { CheckboxProps as MuiCheckboxProps } from '@material-ui/core'
 import {
     HelperBox,
     TextFieldWrapper as CheckFieldsWrapper
@@ -20,7 +21,7 @@ export interface CheckboxProps extends DefaultProps {
     checked?: boolean
     dense?: boolean
     type?: 'switch' | 'checkbox'
-    helperIcon?: React.ReactNode
+    helperIcon?: ReactNode
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLElement>) => void
     checkboxProps?: MuiCheckboxProps

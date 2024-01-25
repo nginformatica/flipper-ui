@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-lines */
 import React, { forwardRef, useRef } from 'react'
+import type { MouseEvent } from 'react'
+import ptBRLocale from 'date-fns/locale/pt-BR'
 import MaterialTable, {
-    Column,
-    Options,
     MTableEditRow,
     MTableBodyRow,
     MTableEditField,
@@ -11,6 +11,16 @@ import MaterialTable, {
     MTablePagination,
     MTableActions
 } from 'material-table'
+import { omit, contains, propOr } from 'ramda'
+import { default as styled } from 'styled-components'
+import type { Column, Options } from 'material-table'
+import ListItem from '@/core/data-display/list-item'
+import { Typography } from '@/core/data-display/typography'
+import { AutoComplete } from '@/core/inputs/auto-complete'
+import { Button } from '@/core/inputs/button'
+import { DateTime } from '@/core/inputs/date-time'
+import { MaskField } from '@/core/inputs/mask-field'
+import { TextField } from '@/core/inputs/text-field'
 import {
     NoteAdd as IconAdd,
     Done as IconDone,
@@ -22,16 +32,6 @@ import {
     FirstPage as IconFirstPage,
     LastPage
 } from '@/icons'
-import Typography from '@/core/data-display/typography'
-import { omit, contains, propOr } from 'ramda'
-import styled from 'styled-components'
-import Button from '@/core/inputs/button'
-import DateTime from '@/core/inputs/date-time'
-import ptBRLocale from 'date-fns/locale/pt-BR'
-import AutoComplete from '@/core/inputs/auto-complete'
-import ListItem from '@/core/data-display/list-item'
-import TextField from '@/core/inputs/text-field'
-import MaskField from '@/core/inputs/mask-field'
 import { getLocalization } from '@/lib/localization'
 
 export interface EditableTableProps<T extends object> {
@@ -87,7 +87,7 @@ export interface EditableTableProps<T extends object> {
      * The input value
      */
     value?: string
-    onRowClick?: (event?: React.MouseEvent, rowData?: T) => void
+    onRowClick?: (event?: MouseEvent, rowData?: T) => void
     onUpdateRow?: (newData: object, oldData?: object) => Promise<void>
     onDeleteRow?: (newData: object, oldData?: object) => Promise<void>
     onAddRow?: (oldData: object) => Promise<void>
@@ -152,6 +152,7 @@ const Wrapper = styled.div`
         justify-content: flex-end;
     }
 `
+
 export const EditableTable = <T extends object>(
     props: EditableTableProps<T>
 ) => {
@@ -213,7 +214,6 @@ export const EditableTable = <T extends object>(
             selectTextOnFocus
             data-testid='autocomplete-container'
             value={inputProps.value}
-            onChange={inputProps.onChange}
             suggestions={propOr([], 'autoCompleteSuggestions', props)}
             renderSuggestion={(item: TSuggestion, props, selected) => (
                 <ListItem key={item.value} selected={selected} {...props}>
@@ -241,13 +241,13 @@ export const EditableTable = <T extends object>(
                     </FullWidthButton>
                 )
             }
+            onChange={inputProps.onChange}
         />
     )
 
     return (
         <div style={{ width: '100%' }}>
             <MaterialTable
-                onRowClick={props.onRowClick}
                 components={{
                     EditRow: props => <CustomRemove {...props} />,
                     Row: props => <CustomRows {...props} />,
@@ -441,6 +441,7 @@ export const EditableTable = <T extends object>(
                     onRowAddCancelled: props.onRowAddCancelled,
                     onRowUpdateCancelled: props.onRowUpdateCancelled
                 }}
+                onRowClick={props.onRowClick}
             />
         </div>
     )

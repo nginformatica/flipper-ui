@@ -1,6 +1,7 @@
-import ListItem from '@/core/data-display/list-item'
-import Select, { SelectProps } from '@/core/inputs/select'
 import * as React from 'react'
+import type { SelectProps } from '@/core/inputs/select'
+import ListItem from '@/core/data-display/list-item'
+import { Select } from '@/core/inputs/select'
 
 interface IProps {
     initialValue?: string
@@ -23,9 +24,9 @@ const Default = (props: IProps) => {
     return (
         <Select
             hasClear={props.selectProps?.hasClear}
-            onClear={props.selectProps?.onClear ?? handleClear}
             value={select}
             data-testid='select-container'
+            onClear={props.selectProps?.onClear ?? handleClear}
             onChange={props.selectProps?.onChange ?? handleChange}>
             <ListItem value='0'>Option 0</ListItem>
             <ListItem value='1'>Option 1</ListItem>

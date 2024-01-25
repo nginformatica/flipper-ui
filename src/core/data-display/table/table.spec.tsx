@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { render } from '@testing-library/react'
-import Table from '.'
-import TableHead from './table-head'
-import TableBody from './table-body'
-import TableRow from './table-row'
-import TableCell from './table-cell'
-import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
+import { render } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
+import TableBody from './table-body'
+import TableCell from './table-cell'
+import TableHead from './table-head'
+import TableRow from './table-row'
+import { Table } from '.'
 
 interface IProps {
     onSort?: (name: string) => void

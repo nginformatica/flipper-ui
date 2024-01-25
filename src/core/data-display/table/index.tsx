@@ -1,6 +1,7 @@
-import MuiTable, { TableProps as MuiTableProps } from '@material-ui/core/Table'
 import React from 'react'
-import { DefaultProps } from '../../types'
+import MuiTable from '@material-ui/core/Table'
+import type { DefaultProps } from '../../types'
+import type { TableProps as MuiTableProps } from '@material-ui/core/Table'
 import { theme } from '@/theme'
 
 const { grays } = theme.colors

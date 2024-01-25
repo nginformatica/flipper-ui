@@ -1,13 +1,13 @@
+/* eslint-disable react-perf/jsx-no-new-array-as-prop */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable max-lines */
 import React, { useState, useRef } from 'react'
-import { Meta } from '@storybook/react'
 import format from 'date-fns/format'
-import DataTable from './data-table'
-import Button from '@/core/inputs/button'
-import Typography from '@/core/data-display/typography'
-import { DataTableAction } from './data-table-action'
-import { ColumnSpec, DataTableController, Identifier, RowMode } from './types'
+import { v4 as uuid } from 'uuid'
+import type { ColumnSpec, DataTableController, Identifier } from './types'
+import type { Meta } from '@storybook/react'
+import { Typography } from '@/core/data-display/typography'
+import { Button } from '@/core/inputs/button'
 import {
     Delete as DeleteIcon,
     Edit as EditIcon,
@@ -17,7 +17,10 @@ import {
     Visibility as VisibilityIcon,
     VisibilityOff as VisibilityOffIcon
 } from '@/icons'
-import { v4 as uuid } from 'uuid'
+import { DataTable } from './data-table'
+import { DataTableAction } from './data-table-action'
+import { DataTableField } from './data-table-field'
+import { RowMode } from './types'
 
 export default {
     title: 'DataDisplay/DataTable',
@@ -31,9 +34,6 @@ type Data = {
     quantity: number
     date: Date
 }
-
-// const Template: ComponentStory<typeof DataTable> = args =>
-// <DataTable { ...args } />
 
 export const Default = () => {
     type Data = {
@@ -245,8 +245,8 @@ export const NoHeader = () => {
 
     return (
         <DataTable
-            data={data}
             noHeader
+            data={data}
             hiddenRowHeight={53}
             pagination={{
                 rowsPerPage: 5,
@@ -699,6 +699,7 @@ export const CrudWithHidden = () => {
         (id: Identifier, isNew = false) =>
         () => {
             const nextItem = controllerRef.current?.getEditedRowData(id)
+
             if (!nextItem) {
                 return
             }
@@ -894,5 +895,104 @@ export const CrudWithHidden = () => {
                 columns={columns}
             />
         </>
+    )
+}
+
+const dataInput = [
+    {
+        branch: 'Keepfy Joinville',
+        local: 'Joiville',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    },
+    {
+        branch: 'Keepfy São Paulo',
+        local: 'São Paulo',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    },
+    {
+        branch: 'Keepfy Rio Grande do Sul',
+        local: 'Rio Grande do Sul',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    },
+    {
+        branch: 'Keepfy Rio de Janeiro',
+        local: 'Rio de Janeiro',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    },
+    {
+        branch: 'Keepfy Curitiba',
+        local: 'Curitiba',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    },
+    {
+        branch: 'Keepfy Teresópolis',
+        local: 'Teresópolis',
+        status: 'Ativo',
+        companyCode: '',
+        branchCode: ''
+    }
+]
+
+const tableHead = [
+    {
+        title: 'Nome da Filial',
+        field: 'branch',
+        type: 'text',
+        editable: false
+    },
+    {
+        title: 'Localidade',
+        field: 'local',
+        type: 'text',
+        editable: false
+    },
+    {
+        title: 'Status',
+        field: 'status',
+        type: 'text',
+        editable: false
+    },
+    {
+        title: 'Código da Empresa',
+        field: 'companyCode',
+        type: 'number',
+        editable: true
+    },
+    {
+        title: 'Código da Filial',
+        field: 'branchCode',
+        type: 'text',
+        editable: true
+    }
+]
+
+export const WithField = () => {
+    const [data, setData] = useState(() => dataInput)
+    const [selectedAll, setSelectedAll] = useState(false)
+    const [selected, setSelected] = useState(Array(data.length).fill(false))
+
+    return (
+        <DataTableField
+            checkbox
+            rows={data}
+            setRows={setData}
+            header={tableHead}
+            checkboxProps={{
+                checkRow: selected,
+                checkAllRows: selectedAll,
+                setSelectedRow: setSelected,
+                setSelectedAllRows: setSelectedAll
+            }}
+        />
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Meta } from '@storybook/react'
-import Zoom from '.'
-import Button from '@/core/inputs/button'
+import type { Meta } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
+import { Zoom } from '.'
 
 export default {
     title: 'Feedback/Zoom',

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Header from '.'
+import { Header } from '.'
 
 describe('Header', () => {
     it('should render', () => {
@@ -31,6 +31,7 @@ describe('Header', () => {
 
     it('should match snapshot', () => {
         const { container } = render(<Header>Flipper UI</Header>)
+
         expect(container).toMatchSnapshot()
     })
 })

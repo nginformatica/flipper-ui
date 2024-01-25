@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Badge from '.'
+import { Badge } from '.'
 
 describe('Badge', () => {
     it('should render', () => {
@@ -29,6 +29,7 @@ describe('Badge', () => {
 describe('Badges - Snapshots', () => {
     it('should match snapshot', () => {
         const { container } = render(<Badge counter={2}>Badge</Badge>)
+
         expect(container).toMatchSnapshot()
     })
 })

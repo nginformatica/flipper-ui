@@ -1,13 +1,17 @@
 import React from 'react'
-import { DefaultProps } from '../../types'
-import MuiCard, { CardProps } from '@material-ui/core/Card'
-import MuiCardActionArea, {
-    CardActionAreaProps
-} from '@material-ui/core/CardActionArea'
-import MuiCardActions, { CardActionsProps } from '@material-ui/core/CardActions'
-import MuiCardContent, { CardContentProps } from '@material-ui/core/CardContent'
-import MuiCardMedia, { CardMediaProps } from '@material-ui/core/CardMedia'
-import MuiCardHeader, { CardHeaderProps } from '@material-ui/core/CardHeader'
+import MuiCard from '@material-ui/core/Card'
+import MuiCardActionArea from '@material-ui/core/CardActionArea'
+import MuiCardActions from '@material-ui/core/CardActions'
+import MuiCardContent from '@material-ui/core/CardContent'
+import MuiCardHeader from '@material-ui/core/CardHeader'
+import MuiCardMedia from '@material-ui/core/CardMedia'
+import type { DefaultProps } from '../../types'
+import type { CardProps } from '@material-ui/core/Card'
+import type { CardActionAreaProps } from '@material-ui/core/CardActionArea'
+import type { CardActionsProps } from '@material-ui/core/CardActions'
+import type { CardContentProps } from '@material-ui/core/CardContent'
+import type { CardHeaderProps } from '@material-ui/core/CardHeader'
+import type { CardMediaProps } from '@material-ui/core/CardMedia'
 
 export const CardActionArea = ({
     margin,

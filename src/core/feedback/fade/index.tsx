@@ -1,11 +1,12 @@
-import { Fade as MuiFade } from '@material-ui/core'
 import React from 'react'
-import { DefaultProps } from '../../types'
+import type { ReactElement } from 'react'
+import { Fade as MuiFade } from '@material-ui/core'
+import type { DefaultProps } from '../../types'
 
 export interface FadeProps extends DefaultProps {
     in: boolean
     timeout?: number | { enter?: number; exit?: number }
-    children: React.ReactElement<Record<string, unknown>>
+    children: ReactElement<Record<string, unknown>>
 }
 
 export const Fade = ({

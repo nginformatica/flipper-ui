@@ -1,10 +1,11 @@
-import React, { MouseEvent } from 'react'
-import { DefaultProps } from '../../types'
-import { Omit } from 'ramda'
-import styled from 'styled-components'
+import React from 'react'
+import type { MouseEvent, MutableRefObject } from 'react'
 import { MenuItem as MuiMenuItem } from '@mui/material'
-import { MenuItemClassKey } from '@material-ui/core/MenuItem'
-import { ClassNameMap } from '@material-ui/core/styles/withStyles'
+import { default as styled } from 'styled-components'
+import type { DefaultProps } from '../../types'
+import type { MenuItemClassKey } from '@material-ui/core/MenuItem'
+import type { ClassNameMap } from '@material-ui/core/styles/withStyles'
+import type { Omit } from 'ramda'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     title?: string
@@ -13,7 +14,7 @@ export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     disabled?: boolean
     onClick?: (event?: MouseEvent) => void
     children?: string
-    ref?: React.MutableRefObject<null>
+    ref?: MutableRefObject<null>
     classes?: Partial<ClassNameMap<MenuItemClassKey>> | undefined
 }
 

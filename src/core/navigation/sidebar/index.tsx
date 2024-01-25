@@ -1,13 +1,15 @@
-import Drawer from '@material-ui/core/Drawer'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import React from 'react'
-import styled from 'styled-components'
+import Drawer from '@material-ui/core/Drawer'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
+import { default as styled } from 'styled-components'
+import type { DefaultProps } from '../../types'
+import type { ButtonProps } from '@/core/inputs/button'
+import type { Theme } from '@material-ui/core/styles'
+import { Button } from '@/core/inputs/button'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
 } from '@/icons'
-import { DefaultProps } from '../../types'
-import Button, { ButtonProps } from '@/core/inputs/button'
 
 export interface SidebarProps extends DefaultProps {
     open: boolean

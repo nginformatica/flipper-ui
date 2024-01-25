@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { Sidebar as FlipperSidebar, Tooltip, List, ListItem } from '@/index'
-import { times, map } from 'ramda'
-import styled from 'styled-components'
+import type { ReactElement } from 'react'
 import { Skeleton } from '@mui/material'
+import { times, map } from 'ramda'
+import { default as styled } from 'styled-components'
+import { Sidebar as FlipperSidebar, Tooltip, List, ListItem } from '@/index'
 import { theme } from '@/theme'
 
 export interface ISidebarOption {
-    icon: React.ReactElement
+    icon: ReactElement
     label: string
     name: string
     route: string
@@ -140,8 +141,8 @@ export const Sidebar = (props: IProps) => {
             maxWidth={228}
             style={{ transition: 'width 100ms ease-in-out', zIndex: 1199 }}
             expanded={expanded}
-            onToggle={toggle}
-            top={top || 0}>
+            top={top || 0}
+            onToggle={toggle}>
             <PaperBar {...otherProps}>
                 <List dense>
                     {loading ? sidebarSkeleton : map(renderOption, options)}

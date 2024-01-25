@@ -1,6 +1,6 @@
-import { Typography } from '@/index'
-import { TypographyProps } from '@material-ui/core'
 import React from 'react'
+import type { TypographyProps } from '@material-ui/core'
+import { Typography } from '@/index'
 
 export interface IProps extends TypographyProps {
     searchText?: string

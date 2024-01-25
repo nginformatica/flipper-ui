@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Meta } from '@storybook/react'
-import PinInput from '.'
 import { Button } from '@material-ui/core'
-import styled from 'styled-components'
+import { default as styled } from 'styled-components'
+import type { Meta } from '@storybook/react'
+import { PinInput } from '.'
 
 export default {
     title: 'Inputs/PinInput',
@@ -32,6 +32,7 @@ export const Default = () => {
 
     const onPinChanged = (pinEntry: number | undefined, index: number) => {
         const newPin = [...pin]
+
         newPin[index] = pinEntry
         setPin(newPin)
     }
@@ -58,12 +59,12 @@ export const Default = () => {
             <PinInput
                 pin={pin}
                 setPin={setPin}
-                onPinChanged={onPinChanged}
                 pinLength={PIN_LENGTH}
                 validationResult={hasError}
                 isValidating={isValidating}
                 size='small'
                 variant='outlined'
+                onPinChanged={onPinChanged}
             />
             <ButtonContainer>
                 <Button
@@ -84,6 +85,7 @@ export const Large = () => {
 
     const onPinChanged = (pinEntry: number | undefined, index: number) => {
         const newPin = [...pin]
+
         newPin[index] = pinEntry
         setPin(newPin)
     }
@@ -110,11 +112,11 @@ export const Large = () => {
             <PinInput
                 pin={pin}
                 setPin={setPin}
-                onPinChanged={onPinChanged}
                 pinLength={PIN_LENGTH}
                 validationResult={hasError}
                 isValidating={isValidating}
                 size='large'
+                onPinChanged={onPinChanged}
             />
             <ButtonContainer>
                 <Button

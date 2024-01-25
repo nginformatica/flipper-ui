@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Tree from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Tree } from '.'
 
 export default {
     title: 'DataDisplay/Tree',

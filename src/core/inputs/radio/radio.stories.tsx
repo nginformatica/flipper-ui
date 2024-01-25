@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Radio from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Radio } from '.'
 
 export default {
     title: 'Inputs/Radio',

@@ -1,10 +1,11 @@
+import React from 'react'
 import {
     List as MuiList,
     ListSubheader as MuiListHeader
 } from '@material-ui/core'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import React from 'react'
-import { DefaultProps } from '../../types'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
+import type { DefaultProps } from '../../types'
+import type { Theme } from '@material-ui/core/styles'
 
 export interface ListProps extends DefaultProps {
     /**

@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Fab as MFab, Tooltip } from '@/index'
 import type { MouseEvent, CSSProperties } from 'react'
-import { FabProps } from '@/core/data-display/fab'
+import type { FabProps } from '@/core/data-display/fab'
+import { Fab as MFab, Tooltip } from '@/index'
 
 export interface IProps extends FabProps {
     large?: boolean

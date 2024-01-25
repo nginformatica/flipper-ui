@@ -1,8 +1,8 @@
-import React, { MouseEvent } from 'react'
-import { DefaultProps } from '../../types'
-import MuiTableRow, {
-    TableRowProps as MuiTableRowProps
-} from '@material-ui/core/TableRow'
+import type { MouseEvent } from 'react'
+import React from 'react'
+import MuiTableRow from '@material-ui/core/TableRow'
+import type { DefaultProps } from '../../types'
+import type { TableRowProps as MuiTableRowProps } from '@material-ui/core/TableRow'
 import { theme } from '@/theme'
 
 const { grays } = theme.colors

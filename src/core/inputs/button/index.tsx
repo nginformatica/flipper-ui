@@ -1,6 +1,7 @@
+import React from 'react'
+import type { ElementType, MouseEvent, ReactNode } from 'react'
 import { Button as MuiButton } from '@material-ui/core'
-import React, { ElementType, MouseEvent } from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '../../types'
 
 export interface ButtonProps extends DefaultProps {
     disabled?: boolean
@@ -13,7 +14,7 @@ export interface ButtonProps extends DefaultProps {
     fullWidth?: boolean
     variant?: 'text' | 'outlined' | 'contained' | 'dashed'
     target?: string
-    children?: React.ReactNode
+    children?: ReactNode
     'data-testid'?: string
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }

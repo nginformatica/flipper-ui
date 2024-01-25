@@ -1,4 +1,4 @@
-import { Priority, Feedback, Criticality, Graphically } from './presets'
+import type { Priority, Feedback, Criticality, Graphically } from './presets'
 
 const neutral = {
     black: '#000000',

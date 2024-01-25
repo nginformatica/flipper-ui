@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Slide from '.'
-import Button from '@/core/inputs/button'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
+import { Slide } from '.'
 
 export default {
     title: 'Feedback/Slide',

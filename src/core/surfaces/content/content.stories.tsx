@@ -1,6 +1,6 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Content from '.'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Content } from '.'
 
 export default {
     title: 'Surfaces/Content',

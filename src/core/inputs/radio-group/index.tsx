@@ -1,3 +1,5 @@
+import type { ChangeEvent, ReactNode } from 'react'
+import React from 'react'
 import {
     FormControl,
     FormControlLabel,
@@ -5,8 +7,7 @@ import {
     Radio,
     RadioGroup as MuiRadioGroup
 } from '@material-ui/core'
-import React, { ChangeEvent, ReactNode } from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '../../types'
 
 export interface RadioGroupProps extends DefaultProps {
     row?: boolean

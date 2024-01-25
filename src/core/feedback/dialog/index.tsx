@@ -1,13 +1,14 @@
+import type { CSSProperties, ReactNode } from 'react'
+import React from 'react'
 import MuiDialog from '@material-ui/core/Dialog'
-import { DialogProps as MuiDialogProps } from '@material-ui/core'
 import MuiDialogActions from '@material-ui/core/DialogActions'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
-import React, { CSSProperties, ReactNode } from 'react'
-import { DefaultProps } from '../../types'
 import { makeStyles } from '@material-ui/core/styles'
-import styled from 'styled-components'
+import { default as styled } from 'styled-components'
+import type { DefaultProps } from '../../types'
+import type { DialogProps as MuiDialogProps } from '@material-ui/core'
 
 export interface DialogProps
     extends DefaultProps,

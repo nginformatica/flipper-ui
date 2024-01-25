@@ -1,11 +1,12 @@
-import { Badge as MuiBadge } from '@material-ui/core'
 import React from 'react'
-import { BadgeProps as MuiBadgeProps } from '@material-ui/core/Badge'
+import type { ReactNode } from 'react'
+import { Badge as MuiBadge } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import type { DefaultProps } from '../../types'
+import type { BadgeProps as MuiBadgeProps } from '@material-ui/core/Badge'
 
 export interface BadgeProps extends DefaultProps, MuiBadgeProps {
-    children: React.ReactNode
+    children: ReactNode
     /**
      * The number to display in the badge.
      */

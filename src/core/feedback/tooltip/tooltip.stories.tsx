@@ -1,7 +1,7 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
-import Tooltip from '.'
-import Button from '@/core/inputs/button'
+import type { Meta, StoryFn } from '@storybook/react'
+import { Button } from '@/core/inputs/button'
+import { Tooltip } from '.'
 
 export default {
     title: 'Feedback/Tooltip',

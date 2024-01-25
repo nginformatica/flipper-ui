@@ -1,6 +1,7 @@
-import ListItem from '@/core/data-display/list-item'
-import TextField, { TextFieldProps } from '@/core/inputs/text-field'
 import * as React from 'react'
+import type { TextFieldProps } from '@/core/inputs/text-field'
+import ListItem from '@/core/data-display/list-item'
+import { TextField } from '@/core/inputs/text-field'
 
 interface IProps {
     initialOption?: string

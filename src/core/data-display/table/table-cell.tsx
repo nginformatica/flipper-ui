@@ -1,16 +1,15 @@
-import MuiTableCell, {
-    TableCellProps as MuiTableCellProps
-} from '@material-ui/core/TableCell'
-import MuiTableSortLabel from '@material-ui/core/TableSortLabel'
 import React, { useContext } from 'react'
-import { DefaultProps } from '../../types'
-import { Omit } from 'ramda'
+import MuiTableCell from '@material-ui/core/TableCell'
+import MuiTableSortLabel from '@material-ui/core/TableSortLabel'
+import type { DefaultProps } from '../../types'
+import type { TableCellProps as MuiTableProps } from '@material-ui/core/TableCell'
+import type { Omit } from 'ramda'
 import { SortContext } from './table-head'
 
 interface TableCellProps extends DefaultProps {
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
-    spacing?: MuiTableCellProps['padding']
+    spacing?: MuiTableProps['padding']
     padding?: number | string
     align?: 'inherit' | 'left' | 'center' | 'right' | 'justify'
 }
@@ -22,7 +21,7 @@ const TableCell = ({
     children,
     spacing,
     ...otherProps
-}: Omit<MuiTableCellProps, 'padding'> & TableCellProps) => {
+}: Omit<MuiTableProps, 'padding'> & TableCellProps) => {
     const { onSort, active, direction } = useContext(SortContext)
 
     const handleSort = () => {
@@ -38,9 +37,9 @@ const TableCell = ({
             padding={spacing}>
             {onSort ? (
                 <MuiTableSortLabel
-                    onClick={handleSort}
                     active={otherProps.name === active}
-                    direction={direction}>
+                    direction={direction}
+                    onClick={handleSort}>
                     {children}
                 </MuiTableSortLabel>
             ) : (

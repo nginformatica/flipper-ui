@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import IconButton from '.'
+import { IconButton } from '.'
 
 describe('IconButton', () => {
     it('should render', () => {
@@ -29,6 +29,7 @@ describe('IconButton', () => {
 
     it('should match snapshot', () => {
         const { container } = render(<IconButton>IconButton</IconButton>)
+
         expect(container).toMatchSnapshot()
     })
 })

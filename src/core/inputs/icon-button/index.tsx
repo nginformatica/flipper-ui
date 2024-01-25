@@ -1,6 +1,7 @@
+import type { MouseEvent } from 'react'
+import React from 'react'
 import MuiIconButton from '@material-ui/core/IconButton'
-import React, { MouseEvent } from 'react'
-import { DefaultProps } from '../../types'
+import type { DefaultProps } from '../../types'
 
 export interface IconButtonProps extends DefaultProps {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
