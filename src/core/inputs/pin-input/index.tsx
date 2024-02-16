@@ -6,7 +6,7 @@ import type {
     KeyboardEvent
 } from 'react'
 import { TextField } from '@material-ui/core'
-import { default as styled } from 'styled-components'
+import { Container } from './styles'
 
 export interface PinInputGridProps {
     pin: Array<number | undefined>
@@ -21,17 +21,11 @@ export interface PinInputGridProps {
     variant?: 'outlined' | 'standard'
 }
 
-const Container = styled.div`
-    display: flex;
-    width: auto;
-    justify-content: center;
-`
-
 const PIN_MIN_VALUE = 0
 const PIN_MAX_VALUE = 9
 const BACKSPACE_KEY = 'Backspace'
 
-export const PinInput = ({
+const PinInput = ({
     pinLength,
     pin,
     setPin,

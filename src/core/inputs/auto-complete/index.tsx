@@ -9,8 +9,8 @@ import type {
     MouseEvent,
     ReactElement
 } from 'react'
-import { Fade } from '@/core/feedback/fade'
-import { Paper } from '@/core/surfaces/paper'
+import Fade from '@/core/feedback/fade'
+import Paper from '@/core/surfaces/paper'
 
 export interface AutoCompleteProps {
     autoFocus?: boolean
@@ -62,7 +62,7 @@ export type TSelected = ISelected | string
 const removeAccents = (text: string) =>
     text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
-export const AutoComplete = (props: AutoCompleteProps) => {
+const AutoComplete = (props: AutoCompleteProps) => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const index = props.suggestions.findIndex(suggestion => {

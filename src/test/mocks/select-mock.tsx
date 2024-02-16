@@ -1,7 +1,7 @@
 import * as React from 'react'
 import type { SelectProps } from '@/core/inputs/select'
 import ListItem from '@/core/data-display/list-item'
-import { Select } from '@/core/inputs/select'
+import Select from '@/core/inputs/select'
 
 interface IProps {
     initialValue?: string

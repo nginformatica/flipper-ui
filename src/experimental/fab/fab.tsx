@@ -15,7 +15,7 @@ export interface IProps extends FabProps {
     onClick(event: MouseEvent<HTMLButtonElement>): void
 }
 
-export const FabV2 = (props: IProps) => {
+const FabV2 = (props: IProps) => {
     const renderButton = () => {
         const { large, children, padding, name, margin, style, ...otherProps } =
             props

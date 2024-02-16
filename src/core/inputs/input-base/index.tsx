@@ -29,7 +29,7 @@ export interface InputAdornmentProps
     value?: string | number | boolean
 }
 
-export const InputBase = ({
+const InputBase = ({
     margin,
     padding,
     style = {},

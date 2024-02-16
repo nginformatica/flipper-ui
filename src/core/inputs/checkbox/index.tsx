@@ -26,7 +26,7 @@ export interface CheckboxProps extends DefaultProps {
     checkboxProps?: MuiCheckboxProps
 }
 
-export const Checkbox = (props: CheckboxProps) => {
+const Checkbox = (props: CheckboxProps) => {
     const {
         type = 'checkbox',
         margin,

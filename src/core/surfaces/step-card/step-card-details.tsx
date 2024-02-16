@@ -2,7 +2,7 @@ import React from 'react'
 import { List } from '@material-ui/core'
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
 import type { IStepCardProps } from '.'
-import { IconButton } from '@/core/inputs/icon-button'
+import IconButton from '@/core/inputs/icon-button'
 import {
     ACORDION_DETAILS,
     ICON_BUTTON,

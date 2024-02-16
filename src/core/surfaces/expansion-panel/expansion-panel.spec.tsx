@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { ExpansionPanel } from '.'
+import ExpansionPanel from '.'
 
 const expectToThrow = (fn: () => void, message: string) => {
     // Even though the error is caught, it still gets printed to the console

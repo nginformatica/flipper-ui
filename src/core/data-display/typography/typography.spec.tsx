@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Typography } from '.'
+import Typography from '.'
 
 describe('Typography', () => {
     it('should render with no variant', () => {

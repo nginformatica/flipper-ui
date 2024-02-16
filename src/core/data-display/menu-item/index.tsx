@@ -1,11 +1,10 @@
 import React from 'react'
 import type { MouseEvent, MutableRefObject } from 'react'
-import { MenuItem as MuiMenuItem } from '@mui/material'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import type { MenuItemClassKey } from '@material-ui/core/MenuItem'
 import type { ClassNameMap } from '@material-ui/core/styles/withStyles'
 import type { Omit } from 'ramda'
+import { MenuItems } from './styles'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     title?: string
@@ -17,18 +16,6 @@ export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     ref?: MutableRefObject<null>
     classes?: Partial<ClassNameMap<MenuItemClassKey>> | undefined
 }
-
-const MenuItems = styled(MuiMenuItem)`
-    && {
-        outline: none;
-        cursor: pointer;
-        font-family: Roboto, Helvetica, Arial, sans-serif;
-
-        &:hover {
-            background-color: #e0e0e0;
-        }
-    }
-`
 
 const MenuItem = (props: ListItemProps) => {
     const { padding, margin, style } = props

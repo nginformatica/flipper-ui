@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Delete } from '@/icons'
-import { Stepper } from '.'
+import Stepper from '.'
 
 describe('Stepper', () => {
     it('should render', () => {

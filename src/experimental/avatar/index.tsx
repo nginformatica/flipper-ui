@@ -1,5 +1,5 @@
-import type { CSSProperties, ReactNode } from 'react'
 import React from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { take } from 'ramda'
 import { Avatar as FlipperAvatar } from '@/index'
 
@@ -16,7 +16,7 @@ export interface IProps {
 
 const FIRST_LETTER = 1
 
-export const Avatar = (props: IProps) => {
+const Avatar = (props: IProps) => {
     const getChild = () => {
         if (props.name) {
             return take(FIRST_LETTER, props.name.toUpperCase())

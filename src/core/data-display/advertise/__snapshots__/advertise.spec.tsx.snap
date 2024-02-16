@@ -3,19 +3,19 @@
 exports[`Advertise should match snapshot 1`] = `
 <div>
   <div
-    class="MuiPaper-root sc-beySPh gShNvO MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root sc-guDLey eZPlpZ MuiPaper-elevation1 MuiPaper-rounded"
     role="mui-paper-container"
     style="padding: 4px;"
   >
     <p
-      class="MuiTypography-root MuiTypography-body2"
-      style="margin: 0px 12px; padding: 6px 18px; border-left: 1px solid #bdbdbd;"
+      class="MuiTypography-root sc-beySPh fcGFSo MuiTypography-body2"
+      style="margin: 0px 12px; padding: 6px 18px;"
     >
       comment
     </p>
     <span
-      class="MuiTypography-root MuiTypography-caption"
-      style="margin: 0px 12px; padding: 6px 18px; border-left: 1px solid #bdbdbd;"
+      class="MuiTypography-root sc-beySPh fcGFSo MuiTypography-caption"
+      style="margin: 0px 12px; padding: 6px 18px;"
     >
       author
     </span>

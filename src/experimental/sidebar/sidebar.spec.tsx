@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import type { ISidebarOption } from '.'
-import { Sidebar } from '.'
+import Sidebar from '.'
 
 const options: ISidebarOption[] = [
     {

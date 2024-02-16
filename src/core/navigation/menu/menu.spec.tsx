@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, screen } from '@testing-library/react'
 import ListItem from '@/core/data-display/list-item'
 import { Backup } from '@/icons'
-import { Menu } from '.'
+import Menu from '.'
 
 describe('Menu', () => {
     it('should render opened', () => {

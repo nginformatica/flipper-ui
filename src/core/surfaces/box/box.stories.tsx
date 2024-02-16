@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Box } from '.'
+import Box from '.'
 
 export default {
     title: 'Surfaces/Box',

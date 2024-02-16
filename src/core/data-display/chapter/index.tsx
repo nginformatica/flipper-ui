@@ -2,7 +2,7 @@ import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import type { DefaultProps } from '../../types'
 import type { TypographyProps } from '@material-ui/core/Typography'
-import { Typography } from '@/core/data-display/typography'
+import Typography from '@/core/data-display/typography'
 import { Container, StyledLine } from './styles'
 
 export interface LineProps extends DefaultProps {
@@ -29,7 +29,7 @@ export interface LineProps extends DefaultProps {
     'data-testid'?: string
 }
 
-export const Chapter = ({
+const Chapter = ({
     padding,
     margin,
     style,

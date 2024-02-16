@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Loading } from '.'
+import Loading from '.'
 
 export default {
     title: 'Experimental/Loading',

@@ -4,9 +4,9 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import type { ISelected, TSelected } from '.'
 import ListItem from '@/core/data-display/list-item'
-import { Typography } from '@/core/data-display/typography'
-import { TextField } from '../text-field'
-import { AutoComplete } from '.'
+import Typography from '@/core/data-display/typography'
+import TextField from '../text-field'
+import AutoComplete from '.'
 
 interface MockProps {
     initialValue?: TSelected

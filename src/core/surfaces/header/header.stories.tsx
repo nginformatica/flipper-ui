@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Header } from '.'
+import Header from '.'
 
 export default {
     title: 'Surfaces/Header',

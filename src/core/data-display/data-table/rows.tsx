@@ -3,9 +3,9 @@ import type { ReactNode } from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import type { ColumnSpec, Data, Errors, PartialData } from './types'
-import { DateTime } from '@/core/inputs/date-time'
-import { MaskField } from '@/core/inputs/mask-field'
-import { TextField } from '@/core/inputs/text-field'
+import DateTime from '@/core/inputs/date-time'
+import MaskField from '@/core/inputs/mask-field'
+import TextField from '@/core/inputs/text-field'
 import { RowMode } from './types'
 
 type RowStateUpdater = <D extends Data>(

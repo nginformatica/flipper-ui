@@ -6,7 +6,7 @@ import { Skeleton } from '@mui/material'
 import format from 'date-fns/format'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -15,7 +15,7 @@ import {
     Save as SaveIcon
 } from '@/icons'
 import { DataTableAction } from './data-table-action'
-import { DataTableQueryPaginated } from './data-table-query-paginated'
+import DataTableQueryPaginated from './data-table-query-paginated'
 import { RowMode } from './types'
 import { usePaginated } from './use-paginated'
 

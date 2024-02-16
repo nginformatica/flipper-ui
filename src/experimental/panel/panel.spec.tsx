@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import { Panel } from '.'
+import Panel from '.'
 
 describe('Panel', () => {
     const TITLE = 'Foo'

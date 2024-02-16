@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { ChipField } from '.'
+import ChipField from '.'
 
 export default {
     title: 'Inputs/ChipField',

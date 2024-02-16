@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { NothingFound } from '.'
+import NothingFound from '.'
 
 export default {
     title: 'Experimental/NothingFound',

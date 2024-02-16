@@ -32,7 +32,7 @@ const useBadgeStyles = (position: BadgeProps['position']) => {
     return getStyles()
 }
 
-export const Badge = (props: BadgeProps) => {
+const Badge = (props: BadgeProps) => {
     const {
         children,
         counter,

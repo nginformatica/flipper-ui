@@ -39,7 +39,7 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
-export const Select = ({
+const Select = ({
     children,
     style = {},
     margin,

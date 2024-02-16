@@ -1,5 +1,5 @@
 import React from 'react'
-import { DialogV2 } from './dialog'
+import DialogV2 from './dialog'
 
 export interface IProps {
     open: boolean

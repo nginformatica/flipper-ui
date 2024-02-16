@@ -11,7 +11,7 @@ export type FlipperSliderProps = Omit<SliderProps, 'defaultValue'> &
     DefaultProps &
     ISliderProps
 
-export const Slider = ({
+const Slider = ({
     padding,
     margin,
     style = {},

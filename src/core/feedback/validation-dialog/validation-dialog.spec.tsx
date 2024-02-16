@@ -8,6 +8,13 @@ import { theme } from '@/theme'
 
 const { action, secondary } = theme.colors
 
+const responses: string[] = []
+const validations: IValidations[] = []
+const responsesDefault = ['Should', 'render', 'default', 'case']
+const responsesSuccess = ['Success', 'Success', 'Success', 'Success']
+const responsesLoading = ['Success', 'Success', 'Success', 'Loading']
+const responsesError = ['Success', 'Success', 'Success', 'Error']
+
 const stepsTitle = {
     success: 'Success',
     loading: 'Loading',
@@ -19,13 +26,6 @@ const stepsIcons = {
     error: <CancelOutlined htmlColor={action.cancel} />,
     loading: <CircularProgress size={20} color='inherit' />
 }
-
-const responses: string[] = []
-const validations: IValidations[] = []
-const responsesDefault = ['Should', 'render', 'default', 'case']
-const responsesSuccess = ['Success', 'Success', 'Success', 'Success']
-const responsesLoading = ['Success', 'Success', 'Success', 'Loading']
-const responsesError = ['Success', 'Success', 'Success', 'Error']
 
 const successValidation = [
     {

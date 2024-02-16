@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, screen } from '@testing-library/react'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
-import { Card } from '.'
+import Card from '.'
 
 describe('Card', () => {
     it('should render', () => {

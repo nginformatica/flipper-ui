@@ -8,7 +8,7 @@ export interface HeaderProps extends Omit<PaperProps, 'classes'>, AppBarProps {
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
 }
 
-export const Header = ({
+const Header = ({
     children,
     padding,
     margin,

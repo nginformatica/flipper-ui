@@ -12,7 +12,7 @@ export interface TableProps
     spacing?: MuiTableProps['padding']
 }
 
-export const Table = ({
+const Table = ({
     style,
     margin,
     padding,

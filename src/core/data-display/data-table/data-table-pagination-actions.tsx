@@ -1,6 +1,6 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
-import { IconButton } from '@/core/inputs/icon-button'
+import IconButton from '@/core/inputs/icon-button'
 import {
     FirstPage,
     LastPage,

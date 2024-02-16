@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { EditableTable } from '.'
+import EditableTable from '.'
 
 export default {
     title: 'DataDisplay/EditTable',

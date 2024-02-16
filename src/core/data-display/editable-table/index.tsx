@@ -11,11 +11,11 @@ import MaterialTable, {
 import { omit, contains, propOr } from 'ramda'
 import type { Column, Options } from 'material-table'
 import ListItem from '@/core/data-display/list-item'
-import { AutoComplete } from '@/core/inputs/auto-complete'
-import { Button } from '@/core/inputs/button'
-import { DateTime } from '@/core/inputs/date-time'
-import { MaskField } from '@/core/inputs/mask-field'
-import { TextField } from '@/core/inputs/text-field'
+import AutoComplete from '@/core/inputs/auto-complete'
+import Button from '@/core/inputs/button'
+import DateTime from '@/core/inputs/date-time'
+import MaskField from '@/core/inputs/mask-field'
+import TextField from '@/core/inputs/text-field'
 import {
     NoteAdd as IconAdd,
     Done as IconDone,
@@ -103,9 +103,7 @@ export interface EditableTableProps<T extends object> {
 
 export type TSuggestion = { label: string; value: string }
 
-export const EditableTable = <T extends object>(
-    props: EditableTableProps<T>
-) => {
+const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
     const addButtonColor =
         (props.color !== 'disabled' && props.color) || 'primary'
     const valueRef = useRef<string | number>()

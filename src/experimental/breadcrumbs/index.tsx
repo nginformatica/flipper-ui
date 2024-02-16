@@ -33,7 +33,7 @@ const defaultLinkWrapper = (link: string, label: string) => (
  * Render breadcrumbs for the provided pathname or the current
  * `window.location.pathname`.
  */
-export const Breadcrumbs = ({
+const Breadcrumbs = ({
     pathname,
     homeId,
     pathMapping,

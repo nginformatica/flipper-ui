@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import type { Meta } from '@storybook/react'
-import { List } from '@/core/data-display/list'
+import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
 import { Backup as IconBackup } from '@/icons'
-import { Drawer } from '.'
+import Drawer from '.'
 
 export default {
     title: 'Navigation/Drawer',

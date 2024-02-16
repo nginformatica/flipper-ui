@@ -1,12 +1,7 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
-import { Typography } from '@/core/data-display/typography'
-import MuiPaper from '@/core/surfaces/paper'
-import { theme } from '@/theme'
-
-const { grays } = theme.colors
+import { AdvertiseTypography, Paper } from './styles'
 
 export interface AdvertiseProps extends DefaultProps {
     /**
@@ -18,7 +13,7 @@ export interface AdvertiseProps extends DefaultProps {
      */
     author: string
     /**
-     * The style of the comment
+     * The style of the comments
      * @optional
      */
     commentStyle?: CSSProperties
@@ -29,17 +24,6 @@ export interface AdvertiseProps extends DefaultProps {
     authorStyle?: CSSProperties
 }
 
-const styles = {
-    border: {
-        borderLeft: `1px solid ${grays.g5}`
-    }
-}
-
-const Paper = styled(MuiPaper)`
-    display: flex;
-    flex-direction: column;
-`
-
 const Advertise = ({
     comment,
     author,
@@ -49,19 +33,19 @@ const Advertise = ({
     ...otherProps
 }: AdvertiseProps) => (
     <Paper padding={padding} {...otherProps}>
-        <Typography
+        <AdvertiseTypography
             margin='0 12px'
             padding='6px 18px'
-            style={{ ...styles.border, ...commentStyle }}>
+            style={{ ...commentStyle }}>
             {comment}
-        </Typography>
-        <Typography
+        </AdvertiseTypography>
+        <AdvertiseTypography
             margin='0px 12px'
             padding='6px 18px'
             variant='caption'
-            style={{ ...styles.border, ...authorStyle }}>
+            style={{ ...authorStyle }}>
             {author}
-        </Typography>
+        </AdvertiseTypography>
     </Paper>
 )
 

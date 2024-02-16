@@ -2,8 +2,8 @@ import type { ChangeEvent } from 'react'
 import React, { useState } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import { InputAdornment } from '@/core/inputs/input-adornment'
-import { TextField } from '.'
+import InputAdornment from '@/core/inputs/input-adornment'
+import TextField from '.'
 import { Wrapper } from './styles'
 
 export default {

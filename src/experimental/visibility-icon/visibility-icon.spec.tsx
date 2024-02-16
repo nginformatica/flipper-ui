@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { VisibilityIcon } from '.'
+import VisibilityIcon from '.'
 
 describe('VisibilityIcon', () => {
     it('should render visible', () => {

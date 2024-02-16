@@ -1,20 +1,9 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
 import { defaultTo } from 'ramda'
-import { default as styled } from 'styled-components'
 import type { PaperProps as FlipperPaperProps } from '@/core/surfaces/paper'
 import { ExpandMore as IconExpand } from '@/icons'
-import { ExpansionPanel, Typography } from '@/index'
-
-const Paper = styled(ExpansionPanel)`
-    && {
-        border-radius: 4px;
-        ::before {
-            height: 0px;
-            background-color: transparent;
-        }
-    }
-`
+import { Paper, Summary, Title } from './styles'
 
 export interface PaperProps
     extends Omit<FlipperPaperProps, 'title' | 'onChange'> {
@@ -40,22 +29,10 @@ export interface PaperProps
     onClick?(event: MouseEvent<HTMLDivElement>): void
 }
 
-const Summary = styled.div`
-    display: flex;
-    flex: 1;
-    align-items: center;
-`
-
-const Title = styled(Typography)`
-    && {
-        flex: 1;
-    }
-`
-
 const NESTED_ELEVATION = 0
 const DEFAULT_ELEVATION = 2
 
-export const Panel = (props: PaperProps) => {
+const Panel = (props: PaperProps) => {
     const {
         hideExpansionIcon,
         expanded,

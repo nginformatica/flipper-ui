@@ -7,7 +7,7 @@ export interface DividerProps extends DefaultProps, MuiDividerProps {
     'data-testid'?: string
 }
 
-export const Divider = ({
+const Divider = ({
     margin,
     padding,
     style = {},

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Slide } from '.'
+import Slide from '.'
 
 describe('Slide', () => {
     it('should render closed', () => {

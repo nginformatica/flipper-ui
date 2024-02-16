@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Header } from '.'
+import Header from '.'
 
 describe('Header', () => {
     it('should render', () => {

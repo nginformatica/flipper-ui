@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Paper } from '.'
+import Paper from '.'
 
 export default {
     title: 'Surfaces/Paper',

@@ -1,6 +1,6 @@
 import { Box, LinearProgress } from '@material-ui/core'
 import { default as styled } from 'styled-components'
-import { default as Typography } from '@/core/data-display/typography'
+import Typography from '@/core/data-display/typography'
 import { CheckCircle, Help as HelpIcon } from '@/icons'
 import { theme } from '@/theme'
 

@@ -42,7 +42,7 @@ export interface ExpansionPanelProps extends Omit<PaperProps, 'onChange'> {
     onClick?: (event: MouseEvent<HTMLDivElement>) => void
 }
 
-export const ExpansionPanel = ({
+const ExpansionPanel = ({
     actions,
     details,
     expandIcon,

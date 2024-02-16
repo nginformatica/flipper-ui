@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import ConfirmDialogComponent from './confirm-dialog'
-import { DialogV2 } from './dialog'
-import RemoveDialogComponent from './remove-dialog'
+import ConfirmDialog from './confirm-dialog'
+import DialogV2 from './dialog'
+import RemoveDialog from './remove-dialog'
 
 const Template: StoryFn<typeof DialogV2> = args => {
     const [open, setOpen] = useState(false)
@@ -19,15 +19,13 @@ const Template: StoryFn<typeof DialogV2> = args => {
     )
 }
 
-const TemplateWithRemoveDialog: StoryFn<
-    typeof RemoveDialogComponent
-> = args => {
+const TemplateWithRemoveDialog: StoryFn<typeof RemoveDialog> = args => {
     const [open, setOpen] = useState(false)
 
     return (
         <>
             <button onClick={() => setOpen(true)}>open dialog</button>
-            <RemoveDialogComponent
+            <RemoveDialog
                 {...args}
                 open={open}
                 onCancel={() => setOpen(false)}
@@ -37,15 +35,13 @@ const TemplateWithRemoveDialog: StoryFn<
     )
 }
 
-const TemplateWithConfirmDialog: StoryFn<
-    typeof ConfirmDialogComponent
-> = args => {
+const TemplateWithConfirmDialog: StoryFn<typeof ConfirmDialog> = args => {
     const [open, setOpen] = useState(false)
 
     return (
         <>
             <button onClick={() => setOpen(true)}>open dialog</button>
-            <ConfirmDialogComponent
+            <ConfirmDialog
                 {...args}
                 open={open}
                 onCancel={() => setOpen(false)}
@@ -60,13 +56,13 @@ Default.args = {
     primaryButtonText: 'Close'
 }
 
-export const RemoveDialog = TemplateWithRemoveDialog.bind({})
-export const ConfirmDialog = TemplateWithConfirmDialog.bind({})
+export const DialogRemove = TemplateWithRemoveDialog.bind({})
+export const DialogConfirm = TemplateWithConfirmDialog.bind({})
 
 export default {
     title: 'Experimental/Dialog',
     component: DialogV2,
-    subcomponents: { ConfirmDialog, RemoveDialog },
+    subcomponents: { DialogConfirm, DialogRemove },
     args: {
         title: 'dialog title',
         text: 'A content here!',

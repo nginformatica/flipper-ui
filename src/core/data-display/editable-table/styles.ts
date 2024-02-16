@@ -1,7 +1,7 @@
 import { MTableEditRow, MTableBodyRow } from 'material-table'
 import { default as styled } from 'styled-components'
-import { Typography } from '@/core/data-display/typography'
-import { Button } from '@/core/inputs/button'
+import Typography from '@/core/data-display/typography'
+import Button from '@/core/inputs/button'
 
 export const DARK = 'rgba(189,189,189,0)'
 export const GREY = 'rgba(189,189,189,1)'

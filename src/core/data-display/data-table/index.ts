@@ -1,5 +1,4 @@
 export { default } from './data-table'
-export { DataTableField } from './data-table-field'
 export { DataTableAction } from './data-table-action'
 export { default as DataTableQueryPaginated } from './data-table-query-paginated'
 export type {

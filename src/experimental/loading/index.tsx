@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import { default as styled } from 'styled-components'
 import { Progress } from '@/index'
+import { LoadingContainer } from './styles'
 
 export interface IProps {
     padding?: number | string
@@ -8,14 +8,7 @@ export interface IProps {
     size?: number
 }
 
-const LoadingContainer = styled.div`
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-`
-
-export const Loading = (props: IProps) => {
+const Loading = (props: IProps) => {
     const { margin = 48, padding = 24, size = 72 } = props
 
     const renderLoading = useMemo(

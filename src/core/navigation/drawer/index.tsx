@@ -24,7 +24,7 @@ const getStyles = (top: number, width?: number) =>
         })
     )
 
-export const Drawer = (props: DrawerProps) => {
+const Drawer = (props: DrawerProps) => {
     const { style, margin, padding, top = 0, width, ...otherProps } = props
     const useStyles = getStyles(top, width)
     const classes = useStyles()

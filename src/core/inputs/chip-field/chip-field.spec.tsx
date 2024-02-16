@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
-import { ChipField } from '.'
+import ChipField from '.'
 
 describe('ChipField', () => {
     const values = [{ value: 'alpha' }, { value: 'beta' }, { value: 'gamma' }]

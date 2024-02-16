@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Container } from '.'
+import Container from '.'
 
 describe('Container', () => {
     it('should render', () => {

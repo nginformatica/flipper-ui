@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import type { Meta } from '@storybook/react'
-import { Typography } from '@/core/data-display/typography'
-import { Button } from '@/core/inputs/button'
-import { Dialog } from '.'
+import Typography from '@/core/data-display/typography'
+import Button from '@/core/inputs/button'
+import Dialog from '.'
 
 export default {
     title: 'Feedback/Dialog',

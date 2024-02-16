@@ -2,8 +2,8 @@ import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import { Backup } from '@/icons'
-import { Avatar } from '../avatar'
-import { List } from '.'
+import Avatar from '../avatar'
+import List from '.'
 
 export default {
     title: 'DataDisplay/List',

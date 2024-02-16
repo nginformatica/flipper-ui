@@ -21,7 +21,7 @@ import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
 import type { DefaultProps } from '../../types'
 import type { TextFieldProps as MuiTextFieldProps } from '@material-ui/core'
 import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
-import { IconButton } from '../icon-button'
+import IconButton from '../icon-button'
 import { Helper, StaticTextFieldWrapper, TextFieldWrapper } from './styles'
 import { theme } from '@/theme'
 
@@ -198,7 +198,7 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
-export const TextField = ({
+const TextField = ({
     options,
     margin,
     padding,

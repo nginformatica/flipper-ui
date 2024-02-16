@@ -25,7 +25,7 @@ interface ITable<D extends Record<string, unknown>> {
     }
 }
 
-export const DataTableField = <D extends Record<string, unknown>>(
+const DataTableField = <D extends Record<string, unknown>>(
     props: ITable<D>
 ) => {
     const { rows, header, checkbox, checkboxProps, setRows } = props
@@ -230,3 +230,5 @@ export const DataTableField = <D extends Record<string, unknown>>(
         </Table>
     )
 }
+
+export default DataTableField

@@ -9,7 +9,7 @@ export interface ZoomProps extends DefaultProps {
     children?: ReactElement<Record<string, unknown>>
 }
 
-export const Zoom = ({
+const Zoom = ({
     children,
     padding,
     margin,

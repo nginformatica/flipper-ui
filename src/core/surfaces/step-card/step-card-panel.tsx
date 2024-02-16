@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react'
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import { sprintf } from 'sprintf-js'
 import type { IStepCardProps } from '.'
-import { Typography } from '@/core/data-display/typography'
+import Typography from '@/core/data-display/typography'
 import { ExpandMore as ExpandMoreIcon } from '@/icons'
 import {
     BarWrapper,

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import type { TSelected } from '.'
 import type { Meta } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import { Typography } from '@/core/data-display/typography'
-import { TextField } from '@/core/inputs/text-field'
-import { AutoComplete } from '.'
+import Typography from '@/core/data-display/typography'
+import TextField from '@/core/inputs/text-field'
+import AutoComplete from '.'
 
 export default {
     title: 'Inputs/AutoComplete',

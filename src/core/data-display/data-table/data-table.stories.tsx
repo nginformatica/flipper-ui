@@ -4,8 +4,8 @@ import format from 'date-fns/format'
 import { v4 as uuid } from 'uuid'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'
-import { Typography } from '@/core/data-display/typography'
-import { Button } from '@/core/inputs/button'
+import Typography from '@/core/data-display/typography'
+import Button from '@/core/inputs/button'
 import {
     Delete as DeleteIcon,
     Edit as EditIcon,
@@ -15,9 +15,9 @@ import {
     Visibility as VisibilityIcon,
     VisibilityOff as VisibilityOffIcon
 } from '@/icons'
-import { DataTable } from './data-table'
+import DataTable from './data-table'
 import { DataTableAction } from './data-table-action'
-import { DataTableField } from './data-table-field'
+import DataTableField from './data-table-field'
 import { RowMode } from './types'
 
 export default {

@@ -1,10 +1,9 @@
 import React from 'react'
-import { default as styled } from 'styled-components'
 import {
     Visibility as IconVisibility,
     VisibilityOff as IconVisibilityOff
 } from '@/icons'
-import { IconButton } from '@/index'
+import { StyledButton } from './styles'
 
 export interface IProps {
     name?: string
@@ -12,17 +11,7 @@ export interface IProps {
     onToggle(): void
 }
 
-const StyledButton = styled(IconButton)`
-    width: 36px !important;
-    height: 36px !important;
-`
-
-export const VisibilityIcon = ({
-    show,
-    onToggle,
-    name,
-    ...otherProps
-}: IProps) => (
+const VisibilityIcon = ({ show, onToggle, name, ...otherProps }: IProps) => (
     <StyledButton {...otherProps} padding='0px' name={name} onClick={onToggle}>
         {show ? (
             <IconVisibilityOff data-testid='icon-off' />

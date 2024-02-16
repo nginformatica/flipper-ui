@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Divider } from '.'
+import Divider from '.'
 
 describe('Divider', () => {
     it('should render', () => {

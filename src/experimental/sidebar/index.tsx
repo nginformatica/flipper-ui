@@ -63,7 +63,7 @@ const useSidebar = () => {
 /**
  * Sidebar component V2
  */
-export const Sidebar = (props: IProps) => {
+const Sidebar = (props: IProps) => {
     const {
         options,
         loading,

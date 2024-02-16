@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Button } from '@/core/inputs/button'
-import { Dialog } from '.'
+import Button from '@/core/inputs/button'
+import Dialog from '.'
 
 describe('Dialog', () => {
     it('should render opened', () => {

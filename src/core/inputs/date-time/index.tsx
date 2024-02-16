@@ -39,7 +39,7 @@ export type DateTimeProps = Omit<
     IProps &
     DefaultProps
 
-export const DateTime = ({
+const DateTime = ({
     padding,
     margin,
     style,
