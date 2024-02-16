@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable max-lines */
 import React, { useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { TableCell, TableRow, Typography } from '@material-ui/core'
@@ -300,26 +299,25 @@ export const Crud = () => {
         setData
     } = usePaginated()
 
-    const newData: ColumnSpec<DataActual>[] = [
-        ...columnsData,
-        {
-            title: 'Actions',
-            type: 'text',
-            field: 'product',
-            cellStyle: {
-                maxWidth: '30px',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis'
-            },
-            editable: true
-        }
-    ]
+    const LoadNode: ReactNode = useMemo(() => {
+        const newData: ColumnSpec<DataActual>[] = [
+            ...columnsData,
+            {
+                title: 'Actions',
+                type: 'text',
+                field: 'product',
+                cellStyle: {
+                    maxWidth: '30px',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                },
+                editable: true
+            }
+        ]
 
-    const LoadNode: ReactNode = useMemo(
-        () => generateSkeleton(size, newData),
-        [size]
-    )
+        return generateSkeleton(size, newData)
+    }, [size])
 
     type Data = {
         id: Identifier

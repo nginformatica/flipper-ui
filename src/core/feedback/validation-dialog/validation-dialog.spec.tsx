@@ -1,12 +1,64 @@
 import React from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
 import { render, screen, fireEvent } from '@testing-library/react'
-import type { ITitles } from '.'
+import type { ITitles, IValidations } from '.'
 import { CheckCircleOutline, CancelOutlined } from '@/icons'
 import ValidationDialog, { ValidationStatus } from '.'
 import { theme } from '@/theme'
 
 const { action, secondary } = theme.colors
+
+const stepsTitle = {
+    success: 'Success',
+    loading: 'Loading',
+    error: 'Error'
+}
+
+const stepsIcons = {
+    success: <CheckCircleOutline htmlColor={secondary.main} />,
+    error: <CancelOutlined htmlColor={action.cancel} />,
+    loading: <CircularProgress size={20} color='inherit' />
+}
+
+const responses: string[] = []
+const validations: IValidations[] = []
+const responsesDefault = ['Should', 'render', 'default', 'case']
+const responsesSuccess = ['Success', 'Success', 'Success', 'Success']
+const responsesLoading = ['Success', 'Success', 'Success', 'Loading']
+const responsesError = ['Success', 'Success', 'Success', 'Error']
+
+const successValidation = [
+    {
+        description: {
+            loading: 'Loading description',
+            success: 'Success description',
+            error: 'Error description'
+        },
+        status: ValidationStatus.Success
+    }
+]
+
+const errorValidation = [
+    {
+        description: {
+            loading: 'Loading description',
+            success: 'Success description',
+            error: 'Error description'
+        },
+        status: ValidationStatus.Error
+    }
+]
+
+const loadingValidation = [
+    {
+        description: {
+            loading: 'Loading description',
+            success: 'Success description',
+            error: 'Error description'
+        },
+        status: ValidationStatus.Loading
+    }
+]
 
 const renderTitle = (stepsTitle: ITitles, responses: string[]) => {
     if (responses.every(item => item === 'Success')) {
@@ -25,32 +77,18 @@ const renderTitle = (stepsTitle: ITitles, responses: string[]) => {
 }
 
 describe('ValidationDialog', () => {
-    const stepsTitle = {
-        success: 'Success',
-        loading: 'Loading',
-        error: 'Error'
-    }
-
-    const stepsIcons = {
-        success: <CheckCircleOutline htmlColor={secondary.main} />,
-        error: <CancelOutlined htmlColor={action.cancel} />,
-        loading: <CircularProgress size={20} color='inherit' />
-    }
-
     it('should render title "Loading" by default', () => {
-        const responses = ['Should', 'render', 'default', 'case']
-
         render(
             <ValidationDialog
                 open
                 title={stepsTitle}
                 failed={
-                    !responses.includes('Loading') &&
-                    responses.includes('Error')
+                    !responsesDefault.includes('Loading') &&
+                    responsesDefault.includes('Error')
                 }
-                success={responses.every(item => item === 'Success')}
-                responses={responses}
-                validations={[]}
+                success={responsesDefault.every(item => item === 'Success')}
+                responses={responsesDefault}
+                validations={validations}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -58,25 +96,23 @@ describe('ValidationDialog', () => {
             />
         )
 
-        const result = renderTitle(stepsTitle, responses)
+        const result = renderTitle(stepsTitle, responsesLoading)
 
         expect(result).toBe(stepsTitle.loading)
     })
 
     it('should render title "Success" when all items are "Success"', () => {
-        const responses = ['Success', 'Success', 'Success', 'Success']
-
         render(
             <ValidationDialog
                 open
                 title={stepsTitle}
                 failed={
-                    !responses.includes('Loading') &&
-                    responses.includes('Error')
+                    !responsesSuccess.includes('Loading') &&
+                    responsesSuccess.includes('Error')
                 }
-                success={responses.every(item => item === 'Success')}
-                responses={responses}
-                validations={[]}
+                success={responsesSuccess.every(item => item === 'Success')}
+                responses={responsesSuccess}
+                validations={validations}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -84,25 +120,23 @@ describe('ValidationDialog', () => {
             />
         )
 
-        const result = renderTitle(stepsTitle, responses)
+        const result = renderTitle(stepsTitle, responsesSuccess)
 
         expect(result).toBe(stepsTitle.success)
     })
 
     it('should render title "Loading" when at least one item is "Loading"', () => {
-        const responses = ['Success', 'Success', 'Success', 'Loading']
-
         render(
             <ValidationDialog
                 open
                 title={stepsTitle}
                 failed={
-                    !responses.includes('Loading') &&
-                    responses.includes('Error')
+                    !responsesLoading.includes('Loading') &&
+                    responsesLoading.includes('Error')
                 }
-                success={responses.every(item => item === 'Success')}
-                responses={responses}
-                validations={[]}
+                success={responsesLoading.every(item => item === 'Success')}
+                responses={responsesLoading}
+                validations={validations}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -110,25 +144,23 @@ describe('ValidationDialog', () => {
             />
         )
 
-        const result = renderTitle(stepsTitle, responses)
+        const result = renderTitle(stepsTitle, responsesLoading)
 
         expect(result).toBe(stepsTitle.loading)
     })
 
     it('should render title "Error" when at least one item is "Error"', () => {
-        const responses = ['Success', 'Success', 'Success', 'Error']
-
         render(
             <ValidationDialog
                 open
                 title={stepsTitle}
                 failed={
-                    !responses.includes('Loading') &&
-                    responses.includes('Error')
+                    !responsesError.includes('Loading') &&
+                    responsesError.includes('Error')
                 }
-                success={responses.every(item => item === 'Success')}
-                responses={responses}
-                validations={[]}
+                success={responsesError.every(item => item === 'Success')}
+                responses={responsesError}
+                validations={validations}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -136,25 +168,23 @@ describe('ValidationDialog', () => {
             />
         )
 
-        const result = renderTitle(stepsTitle, responses)
+        const result = renderTitle(stepsTitle, responsesError)
 
         expect(result).toBe(stepsTitle.error)
     })
 
     it('should render onCancel when all responses are "Success"', () => {
-        const responses = ['Success', 'Success', 'Success', 'Success']
-
         render(
             <ValidationDialog
                 open
                 title={stepsTitle}
                 failed={
-                    !responses.includes('Loading') &&
-                    responses.includes('Error')
+                    !responsesSuccess.includes('Loading') &&
+                    responsesSuccess.includes('Error')
                 }
-                success={responses.every(item => item === 'Success')}
-                responses={responses}
-                validations={[]}
+                success={responsesSuccess.every(item => item === 'Success')}
+                responses={responsesSuccess}
+                validations={validations}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -176,17 +206,8 @@ describe('ValidationDialog', () => {
                 title={stepsTitle}
                 failed={false}
                 success={false}
-                responses={[]}
-                validations={[
-                    {
-                        description: {
-                            loading: 'Loading description',
-                            success: 'Success description',
-                            error: 'Error description'
-                        },
-                        status: ValidationStatus.Success
-                    }
-                ]}
+                responses={responses}
+                validations={successValidation}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -206,17 +227,8 @@ describe('ValidationDialog', () => {
                 title={stepsTitle}
                 failed={false}
                 success={false}
-                responses={[]}
-                validations={[
-                    {
-                        description: {
-                            loading: 'Loading description',
-                            success: 'Success description',
-                            error: 'Error description'
-                        },
-                        status: ValidationStatus.Error
-                    }
-                ]}
+                responses={responses}
+                validations={errorValidation}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -236,17 +248,8 @@ describe('ValidationDialog', () => {
                 title={stepsTitle}
                 failed={false}
                 success={false}
-                responses={[]}
-                validations={[
-                    {
-                        description: {
-                            loading: 'Loading description',
-                            success: 'Success description',
-                            error: 'Error description'
-                        },
-                        status: ValidationStatus.Loading
-                    }
-                ]}
+                responses={responses}
+                validations={loadingValidation}
                 icons={stepsIcons}
                 handleCreate={jest.fn()}
                 onClose={jest.fn()}
@@ -261,7 +264,6 @@ describe('ValidationDialog', () => {
 
     it('should render handleCreate when all responses are "Success"', () => {
         const handleCreateMock = jest.fn()
-        const responses = ['Success', 'Success', 'Success', 'Success']
 
         render(
             <ValidationDialog
@@ -269,8 +271,8 @@ describe('ValidationDialog', () => {
                 success
                 title={stepsTitle}
                 failed={false}
-                responses={responses}
-                validations={[]}
+                responses={responsesSuccess}
+                validations={validations}
                 icons={stepsIcons}
                 handleCreate={handleCreateMock}
                 onClose={jest.fn()}

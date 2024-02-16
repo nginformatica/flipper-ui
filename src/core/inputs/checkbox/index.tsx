@@ -8,10 +8,9 @@ import {
 } from '@material-ui/core'
 import type { DefaultProps } from '../../types'
 import type { CheckboxProps as MuiCheckboxProps } from '@material-ui/core'
-import {
-    HelperBox,
-    TextFieldWrapper as CheckFieldsWrapper
-} from '@/core/inputs/text-field'
+import { HelperBox } from '@/core/inputs/text-field'
+import { CheckFieldsWrapper, DENSE } from './styles'
+
 export interface CheckboxProps extends DefaultProps {
     name: string
     label?: ReactNode
@@ -26,8 +25,6 @@ export interface CheckboxProps extends DefaultProps {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
     checkboxProps?: MuiCheckboxProps
 }
-
-const DENSE = { padding: '2px', margin: '0px 7px' }
 
 export const Checkbox = (props: CheckboxProps) => {
     const {

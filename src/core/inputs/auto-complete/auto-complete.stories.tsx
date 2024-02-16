@@ -11,15 +11,24 @@ export default {
     component: AutoComplete
 } as Meta<typeof AutoComplete>
 
+const suggestions = [
+    { value: 'rock', label: 'Rock' },
+    { value: 'pop', label: 'Pop' },
+    { value: 'classic', label: 'Classic' }
+]
+
+const subheaderSuggestions = [
+    { label: 'Genres', subheader: true },
+    { value: 'rock', label: 'Rock' },
+    { value: 'pop', label: 'Pop' },
+    { value: 'classic', label: 'Classic' }
+]
+
 export const Default = () => (
     <AutoComplete
         defaultIsOpen
         openOnFocus
-        suggestions={[
-            { value: 'rock', label: 'Rock' },
-            { value: 'pop', label: 'Pop' },
-            { value: 'classic', label: 'Classic' }
-        ]}
+        suggestions={suggestions}
         renderInput={({ value, inputProps }) => {
             return (
                 <TextField
@@ -48,11 +57,7 @@ export const OpeningWhenFocused = () => (
     <AutoComplete
         openOnFocus
         value={{ value: 'classic', label: 'Classic' }}
-        suggestions={[
-            { value: 'rock', label: 'Rock' },
-            { value: 'pop', label: 'Pop' },
-            { value: 'classic', label: 'Classic' }
-        ]}
+        suggestions={suggestions}
         renderInput={props => (
             <TextField fullWidth placeholder='Music genres' {...props} />
         )}
@@ -72,12 +77,7 @@ export const OpeningWhenFocused = () => (
 export const WithSubheader = () => (
     <AutoComplete
         openOnFocus
-        suggestions={[
-            { label: 'Genres', subheader: true },
-            { value: 'rock', label: 'Rock' },
-            { value: 'pop', label: 'Pop' },
-            { value: 'classic', label: 'Classic' }
-        ]}
+        suggestions={subheaderSuggestions}
         renderInput={props => (
             <TextField fullWidth placeholder='Music genres' {...props} />
         )}
@@ -112,12 +112,7 @@ export const MockAtuoComplete = () => {
             autoFocus
             caseSensitive
             value={value}
-            suggestions={[
-                { label: 'Genres', subheader: true },
-                { value: 'rock', label: 'Rock' },
-                { value: 'pop', label: 'pop' },
-                { value: 'classic', label: 'Classic' }
-            ]}
+            suggestions={subheaderSuggestions}
             renderInput={props => {
                 return (
                     <TextField

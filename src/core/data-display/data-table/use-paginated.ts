@@ -1,7 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import faker from 'faker'
 import { splitEvery } from 'ramda'
-// import { v4 as uuid } from 'uuid'
 import type { Data } from './types'
 
 export interface IDataProps {
@@ -95,7 +94,6 @@ export const usePaginated = () => {
         }, MOCK_DELAY_VALUE)
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const setData: React.Dispatch<React.SetStateAction<Data[]>> = (
         data: Data[]
     ) => {

@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
 import React, { useState, useCallback } from 'react'
+import type { ReactNode } from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import type { ColumnSpec, Data, Errors, PartialData } from './types'
@@ -82,6 +82,7 @@ const renderEditMode = <D extends Data>(
     }
 
     const type = column.type === 'number' ? 'number' : 'text'
+
     const value = row[column.field] as string
 
     return (

@@ -14,7 +14,12 @@ export const Default = () => {
 
     function handleClick() {
         setOpen(!open)
-        btnLabel === 'Close' ? setBtnLabel('Open') : setBtnLabel('Close')
+
+        if (btnLabel === 'Close') {
+            setBtnLabel('Open')
+        } else {
+            setBtnLabel('Close')
+        }
     }
 
     return (

@@ -14,7 +14,12 @@ const Template: StoryFn<typeof Slide> = args => {
 
     function handleClick() {
         setOpen(!open)
-        btnLabel === 'Close' ? setBtnLabel('Open') : setBtnLabel('Close')
+
+        if (btnLabel === 'Close') {
+            setBtnLabel('Open')
+        } else {
+            setBtnLabel('Close')
+        }
     }
 
     return (

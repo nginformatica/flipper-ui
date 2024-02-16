@@ -7,6 +7,17 @@ export default {
     component: RadioGroup
 } as Meta<typeof RadioGroup>
 
+const options = [
+    {
+        label: 'First option',
+        value: 'first'
+    },
+    {
+        label: 'Second Option',
+        value: 'second'
+    }
+]
+
 export const Default = () => {
     const [option, setOption] = useState('first')
 
@@ -15,16 +26,7 @@ export const Default = () => {
             value={option}
             title='My options'
             name='options'
-            options={[
-                {
-                    label: 'First option',
-                    value: 'first'
-                },
-                {
-                    label: 'Second Option',
-                    value: 'second'
-                }
-            ]}
+            options={options}
             onChange={event => setOption(event.target.value)}
         />
     )

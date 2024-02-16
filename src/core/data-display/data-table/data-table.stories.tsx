@@ -1,6 +1,4 @@
-/* eslint-disable react-perf/jsx-no-new-array-as-prop */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable max-lines */
 import React, { useState, useRef } from 'react'
 import format from 'date-fns/format'
 import { v4 as uuid } from 'uuid'
@@ -673,7 +671,7 @@ export const CrudWithHidden = () => {
         const errorFields = [{ field: 'name', isErrorIf: [isEmpty] }]
             .filter(({ field, isErrorIf }) => {
                 // @ts-ignore
-                const value = nextItem[field]
+                const value: string = nextItem[field]
 
                 if (isNullable(value)) {
                     if (isPartial) {
@@ -977,9 +975,11 @@ const tableHead = [
 ]
 
 export const WithField = () => {
-    const [data, setData] = useState(() => dataInput)
-    const [selectedAll, setSelectedAll] = useState(false)
-    const [selected, setSelected] = useState(Array(data.length).fill(false))
+    const [data, setData] = useState<Record<string, unknown>[]>(() => dataInput)
+    const [selectedAll, setSelectedAll] = useState<boolean>(false)
+    const [selected, setSelected] = useState<boolean[]>(
+        Array(data.length).fill(false)
+    )
 
     return (
         <DataTableField

@@ -94,7 +94,7 @@ const Default = () => {
         const errorFields = [{ field: 'name', isErrorIf: [isEmpty] }]
             .filter(({ field, isErrorIf }) => {
                 // @ts-ignore
-                const value = nextItem[field]
+                const value: string = nextItem[field]
 
                 if (isNullable(value)) {
                     if (isPartial) {

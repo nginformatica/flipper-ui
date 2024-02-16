@@ -2,16 +2,16 @@ import React from 'react'
 import { List } from '@material-ui/core'
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
 import type { IStepCardProps } from '.'
-import { Typography } from '@/core/data-display/typography'
 import { IconButton } from '@/core/inputs/icon-button'
-import { CheckCircle as CheckCircleIcon, Help as HelpIcon } from '@/icons'
-import { ListItemContainer, StepCardColumn } from './styles'
-import { theme } from '@/theme'
-
-const { feedback, grays } = theme.colors
-const DONE_COLOR = feedback.success
-const UNDONE_COLOR = grays.g3
-const UNDONE_FONT_COLOR = grays.g2
+import {
+    ACORDION_DETAILS,
+    ICON_BUTTON,
+    IconCheck,
+    IconHelp,
+    ListItemContainer,
+    StepCardColumn,
+    TypographyContainer
+} from './styles'
 
 interface IStepCardDetailsProps {
     steps: IStepCardProps['steps']
@@ -23,7 +23,7 @@ interface IStepCardDetailsProps {
 export const StepCardDetails = (props: IStepCardDetailsProps) => {
     const { steps, onStepUrlClick, image, expansionPanelDetailsProps } = props
 
-    const StepsList = () => (
+    const stepsList = () => (
         <List>
             {(steps || []).map((step, index) => {
                 const handleOnClickStepUrl = () => {
@@ -34,31 +34,17 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
 
                 return (
                     <ListItemContainer key={index}>
-                        <CheckCircleIcon
-                            style={{
-                                color: step.done ? DONE_COLOR : UNDONE_COLOR
-                            }}
-                        />
-                        <Typography
-                            variant='body1'
-                            style={{
-                                color: UNDONE_FONT_COLOR,
-                                fontWeight: 600
-                            }}>
+                        <IconCheck done={step.done} />
+                        <TypographyContainer variant='body1'>
                             {step.title}
-                        </Typography>
+                        </TypographyContainer>
                         {step.url && onStepUrlClick && (
                             <>
                                 <IconButton
                                     data-testid={`step-card-button-${index}`}
-                                    style={{
-                                        backgroundColor: 'unset'
-                                    }}
+                                    style={ICON_BUTTON}
                                     onClick={handleOnClickStepUrl}>
-                                    <HelpIcon
-                                        fontSize='small'
-                                        style={{ margin: '0px' }}
-                                    />
+                                    <IconHelp fontSize='small' />
                                 </IconButton>
                             </>
                         )}
@@ -70,13 +56,10 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
 
     return (
         <MuiAccordionDetails
-            style={{
-                display: 'flex',
-                justifyContent: 'space-between'
-            }}
+            style={ACORDION_DETAILS}
             {...expansionPanelDetailsProps}>
             <StepCardColumn justifyContent='start'>
-                <StepsList />
+                {stepsList()}
             </StepCardColumn>
             {image && (
                 <StepCardColumn justifyContent='end'>

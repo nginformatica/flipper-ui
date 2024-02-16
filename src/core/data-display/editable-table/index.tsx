@@ -1,21 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable max-lines */
 import React, { forwardRef, useRef } from 'react'
 import type { MouseEvent } from 'react'
 import ptBRLocale from 'date-fns/locale/pt-BR'
 import MaterialTable, {
-    MTableEditRow,
-    MTableBodyRow,
     MTableEditField,
     MTableAction,
     MTablePagination,
     MTableActions
 } from 'material-table'
 import { omit, contains, propOr } from 'ramda'
-import { default as styled } from 'styled-components'
 import type { Column, Options } from 'material-table'
 import ListItem from '@/core/data-display/list-item'
-import { Typography } from '@/core/data-display/typography'
 import { AutoComplete } from '@/core/inputs/auto-complete'
 import { Button } from '@/core/inputs/button'
 import { DateTime } from '@/core/inputs/date-time'
@@ -33,6 +28,16 @@ import {
     LastPage
 } from '@/icons'
 import { getLocalization } from '@/lib/localization'
+import {
+    AddRowButton,
+    AddRowText,
+    Container,
+    CustomRemove,
+    CustomRows,
+    FullWidthButton,
+    RightPagination,
+    Wrapper
+} from './styles'
 
 export interface EditableTableProps<T extends object> {
     /**
@@ -97,61 +102,6 @@ export interface EditableTableProps<T extends object> {
 }
 
 export type TSuggestion = { label: string; value: string }
-
-export const DARK = 'rgba(189,189,189,0)'
-export const GREY = 'rgba(189,189,189,1)'
-
-const AddRowButton = styled.div`
-    display: flex;
-    align-items: center;
-`
-
-const AddRowText = styled(Typography)`
-    margin-left: 4px;
-    font-weight: 500 !important;
-`
-
-const FullWidthButton = styled(Button)`
-    width: calc(100% - 24px);
-    margin: 12px !important;
-`
-
-const CustomRemove = styled(MTableEditRow)({
-    '& h6': {
-        fontSize: '0.85em'
-    }
-})
-
-const CustomRows = styled(MTableBodyRow)`
-    transition: opacity 200ms ease;
-    button {
-        display: none;
-    }
-    &:hover {
-        background: -moz-linear-gradient(left, ${DARK} 0%, ${GREY} 100%);
-        background: -webkit-linear-gradient(left, ${DARK} 0%, ${GREY} 100%);
-        background: linear-gradient(to right, ${DARK} 0%, ${GREY} 100%);
-    }
-    &:hover button {
-        display: inline-block !important;
-    }
-    td {
-        min-width: 64px;
-    }
-`
-
-const RightPagination = styled.div`
-    & > div {
-        display: block;
-        float: right;
-    }
-`
-
-const Wrapper = styled.div`
-    & > div {
-        justify-content: flex-end;
-    }
-`
 
 export const EditableTable = <T extends object>(
     props: EditableTableProps<T>
@@ -223,7 +173,7 @@ export const EditableTable = <T extends object>(
             renderInput={itemProps => (
                 <TextField
                     fullWidth
-                    error={getErrors(inputProps.columnDef.field)}
+                    error={getErrors(inputProps.columnDef.field as string)}
                     name={inputProps.columnDef.field + '-input'}
                     {...itemProps}
                 />
@@ -246,7 +196,7 @@ export const EditableTable = <T extends object>(
     )
 
     return (
-        <div style={{ width: '100%' }}>
+        <Container>
             <MaterialTable
                 components={{
                     EditRow: props => <CustomRemove {...props} />,
@@ -293,16 +243,6 @@ export const EditableTable = <T extends object>(
                             />
                         )
 
-                        // const renderDefault = () => (
-                        //     <MTableAction
-                        //         disabled
-                        //         action={() => {}}
-                        //         size={0}
-                        //         data={[]}
-                        //     />
-                        // )
-
-                        // const hasData = !!localProps.action && size && data
                         const isToolbar =
                             localProps.action &&
                             'position' in localProps.action &&
@@ -313,12 +253,6 @@ export const EditableTable = <T extends object>(
                         }
 
                         return renderActionButton()
-
-                        // return cond([
-                        //     [isToolbar, renderToolbarButton],
-                        //     [hasData, renderActionButton],
-                        //     [T, renderDefault]
-                        // ])(localProps)
                     },
                     EditField: localProps => {
                         if (localProps.columnDef.type === 'datetime') {
@@ -327,7 +261,8 @@ export const EditableTable = <T extends object>(
                                     error={
                                         props.errors
                                             ? getErrors(
-                                                  localProps.columnDef.field
+                                                  localProps.columnDef
+                                                      .field as string
                                               )
                                             : localProps.error
                                     }
@@ -341,7 +276,9 @@ export const EditableTable = <T extends object>(
                         }
 
                         if (localProps.columnDef.type === 'numeric') {
-                            const error = getErrors(localProps.columnDef.field)
+                            const error = getErrors(
+                                localProps.columnDef.field as string
+                            )
 
                             return renderMaskField(localProps, error)
                         }
@@ -443,7 +380,7 @@ export const EditableTable = <T extends object>(
                 }}
                 onRowClick={props.onRowClick}
             />
-        </div>
+        </Container>
     )
 }
 

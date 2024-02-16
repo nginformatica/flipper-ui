@@ -10,9 +10,9 @@ import MuiExpansionPanel from '@material-ui/core/Accordion'
 import MuiExpansionPanelActions from '@material-ui/core/AccordionActions'
 import MuiExpansionPanelDetails from '@material-ui/core/AccordionDetails'
 import MuiExpansionPanelSummary from '@material-ui/core/AccordionSummary'
-import { default as styled } from 'styled-components'
 import type { PaperProps } from '@/core/surfaces/paper'
 import { EditBox, HelperBox } from '@/core/inputs/text-field'
+import { ExpansionPanelHeaderWrapper } from './styles'
 
 export interface ExpansionPanelProps extends Omit<PaperProps, 'onChange'> {
     actions?: ReactNode
@@ -41,18 +41,6 @@ export interface ExpansionPanelProps extends Omit<PaperProps, 'onChange'> {
     ) => void
     onClick?: (event: MouseEvent<HTMLDivElement>) => void
 }
-
-const ExpansionPanelHeaderWrapper = styled.div`
-    display: flex;
-    flex-direction: rows;
-    align-items: center;
-    button {
-        display: none;
-    }
-    :hover button {
-        display: flex;
-    }
-`
 
 export const ExpansionPanel = ({
     actions,

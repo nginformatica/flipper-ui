@@ -7,11 +7,9 @@ export default {
     component: EditableTable,
     args: {
         title: 'adicionar',
-        // eslint-disable-next-line no-console
-        onAddRow: (item: object) => Promise.resolve(console.log(item)),
+        onAddRow: (item: object) => Promise.resolve(alert(item)),
         onRowClick: () => window.alert('hello'),
-        // eslint-disable-next-line no-console
-        onDeleteRow: (item: object) => Promise.resolve(console.log(item)),
+        onDeleteRow: (item: object) => Promise.resolve(alert(item)),
         onUpdateRow: () => Promise.resolve(),
         onClickAdd: () => window.alert('hello')
     },

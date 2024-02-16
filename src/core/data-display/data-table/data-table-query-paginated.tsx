@@ -212,7 +212,14 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         if (controllerRef) {
             controllerRef.current = nextController
         }
-    }, [setRowState, pushRowView, popRowView, getRowState, controllerRef])
+    }, [
+        setRowState,
+        pushRowView,
+        popRowView,
+        getRowState,
+        controllerRef,
+        handleChangePerPage
+    ])
 
     const rowsList = useMemo(
         () =>

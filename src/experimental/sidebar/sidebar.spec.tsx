@@ -19,6 +19,21 @@ const options: ISidebarOption[] = [
     }
 ]
 
+const extraOptions: ISidebarOption[] = [
+    {
+        icon: <svg />,
+        label: 'Extra Option 1',
+        name: 'extraOption1',
+        route: '/extraOption1'
+    },
+    {
+        icon: <svg />,
+        label: 'Extra Option 2',
+        name: 'extraOption2',
+        route: '/extraOption2'
+    }
+]
+
 describe('Sidebar', () => {
     it('renders the options', () => {
         render(<Sidebar options={options} />)
@@ -45,21 +60,6 @@ describe('Sidebar', () => {
     })
 
     it('renders extraOptions when provided', () => {
-        const extraOptions: ISidebarOption[] = [
-            {
-                icon: <svg />,
-                label: 'Extra Option 1',
-                name: 'extraOption1',
-                route: '/extraOption1'
-            },
-            {
-                icon: <svg />,
-                label: 'Extra Option 2',
-                name: 'extraOption2',
-                route: '/extraOption2'
-            }
-        ]
-
         render(<Sidebar options={options} extraOptions={extraOptions} />)
         extraOptions.forEach(option => {
             expect(screen.getByTitle(option.label)).toBeDefined()

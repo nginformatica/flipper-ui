@@ -14,7 +14,12 @@ export const Default = () => {
 
     function handleClick() {
         setOpen(!open)
-        label === 'Close' ? setLabel('Open') : setLabel('Close')
+
+        if (label === 'Close') {
+            setLabel('Open')
+        } else {
+            setLabel('Close')
+        }
     }
 
     return (

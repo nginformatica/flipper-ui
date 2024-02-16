@@ -9,6 +9,23 @@ interface IProps {
     snackProps?: Partial<SnackBarProps>
 }
 
+const Action = ({
+    snackProps,
+    handleClose
+}: {
+    snackProps: IProps['snackProps']
+    handleClose: () => void
+}) => (
+    <MuiIconButton
+        key='close'
+        role='close-icon-button'
+        aria-label='Close'
+        color='inherit'
+        onClick={snackProps?.onClose || handleClose}>
+        <IconClose />
+    </MuiIconButton>
+)
+
 const Default = ({ snackProps, withAction }: IProps) => {
     const [btnState, setBtnState] = useState(false)
     const [open, setOpen] = useState(false)
@@ -22,17 +39,6 @@ const Default = ({ snackProps, withAction }: IProps) => {
         setOpen(!open)
         setBtnState(false)
     }
-
-    const Action = () => (
-        <MuiIconButton
-            key='close'
-            role='close-icon-button'
-            aria-label='Close'
-            color='inherit'
-            onClick={snackProps?.onClose || handleClose}>
-            <IconClose />
-        </MuiIconButton>
-    )
 
     return (
         <>
@@ -48,7 +54,14 @@ const Default = ({ snackProps, withAction }: IProps) => {
             <Snackbar
                 message={snackProps?.message}
                 autoHide={snackProps?.autoHide}
-                action={withAction ? <Action /> : undefined}
+                action={
+                    withAction ? (
+                        <Action
+                            snackProps={snackProps}
+                            handleClose={handleClose}
+                        />
+                    ) : undefined
+                }
                 open={open}
                 onClick={snackProps?.onClick}
                 onClose={snackProps?.onClose || handleClose}

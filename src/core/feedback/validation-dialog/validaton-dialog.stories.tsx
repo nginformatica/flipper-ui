@@ -38,23 +38,8 @@ export default meta
 
 type Story = StoryObj<typeof ValidationDialog>
 
-const ValidationDialogStorie = () => {
-    const [open, setOpen] = useState(false)
-    const [validationResponses, setValidationResponses] = useState<string[]>([])
-
-    const stepsTitle = {
-        success: 'Sua configuração foi validada com sucesso!',
-        error: 'Houve algum problema ao configurar',
-        loading: 'Validando Integrações'
-    }
-
-    const stepsIcons = {
-        success: <CheckCircleOutline htmlColor={secondary.main} />,
-        error: <CancelOutlined htmlColor={action.cancel} />,
-        loading: <CircularProgress size={20} color='inherit' />
-    }
-
-    const validationSteps = [
+const validationSteps = (validationResponses: string[]) => {
+    return [
         {
             description: {
                 loading: 'Validando URL, Porta e Forma de Autenticação',
@@ -88,6 +73,23 @@ const ValidationDialogStorie = () => {
             status: validationResponses[3]
         }
     ]
+}
+
+const ValidationDialogStorie = () => {
+    const [open, setOpen] = useState(false)
+    const [validationResponses, setValidationResponses] = useState<string[]>([])
+
+    const stepsTitle = {
+        success: 'Sua configuração foi validada com sucesso!',
+        error: 'Houve algum problema ao configurar',
+        loading: 'Validando Integrações'
+    }
+
+    const stepsIcons = {
+        success: <CheckCircleOutline htmlColor={secondary.main} />,
+        error: <CancelOutlined htmlColor={action.cancel} />,
+        loading: <CircularProgress size={20} color='inherit' />
+    }
 
     const useSubscriptionValidationState = () => {
         const initLoading = useCallback((condition: boolean = true) => {
@@ -160,7 +162,7 @@ const ValidationDialogStorie = () => {
                     open={open}
                     title={stepsTitle}
                     icons={stepsIcons}
-                    validations={validationSteps}
+                    validations={validationSteps(validationResponses)}
                     responses={validationResponses}
                     failed={
                         !validationResponses.includes('Loading') &&

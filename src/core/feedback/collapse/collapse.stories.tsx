@@ -16,7 +16,12 @@ export const Default = () => {
 
     function handleClick() {
         setOpen(!open)
-        !open ? setButtonLabel('Close') : setButtonLabel('Open')
+
+        if (!open) {
+            setButtonLabel('Close')
+        } else {
+            setButtonLabel('Open')
+        }
     }
 
     return (

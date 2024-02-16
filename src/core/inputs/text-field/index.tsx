@@ -18,11 +18,11 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import type { TextFieldProps as MuiTextFieldProps } from '@material-ui/core'
 import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import { IconButton } from '../icon-button'
+import { Helper, StaticTextFieldWrapper, TextFieldWrapper } from './styles'
 import { theme } from '@/theme'
 
 const { primary } = theme.colors
@@ -85,31 +85,6 @@ interface IEditProps extends Pick<TextFieldProps, 'showEdit' | 'style'> {
     editButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
     saveButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
 }
-
-const Helper = styled.div`
-    width: 42px;
-    height: 38px;
-`
-
-export const TextFieldWrapper = styled.div`
-    display: flex;
-    flex-direction: rows;
-    width: 100%;
-    align-items: center;
-    button {
-        display: none;
-    }
-    :hover button {
-        display: flex;
-    }
-`
-
-export const StaticTextFieldWrapper = styled.div`
-    display: flex;
-    flex-direction: rows;
-    width: 100%;
-    align-items: center;
-`
 
 export const useStyles = makeStyles({
     listOptions: {
@@ -289,7 +264,6 @@ export const TextField = ({
                     ...InputLabelProps
                 }}
                 InputProps={{
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     'data-testid': 'text-field',
                     classes: {

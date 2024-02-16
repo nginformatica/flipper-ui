@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React, { useMemo, useState, useRef, useEffect } from 'react'
 import type {
     MouseEvent,

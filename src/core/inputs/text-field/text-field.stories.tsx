@@ -4,6 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import { InputAdornment } from '@/core/inputs/input-adornment'
 import { TextField } from '.'
+import { Wrapper } from './styles'
 
 export default {
     title: 'Inputs/TextField',
@@ -38,7 +39,7 @@ withHelperButton.args = {
 
 export const withSelect = () => {
     return (
-        <div>
+        <Wrapper>
             <TextField select value='reais'>
                 {[
                     { label: 'R$', value: 'reais' },
@@ -61,7 +62,7 @@ export const withSelect = () => {
                     </ListItem>
                 ))}
             </TextField>
-        </div>
+        </Wrapper>
     )
 }
 
@@ -77,7 +78,7 @@ export const useWithSelectAndClear = () => {
     }
 
     return (
-        <div>
+        <Wrapper>
             <TextField
                 select
                 hasClear
@@ -96,7 +97,7 @@ export const useWithSelectAndClear = () => {
                     </ListItem>
                 ))}
             </TextField>
-        </div>
+        </Wrapper>
     )
 }
 
@@ -113,7 +114,7 @@ export const combobox = () => {
     }
 
     return (
-        <div>
+        <Wrapper>
             <TextField
                 hasClear
                 options={LIST}
@@ -127,6 +128,6 @@ export const combobox = () => {
                 onClear={onClear}
                 onChange={handleChange}
             />
-        </div>
+        </Wrapper>
     )
 }

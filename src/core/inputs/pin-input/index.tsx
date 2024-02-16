@@ -49,9 +49,7 @@ export const PinInput = ({
     const changePinFocus = (pinIndex: number) => {
         const ref = inputRefs.current[pinIndex]
 
-        if (ref) {
-            ref.focus()
-        }
+        ref.focus()
     }
 
     useEffect(() => {
@@ -64,7 +62,7 @@ export const PinInput = ({
         const intValues: number[] = []
 
         for (const value of splitValues) {
-            intValues.push(parseInt(value))
+            intValues.push(parseInt(value, 10))
         }
         setPin(intValues)
         changePinFocus(intValues.length - 1)

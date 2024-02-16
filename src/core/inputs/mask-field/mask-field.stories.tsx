@@ -8,7 +8,7 @@ export default {
     component: MaskField,
     argTypes: {
         helperText: { control: 'text' },
-        value: { control: 'text' || 'number' }
+        value: { control: 'text' }
     }
 } as Meta<typeof MaskField>
 

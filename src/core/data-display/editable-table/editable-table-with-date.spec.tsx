@@ -1,10 +1,10 @@
-/* eslint-disable max-lines */
 import * as React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event/'
 import type { Column } from 'material-table'
 import WithDate from '@/test/mocks/editable-table-date-mock'
+
 const COLUMNS_WITH_DATE: Column<object>[] = [
     {
         title: 'Data',
