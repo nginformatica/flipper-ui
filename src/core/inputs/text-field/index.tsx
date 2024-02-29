@@ -20,7 +20,10 @@ import { makeStyles } from '@material-ui/core/styles'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
 import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
-import type { TextFieldProps as MuiTextFieldProps } from '@material-ui/core'
+import type {
+    InputBaseComponentProps,
+    TextFieldProps as MuiTextFieldProps
+} from '@material-ui/core'
 import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import { IconButton } from '../icon-button'
 import { theme } from '@/theme'
@@ -55,9 +58,7 @@ export interface TextFieldProps
     value?: string | number
     variant?: 'standard' | 'outlined' | 'filled'
     inputRef?: Ref<HTMLInputElement>
-    inputProps?: {
-        maxLength?: number
-    } & object
+    inputProps?: InputBaseComponentProps
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
