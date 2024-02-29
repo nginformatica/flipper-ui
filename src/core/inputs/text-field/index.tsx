@@ -25,7 +25,7 @@ import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import { IconButton } from '../icon-button'
 import { theme } from '@/theme'
 
-const { primary } = theme.colors
+const { grays, primary } = theme.colors
 
 export interface IOption {
     label: string
@@ -55,7 +55,9 @@ export interface TextFieldProps
     value?: string | number
     variant?: 'standard' | 'outlined' | 'filled'
     inputRef?: Ref<HTMLInputElement>
-    inputProps?: object
+    inputProps?: {
+        maxLength?: number
+    } & object
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
@@ -65,6 +67,7 @@ export interface TextFieldProps
     helperIcon?: ReactNode
     showEdit?: boolean
     hasClear?: boolean
+    characters?: boolean
     onClear?: () => void
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -89,6 +92,17 @@ interface IEditProps extends Pick<TextFieldProps, 'showEdit' | 'style'> {
 const Helper = styled.div`
     width: 42px;
     height: 38px;
+`
+
+const CharactersCount = styled.span`
+    margin-left: -35px;
+    color: ${grays.g3};
+    font-size: 14px;
+    font-family:
+        Roboto,
+        Helvetica,
+        Arial,
+        sans- serif;
 `
 
 export const TextFieldWrapper = styled.div`
@@ -239,6 +253,7 @@ export const TextField = ({
     fullWidth,
     hasClear,
     onClear,
+    characters,
     children,
     ...otherProps
 }: TextFieldProps) => {
@@ -311,9 +326,16 @@ export const TextField = ({
                     ...endAdornment,
                     ...SelectProps
                 }}
+                characters={characters?.toString()}
                 {...otherProps}>
                 {options ? renderOptions(options, classes) : children}
             </MuiTextField>
+            {characters && (
+                <CharactersCount>
+                    {otherProps.value?.toString().length}/
+                    {otherProps.inputProps?.maxLength}
+                </CharactersCount>
+            )}
             {onHelperClick && (
                 <HelperBox
                     helperIcon={helperIcon}
