@@ -135,7 +135,7 @@ describe('TextField', () => {
         expect(textField.value).toBe('')
     })
 
-    it.only('should render character counter', () => {
+    it('should render character counter', () => {
         render(
             <TextField characters inputProps={{ placeholder: 'Description' }} />
         )
