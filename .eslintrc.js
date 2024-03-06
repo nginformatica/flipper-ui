@@ -2,14 +2,11 @@ const rulesReact = {
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/no-unescaped-entities': 'off',
-    'react-perf/jsx-no-new-function-as-prop': 'off',
 
     'react/jsx-key': 'warn',
     'react/jsx-pascal-case': 'warn',
     'react/self-closing-comp': 'warn',
     'react/no-unstable-nested-components': 'warn',
-    'react-perf/jsx-no-new-array-as-prop': 'warn',
-    'react-perf/jsx-no-new-object-as-prop': 'warn',
     'react/jsx-sort-props': [
         'warn',
         {
@@ -187,7 +184,6 @@ module.exports = {
     },
     plugins: [
         'react-hooks',
-        'react-perf',
         '@typescript-eslint',
         'import',
         '@stylistic'
