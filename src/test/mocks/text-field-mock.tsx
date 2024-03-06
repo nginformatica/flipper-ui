@@ -6,6 +6,7 @@ import TextField from '@/core/inputs/text-field'
 interface IProps {
     initialOption?: string
     inputProps?: TextFieldProps
+    characters?: boolean
 }
 
 const LIST = [
@@ -16,7 +17,7 @@ const LIST = [
     { label: 'Fable', value: 'fable' }
 ]
 
-const Default = ({ inputProps, initialOption }: IProps) => {
+const Default = ({ inputProps, initialOption, characters }: IProps) => {
     const [value, setValue] = React.useState(initialOption ? initialOption : '')
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,19 +29,28 @@ const Default = ({ inputProps, initialOption }: IProps) => {
     }
 
     return (
-        <TextField
-            value={value}
-            onChange={handleChange}
-            onClear={handleClear}
-            {...inputProps}>
-            {inputProps?.select
-                ? LIST.map(({ label, value }) => (
-                      <ListItem key={value} value={value}>
-                          {label}
-                      </ListItem>
-                  ))
-                : undefined}
-        </TextField>
+        <>
+            <TextField
+                value={value}
+                characters={characters}
+                onChange={handleChange}
+                onClear={handleClear}
+                {...inputProps}>
+                {inputProps?.select
+                    ? LIST.map(({ label, value }) => (
+                          <ListItem key={value} value={value}>
+                              {label}
+                          </ListItem>
+                      ))
+                    : undefined}
+            </TextField>
+            {characters && (
+                <span data-testid='characters-counter'>
+                    {value.toString().length}/
+                    {inputProps?.inputProps?.maxLength}
+                </span>
+            )}
+        </>
     )
 }
 

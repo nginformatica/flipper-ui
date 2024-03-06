@@ -125,9 +125,37 @@ export const combobox = () => {
             <TextField
                 hasClear
                 value={value}
+                placeholder='Description'
                 onClear={onClear}
                 onChange={handleChange}
             />
         </Wrapper>
+    )
+}
+
+export const withCharacterCount = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [value, setValue] = useState('')
+
+    const onClear = () => {
+        setValue('')
+    }
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value)
+    }
+
+    return (
+        <TextField
+            hasClear
+            characters
+            value={value}
+            placeholder='Description'
+            inputProps={{
+                maxLength: 6
+            }}
+            onClear={onClear}
+            onChange={handleChange}
+        />
     )
 }

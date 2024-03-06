@@ -19,10 +19,18 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
 import type { DefaultProps } from '../../types'
-import type { TextFieldProps as MuiTextFieldProps } from '@material-ui/core'
+import type {
+    InputBaseComponentProps,
+    TextFieldProps as MuiTextFieldProps
+} from '@material-ui/core'
 import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import IconButton from '../icon-button'
-import { Helper, StaticTextFieldWrapper, TextFieldWrapper } from './styles'
+import {
+    CharactersCount,
+    Helper,
+    StaticTextFieldWrapper,
+    TextFieldWrapper
+} from './styles'
 import { theme } from '@/theme'
 
 const { primary } = theme.colors
@@ -55,7 +63,7 @@ export interface TextFieldProps
     value?: string | number
     variant?: 'standard' | 'outlined' | 'filled'
     inputRef?: Ref<HTMLInputElement>
-    inputProps?: object
+    inputProps?: InputBaseComponentProps
     InputProps?: object
     InputLabelProps?: object
     SelectProps?: object
@@ -65,6 +73,7 @@ export interface TextFieldProps
     helperIcon?: ReactNode
     showEdit?: boolean
     hasClear?: boolean
+    characters?: boolean
     onClear?: () => void
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -214,6 +223,7 @@ const TextField = ({
     fullWidth,
     hasClear,
     onClear,
+    characters,
     children,
     ...otherProps
 }: TextFieldProps) => {
@@ -285,9 +295,16 @@ const TextField = ({
                     ...endAdornment,
                     ...SelectProps
                 }}
+                characters={characters?.toString()}
                 {...otherProps}>
                 {options ? renderOptions(options, classes) : children}
             </MuiTextField>
+            {characters && (
+                <CharactersCount>
+                    {otherProps.value?.toString().length}/
+                    {otherProps.inputProps?.maxLength}
+                </CharactersCount>
+            )}
             {onHelperClick && (
                 <HelperBox
                     helperIcon={helperIcon}

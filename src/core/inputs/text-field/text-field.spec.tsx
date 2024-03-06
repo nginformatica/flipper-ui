@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { act } from 'react-dom/test-utils'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import TextField from '@/test/mocks/text-field-mock'
 import TextFieldOptions from '@/test/mocks/text-field-options-mock'
@@ -133,5 +133,16 @@ describe('TextField', () => {
         fireEvent.change(textField, { target: { value: '' } })
 
         expect(textField.value).toBe('')
+    })
+
+    it('should render character counter', () => {
+        render(
+            <TextField characters inputProps={{ placeholder: 'Description' }} />
+        )
+        const counter = screen.getByTestId('characters-counter')
+
+        waitFor(() => {
+            expect(counter).toBeDefined()
+        })
     })
 })
