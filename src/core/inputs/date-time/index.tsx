@@ -9,7 +9,6 @@ import {
 } from '@material-ui/pickers'
 import type { DefaultProps } from '../../types'
 import type { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
-// eslint-disable-next-line @stylistic/max-len
 import type { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import type { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 import type { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'

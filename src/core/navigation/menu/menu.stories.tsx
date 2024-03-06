@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import Button from '@/core/inputs/button'
-import { Backup } from '@/icons'
 import Menu from '.'
+import { Backup } from '@/icons'
 
 export default {
     title: 'Navigation/Menu',

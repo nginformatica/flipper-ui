@@ -16,17 +16,6 @@ import Button from '@/core/inputs/button'
 import DateTime from '@/core/inputs/date-time'
 import MaskField from '@/core/inputs/mask-field'
 import TextField from '@/core/inputs/text-field'
-import {
-    NoteAdd as IconAdd,
-    Done as IconDone,
-    Delete as IconRemove,
-    Clear as IconClear,
-    Edit as IconEdit,
-    ChevronLeft as IconChevronLeft,
-    ChevronRight as IconChevronRight,
-    FirstPage as IconFirstPage,
-    LastPage
-} from '@/icons'
 import { getLocalization } from '@/lib/localization'
 import {
     AddRowButton,
@@ -38,6 +27,17 @@ import {
     RightPagination,
     Wrapper
 } from './styles'
+import {
+    NoteAdd as IconAdd,
+    Done as IconDone,
+    Delete as IconRemove,
+    Clear as IconClear,
+    Edit as IconEdit,
+    ChevronLeft as IconChevronLeft,
+    ChevronRight as IconChevronRight,
+    FirstPage as IconFirstPage,
+    LastPage
+} from '@/icons'
 
 export interface EditableTableProps<T extends object> {
     /**

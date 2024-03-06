@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { FileCopy } from '@/icons'
 import Fab from './fab'
 import FabWrapper from './fab-wrapper'
+import { FileCopy } from '@/icons'
 
 describe('Fab', () => {
     it('should render correctly', () => {

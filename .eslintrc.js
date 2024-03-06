@@ -40,10 +40,18 @@ const rulesEslint = {
     'no-console': ['error', { allow: ['error'] }],
     'prefer-const': ['error', { destructuring: 'all' }],
 
-    '@stylistic/max-len': ['error', { code: 85 }],
     '@stylistic/key-spacing': [
         'error',
         { beforeColon: false, afterColon: true }
+    ],
+    '@stylistic/max-len': [
+        'error',
+        {
+            code: 85,
+            ignoreStrings: true,
+            ignoreRegExpLiterals: true,
+            ignoreTemplateLiterals: true
+        }
     ],
     '@stylistic/padding-line-between-statements': [
         'error',
@@ -99,6 +107,11 @@ const rulesImport = {
                 },
                 {
                     pattern: './styles',
+                    group: 'index',
+                    position: 'after'
+                },
+                {
+                    pattern: '@/icons',
                     group: 'index',
                     position: 'after'
                 },

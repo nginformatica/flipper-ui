@@ -1,13 +1,13 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
 import IconButton from '@/core/inputs/icon-button'
+import { PaginationWrapper } from './styles'
 import {
     FirstPage,
     LastPage,
     KeyboardArrowLeft,
     KeyboardArrowRight
 } from '@/icons'
-import { PaginationWrapper } from './styles'
 
 interface DataTablePaginationActionsProps {
     count: number

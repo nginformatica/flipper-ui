@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ButtonProps } from '@/core/inputs/button'
-import { NoteAdd as IconAdd } from '@/icons'
 import { ButtonAdd } from './styles'
+import { NoteAdd as IconAdd } from '@/icons'
 
 export interface Props extends ButtonProps {
     label?: string

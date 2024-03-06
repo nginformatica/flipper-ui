@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/max-len */
 export { default as Advertise } from './core/data-display/advertise'
 export { default as AutoComplete } from './core/inputs/auto-complete'
 export { default as Avatar } from './core/data-display/avatar'

@@ -2,8 +2,8 @@ import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import { Backup } from '@/icons'
 import Sidebar from '.'
+import { Backup } from '@/icons'
 
 export default {
     title: 'Navigation/Sidebar',

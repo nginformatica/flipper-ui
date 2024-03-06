@@ -4,8 +4,8 @@ import { ThemeProvider } from 'styled-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import ThemeProviderFlipper from '@/core/context/theme-provider'
 import Button from '@/core/inputs/button'
-import { CheckCircleOutline, CancelOutlined } from '@/icons'
 import ValidationDialog, { ValidationStatus } from '.'
+import { CheckCircleOutline, CancelOutlined } from '@/icons'
 import { muiThemeOptions, theme } from '@/theme'
 
 const { action, secondary } = theme.colors

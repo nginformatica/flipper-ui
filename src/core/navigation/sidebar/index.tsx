@@ -5,11 +5,11 @@ import type { DefaultProps } from '../../types'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { Theme } from '@material-ui/core/styles'
 import Button from '@/core/inputs/button'
+import { Action } from './styles'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
 } from '@/icons'
-import { Action } from './styles'
 
 export interface SidebarProps extends DefaultProps {
     open: boolean

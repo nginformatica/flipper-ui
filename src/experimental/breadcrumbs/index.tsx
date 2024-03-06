@@ -1,9 +1,9 @@
 import React from 'react'
 import type { ReactNode } from 'react'
 import { addIndex, map } from 'ramda'
-import { ChevronRight as IconChevronRight } from '@/icons'
 import { Breadcrumb } from '@/index'
 import { LinkStyled, TextTypography } from './styles'
+import { ChevronRight as IconChevronRight } from '@/icons'
 
 const imap = addIndex(map)
 

@@ -23,7 +23,6 @@ import type {
     InputBaseComponentProps,
     TextFieldProps as MuiTextFieldProps
 } from '@material-ui/core'
-import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import IconButton from '../icon-button'
 import {
     CharactersCount,
@@ -31,6 +30,7 @@ import {
     StaticTextFieldWrapper,
     TextFieldWrapper
 } from './styles'
+import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import { theme } from '@/theme'
 
 const { primary } = theme.colors
