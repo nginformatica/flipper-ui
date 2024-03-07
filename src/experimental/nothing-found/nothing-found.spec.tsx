@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import NothingFound from '.'
+import { NothingFound } from '.'
 
 const Default = ({ show = true }: { show?: boolean }) => {
     return <NothingFound show={show} />

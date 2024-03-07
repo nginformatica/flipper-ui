@@ -8,7 +8,7 @@ import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
 import { default as DataTable } from './data-table'
 import { DataTableAction } from './data-table-action'
-import DataTableField from './data-table-field'
+import { DataTableField } from './data-table-field'
 import { RowMode } from './types'
 import {
     Delete as DeleteIcon,

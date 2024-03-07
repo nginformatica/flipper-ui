@@ -11,7 +11,7 @@ export interface Props extends ButtonProps {
     onClick?(): void
 }
 
-const AddButton = (props: Props) => (
+export const AddButton = (props: Props) => (
     <ButtonAdd
         {...props}
         variant='dashed'
