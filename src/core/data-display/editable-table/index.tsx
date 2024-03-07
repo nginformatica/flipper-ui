@@ -103,6 +103,27 @@ export interface EditableTableProps<T extends object> {
 
 export type TSuggestion = { label: string; value: string }
 
+const handlePagination = (
+    paginationInfo?: boolean,
+    noRowsExpand?: boolean,
+    title?: string
+) => {
+    const pagination = !paginationInfo
+        ? { Pagination: () => null }
+        : noRowsExpand && {
+              Pagination: (item: any) => (
+                  <RightPagination data-id='pagination'>
+                      <MTablePagination
+                          {...omit(['classes'], item)}
+                          localization={getLocalization(title).pagination}
+                      />
+                  </RightPagination>
+              )
+          }
+
+    return pagination
+}
+
 const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
     const addButtonColor =
         (props.color !== 'disabled' && props.color) || 'primary'
@@ -140,19 +161,6 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
             <AddRowText> Adicionar {props.title} </AddRowText>
         </AddRowButton>
     )
-
-    const pagination = !props.paginationInfo
-        ? { Pagination: () => null }
-        : props.noRowsExpand && {
-              Pagination: (item: any) => (
-                  <RightPagination data-id='pagination'>
-                      <MTablePagination
-                          {...omit(['classes'], item)}
-                          localization={getLocalization(props.title).pagination}
-                      />
-                  </RightPagination>
-              )
-          }
 
     const toolbar = props.noHeader && { Toolbar: () => null }
 
@@ -298,7 +306,11 @@ const EditableTable = <T extends object>(props: EditableTableProps<T>) => {
                             />
                         )
                     },
-                    ...pagination,
+                    ...handlePagination(
+                        props.paginationInfo,
+                        props.noRowsExpand,
+                        props.title
+                    ),
                     ...toolbar
                 }}
                 localization={getLocalization(props.title)}

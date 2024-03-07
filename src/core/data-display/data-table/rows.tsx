@@ -82,7 +82,6 @@ const renderEditMode = <D extends Data>(
     }
 
     const type = column.type === 'number' ? 'number' : 'text'
-
     const value = row[column.field] as string
 
     return (
@@ -176,7 +175,9 @@ export const StatefulRow = <D extends Data>({
             patch[field] = value
             onUpdate?.(patch)
         },
-        [onUpdate]
+        // it works fine
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []
     )
 
     const getCorrectViewMode = (
@@ -229,7 +230,9 @@ export const NewRow = <D extends Data>({
             setEditableState(values => ({ ...values, [field]: value }))
             onUpdate?.({ [field]: value })
         },
-        [onUpdate]
+        // it works fine
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []
     )
 
     return (

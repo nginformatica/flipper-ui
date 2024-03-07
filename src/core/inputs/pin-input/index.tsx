@@ -43,7 +43,11 @@ export const PinInput = ({
     const changePinFocus = (pinIndex: number) => {
         const ref = inputRefs.current[pinIndex]
 
-        ref.focus()
+        // it needs this if, otherwise doesn't work
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (ref) {
+            ref.focus()
+        }
     }
 
     useEffect(() => {

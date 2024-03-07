@@ -1,10 +1,8 @@
-import { Box, LinearProgress } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import { default as styled } from 'styled-components'
-import Typography from '@/core/data-display/typography'
-import { CheckCircle, Help as HelpIcon } from '@/icons'
 import { theme } from '@/theme'
 
-const { feedback, grays } = theme.colors
+const { feedback } = theme.colors
 
 interface IStepContainerProps {
     padding?: React.CSSProperties['padding']
@@ -22,21 +20,6 @@ interface IContainerProps {
 
 interface IColumnProps {
     justifyContent: React.CSSProperties['justifyContent']
-}
-
-export const PROGRESS_BAR = {
-    barColorPrimary: 'barColorPrimary'
-}
-
-export const TEXT_ALIGN = { textAlign: 'center' } as const
-
-export const ICON_BUTTON = {
-    backgroundColor: 'unset'
-}
-
-export const ACORDION_DETAILS = {
-    display: 'flex',
-    justifyContent: 'space-between'
 }
 
 export const Container = styled.div<IContainerProps>`
@@ -120,71 +103,6 @@ export const BarWrapper = styled(Box)`
     width: 100%;
 
     & .barColorPrimary {
-        background-color: ${theme.colors.feedback.success};
-    }
-`
-
-export const TypographyTitle = styled(Typography)`
-    && {
-        color: ${grays.g1};
-        font-size: 24px;
-        text-align: center;
-    }
-`
-
-export const TypographySubtitle = styled(Typography)`
-    && {
-        color: ${grays.g3};
-        text-align: center;
-    }
-`
-
-export const TypographyProgress = styled(Typography)`
-    && {
-        position: absolute;
-        right: 8;
-    }
-`
-
-export const BottomProgressBar = styled(LinearProgress)`
-    && {
-        height: 16px;
-        background-color: ${grays.g5};
-    }
-`
-
-export const ProgressBar = styled(LinearProgress)`
-    && {
-        border-radius: 10px;
-        height: 16px;
-        background-color: ${grays.g5};
-    }
-`
-
-export const CheckIcon = styled(CheckCircle)<{ percentage: number }>`
-    && {
-        font-size: 40px;
-        color: ${props =>
-            props.percentage === 100 ? feedback.success : grays.g3};
-    }
-`
-
-export const IconHelp = styled(HelpIcon)`
-    && {
-        margin: 0px;
-    }
-`
-
-export const IconCheck = styled(CheckCircle)<{ done: boolean }>`
-    && {
-        font-size: 40px;
-        color: ${props => (props.done ? feedback.success : grays.g3)};
-    }
-`
-
-export const TypographyContainer = styled(Typography)`
-    && {
-        color: ${grays.g2};
-        font-weight: 600;
+        background-color: ${feedback.success};
     }
 `

@@ -1,26 +1,25 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
+import { LinearProgress } from '@material-ui/core'
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import { sprintf } from 'sprintf-js'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
 import {
     BarWrapper,
-    BottomProgressBar,
-    CheckIcon,
     NormalProgressContainer,
-    PROGRESS_BAR,
-    ProgressBar,
     StepCardColumn,
     StepCardRow,
     StepContainer,
-    TEXT_ALIGN,
-    TitleContainer,
-    TypographyProgress,
-    TypographySubtitle,
-    TypographyTitle
+    TitleContainer
 } from './styles'
-import { ExpandMore as ExpandMoreIcon } from '@/icons'
+import {
+    CheckCircle as CheckCircleIcon,
+    ExpandMore as ExpandMoreIcon
+} from '@/icons'
+import { theme } from '@/theme'
+
+const { feedback, grays } = theme.colors
 
 interface IStepCardPanelProps {
     title: string
@@ -39,39 +38,6 @@ interface IStepCardPanelProps {
     fullWidth?: boolean
     padding?: CSSProperties['padding']
 }
-
-const TitleColumn = ({
-    showIcon,
-    percentage,
-    title,
-    titleProps,
-    subTitle
-}: {
-    showIcon: boolean
-    percentage: number
-    title: string
-    titleProps: IStepCardProps['titleProps']
-    subTitle?: string
-}) => (
-    <>
-        {showIcon && (
-            <CheckIcon
-                data-testid='step-card-title-icon'
-                percentage={percentage}
-            />
-        )}
-        <TitleContainer>
-            <TypographyTitle variant='h6' {...titleProps}>
-                {title}
-            </TypographyTitle>
-            {subTitle && (
-                <TypographySubtitle variant='h6' {...titleProps}>
-                    {subTitle}
-                </TypographySubtitle>
-            )}
-        </TitleContainer>
-    </>
-)
 
 export const StepCardPanel = (props: IStepCardPanelProps) => {
     const {
@@ -98,18 +64,46 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 fullWidth={fullWidth}
                 minHeight={expandable ? '100px' : '100%'}>
                 <StepCardColumn justifyContent='start'>
-                    <TitleColumn
-                        showIcon={showIcon}
-                        percentage={percentage}
-                        title={title}
-                        titleProps={titleProps}
-                        subTitle={subTitle}
-                    />
+                    {showIcon && (
+                        <CheckCircleIcon
+                            data-testid='step-card-title-icon'
+                            style={{
+                                fontSize: 40,
+                                color:
+                                    percentage === 100
+                                        ? feedback.success
+                                        : grays.g3
+                            }}
+                        />
+                    )}
+                    <TitleContainer>
+                        <Typography
+                            variant='h6'
+                            style={{
+                                color: grays.g1,
+                                fontSize: 24,
+                                textAlign: 'center'
+                            }}
+                            {...titleProps}>
+                            {title}
+                        </Typography>
+                        {subTitle && (
+                            <Typography
+                                variant='h6'
+                                style={{
+                                    color: grays.g3,
+                                    textAlign: 'center'
+                                }}
+                                {...titleProps}>
+                                {subTitle}
+                            </Typography>
+                        )}
+                    </TitleContainer>
                 </StepCardColumn>
                 <StepCardColumn justifyContent='end'>
                     {expandable ? (
                         <MuiAccordionSummary
-                            style={TEXT_ALIGN}
+                            style={{ textAlign: 'center' }}
                             expandIcon={<ExpandMoreIcon fontSize='large' />}>
                             <Typography variant='h6' {...summaryProps}>
                                 {sprintf(summary, remainingSteps, time)}
@@ -120,15 +114,25 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                             <Typography variant='h6' {...summaryProps}>
                                 {summary}
                             </Typography>
-                            <TypographyProgress variant='subtitle2'>
-                                {`${percentage}%`}
-                            </TypographyProgress>
+                            <Typography
+                                variant='subtitle2'
+                                style={{
+                                    position: 'absolute',
+                                    right: 8
+                                }}>{`${percentage}%`}</Typography>
                             <BarWrapper>
-                                <ProgressBar
+                                <LinearProgress
                                     variant='determinate'
                                     value={percentage}
                                     color='primary'
-                                    classes={PROGRESS_BAR}
+                                    classes={{
+                                        barColorPrimary: 'barColorPrimary'
+                                    }}
+                                    style={{
+                                        borderRadius: 10,
+                                        height: '16px',
+                                        backgroundColor: grays.g5
+                                    }}
                                     {...summaryLinearProgressBarProps}
                                 />
                             </BarWrapper>
@@ -139,11 +143,17 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
             {showBottomPercentage && (
                 <StepCardRow fullWidth={fullWidth} minHeight='15px'>
                     <BarWrapper>
-                        <BottomProgressBar
+                        <LinearProgress
                             variant='determinate'
                             value={percentage}
                             color='primary'
-                            classes={PROGRESS_BAR}
+                            classes={{
+                                barColorPrimary: 'barColorPrimary'
+                            }}
+                            style={{
+                                height: '16px',
+                                backgroundColor: grays.g5
+                            }}
                             {...linearProgressBarProps}
                         />
                     </BarWrapper>
