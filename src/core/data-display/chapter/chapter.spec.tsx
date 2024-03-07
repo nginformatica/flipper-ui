@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Chapter } from '.'
+import Chapter from '.'
 
 describe('Chapter', () => {
     it('should render', () => {

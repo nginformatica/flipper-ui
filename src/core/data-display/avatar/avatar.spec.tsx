@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Typography } from '@/core/data-display/typography'
+import Typography from '@/core/data-display/typography'
 import { Avatar } from '.'
 
 describe('Avatar', () => {

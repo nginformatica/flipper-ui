@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     }
 })
 
-export const Chip = ({
+const Chip = ({
     square,
     padding,
     margin,

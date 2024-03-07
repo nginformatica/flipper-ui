@@ -1,5 +1,5 @@
-import type { MouseEvent } from 'react'
 import React, { Fragment } from 'react'
+import type { MouseEvent } from 'react'
 import {
     ListItem as MuiListItem,
     ListItemAvatar as MuiListItemAvatar,

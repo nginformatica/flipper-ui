@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Typography } from '@/index'
-import { Card } from '.'
+import Typography from '@/core/data-display/typography'
+import Card from '.'
 
 export default {
     title: 'Experimental/Card',

@@ -4,7 +4,7 @@ import TableBody from './table-body'
 import TableCell from './table-cell'
 import TableHead from './table-head'
 import TableRow from './table-row'
-import { Table } from '.'
+import Table from '.'
 
 export default {
     title: 'DataDisplay/Table',

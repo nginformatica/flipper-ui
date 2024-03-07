@@ -1,20 +1,11 @@
-import type { ReactNode } from 'react'
 import React from 'react'
+import type { ReactNode } from 'react'
 import { addIndex, map } from 'ramda'
-import { default as styled } from 'styled-components'
+import { Breadcrumb } from '@/index'
+import { LinkStyled, TextTypography } from './styles'
 import { ChevronRight as IconChevronRight } from '@/icons'
-import { Typography, Breadcrumb } from '@/index'
-import { theme } from '@/theme'
 
 const imap = addIndex(map)
-
-const LinkStyled = styled.a({
-    textDecoration: 'none',
-    color: theme.colors.primary.main,
-    ':hover': {
-        textDecoration: 'underline'
-    }
-})
 
 const INDEX_CORRECTION = 1
 const START = 1
@@ -42,7 +33,7 @@ const defaultLinkWrapper = (link: string, label: string) => (
  * Render breadcrumbs for the provided pathname or the current
  * `window.location.pathname`.
  */
-export const Breadcrumbs = ({
+const Breadcrumbs = ({
     pathname,
     homeId,
     pathMapping,
@@ -61,9 +52,9 @@ export const Breadcrumbs = ({
             allChunks.slice(START, chunkIndex + INDEX_CORRECTION).join('/')
 
         const text = (
-            <Typography key={link} color='inherit' style={{ display: 'flex' }}>
+            <TextTypography key={link} color='inherit'>
                 {validChunkWord}
-            </Typography>
+            </TextTypography>
         )
 
         const isLastChunk = chunkIndex === lastChunkIndex

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { InputAdornment } from '.'
+import InputAdornment from '.'
 
 export default {
     title: 'Inputs/InputAdornment',

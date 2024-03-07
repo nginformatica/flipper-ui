@@ -9,8 +9,8 @@ import type {
 import { DataTableAction } from '@/core/data-display/data-table'
 import { DataTable } from '@/core/data-display/data-table/data-table'
 import { RowMode } from '@/core/data-display/data-table/types'
-import { Typography } from '@/core/data-display/typography'
-import { Button } from '@/core/inputs/button'
+import Typography from '@/core/data-display/typography'
+import Button from '@/core/inputs/button'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,

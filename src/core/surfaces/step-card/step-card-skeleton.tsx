@@ -34,23 +34,6 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
         fullWidth
     } = props
 
-    const TextSkeleton = () => (
-        <Skeleton variant='text' style={{ minWidth: '400px' }} height={40} />
-    )
-
-    const NormalProgress = () => (
-        <NormalProgressContainer>
-            <Skeleton
-                variant='text'
-                height={40}
-                style={{ minWidth: '100px', margin: '4px 0px' }}
-            />
-            <Box style={{ width: '100%' }}>
-                <Skeleton variant='text' />
-            </Box>
-        </NormalProgressContainer>
-    )
-
     return (
         <Container
             data-testid='skeleton-container'
@@ -70,12 +53,42 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                                 />
                             )}
                             <TitleContainer>
-                                <TextSkeleton />
-                                {subTitleSkeleton && <TextSkeleton />}
+                                <Skeleton
+                                    variant='text'
+                                    style={{ minWidth: '400px' }}
+                                    height={40}
+                                />
+                                {subTitleSkeleton && (
+                                    <Skeleton
+                                        variant='text'
+                                        style={{ minWidth: '400px' }}
+                                        height={40}
+                                    />
+                                )}
                             </TitleContainer>
                         </StepCardColumn>
                         <StepCardColumn justifyContent='end'>
-                            {expandable ? <TextSkeleton /> : <NormalProgress />}
+                            {expandable ? (
+                                <Skeleton
+                                    variant='text'
+                                    style={{ minWidth: '400px' }}
+                                    height={40}
+                                />
+                            ) : (
+                                <NormalProgressContainer>
+                                    <Skeleton
+                                        variant='text'
+                                        height={40}
+                                        style={{
+                                            minWidth: '100px',
+                                            margin: '4px 0px'
+                                        }}
+                                    />
+                                    <Box style={{ width: '100%' }}>
+                                        <Skeleton variant='text' />
+                                    </Box>
+                                </NormalProgressContainer>
+                            )}
                         </StepCardColumn>
                     </StepCardRow>
                     {showBottomPercentage && (

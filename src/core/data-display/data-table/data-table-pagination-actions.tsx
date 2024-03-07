@@ -1,6 +1,7 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
-import { IconButton } from '@/core/inputs/icon-button'
+import IconButton from '@/core/inputs/icon-button'
+import { PaginationWrapper } from './styles'
 import {
     FirstPage,
     LastPage,
@@ -20,8 +21,6 @@ interface DataTablePaginationActionsBuilder {
     showLastButton?: boolean
     clickable?: boolean
 }
-
-const PAGINATION_WRAPPER_STYLE = { display: 'flex', marginLeft: '12px' }
 
 export const makeDataTablePaginationActions =
     ({
@@ -62,7 +61,7 @@ export const makeDataTablePaginationActions =
         }
 
         return (
-            <div style={PAGINATION_WRAPPER_STYLE}>
+            <PaginationWrapper>
                 {showFirstButton && (
                     <IconButton
                         disabled={page === 0 || clickable}
@@ -91,6 +90,6 @@ export const makeDataTablePaginationActions =
                         <LastPage />
                     </IconButton>
                 )}
-            </div>
+            </PaginationWrapper>
         )
     }

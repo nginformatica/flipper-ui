@@ -19,7 +19,7 @@ export interface ButtonProps extends DefaultProps {
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
-export const Button = ({
+const Button = ({
     children,
     margin,
     padding,

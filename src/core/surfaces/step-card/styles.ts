@@ -2,6 +2,8 @@ import { Box } from '@material-ui/core'
 import { default as styled } from 'styled-components'
 import { theme } from '@/theme'
 
+const { feedback } = theme.colors
+
 interface IStepContainerProps {
     padding?: React.CSSProperties['padding']
 }
@@ -101,6 +103,6 @@ export const BarWrapper = styled(Box)`
     width: 100%;
 
     & .barColorPrimary {
-        background-color: ${theme.colors.feedback.success};
+        background-color: ${feedback.success};
     }
 `

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Panel } from '.'
+import Panel from '.'
 
 export default {
     title: 'Experimental/Panel',

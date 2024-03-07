@@ -1,7 +1,6 @@
 import React from 'react'
-import { default as styled } from 'styled-components'
 import type { ButtonProps } from '@/core/inputs/button'
-import { Button } from '@/core/inputs/button'
+import { ButtonAdd } from './styles'
 import { NoteAdd as IconAdd } from '@/icons'
 
 export interface Props extends ButtonProps {
@@ -12,15 +11,8 @@ export interface Props extends ButtonProps {
     onClick?(): void
 }
 
-const ButtonStyled = styled(Button)`
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-`
-
 export const AddButton = (props: Props) => (
-    <ButtonStyled
+    <ButtonAdd
         {...props}
         variant='dashed'
         color='primary'
@@ -31,7 +23,7 @@ export const AddButton = (props: Props) => (
         onClick={props.onClick}>
         <IconAdd />
         {props.label}
-    </ButtonStyled>
+    </ButtonAdd>
 )
 
 export default AddButton

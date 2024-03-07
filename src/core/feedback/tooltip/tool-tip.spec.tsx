@@ -3,7 +3,7 @@ import { act } from 'react-dom/test-utils'
 import { Button } from '@material-ui/core'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { Tooltip } from '.'
+import Tooltip from '.'
 
 describe('Tooltip', () => {
     it('should render a Tooltip', async () => {

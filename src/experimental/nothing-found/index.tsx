@@ -1,6 +1,6 @@
 import React from 'react'
 import type { TypographyProps } from '@material-ui/core'
-import { Typography } from '@/index'
+import { TextTypography } from './styles'
 
 export interface IProps extends TypographyProps {
     searchText?: string
@@ -15,24 +15,21 @@ export const NothingFound = (props: IProps) => {
     const label = buttonLabel || 'Adicionar'
     const message = readonly
         ? 'Não há nada aqui.'
-        : 'Não há nada aqui. Clique em "' + label + '" para cadastrar um item.'
+        : `Não há nada aqui. Clique em "${label}" para cadastrar um item.`
 
     const { customText = message, searchText = '', show, ...otherProps } = rest
 
     return show ? (
-        <Typography
+        <TextTypography
             align='center'
             variant='h5'
             color='textSecondary'
             padding='48px 0'
-            style={{ flex: 1 }}
             {...otherProps}>
             {searchText !== ''
-                ? 'Sua pesquisa "' +
-                  searchText +
-                  '" não retornou nenhum resultado.'
+                ? `Sua pesquisa "${searchText}" não retornou nenhum resultado.`
                 : customText}
-        </Typography>
+        </TextTypography>
     ) : null
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { Meta } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
-import { Grow } from '.'
+import Button from '@/core/inputs/button'
+import Grow from '.'
 
 export default {
     title: 'Feedback/Grow',
@@ -17,7 +17,12 @@ export const Default = () => {
 
     function handleClick() {
         setOpen(!open)
-        label === 'Close' ? setLabel('Open') : setLabel('Close')
+
+        if (label === 'Close') {
+            setLabel('Open')
+        } else {
+            setLabel('Close')
+        }
     }
 
     return (

@@ -6,9 +6,15 @@ import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogContentText from '@material-ui/core/DialogContentText'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import { makeStyles } from '@material-ui/core/styles'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import type { DialogProps as MuiDialogProps } from '@material-ui/core'
+import {
+    PaperContent,
+    Snippet,
+    SnippetContent,
+    TitleAction,
+    TitleWrapper
+} from './styles'
 
 export interface DialogProps
     extends DefaultProps,
@@ -36,26 +42,6 @@ export interface DialogProps
     'aria-title'?: string
     onClose?: (event: Event) => void
 }
-
-const TitleWrapper = styled.div`
-    display: flex;
-`
-
-const TitleAction = styled.div`
-    padding: 16px 24px;
-    align-items: center;
-    display: flex;
-`
-
-const Snippet = styled.div`
-    display: flex;
-`
-
-const SnippetContent = styled.div`
-    position: relative;
-    height: inherit;
-    display: flex;
-`
 
 const useStyles = makeStyles({
     root: {
@@ -155,7 +141,7 @@ export const Dialog = ({
     const renderSnippet = () => {
         return (
             <Snippet style={snippetStyle}>
-                <div>{renderPaperContent()}</div>
+                <PaperContent>{renderPaperContent()}</PaperContent>
                 <SnippetContent style={snippetContentStyle}>
                     {snippet}
                 </SnippetContent>
@@ -163,12 +149,17 @@ export const Dialog = ({
         )
     }
 
-    const scrollMode =
-        scroll === 'unset-body'
-            ? 'body'
-            : scroll === 'unset-paper'
-              ? 'paper'
-              : scroll
+    const scrollMode = () => {
+        if (scroll === 'unset-body') {
+            return 'body'
+        }
+
+        if (scroll === 'unset-paper') {
+            return 'paper'
+        }
+
+        return scroll
+    }
 
     return (
         <MuiDialog
@@ -177,7 +168,7 @@ export const Dialog = ({
             fullScreen={fullScreen}
             fullWidth={fullWidth}
             maxWidth={maxWidth}
-            scroll={scrollMode}
+            scroll={scrollMode()}
             PaperProps={{
                 ...(ariaTitle ? { title: ariaTitle } : {}),
                 classes:

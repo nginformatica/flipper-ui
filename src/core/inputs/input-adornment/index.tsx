@@ -7,10 +7,7 @@ export interface InputAdornmentProps extends DefaultProps, MuiInputProps {
     position: 'start' | 'end'
 }
 
-export const InputAdornment = ({
-    children,
-    ...otherProps
-}: InputAdornmentProps) => (
+const InputAdornment = ({ children, ...otherProps }: InputAdornmentProps) => (
     <MuiInputAdornment {...otherProps}>{children}</MuiInputAdornment>
 )
 

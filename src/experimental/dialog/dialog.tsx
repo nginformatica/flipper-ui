@@ -38,7 +38,7 @@ const themeDialog = {
     }
 }
 
-export const DialogV2 = (props: IProps) => {
+const DialogV2 = (props: IProps) => {
     const {
         open,
         title,

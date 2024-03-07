@@ -1,27 +1,13 @@
 import React, { useState } from 'react'
 import { Button } from '@material-ui/core'
-import { default as styled } from 'styled-components'
 import type { Meta } from '@storybook/react'
 import { PinInput } from '.'
+import { ButtonContainer, ValidateContainer } from './styles'
 
 export default {
     title: 'Inputs/PinInput',
     component: PinInput
 } as Meta<typeof PinInput>
-
-const ValidateContainer = styled.div`
-    display: flex;
-    width: auto;
-    justify-content: center;
-    margin-bottom: 2rem;
-`
-
-const ButtonContainer = styled.div`
-    display: flex;
-    width: auto;
-    justify-content: center;
-    margin-top: 3rem;
-`
 
 const PIN_LENGTH = 6
 
@@ -53,9 +39,7 @@ export const Default = () => {
 
     return (
         <>
-            <ValidateContainer>
-                <span>Valid pin: 123123</span>
-            </ValidateContainer>
+            <ValidateContainer>Valid pin: 123123</ValidateContainer>
             <PinInput
                 pin={pin}
                 setPin={setPin}
@@ -106,9 +90,7 @@ export const Large = () => {
 
     return (
         <>
-            <ValidateContainer>
-                <span>Valid pin: 123123</span>
-            </ValidateContainer>
+            <ValidateContainer>Valid pin: 123123</ValidateContainer>
             <PinInput
                 pin={pin}
                 setPin={setPin}

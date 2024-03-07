@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { InputBase } from '.'
+import InputBase from '.'
 
 describe('InputBase', () => {
     it('should render', () => {

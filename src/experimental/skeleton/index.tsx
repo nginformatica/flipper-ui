@@ -6,7 +6,7 @@ import { theme } from '@/theme'
 
 const { grays } = theme.colors
 
-export const Skeleton = (props: SkeletonProps) => (
+const Skeleton = (props: SkeletonProps) => (
     <SkeletonLoading
         containerTestId='skeleton-container'
         baseColor={grays.g7}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { act, render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { Pagination } from '.'
+import Pagination from '.'
 
 describe('Pagination', () => {
     it('should call navigation with correct values', async () => {

@@ -7,9 +7,10 @@ export const getLocalization = (title = '') => ({
         editRow: {
             saveTooltip: 'Salvar',
             cancelTooltip: 'Cancelar',
-            deleteText: `Você tem certeza que deseja excluir esse ${
-                title ?? 'item'
-            }?`
+            deleteText:
+                title !== ''
+                    ? `Você tem certeza que deseja excluir esse ${title}?`
+                    : `Você tem certeza que deseja excluir esse item?`
         },
         addTooltip: `Adicionar ${title}`,
         deleteTooltip: `Remover ${title}`,

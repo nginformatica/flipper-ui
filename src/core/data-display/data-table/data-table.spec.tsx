@@ -15,7 +15,9 @@ type Data = {
     quantity: number
     date: Date
 }
+
 const date = () => new Date()
+
 const data = [
     {
         id: 1,

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import type { ISidebarOption } from '.'
-import { Sidebar } from '.'
+import Sidebar from '.'
 
 const options: ISidebarOption[] = [
     {
@@ -16,6 +16,21 @@ const options: ISidebarOption[] = [
         label: 'Option-2',
         name: 'option2',
         route: '/option2'
+    }
+]
+
+const extraOptions: ISidebarOption[] = [
+    {
+        icon: <svg />,
+        label: 'Extra Option 1',
+        name: 'extraOption1',
+        route: '/extraOption1'
+    },
+    {
+        icon: <svg />,
+        label: 'Extra Option 2',
+        name: 'extraOption2',
+        route: '/extraOption2'
     }
 ]
 
@@ -45,21 +60,6 @@ describe('Sidebar', () => {
     })
 
     it('renders extraOptions when provided', () => {
-        const extraOptions: ISidebarOption[] = [
-            {
-                icon: <svg />,
-                label: 'Extra Option 1',
-                name: 'extraOption1',
-                route: '/extraOption1'
-            },
-            {
-                icon: <svg />,
-                label: 'Extra Option 2',
-                name: 'extraOption2',
-                route: '/extraOption2'
-            }
-        ]
-
         render(<Sidebar options={options} extraOptions={extraOptions} />)
         extraOptions.forEach(option => {
             expect(screen.getByTitle(option.label)).toBeDefined()

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Typography } from '.'
+import Typography from '.'
 
 export default {
     title: 'DataDisplay/Typography',

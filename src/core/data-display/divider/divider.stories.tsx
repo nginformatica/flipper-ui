@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta } from '@storybook/react'
-import { List } from '@/core/data-display/list'
+import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
 import { Divider } from '.'
 

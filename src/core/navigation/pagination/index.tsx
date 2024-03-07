@@ -1,8 +1,8 @@
 import React from 'react'
 import { inc, times } from 'ramda'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
+import { Content } from './styles'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
@@ -16,15 +16,7 @@ export interface PaginationProps extends DefaultProps {
     onNavigate: (page: number) => void
 }
 
-const Content = styled.div`
-    display: flex;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
-    justify-content: center;
-    margin: 0.75em;
-`
-
-export const Pagination = (props: PaginationProps) => {
+const Pagination = (props: PaginationProps) => {
     const {
         active,
         style,

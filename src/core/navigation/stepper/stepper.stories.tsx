@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
+import Stepper from '.'
 import { Delete } from '@/icons'
-import { Stepper } from '.'
 
 export default {
     title: 'Navigation/Stepper',

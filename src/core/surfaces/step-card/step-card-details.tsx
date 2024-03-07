@@ -2,16 +2,13 @@ import React from 'react'
 import { List } from '@material-ui/core'
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
 import type { IStepCardProps } from '.'
-import { Typography } from '@/core/data-display/typography'
-import { IconButton } from '@/core/inputs/icon-button'
-import { CheckCircle as CheckCircleIcon, Help as HelpIcon } from '@/icons'
+import Typography from '@/core/data-display/typography'
+import IconButton from '@/core/inputs/icon-button'
 import { ListItemContainer, StepCardColumn } from './styles'
+import { CheckCircle as CheckCircleIcon, Help as HelpIcon } from '@/icons'
 import { theme } from '@/theme'
 
 const { feedback, grays } = theme.colors
-const DONE_COLOR = feedback.success
-const UNDONE_COLOR = grays.g3
-const UNDONE_FONT_COLOR = grays.g2
 
 interface IStepCardDetailsProps {
     steps: IStepCardProps['steps']
@@ -20,53 +17,65 @@ interface IStepCardDetailsProps {
     expansionPanelDetailsProps?: IStepCardProps['expansionPanelDetailsProps']
 }
 
+const StepsList = ({
+    steps,
+    onStepUrlClick
+}: {
+    steps:
+        | {
+              title: string
+              done: boolean
+              url?: string | undefined
+          }[]
+        | undefined
+    onStepUrlClick: ((url: string) => void) | undefined
+}) => (
+    <List>
+        {(steps || []).map((step, index) => {
+            const handleOnClickStepUrl = () => {
+                if (onStepUrlClick && step.url) {
+                    onStepUrlClick(step.url)
+                }
+            }
+
+            return (
+                <ListItemContainer key={index}>
+                    <CheckCircleIcon
+                        style={{
+                            color: step.done ? feedback.success : grays.g3
+                        }}
+                    />
+                    <Typography
+                        variant='body1'
+                        style={{
+                            color: grays.g2,
+                            fontWeight: 600
+                        }}>
+                        {step.title}
+                    </Typography>
+                    {step.url && onStepUrlClick && (
+                        <>
+                            <IconButton
+                                data-testid={`step-card-button-${index}`}
+                                style={{
+                                    backgroundColor: 'unset'
+                                }}
+                                onClick={handleOnClickStepUrl}>
+                                <HelpIcon
+                                    fontSize='small'
+                                    style={{ margin: '0px' }}
+                                />
+                            </IconButton>
+                        </>
+                    )}
+                </ListItemContainer>
+            )
+        })}
+    </List>
+)
+
 export const StepCardDetails = (props: IStepCardDetailsProps) => {
     const { steps, onStepUrlClick, image, expansionPanelDetailsProps } = props
-
-    const StepsList = () => (
-        <List>
-            {(steps || []).map((step, index) => {
-                const handleOnClickStepUrl = () => {
-                    if (onStepUrlClick && step.url) {
-                        onStepUrlClick(step.url)
-                    }
-                }
-
-                return (
-                    <ListItemContainer key={index}>
-                        <CheckCircleIcon
-                            style={{
-                                color: step.done ? DONE_COLOR : UNDONE_COLOR
-                            }}
-                        />
-                        <Typography
-                            variant='body1'
-                            style={{
-                                color: UNDONE_FONT_COLOR,
-                                fontWeight: 600
-                            }}>
-                            {step.title}
-                        </Typography>
-                        {step.url && onStepUrlClick && (
-                            <>
-                                <IconButton
-                                    data-testid={`step-card-button-${index}`}
-                                    style={{
-                                        backgroundColor: 'unset'
-                                    }}
-                                    onClick={handleOnClickStepUrl}>
-                                    <HelpIcon
-                                        fontSize='small'
-                                        style={{ margin: '0px' }}
-                                    />
-                                </IconButton>
-                            </>
-                        )}
-                    </ListItemContainer>
-                )
-            })}
-        </List>
-    )
 
     return (
         <MuiAccordionDetails
@@ -76,7 +85,7 @@ export const StepCardDetails = (props: IStepCardDetailsProps) => {
             }}
             {...expansionPanelDetailsProps}>
             <StepCardColumn justifyContent='start'>
-                <StepsList />
+                <StepsList steps={steps} onStepUrlClick={onStepUrlClick} />
             </StepCardColumn>
             {image && (
                 <StepCardColumn justifyContent='end'>

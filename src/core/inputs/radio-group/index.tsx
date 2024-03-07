@@ -26,7 +26,7 @@ export interface IOption {
     disabled?: boolean
 }
 
-export const RadioGroup = ({
+const RadioGroup = ({
     row,
     options = [],
     className,

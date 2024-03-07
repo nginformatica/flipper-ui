@@ -2,9 +2,14 @@ import React, { useEffect, useState, useCallback } from 'react'
 import type { ReactElement } from 'react'
 import { Skeleton } from '@mui/material'
 import { times, map } from 'ramda'
-import { default as styled } from 'styled-components'
-import { Sidebar as FlipperSidebar, Tooltip, List, ListItem } from '@/index'
-import { theme } from '@/theme'
+import { Tooltip, List } from '@/index'
+import {
+    Link,
+    MenuItem,
+    PaperBar,
+    SkeletonWrapper,
+    StyledFlipperSidebar
+} from './styles'
 
 export interface ISidebarOption {
     icon: ReactElement
@@ -21,46 +26,19 @@ export interface IProps {
     extraOptions?: ISidebarOption[]
 }
 
-const StyledFlipperSidebar = styled(FlipperSidebar)`
-    & > div {
-        border-right: 1px solid ${theme.colors.grays.g6};
-    }
-`
-
-const MenuItem = styled(ListItem)`
-    &&& {
-        & div {
-            padding: 0;
-        }
-    }
-`
-
-const Link = styled.a`
-    color: ${theme.colors.primary.main};
-    text-decoration: none;
-`
-
-const PaperBar = styled.div`
-    flex-direction: column;
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
-    padding-bottom: 16px;
-`
+const renderSkeleton = (index: number) => (
+    <SkeletonWrapper
+        className='skeleton-container'
+        role='skeleton'
+        key={`sidebar-skeleton-${index}`}>
+        <Skeleton width={36} height={36} />
+    </SkeletonWrapper>
+)
 
 const LABEL_TIMEOUT = 300
 
-const renderSkeleton = (index: number) => (
-    <div
-        className='skeleton-container'
-        role='skeleton'
-        key={`sidebar-skeleton-${index}`}
-        style={{ padding: '2px 10px' }}>
-        <Skeleton width={36} height={36} />
-    </div>
-)
-
 const SIDEBAR_SKELETON_SIZE = 6
+
 const sidebarSkeleton = times(renderSkeleton, SIDEBAR_SKELETON_SIZE)
 
 // create a function that extract path from location.pathname
@@ -70,6 +48,7 @@ const extract = (location: string): string => {
 
     return '/' + location.slice(lastSlashIndex + 1)
 }
+
 const useSidebar = () => {
     const [expanded, setExpanded] = useState(false)
     const route = extract(location.pathname)
@@ -81,17 +60,15 @@ const useSidebar = () => {
     return { toggle, expanded, route }
 }
 
-const emptyList: ISidebarOption[] = []
-
 /**
  * Sidebar component V2
  */
-export const Sidebar = (props: IProps) => {
+const Sidebar = (props: IProps) => {
     const {
         options,
         loading,
         handleGoTo,
-        extraOptions = emptyList,
+        extraOptions = [],
         top,
         ...otherProps
     } = props

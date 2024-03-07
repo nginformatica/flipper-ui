@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
 import { Zoom } from '.'
 
 export default {
@@ -14,7 +14,12 @@ export const Default = () => {
 
     function handleClick() {
         setOpen(!open)
-        btnLabel === 'Close' ? setBtnLabel('Open') : setBtnLabel('Close')
+
+        if (btnLabel === 'Close') {
+            setBtnLabel('Open')
+        } else {
+            setBtnLabel('Close')
+        }
     }
 
     return (

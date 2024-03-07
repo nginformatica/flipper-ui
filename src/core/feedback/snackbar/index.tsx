@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-export const SnackBar = (props: SnackBarProps) => {
+const SnackBar = (props: SnackBarProps) => {
     const {
         id,
         action,

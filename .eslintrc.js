@@ -2,14 +2,13 @@ const rulesReact = {
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/no-unescaped-entities': 'off',
-    'react-perf/jsx-no-new-function-as-prop': 'off',
-
+    
     'react/jsx-key': 'warn',
     'react/jsx-pascal-case': 'warn',
     'react/self-closing-comp': 'warn',
-    'react/no-unstable-nested-components': 'warn',
-    'react-perf/jsx-no-new-array-as-prop': 'warn',
-    'react-perf/jsx-no-new-object-as-prop': 'warn',
+    // it should be 'warn' but
+    // material-table needs to render nested components
+    'react/no-unstable-nested-components': 'off',
     'react/jsx-sort-props': [
         'warn',
         {
@@ -43,10 +42,18 @@ const rulesEslint = {
     'no-console': ['error', { allow: ['error'] }],
     'prefer-const': ['error', { destructuring: 'all' }],
 
-    '@stylistic/max-len': ['error', { code: 85 }],
     '@stylistic/key-spacing': [
         'error',
         { beforeColon: false, afterColon: true }
+    ],
+    '@stylistic/max-len': [
+        'error',
+        {
+            code: 85,
+            ignoreStrings: true,
+            ignoreRegExpLiterals: true,
+            ignoreTemplateLiterals: true
+        }
     ],
     '@stylistic/padding-line-between-statements': [
         'error',
@@ -102,6 +109,11 @@ const rulesImport = {
                 },
                 {
                     pattern: './styles',
+                    group: 'index',
+                    position: 'after'
+                },
+                {
+                    pattern: '@/icons',
                     group: 'index',
                     position: 'after'
                 },
@@ -187,7 +199,6 @@ module.exports = {
     },
     plugins: [
         'react-hooks',
-        'react-perf',
         '@typescript-eslint',
         'import',
         '@stylistic'

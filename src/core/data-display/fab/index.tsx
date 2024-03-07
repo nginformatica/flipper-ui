@@ -9,7 +9,7 @@ export interface FabProps extends DefaultProps, MuiFabProps {
     children: ReactElement<Record<string, unknown>>
 }
 
-export const Fab = ({
+const Fab = ({
     children,
     margin,
     padding,

@@ -3,7 +3,7 @@ import MuiTypography from '@material-ui/core/Typography'
 import type { DefaultProps } from '../../types'
 import type { TypographyProps } from '@material-ui/core/Typography'
 
-export const Typography = ({
+const Typography = ({
     children,
     margin,
     padding,

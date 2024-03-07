@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
+import IconButton from '.'
 import { Add as IconAdd } from '@/icons'
-import { IconButton } from '.'
 
 export default {
     title: 'Inputs/IconButton',

@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
+import Sidebar from '.'
 import { Home, Computer, Edit } from '@/icons'
-import { Sidebar } from '.'
 
 export default {
     title: 'Experimental/Sidebar',

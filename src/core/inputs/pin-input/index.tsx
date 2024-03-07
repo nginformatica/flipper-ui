@@ -6,7 +6,7 @@ import type {
     KeyboardEvent
 } from 'react'
 import { TextField } from '@material-ui/core'
-import { default as styled } from 'styled-components'
+import { Container } from './styles'
 
 export interface PinInputGridProps {
     pin: Array<number | undefined>
@@ -20,12 +20,6 @@ export interface PinInputGridProps {
     inputProps?: CSSProperties
     variant?: 'outlined' | 'standard'
 }
-
-const Container = styled.div`
-    display: flex;
-    width: auto;
-    justify-content: center;
-`
 
 const PIN_MIN_VALUE = 0
 const PIN_MAX_VALUE = 9
@@ -49,6 +43,8 @@ export const PinInput = ({
     const changePinFocus = (pinIndex: number) => {
         const ref = inputRefs.current[pinIndex]
 
+        // it needs this if, otherwise doesn't work
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (ref) {
             ref.focus()
         }
@@ -64,7 +60,7 @@ export const PinInput = ({
         const intValues: number[] = []
 
         for (const value of splitValues) {
-            intValues.push(parseInt(value))
+            intValues.push(parseInt(value, 10))
         }
         setPin(intValues)
         changePinFocus(intValues.length - 1)

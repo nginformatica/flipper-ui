@@ -1,10 +1,8 @@
 import React from 'react'
 import type { FC, ReactNode } from 'react'
-import { default as styled } from 'styled-components'
-import { Typography } from '@/core/data-display/typography'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
 import { Actions } from '@/experimental/actions'
-import { Dialog } from '../dialog'
+import { DialogTypography, MuiDialog, ValidationWrapper } from './styles'
 
 export interface IValidateProps {
     open: boolean
@@ -52,25 +50,6 @@ export enum ValidationStatus {
     Success = 'Success',
     Error = 'Error'
 }
-
-const MuiDialog = styled(Dialog)`
-    div > div > h2 {
-        margin-top: 20px;
-    }
-`
-
-const DialogTypography = styled(Typography)`
-    && {
-        font-size: 16px;
-    }
-`
-
-const ValidationWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 15px 0;
-    gap: 15px;
-`
 
 const ValidationDialog: FC<IValidateProps> = ({
     open,

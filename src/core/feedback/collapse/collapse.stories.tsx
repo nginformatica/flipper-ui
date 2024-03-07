@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
 import { Collapse } from '.'
 
 export default {
@@ -16,7 +16,12 @@ export const Default = () => {
 
     function handleClick() {
         setOpen(!open)
-        !open ? setButtonLabel('Close') : setButtonLabel('Open')
+
+        if (!open) {
+            setButtonLabel('Close')
+        } else {
+            setButtonLabel('Open')
+        }
     }
 
     return (

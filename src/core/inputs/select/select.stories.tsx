@@ -1,8 +1,8 @@
-import type { ChangeEvent } from 'react'
 import React, { useState } from 'react'
+import type { ChangeEvent } from 'react'
 import type { Meta } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import { Select } from '.'
+import Select from '.'
 
 export default {
     title: 'Inputs/Select',

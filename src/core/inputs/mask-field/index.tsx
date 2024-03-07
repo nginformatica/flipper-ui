@@ -16,7 +16,7 @@ export interface MaskFieldProps extends NumberFormatProps {
     customInput?: ComponentType<TextFieldProps>
 }
 
-export const MaskField = (props: MaskFieldProps) => {
+const MaskField = (props: MaskFieldProps) => {
     const { customInput, ...otherProps } = props
 
     return (

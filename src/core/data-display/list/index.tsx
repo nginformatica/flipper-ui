@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-export const List = ({
+const List = ({
     title,
     padding,
     margin,

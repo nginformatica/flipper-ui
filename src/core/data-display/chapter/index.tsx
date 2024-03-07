@@ -1,12 +1,9 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import type { TypographyProps } from '@material-ui/core/Typography'
-import { Typography } from '@/core/data-display/typography'
-import { theme } from '@/theme'
-
-const { grays } = theme.colors
+import Typography from '@/core/data-display/typography'
+import { Container, StyledLine } from './styles'
 
 export interface LineProps extends DefaultProps {
     /**
@@ -32,28 +29,7 @@ export interface LineProps extends DefaultProps {
     'data-testid'?: string
 }
 
-const StyledLine = styled.div<LineProps>`
-    height: 1px;
-    flex: 1;
-    min-height: 0.75px;
-    max-height: 3px;
-    align-self: center;
-    background-color: ${props => (props.primary ? grays.g4 : grays.g6)};
-`
-
-const Container = styled.div`
-    display: flex;
-
-    & div:first-child {
-        margin-right: 10px;
-    }
-
-    & div:last-child {
-        margin-left: 10px;
-    }
-`
-
-export const Chapter = ({
+const Chapter = ({
     padding,
     margin,
     style,
@@ -63,17 +39,19 @@ export const Chapter = ({
     primary,
     ...otherProps
 }: LineProps) => {
-    const Line = (props: LineProps) => (
-        <StyledLine {...props} style={{ padding, margin, ...style }} />
-    )
-
     return (
         <Container {...otherProps}>
-            <Line primary={primary} />
+            <StyledLine
+                primary={primary}
+                style={{ padding, margin, ...style }}
+            />
             <Typography variant={variant} style={{ ...childrenStyle }}>
                 {children}
             </Typography>
-            <Line primary={primary} />
+            <StyledLine
+                primary={primary}
+                style={{ padding, margin, ...style }}
+            />
         </Container>
     )
 }

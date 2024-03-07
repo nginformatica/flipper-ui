@@ -1,4 +1,10 @@
-import React, { Fragment, useState, useRef, useEffect } from 'react'
+import React, {
+    Fragment,
+    useState,
+    useRef,
+    useEffect,
+    useCallback
+} from 'react'
 import type {
     ReactNode,
     ChangeEvent,
@@ -81,7 +87,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
             const current = inputRef.current
 
             if (current) {
-                current!.focus()
+                current.focus()
 
                 if (props.openOnFocus) {
                     setOpen(true)
@@ -100,7 +106,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
                 }
             }, props.focusDelay)
         }
-    }, [])
+    }, [props.autoFocus, props.focusDelay, props.openOnFocus])
 
     const inputValue =
         typeof props.value === 'object' ? props.value.label : props.value || ''
@@ -114,31 +120,37 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         props.onChange(item)
     }
 
-    const getSuggestions = (value: string = inputValue): TSelected[] => {
-        if (props.openOnFocus && !value) {
-            return props.suggestions
-        }
-
-        const items = value && value.length ? props.suggestions : []
-
-        return items.filter(item => {
-            if (!item.subheader) {
-                return props.caseSensitive
-                    ? removeAccents(item.label).includes(removeAccents(value))
-                    : removeAccents(item.label)
-                          .toLocaleLowerCase()
-                          .includes(removeAccents(value).toLocaleLowerCase())
+    const getSuggestions = useCallback(
+        (value: string = inputValue): TSelected[] => {
+            if (props.openOnFocus && !value) {
+                return props.suggestions
             }
 
-            return true
-        })
-    }
+            const items = value.length ? props.suggestions : []
+
+            return items.filter(item => {
+                if (!item.subheader) {
+                    return props.caseSensitive
+                        ? removeAccents(item.label).includes(
+                              removeAccents(value)
+                          )
+                        : removeAccents(item.label)
+                              .toLocaleLowerCase()
+                              .includes(
+                                  removeAccents(value).toLocaleLowerCase()
+                              )
+                }
+
+                return true
+            })
+        },
+        [inputValue, props.caseSensitive, props.openOnFocus, props.suggestions]
+    )
 
     useEffect(() => {
-        const isFocused =
-            inputRef && inputRef.current
-                ? document.activeElement === inputRef.current
-                : false
+        const isFocused = inputRef.current
+            ? document.activeElement === inputRef.current
+            : false
 
         const isSearching = props.value && typeof props.value === 'string'
 
@@ -147,7 +159,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         if (isSearching && hasSuggestions && isFocused) {
             setOpen(true)
         }
-    }, [getSuggestions(), props.value])
+    }, [getSuggestions, props.value])
 
     const getPaperPosition = () => {
         if (inputRef.current !== null) {
@@ -178,9 +190,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         if (props.selectTextOnFocus) {
             const input = event.target
 
-            if (input.select) {
-                input.select()
-            }
+            input.select()
         }
 
         if (props.onFocus) {

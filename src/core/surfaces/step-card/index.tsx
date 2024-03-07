@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, HTMLAttributes } from 'react'
 import { Accordion as MuiAccordion } from '@material-ui/core'
-import type { Typography } from '@/core/data-display/typography'
+import type Typography from '@/core/data-display/typography'
 import type {
     LinearProgress,
     AccordionDetails as MuiAccordionDetails
@@ -274,7 +274,7 @@ export interface IStepCardProps {
  *   defaultExpanded={false}
  * />
  */
-export const StepCard = ({
+const StepCard = ({
     expanded,
     loading = false,
     percentage,

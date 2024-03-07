@@ -9,7 +9,7 @@ export interface MenuProps extends DefaultProps, MuiMenuProps {
     withWrapper?: boolean
 }
 
-export const Menu = ({
+const Menu = ({
     children,
     padding,
     margin,

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Progress } from '.'
+import Progress from '.'
 
 export default {
     title: 'Feedback/Progress',

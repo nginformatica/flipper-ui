@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
-import { Slide } from '.'
+import Button from '@/core/inputs/button'
+import Slide from '.'
 
 export default {
     title: 'Feedback/Slide',
@@ -14,7 +14,12 @@ const Template: StoryFn<typeof Slide> = args => {
 
     function handleClick() {
         setOpen(!open)
-        btnLabel === 'Close' ? setBtnLabel('Open') : setBtnLabel('Close')
+
+        if (btnLabel === 'Close') {
+            setBtnLabel('Open')
+        } else {
+            setBtnLabel('Close')
+        }
     }
 
     return (

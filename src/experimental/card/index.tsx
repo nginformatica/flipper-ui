@@ -1,16 +1,16 @@
 import React from 'react'
-import type { CSSProperties, ReactNode } from 'react'
-import { default as styled } from 'styled-components'
+import type { ReactNode } from 'react'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
-import { Close as IconClose, Edit as IconEdit } from '@/icons'
+import { Paper, Line, Button as AddButton } from '@/index'
 import {
-    Typography,
-    Paper,
-    Line,
-    Button as AddButton,
-    IconButton
-} from '@/index'
+    EditButton,
+    Header,
+    NESTED_ELEVATION,
+    PAPER_PROPS,
+    Title
+} from './styles'
+import { Close as IconClose, Edit as IconEdit } from '@/icons'
 
 export interface IProps {
     /**
@@ -42,38 +42,7 @@ export interface IProps {
     onToggleEdit?(): void
 }
 
-export const Content = styled.div`
-    flex: 1;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-`
-
-const Header = styled.div`
-    display: flex;
-`
-
-export const Title = styled(Typography)`
-    flex: 1;
-`
-
-const EditButton = styled(IconButton)`
-    && {
-        width: 36px;
-        height: 36px;
-    }
-`
-
-const NESTED_ELEVATION = 0
-
-const paperStyle: CSSProperties = {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column'
-}
-
-export const Card = (props: IProps) => {
+const Card = (props: IProps) => {
     const {
         id,
         name,
@@ -95,7 +64,7 @@ export const Card = (props: IProps) => {
             {...otherProps}
             name={name}
             id={id}
-            style={paperStyle}
+            style={PAPER_PROPS}
             className='showable'
             elevation={nested ? NESTED_ELEVATION : undefined}
             padding={nested ? '0' : '24px'}>

@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 import faker from 'faker'
 import { splitEvery } from 'ramda'
-// import { v4 as uuid } from 'uuid'
 import type { Data } from './types'
 
 export interface IDataProps {
@@ -70,6 +70,8 @@ export const usePaginated = () => {
         } else {
             setState(prev => ({ ...prev, items: splitData[0], actualPage: 0 }))
         }
+        // it works fine
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.size])
 
     useEffect(() => {
@@ -77,6 +79,8 @@ export const usePaginated = () => {
             ...prev,
             items: splitData[state.actualPage]
         }))
+        // it works fine
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.actualPage])
 
     const handleChangePage = (newPage: number) => {
@@ -95,10 +99,7 @@ export const usePaginated = () => {
         }, MOCK_DELAY_VALUE)
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const setData: React.Dispatch<React.SetStateAction<Data[]>> = (
-        data: Data[]
-    ) => {
+    const setData: Dispatch<SetStateAction<Data[]>> = (data: Data[]) => {
         setState(prev => ({ ...prev, items: data }))
     }
 

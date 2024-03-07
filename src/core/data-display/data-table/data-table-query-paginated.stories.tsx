@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable max-lines */
 import React, { useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { TableCell, TableRow, Typography } from '@material-ui/core'
@@ -7,7 +6,11 @@ import { Skeleton } from '@mui/material'
 import format from 'date-fns/format'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
+import { DataTableAction } from './data-table-action'
+import { DataTableQueryPaginated } from './data-table-query-paginated'
+import { RowMode } from './types'
+import { usePaginated } from './use-paginated'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -15,10 +18,6 @@ import {
     Edit as EditIcon,
     Save as SaveIcon
 } from '@/icons'
-import { DataTableAction } from './data-table-action'
-import { DataTableQueryPaginated } from './data-table-query-paginated'
-import { RowMode } from './types'
-import { usePaginated } from './use-paginated'
 
 export default {
     title: 'DataDisplay/DataTableQueryPaginated',
@@ -300,26 +299,25 @@ export const Crud = () => {
         setData
     } = usePaginated()
 
-    const newData: ColumnSpec<DataActual>[] = [
-        ...columnsData,
-        {
-            title: 'Actions',
-            type: 'text',
-            field: 'product',
-            cellStyle: {
-                maxWidth: '30px',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis'
-            },
-            editable: true
-        }
-    ]
+    const LoadNode: ReactNode = useMemo(() => {
+        const newData: ColumnSpec<DataActual>[] = [
+            ...columnsData,
+            {
+                title: 'Actions',
+                type: 'text',
+                field: 'product',
+                cellStyle: {
+                    maxWidth: '30px',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                },
+                editable: true
+            }
+        ]
 
-    const LoadNode: ReactNode = useMemo(
-        () => generateSkeleton(size, newData),
-        [size]
-    )
+        return generateSkeleton(size, newData)
+    }, [size])
 
     type Data = {
         id: Identifier

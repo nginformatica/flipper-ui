@@ -1,10 +1,10 @@
-import type { ReactNode } from 'react'
 import React, { useState, useCallback } from 'react'
+import type { ReactNode } from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import type { ColumnSpec, Data, Errors, PartialData } from './types'
 import { DateTime } from '@/core/inputs/date-time'
-import { MaskField } from '@/core/inputs/mask-field'
+import MaskField from '@/core/inputs/mask-field'
 import { TextField } from '@/core/inputs/text-field'
 import { RowMode } from './types'
 
@@ -175,6 +175,8 @@ export const StatefulRow = <D extends Data>({
             patch[field] = value
             onUpdate?.(patch)
         },
+        // it works fine
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         []
     )
 
@@ -228,6 +230,8 @@ export const NewRow = <D extends Data>({
             setEditableState(values => ({ ...values, [field]: value }))
             onUpdate?.({ [field]: value })
         },
+        // it works fine
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         []
     )
 

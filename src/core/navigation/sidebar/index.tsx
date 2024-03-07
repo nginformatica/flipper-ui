@@ -1,11 +1,11 @@
 import React from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { Theme } from '@material-ui/core/styles'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
+import { Action } from './styles'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
@@ -26,11 +26,6 @@ export interface SidebarProps extends DefaultProps {
     name?: string
     ButtonProps?: ButtonProps
     onToggle: () => void
-}
-
-interface IAction {
-    anchor?: 'top' | 'left' | 'bottom' | 'right'
-    minWidth?: SidebarProps['minWidth']
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -75,14 +70,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const Action = styled.div<IAction>`
-    flex-direction: ${props =>
-        props.anchor === 'left' ? 'row-reverse' : 'row'};
-    display: flex;
-    padding: 4px;
-`
-
-export const Sidebar = ({
+const Sidebar = ({
     id,
     anchor = 'left',
     className,

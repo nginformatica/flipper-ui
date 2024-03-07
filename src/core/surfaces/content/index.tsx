@@ -1,19 +1,9 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import { default as styled } from 'styled-components'
 import type { DefaultProps } from '../../types'
+import { ContainerStyles, StyledContent } from './styles'
 
-const StyledContent = styled.main`
-    flex: 1;
-    transition: all 500ms ease;
-`
-
-const ContainerStyles: CSSProperties = {
-    flex: 1,
-    transition: 'all 500ms ease'
-}
-
-export const Content = ({
+const Content = ({
     children,
     padding,
     margin,

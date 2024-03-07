@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Container } from '.'
+import Container from '.'
 
 export default {
     title: 'Surfaces/Container',

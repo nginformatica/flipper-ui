@@ -1,8 +1,8 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import { FileCopy } from '@/icons'
-import { FabV2 } from './fab'
+import FabV2 from './fab'
 import FabWrapper from './fab-wrapper'
+import { FileCopy } from '@/icons'
 
 const Template: StoryFn<typeof FabV2> = args => <FabV2 {...args} />
 

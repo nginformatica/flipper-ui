@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Radio } from '.'
+import Radio from '.'
 
 describe('Radio', () => {
     it('should render', () => {

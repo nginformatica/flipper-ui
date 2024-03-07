@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
 import { Fade } from '.'
 
 export default {
@@ -14,7 +14,12 @@ export const Default = () => {
 
     function handleClick() {
         setOpen(!open)
-        label === 'Close' ? setLabel('Open') : setLabel('Close')
+
+        if (label === 'Close') {
+            setLabel('Open')
+        } else {
+            setLabel('Close')
+        }
     }
 
     return (

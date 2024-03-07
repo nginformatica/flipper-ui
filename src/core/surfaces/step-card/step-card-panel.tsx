@@ -4,11 +4,7 @@ import { LinearProgress } from '@material-ui/core'
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import { sprintf } from 'sprintf-js'
 import type { IStepCardProps } from '.'
-import { Typography } from '@/core/data-display/typography'
-import {
-    CheckCircle as CheckCircleIcon,
-    ExpandMore as ExpandMoreIcon
-} from '@/icons'
+import Typography from '@/core/data-display/typography'
 import {
     BarWrapper,
     NormalProgressContainer,
@@ -17,13 +13,13 @@ import {
     StepContainer,
     TitleContainer
 } from './styles'
+import {
+    CheckCircle as CheckCircleIcon,
+    ExpandMore as ExpandMoreIcon
+} from '@/icons'
 import { theme } from '@/theme'
 
 const { feedback, grays } = theme.colors
-const DONE_COLOR = feedback.success
-const UNDONE_COLOR = grays.g3
-const UNDONE_TITLE_COLOR = grays.g1
-const UNDONE_PROGRESS_COLOR = grays.g5
 
 interface IStepCardPanelProps {
     title: string
@@ -62,139 +58,104 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
         padding
     } = props
 
-    const TitleIcon = () => {
-        return (
-            <CheckCircleIcon
-                data-testid='step-card-title-icon'
-                style={{
-                    fontSize: 40,
-                    color: percentage === 100 ? DONE_COLOR : UNDONE_COLOR
-                }}
-            />
-        )
-    }
-
-    const Title = () => {
-        return (
-            <Typography
-                variant='h6'
-                style={{
-                    color: UNDONE_TITLE_COLOR,
-                    fontSize: 24,
-                    textAlign: 'center'
-                }}
-                {...titleProps}>
-                {title}
-            </Typography>
-        )
-    }
-
-    const SubTitle = () => {
-        return (
-            <Typography
-                variant='h6'
-                style={{
-                    color: UNDONE_COLOR,
-                    textAlign: 'center'
-                }}
-                {...titleProps}>
-                {subTitle}
-            </Typography>
-        )
-    }
-
-    const TitleColumn = () => (
-        <>
-            {showIcon && <TitleIcon />}
-            <TitleContainer>
-                <Title />
-                {subTitle && <SubTitle />}
-            </TitleContainer>
-        </>
-    )
-
-    const Summary = () => {
-        return (
-            <MuiAccordionSummary
-                style={{ textAlign: 'center' }}
-                expandIcon={<ExpandMoreIcon fontSize='large' />}>
-                <Typography variant='h6' {...summaryProps}>
-                    {sprintf(summary, remainingSteps, time)}
-                </Typography>
-            </MuiAccordionSummary>
-        )
-    }
-
-    const SummaryLinearProgress = () => {
-        return (
-            <LinearProgress
-                variant='determinate'
-                value={percentage}
-                color='primary'
-                classes={{
-                    barColorPrimary: 'barColorPrimary'
-                }}
-                style={{
-                    borderRadius: 10,
-                    height: '16px',
-                    backgroundColor: UNDONE_PROGRESS_COLOR
-                }}
-                {...summaryLinearProgressBarProps}
-            />
-        )
-    }
-
-    const NormalProgress = () => (
-        <NormalProgressContainer data-testid='normal-progress'>
-            <Typography variant='h6' {...summaryProps}>
-                {summary}
-            </Typography>
-            <Typography
-                variant='subtitle2'
-                style={{
-                    position: 'absolute',
-                    right: 8
-                }}>{`${percentage}%`}</Typography>
-            <BarWrapper>
-                <SummaryLinearProgress />
-            </BarWrapper>
-        </NormalProgressContainer>
-    )
-
-    const BottomLineProgress = () => {
-        return (
-            <LinearProgress
-                variant='determinate'
-                value={percentage}
-                color='primary'
-                classes={{
-                    barColorPrimary: 'barColorPrimary'
-                }}
-                style={{
-                    height: '16px',
-                    backgroundColor: UNDONE_PROGRESS_COLOR
-                }}
-                {...linearProgressBarProps}
-            />
-        )
-    }
-
     return (
         <StepContainer padding={padding}>
             <StepCardRow
                 fullWidth={fullWidth}
                 minHeight={expandable ? '100px' : '100%'}>
                 <StepCardColumn justifyContent='start'>
-                    <TitleColumn />
+                    {showIcon && (
+                        <CheckCircleIcon
+                            data-testid='step-card-title-icon'
+                            style={{
+                                fontSize: 40,
+                                color:
+                                    percentage === 100
+                                        ? feedback.success
+                                        : grays.g3
+                            }}
+                        />
+                    )}
+                    <TitleContainer>
+                        <Typography
+                            variant='h6'
+                            style={{
+                                color: grays.g1,
+                                fontSize: 24,
+                                textAlign: 'center'
+                            }}
+                            {...titleProps}>
+                            {title}
+                        </Typography>
+                        {subTitle && (
+                            <Typography
+                                variant='h6'
+                                style={{
+                                    color: grays.g3,
+                                    textAlign: 'center'
+                                }}
+                                {...titleProps}>
+                                {subTitle}
+                            </Typography>
+                        )}
+                    </TitleContainer>
                 </StepCardColumn>
                 <StepCardColumn justifyContent='end'>
-                    {expandable ? <Summary /> : <NormalProgress />}
+                    {expandable ? (
+                        <MuiAccordionSummary
+                            style={{ textAlign: 'center' }}
+                            expandIcon={<ExpandMoreIcon fontSize='large' />}>
+                            <Typography variant='h6' {...summaryProps}>
+                                {sprintf(summary, remainingSteps, time)}
+                            </Typography>
+                        </MuiAccordionSummary>
+                    ) : (
+                        <NormalProgressContainer data-testid='normal-progress'>
+                            <Typography variant='h6' {...summaryProps}>
+                                {summary}
+                            </Typography>
+                            <Typography
+                                variant='subtitle2'
+                                style={{
+                                    position: 'absolute',
+                                    right: 8
+                                }}>{`${percentage}%`}</Typography>
+                            <BarWrapper>
+                                <LinearProgress
+                                    variant='determinate'
+                                    value={percentage}
+                                    color='primary'
+                                    classes={{
+                                        barColorPrimary: 'barColorPrimary'
+                                    }}
+                                    style={{
+                                        borderRadius: 10,
+                                        height: '16px',
+                                        backgroundColor: grays.g5
+                                    }}
+                                    {...summaryLinearProgressBarProps}
+                                />
+                            </BarWrapper>
+                        </NormalProgressContainer>
+                    )}
                 </StepCardColumn>
             </StepCardRow>
             {showBottomPercentage && (
                 <StepCardRow fullWidth={fullWidth} minHeight='15px'>
                     <BarWrapper>
-                        <BottomLineProgress />
+                        <LinearProgress
+                            variant='determinate'
+                            value={percentage}
+                            color='primary'
+                            classes={{
+                                barColorPrimary: 'barColorPrimary'
+                            }}
+                            style={{
+                                height: '16px',
+                                backgroundColor: grays.g5
+                            }}
+                            {...linearProgressBarProps}
+                        />
                     </BarWrapper>
                 </StepCardRow>
             )}

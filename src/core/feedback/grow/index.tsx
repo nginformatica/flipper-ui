@@ -9,7 +9,7 @@ export interface GrowProps extends DefaultProps {
     children?: ReactElement<Record<string, unknown>>
 }
 
-export const Grow = ({
+const Grow = ({
     children,
     padding,
     margin,

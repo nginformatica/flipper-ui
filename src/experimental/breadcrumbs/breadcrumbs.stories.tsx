@@ -1,14 +1,14 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import BreadcrumbsComponent from '.'
+import Breadcrumbs from '.'
 
 export default {
     title: 'Experimental/Breadcrumbs',
-    component: BreadcrumbsComponent
-} as Meta<typeof BreadcrumbsComponent>
+    component: Breadcrumbs
+} as Meta<typeof Breadcrumbs>
 
-const Template: StoryFn<typeof BreadcrumbsComponent> = args => {
-    return <BreadcrumbsComponent {...args} />
+const Template: StoryFn<typeof Breadcrumbs> = args => {
+    return <Breadcrumbs {...args} />
 }
 
 export const Default = Template.bind({})

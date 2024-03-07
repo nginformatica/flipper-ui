@@ -33,7 +33,7 @@ const StepIcon = ({ icon, active }: StepIconProps) => {
     })
 }
 
-export const Stepper = ({
+const Stepper = ({
     active,
     bottomLabel,
     steps,

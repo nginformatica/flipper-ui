@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
 import Tab from '@/core/navigation/tab'
-import { Tabs } from '.'
+import Tabs from '.'
 
 describe('Tabs', () => {
     it('should render the tab', () => {

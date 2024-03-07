@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta } from '@storybook/react'
-import { Button } from '@/core/inputs/button'
+import Button from '@/core/inputs/button'
 import { Card, CardActionArea, CardActions, CardContent, CardMedia } from '.'
 
 export default {

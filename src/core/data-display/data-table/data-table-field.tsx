@@ -1,16 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import React from 'react'
 import type { ChangeEvent, Dispatch, SetStateAction } from 'react'
-import {
-    Checkbox,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow
-} from '@mui/material'
-import { default as styled } from 'styled-components'
+import { Checkbox, Table, TableBody, TableCell, TableHead } from '@mui/material'
 import { TextField } from '@/index'
+import { FieldWrapper, RowTable, TableCellRows } from './styles'
 
 interface IHeader {
     title: string
@@ -31,41 +24,6 @@ interface ITable<D extends Record<string, unknown>> {
         setSelectedAllRows?: Dispatch<SetStateAction<boolean>>
     }
 }
-
-const TableCellRows = styled(TableCell)`
-    && {
-        width: 400px;
-        height: 60px;
-        padding: 0 10px;
-    }
-`
-
-const RowTable = styled(TableRow)`
-    width: 100%;
-    cursor: pointer;
-
-    &:hover {
-        background: -moz-linear-gradient(
-            left,
-            rgba(189, 189, 189, 0) 0%,
-            rgba(189, 189, 189, 1) 100%
-        );
-        background: -webkit-linear-gradient(
-            left,
-            rgba(189, 189, 189, 0) 0%,
-            rgba(189, 189, 189, 1) 100%
-        );
-        background: linear-gradient(
-            to right,
-            rgba(189, 189, 189, 0) 0%,
-            rgba(189, 189, 189, 1) 100%
-        );
-    }
-
-    &.no-hover {
-        background: none;
-    }
-`
 
 export const DataTableField = <D extends Record<string, unknown>>(
     props: ITable<D>
@@ -187,13 +145,19 @@ export const DataTableField = <D extends Record<string, unknown>>(
                                     }
                                 />
                             ) : (
-                                <span>
-                                    {column.editable
-                                        ? checkboxProps?.checkRow?.[index]
-                                            ? (row[column.field] as string)
-                                            : ''
-                                        : (row[column.field] as string)}
-                                </span>
+                                <FieldWrapper>
+                                    {(() => {
+                                        if (column.editable) {
+                                            return checkboxProps?.checkRow?.[
+                                                index
+                                            ]
+                                                ? (row[column.field] as string)
+                                                : ''
+                                        }
+
+                                        return row[column.field] as string
+                                    })()}
+                                </FieldWrapper>
                             )}
                         </TableCellRows>
                     )
@@ -266,3 +230,5 @@ export const DataTableField = <D extends Record<string, unknown>>(
         </Table>
     )
 }
+
+export default DataTableField

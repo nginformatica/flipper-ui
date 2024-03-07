@@ -7,7 +7,7 @@ const ContainerStyles: CSSProperties = {
     flex: 1
 }
 
-export const Container = ({
+const Container = ({
     children,
     padding,
     margin,
