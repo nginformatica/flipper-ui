@@ -12,7 +12,7 @@ export interface LineProps extends DefaultProps {
     'data-testid'?: string
 }
 
-const Line = ({
+export const Line = ({
     padding,
     margin,
     style,

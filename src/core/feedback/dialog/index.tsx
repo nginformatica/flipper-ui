@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     }
 })
 
-const Dialog = ({
+export const Dialog = ({
     snippet,
     style,
     padding,

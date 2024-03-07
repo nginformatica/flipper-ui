@@ -3,9 +3,9 @@ import type { ReactNode } from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import type { ColumnSpec, Data, Errors, PartialData } from './types'
-import DateTime from '@/core/inputs/date-time'
+import { DateTime } from '@/core/inputs/date-time'
 import MaskField from '@/core/inputs/mask-field'
-import TextField from '@/core/inputs/text-field'
+import { TextField } from '@/core/inputs/text-field'
 import { RowMode } from './types'
 
 type RowStateUpdater = <D extends Data>(
@@ -176,7 +176,7 @@ export const StatefulRow = <D extends Data>({
             patch[field] = value
             onUpdate?.(patch)
         },
-        []
+        [onUpdate]
     )
 
     const getCorrectViewMode = (
@@ -229,7 +229,7 @@ export const NewRow = <D extends Data>({
             setEditableState(values => ({ ...values, [field]: value }))
             onUpdate?.({ [field]: value })
         },
-        []
+        [onUpdate]
     )
 
     return (

@@ -39,7 +39,7 @@ export const useRowsState = <D extends Data, V extends StackView>(
         }
 
         setState({ internal: nextState })
-    }, [rows, !!newRow])
+    }, [isHidden, newRow, rows, state.internal])
 
     const setRowState = useCallback(
         (id: Identifier, partial: Partial<RowState<D, V>>) => {

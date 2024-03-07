@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from '@material-ui/core'
 import type { Meta } from '@storybook/react'
-import PinInput from '.'
+import { PinInput } from '.'
 import { ButtonContainer, ValidateContainer } from './styles'
 
 export default {

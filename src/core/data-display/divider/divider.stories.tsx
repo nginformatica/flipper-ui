@@ -2,7 +2,7 @@ import React from 'react'
 import type { Meta } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import Divider from '.'
+import { Divider } from '.'
 
 export default {
     title: 'DataDisplay/Divider',

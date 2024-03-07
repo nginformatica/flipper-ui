@@ -1,8 +1,8 @@
 import React from 'react'
 import { Autocomplete as AutocompleteLab } from '@material-ui/lab'
 import type { Meta } from '@storybook/react'
-import AutoComplete from '@/core/inputs/auto-complete'
-import TextField from '@/core/inputs/text-field'
+import { default as AutoComplete } from '@/core/inputs/auto-complete'
+import { TextField } from '@/core/inputs/text-field'
 
 export default {
     title: 'Experimental/AutoCompleteLab',

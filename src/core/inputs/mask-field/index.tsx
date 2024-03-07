@@ -3,7 +3,7 @@ import type { ComponentType } from 'react'
 import type { NumberFormatProps } from 'react-number-format'
 import NumberFormat from 'react-number-format'
 import type { TextFieldProps } from '@/core/inputs/text-field'
-import TextField from '@/core/inputs/text-field'
+import { TextField } from '@/core/inputs/text-field'
 
 export interface MaskFieldProps extends NumberFormatProps {
     mask?: string

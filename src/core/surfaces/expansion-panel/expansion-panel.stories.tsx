@@ -3,7 +3,7 @@ import type { KeyboardEvent } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
-import TextField from '@/core/inputs/text-field'
+import { TextField } from '@/core/inputs/text-field'
 import ExpansionPanel from '.'
 import { ExpandMore } from '@/icons'
 

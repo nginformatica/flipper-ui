@@ -207,7 +207,7 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
-const TextField = ({
+export const TextField = ({
     options,
     margin,
     padding,

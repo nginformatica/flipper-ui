@@ -69,14 +69,14 @@ export const usePaginated = () => {
         } else {
             setState(prev => ({ ...prev, items: splitData[0], actualPage: 0 }))
         }
-    }, [state.size])
+    }, [splitData, state.actualPage, state.size])
 
     useEffect(() => {
         setState(prev => ({
             ...prev,
             items: splitData[state.actualPage]
         }))
-    }, [state.actualPage])
+    }, [splitData, state.actualPage])
 
     const handleChangePage = (newPage: number) => {
         setLoading(true)

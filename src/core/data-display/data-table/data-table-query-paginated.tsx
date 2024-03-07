@@ -128,7 +128,7 @@ const defaultPagination: PaginationOptions = {
     rowsPerPageOptions: [5, 10, 25, 50]
 }
 
-const DataTableQueryPaginated = <D extends Data, V extends StackView>(
+export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
     props: DataTableProps<D, V>
 ) => {
     const pagination = { ...defaultPagination, ...props.pagination }

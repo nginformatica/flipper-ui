@@ -5,8 +5,8 @@ import { userEvent } from '@testing-library/user-event'
 import type { ISelected, TSelected } from '.'
 import ListItem from '@/core/data-display/list-item'
 import Typography from '@/core/data-display/typography'
-import TextField from '../text-field'
-import AutoComplete from '.'
+import { TextField } from '../text-field'
+import { default as AutoComplete } from '.'
 
 interface MockProps {
     initialValue?: TSelected

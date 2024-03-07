@@ -8,7 +8,7 @@ export interface IProps {
     size?: number
 }
 
-const Loading = (props: IProps) => {
+export const Loading = (props: IProps) => {
     const { margin = 48, padding = 24, size = 72 } = props
 
     const renderLoading = useMemo(

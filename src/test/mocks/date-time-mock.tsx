@@ -2,7 +2,7 @@ import * as React from 'react'
 import { isValid, startOfDay } from 'date-fns'
 import type { DateTimeProps } from '@/core/inputs/date-time'
 import type { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
-import DateTime from '@/core/inputs/date-time'
+import { DateTime } from '@/core/inputs/date-time'
 
 interface IProps {
     initialValue?: string

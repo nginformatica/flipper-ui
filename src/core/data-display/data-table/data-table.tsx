@@ -131,7 +131,7 @@ const sliceData = <D,>(data: D[], page: number, rowsPerPage: number) => {
     return data.slice(start, end)
 }
 
-const DataTable = <D extends Data, V extends StackView>(
+export const DataTable = <D extends Data, V extends StackView>(
     props: DataTableProps<D, V>
 ) => {
     const [page, setPage] = useState(0)

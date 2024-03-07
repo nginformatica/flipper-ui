@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => {
     })
 })
 
-const Avatar = ({
+export const Avatar = ({
     children,
     primary,
     className,

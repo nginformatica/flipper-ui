@@ -1,6 +1,6 @@
 import { default as styled } from 'styled-components'
 import Typography from '@/core/data-display/typography'
-import Dialog from '../dialog'
+import { Dialog } from '../dialog'
 
 export const MuiDialog = styled(Dialog)`
     div > div > h2 {

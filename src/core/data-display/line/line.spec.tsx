@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import Line from '.'
+import { Line } from '.'
 import { theme } from '@/theme'
 
 const { grays, secondary } = theme.colors

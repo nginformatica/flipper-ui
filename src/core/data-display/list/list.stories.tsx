@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import Avatar from '../avatar'
+import { Avatar } from '../avatar'
 import List from '.'
 import { Backup } from '@/icons'
 

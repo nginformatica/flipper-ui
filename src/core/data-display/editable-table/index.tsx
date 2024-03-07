@@ -11,11 +11,11 @@ import MaterialTable, {
 import { omit, contains, propOr } from 'ramda'
 import type { Column, Options } from 'material-table'
 import ListItem from '@/core/data-display/list-item'
-import AutoComplete from '@/core/inputs/auto-complete'
+import { default as AutoComplete } from '@/core/inputs/auto-complete'
 import Button from '@/core/inputs/button'
-import DateTime from '@/core/inputs/date-time'
+import { DateTime } from '@/core/inputs/date-time'
 import MaskField from '@/core/inputs/mask-field'
-import TextField from '@/core/inputs/text-field'
+import { TextField } from '@/core/inputs/text-field'
 import { getLocalization } from '@/lib/localization'
 import {
     AddRowButton,

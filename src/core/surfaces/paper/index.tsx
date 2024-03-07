@@ -8,7 +8,7 @@ export interface PaperProps extends DefaultProps, MuiPaperProps {
     elevation?: number
 }
 
-const Paper = ({
+export const Paper = ({
     children,
     style = {},
     padding,

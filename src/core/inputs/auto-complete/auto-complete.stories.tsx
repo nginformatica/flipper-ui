@@ -3,32 +3,23 @@ import type { TSelected } from '.'
 import type { Meta } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import Typography from '@/core/data-display/typography'
-import TextField from '@/core/inputs/text-field'
-import AutoComplete from '.'
+import { TextField } from '@/core/inputs/text-field'
+import { default as AutoComplete } from '.'
 
 export default {
     title: 'Inputs/AutoComplete',
     component: AutoComplete
 } as Meta<typeof AutoComplete>
 
-const suggestions = [
-    { value: 'rock', label: 'Rock' },
-    { value: 'pop', label: 'Pop' },
-    { value: 'classic', label: 'Classic' }
-]
-
-const subheaderSuggestions = [
-    { label: 'Genres', subheader: true },
-    { value: 'rock', label: 'Rock' },
-    { value: 'pop', label: 'Pop' },
-    { value: 'classic', label: 'Classic' }
-]
-
 export const Default = () => (
     <AutoComplete
         defaultIsOpen
         openOnFocus
-        suggestions={suggestions}
+        suggestions={[
+            { value: 'rock', label: 'Rock' },
+            { value: 'pop', label: 'Pop' },
+            { value: 'classic', label: 'Classic' }
+        ]}
         renderInput={({ value, inputProps }) => {
             return (
                 <TextField
@@ -57,7 +48,11 @@ export const OpeningWhenFocused = () => (
     <AutoComplete
         openOnFocus
         value={{ value: 'classic', label: 'Classic' }}
-        suggestions={suggestions}
+        suggestions={[
+            { value: 'rock', label: 'Rock' },
+            { value: 'pop', label: 'Pop' },
+            { value: 'classic', label: 'Classic' }
+        ]}
         renderInput={props => (
             <TextField fullWidth placeholder='Music genres' {...props} />
         )}
@@ -77,7 +72,12 @@ export const OpeningWhenFocused = () => (
 export const WithSubheader = () => (
     <AutoComplete
         openOnFocus
-        suggestions={subheaderSuggestions}
+        suggestions={[
+            { label: 'Genres', subheader: true },
+            { value: 'rock', label: 'Rock' },
+            { value: 'pop', label: 'Pop' },
+            { value: 'classic', label: 'Classic' }
+        ]}
         renderInput={props => (
             <TextField fullWidth placeholder='Music genres' {...props} />
         )}
@@ -112,7 +112,12 @@ export const MockAtuoComplete = () => {
             autoFocus
             caseSensitive
             value={value}
-            suggestions={subheaderSuggestions}
+            suggestions={[
+                { label: 'Genres', subheader: true },
+                { value: 'rock', label: 'Rock' },
+                { value: 'pop', label: 'pop' },
+                { value: 'classic', label: 'Classic' }
+            ]}
             renderInput={props => {
                 return (
                     <TextField
