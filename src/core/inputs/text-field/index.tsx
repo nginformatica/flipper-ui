@@ -256,6 +256,7 @@ export const TextField = ({
     return (
         <Wrapper>
             <MuiTextField
+                title=''
                 select={!!options?.length}
                 fullWidth={fullWidth}
                 autoComplete={autoComplete}
