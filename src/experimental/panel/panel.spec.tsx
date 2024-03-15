@@ -1,25 +1,28 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import Panel from '.'
 
 describe('Panel', () => {
-    const TITLE = 'Foo'
-    const DETAILS = <button>bar</button>
-
     it('should render', () => {
-        render(<Panel title={TITLE} details={DETAILS} />)
+        render(<Panel title='Foo' details={<button>bar</button>} />)
 
-        const panel = screen.getByText(TITLE)
-        const panelContainer = screen.getByTestId('panel-component')
+        const panel = screen.getByText('Foo')
         const expandIcon = screen.getByTestId('expand-icon')
 
         expect(panel).toBeDefined()
-        expect(panelContainer).toHaveProperty('style.border', '')
         expect(expandIcon).toBeDefined()
     })
 
+    it('should render with default style', () => {
+        render(<Panel title='Foo' details={<button>bar</button>} />)
+
+        const panelContainer = screen.getByTestId('panel-component')
+
+        expect(panelContainer).toHaveProperty('style.border', '')
+    })
+
     it('should render nested', () => {
-        render(<Panel nested title={TITLE} details={DETAILS} />)
+        render(<Panel nested title='Foo' details={<button>bar</button>} />)
 
         const panel = screen.getByTestId('panel-component')
 
@@ -27,12 +30,26 @@ describe('Panel', () => {
     })
 
     it('should render with omitted icon', () => {
-        render(<Panel hideExpansionIcon title={TITLE} details={DETAILS} />)
+        render(
+            <Panel
+                hideExpansionIcon
+                title='Foo'
+                details={<button>bar</button>}
+            />
+        )
 
         waitFor(() => {
             const panel = screen.getByTestId('expand-icon')
 
             expect(panel).not.toBeDefined()
         })
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Panel title='Foo' details={<button>bar</button>} />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

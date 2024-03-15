@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiAvatar-root MuiAvatar-circular custom-class makeStyles-primary-5 MuiAvatar-colorDefault"
+  >
+    F
+  </div>
+</div>
+`;

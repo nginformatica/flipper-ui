@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Node should match snapshot 1`] = `
+<div>
+  <ul
+    class="sc-beySPh jGWtOB"
+    name="Branch"
+  >
+    <li
+      class="sc-guDLey uiCyR"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium sc-hLQSwg ksLdFu css-i4bv87-MuiSvgIcon-root"
+        data-testid="KeyboardArrowDownIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"
+        />
+      </svg>
+      Branch
+    </li>
+  </ul>
+</div>
+`;

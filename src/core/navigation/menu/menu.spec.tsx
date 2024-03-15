@@ -1,11 +1,11 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import ListItem from '@/core/data-display/list-item'
 import Menu from '.'
 import { Backup } from '@/icons'
 
 describe('Menu', () => {
-    it('should render opened', () => {
+    it('should render', () => {
         render(
             <Menu open>
                 <ListItem icon={<Backup />} title='Menu 1' />
@@ -80,5 +80,16 @@ describe('Menu', () => {
         expect(container).toHaveProperty('style.padding', '5px')
 
         spy.mockRestore()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Menu open>
+                <ListItem icon={<Backup />} title='Menu 1' />
+                <ListItem icon={<Backup />} title='Menu 2' />
+            </Menu>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Stepper from '.'
 import { Delete } from '@/icons'
@@ -89,5 +89,30 @@ describe('Stepper', () => {
         expect(stepOne).toBeTruthy()
         expect(stepOneIcon).toBeTruthy()
         expect(stepOne.classList).not.toContain('MuiStepLabel-completed')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Stepper
+                bottomLabel
+                active={1}
+                steps={[
+                    {
+                        label: 'Name',
+                        icon: <Delete data-testid='step-icon1' />
+                    },
+                    {
+                        label: 'Email',
+                        icon: () => <Delete data-testid='step-icon2' />
+                    },
+                    {
+                        label: 'Password',
+                        icon: <Delete data-testid='step-icon3' />
+                    }
+                ]}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

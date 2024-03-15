@@ -103,29 +103,11 @@ export type RowViewComponent<D> = FunctionComponent<{
 }>
 
 export type DataTableController<D extends Data, V extends StackView> = {
-    /**
-     * Actives the edit mode for a row
-     */
     editRow(id: Identifier): void
-    /**
-     * Actives the view mode for a row
-     */
     viewRow(id: Identifier): void
-    /**
-     * Hides the view mode for a row
-     */
     hideRow(id: Identifier): void
-    /**
-     * Adds a new row on the DataTable
-     */
     addRow(data: PartialData<D>): void
-    /**
-     * Returns only the edited properties of a row in edit mode
-     */
     getEditedRowData(id: Identifier): PartialData<D>
-    /**
-     * Returns the edited properties and the old data of a row in edit mode
-     */
     getRowData(id: Identifier): { edited: PartialData<D>; current?: D }
     pushRowView(id: Identifier, view: keyof V): void
     popRowView(id: Identifier): void

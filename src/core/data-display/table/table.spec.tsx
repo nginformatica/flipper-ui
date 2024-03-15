@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -57,6 +57,7 @@ describe('Table', () => {
 
     it('should render with sort', async () => {
         const onSortSpy = jest.fn()
+
         const { getByText } = render(<Default onSort={onSortSpy} />)
 
         const tableHeadName = getByText('Table-Head-Name')

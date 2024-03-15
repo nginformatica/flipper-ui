@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import EditableTable from '.'
 
 export default {
-    title: 'DataDisplay/EditTable',
+    title: 'DataDisplay/EditableTable',
     component: EditableTable,
     args: {
         title: 'adicionar',

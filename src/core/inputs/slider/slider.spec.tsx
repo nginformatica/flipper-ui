@@ -1,10 +1,22 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import drag from '@/test/util'
 import Slider from '.'
 
 describe('Slider', () => {
+    it('should render', async () => {
+        render(
+            <Slider data-testid='slider-container'>
+                <>Slider</>
+            </Slider>
+        )
+
+        const slider = screen.getByTestId('slider-container')
+
+        expect(slider).toBeDefined()
+    })
+
     it('should render and slide', async () => {
         render(
             <Slider data-testid='slider-container'>
@@ -39,5 +51,19 @@ describe('Slider', () => {
         expect(container).toHaveProperty('style.color', 'red')
         expect(container).toHaveProperty('style.margin', '10px')
         expect(container).toHaveProperty('style.padding', '5px')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Slider
+                data-testid='slider-container'
+                margin={10}
+                padding={5}
+                style={{ color: 'red' }}>
+                <>Slider</>
+            </Slider>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { isValid, startOfDay } from 'date-fns'
 import type { DateTimeProps } from '@/core/inputs/date-time'
 import type { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const Default = ({ dateProps, initialValue }: IProps) => {
-    const [value, setValue] = React.useState<MaterialUiPickersDate | string>(
+    const [value, setValue] = useState<MaterialUiPickersDate | string>(
         initialValue ?? new Date()
     )
 

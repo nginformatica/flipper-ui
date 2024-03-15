@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Breadcrumbs from '.'
 
@@ -36,5 +36,21 @@ describe('Breadcrumbs', () => {
         const breadcrumbs = screen.getByText('Home')
 
         expect(breadcrumbs).toBeDefined()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Breadcrumbs
+                pathname={'/foo/bar'}
+                homeId='-'
+                pathMapping={{
+                    '-': 'Home',
+                    foo: 'Foo',
+                    bar: 'Bar'
+                }}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

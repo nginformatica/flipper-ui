@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Avatar from '.'
 
@@ -25,5 +25,11 @@ describe('Avatar', () => {
         const avatar = screen.getByRole('img')
 
         expect(avatar).toBeDefined()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(<Avatar name='felipe' />)
+
+        expect(container).toMatchSnapshot()
     })
 })

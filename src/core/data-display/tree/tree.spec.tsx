@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -74,5 +74,11 @@ describe('Tree', () => {
         const leaf = screen.getAllByText('Branch')
 
         expect(leaf.length).toEqual(3)
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(<Tree nodes={NODES} />)
+
+        expect(container).toMatchSnapshot()
     })
 })

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import type { RadioGroupProps } from '@/core/inputs/radio-group'
 import RadioGroup from '@/core/inputs/radio-group'
 
@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Default = ({ radioGroupProps }: IProps) => {
-    const [option, setOption] = React.useState('first')
+    const [option, setOption] = useState('first')
 
     return (
         <RadioGroup

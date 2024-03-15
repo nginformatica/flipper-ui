@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { act } from 'react-dom/test-utils'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -20,9 +20,9 @@ interface MockProps {
     caseSensitive?: boolean
 }
 
-const MockAtuoComplete = (props: MockProps) => {
+const MockAutoComplete = (props: MockProps) => {
     const { suggestions, ...rest } = props
-    const [value, setValue] = React.useState<TSelected>(
+    const [value, setValue] = useState<TSelected>(
         props.initialValue ? props.initialValue : ''
     )
 
@@ -78,7 +78,7 @@ describe('AutoComplete', () => {
 
     it('should render suggestions', () => {
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 openOnFocus
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
             />
@@ -99,7 +99,7 @@ describe('AutoComplete', () => {
 
     it('should render suggestions with case sensitive', async () => {
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 caseSensitive
                 openOnFocus
                 suggestions={SUGGESTIONS}
@@ -118,7 +118,7 @@ describe('AutoComplete', () => {
     })
 
     it('should render with no suggestions', () => {
-        render(<MockAtuoComplete suggestions={[]} />)
+        render(<MockAutoComplete suggestions={[]} />)
         const input = screen.getByPlaceholderText('input-placeholder')
 
         fireEvent.focus(input)
@@ -134,7 +134,7 @@ describe('AutoComplete', () => {
 
     it('should open with auto focus', async () => {
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 autoFocus
                 openOnFocus
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
@@ -153,7 +153,7 @@ describe('AutoComplete', () => {
         const onChangeSpy = jest.fn()
 
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 openOnFocus
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
                 initialValue={{ label: 'Rock', value: 'rock' }}
@@ -610,7 +610,7 @@ describe('AutoComplete', () => {
         const onFocusSpy = jest.fn()
 
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
                 onFocus={onFocusSpy}
             />
@@ -625,7 +625,7 @@ describe('AutoComplete', () => {
         expect(onFocusSpy).toBeCalled()
     })
 
-    it('should selects a suggestion when clicking on it', () => {
+    it('should select a suggestion when clicking on it', () => {
         const onChangeSpy = jest.fn()
 
         render(
@@ -677,7 +677,7 @@ describe('AutoComplete', () => {
     })
 
     it('should update input value', async () => {
-        render(<MockAtuoComplete suggestions={SUGGESTIONS_WITH_SUBHEADER} />)
+        render(<MockAutoComplete suggestions={SUGGESTIONS_WITH_SUBHEADER} />)
 
         const input = screen.getByPlaceholderText(
             'input-placeholder'
@@ -695,7 +695,7 @@ describe('AutoComplete', () => {
 
     it('should cancel if input value is a subheader', async () => {
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 openOnFocus
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
             />
@@ -718,7 +718,7 @@ describe('AutoComplete', () => {
 
     it('should select when selectTextOnFocus', async () => {
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 selectTextOnFocus
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
             />
@@ -737,7 +737,7 @@ describe('AutoComplete', () => {
 
     it('should open suggestions with focusDelay', async () => {
         render(
-            <MockAtuoComplete
+            <MockAutoComplete
                 openOnFocus
                 suggestions={SUGGESTIONS_WITH_SUBHEADER}
                 focusDelay={100}
@@ -747,5 +747,16 @@ describe('AutoComplete', () => {
         const item = await waitFor(() => screen.findByText('Rock'))
 
         expect(item).toBeTruthy()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <MockAutoComplete
+                openOnFocus
+                suggestions={SUGGESTIONS_WITH_SUBHEADER}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

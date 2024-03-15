@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -15,6 +15,7 @@ const LIST = [
 describe('TextField', () => {
     it('should render', () => {
         render(<TextField inputProps={{ placeholder: 'Description' }} />)
+
         const textField = screen.getByPlaceholderText('Description')
 
         expect(textField).toBeDefined()
@@ -26,6 +27,7 @@ describe('TextField', () => {
                 inputProps={{ placeholder: 'Description', variant: 'outlined' }}
             />
         )
+
         const textField = screen.getByPlaceholderText('Description')
 
         expect(textField.classList).toContain('MuiOutlinedInput-input')
@@ -37,6 +39,7 @@ describe('TextField', () => {
                 inputProps={{ placeholder: 'Description', variant: 'filled' }}
             />
         )
+
         const textField = screen.getByPlaceholderText('Description')
 
         expect(textField.classList).toContain('MuiInputBase-input')
@@ -53,6 +56,7 @@ describe('TextField', () => {
                 }}
             />
         )
+
         const textField = screen.getByPlaceholderText('Description')
 
         await userEvent.hover(textField)
@@ -94,6 +98,7 @@ describe('TextField', () => {
 
     it('should update on type', () => {
         render(<TextField inputProps={{ placeholder: 'Description' }} />)
+
         const textField = screen.getByPlaceholderText(
             'Description'
         ) as HTMLInputElement
@@ -103,7 +108,7 @@ describe('TextField', () => {
         expect(textField.value).toBe('Hello')
     })
 
-    it('should update on type', () => {
+    it('should update with options', () => {
         render(
             <TextFieldOptions
                 inputProps={{ placeholder: 'Description' }}
@@ -119,13 +124,14 @@ describe('TextField', () => {
         expect(textField.value).toBe('')
     })
 
-    it('should update on type', () => {
+    it('should update with options stringfied', () => {
         render(
             <TextFieldOptions
                 inputProps={{ placeholder: 'Description' }}
                 options={JSON.stringify(LIST)}
             />
         )
+
         const textField = screen.getByPlaceholderText(
             'Description'
         ) as HTMLInputElement
@@ -139,10 +145,26 @@ describe('TextField', () => {
         render(
             <TextField characters inputProps={{ placeholder: 'Description' }} />
         )
+
         const counter = screen.getByTestId('characters-counter')
 
         waitFor(() => {
             expect(counter).toBeDefined()
         })
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <TextField
+                initialOption='elm'
+                inputProps={{
+                    select: true,
+                    placeholder: 'Description',
+                    hasClear: true
+                }}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

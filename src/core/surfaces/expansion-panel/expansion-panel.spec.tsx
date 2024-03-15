@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import ExpansionPanel from '.'
 
@@ -13,6 +13,25 @@ const expectToThrow = (fn: () => void, message: string) => {
 }
 
 describe('ExpansionPanel', () => {
+    it('should render', () => {
+        render(
+            <ExpansionPanel
+                expanded
+                editing={false}
+                summary='Expansion Panel'
+                role='mui-expansion-panel'
+                onClick={jest.fn()}
+            />
+        )
+
+        const expansionPanel = screen.getByRole('mui-expansion-panel')
+
+        expect(expansionPanel.lastChild).toHaveProperty(
+            'className',
+            'MuiCollapse-root MuiCollapse-entered'
+        )
+    })
+
     it('should render closed', () => {
         render(
             <ExpansionPanel
@@ -29,25 +48,6 @@ describe('ExpansionPanel', () => {
         expect(expansionPanel.lastChild).toHaveProperty(
             'className',
             'MuiCollapse-root MuiCollapse-hidden'
-        )
-    })
-
-    it('should render expanded', () => {
-        render(
-            <ExpansionPanel
-                expanded
-                editing={false}
-                summary='Expansion Panel'
-                role='mui-expansion-panel'
-                onClick={jest.fn()}
-            />
-        )
-
-        const expansionPanel = screen.getByRole('mui-expansion-panel')
-
-        expect(expansionPanel.lastChild).toHaveProperty(
-            'className',
-            'MuiCollapse-root MuiCollapse-entered'
         )
     })
 
@@ -190,5 +190,20 @@ describe('ExpansionPanel', () => {
                 />
             )
         }, 'onEditClick is required when editable is true')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <ExpansionPanel
+                expanded
+                editing={false}
+                summary='Expansion Panel'
+                role='mui-expansion-panel'
+                actions={<button role='action-button'>Confirm</button>}
+                onClick={jest.fn()}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

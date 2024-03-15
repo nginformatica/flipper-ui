@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
@@ -72,5 +72,18 @@ describe('Sidebar', () => {
 
         expect(item1).toBeDefined()
         expect(item2).toBeDefined()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Sidebar open onToggle={jest.fn()}>
+                <List>
+                    <ListItem title='Item 1' icon={<Backup />} />
+                    <ListItem title='Item 2' icon={<Backup />} />
+                </List>
+            </Sidebar>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -46,7 +46,7 @@ describe('Select', () => {
 
         await act(async () => await userEvent.click(option))
 
-        expect(onChangeSpy).toBeCalledWith(
+        expect(onChangeSpy).toHaveBeenCalledWith(
             expect.objectContaining({
                 target: { value: '1', name: undefined }
             })
@@ -65,5 +65,11 @@ describe('Select', () => {
         const input = screen.getByTestId('select-input') as HTMLInputElement
 
         expect(input.value).toBe('')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(<Select initialValue='0' />)
+
+        expect(container).toMatchSnapshot()
     })
 })

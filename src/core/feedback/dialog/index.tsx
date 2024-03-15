@@ -1,5 +1,5 @@
-import type { CSSProperties, ReactNode } from 'react'
 import React from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import MuiDialog from '@material-ui/core/Dialog'
 import MuiDialogActions from '@material-ui/core/DialogActions'
 import MuiDialogContent from '@material-ui/core/DialogContent'

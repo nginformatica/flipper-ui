@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Typography from '@/core/data-display/typography'
 import { Avatar } from '.'
@@ -12,7 +12,7 @@ describe('Avatar', () => {
         expect(avatar).toBeDefined()
     })
 
-    it('should render primary', () => {
+    it('should render primary color', () => {
         render(
             <Avatar primary data-testid='avatar-container'>
                 F
@@ -29,12 +29,10 @@ describe('Avatar', () => {
     })
 
     it('should render with custom className', () => {
-        const customClass = 'custom-class'
-
         render(
             <Avatar
                 primary
-                className={customClass}
+                className={'custom-class'}
                 data-testid='avatar-container'>
                 F
             </Avatar>
@@ -42,7 +40,7 @@ describe('Avatar', () => {
 
         const container = screen.getByTestId('avatar-container')
 
-        expect(container.classList).toContain(customClass)
+        expect(container.classList).toContain('custom-class')
     })
 
     it('should render nested children', () => {
@@ -57,5 +55,15 @@ describe('Avatar', () => {
         const avatar = screen.getByText('icon')
 
         expect(avatar).toBeDefined()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Avatar primary className={'custom-class'}>
+                F
+            </Avatar>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

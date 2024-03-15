@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiStepper-root MuiStepper-horizontal MuiStepper-alternativeLabel MuiPaper-elevation0"
+    role="stepper-container"
+  >
+    <div
+      class="MuiStep-root MuiStep-horizontal MuiStep-alternativeLabel MuiStep-completed"
+    >
+      <span
+        class="MuiStepLabel-root MuiStepLabel-horizontal MuiStepLabel-alternativeLabel"
+      >
+        <span
+          class="MuiStepLabel-iconContainer MuiStepLabel-alternativeLabel"
+        >
+          <svg
+            active="true"
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-ci5apu-MuiSvgIcon-root"
+            data-testid="step-icon1"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiStepLabel-labelContainer"
+        >
+          <span
+            class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiStepLabel-completed MuiTypography-body2 MuiTypography-displayBlock"
+          >
+            Name
+          </span>
+        </span>
+      </span>
+    </div>
+    <div
+      class="MuiStep-root MuiStep-horizontal MuiStep-alternativeLabel"
+    >
+      <div
+        class="MuiStepConnector-root MuiStepConnector-horizontal MuiStepConnector-alternativeLabel MuiStepConnector-active"
+      >
+        <span
+          class="MuiStepConnector-line MuiStepConnector-lineHorizontal"
+        />
+      </div>
+      <span
+        class="MuiStepLabel-root MuiStepLabel-horizontal MuiStepLabel-alternativeLabel"
+      >
+        <span
+          class="MuiStepLabel-iconContainer MuiStepLabel-alternativeLabel"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="step-icon2"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiStepLabel-labelContainer"
+        >
+          <span
+            class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+          >
+            Email
+          </span>
+        </span>
+      </span>
+    </div>
+    <div
+      class="MuiStep-root MuiStep-horizontal MuiStep-alternativeLabel"
+    >
+      <div
+        class="MuiStepConnector-root MuiStepConnector-horizontal MuiStepConnector-alternativeLabel Mui-disabled"
+      >
+        <span
+          class="MuiStepConnector-line MuiStepConnector-lineHorizontal"
+        />
+      </div>
+      <span
+        class="MuiStepLabel-root MuiStepLabel-horizontal Mui-disabled MuiStepLabel-alternativeLabel"
+      >
+        <span
+          class="MuiStepLabel-iconContainer MuiStepLabel-alternativeLabel"
+        >
+          <svg
+            active="false"
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-colorDisabled MuiSvgIcon-fontSizeMedium css-1db085k-MuiSvgIcon-root"
+            data-testid="step-icon3"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiStepLabel-labelContainer"
+        >
+          <span
+            class="MuiTypography-root MuiStepLabel-label MuiStepLabel-alternativeLabel MuiTypography-body2 MuiTypography-displayBlock"
+          >
+            Password
+          </span>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;

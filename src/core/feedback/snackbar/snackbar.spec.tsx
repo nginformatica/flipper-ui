@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -71,6 +71,7 @@ describe('Snackbar', () => {
 
         await waitFor(() => expect(onClick).toHaveBeenCalled())
     })
+
     it('should call onClose', async () => {
         const onClose = jest.fn()
 
@@ -97,5 +98,23 @@ describe('Snackbar', () => {
         })
 
         await waitFor(() => expect(onClose).toHaveBeenCalled())
+    })
+
+    it('should match snapshot', () => {
+        const onClick = jest.fn()
+        const onClose = jest.fn()
+
+        const { container } = render(
+            <Snackbar
+                withAction
+                snackProps={{
+                    message: 'Snackbar Message',
+                    onClick,
+                    onClose
+                }}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

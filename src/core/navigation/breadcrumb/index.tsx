@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import MuiBreadcrumbs from '@material-ui/core/Breadcrumbs'
 import type { BreadcrumbsProps } from '@material-ui/core/Breadcrumbs'
 

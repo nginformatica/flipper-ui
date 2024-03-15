@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import type { MouseEvent, CSSProperties } from 'react'
 import type { FabProps } from '@/core/data-display/fab'
 import { Fab as MFab, Tooltip } from '@/index'

@@ -1,9 +1,17 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen, act, waitFor, fireEvent } from '@testing-library/react'
 import Checkbox from '.'
 
 describe('Checkbox', () => {
     it('should render', () => {
+        render(<Checkbox name='checkbox-name' onChange={jest.fn()} />)
+
+        const checkbox = screen.getByRole('checkbox')
+
+        expect(checkbox).toBeDefined()
+    })
+
+    it('should render with label', () => {
         render(
             <Checkbox
                 label='checkbox-label'
@@ -13,18 +21,8 @@ describe('Checkbox', () => {
         )
 
         const label = screen.getByText('checkbox-label')
-        const checkbox = screen.getByRole('checkbox')
 
         expect(label).toBeDefined()
-        expect(checkbox).toBeDefined()
-    })
-
-    it('should render without label', () => {
-        render(<Checkbox name='checkbox-name' onChange={jest.fn()} />)
-
-        const checkbox = screen.getByRole('checkbox')
-
-        expect(checkbox).toBeDefined()
     })
 
     it('should render dense', () => {
@@ -52,10 +50,8 @@ describe('Checkbox', () => {
             />
         )
 
-        const label = screen.getByText('checkbox-label')
         const checkbox = screen.getByRole('switch')
 
-        expect(label).toBeDefined()
         expect(checkbox).toBeDefined()
     })
 
@@ -135,5 +131,18 @@ describe('Checkbox', () => {
         await waitFor(() => {
             expect(onHelperClick).toHaveBeenCalled()
         })
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Checkbox
+                type='switch'
+                label='checkbox-label'
+                name='checkbox-name'
+                onChange={jest.fn()}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

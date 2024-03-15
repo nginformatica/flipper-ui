@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event/'
 import StepCard from '@/test/mocks/step-card-mock'
@@ -305,5 +305,30 @@ describe('StepCard', () => {
         await userEvent.click(step1InfoButton)
 
         expect(onStepUrlClickSpy).toHaveBeenCalledWith('valid-url')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <StepCard
+                stepProps={{
+                    image: 'https://picsum.photos/200',
+                    percentage: 50,
+                    summary: 'Summary',
+                    title: 'Title',
+                    steps: [
+                        {
+                            title: 'Step 1',
+                            done: false
+                        },
+                        {
+                            title: 'Step 2',
+                            done: true
+                        }
+                    ]
+                }}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

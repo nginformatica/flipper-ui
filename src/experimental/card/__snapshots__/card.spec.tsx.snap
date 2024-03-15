@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root showable MuiPaper-elevation1 MuiPaper-rounded"
+    name="test"
+    role="mui-paper-container"
+    style="padding: 24px; flex: 1; display: flex; flex-direction: column;"
+  >
+    <div
+      class="sc-faxByu czPKaA"
+    >
+      <h6
+        class="MuiTypography-root sc-EFWon fFvvmv MuiTypography-h6 MuiTypography-colorPrimary"
+        name="test-title"
+      >
+        test-title
+      </h6>
+    </div>
+    <div>
+      <div
+        style="flex: 1; border: 1px solid #e0e0e0;"
+      />
+    </div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text"
+      style="opacity: 1;"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        add button
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <div>
+      <h1>
+        test
+      </h1>
+    </div>
+  </div>
+</div>
+`;

@@ -7,9 +7,6 @@ import { ChevronRight as IconChevronRight } from '@/icons'
 
 const imap = addIndex(map)
 
-const INDEX_CORRECTION = 1
-const START = 1
-
 type Props = {
     /**
      * A mapping between the pathname and the friendly name
@@ -29,10 +26,6 @@ const defaultLinkWrapper = (link: string, label: string) => (
     </LinkStyled>
 )
 
-/**
- * Render breadcrumbs for the provided pathname or the current
- * `window.location.pathname`.
- */
 const Breadcrumbs = ({
     pathname,
     homeId,
@@ -42,14 +35,12 @@ const Breadcrumbs = ({
     const path = pathname || window.location.pathname
     const validChunks = path.split('/').filter(term => term in pathMapping)
     const allChunks = [homeId, ...validChunks]
-    const lastChunkIndex = allChunks.length - INDEX_CORRECTION
+    const lastChunkIndex = allChunks.length - 1
 
     const links = imap((term: string, chunkIndex) => {
         const validChunkWord = pathMapping[term]
 
-        const link =
-            '/' +
-            allChunks.slice(START, chunkIndex + INDEX_CORRECTION).join('/')
+        const link = '/' + allChunks.slice(1, chunkIndex + 1).join('/')
 
         const text = (
             <TextTypography key={link} color='inherit'>

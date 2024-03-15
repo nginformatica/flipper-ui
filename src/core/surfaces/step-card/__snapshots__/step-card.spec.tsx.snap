@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepCard should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-beySPh hcYLCv"
+  >
+    <div
+      class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="sc-dmyCSP fCXOnE"
+      >
+        <div
+          class="sc-guDLey fgXnDi"
+          minheight="100px"
+        >
+          <div
+            class="sc-hLQSwg jOTGbJ"
+            justifycontent="start"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="step-card-title-icon"
+              focusable="false"
+              style="font-size: 40px; color: rgb(117, 117, 117);"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+              />
+            </svg>
+            <div
+              class="sc-jTQCzO kJgUNQ"
+            >
+              <h6
+                class="MuiTypography-root MuiTypography-h6"
+                style="color: rgb(66, 66, 66); font-size: 24px; text-align: center;"
+              >
+                Title
+              </h6>
+            </div>
+          </div>
+          <div
+            class="sc-hLQSwg dsPHCL"
+            justifycontent="end"
+          >
+            <div
+              aria-disabled="false"
+              aria-expanded="false"
+              class="MuiButtonBase-root MuiAccordionSummary-root"
+              role="button"
+              style="text-align: center;"
+              tabindex="0"
+            >
+              <div
+                class="MuiAccordionSummary-content"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-h6"
+                >
+                  Summary
+                </h6>
+              </div>
+              <div
+                aria-disabled="false"
+                aria-hidden="true"
+                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+                    data-testid="ExpandMoreIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-guDLey kwejIX"
+          minheight="15px"
+        >
+          <div
+            class="MuiBox-root MuiBox-root-17 sc-iBdnpw fllEAt"
+          >
+            <div
+              aria-valuemax="100"
+              aria-valuemin="0"
+              aria-valuenow="50"
+              class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
+              role="progressbar"
+              style="height: 16px; background-color: rgb(189, 189, 189);"
+            >
+              <div
+                class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary barColorPrimary MuiLinearProgress-bar1Determinate"
+                style="transform: translateX(-50%);"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-root MuiCollapse-hidden"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner"
+          >
+            <div
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root"
+                style="display: flex; justify-content: space-between;"
+              >
+                <div
+                  class="sc-hLQSwg jOTGbJ"
+                  justifycontent="start"
+                >
+                  <ul
+                    class="MuiList-root MuiList-padding"
+                  >
+                    <li
+                      class="sc-eDLKkx PVLsv"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CheckCircleIcon"
+                        focusable="false"
+                        style="color: rgb(117, 117, 117);"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                        />
+                      </svg>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                        style="color: rgb(97, 97, 97); font-weight: 600;"
+                      >
+                        Step 1
+                      </p>
+                    </li>
+                    <li
+                      class="sc-eDLKkx PVLsv"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CheckCircleIcon"
+                        focusable="false"
+                        style="color: rgb(14, 144, 67);"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                        />
+                      </svg>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                        style="color: rgb(97, 97, 97); font-weight: 600;"
+                      >
+                        Step 2
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="sc-hLQSwg dsPHCL"
+                  justifycontent="end"
+                >
+                  <img
+                    alt="Step Icon"
+                    src="https://picsum.photos/200"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

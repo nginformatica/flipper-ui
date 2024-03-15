@@ -195,7 +195,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
         })
 
     return (
-        <Table>
+        <Table data-testid='data-table-field'>
             <TableHead>
                 {checkbox && (
                     <TableCell padding='checkbox'>

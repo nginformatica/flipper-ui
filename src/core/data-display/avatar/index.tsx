@@ -7,9 +7,6 @@ import type { AvatarProps as MuiAvatarProps } from '@material-ui/core'
 import type { Theme } from '@material-ui/core/styles'
 
 export interface AvatarProps extends DefaultProps, MuiAvatarProps {
-    /**
-     * If true, the avatar will have a primary color background.
-     */
     primary?: boolean
     children?: ReactNode
     'data-testid'?: string

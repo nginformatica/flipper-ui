@@ -34,83 +34,24 @@ export type DataTableProps<
     D extends Data,
     V extends StackView = Record<string, unknown>
 > = {
-    /**
-     * The data to be shown in the table
-     */
     data: D[]
-    /**
-     * The total elements present in query
-     */
     totalElements: number
-    /**
-     * Change current page handler
-     */
     handleChangePage: (page: number) => void
-    /**
-     * Per page value
-     */
     perPage: number
-    /**
-     * Change page handler
-     */
     handleChangePerPage: (value: number) => void
-    /**
-     * Actual page
-     */
     page: number
-    /**
-     * Errors as an object where the key is the ID of the row and the value is
-     * a Set with the fields of error
-     */
     errors?: Errors<D>
-    /**
-     * The columns specification
-     */
     columns: ColumnSpec<D>[]
-    /**
-     * Hide the table header
-     */
     noHeader?: boolean
-    /**
-     * Component to show when there are no data
-     */
     componentForEmpty?: ReactNode
-    /**
-     * Custom style to be applied to the table body
-     */
     bodyStyle?: CSSProperties
-    /**
-     * Custom style to be applied to the table head
-     */
     headStyle?: CSSProperties
-    /**
-     * Custom style to be applied to all rows of the table body
-     */
     bodyRowStyle?: CSSProperties
-    /**
-     * Custom style to be applied to all rows of the table head
-     */
     headRowStyle?: CSSProperties
-    /**
-     * Height of a hidden row, when you need to have some blank space in case
-     * you fill in the pagination.rowsPerPage
-     */
     hiddenRowHeight?: number
-    /**
-     * The pagination configuration
-     */
     pagination?: Partial<PaginationOptions>
-    /**
-     * A React MutableRefObject for the row controller
-     */
     controllerRef?: MutableRefObject<DataTableController<D, V> | undefined>
-    /**
-     * Initialize with hidden values
-     */
     hidden?: boolean
-    /**
-     * Custom rowViews used as a Stac
-     */
     rowViews?: Record<keyof V, RowViewComponent<D>>
     onRowClick?: (event: MouseEvent<HTMLTableRowElement>, rowData: D) => void
 }

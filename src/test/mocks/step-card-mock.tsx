@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import type { IStepCardProps } from '@/core/surfaces/step-card'
 import StepCard from '@/core/surfaces/step-card'
 
@@ -14,7 +14,7 @@ const Default = ({
     blockInitialLoading
 }: IProps) => {
     const { percentage, summary, title, ...rest } = stepProps
-    const [loading, setLoading] = React.useState(initialLoading ?? false)
+    const [loading, setLoading] = useState(initialLoading ?? false)
 
     setTimeout(() => {
         setLoading(false)

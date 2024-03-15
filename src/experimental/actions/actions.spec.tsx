@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Actions } from '.'
 
@@ -75,5 +75,16 @@ describe('Actions', () => {
         actionConfirm.click()
 
         expect(onConfirm).toHaveBeenCalled()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Actions
+                labels={{ cancel: 'Voltar', confirm: 'Excluir' }}
+                onConfirm={jest.fn()}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

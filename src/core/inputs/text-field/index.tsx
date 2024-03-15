@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react'
 import type {
     ChangeEvent,
@@ -163,8 +162,7 @@ export const renderOptions = (
 
     return (
         options &&
-        // @ts-ignore
-        comboOptions.map((option: TextFieldProps) => (
+        comboOptions?.map((option: TextFieldProps) => (
             <ListItem
                 id={toLispCase(`option-${option.value}`)}
                 key={option.value}
@@ -275,7 +273,7 @@ export const TextField = ({
                     ...InputLabelProps
                 }}
                 InputProps={{
-                    // @ts-ignore
+                    // @ts-expect-error It needs the data-testid for the tests
                     'data-testid': 'text-field',
                     classes: {
                         input:

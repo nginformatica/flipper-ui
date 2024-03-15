@@ -7,13 +7,7 @@ import type { BadgeProps as MuiBadgeProps } from '@material-ui/core/Badge'
 
 export interface BadgeProps extends DefaultProps, MuiBadgeProps {
     children: ReactNode
-    /**
-     * The number to display in the badge.
-     */
     counter: number | string
-    /**
-     * The position of the badge.
-     */
     position?: {
         top?: number
         bottom?: number

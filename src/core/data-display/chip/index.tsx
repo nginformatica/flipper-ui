@@ -7,9 +7,6 @@ import type { ChipProps as MuiChipProps } from '@material-ui/core'
 export interface IChipProps
     extends MuiChipProps,
         Omit<DefaultProps, 'children'> {
-    /**
-     * If `true`, the chip will be squared.
-     */
     square?: boolean
 }
 

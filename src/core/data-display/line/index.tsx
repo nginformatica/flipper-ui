@@ -5,9 +5,6 @@ import { theme } from '@/theme'
 const { grays, secondary } = theme.colors
 
 export interface LineProps extends DefaultProps {
-    /**
-     * If true, the line will use the primary color.
-     */
     primary?: boolean
     'data-testid'?: string
 }

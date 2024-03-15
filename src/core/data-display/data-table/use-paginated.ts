@@ -35,15 +35,11 @@ export const generateRandomDate = (size: number): Data[] => {
     return content
 }
 
-const MOCK_DELAY_VALUE = 1000
-const DEFAULT_PAGE_SIZE = 5
-const DEFAULT_MOCK_LENGTH = 35
-
-const mockData = generateRandomDate(DEFAULT_MOCK_LENGTH)
+const mockData = generateRandomDate(35)
 
 const INITIAL_STATE: IPaginated<Data> = {
     items: [],
-    size: DEFAULT_PAGE_SIZE,
+    size: 5,
     actualPage: 0,
     totalItens: 0
 }
@@ -61,7 +57,7 @@ export const usePaginated = () => {
         setState(prev => ({ ...prev, totalItens: mockData.length }))
         setTimeout(() => {
             setLoading(false)
-        }, MOCK_DELAY_VALUE)
+        }, 1000)
     }, [])
 
     useEffect(() => {
@@ -85,18 +81,22 @@ export const usePaginated = () => {
 
     const handleChangePage = (newPage: number) => {
         setLoading(true)
+
         setState(prev => ({ ...prev, actualPage: newPage }))
+
         setTimeout(() => {
             setLoading(false)
-        }, MOCK_DELAY_VALUE)
+        }, 1000)
     }
 
     const handleChangePerPage = (value: number) => {
         setLoading(true)
+
         setState(prev => ({ ...prev, size: value }))
+
         setTimeout(() => {
             setLoading(false)
-        }, MOCK_DELAY_VALUE)
+        }, 1000)
     }
 
     const setData: Dispatch<SetStateAction<Data[]>> = (data: Data[]) => {

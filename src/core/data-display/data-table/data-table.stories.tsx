@@ -33,15 +33,29 @@ type Data = {
     date: Date
 }
 
+type DataCrud = {
+    id: Identifier
+    product: string
+    price: number
+    quantity: number
+    date: Date
+}
+
+type DataCrudWithHidden = {
+    id: Identifier
+    name: string
+    key: string
+    secret: string
+    rowMode: RowMode
+}
+
+type View = {
+    confirmDelete(): JSX.Element
+}
+
 export const Default = () => {
-    type Data = {
-        id: number
-        product: string
-        price: number
-        quantity: number
-        date: Date
-    }
     const date = () => new Date()
+
     const data = [
         {
             id: 1,
@@ -177,6 +191,7 @@ export const Empty = () => {
 
 export const NoHeader = () => {
     const date = () => new Date()
+
     const data = [
         {
             id: 1,
@@ -257,6 +272,7 @@ export const NoHeader = () => {
 
 export const NoPagination = () => {
     const date = () => new Date()
+
     const data = [
         {
             id: 1,
@@ -334,25 +350,13 @@ export const NoPagination = () => {
 }
 
 export const Crud = () => {
-    type Data = {
-        id: Identifier
-        product: string
-        price: number
-        quantity: number
-        date: Date
-    }
-
-    type View = {
-        confirmDelete(): JSX.Element
-    }
-
     const date = () => new Date()
-    const controllerRef = useRef<DataTableController<Data, View>>()
+    const controllerRef = useRef<DataTableController<DataCrud, View>>()
     const [errors, setErrors] = useState({})
 
     const randomId = () => Math.random().toString(36).substr(0, 12)
 
-    const [data, setData] = useState<Data[]>([
+    const [data, setData] = useState<DataCrud[]>([
         { id: 1, product: 'Magazine', price: 13.5, quantity: 12, date: date() },
         { id: 2, product: 'Table', price: 200.49, quantity: 3, date: date() },
         { id: 3, product: 'Chair', price: 53.5, quantity: 9, date: date() },
@@ -599,24 +603,13 @@ export const Crud = () => {
 }
 
 export const CrudWithHidden = () => {
-    type Data = {
-        id: Identifier
-        name: string
-        key: string
-        secret: string
-        rowMode: RowMode
-    }
-
-    type View = {
-        confirmDelete(): JSX.Element
-    }
-
-    const controllerRef = useRef<DataTableController<Data, View>>()
+    const controllerRef =
+        useRef<DataTableController<DataCrudWithHidden, View>>()
     const [errors, setErrors] = useState({})
 
     const randomId = () => Math.random().toString(36).substr(0, 12)
 
-    const [data, setData] = useState<Data[]>([
+    const [data, setData] = useState<DataCrudWithHidden[]>([
         {
             id: 1,
             name: 'PowerBI',
@@ -708,7 +701,11 @@ export const CrudWithHidden = () => {
 
             if (isNew) {
                 setData(data => [
-                    { ...nextItem, key: uuid(), secret: uuid() } as Data,
+                    {
+                        ...nextItem,
+                        key: uuid(),
+                        secret: uuid()
+                    } as DataCrudWithHidden,
                     ...data
                 ])
             } else {
@@ -729,7 +726,7 @@ export const CrudWithHidden = () => {
             controllerRef.current?.viewRow(id)
         }
 
-    const columns: ColumnSpec<Data>[] = [
+    const columns: ColumnSpec<DataCrudWithHidden>[] = [
         {
             title: 'Name',
             field: 'name',
@@ -841,7 +838,7 @@ export const CrudWithHidden = () => {
     ]
 
     const rowViews = {
-        confirmDelete: ({ data }: { data: Data }) => {
+        confirmDelete: ({ data }: { data: DataCrudWithHidden }) => {
             return (
                 <td colSpan={5}>
                     <div
@@ -896,85 +893,85 @@ export const CrudWithHidden = () => {
     )
 }
 
-const dataInput = [
-    {
-        branch: 'Keepfy Joinville',
-        local: 'Joiville',
-        status: 'Ativo',
-        companyCode: '',
-        branchCode: ''
-    },
-    {
-        branch: 'Keepfy São Paulo',
-        local: 'São Paulo',
-        status: 'Ativo',
-        companyCode: '',
-        branchCode: ''
-    },
-    {
-        branch: 'Keepfy Rio Grande do Sul',
-        local: 'Rio Grande do Sul',
-        status: 'Ativo',
-        companyCode: '',
-        branchCode: ''
-    },
-    {
-        branch: 'Keepfy Rio de Janeiro',
-        local: 'Rio de Janeiro',
-        status: 'Ativo',
-        companyCode: '',
-        branchCode: ''
-    },
-    {
-        branch: 'Keepfy Curitiba',
-        local: 'Curitiba',
-        status: 'Ativo',
-        companyCode: '',
-        branchCode: ''
-    },
-    {
-        branch: 'Keepfy Teresópolis',
-        local: 'Teresópolis',
-        status: 'Ativo',
-        companyCode: '',
-        branchCode: ''
-    }
-]
-
-const tableHead = [
-    {
-        title: 'Nome da Filial',
-        field: 'branch',
-        type: 'text',
-        editable: false
-    },
-    {
-        title: 'Localidade',
-        field: 'local',
-        type: 'text',
-        editable: false
-    },
-    {
-        title: 'Status',
-        field: 'status',
-        type: 'text',
-        editable: false
-    },
-    {
-        title: 'Código da Empresa',
-        field: 'companyCode',
-        type: 'number',
-        editable: true
-    },
-    {
-        title: 'Código da Filial',
-        field: 'branchCode',
-        type: 'text',
-        editable: true
-    }
-]
-
 export const WithField = () => {
+    const dataInput = [
+        {
+            branch: 'Keepfy Joinville',
+            local: 'Joiville',
+            status: 'Ativo',
+            companyCode: '',
+            branchCode: ''
+        },
+        {
+            branch: 'Keepfy São Paulo',
+            local: 'São Paulo',
+            status: 'Ativo',
+            companyCode: '',
+            branchCode: ''
+        },
+        {
+            branch: 'Keepfy Rio Grande do Sul',
+            local: 'Rio Grande do Sul',
+            status: 'Ativo',
+            companyCode: '',
+            branchCode: ''
+        },
+        {
+            branch: 'Keepfy Rio de Janeiro',
+            local: 'Rio de Janeiro',
+            status: 'Ativo',
+            companyCode: '',
+            branchCode: ''
+        },
+        {
+            branch: 'Keepfy Curitiba',
+            local: 'Curitiba',
+            status: 'Ativo',
+            companyCode: '',
+            branchCode: ''
+        },
+        {
+            branch: 'Keepfy Teresópolis',
+            local: 'Teresópolis',
+            status: 'Ativo',
+            companyCode: '',
+            branchCode: ''
+        }
+    ]
+
+    const tableHead = [
+        {
+            title: 'Nome da Filial',
+            field: 'branch',
+            type: 'text',
+            editable: false
+        },
+        {
+            title: 'Localidade',
+            field: 'local',
+            type: 'text',
+            editable: false
+        },
+        {
+            title: 'Status',
+            field: 'status',
+            type: 'text',
+            editable: false
+        },
+        {
+            title: 'Código da Empresa',
+            field: 'companyCode',
+            type: 'number',
+            editable: true
+        },
+        {
+            title: 'Código da Filial',
+            field: 'branchCode',
+            type: 'text',
+            editable: true
+        }
+    ]
+
     const [data, setData] = useState<Record<string, unknown>[]>(() => dataInput)
     const [selectedAll, setSelectedAll] = useState<boolean>(false)
     const [selected, setSelected] = useState<boolean[]>(
