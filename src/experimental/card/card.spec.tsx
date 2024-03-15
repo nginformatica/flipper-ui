@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
@@ -92,6 +92,7 @@ describe('Card', () => {
         const addButton = screen.getByTestId('add-button')
 
         addButton.click()
+
         expect(onClickAdd).toHaveBeenCalled()
     })
 
@@ -113,7 +114,22 @@ describe('Card', () => {
         const editButton = screen.getByTestId('edit-button')
 
         editButton.click()
+
         expect(onToggleEdit).toHaveBeenCalled()
         expect(editButton).toHaveProperty('name', 'edit-test')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Card
+                name='test'
+                title='test-title'
+                onAddBtnLabel='add button'
+                onClickAdd={jest.fn()}>
+                <h1>test</h1>
+            </Card>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

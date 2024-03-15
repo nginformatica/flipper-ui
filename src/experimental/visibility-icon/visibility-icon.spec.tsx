@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import VisibilityIcon from '.'
 
 describe('VisibilityIcon', () => {
-    it('should render visible', () => {
+    it('should render', () => {
         render(<VisibilityIcon show onToggle={jest.fn()} />)
 
         const svg = screen.getByTestId('icon-off')
@@ -21,7 +21,9 @@ describe('VisibilityIcon', () => {
 
     it('should call onClick', () => {
         const onClick = jest.fn()
+
         const container = render(<VisibilityIcon show onToggle={onClick} />)
+
         const button = container.container.querySelector('button')
 
         fireEvent.click(button || container.container)
@@ -30,13 +32,18 @@ describe('VisibilityIcon', () => {
     })
 
     it('should have name', () => {
-        const NAME = 'show'
         const container = render(
-            <VisibilityIcon show name={NAME} onToggle={jest.fn()} />
+            <VisibilityIcon show name='show' onToggle={jest.fn()} />
         )
 
         const button = container.container.querySelector('button')
 
-        expect(button).toHaveProperty('name', NAME)
+        expect(button).toHaveProperty('name', 'show')
+    })
+
+    it('should match snapshot', () => {
+        const container = render(<VisibilityIcon show onToggle={jest.fn()} />)
+
+        expect(container).toMatchSnapshot()
     })
 })

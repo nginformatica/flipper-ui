@@ -286,4 +286,26 @@ describe('ValidationDialog', () => {
 
         expect(handleCreateMock).toHaveBeenCalled()
     })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <ValidationDialog
+                open
+                title={stepsTitle}
+                failed={
+                    !responsesDefault.includes('Loading') &&
+                    responsesDefault.includes('Error')
+                }
+                success={responsesDefault.every(item => item === 'Success')}
+                responses={responsesDefault}
+                validations={validations}
+                icons={stepsIcons}
+                handleCreate={jest.fn()}
+                onClose={jest.fn()}
+                onCancel={jest.fn()}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
+    })
 })

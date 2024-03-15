@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapse should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiCollapse-root MuiCollapse-entered"
+    data-testid="collapse-container"
+    style="min-height: 0px;"
+  >
+    <div
+      class="MuiCollapse-wrapper"
+    >
+      <div
+        class="MuiCollapse-wrapperInner"
+      >
+        I am open for discussions
+      </div>
+    </div>
+  </div>
+</div>
+`;

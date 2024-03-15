@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event/'
@@ -10,6 +10,7 @@ describe('DateTime', () => {
         render(
             <DateTime dateProps={{ type: 'date', inputVariant: 'standard' }} />
         )
+
         const container = screen.getByRole('date-picker') as HTMLInputElement
 
         await act(async () => {
@@ -22,6 +23,7 @@ describe('DateTime', () => {
 
     it('should update date', async () => {
         render(<DateTime dateProps={{ type: 'date' }} />)
+
         const container = screen.getByRole('date-picker') as HTMLInputElement
 
         await act(async () => {
@@ -41,6 +43,7 @@ describe('DateTime', () => {
                 }}
             />
         )
+
         const container = screen.getByRole('date-picker') as HTMLInputElement
 
         await act(async () => {
@@ -50,8 +53,10 @@ describe('DateTime', () => {
 
         expect(container.value).toBe('09111991')
     })
+
     it('should update time', async () => {
         render(<DateTime dateProps={{ type: 'time' }} />)
+
         const container = screen.getByRole('date-picker') as HTMLInputElement
 
         await act(async () => {
@@ -64,6 +69,7 @@ describe('DateTime', () => {
 
     it('should update datetime', async () => {
         render(<DateTime dateProps={{ type: 'datetime' }} />)
+
         const container = screen.getByRole('date-picker') as HTMLInputElement
 
         await act(async () => {
@@ -72,5 +78,18 @@ describe('DateTime', () => {
         })
 
         expect(container.value).toBe('09/11/1991 08:00')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <DateTime
+                dateProps={{
+                    format: 'ddMMyyyy',
+                    locale: ptBR
+                }}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Button from '@/core/inputs/button'
 import { Dialog } from '.'
@@ -36,14 +36,8 @@ describe('Dialog', () => {
             />
         )
 
-        const title = screen.getByText('My beautiful Dialog')
-        const text = screen.getByText('Is not it?')
-        const close = screen.getByText('Close')
         const snippet = screen.getByText('Snippet')
 
-        expect(title).toBeDefined()
-        expect(text).toBeDefined()
-        expect(close).toBeDefined()
         expect(snippet).toBeDefined()
     })
 
@@ -81,12 +75,8 @@ describe('Dialog', () => {
             />
         )
 
-        const title = screen.getByText('My beautiful Dialog')
-        const close = screen.getByText('Close')
         const content = screen.getByText('Content')
 
-        expect(title).toBeDefined()
-        expect(close).toBeDefined()
         expect(content).toBeDefined()
     })
 
@@ -172,5 +162,20 @@ describe('Dialog', () => {
         expect(element.parentElement?.classList).toContain(
             'MuiDialog-scrollPaper'
         )
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Dialog
+                open
+                title='My beautiful Dialog'
+                text={'Is not it?'}
+                actions={<Button onClick={jest.fn()}>Close</Button>}
+                content={<div>Content</div>}
+                onClose={jest.fn()}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

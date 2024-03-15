@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Skeleton should match snapshot - Circle 1`] = `
+exports[`Skeleton should match snapshot - circle 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -89,7 +89,7 @@ exports[`Skeleton should match snapshot - Circle 1`] = `
 }
 `;
 
-exports[`Skeleton should match snapshot - Simple 1`] = `
+exports[`Skeleton should match snapshot - with custom height 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -101,7 +101,7 @@ exports[`Skeleton should match snapshot - Simple 1`] = `
       >
         <span
           class="react-loading-skeleton"
-          style="--base-color: #eeeeee; --highlight-color: #e0e0e0;"
+          style="width: 64px; height: 64px; --base-color: #eeeeee; --highlight-color: #e0e0e0;"
         >
           ‌
         </span>
@@ -117,7 +117,7 @@ exports[`Skeleton should match snapshot - Simple 1`] = `
     >
       <span
         class="react-loading-skeleton"
-        style="--base-color: #eeeeee; --highlight-color: #e0e0e0;"
+        style="width: 64px; height: 64px; --base-color: #eeeeee; --highlight-color: #e0e0e0;"
       >
         ‌
       </span>
@@ -178,7 +178,7 @@ exports[`Skeleton should match snapshot - Simple 1`] = `
 }
 `;
 
-exports[`Skeleton should match snapshot - WithCustomHeight 1`] = `
+exports[`Skeleton should match snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -190,7 +190,7 @@ exports[`Skeleton should match snapshot - WithCustomHeight 1`] = `
       >
         <span
           class="react-loading-skeleton"
-          style="width: 64px; height: 64px; --base-color: #eeeeee; --highlight-color: #e0e0e0;"
+          style="--base-color: #eeeeee; --highlight-color: #e0e0e0;"
         >
           ‌
         </span>
@@ -206,7 +206,7 @@ exports[`Skeleton should match snapshot - WithCustomHeight 1`] = `
     >
       <span
         class="react-loading-skeleton"
-        style="width: 64px; height: 64px; --base-color: #eeeeee; --highlight-color: #e0e0e0;"
+        style="--base-color: #eeeeee; --highlight-color: #e0e0e0;"
       >
         ‌
       </span>

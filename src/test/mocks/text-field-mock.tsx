@@ -1,4 +1,5 @@
-import * as React from 'react'
+import React, { useState } from 'react'
+import type { ChangeEvent } from 'react'
 import type { TextFieldProps } from '@/core/inputs/text-field'
 import ListItem from '@/core/data-display/list-item'
 import { TextField } from '@/core/inputs/text-field'
@@ -18,9 +19,9 @@ const LIST = [
 ]
 
 const Default = ({ inputProps, initialOption, characters }: IProps) => {
-    const [value, setValue] = React.useState(initialOption ? initialOption : '')
+    const [value, setValue] = useState(initialOption ? initialOption : '')
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
     }
 

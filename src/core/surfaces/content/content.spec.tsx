@@ -1,15 +1,21 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Content from '.'
 
 describe('Content', () => {
     it('should render', () => {
-        render(<Content data-testid='container'>I am a Content</Content>)
+        render(<Content data-testid='container' />)
 
         const container = screen.getByTestId('container')
-        const label = screen.getByText('I am a Content')
 
         expect(container).toBeDefined()
+    })
+
+    it('should render children', () => {
+        render(<Content data-testid='container'>I am a Content</Content>)
+
+        const label = screen.getByText('I am a Content')
+
         expect(label).toBeDefined()
     })
 

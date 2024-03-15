@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import Fab from './fab'
@@ -6,7 +6,7 @@ import FabWrapper from './fab-wrapper'
 import { FileCopy } from '@/icons'
 
 describe('Fab', () => {
-    it('should render correctly', () => {
+    it('should render', () => {
         render(
             <Fab onClick={jest.fn()}>
                 <FileCopy />
@@ -18,7 +18,7 @@ describe('Fab', () => {
         expect(container.classList).toContain('MuiFab-sizeSmall')
     })
 
-    it('should render large correctly', () => {
+    it('should render large', () => {
         render(
             <Fab large onClick={jest.fn()}>
                 <FileCopy />
@@ -30,7 +30,7 @@ describe('Fab', () => {
         expect(container.classList).toContain('MuiFab-sizeMedium')
     })
 
-    it('Should call onClick', async () => {
+    it('should call onClick', async () => {
         const onClickSpy = jest.fn()
 
         render(
@@ -48,7 +48,7 @@ describe('Fab', () => {
         })
     })
 
-    it('Should show tooltip', async () => {
+    it('should show tooltip', async () => {
         const onClickSpy = jest.fn()
 
         render(
@@ -64,14 +64,30 @@ describe('Fab', () => {
 
         expect(tooltip).toBeDefined()
     })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Fab tooltip='tooltip-test' onClick={jest.fn()}>
+                <FileCopy />
+            </Fab>
+        )
+
+        expect(container).toMatchSnapshot()
+    })
 })
 
 describe('FabWrapper', () => {
-    it('should render correctly', () => {
+    it('should render', () => {
         render(<FabWrapper>Test</FabWrapper>)
 
         const fabWrapper = screen.getByText('Test')
 
         expect(fabWrapper).toBeDefined()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(<FabWrapper>Test</FabWrapper>)
+
+        expect(container).toMatchSnapshot()
     })
 })

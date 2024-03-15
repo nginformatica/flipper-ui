@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Drawer } from '.'
 
@@ -25,5 +25,15 @@ describe('Drawer', () => {
         )
 
         expect(container.container.firstChild).toBeNull()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Drawer open data-testid='drawer'>
+                <div>Drawer</div>
+            </Drawer>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

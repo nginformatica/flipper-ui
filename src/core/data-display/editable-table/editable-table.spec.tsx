@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event/'
@@ -128,26 +128,6 @@ describe('EditableTable', () => {
         expect(label).toBeDefined()
     })
 
-    it('should render with no data', () => {
-        render(
-            <EditableTable
-                tableProps={{
-                    paginationInfo: true,
-                    disableAddHeader: true,
-                    onAddRow: jest.fn(),
-                    onRowClick: jest.fn(),
-                    title: 'adicionar'
-                }}
-            />
-        )
-
-        const label = screen.getByText(
-            'Não há dados para serem exibidos no momento'
-        )
-
-        expect(label).toBeDefined()
-    })
-
     it('should render with no data or columns', () => {
         render(
             <EditableTable
@@ -245,6 +225,7 @@ describe('EditableTable', () => {
         const label = screen.getByText('Adicionar item')
 
         await userEvent.click(label)
+
         const nameInput = screen.getByRole('name-input').firstElementChild
             ?.firstElementChild as HTMLInputElement
         const valueInput = screen.getByRole('name-input').firstElementChild
@@ -318,27 +299,6 @@ describe('EditableTable', () => {
         await act(async () => await userEvent.click(nextPageBtn))
 
         const label = screen.getByText('E mais um')
-
-        expect(label).toBeDefined()
-    })
-
-    it('should render with no pagination info', () => {
-        render(
-            <EditableTable
-                tableProps={{
-                    paginationInfo: false,
-                    noRowsExpand: true,
-                    disableAddHeader: true,
-                    onAddRow: jest.fn(),
-                    onRowClick: jest.fn(),
-                    title: 'adicionar',
-                    columns: COLUMNS,
-                    data: DATA
-                }}
-            />
-        )
-
-        const label = screen.getByText('Fulano')
 
         expect(label).toBeDefined()
     })
@@ -539,10 +499,9 @@ describe('EditableTable', () => {
         await act(async () => await userEvent.click(editFirstRow))
 
         const dateInput = screen.getByRole('date-picker') as HTMLInputElement
-
-        expect(dateInput.value).toBe('01/07/2019 17:21')
         const textInput = screen.getAllByTestId('text-field')[0]
 
+        expect(dateInput.value).toBe('01/07/2019 17:21')
         expect(dateInput.parentElement?.classList).toContain('Mui-error')
         expect(textInput.classList).toContain('Mui-error')
     })

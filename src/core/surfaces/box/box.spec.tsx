@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Typography from '@/core/data-display/typography'
 import Box from '.'
@@ -20,40 +20,38 @@ describe('Advertise', () => {
     })
 
     it('should render with custom string margins', () => {
-        const newMargin = '10px'
-        const newPadding = '12px'
-
         render(
-            <Box
-                margin={newMargin}
-                padding={newPadding}
-                data-testid='box-container'>
+            <Box margin='10px' padding='12px' data-testid='box-container'>
                 <Typography>Box</Typography>
             </Box>
         )
 
         const container = screen.getByTestId('box-container')
 
-        expect(container).toHaveProperty('style.margin', newMargin)
-        expect(container).toHaveProperty('style.padding', newPadding)
+        expect(container).toHaveProperty('style.margin', '10px')
+        expect(container).toHaveProperty('style.padding', '12px')
     })
 
     it('should render with custom number margins', () => {
-        const newMargin = 10
-        const newPadding = 12
-
         render(
-            <Box
-                margin={newMargin}
-                padding={newPadding}
-                data-testid='box-container'>
+            <Box margin={10} padding={12} data-testid='box-container'>
                 <Typography>Box</Typography>
             </Box>
         )
 
         const container = screen.getByTestId('box-container')
 
-        expect(container).toHaveProperty('style.margin', `${newMargin}px`)
-        expect(container).toHaveProperty('style.padding', `${newPadding}px`)
+        expect(container).toHaveProperty('style.margin', '10px')
+        expect(container).toHaveProperty('style.padding', '12px')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Box margin={10} padding={12} data-testid='box-container'>
+                <Typography>Box</Typography>
+            </Box>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

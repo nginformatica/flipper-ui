@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -7,13 +7,11 @@ import { PinInput } from '.'
 
 describe('PinInput', () => {
     it('should render', () => {
-        const PIN_LENGTH = 6
-
         render(
             <PinInput
                 isValidating={false}
                 pin={[]}
-                pinLength={PIN_LENGTH}
+                pinLength={6}
                 setPin={jest.fn()}
                 size='small'
                 validationResult={false}
@@ -23,7 +21,7 @@ describe('PinInput', () => {
 
         const pinInput = screen.getAllByRole('pin-input-field')
 
-        expect(pinInput).toHaveLength(PIN_LENGTH)
+        expect(pinInput).toHaveLength(6)
     })
 
     it('should update zeros', async () => {
@@ -264,5 +262,21 @@ describe('PinInput', () => {
         expect(container).toHaveProperty('style.width', '40px')
         expect(container).toHaveProperty('style.height', '40px')
         expect(container).toHaveProperty('style.margin-inline', '10px')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <PinInput
+                isValidating={false}
+                pin={[]}
+                pinLength={6}
+                setPin={jest.fn()}
+                size='small'
+                validationResult={false}
+                onPinChanged={jest.fn()}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

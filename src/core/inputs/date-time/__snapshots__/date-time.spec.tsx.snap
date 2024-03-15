@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTime should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root MuiTextField-root"
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+    >
+      <input
+        aria-invalid="false"
+        autocomplete="off"
+        class="MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-49 MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+        role="date-picker"
+        type="text"
+        value="15032024"
+      />
+      <div
+        class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+        style="width: 32px;"
+      >
+        <button
+          class="MuiButtonBase-root MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-53 MuiOutlinedInput-notchedOutline"
+        style="padding-left: 8px;"
+      >
+        <legend
+          class="PrivateNotchedOutline-legend-54"
+          style="width: 0.01px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+</div>
+`;

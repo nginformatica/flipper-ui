@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
@@ -37,5 +37,16 @@ describe('Node', () => {
 
         expect(node1).toBeDefined()
         expect(node2).toBeDefined()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Node name='Branch'>
+                <Node id='2' name='Node 1' />
+                <Node id='3' name='Node 2' />
+            </Node>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

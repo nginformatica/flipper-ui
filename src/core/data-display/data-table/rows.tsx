@@ -13,6 +13,13 @@ type RowStateUpdater = <D extends Data>(
     value: D[keyof D]
 ) => void
 
+type NewRowProps<D extends Data> = {
+    data: PartialData<D>
+    errors?: Errors<D>
+    columns: ColumnSpec<D>[]
+    onUpdate?(partial: Partial<Data>): void
+}
+
 const isEditable = <D extends Data>(column: ColumnSpec<D>) =>
     column.type === 'actions' || column.editable
 
@@ -208,13 +215,6 @@ export const StatefulRow = <D extends Data>({
             ))}
         </>
     )
-}
-
-type NewRowProps<D extends Data> = {
-    data: PartialData<D>
-    errors?: Errors<D>
-    columns: ColumnSpec<D>[]
-    onUpdate?(partial: Partial<Data>): void
 }
 
 export const NewRow = <D extends Data>({

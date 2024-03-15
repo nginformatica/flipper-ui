@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-jTQCzO dhTzGX"
+  >
+    <label
+      class="MuiFormControlLabel-root"
+    >
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-33 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          role="switch"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              class="PrivateSwitchBase-input-36 MuiSwitch-input"
+              name="checkbox-name"
+              type="checkbox"
+              value="checkbox-name"
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
+      <span
+        class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+      >
+        checkbox-label
+      </span>
+    </label>
+  </div>
+</div>
+`;

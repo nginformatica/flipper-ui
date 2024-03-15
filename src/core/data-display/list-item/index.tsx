@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import type { MouseEvent } from 'react'
 import {
     ListItem as MuiListItem,
@@ -49,7 +49,7 @@ const ListItem = (props: ListItemProps) => {
         const typographyProps = { className }
 
         return (
-            <Fragment>
+            <>
                 {props.avatar && (
                     <MuiListItemAvatar>{props.avatar}</MuiListItemAvatar>
                 )}
@@ -73,7 +73,7 @@ const ListItem = (props: ListItemProps) => {
                         {props.action}
                     </MuiListItemSecondaryAction>
                 )}
-            </Fragment>
+            </>
         )
     }
 

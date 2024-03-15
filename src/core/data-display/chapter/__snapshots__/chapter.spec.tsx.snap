@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chapter should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-guDLey wpcEU"
+  >
+    <div
+      class="sc-beySPh bYMaWh"
+    />
+    <p
+      class="MuiTypography-root MuiTypography-body2"
+    >
+      Chapter
+    </p>
+    <div
+      class="sc-beySPh bYMaWh"
+    />
+  </div>
+</div>
+`;

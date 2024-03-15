@@ -1,4 +1,5 @@
-import * as React from 'react'
+import React, { useState } from 'react'
+import type { ChangeEvent } from 'react'
 import type { SelectProps } from '@/core/inputs/select'
 import ListItem from '@/core/data-display/list-item'
 import Select from '@/core/inputs/select'
@@ -9,10 +10,10 @@ interface IProps {
 }
 
 const Default = (props: IProps) => {
-    const [select, setSelect] = React.useState(props.initialValue || '')
+    const [select, setSelect] = useState(props.initialValue || '')
 
     function handleChange(
-        event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+        event: ChangeEvent<HTMLSelectElement | HTMLInputElement>
     ) {
         setSelect(event.target.value)
     }

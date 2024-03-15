@@ -4,23 +4,9 @@ import type { DefaultProps } from '../../types'
 import { AdvertiseTypography, Paper } from './styles'
 
 export interface AdvertiseProps extends DefaultProps {
-    /**
-     * The comment to be displayed
-     */
     comment: string
-    /**
-     * The author of the comment
-     */
     author: string
-    /**
-     * The style of the comments
-     * @optional
-     */
     commentStyle?: CSSProperties
-    /**
-     * The style of the author
-     * @optional
-     */
     authorStyle?: CSSProperties
 }
 

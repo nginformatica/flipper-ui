@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MaskField should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-dmyCSP kvMDoa"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root"
+      inputmode="numeric"
+      title=""
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        data-testid="text-field"
+      >
+        <input
+          aria-invalid="false"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-17"
+          placeholder="Description"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-22 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-23"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;

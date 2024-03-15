@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PinInput should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-beySPh hfIdRQ"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root pin-input-field"
+      style="width: 40px; height: 30px; margin-inline: 5px;"
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root Mui-focused Mui-focused MuiInputBase-formControl"
+        role="pin-input-field"
+        style="width: 40px; text-align: center; font-weight: bold; font-size: 16px;"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-49 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-50"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root pin-input-field"
+      style="width: 40px; height: 30px; margin-inline: 5px;"
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        role="pin-input-field"
+        style="width: 40px; text-align: center; font-weight: bold; font-size: 16px;"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-49 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-50"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root pin-input-field"
+      style="width: 40px; height: 30px; margin-inline: 5px;"
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        role="pin-input-field"
+        style="width: 40px; text-align: center; font-weight: bold; font-size: 16px;"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-49 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-50"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root pin-input-field"
+      style="width: 40px; height: 30px; margin-inline: 5px;"
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        role="pin-input-field"
+        style="width: 40px; text-align: center; font-weight: bold; font-size: 16px;"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-49 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-50"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root pin-input-field"
+      style="width: 40px; height: 30px; margin-inline: 5px;"
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        role="pin-input-field"
+        style="width: 40px; text-align: center; font-weight: bold; font-size: 16px;"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-49 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-50"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root pin-input-field"
+      style="width: 40px; height: 30px; margin-inline: 5px;"
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        role="pin-input-field"
+        style="width: 40px; text-align: center; font-weight: bold; font-size: 16px;"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-49 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-50"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;

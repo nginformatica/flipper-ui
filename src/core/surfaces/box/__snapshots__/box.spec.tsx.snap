@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advertise should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    data-testid="box-container"
+    role="mui-paper-container"
+    style="padding: 12px; margin: 10px; min-height: 400px;"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body2"
+    >
+      Box
+    </p>
+  </div>
+</div>
+`;

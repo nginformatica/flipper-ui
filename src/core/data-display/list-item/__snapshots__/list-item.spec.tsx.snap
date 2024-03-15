@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem should match snapshot 1`] = `
+<div>
+  <div
+    aria-disabled="false"
+    class="MuiButtonBase-root MuiListItem-root makeStyles-root-7 MuiListItem-gutters MuiListItem-button"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="MuiListItemAvatar-root"
+    >
+      <div>
+        Avatar
+      </div>
+    </div>
+    <div
+      class="MuiListItemText-root"
+      data-testid="list-item-undefined"
+      style="margin-right: 36px;"
+    >
+      <span
+        class="MuiTypography-root makeStyles-default-8 MuiTypography-body1 MuiTypography-displayBlock"
+      >
+        Item 1
+      </span>
+    </div>
+    <div
+      class="MuiListItemSecondaryAction-root makeStyles-default-8"
+    >
+      <div>
+        Action
+      </div>
+    </div>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </div>
+</div>
+`;

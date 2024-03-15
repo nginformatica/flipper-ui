@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiDrawer-root MuiDrawer-docked sc-gHWSBU iWntKS"
+    id="sidebar"
+    style="width: 56px; top: 0px; transition: width 100ms ease-in-out; z-index: 1199;"
+  >
+    <div
+      class="MuiPaper-root MuiDrawer-paper MuiDrawer-paperAnchorLeft makeStyles-sidebar-83 makeStyles-default-78 MuiDrawer-paperAnchorDockedLeft MuiPaper-elevation0"
+    >
+      <div
+        anchor="left"
+        class="sc-lnsjTu ifVEsT"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-77"
+          data-testid="sidebar-button"
+          id="sidebar-toggle-button"
+          name="button-sidebar"
+          style="max-width: 56px; opacity: 1;"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium makeStyles-icon-79 css-i4bv87-MuiSvgIcon-root"
+              data-testid="KeyboardArrowRightIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="sc-EFWon kmYJpi"
+      >
+        <ul
+          class="MuiList-root makeStyles-default-84 undefined MuiList-dense MuiList-padding"
+        >
+          <a
+            class="sc-faxByu kWMcfv"
+            data-testid="sidebar-option-option1"
+          >
+            <div
+              class=""
+              style="display: inherit;"
+              title="Option-1"
+            >
+              <div
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root makeStyles-root-88 sc-cmfnrN bzFsWg MuiListItem-dense MuiListItem-gutters MuiListItem-button"
+                role="button"
+                style="padding: 0px 18px; min-height: 42px;"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root makeStyles-default-89"
+                  style="min-width: 0px;"
+                >
+                  <svg />
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+          </a>
+          <a
+            class="sc-faxByu kWMcfv"
+            data-testid="sidebar-option-option2"
+          >
+            <div
+              class=""
+              style="display: inherit;"
+              title="Option-2"
+            >
+              <div
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root makeStyles-root-88 sc-cmfnrN bzFsWg MuiListItem-dense MuiListItem-gutters MuiListItem-button"
+                role="button"
+                style="padding: 0px 18px; min-height: 42px;"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root makeStyles-default-89"
+                  style="min-width: 0px;"
+                >
+                  <svg />
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+          </a>
+        </ul>
+        <ul
+          class="MuiList-root makeStyles-default-84 undefined MuiList-dense MuiList-padding"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

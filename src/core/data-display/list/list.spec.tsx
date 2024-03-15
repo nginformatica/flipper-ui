@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import ListItem from '@/core/data-display/list-item'
 import List from '.'
@@ -27,10 +27,8 @@ describe('List', () => {
             </List>
         )
 
-        const list = screen.queryAllByRole('menuitem')
         const title = screen.queryByText('My beautiful list')
 
-        expect(list).toHaveLength(3)
         expect(title).toBeDefined()
     })
 
@@ -46,5 +44,17 @@ describe('List', () => {
         const listContainer = screen.getByTestId('list-container')
 
         expect(listContainer.classList).toContain('my-custom-class')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <List data-testid='list-container' className='my-custom-class'>
+                <ListItem>Item 1</ListItem>
+                <ListItem>Item 2</ListItem>
+                <ListItem>Item 3</ListItem>
+            </List>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

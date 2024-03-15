@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import Chip from '.'
 
@@ -37,5 +37,13 @@ describe('Chip', () => {
         waitFor(() => {
             expect(onDelete).toHaveBeenCalled()
         })
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Chip label='chip-label' onChange={jest.fn()} />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

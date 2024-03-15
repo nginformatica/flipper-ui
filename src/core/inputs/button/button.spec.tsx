@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Button from '.'
 
@@ -7,9 +7,15 @@ describe('Button', () => {
         render(<Button data-testid='button-container'>Button</Button>)
 
         const button = screen.getByText('Button')
-        const container = screen.getByTestId('button-container')
 
         expect(button).toBeDefined()
+    })
+
+    it('should render with default style', () => {
+        render(<Button data-testid='button-container'>Button</Button>)
+
+        const container = screen.getByTestId('button-container')
+
         expect(container).toHaveProperty('style.opacity', '1')
         expect(container).toHaveProperty('style.borderStyle', '')
     })
@@ -48,5 +54,13 @@ describe('Button', () => {
         button.click()
 
         expect(onClick).toHaveBeenCalled()
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Button data-testid='button-container'>Button</Button>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+    data-testid="card"
+    name="test"
+  >
+    <button
+      class="MuiButtonBase-root MuiCardActionArea-root"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="MuiCardMedia-root"
+        style="background-image: url(valid_url); height: 256px;"
+        title="Puppies"
+      />
+      <div
+        class="MuiCardContent-root"
+      >
+        Content
+      </div>
+      <span
+        class="MuiCardActionArea-focusHighlight"
+      />
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <div
+      class="MuiCardActions-root MuiCardActions-spacing"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+        style="opacity: 1;"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Confirm
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

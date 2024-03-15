@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event/'
@@ -92,6 +92,7 @@ describe('EditableTable - With Date', () => {
         const dateInput = screen.getByRole('date-picker') as HTMLInputElement
 
         expect(dateInput.value).toBe('01/07/2019 17:21')
+
         jest.clearAllMocks()
     })
 })

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Line } from '.'
 import { theme } from '@/theme'
@@ -12,7 +12,6 @@ describe('Line', () => {
         const element = screen.getByTestId('line-component')
 
         expect(element).toBeDefined()
-        expect(element).toHaveProperty('style.flex', '1')
     })
 
     it('should render with custom styles', () => {
@@ -27,6 +26,7 @@ describe('Line', () => {
 
         const element = screen.getByTestId('line-component')
 
+        expect(element).toHaveProperty('style.flex', '1')
         expect(element).toHaveProperty('style.color', 'red')
         expect(element).toHaveProperty('style.margin', '10px')
         expect(element).toHaveProperty('style.padding', '5px')

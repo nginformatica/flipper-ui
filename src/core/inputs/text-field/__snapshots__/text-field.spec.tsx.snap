@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-hLQSwg dhfXCV"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root"
+      title=""
+    >
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+        data-testid="text-field"
+      >
+        <div
+          aria-haspopup="listbox"
+          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-100 MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          role="button"
+          tabindex="0"
+        >
+          Elm
+        </div>
+        <input
+          aria-hidden="true"
+          autocomplete="off"
+          class="MuiSelect-nativeInput"
+          placeholder="Description"
+          tabindex="-1"
+          value="elm"
+        />
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined makeStyles-iconOutlined-104"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            role="clear-button"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="ClearIcon"
+                focusable="false"
+                style="font-size: 15px;"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-105 MuiOutlinedInput-notchedOutline"
+          style="padding-left: 8px;"
+        >
+          <legend
+            class="PrivateNotchedOutline-legend-106"
+            style="width: 0.01px;"
+          >
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;

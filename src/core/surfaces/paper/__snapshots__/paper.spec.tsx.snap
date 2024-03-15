@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paper should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    role="mui-paper-container"
+  >
+    'I am a Paper.'
+  </div>
+</div>
+`;

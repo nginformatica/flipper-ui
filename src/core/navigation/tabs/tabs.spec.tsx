@@ -1,10 +1,10 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Tab from '@/core/navigation/tab'
 import Tabs from '.'
 
 describe('Tabs', () => {
-    it('should render the tab', () => {
+    it('should render', () => {
         render(
             <Tabs value={0}>
                 <Tab label='Profile' />
@@ -36,5 +36,16 @@ describe('Tabs', () => {
             'style.padding',
             '5px'
         )
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Tabs style={{ color: 'red' }} margin={10} padding={5} value={0}>
+                <Tab label='Profile' />
+                <Tab label='Enterprise' />
+            </Tabs>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

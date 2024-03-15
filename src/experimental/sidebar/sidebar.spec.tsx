@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import type { ISidebarOption } from '.'
@@ -35,7 +35,7 @@ const extraOptions: ISidebarOption[] = [
 ]
 
 describe('Sidebar', () => {
-    it('renders the options', () => {
+    it('should render', () => {
         render(<Sidebar options={options} />)
 
         options.forEach(option => {
@@ -43,7 +43,7 @@ describe('Sidebar', () => {
         })
     })
 
-    it('calls handleGoTo when an option is clicked', () => {
+    it('should call handleGoTo when an option is clicked', () => {
         const handleGoTo = jest.fn()
 
         render(<Sidebar options={options} handleGoTo={handleGoTo} />)
@@ -59,15 +59,17 @@ describe('Sidebar', () => {
         expect(handleGoTo).toHaveBeenCalledWith('option1', '/option1')
     })
 
-    it('renders extraOptions when provided', () => {
+    it('should render extraOptions when provided', () => {
         render(<Sidebar options={options} extraOptions={extraOptions} />)
+
         extraOptions.forEach(option => {
             expect(screen.getByTitle(option.label)).toBeDefined()
         })
     })
 
-    it('renders a skeleton when loading', () => {
+    it('should render a skeleton when loading', () => {
         render(<Sidebar loading options={options} />)
+
         expect(screen.queryAllByRole('skeleton')).toHaveLength(6)
     })
 
@@ -75,6 +77,7 @@ describe('Sidebar', () => {
         const handleGoTo = jest.fn()
 
         render(<Sidebar options={options} handleGoTo={handleGoTo} />)
+
         const expandBtn = screen.getByTestId('sidebar-button')
 
         userEvent.click(expandBtn)
@@ -100,5 +103,11 @@ describe('Sidebar', () => {
 
             labels.forEach(label => expect(label).toBeNull())
         })
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(<Sidebar options={options} />)
+
+        expect(container).toMatchSnapshot()
     })
 })

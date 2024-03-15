@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Paper } from '.'
 
@@ -10,9 +10,16 @@ describe('Paper', () => {
 
         const matchingElements = screen.getByText(children)
 
+        expect(matchingElements).toBeDefined()
+    })
+
+    it('should render round paper', () => {
+        const children = 'I am a Paper.'
+
+        render(<Paper>{children}</Paper>)
+
         const container = screen.getByRole('mui-paper-container')
 
-        expect(matchingElements).toBeDefined()
         expect(container.classList).toContain('MuiPaper-rounded')
     })
 
@@ -21,9 +28,9 @@ describe('Paper', () => {
 
         render(<Paper square>{children}</Paper>)
 
-        const matchingElements = screen.getByText(children)
+        const container = screen.getByRole('mui-paper-container')
 
-        expect(matchingElements).toBeDefined()
+        expect(container.classList).not.toContain('MuiPaper-rounded')
     })
 
     it('should render paper with no elevation', () => {
@@ -60,5 +67,11 @@ describe('Paper', () => {
 
         expect(matchingElements).toBeDefined()
         expect(container.classList).toContain('MuiPaper-elevation24')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(<Paper>'I am a Paper.'</Paper>)
+
+        expect(container).toMatchSnapshot()
     })
 })

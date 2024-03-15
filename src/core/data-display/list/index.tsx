@@ -8,14 +8,8 @@ import type { DefaultProps } from '../../types'
 import type { Theme } from '@material-ui/core/styles'
 
 export interface ListProps extends DefaultProps {
-    /**
-     * The title of the list
-     */
     title?: string
     dense?: boolean
-    /**
-     * The color of the list
-     */
     color?: 'primary' | 'secondary' | 'default' | 'inherit'
 }
 

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Collapse } from '.'
 
@@ -27,5 +27,15 @@ describe('Collapse', () => {
         const container = screen.getByTestId('collapse-container')
 
         expect(container.classList).toContain('MuiCollapse-hidden')
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <Collapse in data-testid='collapse-container'>
+                I am open for discussions
+            </Collapse>
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })

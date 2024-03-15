@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import ChipField from '.'
 
@@ -57,5 +57,18 @@ describe('ChipField', () => {
         await waitFor(() => {
             expect(onDelete).toHaveBeenCalledWith('gamma', 2)
         })
+    })
+
+    it('should match snapshot', () => {
+        const { container } = render(
+            <ChipField
+                data-testid='chip-field-container'
+                values={values}
+                onAdd={jest.fn}
+                onDelete={jest.fn}
+            />
+        )
+
+        expect(container).toMatchSnapshot()
     })
 })
