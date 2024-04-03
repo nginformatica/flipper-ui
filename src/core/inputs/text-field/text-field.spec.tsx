@@ -153,6 +153,18 @@ describe('TextField', () => {
         })
     })
 
+    it('should remove emojis if typed', () => {
+        render(<TextField inputProps={{ placeholder: 'Description' }} />)
+
+        const inputElement = screen.getByPlaceholderText(
+            'Description'
+        ) as HTMLInputElement
+
+        fireEvent.change(inputElement, { target: { value: 'Hello World😀' } })
+
+        expect(inputElement.value).toBe('Hello World')
+    })
+
     it('should match snapshot', () => {
         const { container } = render(
             <TextField
