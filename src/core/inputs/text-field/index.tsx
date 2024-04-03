@@ -221,6 +221,7 @@ export const TextField = ({
     fullWidth,
     hasClear,
     onClear,
+    onChange,
     characters,
     children,
     ...otherProps
@@ -233,15 +234,15 @@ export const TextField = ({
         }
     })
 
+    const classes = useStyles()
+    const clearClass = clearStyle()
+
     const hasValue = !!otherProps.value
 
     const endAdornment =
         hasValue && hasClear
             ? { endAdornment: renderEndAdornment(onClear) }
             : {}
-
-    const classes = useStyles()
-    const clearClass = clearStyle()
 
     const handleClick = () => {
         if (onHelperClick) {
@@ -250,6 +251,25 @@ export const TextField = ({
     }
 
     const Wrapper = hasClear ? StaticTextFieldWrapper : TextFieldWrapper
+
+    const emojiRegex =
+        /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g
+
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+            const inputValue = event.target.value
+
+            if (emojiRegex.test(inputValue)) {
+                const newValue = inputValue.replace(emojiRegex, '')
+
+                event.target.value = newValue
+
+                return onChange(event)
+            }
+
+            return onChange(event)
+        }
+    }
 
     return (
         <Wrapper>
@@ -295,6 +315,7 @@ export const TextField = ({
                     ...SelectProps
                 }}
                 characters={characters?.toString()}
+                onChange={handleInputChange}
                 {...otherProps}>
                 {options ? renderOptions(options, classes) : children}
             </MuiTextField>
