@@ -15,7 +15,7 @@ exports[`TextField should match snapshot 1`] = `
       >
         <div
           aria-haspopup="listbox"
-          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-100 MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-112 MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
           role="button"
           tabindex="0"
         >
@@ -31,7 +31,7 @@ exports[`TextField should match snapshot 1`] = `
         />
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined makeStyles-iconOutlined-104"
+          class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined makeStyles-iconOutlined-116"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -71,11 +71,11 @@ exports[`TextField should match snapshot 1`] = `
         </div>
         <fieldset
           aria-hidden="true"
-          class="PrivateNotchedOutline-root-105 MuiOutlinedInput-notchedOutline"
+          class="PrivateNotchedOutline-root-117 MuiOutlinedInput-notchedOutline"
           style="padding-left: 8px;"
         >
           <legend
-            class="PrivateNotchedOutline-legend-106"
+            class="PrivateNotchedOutline-legend-118"
             style="width: 0.01px;"
           >
             <span>
