@@ -205,10 +205,10 @@ export const StatefulRow = <D extends Data>({
 
     return (
         <>
-            {columns.map(column => (
+            {columns.map((column, i) => (
                 <TableCell
                     align={column.align}
-                    key={column.title}
+                    key={`${column.title}-${i}`}
                     style={column.cellStyle}>
                     {getCorrectViewMode(column, mode, isEditable(column))}
                 </TableCell>
@@ -237,11 +237,11 @@ export const NewRow = <D extends Data>({
 
     return (
         <TableRow data-testid='table-row'>
-            {columns.map(column => (
+            {columns.map((column, i) => (
                 <TableCell
                     style={column.cellStyle}
                     align={column.align}
-                    key={column.title}>
+                    key={`${column.title}-${i}`}>
                     {isEditable(column)
                         ? renderEditMode(
                               column,
