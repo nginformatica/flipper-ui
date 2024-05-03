@@ -303,6 +303,12 @@ export const TextField = ({
                                 ? classes.outlinedMultiline
                                 : ''
                     },
+                    endAdornment: characters && (
+                        <CharactersCount>
+                            {otherProps.value?.toString().length}/
+                            {otherProps.inputProps?.maxLength}
+                        </CharactersCount>
+                    ),
                     ...InputProps
                 }}
                 SelectProps={{
@@ -319,12 +325,6 @@ export const TextField = ({
                 {...otherProps}>
                 {options ? renderOptions(options, classes) : children}
             </MuiTextField>
-            {characters && (
-                <CharactersCount>
-                    {otherProps.value?.toString().length}/
-                    {otherProps.inputProps?.maxLength}
-                </CharactersCount>
-            )}
             {onHelperClick && (
                 <HelperBox
                     helperIcon={helperIcon}
