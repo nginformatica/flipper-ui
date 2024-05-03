@@ -11,9 +11,9 @@ export const Helper = styled.div`
 `
 
 export const TextFieldWrapper = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: rows;
-    width: 100%;
     align-items: center;
     button {
         display: none;
@@ -24,14 +24,13 @@ export const TextFieldWrapper = styled.div`
 `
 
 export const StaticTextFieldWrapper = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: rows;
-    width: 100%;
     align-items: center;
 `
 
 export const CharactersCount = styled.span`
-    margin-left: -35px;
     color: ${grays.g3};
     font-size: 14px;
     font-family:
