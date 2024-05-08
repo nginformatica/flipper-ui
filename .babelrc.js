@@ -75,31 +75,6 @@ module.exports = {
                     transform: './src',
                     preventFullImport: true
                 },
-                '@mui/icons-material': {
-                    transform: '@mui/icons-material/${member}',
-                    preventFullImport: true
-                },
-                '@material-ui/core': {
-                    transform: '@material-ui/core/${member}',
-                    preventFullImport: true
-                },
-                '@material-ui/styles': {
-                    transform: '@material-ui/styles/${member}',
-                    preventFullImport: true
-                },
-                '../icons': {
-                    transform: '@mui/icons-material/${member}',
-                    preventFullImport: true
-                },
-                '../charts': {
-                    transform: 'flipper-ui/charts/${member}',
-                    preventFullImport: true
-                },
-                'react-vis': {
-                    transform: importName =>
-                        `react-vis/es/${reactVisModules[importName]}`,
-                    preventFullImport: true
-                },
                 'date-fns/locale': {
                     transform: importName =>
                         `date-fns/locale/${toKebabCase(importName)}`,
@@ -114,6 +89,51 @@ module.exports = {
                     preventFullImport: true
                 }
             }
+        ],
+        [
+            'babel-plugin-import',
+            {
+                libraryName: '@material-ui/core',
+                libraryDirectory: '',
+                camel2DashComponentName: false
+            },
+            'material-core'
+        ],
+        [
+            'babel-plugin-import',
+            {
+                libraryName: '@material-ui/styles',
+                libraryDirectory: '',
+                camel2DashComponentName: false
+            },
+            'material-styles'
+        ],
+        [
+            'babel-plugin-import',
+            {
+                libraryName: '@mui/material',
+                libraryDirectory: '',
+                camel2DashComponentName: false
+            },
+            'mui-core'
+        ],
+        [
+            'babel-plugin-import',
+            {
+                libraryName: '@mui/icons-material',
+                libraryDirectory: '',
+                camel2DashComponentName: false
+            },
+            'mui-icons'
+        ],
+        [
+            'babel-plugin-import',
+            {
+                libraryName: '@mui/styles',
+                libraryDirectory: '',
+                camel2DashComponentName: false
+            },
+            'mui-styles'
         ],
         [
             'module-resolver',
