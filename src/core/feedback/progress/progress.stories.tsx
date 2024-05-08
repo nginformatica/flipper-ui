@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import Progress from '.'
+import { theme } from '@/theme'
 
 export default {
     title: 'Feedback/Progress',
@@ -75,4 +76,15 @@ LinearQuerySecondary.args = {
     color: 'secondary',
     variant: 'query',
     linear: true
+}
+
+export const LinearWithCustom = Template.bind({})
+LinearWithCustom.args = {
+    linear: true,
+    size: '100px',
+    variant: 'determinate',
+    value: 75,
+    valueBuffer: 100,
+    primaryColor: `${theme.colors.graphic.red.main}80`,
+    barPrimaryColor: theme.colors.graphic.red.main
 }

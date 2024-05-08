@@ -3,6 +3,7 @@ import {
     CircularProgress as MuiCircularProgress,
     LinearProgress as MuiLinearProgress
 } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import type { DefaultProps } from '../../types'
 
 export interface ILinear {
@@ -15,6 +16,10 @@ export interface ILinear {
         barColorPrimary?: string
         barColorSecondary?: string
     }
+    rootColor?: string
+    primaryColor?: string
+    barPrimaryColor?: string
+    barSecondaryColor?: string
 }
 
 export interface ICircular {
@@ -28,16 +33,62 @@ export interface ProgressProps extends DefaultProps {
     linear?: boolean
 }
 
+export interface IColors {
+    rootColor?: string
+    primaryColor?: string
+    barPrimaryColor?: string
+    barSecondaryColor?: string
+}
+
+type TProps = {
+    rootColor?: string
+    primaryColor?: string
+    barPrimaryColor?: string
+    barSecondaryColor?: string
+}
+
+const useStyles = makeStyles(() => ({
+    root: (props: TProps) => ({
+        backgroundColor: props.rootColor
+    }),
+    colorPrimary: (props: TProps) => ({
+        backgroundColor: props.primaryColor
+    }),
+    barColorPrimary: (props: TProps) => ({
+        backgroundColor: props.barPrimaryColor
+    }),
+    barColorSecondary: (props: TProps) => ({
+        backgroundColor: props.barSecondaryColor
+    })
+}))
+
 const Progress = ({
     linear,
     style = {},
     margin,
     padding,
+    rootColor,
+    primaryColor,
+    barPrimaryColor,
+    barSecondaryColor,
     ...otherProps
-}: ProgressProps & ICircular & ILinear) =>
-    linear ? (
+}: ProgressProps & ICircular & ILinear) => {
+    const classes = useStyles({
+        rootColor,
+        primaryColor,
+        barPrimaryColor,
+        barSecondaryColor
+    })
+
+    return linear ? (
         <MuiLinearProgress
             style={{ margin, padding, ...style }}
+            classes={{
+                root: classes.root,
+                colorPrimary: classes.colorPrimary,
+                barColorPrimary: classes.barColorPrimary,
+                barColorSecondary: classes.barColorSecondary
+            }}
             {...otherProps}
         />
     ) : (
@@ -46,5 +97,6 @@ const Progress = ({
             {...otherProps}
         />
     )
+}
 
 export default Progress

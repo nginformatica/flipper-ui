@@ -1,8 +1,7 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import { Box } from '@material-ui/core'
 import MuiAccordion from '@material-ui/core/Accordion'
-import { Skeleton } from '@mui/material'
+import { Box, Skeleton } from '@mui/material'
 import {
     Container,
     NormalProgressContainer,

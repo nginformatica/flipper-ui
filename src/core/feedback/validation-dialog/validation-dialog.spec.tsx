@@ -1,5 +1,5 @@
 import React from 'react'
-import CircularProgress from '@mui/material/CircularProgress'
+import { CircularProgress } from '@mui/material'
 import { render, screen, fireEvent } from '@testing-library/react'
 import type { ITitles, IValidations } from '.'
 import ValidationDialog, { ValidationStatus } from '.'
