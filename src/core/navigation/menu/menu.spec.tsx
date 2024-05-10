@@ -1,8 +1,8 @@
 import React from 'react'
+import { Backup } from '@mui/icons-material'
 import { render, screen } from '@testing-library/react'
 import ListItem from '@/core/data-display/list-item'
 import Menu from '.'
-import { Backup } from '@/icons'
 
 describe('Menu', () => {
     it('should render', () => {

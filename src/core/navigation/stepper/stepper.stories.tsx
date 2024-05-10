@@ -1,7 +1,7 @@
 import React from 'react'
+import { Delete } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import Stepper from '.'
-import { Delete } from '@/icons'
 
 export default {
     title: 'Navigation/Stepper',

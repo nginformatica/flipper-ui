@@ -3,7 +3,7 @@
 exports[`Loading should match snapshot 1`] = `
 <div>
   <div
-    class="sc-fYlSAf gdXosL"
+    class="sc-dZodDb ewIVir"
     data-testid="loading-component"
     style="margin: 48px; padding: 24px;"
   >

@@ -1,9 +1,9 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
+import { ExpandMore as IconExpand } from '@mui/icons-material'
 import { defaultTo } from 'ramda'
 import type { PaperProps as FlipperPaperProps } from '@/core/surfaces/paper'
 import { Paper, Summary, Title } from './styles'
-import { ExpandMore as IconExpand } from '@/icons'
 
 export interface PaperProps
     extends Omit<FlipperPaperProps, 'title' | 'onChange'> {

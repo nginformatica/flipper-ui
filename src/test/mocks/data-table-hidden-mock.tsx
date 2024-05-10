@@ -1,5 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useRef, useState } from 'react'
+import {
+    Cancel as CancelIcon,
+    Check as CheckIcon,
+    Delete as DeleteIcon,
+    Edit as EditIcon,
+    Save as SaveIcon,
+    Visibility as VisibilityIcon,
+    VisibilityOff as VisibilityOffIcon
+} from '@mui/icons-material'
 import { v4 as uuid } from 'uuid'
 import type { DataTableController } from '@/core/data-display/data-table'
 import type {
@@ -11,15 +20,6 @@ import { DataTable } from '@/core/data-display/data-table/data-table'
 import { RowMode } from '@/core/data-display/data-table/types'
 import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
-import {
-    Cancel as CancelIcon,
-    Check as CheckIcon,
-    Delete as DeleteIcon,
-    Edit as EditIcon,
-    Save as SaveIcon,
-    Visibility as VisibilityIcon,
-    VisibilityOff as VisibilityOffIcon
-} from '@/icons'
 
 const Default = () => {
     type Data = {

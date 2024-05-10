@@ -1,9 +1,9 @@
 import React from 'react'
+import { FileCopy } from '@mui/icons-material'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import Fab from './fab'
 import FabWrapper from './fab-wrapper'
-import { FileCopy } from '@/icons'
 
 describe('Fab', () => {
     it('should render', () => {

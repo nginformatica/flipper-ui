@@ -1,7 +1,7 @@
 import React from 'react'
+import { Home, Computer, Edit } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import Sidebar from '.'
-import { Home, Computer, Edit } from '@/icons'
 
 export default {
     title: 'Experimental/Sidebar',

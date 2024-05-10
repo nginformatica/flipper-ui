@@ -3,7 +3,7 @@
 exports[`Sidebar should match snapshot 1`] = `
 <div>
   <div
-    class="MuiDrawer-root MuiDrawer-docked sc-gHWSBU iWntKS"
+    class="MuiDrawer-root MuiDrawer-docked sc-dSCuSI dAHlDF"
     id="sidebar"
     style="width: 56px; top: 0px; transition: width 100ms ease-in-out; z-index: 1199;"
   >
@@ -12,7 +12,7 @@ exports[`Sidebar should match snapshot 1`] = `
     >
       <div
         anchor="left"
-        class="sc-lnsjTu ifVEsT"
+        class="sc-jsJARu gALAPU"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-77"
@@ -44,13 +44,13 @@ exports[`Sidebar should match snapshot 1`] = `
         </button>
       </div>
       <div
-        class="sc-EFWon kmYJpi"
+        class="sc-jnOFWn bTmcv"
       >
         <ul
           class="MuiList-root makeStyles-default-84 undefined MuiList-dense MuiList-padding"
         >
           <a
-            class="sc-faxByu kWMcfv"
+            class="sc-hIUIyC gHJAXd"
             data-testid="sidebar-option-option1"
           >
             <div
@@ -60,7 +60,7 @@ exports[`Sidebar should match snapshot 1`] = `
             >
               <div
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiListItem-root makeStyles-root-88 sc-cmfnrN bzFsWg MuiListItem-dense MuiListItem-gutters MuiListItem-button"
+                class="MuiButtonBase-root MuiListItem-root makeStyles-root-88 sc-fxwsqt jBdEPh MuiListItem-dense MuiListItem-gutters MuiListItem-button"
                 role="button"
                 style="padding: 0px 18px; min-height: 42px;"
                 tabindex="0"
@@ -78,7 +78,7 @@ exports[`Sidebar should match snapshot 1`] = `
             </div>
           </a>
           <a
-            class="sc-faxByu kWMcfv"
+            class="sc-hIUIyC gHJAXd"
             data-testid="sidebar-option-option2"
           >
             <div
@@ -88,7 +88,7 @@ exports[`Sidebar should match snapshot 1`] = `
             >
               <div
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiListItem-root makeStyles-root-88 sc-cmfnrN bzFsWg MuiListItem-dense MuiListItem-gutters MuiListItem-button"
+                class="MuiButtonBase-root MuiListItem-root makeStyles-root-88 sc-fxwsqt jBdEPh MuiListItem-dense MuiListItem-gutters MuiListItem-button"
                 role="button"
                 style="padding: 0px 18px; min-height: 42px;"
                 tabindex="0"

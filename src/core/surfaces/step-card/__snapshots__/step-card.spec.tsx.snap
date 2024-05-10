@@ -3,20 +3,20 @@
 exports[`StepCard should match snapshot 1`] = `
 <div>
   <div
-    class="sc-beySPh hcYLCv"
+    class="sc-aYaIB hvFdbM"
   >
     <div
       class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
     >
       <div
-        class="sc-dmyCSP fCXOnE"
+        class="sc-eqUzNf jwXvAb"
       >
         <div
-          class="sc-guDLey fgXnDi"
+          class="sc-gEvDqW dsflTG"
           minheight="100px"
         >
           <div
-            class="sc-hLQSwg jOTGbJ"
+            class="sc-fqkwJk ecodSZ"
             justifycontent="start"
           >
             <svg
@@ -32,7 +32,7 @@ exports[`StepCard should match snapshot 1`] = `
               />
             </svg>
             <div
-              class="sc-jTQCzO kJgUNQ"
+              class="sc-iGgVNO dRwqyP"
             >
               <h6
                 class="MuiTypography-root MuiTypography-h6"
@@ -43,7 +43,7 @@ exports[`StepCard should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="sc-hLQSwg dsPHCL"
+            class="sc-fqkwJk iZCAOH"
             justifycontent="end"
           >
             <div
@@ -91,11 +91,11 @@ exports[`StepCard should match snapshot 1`] = `
           </div>
         </div>
         <div
-          class="sc-guDLey kwejIX"
+          class="sc-gEvDqW eCImaH"
           minheight="15px"
         >
           <div
-            class="MuiBox-root MuiBox-root-17 sc-iBdnpw fllEAt"
+            class="MuiBox-root MuiBox-root-14 sc-kAycRU chAgTo"
           >
             <div
               aria-valuemax="100"
@@ -131,14 +131,14 @@ exports[`StepCard should match snapshot 1`] = `
                 style="display: flex; justify-content: space-between;"
               >
                 <div
-                  class="sc-hLQSwg jOTGbJ"
+                  class="sc-fqkwJk ecodSZ"
                   justifycontent="start"
                 >
                   <ul
                     class="MuiList-root MuiList-padding"
                   >
                     <li
-                      class="sc-eDLKkx PVLsv"
+                      class="sc-dcJtft jbcafN"
                     >
                       <svg
                         aria-hidden="true"
@@ -160,7 +160,7 @@ exports[`StepCard should match snapshot 1`] = `
                       </p>
                     </li>
                     <li
-                      class="sc-eDLKkx PVLsv"
+                      class="sc-dcJtft jbcafN"
                     >
                       <svg
                         aria-hidden="true"
@@ -184,7 +184,7 @@ exports[`StepCard should match snapshot 1`] = `
                   </ul>
                 </div>
                 <div
-                  class="sc-hLQSwg dsPHCL"
+                  class="sc-fqkwJk iZCAOH"
                   justifycontent="end"
                 >
                   <img

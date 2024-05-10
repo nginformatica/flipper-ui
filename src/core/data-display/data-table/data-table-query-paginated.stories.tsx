@@ -2,6 +2,13 @@
 import React, { useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { TableCell, TableRow, Typography } from '@material-ui/core'
+import {
+    Cancel as CancelIcon,
+    Check as CheckIcon,
+    Delete as DeleteIcon,
+    Edit as EditIcon,
+    Save as SaveIcon
+} from '@mui/icons-material'
 import { Skeleton } from '@mui/material'
 import format from 'date-fns/format'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
@@ -11,13 +18,6 @@ import { DataTableAction } from './data-table-action'
 import { DataTableQueryPaginated } from './data-table-query-paginated'
 import { RowMode } from './types'
 import { usePaginated } from './use-paginated'
-import {
-    Cancel as CancelIcon,
-    Check as CheckIcon,
-    Delete as DeleteIcon,
-    Edit as EditIcon,
-    Save as SaveIcon
-} from '@/icons'
 
 export default {
     title: 'DataDisplay/DataTableQueryPaginated',

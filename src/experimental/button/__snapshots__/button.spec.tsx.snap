@@ -3,7 +3,7 @@
 exports[`Button should match snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined sc-beySPh jOzLSF MuiButton-outlinedPrimary"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined sc-aYaIB eiShaW MuiButton-outlinedPrimary"
     id="add-btnName"
     label="Click Me"
     name="add-btnName"

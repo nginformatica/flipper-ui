@@ -1,9 +1,9 @@
 import React from 'react'
+import { CheckCircleOutline, CancelOutlined } from '@mui/icons-material'
 import { CircularProgress } from '@mui/material'
 import { render, screen, fireEvent } from '@testing-library/react'
 import type { ITitles, IValidations } from '.'
 import ValidationDialog, { ValidationStatus } from '.'
-import { CheckCircleOutline, CancelOutlined } from '@/icons'
 import { theme } from '@/theme'
 
 const { action, secondary } = theme.colors

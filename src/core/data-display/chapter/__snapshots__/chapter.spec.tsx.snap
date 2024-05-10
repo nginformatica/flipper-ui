@@ -3,10 +3,10 @@
 exports[`Chapter should match snapshot 1`] = `
 <div>
   <div
-    class="sc-guDLey wpcEU"
+    class="sc-gEvDqW geoBRc"
   >
     <div
-      class="sc-beySPh bYMaWh"
+      class="sc-aYaIB jcOBwW"
     />
     <p
       class="MuiTypography-root MuiTypography-body2"
@@ -14,7 +14,7 @@ exports[`Chapter should match snapshot 1`] = `
       Chapter
     </p>
     <div
-      class="sc-beySPh bYMaWh"
+      class="sc-aYaIB jcOBwW"
     />
   </div>
 </div>

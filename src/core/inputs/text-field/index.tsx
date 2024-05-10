@@ -16,6 +16,12 @@ import {
     ListItem
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import {
+    Clear,
+    Help as ContactSupportIcon,
+    Edit,
+    Save
+} from '@mui/icons-material'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
 import type { DefaultProps } from '../../types'
 import type {
@@ -29,7 +35,6 @@ import {
     StaticTextFieldWrapper,
     TextFieldWrapper
 } from './styles'
-import { Clear, Help as ContactSupportIcon, Edit, Save } from '@/icons'
 import { theme } from '@/theme'
 
 const { primary } = theme.colors

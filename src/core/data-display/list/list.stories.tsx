@@ -1,9 +1,9 @@
 import React from 'react'
+import { Backup } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import { Avatar } from '../avatar'
 import List from '.'
-import { Backup } from '@/icons'
 
 export default {
     title: 'DataDisplay/List',

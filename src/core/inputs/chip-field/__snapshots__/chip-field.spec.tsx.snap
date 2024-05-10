@@ -3,7 +3,7 @@
 exports[`ChipField should match snapshot 1`] = `
 <div>
   <div
-    class="MuiFormControl-root sc-beySPh jTLxIV WAMuiChipInput-root-52"
+    class="MuiFormControl-root sc-aYaIB dJwsHK WAMuiChipInput-root-52"
     data-testid="chip-field-container"
     values="[object Object],[object Object],[object Object]"
   >
