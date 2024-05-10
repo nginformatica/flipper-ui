@@ -113,11 +113,6 @@ const rulesImport = {
                     position: 'after'
                 },
                 {
-                    pattern: '@/icons',
-                    group: 'index',
-                    position: 'after'
-                },
-                {
                     pattern: '@/theme',
                     group: 'index',
                     position: 'after'
@@ -203,5 +198,5 @@ module.exports = {
         'import',
         '@stylistic'
     ],
-    ignorePatterns: ['.eslintrc.js']
+    ignorePatterns: ['.eslintrc.js', 'pre-publish.js', 'jest.config.js']
 }
