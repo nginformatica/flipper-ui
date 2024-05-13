@@ -66,3 +66,7 @@ export { default as StepCard } from './core/surfaces/step-card'
 export { default as StepCardSkeleton } from './core/surfaces/step-card/step-card-skeleton'
 export { default as ValidationDialog } from './core/feedback/validation-dialog/'
 export * as Experimental from './experimental'
+
+export type { PopperProps } from '@material-ui/core/Popper'
+
+export { default as ClickAwayListener } from '@mui/material/ClickAwayListener'
