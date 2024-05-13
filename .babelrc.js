@@ -21,6 +21,15 @@ module.exports = {
         [
             'import',
             {
+                libraryName: 'date-fns',
+                libraryDirectory: '',
+                camel2DashComponentName: false
+            },
+            'date-fns'
+        ],
+        [
+            'import',
+            {
                 libraryName: '@material-ui/core',
                 libraryDirectory: '',
                 camel2DashComponentName: false
