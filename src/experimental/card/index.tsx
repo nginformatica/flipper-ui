@@ -1,5 +1,6 @@
 import React from 'react'
 import type { ReactNode } from 'react'
+import { Close as IconClose, Edit as IconEdit } from '@mui/icons-material'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import { Paper, Line, Button as AddButton } from '@/index'
@@ -10,7 +11,6 @@ import {
     PAPER_PROPS,
     Title
 } from './styles'
-import { Close as IconClose, Edit as IconEdit } from '@/icons'
 
 export interface IProps {
     /**

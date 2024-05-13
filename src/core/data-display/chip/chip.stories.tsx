@@ -1,8 +1,8 @@
 import React from 'react'
+import { Face } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import { Avatar } from '@/core/data-display/avatar'
 import Chip from '.'
-import { Face } from '@/icons'
 
 export default {
     title: 'DataDisplay/Chip',

@@ -2,6 +2,10 @@ import React from 'react'
 import type { CSSProperties } from 'react'
 import { LinearProgress } from '@material-ui/core'
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
+import {
+    CheckCircle as CheckCircleIcon,
+    ExpandMore as ExpandMoreIcon
+} from '@mui/icons-material'
 import { sprintf } from 'sprintf-js'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
@@ -13,10 +17,6 @@ import {
     StepContainer,
     TitleContainer
 } from './styles'
-import {
-    CheckCircle as CheckCircleIcon,
-    ExpandMore as ExpandMoreIcon
-} from '@/icons'
 import { theme } from '@/theme'
 
 const { feedback, grays } = theme.colors

@@ -1,12 +1,12 @@
 import React from 'react'
+import {
+    KeyboardArrowLeft as IconArrowLeft,
+    KeyboardArrowRight as IconArrowRight
+} from '@mui/icons-material'
 import { inc, times } from 'ramda'
 import type { DefaultProps } from '../../types'
 import Button from '@/core/inputs/button'
 import { Content } from './styles'
-import {
-    KeyboardArrowLeft as IconArrowLeft,
-    KeyboardArrowRight as IconArrowRight
-} from '@/icons'
 
 export interface PaginationProps extends DefaultProps {
     pages?: number

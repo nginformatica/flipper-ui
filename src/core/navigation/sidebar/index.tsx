@@ -1,15 +1,15 @@
 import React from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
+import {
+    KeyboardArrowLeft as IconArrowLeft,
+    KeyboardArrowRight as IconArrowRight
+} from '@mui/icons-material'
 import type { DefaultProps } from '../../types'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { Theme } from '@material-ui/core/styles'
 import Button from '@/core/inputs/button'
 import { Action } from './styles'
-import {
-    KeyboardArrowLeft as IconArrowLeft,
-    KeyboardArrowRight as IconArrowRight
-} from '@/icons'
 
 export interface SidebarProps extends DefaultProps {
     open: boolean

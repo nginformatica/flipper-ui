@@ -3,7 +3,7 @@
 exports[`PinInput should match snapshot 1`] = `
 <div>
   <div
-    class="sc-beySPh hfIdRQ"
+    class="sc-aYaIB lNsDf"
   >
     <div
       class="MuiFormControl-root MuiTextField-root pin-input-field"

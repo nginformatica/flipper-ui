@@ -3,7 +3,7 @@
 exports[`NothingFound should match snapshot 1`] = `
 <div>
   <h5
-    class="MuiTypography-root sc-beySPh ccQFQB MuiTypography-h5 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+    class="MuiTypography-root sc-aYaIB eEveha MuiTypography-h5 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
     style="padding: 48px 0px;"
   >
     Não há nada aqui. Clique em "Adicionar" para cadastrar um item.

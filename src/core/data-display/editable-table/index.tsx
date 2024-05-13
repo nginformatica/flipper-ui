@@ -1,6 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef, useRef } from 'react'
 import type { MouseEvent } from 'react'
+import {
+    NoteAdd as IconAdd,
+    Done as IconDone,
+    Delete as IconRemove,
+    Clear as IconClear,
+    Edit as IconEdit,
+    ChevronLeft as IconChevronLeft,
+    ChevronRight as IconChevronRight,
+    FirstPage as IconFirstPage,
+    LastPage
+} from '@mui/icons-material'
 import ptBRLocale from 'date-fns/locale/pt-BR'
 import MaterialTable, {
     MTableEditField,
@@ -27,17 +38,6 @@ import {
     RightPagination,
     Wrapper
 } from './styles'
-import {
-    NoteAdd as IconAdd,
-    Done as IconDone,
-    Delete as IconRemove,
-    Clear as IconClear,
-    Edit as IconEdit,
-    ChevronLeft as IconChevronLeft,
-    ChevronRight as IconChevronRight,
-    FirstPage as IconFirstPage,
-    LastPage
-} from '@/icons'
 
 export interface EditableTableProps<T extends object> {
     /**

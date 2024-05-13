@@ -1,7 +1,7 @@
 import React from 'react'
+import { Delete } from '@mui/icons-material'
 import { render, screen } from '@testing-library/react'
 import Stepper from '.'
-import { Delete } from '@/icons'
 
 describe('Stepper', () => {
     it('should render', () => {

@@ -1,8 +1,8 @@
-import { default as styled } from 'styled-components'
 import {
     KeyboardArrowDown as IconArrowDown,
     KeyboardArrowUp as IconArrowUp
-} from '@/icons'
+} from '@mui/icons-material'
+import { default as styled } from 'styled-components'
 import { theme } from '@/theme'
 
 const { grays } = theme.colors

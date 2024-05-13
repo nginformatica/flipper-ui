@@ -1,9 +1,9 @@
 import React from 'react'
+import { Backup } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
 import Sidebar from '.'
-import { Backup } from '@/icons'
 
 export default {
     title: 'Navigation/Sidebar',

@@ -3,7 +3,7 @@
 exports[`Panel should match snapshot 1`] = `
 <div>
   <div
-    class="MuiPaper-root MuiAccordion-root sc-faxByu jfSMXG Mui-expanded MuiAccordion-rounded MuiPaper-elevation2 MuiPaper-rounded"
+    class="MuiPaper-root MuiAccordion-root sc-hIUIyC klyQYs Mui-expanded MuiAccordion-rounded MuiPaper-elevation2 MuiPaper-rounded"
     data-testid="panel-component"
     style="margin: 0px;"
   >
@@ -18,13 +18,13 @@ exports[`Panel should match snapshot 1`] = `
         class="MuiAccordionSummary-content Mui-expanded"
       >
         <div
-          class="sc-hIPBNq jmOphr"
+          class="sc-dAbbbq eoLUQh"
         >
           <div
-            class="sc-EFWon faNsBz"
+            class="sc-jnOFWn jqRqRW"
           >
             <h6
-              class="MuiTypography-root sc-fYlSAf fmSOXT MuiTypography-subtitle1 MuiTypography-noWrap"
+              class="MuiTypography-root sc-dZodDb fkNYyT MuiTypography-subtitle1 MuiTypography-noWrap"
             >
               Foo
             </h6>

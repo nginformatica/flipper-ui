@@ -1,11 +1,14 @@
 import React from 'react'
 import { List } from '@material-ui/core'
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
+import {
+    CheckCircle as CheckCircleIcon,
+    Help as HelpIcon
+} from '@mui/icons-material'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
 import IconButton from '@/core/inputs/icon-button'
 import { ListItemContainer, StepCardColumn } from './styles'
-import { CheckCircle as CheckCircleIcon, Help as HelpIcon } from '@/icons'
 import { theme } from '@/theme'
 
 const { feedback, grays } = theme.colors

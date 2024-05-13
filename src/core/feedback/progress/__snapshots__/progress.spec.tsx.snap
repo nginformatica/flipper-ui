@@ -27,14 +27,14 @@ exports[`Progress should match snapshot 1`] = `
 exports[`Progress should match snapshot 2`] = `
 <div>
   <div
-    class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
+    class="MuiLinearProgress-root makeStyles-root-17 makeStyles-root-25 MuiLinearProgress-colorPrimary makeStyles-colorPrimary-18 makeStyles-colorPrimary-26 MuiLinearProgress-indeterminate"
     role="progressbar"
   >
     <div
-      class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate"
+      class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary makeStyles-barColorPrimary-19 makeStyles-barColorPrimary-27 MuiLinearProgress-bar1Indeterminate"
     />
     <div
-      class="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary"
+      class="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary makeStyles-barColorPrimary-19 makeStyles-barColorPrimary-27"
     />
   </div>
 </div>

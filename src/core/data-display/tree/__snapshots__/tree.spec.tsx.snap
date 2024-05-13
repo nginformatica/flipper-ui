@@ -3,15 +3,15 @@
 exports[`Tree should match snapshot 1`] = `
 <div>
   <ul
-    class="sc-beySPh jGWtOB"
+    class="sc-aYaIB exChqK"
     name="root"
   >
     <li
-      class="sc-guDLey uiCyR"
+      class="sc-gEvDqW hovEjp"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium sc-hLQSwg ksLdFu css-i4bv87-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium sc-fqkwJk iYAchi css-i4bv87-MuiSvgIcon-root"
         data-testid="KeyboardArrowDownIcon"
         focusable="false"
         viewBox="0 0 24 24"

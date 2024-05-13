@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import { Backup } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import Button from '@/core/inputs/button'
 import Menu from '.'
-import { Backup } from '@/icons'
 
 export default {
     title: 'Navigation/Menu',

@@ -1,9 +1,9 @@
 import React from 'react'
+import { Backup } from '@mui/icons-material'
 import { render, screen } from '@testing-library/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
 import Sidebar from '.'
-import { Backup } from '@/icons'
 
 describe('Sidebar', () => {
     it('should render', () => {

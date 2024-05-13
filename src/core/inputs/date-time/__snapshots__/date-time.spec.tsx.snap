@@ -14,7 +14,7 @@ exports[`DateTime should match snapshot 1`] = `
         class="MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-49 MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
         role="date-picker"
         type="text"
-        value="03052024"
+        value="13052024"
       />
       <div
         class="MuiInputAdornment-root MuiInputAdornment-positionEnd"

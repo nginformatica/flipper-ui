@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyledButton } from './styles'
 import {
     Visibility as IconVisibility,
     VisibilityOff as IconVisibilityOff
-} from '@/icons'
+} from '@mui/icons-material'
+import { StyledButton } from './styles'
 
 export interface IProps {
     name?: string
