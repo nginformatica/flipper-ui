@@ -11,8 +11,17 @@ export interface IProps {
     onToggle(): void
 }
 
-const VisibilityIcon = ({ show, onToggle, name, ...otherProps }: IProps) => (
-    <StyledButton {...otherProps} padding='0px' name={name} onClick={onToggle}>
+const PasswordVisibility = ({
+    show,
+    onToggle,
+    name,
+    ...otherProps
+}: IProps) => (
+    <StyledButton
+        {...otherProps}
+        padding='0px'
+        name={name ?? 'show-password'}
+        onClick={onToggle}>
         {show ? (
             <IconVisibilityOff data-testid='icon-off' />
         ) : (
@@ -21,4 +30,4 @@ const VisibilityIcon = ({ show, onToggle, name, ...otherProps }: IProps) => (
     </StyledButton>
 )
 
-export default VisibilityIcon
+export default PasswordVisibility

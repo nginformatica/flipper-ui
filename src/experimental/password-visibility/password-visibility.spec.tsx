@@ -1,10 +1,10 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import VisibilityIcon from '.'
+import PasswordVisibility from '.'
 
-describe('VisibilityIcon', () => {
+describe('PasswordVisibility', () => {
     it('should render', () => {
-        render(<VisibilityIcon show onToggle={jest.fn()} />)
+        render(<PasswordVisibility show onToggle={jest.fn()} />)
 
         const svg = screen.getByTestId('icon-off')
 
@@ -12,7 +12,7 @@ describe('VisibilityIcon', () => {
     })
 
     it('should render hidden', () => {
-        render(<VisibilityIcon show={false} onToggle={jest.fn()} />)
+        render(<PasswordVisibility show={false} onToggle={jest.fn()} />)
 
         const svg = screen.getByTestId('icon-on')
 
@@ -22,7 +22,7 @@ describe('VisibilityIcon', () => {
     it('should call onClick', () => {
         const onClick = jest.fn()
 
-        const container = render(<VisibilityIcon show onToggle={onClick} />)
+        const container = render(<PasswordVisibility show onToggle={onClick} />)
 
         const button = container.container.querySelector('button')
 
@@ -33,7 +33,7 @@ describe('VisibilityIcon', () => {
 
     it('should have name', () => {
         const container = render(
-            <VisibilityIcon show name='show' onToggle={jest.fn()} />
+            <PasswordVisibility show name='show' onToggle={jest.fn()} />
         )
 
         const button = container.container.querySelector('button')
@@ -42,7 +42,9 @@ describe('VisibilityIcon', () => {
     })
 
     it('should match snapshot', () => {
-        const container = render(<VisibilityIcon show onToggle={jest.fn()} />)
+        const container = render(
+            <PasswordVisibility show onToggle={jest.fn()} />
+        )
 
         expect(container).toMatchSnapshot()
     })
