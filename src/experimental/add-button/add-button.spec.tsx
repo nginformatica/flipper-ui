@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Button from '.'
+import AddButton from '.'
 
-describe('Button', () => {
+describe('Add Button', () => {
     it('should render', () => {
-        render(<Button name='btnName' label='Click Me' />)
+        render(<AddButton name='btnName' label='Click Me' />)
 
         const button = screen.getByText('Click Me')
 
@@ -14,7 +14,7 @@ describe('Button', () => {
     it('should call onClick', () => {
         const onClick = jest.fn()
 
-        render(<Button name='btnName' label='Click Me' onClick={onClick} />)
+        render(<AddButton name='btnName' label='Click Me' onClick={onClick} />)
 
         const button = screen.getByText('Click Me')
 
@@ -24,7 +24,9 @@ describe('Button', () => {
     })
 
     it('should match snapshot', () => {
-        const { container } = render(<Button name='btnName' label='Click Me' />)
+        const { container } = render(
+            <AddButton name='btnName' label='Click Me' />
+        )
 
         expect(container).toMatchSnapshot()
     })

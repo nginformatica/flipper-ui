@@ -8,17 +8,19 @@ export interface Props extends ButtonProps {
     name: string
     margin?: string | number
     padding?: string | number
+    disabled?: boolean
     onClick?(): void
 }
 
-export const AddButton = (props: Props) => (
+const AddButton = (props: Props) => (
     <ButtonAdd
         {...props}
         variant='dashed'
         color='primary'
-        id={'add-' + props.name}
+        id={'id-add-' + props.name}
         name={'add-' + props.name}
         padding={props.padding}
+        disabled={!!props.disabled}
         margin={props.margin || '12px 0 24px'}
         onClick={props.onClick}>
         <IconAdd />

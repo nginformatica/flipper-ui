@@ -8,7 +8,7 @@ import {
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import { Paper, Line } from '@/index'
-import { AddButton } from '../button'
+import AddButton from '../add-button'
 import {
     CardButton,
     Header,
