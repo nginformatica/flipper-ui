@@ -1,9 +1,9 @@
 import React from 'react'
 import type { ReactNode } from 'react'
+import MuiBreadcrumbs from '@material-ui/core/Breadcrumbs'
 import { ChevronRight as IconChevronRight } from '@mui/icons-material'
 import { addIndex, map } from 'ramda'
-import { Breadcrumb } from '@/index'
-import { LinkStyled, TextTypography } from './styles'
+import { BreadcrumbLink, TextTypography } from './styles'
 
 const imap = addIndex(map)
 
@@ -21,9 +21,9 @@ type Props = {
 }
 
 const defaultLinkWrapper = (link: string, label: string) => (
-    <LinkStyled key={link} href={link}>
+    <BreadcrumbLink key={link} to={link}>
         {label}
-    </LinkStyled>
+    </BreadcrumbLink>
 )
 
 const Breadcrumbs = ({
@@ -53,7 +53,11 @@ const Breadcrumbs = ({
         return validChunkWord && (isLastChunk ? text : linkWrapper(link, text))
     }, allChunks) as ReactNode[]
 
-    return <Breadcrumb separator={<IconChevronRight />}>{links}</Breadcrumb>
+    return (
+        <MuiBreadcrumbs separator={<IconChevronRight />}>
+            {links}
+        </MuiBreadcrumbs>
+    )
 }
 
 export default Breadcrumbs
