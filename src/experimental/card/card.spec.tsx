@@ -46,7 +46,7 @@ describe('Card', () => {
             <Card
                 name='test'
                 title='test-title'
-                onAddBtnLabel='add button'
+                label='add button'
                 onClickAdd={onAddClickSpy}>
                 <h1>test</h1>
             </Card>
@@ -124,7 +124,7 @@ describe('Card', () => {
             <Card
                 name='test'
                 title='test-title'
-                onAddBtnLabel='add button'
+                label='add button'
                 onClickAdd={jest.fn()}>
                 <h1>test</h1>
             </Card>

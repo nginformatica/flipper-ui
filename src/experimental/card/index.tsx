@@ -1,58 +1,55 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import { Close as IconClose, Edit as IconEdit } from '@mui/icons-material'
+import {
+    Close as IconClose,
+    Edit as IconEdit,
+    Delete as IconDelete
+} from '@mui/icons-material'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
-import { Paper, Line, Button as AddButton } from '@/index'
+import { Paper, Line } from '@/index'
+import { AddButton } from '../button'
 import {
-    EditButton,
+    CardButton,
     Header,
     NESTED_ELEVATION,
     PAPER_PROPS,
     Title
 } from './styles'
+import { theme } from '@/theme'
+
+const { feedback } = theme.colors
 
 export interface IProps {
-    /**
-     * Children to be rendered inside the card.
-     */
     children: ReactNode
-    /**
-     * If `true`, the card will be rendered with a nested style.
-     * @default false
-     */
     nested?: boolean
-    /**
-     * Title of the card.
-     * @default undefined
-     */
     title?: string
     name: string
-    /**
-     * Label to be displayed on the add button.
-     * @default undefined
-     */
-    onAddBtnLabel?: string
+    label?: string
     id?: string
     editing?: boolean
     action?: JSX.Element | null
+    renderRemove?: boolean
     onAddProps?: Partial<ButtonProps>
     onEditProps?: Partial<IconButtonProps>
     onClickAdd?(): void
     onToggleEdit?(): void
+    onRemove?(): void
 }
 
 const Card = (props: IProps) => {
     const {
         id,
         name,
-        onAddBtnLabel,
+        label,
         nested,
         title,
         action,
         onToggleEdit,
         editing,
         children,
+        renderRemove,
+        onRemove,
         onClickAdd,
         onAddProps,
         onEditProps,
@@ -79,9 +76,22 @@ const Card = (props: IProps) => {
                                 {title}
                             </Title>
                         )}
+
                         {action}
+
+                        {onRemove && !!renderRemove && (
+                            <CardButton
+                                className={editing ? '' : 'showable-target'}
+                                name={`remove-${name}`}
+                                margin='-10px 20px'
+                                padding='0px'
+                                onClick={onRemove}>
+                                <IconDelete htmlColor={feedback.danger} />
+                            </CardButton>
+                        )}
+
                         {onToggleEdit && (
-                            <EditButton
+                            <CardButton
                                 {...onEditProps}
                                 className={editing ? '' : 'showable-target'}
                                 name={`${editing ? 'cancel' : 'edit'}-${name}`}
@@ -89,21 +99,23 @@ const Card = (props: IProps) => {
                                 padding='0px'
                                 onClick={onToggleEdit}>
                                 {editing ? <IconClose /> : <IconEdit />}
-                            </EditButton>
+                            </CardButton>
                         )}
                     </Header>
-                    <div>
-                        <Line />
-                    </div>
+                    <Line />
                 </>
             )}
 
             {onClickAdd && (
-                <AddButton {...onAddProps} onClick={onClickAdd}>
-                    {onAddBtnLabel}
-                </AddButton>
+                <AddButton
+                    {...onAddProps}
+                    name={name}
+                    label={label}
+                    onClick={onClickAdd}
+                />
             )}
-            <div>{children}</div>
+
+            {children}
         </Paper>
     )
 }
