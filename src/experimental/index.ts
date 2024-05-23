@@ -1,7 +1,7 @@
 export * from './fab'
 export * from './dialog'
 export { default as Avatar } from './avatar'
-export { default as Actions, Wrapper } from './actions'
+export { default as Actions } from './actions'
 export { default as Breadcrumbs } from './breadcrumbs'
 export { default as Button } from './button'
 export { default as Card } from './card'

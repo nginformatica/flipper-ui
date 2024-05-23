@@ -1,13 +1,15 @@
 import React from 'react'
-import { default as styled } from 'styled-components'
 import type { ButtonProps } from '@material-ui/core'
 import { Button } from '@/index'
+import { Wrapper } from './styles'
 
 export interface IProps {
     padding?: number | string
     margin?: number | string
     align?: 'flex-end' | 'flex-start' | 'center'
-    disabled?: boolean
+    prefix?: string
+    buttons?: Array<'confirm' | 'cancel'>
+    actionButtonColor?: ButtonProps['color']
     names?: {
         cancel: string
         confirm: string
@@ -17,29 +19,14 @@ export interface IProps {
         confirm: string
     }
     readonly?: boolean
-    prefix?: string
-    buttons?: Array<'confirm' | 'cancel'>
-    actionButtonColor?: ButtonProps['color']
+    disabled?: boolean
+    disabledCancel?: boolean
+    disabledConfirm?: boolean
     onCancel?(): void | boolean
     onConfirm(): void
 }
 
-interface IWrapper {
-    padding?: IProps['padding']
-    margin?: IProps['margin']
-    align: IProps['align']
-}
-
-export const Wrapper = styled.div<IWrapper>`
-    grid-area: actions;
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    padding: ${props => props.padding};
-    margin: ${props => props.margin};
-`
-
-export const Actions = (props: IProps) => {
+const Actions = (props: IProps) => {
     const showButton =
         !props.readonly && (!props.buttons || props.buttons.includes('confirm'))
 
@@ -51,7 +38,7 @@ export const Actions = (props: IProps) => {
             {(!props.buttons || props.buttons.includes('cancel')) && (
                 <Button
                     margin='0 16px'
-                    disabled={props.disabled}
+                    disabled={props.disabled || props.disabledCancel}
                     name={props.names ? props.names.cancel : 'cancel-action'}
                     data-testid='cancel-action'
                     onClick={props.onCancel}>
@@ -60,9 +47,9 @@ export const Actions = (props: IProps) => {
             )}
             {showButton && (
                 <Button
-                    color={props.actionButtonColor || 'primary'}
+                    color={props.actionButtonColor || 'secondary'}
                     variant='contained'
-                    disabled={props.disabled}
+                    disabled={props.disabled || props.disabledConfirm}
                     name={props.names ? props.names.confirm : 'confirm-action'}
                     data-testid='confirm-action'
                     onClick={props.onConfirm}>
