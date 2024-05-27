@@ -1,7 +1,7 @@
 import React from 'react'
 import type { MouseEvent, ReactNode } from 'react'
-import { Dialog as DialogFlipper, Button, ThemeProviderFlipper } from '@/index'
-import { theme } from '@/theme'
+import { Dialog as DialogFlipper, Button } from '@/index'
+import { ThemeProviderFlipper, theme } from '@/theme'
 
 const { action, primary } = theme.colors
 
