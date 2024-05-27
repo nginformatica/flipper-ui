@@ -1,22 +1,18 @@
-<!-- Logo -->
 <p align="center">
-  <img width="150" src="logo.png" alt="Flipper-UI logo" />
+  <img width="150" src="./src/images/logo.png" alt="Flipper-UI logo" />
 </p>
 
-<!-- Name -->
 <h1 align="center">Flipper-UI</h1>
 
-<!-- Badges -->
-<div align="center">
 
-[React](http://facebook.github.io/react/) UI toolkit for the web.
+<div align="center">
+React UI based on the <br/>
+
+`@material-ui/core` and `@mui/material` <br/>
+toolkit for the web.
 
 [![npm package](https://img.shields.io/npm/v/flipper-ui/latest.svg)](https://www.npmjs.com/package/flipper-ui)
 [![npm downloads](https://img.shields.io/npm/dm/flipper-ui.svg)](https://www.npmjs.com/package/flipper-ui)
-[![Dependencies](https://img.shields.io/david/nginformatica/flipper-ui.svg?style=flat-square)](https://david-dm.org/nginformatica/flipper-ui)
-[![DevDependencies](https://img.shields.io/david/dev/nginformatica/flipper-ui.svg)](https://david-dm.org/nginformatica/flipper-ui?type=dev)
-[![Build Status](https://travis-ci.org/nginformatica/flipper-ui.svg?branch=master)](https://travis-ci.org/nginformatica/flipper-ui)
-
 </div>
 
 ## Installation
@@ -24,10 +20,11 @@
 Flipper-UI is available as an [npm package](https://www.npmjs.com/package/flipper-ui).
 
 ```sh
-// with npm
 npm install flipper-ui
 
-// with yarn
+```
+
+```sh
 yarn add flipper-ui
 ```
 
@@ -35,71 +32,26 @@ yarn add flipper-ui
 
 Here is a quick example to get you started, **it's all you need**:
 
-```jsx
+```tsx
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import { Button } from 'flipper-ui'
 
-function App() {
+const App = () => {
   return (
     <Button variant="contained" color="primary">
       Hello World
     </Button>
-  );
+  )
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+render(<App />, document.getElementById('root'))
 ```
-
-## Components
-
-- [x] Advertise
-- [x] AppBar/Header
-- [x] AutoComplete
-- [x] Avatar
-- [x] Badge
-- [x] Box
-- [x] Button
-- [x] Checkbox
-- [x] Chip
-- [x] Collapse
-- [x] DatePicker
-- [x] Dialog
-- [x] Divider
-- [x] Expansion Panel
-- [x] Menu
-- [x] Fade
-- [x] Floating Action Button
-- [x] Grow
-- [x] Icon
-- [x] Icon Button
-- [x] List
-- [x] ListItem
-- [x] Paper
-- [x] Progress
-- [x] Sidebar/Drawer
-- [x] Switcher
-- [x] Radio
-- [x] RadioGroup
-- [x] Select
-- [x] Slide
-- [x] Snackbar
-- [x] Table
-- [x] Tabs
-- [x] TextArea
-- [x] TextField
-- [x] Tooltip
-- [x] Typography
-- [x] Zoom
-
-## Next Components
-
-- [ ] Carousel/Gallery
-- [ ] Tree
 
 ## Documentation
 
-Check out our [documentation website](https://nginformatica.github.io/flipper-ui/).
+Check out our [documentation website](https://flipper-ui.ngi.com.br/?path=/docs/introduction--docs). You can also interact with the components there!
+
 
 ## Contributing
 
