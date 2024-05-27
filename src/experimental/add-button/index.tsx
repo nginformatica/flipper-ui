@@ -9,6 +9,7 @@ export interface Props extends ButtonProps {
     margin?: string | number
     padding?: string | number
     disabled?: boolean
+    fullWidth?: boolean
     onClick?(): void
 }
 
@@ -22,6 +23,7 @@ const AddButton = (props: Props) => (
         padding={props.padding}
         disabled={!!props.disabled}
         margin={props.margin || '12px 0 24px'}
+        fullWidth={props.fullWidth}
         onClick={props.onClick}>
         <IconAdd />
         {props.label}

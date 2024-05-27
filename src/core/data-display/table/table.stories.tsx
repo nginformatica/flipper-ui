@@ -17,7 +17,7 @@ export const Default = Template.bind({})
 Default.args = {
     children: (
         <>
-            <TableHead color='default'>
+            <TableHead>
                 <TableRow>
                     <TableCell>Name</TableCell>
                     <TableCell>Email</TableCell>

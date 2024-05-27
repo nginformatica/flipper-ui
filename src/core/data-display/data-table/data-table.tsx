@@ -66,9 +66,9 @@ export type DataTableProps<
 
 const defaultPagination: PaginationOptions = {
     rowsPerPage: 10,
-    labelRowsPerPage: 'Rows per page:',
+    labelRowsPerPage: 'Linhas por página:',
     labelDisplayedRows: ({ from, to, count }) => {
-        return `${from}-${to} of ${count !== -1 ? count : `more than ${to}`}`
+        return `${from}-${to} de ${count !== -1 ? count : `mais que ${to}`}`
     },
     disabled: false,
     showFirstButton: false,

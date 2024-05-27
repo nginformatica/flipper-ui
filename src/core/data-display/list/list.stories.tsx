@@ -2,7 +2,7 @@ import React from 'react'
 import { Backup } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import { Avatar } from '../avatar'
+import { Avatar } from '@/experimental'
 import List from '.'
 
 export default {
@@ -51,14 +51,14 @@ WithAvatar.args = {
     title: 'My beautiful list"',
     children: (
         <>
-            <ListItem avatar={<Avatar>1</Avatar>} title='Person 1' />
-            <ListItem avatar={<Avatar>2</Avatar>} title='Person 2' />
-            <ListItem avatar={<Avatar>3</Avatar>} title='Person 3' />
-            <ListItem avatar={<Avatar>4</Avatar>} title='Person 4' />
-            <ListItem avatar={<Avatar>5</Avatar>} title='Person 5' />
-            <ListItem avatar={<Avatar>6</Avatar>} title='Person 6' />
-            <ListItem avatar={<Avatar>7</Avatar>} title='Person 7' />
-            <ListItem avatar={<Avatar>8</Avatar>} title='Person 8' />
+            <ListItem avatar={<Avatar name='1' />} title='Person 1' />
+            <ListItem avatar={<Avatar name='2' />} title='Person 2' />
+            <ListItem avatar={<Avatar name='3' />} title='Person 3' />
+            <ListItem avatar={<Avatar name='4' />} title='Person 4' />
+            <ListItem avatar={<Avatar name='5' />} title='Person 5' />
+            <ListItem avatar={<Avatar name='6' />} title='Person 6' />
+            <ListItem avatar={<Avatar name='7' />} title='Person 7' />
+            <ListItem avatar={<Avatar name='8' />} title='Person 8' />
         </>
     )
 }

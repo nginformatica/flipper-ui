@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
+import { Avatar as MuiAvatar } from '@mui/material'
 import { take } from 'ramda'
-import { Avatar as FlipperAvatar } from '@/index'
 
 export interface IProps {
     name?: string
@@ -19,7 +19,7 @@ const Avatar = (props: IProps) => {
         return props.icon
     }
 
-    return <FlipperAvatar {...props}>{getChild()}</FlipperAvatar>
+    return <MuiAvatar {...props}>{getChild()}</MuiAvatar>
 }
 
 export default Avatar
