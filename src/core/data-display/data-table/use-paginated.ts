@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
-import faker from 'faker'
+import { faker } from '@faker-js/faker'
 import { splitEvery } from 'ramda'
 import type { Data } from './types'
 
