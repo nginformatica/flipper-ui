@@ -120,12 +120,85 @@ export const Default = () => {
         }
     ]
 
+    return <DataTable data={data} columns={columns} />
+}
+
+export const Custom = () => {
+    const date = () => new Date()
+
+    const data = [
+        {
+            id: 1,
+            product: 'Magazine Magazine Magazine',
+            price: 13.5,
+            quantity: 12,
+            date: date()
+        },
+        { id: 2, product: 'Table', price: 200.49, quantity: 3, date: date() },
+        { id: 3, product: 'Chair', price: 53.5, quantity: 9, date: date() },
+        { id: 4, product: 'Keyboard', price: 53.29, quantity: 4, date: date() },
+        { id: 5, product: 'Mouse', price: 27.13, quantity: 16, date: date() },
+        {
+            id: 6,
+            product: 'Microphone',
+            price: 89.14,
+            quantity: 2,
+            date: date()
+        },
+        { id: 7, product: 'Headset', price: 117.85, quantity: 6, date: date() },
+        { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: date() }
+    ]
+
+    const columns: ColumnSpec<Data>[] = [
+        {
+            title: 'Product',
+            type: 'text',
+            field: 'product',
+            cellStyle: {
+                maxWidth: '72px',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+            },
+            editable: true
+        },
+        {
+            title: 'Price (R$)',
+            field: 'price',
+            type: 'numeric-float',
+            editable: false,
+            getValue: (value: number) => value.toFixed(2).replace('.', ',')
+        },
+        {
+            title: 'Quantity',
+            field: 'quantity',
+            type: 'numeric-int',
+            editable: true,
+            cellStyle: {
+                width: '82px'
+            }
+        },
+        {
+            title: 'Date',
+            field: 'date',
+            type: 'datetime',
+            editable: true,
+            getValue: (value: Date) => format(value, 'dd/MM/yyyy HH:mm'),
+            cellStyle: {
+                width: '200px'
+            }
+        }
+    ]
+
     return (
         <DataTable
+            hideSelect
+            renderEmptyRows
             data={data}
             pagination={{
                 rowsPerPage: 5,
-                labelRowsPerPage: 'Row per page'
+                showFirstButton: true,
+                showLastButton: true
             }}
             columns={columns}
         />

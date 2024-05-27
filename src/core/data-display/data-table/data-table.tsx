@@ -51,6 +51,9 @@ export type DataTableProps<
     controllerRef?: MutableRefObject<DataTableController<D, V> | undefined>
     hidden?: boolean
     rowViews?: Record<keyof V, RowViewComponent<D>>
+    size?: 'small' | 'medium'
+    renderEmptyRows?: boolean
+    hideSelect?: boolean
     checkbox?: boolean
     checkboxProps?: {
         checkRow?: boolean[]
@@ -98,6 +101,9 @@ export const DataTable = <D extends Data, V extends StackView>(
         headRowStyle,
         errors,
         componentForEmpty,
+        size,
+        renderEmptyRows,
+        hideSelect,
         bodyStyle,
         headStyle,
         hiddenRowHeight,
@@ -332,9 +338,12 @@ export const DataTable = <D extends Data, V extends StackView>(
         [pagination.showFirstButton, pagination.showLastButton]
     )
 
+    const emptyRows =
+        rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage)
+
     return (
         <TableContainer role='data-table-container' component={Paper}>
-            <Table>
+            <Table size={size}>
                 {!noHeader && (
                     <TableHead style={headStyle}>
                         <TableRow style={headRowStyle}>
@@ -369,6 +378,14 @@ export const DataTable = <D extends Data, V extends StackView>(
                 <TableBody style={bodyStyle}>
                     {currentRowsNumber === 0 ? componentForEmpty : rowsElements}
                     {hiddenRowFiller}
+                    {renderEmptyRows && emptyRows > 0 && (
+                        <TableRow
+                            style={{
+                                height: (size === 'small' ? 33 : 53) * emptyRows
+                            }}>
+                            <TableCell colSpan={columns.length} />
+                        </TableRow>
+                    )}
                 </TableBody>
                 {!pagination.disabled && (
                     <TableFooter>
@@ -380,9 +397,18 @@ export const DataTable = <D extends Data, V extends StackView>(
                                     pagination.rowsPerPageOptions
                                 }
                                 rowsPerPage={rowsPerPage}
-                                labelRowsPerPage={pagination.labelRowsPerPage}
+                                labelRowsPerPage={
+                                    hideSelect
+                                        ? ''
+                                        : pagination.labelRowsPerPage
+                                }
                                 labelDisplayedRows={
                                     pagination.labelDisplayedRows
+                                }
+                                SelectProps={
+                                    hideSelect
+                                        ? { style: { display: 'none' } }
+                                        : {}
                                 }
                                 ActionsComponent={paginationActionsComponent}
                                 onPageChange={(_, page) => {
