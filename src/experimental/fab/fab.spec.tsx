@@ -2,8 +2,7 @@ import React from 'react'
 import { FileCopy } from '@mui/icons-material'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import Fab from './fab'
-import FabWrapper from './fab-wrapper'
+import Fab from '.'
 
 describe('Fab', () => {
     it('should render', () => {
@@ -71,22 +70,6 @@ describe('Fab', () => {
                 <FileCopy />
             </Fab>
         )
-
-        expect(container).toMatchSnapshot()
-    })
-})
-
-describe('FabWrapper', () => {
-    it('should render', () => {
-        render(<FabWrapper>Test</FabWrapper>)
-
-        const fabWrapper = screen.getByText('Test')
-
-        expect(fabWrapper).toBeDefined()
-    })
-
-    it('should match snapshot', () => {
-        const { container } = render(<FabWrapper>Test</FabWrapper>)
 
         expect(container).toMatchSnapshot()
     })

@@ -1,8 +1,7 @@
 import React from 'react'
 import { FileCopy } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
-import FabV2 from './fab'
-import FabWrapper from './fab-wrapper'
+import FabV2 from '.'
 
 const Template: StoryFn<typeof FabV2> = args => <FabV2 {...args} />
 
@@ -18,8 +17,5 @@ export default {
         name: 'copy',
         tooltip: 'Copy file',
         onClick: () => alert('fab click')
-    },
-    subcomponents: {
-        FabWrapper
     }
 } as Meta<typeof FabV2>

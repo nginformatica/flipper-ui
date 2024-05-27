@@ -1,13 +1,12 @@
 import React from 'react'
 import type { Meta } from '@storybook/react'
-import { default as AutoComplete } from '@/core/inputs/auto-complete'
 import { TextField } from '@/core/inputs/text-field'
 import { Autocomplete as AutocompleteLab } from '.'
 
 export default {
     title: 'Experimental/AutoCompleteLab',
-    component: AutoComplete
-} as Meta<typeof AutoComplete>
+    component: AutocompleteLab
+} as Meta<typeof AutocompleteLab>
 
 export const Default = () => (
     <AutocompleteLab
