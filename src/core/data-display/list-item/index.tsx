@@ -11,7 +11,6 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import type { DefaultProps } from '../../types'
 import type { Theme } from '@material-ui/core'
-import type { Omit } from 'ramda'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     avatar?: JSX.Element

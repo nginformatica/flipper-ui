@@ -3,7 +3,6 @@ import type { MouseEvent, MutableRefObject, ReactNode } from 'react'
 import type { DefaultProps } from '../../types'
 import type { MenuItemClassKey } from '@material-ui/core/MenuItem'
 import type { ClassNameMap } from '@material-ui/core/styles/withStyles'
-import type { Omit } from 'ramda'
 import { MenuItems } from './styles'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
