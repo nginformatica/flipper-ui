@@ -1,33 +1,70 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
+import { Face } from '@mui/icons-material'
+import type { Meta, StoryObj } from '@storybook/react'
 import Avatar from '.'
 
 const srcImage = 'https://imgflip.com/s/meme/Doge.jpg'
 
-export default {
+const meta: Meta<typeof Avatar> = {
     title: 'Experimental/Avatar',
     component: Avatar,
-    args: {
-        name: 'Felipe'
+    argTypes: {
+        icon: {
+            table: {
+                disable: true
+            }
+        },
+        style: {
+            control: 'object',
+            description: 'The avatar style.'
+        }
     }
-} as Meta<typeof Avatar>
-
-const Template: StoryFn<typeof Avatar> = args => {
-    return <Avatar {...args} />
 }
 
-export const simpleAvatar = Template.bind({})
-simpleAvatar.args = {
-    src: srcImage
+export default meta
+
+type Story = StoryObj<typeof Avatar>
+
+export const avatar: Story = {
+    render: ({ ...args }) => {
+        return <Avatar {...args} />
+    },
+    args: {
+        name: '',
+        src: srcImage
+    }
 }
 
-export const withCustomSize = Template.bind({})
-withCustomSize.args = {
-    src: srcImage,
-    style: { width: '64px', height: '64px' }
+export const avatarWithCustomSize: Story = {
+    render: ({ ...args }) => {
+        return <Avatar {...args} />
+    },
+    args: {
+        name: 'felipe',
+        src: '',
+        style: { width: '64px', height: '64px' }
+    }
 }
 
-export const withoutImage = Template.bind({})
-withoutImage.args = {
-    style: { width: '64px', height: '64px' }
+export const avatarWithoutImage: Story = {
+    render: ({ ...args }) => {
+        return <Avatar {...args} />
+    },
+    args: {
+        name: '',
+        src: '',
+        style: { width: '64px', height: '64px' }
+    }
+}
+
+export const avatarWithCustomIcon: Story = {
+    render: ({ ...args }) => {
+        return <Avatar {...args} />
+    },
+    args: {
+        name: '',
+        src: '',
+        icon: <Face />,
+        style: { width: '64px', height: '64px' }
+    }
 }

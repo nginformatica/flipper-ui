@@ -1,27 +1,23 @@
 import React from 'react'
 import type { MouseEvent, ReactNode } from 'react'
+import type { DialogProps } from '@/core/feedback/dialog'
 import { Dialog as DialogFlipper, Button } from '@/index'
 import { ThemeProviderFlipper, theme } from '@/theme'
 
 const { action, primary } = theme.colors
 
-export interface IProps {
+export interface IProps extends DialogProps {
     open: boolean
     title: string
     titleAction?: string | ReactNode
-    text?: string
     primaryButtonColor?: 'default' | 'primary' | 'inherit' | 'secondary'
     primaryButtonName?: string
     primaryButtonText: string
     secondaryButtonText?: string
     secondaryButtonName?: string
-    snippet?: JSX.Element | ReactNode
-    content?: JSX.Element | ReactNode
-    PaperProps?: Record<string, unknown>
     omitActionButtons?: boolean
     primaryButtonAction(event: MouseEvent<HTMLButtonElement>): void
     secondaryButtonAction?(event: MouseEvent<HTMLButtonElement>): void
-    onClose?(): void
 }
 
 const themeDialog = {

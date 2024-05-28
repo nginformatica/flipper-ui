@@ -1,21 +1,70 @@
 import React from 'react'
 import { FileCopy } from '@mui/icons-material'
-import type { Meta, StoryFn } from '@storybook/react'
-import FabV2 from '.'
+import type { Meta, StoryObj } from '@storybook/react'
+import Fab from '.'
+import { theme } from '@/theme'
 
-const Template: StoryFn<typeof FabV2> = args => <FabV2 {...args} />
+const { primary } = theme.colors
 
-export const Default = Template.bind({})
-Default.args = {
-    children: <FileCopy />
+const meta: Meta<typeof Fab> = {
+    title: 'Experimental/Fab',
+    component: Fab,
+    argTypes: {
+        className: {
+            table: {
+                disable: true
+            }
+        },
+        onClick: {
+            table: {
+                disable: true
+            }
+        },
+        name: {
+            control: 'text',
+            description: 'The Fab name.'
+        },
+        tooltip: {
+            control: 'text',
+            description: 'The Fab tooltip label.'
+        },
+        large: {
+            control: 'boolean',
+            description: 'The Fab size.'
+        },
+        padding: {
+            control: 'text',
+            description: 'The Fab padding.'
+        },
+        margin: {
+            control: 'text',
+            description: 'The Fab margin.'
+        },
+        style: {
+            control: 'object',
+            description: 'The Fab style.'
+        }
+    }
 }
 
-export default {
-    title: 'Experimental/Fab',
-    component: FabV2,
+export default meta
+
+type Story = StoryObj<typeof Fab>
+
+export const fab: Story = {
+    render: ({ ...args }) => {
+        return (
+            <Fab {...args} onClick={() => alert('Fab clicked!')}>
+                <FileCopy />
+            </Fab>
+        )
+    },
     args: {
-        name: 'copy',
+        name: 'Copy',
+        large: true,
         tooltip: 'Copy file',
-        onClick: () => alert('fab click')
+        margin: '',
+        padding: '',
+        style: { color: primary.main }
     }
-} as Meta<typeof FabV2>
+}

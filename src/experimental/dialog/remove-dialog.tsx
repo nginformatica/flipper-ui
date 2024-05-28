@@ -5,7 +5,7 @@ import DialogV2 from './dialog'
 export interface IProps {
     open: boolean
     title?: string
-    text: string
+    text?: string
     disableBackdropClick?: boolean
     labels?: {
         cancel?: string

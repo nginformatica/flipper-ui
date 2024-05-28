@@ -1,22 +1,37 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
-import { Loading } from '.'
+import type { Meta, StoryObj } from '@storybook/react'
+import Loading from '.'
 
-export default {
+const meta: Meta<typeof Loading> = {
     title: 'Experimental/Loading',
-    component: Loading
-} as Meta<typeof Loading>
-
-const Template: StoryFn<typeof Loading> = args => <Loading {...args} />
-
-export const Default = Template.bind({})
-
-export const CustomSize = Template.bind({})
-CustomSize.args = {
-    size: 32
+    component: Loading,
+    argTypes: {
+        size: {
+            control: 'number',
+            description: 'The Loading size.'
+        },
+        margin: {
+            control: 'text',
+            description: 'The Loading margin.'
+        },
+        padding: {
+            control: 'text',
+            description: 'The Loading padding.'
+        }
+    }
 }
 
-export const CustomMargin = Template.bind({})
-CustomMargin.args = {
-    margin: 32
+export default meta
+
+type Story = StoryObj<typeof Loading>
+
+export const loading: Story = {
+    render: ({ ...args }) => {
+        return <Loading {...args} />
+    },
+    args: {
+        size: 72,
+        margin: '',
+        padding: ''
+    }
 }

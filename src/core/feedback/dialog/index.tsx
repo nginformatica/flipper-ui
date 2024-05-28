@@ -29,7 +29,7 @@ export interface DialogProps
     content?: ReactNode | string
     text?: string
     snippet?: ReactNode | JSX.Element
-    PaperProps?: object
+    PaperProps?: Record<string, unknown>
     titleStyle?: CSSProperties
     snippetStyle?: CSSProperties
     titleWrapperStyle?: CSSProperties

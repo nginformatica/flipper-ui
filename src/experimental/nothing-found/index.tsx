@@ -10,9 +10,10 @@ export interface IProps extends TypographyProps {
     show: boolean
 }
 
-export const NothingFound = (props: IProps) => {
+const NothingFound = (props: IProps) => {
     const { buttonLabel, readonly, ...rest } = props
     const label = buttonLabel || 'Adicionar'
+
     const message = readonly
         ? 'Não há nada aqui.'
         : `Não há nada aqui. Clique em "${label}" para cadastrar um item.`
