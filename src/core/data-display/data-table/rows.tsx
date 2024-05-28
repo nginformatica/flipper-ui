@@ -182,9 +182,7 @@ export const StatefulRow = <D extends Data>({
             patch[field] = value
             onUpdate?.(patch)
         },
-        // it works fine
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        []
+        [onUpdate]
     )
 
     const getCorrectViewMode = (
@@ -230,9 +228,7 @@ export const NewRow = <D extends Data>({
             setEditableState(values => ({ ...values, [field]: value }))
             onUpdate?.({ [field]: value })
         },
-        // it works fine
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        []
+        [onUpdate]
     )
 
     return (

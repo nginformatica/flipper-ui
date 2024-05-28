@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState, useRef } from 'react'
+import type { MutableRefObject, Dispatch, SetStateAction } from 'react'
 import {
     Delete as DeleteIcon,
     Edit as EditIcon,
@@ -446,6 +446,44 @@ export const Crud = () => {
         { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: date() }
     ])
 
+    const rows = (
+        data: Data,
+        setData: Dispatch<SetStateAction<Data[]>>,
+        controllerRef: MutableRefObject<DataTableController<Data, View>>
+    ) => {
+        return (
+            <td colSpan={5}>
+                <div
+                    style={{
+                        display: 'flex',
+                        padding: '16px',
+                        justifyContent: 'space-between'
+                    }}>
+                    <Typography>Confirm Delete "{data.product}"?</Typography>
+                    <div style={{ display: 'flex' }}>
+                        <DataTableAction
+                            label='CheckIcon'
+                            onClick={() => {
+                                controllerRef.current.popRowView(data.id)
+                                setData(dataList =>
+                                    dataList.filter(item => item.id !== data.id)
+                                )
+                            }}>
+                            <CheckIcon />
+                        </DataTableAction>
+                        <DataTableAction
+                            label='CancelIcon'
+                            onClick={() => {
+                                controllerRef.current.popRowView(data.id)
+                            }}>
+                            <CancelIcon />
+                        </DataTableAction>
+                    </div>
+                </div>
+            </td>
+        )
+    }
+
     const handleAdd = () => {
         controllerRef.current?.addRow({ id: randomId(), date: date() })
     }
@@ -489,7 +527,7 @@ export const Crud = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond)
+                return isErrorIf.some(cond => cond(value as never))
             })
             .map(({ field }) => field)
 
@@ -612,41 +650,8 @@ export const Crud = () => {
 
     const rowViews = {
         confirmDelete: ({ data }: { data: Data }) => {
-            return (
-                <td colSpan={5}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            padding: '16px',
-                            justifyContent: 'space-between'
-                        }}>
-                        <Typography>
-                            Confirm Delete "{data.product}"?
-                        </Typography>
-                        <div style={{ display: 'flex' }}>
-                            <DataTableAction
-                                label='CheckIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                    setData(dataList =>
-                                        dataList.filter(
-                                            item => item.id !== data.id
-                                        )
-                                    )
-                                }}>
-                                <CheckIcon />
-                            </DataTableAction>
-                            <DataTableAction
-                                label='CancelIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                }}>
-                                <CancelIcon />
-                            </DataTableAction>
-                        </div>
-                    </div>
-                </td>
-            )
+            // @ts-expect-error TODO: fix controller type
+            return rows(data, setData, controllerRef)
         }
     }
 
@@ -675,7 +680,7 @@ export const Crud = () => {
     )
 }
 
-export const CrudWithHidden = () => {
+export const CrudWithoutPagination = () => {
     const controllerRef =
         useRef<DataTableController<DataCrudWithHidden, View>>()
     const [errors, setErrors] = useState({})
@@ -706,6 +711,46 @@ export const CrudWithHidden = () => {
         }
     ])
 
+    const rows = (
+        data: DataCrudWithHidden,
+        setData: Dispatch<SetStateAction<DataCrudWithHidden[]>>,
+        controllerRef?: MutableRefObject<
+            DataTableController<DataCrudWithHidden, View>
+        >
+    ) => {
+        return (
+            <td colSpan={5}>
+                <div
+                    style={{
+                        display: 'flex',
+                        padding: '16px',
+                        justifyContent: 'space-between'
+                    }}>
+                    <Typography>Confirm Delete "{data.name}"?</Typography>
+                    <div style={{ display: 'flex' }}>
+                        <DataTableAction
+                            label='CheckIcon'
+                            onClick={() => {
+                                controllerRef?.current.popRowView(data.id)
+                                setData(dataList =>
+                                    dataList.filter(item => item.id !== data.id)
+                                )
+                            }}>
+                            <CheckIcon />
+                        </DataTableAction>
+                        <DataTableAction
+                            label='CancelIcon'
+                            onClick={() => {
+                                controllerRef?.current.popRowView(data.id)
+                            }}>
+                            <CancelIcon />
+                        </DataTableAction>
+                    </div>
+                </div>
+            </td>
+        )
+    }
+
     const handleAdd = () => {
         controllerRef.current?.addRow({ id: randomId() })
     }
@@ -731,13 +776,12 @@ export const CrudWithHidden = () => {
 
     const handleErrors = (
         id: string | number,
-        nextItem = {},
+        nextItem: { [key: string]: unknown } = {},
         isPartial = false
     ) => {
         const errorFields = [{ field: 'name', isErrorIf: [isEmpty] }]
             .filter(({ field, isErrorIf }) => {
-                // @ts-ignore
-                const value: string = nextItem[field]
+                const value = nextItem[field]
 
                 if (isNullable(value)) {
                     if (isPartial) {
@@ -747,7 +791,7 @@ export const CrudWithHidden = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond(value))
+                return isErrorIf.some(cond => cond(value as string))
             })
             .map(({ field }) => field)
 
@@ -912,39 +956,8 @@ export const CrudWithHidden = () => {
 
     const rowViews = {
         confirmDelete: ({ data }: { data: DataCrudWithHidden }) => {
-            return (
-                <td colSpan={5}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            padding: '16px',
-                            justifyContent: 'space-between'
-                        }}>
-                        <Typography>Confirm Delete "{data.name}"?</Typography>
-                        <div style={{ display: 'flex' }}>
-                            <DataTableAction
-                                label='CheckIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                    setData(dataList =>
-                                        dataList.filter(
-                                            item => item.id !== data.id
-                                        )
-                                    )
-                                }}>
-                                <CheckIcon />
-                            </DataTableAction>
-                            <DataTableAction
-                                label='CancelIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                }}>
-                                <CancelIcon />
-                            </DataTableAction>
-                        </div>
-                    </div>
-                </td>
-            )
+            // @ts-expect-error TODO: fix controller type
+            return rows(data, setData, controllerRef)
         }
     }
 

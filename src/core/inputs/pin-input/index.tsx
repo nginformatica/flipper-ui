@@ -38,13 +38,11 @@ export const PinInput = ({
     variant,
     ...otherProps
 }: PinInputGridProps) => {
-    const inputRefs = useRef<HTMLInputElement[]>([])
+    const inputRefs = useRef<(HTMLInputElement | null)[]>([])
 
     const changePinFocus = (pinIndex: number) => {
         const ref = inputRefs.current[pinIndex]
 
-        // it needs this if, otherwise doesn't work
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (ref) {
             ref.focus()
         }

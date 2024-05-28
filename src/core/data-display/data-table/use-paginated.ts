@@ -66,18 +66,14 @@ export const usePaginated = () => {
         } else {
             setState(prev => ({ ...prev, items: splitData[0], actualPage: 0 }))
         }
-        // it works fine
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.size])
+    }, [splitData, state.actualPage, state.size])
 
     useEffect(() => {
         setState(prev => ({
             ...prev,
             items: splitData[state.actualPage]
         }))
-        // it works fine
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.actualPage])
+    }, [splitData, state.actualPage])
 
     const handleChangePage = (newPage: number) => {
         setLoading(true)

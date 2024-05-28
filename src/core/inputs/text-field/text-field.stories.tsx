@@ -101,8 +101,7 @@ export const useWithSelectAndClear = () => {
     )
 }
 
-export const combobox = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+export const Combobox = () => {
     const [value, setValue] = useState('fable')
 
     const onClear = () => {
@@ -133,8 +132,7 @@ export const combobox = () => {
     )
 }
 
-export const withCharacterCount = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+export const WithCharacterCount = () => {
     const [value, setValue] = useState('')
 
     const onClear = () => {
