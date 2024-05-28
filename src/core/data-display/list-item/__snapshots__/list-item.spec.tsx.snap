@@ -4,7 +4,7 @@ exports[`ListItem should match snapshot 1`] = `
 <div>
   <div
     aria-disabled="false"
-    class="MuiButtonBase-root MuiListItem-root makeStyles-root-7 MuiListItem-gutters MuiListItem-button"
+    class="MuiButtonBase-root MuiListItem-root makeStyles-root-13 MuiListItem-gutters MuiListItem-button"
     role="button"
     tabindex="0"
   >
@@ -16,18 +16,39 @@ exports[`ListItem should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="MuiListItemText-root"
-      data-testid="list-item-undefined"
+      class="MuiListItemIcon-root makeStyles-default-14"
+      style="min-width: 42px;"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="FaceIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25m6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiListItemText-root MuiListItemText-multiline"
+      data-testid="list-item-Subtitle"
       style="margin-right: 36px;"
     >
       <span
-        class="MuiTypography-root makeStyles-default-8 MuiTypography-body1 MuiTypography-displayBlock"
+        class="MuiTypography-root makeStyles-default-14 MuiTypography-body1 MuiTypography-displayBlock"
       >
-        Item 1
+        Title
       </span>
+      <p
+        class="MuiTypography-root makeStyles-default-14 MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+      >
+        Subtitle
+      </p>
     </div>
     <div
-      class="MuiListItemSecondaryAction-root makeStyles-default-8"
+      class="MuiListItemSecondaryAction-root makeStyles-default-14"
     >
       <div>
         Action

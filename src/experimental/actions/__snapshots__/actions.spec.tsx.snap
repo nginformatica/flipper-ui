@@ -4,7 +4,7 @@ exports[`Actions should match snapshot 1`] = `
 <div>
   <div
     align="flex-end"
-    class="sc-dZodDb uKEcO"
+    class="sc-bbSYpP dLcgmS"
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -24,7 +24,7 @@ exports[`Actions should match snapshot 1`] = `
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
       data-testid="confirm-action"
       name="confirm-action"
       style="opacity: 1;"

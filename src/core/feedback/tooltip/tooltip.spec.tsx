@@ -42,6 +42,24 @@ describe('Tooltip', () => {
         expect(message).toBeDefined()
     })
 
+    it('should not render a Tooltip', async () => {
+        render(
+            <Tooltip title=''>
+                <Button variant='outlined'>Tooltip</Button>
+            </Tooltip>
+        )
+
+        const label = screen.getByText('Tooltip')
+
+        await act(async () => {
+            await userEvent.hover(label)
+        })
+
+        const message = screen.queryByText('Tooltip Message')
+
+        expect(message).toBeNull()
+    })
+
     it('should match snapshot', () => {
         const { container } = render(
             <Tooltip withWrapper enterDelay={1} title='Tooltip Message'>

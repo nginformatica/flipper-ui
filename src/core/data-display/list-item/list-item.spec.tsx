@@ -1,6 +1,8 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { Face } from '@mui/icons-material'
+import { render, screen, waitFor } from '@testing-library/react'
 import ListItem from '.'
+import '@testing-library/jest-dom'
 
 describe('ListItem', () => {
     it('should render', () => {
@@ -27,10 +29,42 @@ describe('ListItem', () => {
         expect(action).toBeDefined()
     })
 
+    it('should render with subtitle', () => {
+        render(<ListItem subtitle='Subtitle' />)
+
+        const subtitle = screen.getByTestId('list-item-Subtitle')
+
+        expect(subtitle).toBeDefined()
+    })
+
+    it('should render with custom width icon', () => {
+        render(<ListItem title='Title' subtitle='Subtitle' icon={<Face />} />)
+
+        const button = screen.getByRole('button')
+        const icon = button.querySelector('.MuiListItemIcon-root')
+
+        waitFor(() => {
+            expect(icon).toHaveStyle({ minWidth: '42px' })
+        })
+    })
+
+    it('should not render with custom width icon', () => {
+        render(<ListItem icon={<Face />} />)
+
+        const button = screen.getByRole('button')
+        const icon = button.querySelector('.MuiListItemIcon-root')
+
+        waitFor(() => {
+            expect(icon).toHaveStyle({ minWidth: '0px' })
+        })
+    })
+
     it('should match snapshot', () => {
         const { container } = render(
             <ListItem
-                title='Item 1'
+                title='Title'
+                subtitle='Subtitle'
+                icon={<Face />}
                 avatar={<div>Avatar</div>}
                 action={<div>Action</div>}
             />

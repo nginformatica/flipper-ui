@@ -37,13 +37,3 @@ exports[`Fab should match snapshot 1`] = `
   </div>
 </div>
 `;
-
-exports[`FabWrapper should match snapshot 1`] = `
-<div>
-  <div
-    class="sc-fBWQee lhYxDZ list-item-action"
-  >
-    Test
-  </div>
-</div>
-`;

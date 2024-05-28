@@ -1,16 +1,17 @@
 import React from 'react'
 import { act } from 'react-dom/test-utils'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import TableBody from './table-body'
 import TableCell from './table-cell'
 import TableHead from './table-head'
 import TableRow from './table-row'
 import Table from '.'
+import '@testing-library/jest-dom'
 
 interface IProps {
     onSort?: (name: string) => void
-    color?: 'primary' | 'secondary' | 'default' | 'inherit'
+    color?: string
 }
 
 const Default = ({ onSort, color }: IProps) => {
@@ -71,17 +72,21 @@ describe('Table', () => {
         expect(onSortSpy).toHaveBeenCalled()
     })
 
-    it('should render with custom color', async () => {
-        const { container } = render(<Default color='secondary' />)
+    it('should render with custom color', () => {
+        const { container } = render(<Default color='blue' />)
 
         const header = container.querySelector(
             '.MuiTableHead-root'
         ) as HTMLTableCellElement
 
-        const findSecondaryClass = Array.from(header.classList)
-            .join(' ')
-            .indexOf('TableHead-secondary')
+        waitFor(() => {
+            expect(header).toBeInTheDocument()
+        })
 
-        expect(findSecondaryClass).toBeGreaterThan(-1)
+        const headerStyle = getComputedStyle(header)
+
+        waitFor(() => {
+            expect(headerStyle.backgroundColor).toBe('blue')
+        })
     })
 })

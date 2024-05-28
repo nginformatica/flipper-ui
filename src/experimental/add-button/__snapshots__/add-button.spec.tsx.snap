@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should match snapshot 1`] = `
+exports[`Add Button should match snapshot 1`] = `
 <div>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-outlined sc-aYaIB eiShaW MuiButton-outlinedPrimary"
-    id="add-btnName"
+    id="id-add-btnName"
     label="Click Me"
     name="add-btnName"
     style="margin: 12px 0px 24px; opacity: 1; border-style: dashed;"

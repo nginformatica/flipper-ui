@@ -32,6 +32,7 @@ export interface IProps {
     renderRemove?: boolean
     onAddProps?: Partial<ButtonProps>
     onEditProps?: Partial<IconButtonProps>
+    onRemoveProps?: Partial<IconButtonProps>
     onClickAdd?(): void
     onToggleEdit?(): void
     onRemove?(): void
@@ -53,6 +54,7 @@ const Card = (props: IProps) => {
         onClickAdd,
         onAddProps,
         onEditProps,
+        onRemoveProps,
         ...otherProps
     } = props
 
@@ -81,6 +83,7 @@ const Card = (props: IProps) => {
 
                         {onRemove && !!renderRemove && (
                             <CardButton
+                                {...onRemoveProps}
                                 className={editing ? '' : 'showable-target'}
                                 name={`remove-${name}`}
                                 margin='-10px 20px'

@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import type { ButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Card from '.'
+import '@testing-library/jest-dom'
 
 describe('Card', () => {
     it('should render', () => {
@@ -78,6 +79,53 @@ describe('Card', () => {
         expect(editButton).toHaveProperty('name', 'cancel-test')
     })
 
+    it('should render remove button ', () => {
+        const onRemove = jest.fn()
+        const onRemoveProps: Partial<IconButtonProps> = {
+            'data-testid': 'remove-button'
+        }
+
+        render(
+            <Card
+                editing
+                renderRemove
+                name='test'
+                data-testid='card'
+                title='title'
+                onRemoveProps={onRemoveProps}
+                onRemove={onRemove}>
+                <h1>test</h1>
+            </Card>
+        )
+
+        const removeButton = screen.getByTestId('remove-button')
+
+        expect(removeButton).toHaveProperty('name', 'remove-test')
+    })
+
+    it('should not contain className', () => {
+        const onRemove = jest.fn()
+        const onRemoveProps: Partial<IconButtonProps> = {
+            'data-testid': 'remove-button'
+        }
+
+        render(
+            <Card
+                renderRemove
+                name='test'
+                data-testid='card'
+                title='title'
+                onRemoveProps={onRemoveProps}
+                onRemove={onRemove}>
+                <h1>test</h1>
+            </Card>
+        )
+
+        const removeButton = screen.getByTestId('remove-button')
+
+        expect(removeButton).toHaveClass('showable-target')
+    })
+
     it('should call onClickAdd', () => {
         const onAddProps: Partial<ButtonProps> = {
             'data-testid': 'add-button'
@@ -120,12 +168,26 @@ describe('Card', () => {
     })
 
     it('should match snapshot', () => {
+        const onEditProps: Partial<IconButtonProps> = {
+            'data-testid': 'edit-button'
+        }
+        const onRemoveProps: Partial<IconButtonProps> = {
+            'data-testid': 'remove-button'
+        }
+
         const { container } = render(
             <Card
+                editing
+                renderRemove
                 name='test'
-                title='test-title'
+                data-testid='card'
+                title='title'
                 label='add button'
-                onClickAdd={jest.fn()}>
+                onClickAdd={jest.fn()}
+                onToggleEdit={jest.fn()}
+                onEditProps={onEditProps}
+                onRemoveProps={onRemoveProps}
+                onRemove={jest.fn()}>
                 <h1>test</h1>
             </Card>
         )

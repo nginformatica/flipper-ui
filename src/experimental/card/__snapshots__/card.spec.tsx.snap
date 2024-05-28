@@ -4,45 +4,111 @@ exports[`Card should match snapshot 1`] = `
 <div>
   <div
     class="MuiPaper-root showable MuiPaper-elevation1 MuiPaper-rounded"
+    data-testid="card"
     name="test"
     role="mui-paper-container"
     style="padding: 24px; flex: 1; display: flex; flex-direction: column;"
   >
     <div
-      class="sc-hIUIyC evvVES"
+      class="sc-fXSgRJ dFDIHT"
     >
       <h6
-        class="MuiTypography-root sc-jnOFWn fNUFMK MuiTypography-h6 MuiTypography-colorPrimary"
+        class="MuiTypography-root sc-fjvwmM bDJBrr MuiTypography-h6 MuiTypography-colorPrimary"
         name="test-title"
       >
-        test-title
+        title
       </h6>
+      <button
+        class="MuiButtonBase-root MuiIconButton-root sc-bbSYpP bsOeq"
+        data-testid="remove-button"
+        name="remove-test"
+        style="margin: -10px 20px; padding: 0px;"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            color="#D84315"
+            data-testid="DeleteIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiIconButton-root sc-bbSYpP bsOeq"
+        data-testid="edit-button"
+        name="cancel-test"
+        style="margin: -10px; padding: 0px;"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="CloseIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
     </div>
-    <div>
-      <div
-        style="flex: 1; border: 1px solid #e0e0e0;"
-      />
-    </div>
+    <div
+      style="flex: 1; border: 1px solid #e0e0e0;"
+    />
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text"
-      style="opacity: 1;"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined sc-dCFGXG eJyYUZ MuiButton-outlinedPrimary"
+      id="id-add-test"
+      label="add button"
+      name="add-test"
+      style="margin: 12px 0px 24px; opacity: 1; border-style: dashed;"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-label"
       >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="NoteAddIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm2 14h-3v3h-2v-3H8v-2h3v-3h2v3h3zm-3-7V3.5L18.5 9z"
+          />
+        </svg>
         add button
       </span>
       <span
         class="MuiTouchRipple-root"
       />
     </button>
-    <div>
-      <h1>
-        test
-      </h1>
-    </div>
+    <h1>
+      test
+    </h1>
   </div>
 </div>
 `;
