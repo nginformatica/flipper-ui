@@ -1,42 +1,25 @@
 import React from 'react'
-import type { ReactNode } from 'react'
-import { Avatar as MuiAvatar } from '@material-ui/core'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
-import type { DefaultProps } from '../../types'
-import type { AvatarProps as MuiAvatarProps } from '@material-ui/core'
-import type { Theme } from '@material-ui/core/styles'
+import type { CSSProperties, ReactNode } from 'react'
+import { Avatar as MuiAvatar } from '@mui/material'
+import { take } from 'ramda'
 
-export interface AvatarProps extends DefaultProps, MuiAvatarProps {
-    primary?: boolean
-    children?: ReactNode
-    'data-testid'?: string
+export interface IProps {
+    name?: string
+    icon?: ReactNode
+    src?: string
+    style?: CSSProperties
 }
 
-const useStyles = makeStyles((theme: Theme) => {
-    return createStyles({
-        primary: {
-            backgroundColor: theme.palette.primary.main
+const Avatar = (props: IProps) => {
+    const getChild = () => {
+        if (props.name) {
+            return take(1, props.name.toUpperCase())
         }
-    })
-})
 
-export const Avatar = ({
-    children,
-    primary,
-    className,
-    ...otherProps
-}: AvatarProps) => {
-    const classes = useStyles()
+        return props.icon
+    }
 
-    return (
-        <MuiAvatar
-            {...otherProps}
-            className={`${className ? className : ''} ${
-                primary ? classes['primary'] : ''
-            }`}>
-            {children}
-        </MuiAvatar>
-    )
+    return <MuiAvatar {...props}>{getChild()}</MuiAvatar>
 }
 
 export default Avatar

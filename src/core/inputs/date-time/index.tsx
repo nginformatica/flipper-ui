@@ -12,7 +12,6 @@ import type { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import type { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import type { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 import type { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
-import type { Omit } from 'ramda'
 import { useStyles } from '@/core/inputs/text-field'
 
 export interface IProps {
@@ -39,7 +38,7 @@ export type DateTimeProps = Omit<
     IProps &
     DefaultProps
 
-export const DateTime = ({
+const DateTime = ({
     padding,
     margin,
     style,

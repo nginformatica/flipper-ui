@@ -6,9 +6,7 @@ const rulesReact = {
     'react/jsx-key': 'warn',
     'react/jsx-pascal-case': 'warn',
     'react/self-closing-comp': 'warn',
-    // it should be 'warn' but
-    // material-table needs to render nested components
-    'react/no-unstable-nested-components': 'off',
+    'react/no-unstable-nested-components': 'warn',
     'react/jsx-sort-props': [
         'warn',
         {

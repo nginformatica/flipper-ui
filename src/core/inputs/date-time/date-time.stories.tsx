@@ -1,22 +1,28 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
-import { DateTime } from '.'
+import type { Meta, StoryObj } from '@storybook/react'
+import DateTime from '.'
 
-export default {
+const meta: Meta<typeof DateTime> = {
     title: 'Inputs/DateTime',
-    component: DateTime
-} as Meta<typeof DateTime>
-
-const Template: StoryFn<typeof DateTime> = args => <DateTime {...args} />
-
-export const Default = Template.bind({})
-
-export const WithTime = Template.bind({})
-WithTime.args = {
-    type: 'time'
+    component: DateTime,
+    argTypes: {
+        type: {
+            options: ['date', 'time', 'datetime'],
+            control: { type: 'radio' },
+            description: 'The type of the filter.'
+        }
+    }
 }
 
-export const WithDateTime = Template.bind({})
-WithDateTime.args = {
-    type: 'datetime'
+export default meta
+
+type Story = StoryObj<typeof DateTime>
+
+export const dateTime: Story = {
+    render: ({ ...args }) => {
+        return <DateTime {...args} />
+    },
+    args: {
+        type: 'date'
+    }
 }

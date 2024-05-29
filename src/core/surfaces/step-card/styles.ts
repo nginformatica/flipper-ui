@@ -1,25 +1,25 @@
-import { Box } from '@material-ui/core'
+import { Box } from '@mui/material'
 import { default as styled } from 'styled-components'
 import { theme } from '@/theme'
 
 const { feedback } = theme.colors
 
 interface IStepContainerProps {
-    padding?: React.CSSProperties['padding']
+    padding?: string | number
 }
 
 interface IRowProps {
-    minHeight: React.CSSProperties['minHeight']
+    minHeight: string | number
     fullWidth?: boolean
 }
 
 interface IContainerProps {
     fullWidth?: boolean
-    margin?: React.CSSProperties['margin']
+    margin?: string | number
 }
 
 interface IColumnProps {
-    justifyContent: React.CSSProperties['justifyContent']
+    justifyContent: string | number
 }
 
 export const Container = styled.div<IContainerProps>`

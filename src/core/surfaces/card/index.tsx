@@ -1,82 +1,127 @@
 import React from 'react'
-import MuiCard from '@material-ui/core/Card'
-import MuiCardActionArea from '@material-ui/core/CardActionArea'
-import MuiCardActions from '@material-ui/core/CardActions'
-import MuiCardContent from '@material-ui/core/CardContent'
-import MuiCardHeader from '@material-ui/core/CardHeader'
-import MuiCardMedia from '@material-ui/core/CardMedia'
-import type { DefaultProps } from '../../types'
-import type { CardProps } from '@material-ui/core/Card'
-import type { CardActionAreaProps } from '@material-ui/core/CardActionArea'
-import type { CardActionsProps } from '@material-ui/core/CardActions'
-import type { CardContentProps } from '@material-ui/core/CardContent'
-import type { CardHeaderProps } from '@material-ui/core/CardHeader'
-import type { CardMediaProps } from '@material-ui/core/CardMedia'
+import type { ReactNode } from 'react'
+import {
+    Close as IconClose,
+    Edit as IconEdit,
+    Delete as IconDelete
+} from '@mui/icons-material'
+import type { ButtonProps } from '@/core/inputs/button'
+import type { IconButtonProps } from '@/core/inputs/icon-button'
+import Line from '@/core/data-display/line'
+import AddButton from '@/core/inputs/add-button'
+import Paper from '../paper'
+import {
+    CardButton,
+    Header,
+    NESTED_ELEVATION,
+    PAPER_PROPS,
+    Title
+} from './styles'
+import { theme } from '@/theme'
 
-export const CardActionArea = ({
-    margin,
-    padding,
-    style,
-    ...otherProps
-}: DefaultProps & CardActionAreaProps) => (
-    <MuiCardActionArea {...otherProps} style={{ padding, margin, ...style }}>
-        {otherProps.children}
-    </MuiCardActionArea>
-)
+const { feedback } = theme.colors
 
-export const CardActions = ({
-    margin,
-    padding,
-    style,
-    ...otherProps
-}: DefaultProps & CardActionsProps) => (
-    <MuiCardActions {...otherProps} style={{ padding, margin, ...style }}>
-        {otherProps.children}
-    </MuiCardActions>
-)
+export interface IProps {
+    children: ReactNode
+    nested?: boolean
+    title?: string
+    name: string
+    label?: string
+    id?: string
+    editing?: boolean
+    action?: JSX.Element | null
+    renderRemove?: boolean
+    onAddProps?: Partial<ButtonProps>
+    onEditProps?: Partial<IconButtonProps>
+    onRemoveProps?: Partial<IconButtonProps>
+    onClickAdd?(): void
+    onToggleEdit?(): void
+    onRemove?(): void
+}
 
-export const CardContent = ({
-    margin,
-    padding,
-    style,
-    ...otherProps
-}: DefaultProps & CardContentProps) => (
-    <MuiCardContent {...otherProps} style={{ padding, margin, ...style }}>
-        {otherProps.children}
-    </MuiCardContent>
-)
+const Card = (props: IProps) => {
+    const {
+        id,
+        name,
+        label,
+        nested,
+        title,
+        action,
+        onToggleEdit,
+        editing,
+        children,
+        renderRemove,
+        onRemove,
+        onClickAdd,
+        onAddProps,
+        onEditProps,
+        onRemoveProps,
+        ...otherProps
+    } = props
 
-export const CardMedia = ({
-    margin,
-    padding,
-    style,
-    ...otherProps
-}: DefaultProps & CardMediaProps) => (
-    <MuiCardMedia {...otherProps} style={{ padding, margin, ...style }}>
-        {otherProps.children}
-    </MuiCardMedia>
-)
+    return (
+        <Paper
+            {...otherProps}
+            name={name}
+            id={id}
+            style={PAPER_PROPS}
+            className='showable'
+            elevation={nested ? NESTED_ELEVATION : undefined}
+            padding={nested ? '0' : '24px'}>
+            {title && (
+                <>
+                    <Header>
+                        {title && (
+                            <Title
+                                name={name + '-title'}
+                                variant='h6'
+                                color='primary'>
+                                {title}
+                            </Title>
+                        )}
 
-export const CardHeader = ({
-    margin,
-    padding,
-    style,
-    ...otherProps
-}: DefaultProps & CardHeaderProps) => (
-    <MuiCardHeader {...otherProps} style={{ padding, margin, ...style }}>
-        {otherProps.children}
-    </MuiCardHeader>
-)
+                        {action}
 
-export const Card = ({
-    margin,
-    padding,
-    style,
-    ...otherProps
-}: DefaultProps & CardProps) => (
-    <MuiCard {...otherProps} style={{ padding, margin, ...style }}>
-        {otherProps.children}
-    </MuiCard>
-)
+                        {onRemove && !!renderRemove && (
+                            <CardButton
+                                {...onRemoveProps}
+                                className={editing ? '' : 'showable-target'}
+                                name={`remove-${name}`}
+                                margin='-10px 20px'
+                                padding='0px'
+                                onClick={onRemove}>
+                                <IconDelete htmlColor={feedback.danger} />
+                            </CardButton>
+                        )}
+
+                        {onToggleEdit && (
+                            <CardButton
+                                {...onEditProps}
+                                className={editing ? '' : 'showable-target'}
+                                name={`${editing ? 'cancel' : 'edit'}-${name}`}
+                                margin='-10px'
+                                padding='0px'
+                                onClick={onToggleEdit}>
+                                {editing ? <IconClose /> : <IconEdit />}
+                            </CardButton>
+                        )}
+                    </Header>
+                    <Line />
+                </>
+            )}
+
+            {onClickAdd && (
+                <AddButton
+                    {...onAddProps}
+                    name={name}
+                    label={label}
+                    onClick={onClickAdd}
+                />
+            )}
+
+            {children}
+        </Paper>
+    )
+}
 
 export default Card

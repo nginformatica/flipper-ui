@@ -1,29 +1,42 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
-import { Line } from '.'
+import type { Meta, StoryObj } from '@storybook/react'
+import Line from '.'
 
-export default {
+const meta: Meta<typeof Line> = {
     title: 'DataDisplay/Line',
     component: Line,
     argTypes: {
-        'data-testid': {
-            table: {
-                disable: true
-            }
+        margin: {
+            control: 'text',
+            description: 'The line margin.'
+        },
+        padding: {
+            control: 'text',
+            description: 'The line padding.'
+        },
+        primary: {
+            control: 'boolean',
+            description: 'To set the line border color.'
+        },
+        style: {
+            control: 'object',
+            description: 'The line style.'
         }
     }
-} as Meta<typeof Line>
-
-const Template: StoryFn<typeof Line> = args => <Line {...args} />
-
-export const Default = Template.bind({})
-
-export const Primary = Template.bind({})
-Primary.args = {
-    primary: true
 }
 
-export const LineWithWidthProp = Template.bind({})
-LineWithWidthProp.args = {
-    width: '100%'
+export default meta
+
+type Story = StoryObj<typeof Line>
+
+export const line: Story = {
+    render: ({ ...args }) => {
+        return <Line {...args} />
+    },
+    args: {
+        margin: '',
+        padding: '',
+        primary: false,
+        style: {}
+    }
 }

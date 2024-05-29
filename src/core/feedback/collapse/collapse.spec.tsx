@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Collapse } from '.'
+import Collapse from '.'
 
 describe('Collapse', () => {
     it('should render opened', () => {

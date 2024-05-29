@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useRef, useState } from 'react'
+import type { Dispatch, MutableRefObject, SetStateAction } from 'react'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -21,19 +21,57 @@ import { RowMode } from '@/core/data-display/data-table/types'
 import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
 
+type Data = {
+    id: Identifier
+    name: string
+    key: string
+    secret: string
+    rowMode: RowMode
+}
+
+type View = {
+    confirmDelete(): JSX.Element
+}
+
+const rows = (
+    data: Data,
+    setData: Dispatch<SetStateAction<Data[]>>,
+    controllerRef: MutableRefObject<DataTableController<Data, View>>
+) => {
+    return (
+        <td colSpan={5}>
+            <div
+                style={{
+                    display: 'flex',
+                    padding: '16px',
+                    justifyContent: 'space-between'
+                }}>
+                <Typography>Confirm Delete "{data.name}"?</Typography>
+                <div style={{ display: 'flex' }}>
+                    <DataTableAction
+                        label='CheckIcon'
+                        onClick={() => {
+                            controllerRef.current.popRowView(data.id)
+                            setData(dataList =>
+                                dataList.filter(item => item.id !== data.id)
+                            )
+                        }}>
+                        <CheckIcon />
+                    </DataTableAction>
+                    <DataTableAction
+                        label='CancelIcon'
+                        onClick={() => {
+                            controllerRef.current.popRowView(data.id)
+                        }}>
+                        <CancelIcon />
+                    </DataTableAction>
+                </div>
+            </div>
+        </td>
+    )
+}
+
 const Default = () => {
-    type Data = {
-        id: Identifier
-        name: string
-        key: string
-        secret: string
-        rowMode: RowMode
-    }
-
-    type View = {
-        confirmDelete(): JSX.Element
-    }
-
     const controllerRef = useRef<DataTableController<Data, View>>()
     const [errors, setErrors] = useState({})
 
@@ -88,13 +126,12 @@ const Default = () => {
 
     const handleErrors = (
         id: string | number,
-        nextItem = {},
+        nextItem: { [key: string]: unknown } = {},
         isPartial = false
     ) => {
         const errorFields = [{ field: 'name', isErrorIf: [isEmpty] }]
             .filter(({ field, isErrorIf }) => {
-                // @ts-ignore
-                const value: string = nextItem[field]
+                const value = nextItem[field]
 
                 if (isNullable(value)) {
                     if (isPartial) {
@@ -104,7 +141,7 @@ const Default = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond(value))
+                return isErrorIf.some(cond => cond(value as never))
             })
             .map(({ field }) => field)
 
@@ -265,39 +302,8 @@ const Default = () => {
 
     const rowViews = {
         confirmDelete: ({ data }: { data: Data }) => {
-            return (
-                <td colSpan={5}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            padding: '16px',
-                            justifyContent: 'space-between'
-                        }}>
-                        <Typography>Confirm Delete "{data.name}"?</Typography>
-                        <div style={{ display: 'flex' }}>
-                            <DataTableAction
-                                label='CheckIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                    setData(dataList =>
-                                        dataList.filter(
-                                            item => item.id !== data.id
-                                        )
-                                    )
-                                }}>
-                                <CheckIcon />
-                            </DataTableAction>
-                            <DataTableAction
-                                label='CancelIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                }}>
-                                <CancelIcon />
-                            </DataTableAction>
-                        </div>
-                    </div>
-                </td>
-            )
+            // @ts-expect-error TODO: fix controller type
+            return rows(data, setData, controllerRef)
         }
     }
 

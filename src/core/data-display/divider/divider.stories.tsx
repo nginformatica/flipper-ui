@@ -1,68 +1,54 @@
 import React from 'react'
-import type { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import { Divider } from '.'
+import Divider from '.'
 
-export default {
+const meta: Meta<typeof Divider> = {
     title: 'DataDisplay/Divider',
     component: Divider,
     argTypes: {
-        'data-testid': {
-            table: {
-                disable: true
-            }
+        margin: {
+            control: 'text',
+            description: 'The divider margin.'
+        },
+        padding: {
+            control: 'text',
+            description: 'The divider padding.'
+        },
+        style: {
+            control: 'object',
+            description: 'The divider style.'
         }
     }
-} as Meta<typeof Divider>
+}
 
-export const Default = () => (
-    <List>
-        <ListItem>
-            <p>Banded penguin</p>
-        </ListItem>
-        <Divider />
-        <ListItem>
-            <p>Chinstrap penguin</p>
-        </ListItem>
-        <Divider />
-        <ListItem>
-            <p>Crested penguins</p>
-        </ListItem>
-        <Divider />
-    </List>
-)
+export default meta
 
-export const WithDisabledFields = () => (
-    <List>
-        <ListItem>
-            <p>Banded penguin</p>
-        </ListItem>
-        <Divider />
-        <ListItem disabled>
-            <p>Chinstrap penguin</p>
-        </ListItem>
-        <Divider />
-        <ListItem disabled>
-            <p>Crested penguins</p>
-        </ListItem>
-        <Divider />
-    </List>
-)
+type Story = StoryObj<typeof Divider>
 
-export const WithSelectedFields = () => (
-    <List>
-        <ListItem selected>
-            <p>Banded penguin</p>
-        </ListItem>
-        <Divider />
-        <ListItem>
-            <p>Chinstrap penguin</p>
-        </ListItem>
-        <Divider />
-        <ListItem>
-            <p>Crested penguins</p>
-        </ListItem>
-        <Divider />
-    </List>
-)
+export const divider: Story = {
+    render: ({ ...args }) => {
+        return (
+            <List>
+                <ListItem>
+                    <p>Banded penguin</p>
+                </ListItem>
+                <Divider {...args} />
+                <ListItem>
+                    <p>Chinstrap penguin</p>
+                </ListItem>
+                <Divider {...args} />
+                <ListItem>
+                    <p>Crested penguins</p>
+                </ListItem>
+                <Divider {...args} />
+            </List>
+        )
+    },
+    args: {
+        margin: '',
+        padding: '',
+        style: {}
+    }
+}

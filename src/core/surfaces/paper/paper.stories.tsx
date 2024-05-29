@@ -1,48 +1,47 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
-import { Paper } from '.'
+import type { Meta, StoryObj } from '@storybook/react'
+import Paper from '.'
 
-export default {
+const meta: Meta<typeof Paper> = {
     title: 'Surfaces/Paper',
-    component: Paper
-} as Meta<typeof Paper>
-
-const Template: StoryFn<typeof Paper> = args => <Paper {...args} />
-
-const defaultArgs = {
-    padding: 24,
-    margin: 24
+    component: Paper,
+    argTypes: {
+        children: {
+            control: 'text',
+            description: 'The paper children.'
+        },
+        square: {
+            control: 'boolean',
+            description: 'The paper format.'
+        },
+        elevation: {
+            control: 'number',
+            description: 'The paper elevation.'
+        },
+        margin: {
+            control: 'number',
+            description: 'The paper margin.'
+        },
+        padding: {
+            control: 'number',
+            description: 'The paper margin.'
+        }
+    }
 }
 
-const argsWithChildren = {
-    ...defaultArgs,
-    children: 'I am a Paper.'
-}
+export default meta
 
-export const Default = () => (
-    <Paper style={{ ...defaultArgs }}>I am a Paper.</Paper>
-)
+type Story = StoryObj<typeof Paper>
 
-export const Square = Template.bind({})
-Square.args = {
-    ...argsWithChildren,
-    square: true
-}
-
-export const NoElevated = Template.bind({})
-NoElevated.args = {
-    ...argsWithChildren,
-    elevation: 0
-}
-
-export const Elevated = Template.bind({})
-Elevated.args = {
-    ...argsWithChildren,
-    elevation: 12
-}
-
-export const MaxEletavion = Template.bind({})
-MaxEletavion.args = {
-    ...argsWithChildren,
-    elevation: 24
+export const paper: Story = {
+    render: ({ ...args }) => {
+        return <Paper {...args} />
+    },
+    args: {
+        children: 'I am a Paper.',
+        square: false,
+        elevation: 4,
+        padding: 24,
+        margin: 24
+    }
 }

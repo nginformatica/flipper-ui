@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiAccordion-root sc-gsFSjX kNlMVI Mui-expanded MuiAccordion-rounded MuiPaper-elevation2 MuiPaper-rounded"
+    data-testid="panel-component"
+    style="margin: 0px;"
+  >
+    <div
+      aria-disabled="false"
+      aria-expanded="true"
+      class="MuiButtonBase-root MuiAccordionSummary-root Mui-expanded"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="MuiAccordionSummary-content Mui-expanded"
+      >
+        <div
+          class="sc-iGgVNO iPPrNl"
+        >
+          <div
+            class="sc-kAycRU FJrwN"
+          >
+            <h6
+              class="MuiTypography-root sc-imWZod cQNAri MuiTypography-subtitle1 MuiTypography-noWrap"
+            >
+              Foo
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-disabled="false"
+        aria-hidden="true"
+        class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon Mui-expanded MuiIconButton-edgeEnd"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="expand-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiCollapse-root MuiCollapse-entered"
+      style="min-height: 0px;"
+    >
+      <div
+        class="MuiCollapse-wrapper"
+      >
+        <div
+          class="MuiCollapse-wrapperInner"
+        >
+          <div
+            role="region"
+          >
+            <div
+              class="MuiAccordionDetails-root"
+            >
+              <button>
+                bar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

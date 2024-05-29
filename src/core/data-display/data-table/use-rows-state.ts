@@ -11,7 +11,6 @@ export const useRowsState = <D extends Data, V extends StackView>(
         internal: new Map<Identifier, RowState<D, V>>()
     }))
 
-    // TODO: lazy inicialization
     useEffect(() => {
         const nextState = new Map<Identifier, RowState<D, V>>()
 

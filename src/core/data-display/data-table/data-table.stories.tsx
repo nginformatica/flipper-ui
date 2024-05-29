@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState, useRef } from 'react'
+import type { MutableRefObject, Dispatch, SetStateAction } from 'react'
 import {
     Delete as DeleteIcon,
     Edit as EditIcon,
@@ -120,12 +120,85 @@ export const Default = () => {
         }
     ]
 
+    return <DataTable data={data} columns={columns} />
+}
+
+export const Custom = () => {
+    const date = () => new Date()
+
+    const data = [
+        {
+            id: 1,
+            product: 'Magazine Magazine Magazine',
+            price: 13.5,
+            quantity: 12,
+            date: date()
+        },
+        { id: 2, product: 'Table', price: 200.49, quantity: 3, date: date() },
+        { id: 3, product: 'Chair', price: 53.5, quantity: 9, date: date() },
+        { id: 4, product: 'Keyboard', price: 53.29, quantity: 4, date: date() },
+        { id: 5, product: 'Mouse', price: 27.13, quantity: 16, date: date() },
+        {
+            id: 6,
+            product: 'Microphone',
+            price: 89.14,
+            quantity: 2,
+            date: date()
+        },
+        { id: 7, product: 'Headset', price: 117.85, quantity: 6, date: date() },
+        { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: date() }
+    ]
+
+    const columns: ColumnSpec<Data>[] = [
+        {
+            title: 'Product',
+            type: 'text',
+            field: 'product',
+            cellStyle: {
+                maxWidth: '72px',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+            },
+            editable: true
+        },
+        {
+            title: 'Price (R$)',
+            field: 'price',
+            type: 'numeric-float',
+            editable: false,
+            getValue: (value: number) => value.toFixed(2).replace('.', ',')
+        },
+        {
+            title: 'Quantity',
+            field: 'quantity',
+            type: 'numeric-int',
+            editable: true,
+            cellStyle: {
+                width: '82px'
+            }
+        },
+        {
+            title: 'Date',
+            field: 'date',
+            type: 'datetime',
+            editable: true,
+            getValue: (value: Date) => format(value, 'dd/MM/yyyy HH:mm'),
+            cellStyle: {
+                width: '200px'
+            }
+        }
+    ]
+
     return (
         <DataTable
+            hideSelect
+            renderEmptyRows
             data={data}
             pagination={{
                 rowsPerPage: 5,
-                labelRowsPerPage: 'Row per page'
+                showFirstButton: true,
+                showLastButton: true
             }}
             columns={columns}
         />
@@ -373,6 +446,44 @@ export const Crud = () => {
         { id: 8, product: 'Pencil', price: 1.5, quantity: 11, date: date() }
     ])
 
+    const rows = (
+        data: Data,
+        setData: Dispatch<SetStateAction<Data[]>>,
+        controllerRef: MutableRefObject<DataTableController<Data, View>>
+    ) => {
+        return (
+            <td colSpan={5}>
+                <div
+                    style={{
+                        display: 'flex',
+                        padding: '16px',
+                        justifyContent: 'space-between'
+                    }}>
+                    <Typography>Confirm Delete "{data.product}"?</Typography>
+                    <div style={{ display: 'flex' }}>
+                        <DataTableAction
+                            label='CheckIcon'
+                            onClick={() => {
+                                controllerRef.current.popRowView(data.id)
+                                setData(dataList =>
+                                    dataList.filter(item => item.id !== data.id)
+                                )
+                            }}>
+                            <CheckIcon />
+                        </DataTableAction>
+                        <DataTableAction
+                            label='CancelIcon'
+                            onClick={() => {
+                                controllerRef.current.popRowView(data.id)
+                            }}>
+                            <CancelIcon />
+                        </DataTableAction>
+                    </div>
+                </div>
+            </td>
+        )
+    }
+
     const handleAdd = () => {
         controllerRef.current?.addRow({ id: randomId(), date: date() })
     }
@@ -416,7 +527,7 @@ export const Crud = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond)
+                return isErrorIf.some(cond => cond(value as never))
             })
             .map(({ field }) => field)
 
@@ -539,41 +650,8 @@ export const Crud = () => {
 
     const rowViews = {
         confirmDelete: ({ data }: { data: Data }) => {
-            return (
-                <td colSpan={5}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            padding: '16px',
-                            justifyContent: 'space-between'
-                        }}>
-                        <Typography>
-                            Confirm Delete "{data.product}"?
-                        </Typography>
-                        <div style={{ display: 'flex' }}>
-                            <DataTableAction
-                                label='CheckIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                    setData(dataList =>
-                                        dataList.filter(
-                                            item => item.id !== data.id
-                                        )
-                                    )
-                                }}>
-                                <CheckIcon />
-                            </DataTableAction>
-                            <DataTableAction
-                                label='CancelIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                }}>
-                                <CancelIcon />
-                            </DataTableAction>
-                        </div>
-                    </div>
-                </td>
-            )
+            // @ts-expect-error TODO: fix controller type
+            return rows(data, setData, controllerRef)
         }
     }
 
@@ -602,7 +680,7 @@ export const Crud = () => {
     )
 }
 
-export const CrudWithHidden = () => {
+export const CrudWithoutPagination = () => {
     const controllerRef =
         useRef<DataTableController<DataCrudWithHidden, View>>()
     const [errors, setErrors] = useState({})
@@ -633,6 +711,46 @@ export const CrudWithHidden = () => {
         }
     ])
 
+    const rows = (
+        data: DataCrudWithHidden,
+        setData: Dispatch<SetStateAction<DataCrudWithHidden[]>>,
+        controllerRef?: MutableRefObject<
+            DataTableController<DataCrudWithHidden, View>
+        >
+    ) => {
+        return (
+            <td colSpan={5}>
+                <div
+                    style={{
+                        display: 'flex',
+                        padding: '16px',
+                        justifyContent: 'space-between'
+                    }}>
+                    <Typography>Confirm Delete "{data.name}"?</Typography>
+                    <div style={{ display: 'flex' }}>
+                        <DataTableAction
+                            label='CheckIcon'
+                            onClick={() => {
+                                controllerRef?.current.popRowView(data.id)
+                                setData(dataList =>
+                                    dataList.filter(item => item.id !== data.id)
+                                )
+                            }}>
+                            <CheckIcon />
+                        </DataTableAction>
+                        <DataTableAction
+                            label='CancelIcon'
+                            onClick={() => {
+                                controllerRef?.current.popRowView(data.id)
+                            }}>
+                            <CancelIcon />
+                        </DataTableAction>
+                    </div>
+                </div>
+            </td>
+        )
+    }
+
     const handleAdd = () => {
         controllerRef.current?.addRow({ id: randomId() })
     }
@@ -658,13 +776,12 @@ export const CrudWithHidden = () => {
 
     const handleErrors = (
         id: string | number,
-        nextItem = {},
+        nextItem: { [key: string]: unknown } = {},
         isPartial = false
     ) => {
         const errorFields = [{ field: 'name', isErrorIf: [isEmpty] }]
             .filter(({ field, isErrorIf }) => {
-                // @ts-ignore
-                const value: string = nextItem[field]
+                const value = nextItem[field]
 
                 if (isNullable(value)) {
                     if (isPartial) {
@@ -674,7 +791,7 @@ export const CrudWithHidden = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond(value))
+                return isErrorIf.some(cond => cond(value as string))
             })
             .map(({ field }) => field)
 
@@ -839,39 +956,8 @@ export const CrudWithHidden = () => {
 
     const rowViews = {
         confirmDelete: ({ data }: { data: DataCrudWithHidden }) => {
-            return (
-                <td colSpan={5}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            padding: '16px',
-                            justifyContent: 'space-between'
-                        }}>
-                        <Typography>Confirm Delete "{data.name}"?</Typography>
-                        <div style={{ display: 'flex' }}>
-                            <DataTableAction
-                                label='CheckIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                    setData(dataList =>
-                                        dataList.filter(
-                                            item => item.id !== data.id
-                                        )
-                                    )
-                                }}>
-                                <CheckIcon />
-                            </DataTableAction>
-                            <DataTableAction
-                                label='CancelIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                }}>
-                                <CancelIcon />
-                            </DataTableAction>
-                        </div>
-                    </div>
-                </td>
-            )
+            // @ts-expect-error TODO: fix controller type
+            return rows(data, setData, controllerRef)
         }
     }
 

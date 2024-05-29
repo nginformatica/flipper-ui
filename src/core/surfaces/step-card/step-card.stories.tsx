@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 import Button from '@/core/inputs/button'
-import { stepCardImageUrl } from '@/lib/images'
+import stepCardImage from '../../../images/step-card-image.svg'
 import StepCard from '.'
 
 export default {
@@ -36,7 +36,7 @@ Default.args = {
     percentage: 75,
     remainingSteps: 3,
     title: 'Configurar a organização e filial',
-    image: stepCardImageUrl,
+    image: stepCardImage,
     onStepUrlClick: (url: string) => alert(url),
     steps: [
         {
@@ -96,7 +96,7 @@ WithLoading.args = {
     time: 2,
     remainingSteps: 3,
     title: 'Configurar a organização e filial',
-    image: stepCardImageUrl,
+    image: stepCardImage,
     onStepUrlClick: (url: string) => alert(url),
     steps: [
         {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Face } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Avatar } from '@/core/data-display/avatar'
+import Avatar from '../avatar'
 import Chip from '.'
 
 export default {
@@ -29,17 +29,13 @@ Squared.args = {
 export const WithInitialsAvatar = Template.bind({})
 WithInitialsAvatar.args = {
     ...commonArgs,
-    avatar: <Avatar>HD</Avatar>
+    avatar: <Avatar name='HD' />
 }
 
 export const WithIconAvatar = Template.bind({})
 WithIconAvatar.args = {
     ...commonArgs,
-    avatar: (
-        <Avatar>
-            <Face />
-        </Avatar>
-    )
+    avatar: <Avatar icon={<Face />} />
 }
 
 export const WithImageAvatar = Template.bind({})

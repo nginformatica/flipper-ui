@@ -6,7 +6,7 @@ import format from 'date-fns/format'
 import type { ColumnSpec } from './types'
 import DataTableWithHidden from '@/test/mocks/data-table-hidden-mock'
 import DataTableWithCrud from '@/test/mocks/data-table-mock'
-import DataTable from '.'
+import { DataTable } from '.'
 
 type Data = {
     id: number

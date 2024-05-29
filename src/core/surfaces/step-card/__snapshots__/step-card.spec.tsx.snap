@@ -95,7 +95,7 @@ exports[`StepCard should match snapshot 1`] = `
           minheight="15px"
         >
           <div
-            class="MuiBox-root MuiBox-root-14 sc-kAycRU chAgTo"
+            class="sc-kAycRU chAgTo MuiBox-root css-0"
           >
             <div
               aria-valuemax="100"

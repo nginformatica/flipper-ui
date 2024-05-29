@@ -3,7 +3,8 @@
 exports[`Avatar should match snapshot 1`] = `
 <div>
   <div
-    class="MuiAvatar-root MuiAvatar-circular custom-class makeStyles-primary-5 MuiAvatar-colorDefault"
+    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-17o22dy-MuiAvatar-root"
+    name="felipe"
   >
     F
   </div>

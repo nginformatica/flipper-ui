@@ -1,10 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fireEvent } from '@testing-library/dom'
 
-function isElement(obj: any): obj is Element {
+type DragOptions = {
+    to?: { x: number; y: number } | Element
+    delta?: { x: number; y: number }
+    steps?: number
+    duration?: number
+}
+
+function isElement(obj: unknown): obj is Element {
     if (typeof obj !== 'object') {
         return false
     }
+
     let prototypeStr: string, prototype: object | null
 
     do {
@@ -41,13 +48,6 @@ const sleep = (ms: number): Promise<void> =>
     new Promise(resolve => {
         setTimeout(resolve, ms)
     })
-
-type DragOptions = {
-    to?: { x: number; y: number } | Element
-    delta?: { x: number; y: number }
-    steps?: number
-    duration?: number
-}
 
 export default async function drag(
     element: Element,

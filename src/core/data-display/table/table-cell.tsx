@@ -3,10 +3,9 @@ import MuiTableCell from '@material-ui/core/TableCell'
 import MuiTableSortLabel from '@material-ui/core/TableSortLabel'
 import type { DefaultProps } from '../../types'
 import type { TableCellProps as MuiTableProps } from '@material-ui/core/TableCell'
-import type { Omit } from 'ramda'
 import { SortContext } from './table-head'
 
-interface TableCellProps extends DefaultProps {
+export interface TableCellProps extends DefaultProps {
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
     spacing?: MuiTableProps['padding']

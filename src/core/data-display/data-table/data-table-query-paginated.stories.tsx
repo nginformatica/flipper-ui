@@ -1,6 +1,10 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useMemo, useRef, useState } from 'react'
-import type { ReactNode } from 'react'
+import type {
+    Dispatch,
+    MutableRefObject,
+    ReactNode,
+    SetStateAction
+} from 'react'
 import { TableCell, TableRow, Typography } from '@material-ui/core'
 import {
     Cancel as CancelIcon,
@@ -20,7 +24,7 @@ import { RowMode } from './types'
 import { usePaginated } from './use-paginated'
 
 export default {
-    title: 'DataDisplay/DataTableQueryPaginated',
+    title: 'DataDisplay/Data Table Query Paginated',
     component: DataTableQueryPaginated
 } as Meta<typeof DataTableQueryPaginated>
 
@@ -337,6 +341,44 @@ export const Crud = () => {
 
     const randomId = () => Math.random().toString(36).substr(0, 12)
 
+    const rows = (
+        data: Data,
+        setData: Dispatch<SetStateAction<Data[]>>,
+        controllerRef: MutableRefObject<DataTableController<Data, View>>
+    ) => {
+        return (
+            <td colSpan={5}>
+                <div
+                    style={{
+                        display: 'flex',
+                        padding: '16px',
+                        justifyContent: 'space-between'
+                    }}>
+                    <Typography>Confirm Delete "{data.product}"?</Typography>
+                    <div style={{ display: 'flex' }}>
+                        <DataTableAction
+                            label='CheckIcon'
+                            onClick={() => {
+                                controllerRef.current.popRowView(data.id)
+                                setData(dataList =>
+                                    dataList.filter(item => item.id !== data.id)
+                                )
+                            }}>
+                            <CheckIcon />
+                        </DataTableAction>
+                        <DataTableAction
+                            label='CancelIcon'
+                            onClick={() => {
+                                controllerRef.current.popRowView(data.id)
+                            }}>
+                            <CancelIcon />
+                        </DataTableAction>
+                    </div>
+                </div>
+            </td>
+        )
+    }
+
     const handleAdd = () => {
         controllerRef.current?.addRow({ id: randomId(), date: date() })
     }
@@ -360,7 +402,7 @@ export const Crud = () => {
 
     const handleErrors = (
         id: string | number,
-        nextItem = {},
+        nextItem: { [key: string]: unknown } = {},
         isPartial = false
     ) => {
         const errorFields = [
@@ -370,7 +412,6 @@ export const Crud = () => {
             { field: 'price', isErrorIf: [isNaN, isNotPositive] }
         ]
             .filter(({ field, isErrorIf }) => {
-                // @ts-ignore
                 const value = nextItem[field]
 
                 if (isNullable(value)) {
@@ -381,7 +422,7 @@ export const Crud = () => {
                     return true
                 }
 
-                return isErrorIf.some(cond => cond)
+                return isErrorIf.some(cond => cond(value as never))
             })
             .map(({ field }) => field)
 
@@ -504,41 +545,8 @@ export const Crud = () => {
 
     const rowViews = {
         confirmDelete: ({ data }: { data: Data }) => {
-            return (
-                <td colSpan={5}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            padding: '16px',
-                            justifyContent: 'space-between'
-                        }}>
-                        <Typography>
-                            Confirm Delete "{data.product}"?
-                        </Typography>
-                        <div style={{ display: 'flex' }}>
-                            <DataTableAction
-                                label='CheckIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                    setData(dataList =>
-                                        dataList.filter(
-                                            item => item.id !== data.id
-                                        )
-                                    )
-                                }}>
-                                <CheckIcon />
-                            </DataTableAction>
-                            <DataTableAction
-                                label='CancelIcon'
-                                onClick={() => {
-                                    controllerRef.current?.popRowView(data.id)
-                                }}>
-                                <CancelIcon />
-                            </DataTableAction>
-                        </div>
-                    </div>
-                </td>
-            )
+            // @ts-expect-error TODO: fix controller type
+            return rows(data, setData, controllerRef)
         }
     }
 

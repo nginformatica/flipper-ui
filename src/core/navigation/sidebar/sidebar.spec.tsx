@@ -74,6 +74,23 @@ describe('Sidebar', () => {
         expect(item2).toBeDefined()
     })
 
+    it('should render with docked', () => {
+        render(
+            <Sidebar open docked onToggle={jest.fn()}>
+                <List>
+                    <ListItem title='Item 1' icon={<Backup />} />
+                    <ListItem title='Item 2' icon={<Backup />} />
+                </List>
+            </Sidebar>
+        )
+
+        const item1 = screen.getByText('Item 1')
+        const item2 = screen.getByText('Item 2')
+
+        expect(item1).toBeDefined()
+        expect(item2).toBeDefined()
+    })
+
     it('should match snapshot', () => {
         const { container } = render(
             <Sidebar open onToggle={jest.fn()}>

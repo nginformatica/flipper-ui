@@ -1,31 +1,92 @@
 import React from 'react'
-import type { Meta } from '@storybook/react'
-import Button from '@/core/inputs/button'
-import { Card, CardActionArea, CardActions, CardContent, CardMedia } from '.'
+import type { Meta, StoryObj } from '@storybook/react'
+import Typography from '@/core/data-display/typography'
+import Card from '.'
+import { CardWrapper } from './styles'
 
-export default {
+const meta: Meta<typeof Card> = {
     title: 'Surfaces/Card',
-    component: Card
-} as Meta<typeof Card>
+    component: Card,
+    argTypes: {
+        action: {
+            table: {
+                disable: true
+            }
+        },
+        id: {
+            table: {
+                disable: true
+            }
+        },
+        name: {
+            control: 'text',
+            description: 'The card name.'
+        },
+        title: {
+            control: 'text',
+            description: 'The card title.'
+        },
+        label: {
+            control: 'text',
+            description:
+                'The card Add Button label. Must be used with the `onClickAdd` prop.'
+        },
+        editing: {
+            control: 'boolean',
+            description: 'If `true`, the title is editable.'
+        },
+        nested: {
+            control: 'boolean',
+            description: 'To set the panel nested.'
+        },
+        onClickAdd: {
+            control: 'boolean',
+            description: 'The function to implement on the Add Button.'
+        },
+        onToggleEdit: {
+            control: 'boolean',
+            description: 'The functon to implement the `editing` toggle.'
+        },
+        onRemove: {
+            control: 'boolean',
+            description:
+                'The functon to implement to remove information.' +
+                'Must be used with the `renderRemove` prop.'
+        },
+        renderRemove: {
+            control: 'boolean',
+            description:
+                'To render the remove button.' +
+                'Must be used with the `onRemove` prop.'
+        }
+    }
+}
 
-const url =
-    'https://media2.s-nbcnews.com/j/newscms/2018_20/1339477' +
-    '/puppy-cute-today-180515-main_a936531048fdb698635dd1b418abdee9.fit-760w.jpg'
+export default meta
 
-export const Default = () => (
-    <Card>
-        <CardActionArea>
-            <CardMedia
-                image={url}
-                title='Puppies'
-                style={{ height: '256px' }}
-            />
-            <CardContent>...look, a beautiful person over here</CardContent>
-        </CardActionArea>
-        <CardActions>
-            <Button size='small' color='primary'>
-                Confirm
-            </Button>
-        </CardActions>
-    </Card>
-)
+type Story = StoryObj<typeof Card>
+
+export const card: Story = {
+    render: ({ ...args }) => {
+        return (
+            <CardWrapper>
+                <Card {...args}>
+                    <Typography margin='12px 0 0'>
+                        This is the card content.
+                    </Typography>
+                </Card>
+            </CardWrapper>
+        )
+    },
+    args: {
+        name: 'Card Name',
+        title: 'This is the Card Title',
+        label: "I'm the label!",
+        nested: false,
+        editing: false,
+        renderRemove: false,
+        onClickAdd: () => alert('Add Me!'),
+        onToggleEdit: () => alert('Edit Me!'),
+        onRemove: () => alert('Remove Me!')
+    }
+}

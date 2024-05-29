@@ -1,113 +1,90 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { Button } from '@material-ui/core'
-import type { Meta } from '@storybook/react'
-import { PinInput } from '.'
+import type { Meta, StoryObj } from '@storybook/react'
+import PinInput from '.'
 import { ButtonContainer, ValidateContainer } from './styles'
 
-export default {
+const meta: Meta<typeof PinInput> = {
     title: 'Inputs/PinInput',
-    component: PinInput
-} as Meta<typeof PinInput>
-
-const PIN_LENGTH = 6
-
-export const Default = () => {
-    const [pin, setPin] = useState<Array<number | undefined>>(
-        new Array(PIN_LENGTH)
-    )
-
-    const onPinChanged = (pinEntry: number | undefined, index: number) => {
-        const newPin = [...pin]
-
-        newPin[index] = pinEntry
-        setPin(newPin)
-    }
-    const [hasError, setHasError] = useState(false)
-    const [isValidating, setIsValidating] = useState(false)
-
-    const handleValidation = () => {
-        setIsValidating(true)
-        if (pin.join('') !== '123123') {
-            setHasError(true)
-            setPin(new Array(PIN_LENGTH))
-        } else {
-            setHasError(false)
-            alert('PIN is correct')
+    component: PinInput,
+    argTypes: {
+        size: {
+            options: ['small', 'large'],
+            control: { type: 'radio' },
+            description: 'The size of the pin-input.'
+        },
+        variant: {
+            options: ['outlined', 'standard'],
+            control: { type: 'radio' },
+            description: 'The variant of the pin-input.'
+        },
+        style: {
+            control: 'object',
+            description: 'The pin-input style.'
         }
-        setIsValidating(false)
     }
-
-    return (
-        <>
-            <ValidateContainer>Valid pin: 123123</ValidateContainer>
-            <PinInput
-                pin={pin}
-                setPin={setPin}
-                pinLength={PIN_LENGTH}
-                validationResult={hasError}
-                isValidating={isValidating}
-                size='small'
-                variant='outlined'
-                onPinChanged={onPinChanged}
-            />
-            <ButtonContainer>
-                <Button
-                    onClick={() => {
-                        handleValidation()
-                    }}>
-                    Validate
-                </Button>
-            </ButtonContainer>
-        </>
-    )
 }
 
-export const Large = () => {
-    const [pin, setPin] = useState<Array<number | undefined>>(
-        new Array(PIN_LENGTH)
-    )
+export default meta
 
-    const onPinChanged = (pinEntry: number | undefined, index: number) => {
-        const newPin = [...pin]
+type Story = StoryObj<typeof PinInput>
 
-        newPin[index] = pinEntry
-        setPin(newPin)
-    }
-    const [hasError, setHasError] = useState(false)
-    const [isValidating, setIsValidating] = useState(false)
+export const pinInput: Story = {
+    render: ({ ...args }) => {
+        const PIN_LENGTH = 6
 
-    const handleValidation = () => {
-        setIsValidating(true)
-        if (pin.join('') !== '123123') {
-            setPin(new Array(PIN_LENGTH))
-            setHasError(true)
-        } else {
-            setHasError(false)
-            alert('PIN is correct')
+        const [pin, setPin] = useState<Array<number | undefined>>(
+            new Array(PIN_LENGTH)
+        )
+
+        const onPinChanged = (pinEntry: number | undefined, index: number) => {
+            const newPin = [...pin]
+
+            newPin[index] = pinEntry
+            setPin(newPin)
         }
-        setIsValidating(false)
-    }
+        const [hasError, setHasError] = useState(false)
+        const [isValidating, setIsValidating] = useState(false)
 
-    return (
-        <>
-            <ValidateContainer>Valid pin: 123123</ValidateContainer>
-            <PinInput
-                pin={pin}
-                setPin={setPin}
-                pinLength={PIN_LENGTH}
-                validationResult={hasError}
-                isValidating={isValidating}
-                size='large'
-                onPinChanged={onPinChanged}
-            />
-            <ButtonContainer>
-                <Button
-                    onClick={() => {
-                        handleValidation()
-                    }}>
-                    Validate
-                </Button>
-            </ButtonContainer>
-        </>
-    )
+        const handleValidation = () => {
+            setIsValidating(true)
+            if (pin.join('') !== '123123') {
+                setHasError(true)
+                setPin(new Array(PIN_LENGTH))
+            } else {
+                setHasError(false)
+                alert('PIN is correct')
+            }
+            setIsValidating(false)
+        }
+
+        return (
+            <>
+                <ValidateContainer>Valid pin: 123123</ValidateContainer>
+                <PinInput
+                    {...args}
+                    pin={pin}
+                    setPin={setPin}
+                    pinLength={PIN_LENGTH}
+                    validationResult={hasError}
+                    isValidating={isValidating}
+                    onPinChanged={onPinChanged}
+                />
+                <ButtonContainer>
+                    <Button
+                        onClick={() => {
+                            handleValidation()
+                        }}>
+                        Validate
+                    </Button>
+                </ButtonContainer>
+            </>
+        )
+    },
+    args: {
+        size: 'small',
+        variant: 'outlined',
+        style: {}
+    }
 }

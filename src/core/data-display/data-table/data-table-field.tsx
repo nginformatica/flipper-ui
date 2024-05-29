@@ -1,8 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import React from 'react'
-import type { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react'
 import { Checkbox, Table, TableBody, TableCell, TableHead } from '@mui/material'
-import { TextField } from '@/index'
+import TextField from '@/core/inputs/text-field'
 import { FieldWrapper, RowTable, TableCellRows } from './styles'
 
 interface IHeader {
@@ -101,7 +100,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
     }
 
     const handleTableRow = (
-        event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
+        event: MouseEvent<HTMLTableRowElement>,
         index: number
     ) => {
         const isCheckboxClick =

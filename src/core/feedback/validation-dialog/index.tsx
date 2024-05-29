@@ -1,7 +1,7 @@
 import React from 'react'
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import Actions from '@/core/data-display/actions'
 import Button from '@/core/inputs/button'
-import { Actions } from '@/experimental/actions'
 import { DialogTypography, MuiDialog, ValidationWrapper } from './styles'
 
 export interface IValidateProps {
@@ -51,7 +51,7 @@ export enum ValidationStatus {
     Error = 'Error'
 }
 
-const ValidationDialog: FC<IValidateProps> = ({
+const ValidationDialog = ({
     open,
     failed,
     success,
@@ -62,7 +62,7 @@ const ValidationDialog: FC<IValidateProps> = ({
     onClose,
     onCancel,
     handleCreate
-}) => {
+}: IValidateProps) => {
     const renderTitle = (stepsTitle: ITitles, responses: string[]) => {
         if (responses.every(item => item === 'Success')) {
             return stepsTitle.success
