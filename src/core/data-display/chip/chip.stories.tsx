@@ -1,7 +1,7 @@
 import React from 'react'
 import { Face } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
-import { Avatar } from '@/experimental'
+import Avatar from '../avatar'
 import Chip from '.'
 
 export default {

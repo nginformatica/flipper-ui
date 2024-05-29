@@ -5,12 +5,9 @@ module.exports = {
     coveragePathIgnorePatterns: ['stories.(ts|tsx)'],
     collectCoverageFrom: [
         '<rootDir>/src/core/**/*.(ts|tsx)',
-        '<rootDir>/src/experimental/**/*.(ts|tsx)',
         '!<rootDir>/src/core/data-display/data-table/*.(ts|tsx)',
-        '!<rootDir>/src/experimental/auto-complete-lab/*.(ts|tsx)',
-        '!<rootDir>/src/experimental/index.ts',
-        '!<rootDir>/src/experimental/dialog/index.ts',
-        '!<rootDir>/src/experimental/breadcrumbs/index.tsx'
+        '!<rootDir>/src/core/feedback/dialog-v2/index.ts',
+        '!<rootDir>/src/core/navigation/breadcrumbs/index.tsx'
     ],
     transform: {
         '.+\\.(ts|tsx)$': 'ts-jest'

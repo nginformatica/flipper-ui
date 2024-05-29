@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactNode } from 'react'
+import Actions from '@/core/data-display/actions'
 import Button from '@/core/inputs/button'
-import Actions from '@/experimental/actions'
 import { DialogTypography, MuiDialog, ValidationWrapper } from './styles'
 
 export interface IValidateProps {

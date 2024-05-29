@@ -24,7 +24,7 @@ import { RowMode } from './types'
 import { usePaginated } from './use-paginated'
 
 export default {
-    title: 'DataDisplay/DataTableQueryPaginated',
+    title: 'DataDisplay/Data Table Query Paginated',
     component: DataTableQueryPaginated
 } as Meta<typeof DataTableQueryPaginated>
 

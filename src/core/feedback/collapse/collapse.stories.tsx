@@ -1,51 +1,49 @@
-import React, { useState } from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
-import Button from '@/core/inputs/button'
-import { Collapse } from '.'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import Collapse from '.'
 
-export default {
+const meta: Meta<typeof Collapse> = {
     title: 'Feedback/Collapse',
-    component: Collapse
-} as Meta<typeof Collapse>
-
-const Template: StoryFn<typeof Collapse> = args => <Collapse {...args} />
-
-export const Default = () => {
-    const [open, setOpen] = useState(true)
-    const [buttonLabel, setButtonLabel] = useState('Close')
-
-    function handleClick() {
-        setOpen(!open)
-
-        if (!open) {
-            setButtonLabel('Close')
-        } else {
-            setButtonLabel('Open')
+    component: Collapse,
+    argTypes: {
+        in: {
+            control: 'boolean',
+            description: 'To open or close the collapse.'
+        },
+        timeout: {
+            control: 'object',
+            description:
+                'The collapse timeout. ' +
+                'Can be a `number`, `auto`, or set the object individually `{ enter: 200, exit: 500 }`.'
+        },
+        margin: {
+            control: 'text',
+            description: 'The collapse margin.'
+        },
+        padding: {
+            control: 'text',
+            description: 'The collapse padding.'
+        },
+        style: {
+            control: 'object',
+            description: 'The collapse style.'
         }
     }
-
-    return (
-        <>
-            <Collapse in={open}> I am open for discussions </Collapse>
-            <Button
-                size='small'
-                color='primary'
-                style={{ marginTop: '3em' }}
-                onClick={handleClick}>
-                {buttonLabel}
-            </Button>
-        </>
-    )
 }
 
-export const Open = Template.bind({})
-Open.args = {
-    in: true,
-    children: 'I am open for discussions'
-}
+export default meta
 
-export const Closed = Template.bind({})
-Closed.args = {
-    in: false,
-    children: 'I am not open for discussions. Please do not insist.'
+type Story = StoryObj<typeof Collapse>
+
+export const collapse: Story = {
+    render: ({ ...args }) => {
+        return <Collapse {...args}>I am open for discussions.</Collapse>
+    },
+    args: {
+        in: false,
+        timeout: { enter: 200, exit: 500 },
+        margin: '',
+        padding: '',
+        style: {}
+    }
 }

@@ -29,7 +29,7 @@ export interface DialogProps
     content?: ReactNode | string
     text?: string
     snippet?: ReactNode | JSX.Element
-    PaperProps?: Record<string, unknown>
+    PaperProps?: object
     titleStyle?: CSSProperties
     snippetStyle?: CSSProperties
     titleWrapperStyle?: CSSProperties
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     }
 })
 
-export const Dialog = ({
+const Dialog = ({
     snippet,
     style,
     padding,

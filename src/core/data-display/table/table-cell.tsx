@@ -5,7 +5,7 @@ import type { DefaultProps } from '../../types'
 import type { TableCellProps as MuiTableProps } from '@material-ui/core/TableCell'
 import { SortContext } from './table-head'
 
-interface TableCellProps extends DefaultProps {
+export interface TableCellProps extends DefaultProps {
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
     spacing?: MuiTableProps['padding']

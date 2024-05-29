@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react'
 import { Checkbox, Table, TableBody, TableCell, TableHead } from '@mui/material'
-import { TextField } from '@/index'
+import TextField from '@/core/inputs/text-field'
 import { FieldWrapper, RowTable, TableCellRows } from './styles'
 
 interface IHeader {

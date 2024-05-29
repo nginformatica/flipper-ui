@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { IconButton as MuiIconButton } from '@material-ui/core'
 import { Close as IconClose } from '@mui/icons-material'
 import type { SnackBarProps } from '@/core/feedback/snackbar'
-import { Button, Snackbar } from '@/index'
+import SnackBar from '@/core/feedback/snackbar'
+import Button from '@/core/inputs/button'
 
 interface IProps {
     withAction?: boolean
@@ -51,7 +52,7 @@ const Default = ({ snackProps, withAction }: IProps) => {
                 onClick={handleClick}>
                 Open
             </Button>
-            <Snackbar
+            <SnackBar
                 message={snackProps?.message}
                 autoHide={snackProps?.autoHide}
                 action={

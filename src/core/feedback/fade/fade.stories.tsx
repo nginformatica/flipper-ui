@@ -1,39 +1,53 @@
-import React, { useState } from 'react'
-import type { Meta } from '@storybook/react'
-import Button from '@/core/inputs/button'
-import { Fade } from '.'
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import Fade from '.'
 
-export default {
+const meta: Meta<typeof Fade> = {
     title: 'Feedback/Fade',
-    component: Fade
-} as Meta<typeof Fade>
-
-export const Default = () => {
-    const [open, setOpen] = useState(true)
-    const [label, setLabel] = useState('Close')
-
-    function handleClick() {
-        setOpen(!open)
-
-        if (label === 'Close') {
-            setLabel('Open')
-        } else {
-            setLabel('Close')
+    component: Fade,
+    argTypes: {
+        in: {
+            control: 'boolean',
+            description: 'To open or close the fade.'
+        },
+        timeout: {
+            control: 'object',
+            description:
+                'The fade timeout. ' +
+                'Can be a `number`, `auto`, or set the object individually `{ enter: 200, exit: 500 }`.'
+        },
+        margin: {
+            control: 'text',
+            description: 'The fade margin.'
+        },
+        padding: {
+            control: 'text',
+            description: 'The fade padding.'
+        },
+        style: {
+            control: 'object',
+            description: 'The fade style.'
         }
     }
+}
 
-    return (
-        <>
-            <Button
-                style={{ marginRight: '3em' }}
-                variant='contained'
-                color='primary'
-                onClick={handleClick}>
-                {label}
-            </Button>
-            <Fade in={open}>
+export default meta
+
+type Story = StoryObj<typeof Fade>
+
+export const fade: Story = {
+    render: ({ ...args }) => {
+        return (
+            <Fade {...args}>
                 <span>I am open for discussions</span>
             </Fade>
-        </>
-    )
+        )
+    },
+    args: {
+        in: false,
+        timeout: { enter: 200, exit: 500 },
+        margin: '',
+        padding: '',
+        style: {}
+    }
 }

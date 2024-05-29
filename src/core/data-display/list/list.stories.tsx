@@ -2,7 +2,7 @@ import React from 'react'
 import { Backup } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import { Avatar } from '@/experimental'
+import Avatar from '../avatar'
 import List from '.'
 
 export default {
