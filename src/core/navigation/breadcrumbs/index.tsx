@@ -21,7 +21,7 @@ type Props = {
 }
 
 const defaultLinkWrapper = (link: string, label: string) => (
-    <BreadcrumbLink key={link} to={link}>
+    <BreadcrumbLink key={link} href={link}>
         {label}
     </BreadcrumbLink>
 )
