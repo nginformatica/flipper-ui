@@ -12,6 +12,8 @@ export interface IProps extends DialogProps {
     title: string
     titleAction?: string | ReactNode
     text?: string
+    fullWidth?: boolean
+    maxWidth?: 'xs' | 'sm' | 'md' | 'lg'
     primaryButtonColor?: 'default' | 'primary' | 'inherit' | 'secondary'
     primaryButtonName?: string
     primaryButtonText: string
@@ -54,6 +56,8 @@ const DialogV2 = (props: IProps) => {
         snippet,
         content,
         PaperProps,
+        fullWidth,
+        maxWidth,
         omitActionButtons,
         primaryButtonAction,
         secondaryButtonAction,
@@ -73,6 +77,8 @@ const DialogV2 = (props: IProps) => {
                 text={text}
                 content={content}
                 snippet={snippet}
+                fullWidth={fullWidth}
+                maxWidth={maxWidth}
                 PaperProps={PaperProps}
                 actions={
                     !omitActionButtons && (
