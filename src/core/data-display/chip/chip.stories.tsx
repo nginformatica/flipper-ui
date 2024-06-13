@@ -23,7 +23,8 @@ Default.args = {
 export const Squared = Template.bind({})
 Squared.args = {
     ...commonArgs,
-    square: true
+    square: true,
+    avatar: <Avatar name='HD' />
 }
 
 export const WithInitialsAvatar = Template.bind({})

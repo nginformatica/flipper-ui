@@ -74,7 +74,7 @@ export default meta
 
 type Story = StoryObj<typeof Badge>
 
-export const actions: Story = {
+export const badge: Story = {
     render: ({ ...args }) => {
         return <Badge {...args}>Badge</Badge>
     },
