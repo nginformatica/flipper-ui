@@ -1,11 +1,14 @@
 import React from 'react'
-import { AppBar, Toolbar } from '@material-ui/core'
-import type { PaperProps } from '@/core/surfaces/paper'
-import type { AppBarProps } from '@material-ui/core'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import type { DefaultProps } from '@/core/types'
+import type { AppBarProps } from '@mui/material/AppBar'
 
-export interface HeaderProps extends Omit<PaperProps, 'classes'>, AppBarProps {
+export interface HeaderProps extends DefaultProps, AppBarProps {
     position?: 'absolute' | 'fixed' | 'static' | 'sticky'
     color?: 'default' | 'inherit' | 'primary' | 'secondary'
+    square?: boolean
+    elevation?: number
 }
 
 const Header = ({
