@@ -68,7 +68,11 @@ Default.args = {
     onHelperClick: () => window.alert('HELP!'),
     helperButtonPosition: 'left',
     expandIcon: <ExpandMore />,
-    actions: <Button color='primary'>Confirm</Button>,
+    actions: (
+        <Button color='primary' margin='12px'>
+            Confirm
+        </Button>
+    ),
     details: (
         <div>
             <Typography gutterBottom>

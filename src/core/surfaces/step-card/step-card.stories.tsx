@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
-import Button from '@/core/inputs/button'
 import stepCardImage from '../../../images/step-card-image.svg'
 import StepCard from '.'
 
@@ -14,18 +13,7 @@ const Template: StoryFn<typeof StepCard> = args => {
 }
 
 const TemplateWithLoading: StoryFn<typeof StepCard> = args => {
-    const [loading, setLoading] = useState(true)
-
-    setTimeout(() => {
-        setLoading(false)
-    }, 22500)
-
-    return (
-        <>
-            <Button />
-            <StepCard {...args} loading={loading} subTitle='asd' />
-        </>
-    )
+    return <StepCard {...args} loading={args.loading} subTitle='É rápido!' />
 }
 
 export const Default = Template.bind({})
@@ -89,9 +77,11 @@ WithoutExpandable.args = {
         }
     ]
 }
+
 export const WithLoading = TemplateWithLoading.bind({})
 
 WithLoading.args = {
+    loading: true,
     summary: '%i passos restantes - Leva %i minuto(s)',
     time: 2,
     remainingSteps: 3,

@@ -5,7 +5,7 @@ import {
     Edit as IconEdit,
     Delete as IconDelete
 } from '@mui/icons-material'
-import type { ButtonProps } from '@/core/inputs/button'
+import type { IButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Line from '@/core/data-display/line'
 import AddButton from '@/core/inputs/add-button'
@@ -31,7 +31,7 @@ export interface IProps {
     editing?: boolean
     action?: JSX.Element | null
     renderRemove?: boolean
-    onAddProps?: Partial<ButtonProps>
+    onAddProps?: Partial<IButtonProps>
     onEditProps?: Partial<IconButtonProps>
     onRemoveProps?: Partial<IconButtonProps>
     onClickAdd?(): void
