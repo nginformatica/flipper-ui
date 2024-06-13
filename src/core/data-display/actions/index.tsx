@@ -1,15 +1,21 @@
 import React from 'react'
-import type { ButtonProps } from '@material-ui/core'
 import Button from '@/core/inputs/button'
 import { Wrapper } from './styles'
 
-export interface IProps {
+export interface IActionsProps {
     padding?: number | string
     margin?: number | string
     align?: 'flex-end' | 'flex-start' | 'center'
     prefix?: string
     buttons?: Array<'confirm' | 'cancel'>
-    actionButtonColor?: ButtonProps['color']
+    actionButtonColor?:
+        | 'inherit'
+        | 'primary'
+        | 'secondary'
+        | 'success'
+        | 'error'
+        | 'info'
+        | 'warning'
     names?: {
         cancel: string
         confirm: string
@@ -26,7 +32,7 @@ export interface IProps {
     onConfirm(): void
 }
 
-const Actions = (props: IProps) => {
+const Actions = (props: IActionsProps) => {
     const showButton =
         !props.readonly && (!props.buttons || props.buttons.includes('confirm'))
 

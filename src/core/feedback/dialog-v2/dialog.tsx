@@ -14,7 +14,14 @@ export interface IProps extends DialogProps {
     text?: string
     fullWidth?: boolean
     maxWidth?: 'xs' | 'sm' | 'md' | 'lg'
-    primaryButtonColor?: 'default' | 'primary' | 'inherit' | 'secondary'
+    primaryButtonColor?:
+        | 'inherit'
+        | 'primary'
+        | 'secondary'
+        | 'success'
+        | 'error'
+        | 'info'
+        | 'warning'
     primaryButtonName?: string
     primaryButtonText: string
     secondaryButtonText?: string

@@ -53,11 +53,20 @@ const meta: Meta<typeof Actions> = {
             description: 'The buttons margin.'
         },
         actionButtonColor: {
-            options: ['inherit', 'primary', 'secondary', 'default', undefined],
+            options: [
+                'inherit',
+                'primary',
+                'secondary',
+                'success',
+                'error',
+                'info',
+                'warning',
+                undefined
+            ],
             control: { type: 'radio' },
             description:
                 'The "Confirmar" button color.' +
-                'Must be `"inherit" | "primary" | "secondary" | "default" | undefined`' +
+                'Must be `"inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning"`' +
                 'If not set, the default is "secondary"'
         },
         disabled: {
