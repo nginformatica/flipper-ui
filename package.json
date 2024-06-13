@@ -41,6 +41,7 @@
         "@material-ui/pickers": "3.3.11",
         "@mui/icons-material": "5.15.19",
         "@mui/material": "5.15.19",
+        "@mui/styles": "5.15.20",
         "date-fns": "2.30.0",
         "material-ui-chip-input": "2.0.0-beta.2",
         "ramda": "0.25.0",
