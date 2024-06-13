@@ -3,55 +3,53 @@
 exports[`Sidebar should match snapshot 1`] = `
 <div>
   <div
-    class="MuiDrawer-root MuiDrawer-docked"
+    class="MuiDrawer-root MuiDrawer-docked css-7ik032-MuiDrawer-docked"
     style="width: 220px; top: 64px;"
   >
     <div
-      class="MuiPaper-root MuiDrawer-paper MuiDrawer-paperAnchorLeft  makeStyles-default-67 MuiDrawer-paperAnchorDockedLeft MuiPaper-elevation0"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-12i7wg6-MuiPaper-root-MuiDrawer-paper"
     >
       <div
         anchor="left"
         class="sc-aYaIB eVWnkT"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-66"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedInherit MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorInherit MuiButton-root MuiButton-contained MuiButton-containedInherit MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorInherit sc-gEvDqW fksaFw css-1sim9df-MuiButtonBase-root-MuiButton-root"
           data-testid="sidebar-button"
+          href=""
+          minwidth="72"
           name="button-sidebar"
-          style="max-width: 72px; opacity: 1;"
+          style="padding: 6px 16px; opacity: 1;"
           tabindex="0"
           type="button"
         >
-          <span
-            class="MuiButton-label"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="KeyboardArrowLeftIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium makeStyles-icon-68 css-i4bv87-MuiSvgIcon-root"
-              data-testid="KeyboardArrowLeftIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z"
+            />
+          </svg>
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </button>
       </div>
       <ul
-        class="MuiList-root makeStyles-default-73 undefined MuiList-padding"
+        class="MuiList-root makeStyles-default-31 undefined MuiList-padding"
       >
         <div
           aria-disabled="false"
-          class="MuiButtonBase-root MuiListItem-root makeStyles-root-77 MuiListItem-gutters MuiListItem-button"
+          class="MuiButtonBase-root MuiListItem-root makeStyles-root-35 MuiListItem-gutters MuiListItem-button"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiListItemIcon-root makeStyles-default-78"
+            class="MuiListItemIcon-root makeStyles-default-36"
             style="min-width: 42px;"
           >
             <svg
@@ -71,7 +69,7 @@ exports[`Sidebar should match snapshot 1`] = `
             data-testid="list-item-undefined"
           >
             <span
-              class="MuiTypography-root makeStyles-default-78 MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root makeStyles-default-36 MuiTypography-body1 MuiTypography-displayBlock"
             >
               Item 1
             </span>
@@ -82,12 +80,12 @@ exports[`Sidebar should match snapshot 1`] = `
         </div>
         <div
           aria-disabled="false"
-          class="MuiButtonBase-root MuiListItem-root makeStyles-root-77 MuiListItem-gutters MuiListItem-button"
+          class="MuiButtonBase-root MuiListItem-root makeStyles-root-35 MuiListItem-gutters MuiListItem-button"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiListItemIcon-root makeStyles-default-78"
+            class="MuiListItemIcon-root makeStyles-default-36"
             style="min-width: 42px;"
           >
             <svg
@@ -107,7 +105,7 @@ exports[`Sidebar should match snapshot 1`] = `
             data-testid="list-item-undefined"
           >
             <span
-              class="MuiTypography-root makeStyles-default-78 MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root makeStyles-default-36 MuiTypography-body1 MuiTypography-displayBlock"
             >
               Item 2
             </span>

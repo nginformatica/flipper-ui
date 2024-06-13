@@ -12,10 +12,11 @@ exports[`Breadcrumbs should match snapshot 1`] = `
         class="MuiBreadcrumbs-li"
       >
         <a
+          class="sc-aYaIB ZmSFF"
           href="/"
         >
           <p
-            class="MuiTypography-root sc-eqUzNf bJIrlA MuiTypography-body2 MuiTypography-colorInherit"
+            class="MuiTypography-root sc-gEvDqW hxMRUB MuiTypography-body2 MuiTypography-colorInherit"
           >
             Home
           </p>
@@ -41,10 +42,11 @@ exports[`Breadcrumbs should match snapshot 1`] = `
         class="MuiBreadcrumbs-li"
       >
         <a
+          class="sc-aYaIB ZmSFF"
           href="/foo"
         >
           <p
-            class="MuiTypography-root sc-eqUzNf bJIrlA MuiTypography-body2 MuiTypography-colorInherit"
+            class="MuiTypography-root sc-gEvDqW hxMRUB MuiTypography-body2 MuiTypography-colorInherit"
           >
             Foo
           </p>
@@ -70,7 +72,7 @@ exports[`Breadcrumbs should match snapshot 1`] = `
         class="MuiBreadcrumbs-li"
       >
         <p
-          class="MuiTypography-root sc-eqUzNf bJIrlA MuiTypography-body2 MuiTypography-colorInherit"
+          class="MuiTypography-root sc-gEvDqW hxMRUB MuiTypography-body2 MuiTypography-colorInherit"
         >
           Bar
         </p>
