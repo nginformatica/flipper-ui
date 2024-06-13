@@ -1,15 +1,12 @@
 import React from 'react'
-import Drawer from '@material-ui/core/Drawer'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
 import {
     KeyboardArrowLeft as IconArrowLeft,
     KeyboardArrowRight as IconArrowRight
 } from '@mui/icons-material'
+import Drawer from '@mui/material/Drawer'
 import type { DefaultProps } from '../../types'
-import type { ButtonProps } from '@/core/inputs/button'
-import type { Theme } from '@material-ui/core/styles'
-import Button from '@/core/inputs/button'
-import { Action } from './styles'
+import type { IButtonProps } from '@/core/inputs/button'
+import { Action, AnchorButton } from './styles'
 
 export interface SidebarProps extends DefaultProps {
     open: boolean
@@ -17,64 +14,20 @@ export interface SidebarProps extends DefaultProps {
     showButton?: boolean
     anchor?: 'top' | 'left' | 'bottom' | 'right'
     variant?: 'persistent' | 'temporary' | 'permanent'
-    color?: 'primary' | 'secondary' | 'default' | 'inherit'
     docked?: boolean
     maxWidth?: number | string
     minWidth?: number | string
     top?: number | string
     paperClasses?: object
     name?: string
-    ButtonProps?: ButtonProps
+    ButtonProps?: IButtonProps
     onToggle: () => void
 }
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        button: {
-            '&:active': {
-                boxShadow: 'none'
-            },
-            alignSelf: 'right',
-            backgroundColor: 'transparent',
-            boxShadow: 'none',
-            maxWidth: 'inherit',
-            minWidth: 'auto',
-            width: '100%'
-        },
-        default: {
-            backgroundColor: theme.palette.background.default,
-            color: theme.palette.text.primary
-        },
-        icon: {
-            fontSize: '24px'
-        },
-        inherit: {
-            backgroundColor: 'inherit',
-            color: 'inherit'
-        },
-        primary: {
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.primary.contrastText
-        },
-        secondary: {
-            backgroundColor: theme.palette.secondary.main,
-            color: theme.palette.secondary.contrastText
-        },
-        sidebar: {
-            bottom: '0px',
-            left: '0px',
-            position: 'fixed' as const,
-            top: 'inherit',
-            width: 'inherit'
-        }
-    })
-)
 
 const Sidebar = ({
     id,
     anchor = 'left',
     className,
-    color = 'default',
     docked = false,
     expanded = true,
     margin,
@@ -93,32 +46,30 @@ const Sidebar = ({
     name,
     ...otherProps
 }: SidebarProps) => {
-    const classes = useStyles()
-
     const renderAction = () => {
         const iconToLeft =
             (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
 
         return (
             <Action anchor={anchor}>
-                <Button
+                <AnchorButton
                     name={`button-${name || 'sidebar'}`}
-                    color={color}
                     data-testid='sidebar-button'
                     variant='contained'
-                    className={classes.button}
-                    style={{ maxWidth: minWidth }}
+                    padding='6px 16px'
+                    minwidth={minWidth}
                     onClick={onToggle}
                     {...ButtonProps}>
                     {iconToLeft ? (
-                        <IconArrowLeft className={classes.icon} />
+                        <IconArrowLeft fontSize='medium' />
                     ) : (
-                        <IconArrowRight className={classes.icon} />
+                        <IconArrowRight fontSize='medium' />
                     )}
-                </Button>
+                </AnchorButton>
             </Action>
         )
     }
+
     const width = expanded ? maxWidth : minWidth
 
     return (
@@ -131,7 +82,16 @@ const Sidebar = ({
             className={className}
             style={{ width, padding, margin, top, ...style }}
             PaperProps={{
-                className: `${docked ? classes.sidebar : ''} ${classes[color]}`,
+                style: docked
+                    ? {
+                          position: 'fixed',
+                          left: '0px',
+                          bottom: '0px',
+                          top: 'inherit',
+                          width: 'inherit',
+                          height: 'inherit'
+                      }
+                    : {},
                 classes: paperClasses
             }}>
             {showButton && renderAction()}

@@ -1,29 +1,52 @@
 import React from 'react'
 import { Backup } from '@mui/icons-material'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
 import Sidebar from '.'
+import { SidebarStorie } from './styles'
 
-export default {
+const meta: Meta<typeof Sidebar> = {
     title: 'Navigation/Sidebar',
-    component: Sidebar
-} as Meta<typeof Sidebar>
+    component: Sidebar,
+    argTypes: {
+        expanded: {
+            control: 'boolean',
+            description: 'If the sidebar is expanded'
+        },
+        docked: {
+            control: 'boolean',
+            description: 'If the sidebar is docked'
+        },
+        children: {
+            control: false,
+            description: 'The sidebar children'
+        }
+    }
+}
 
-const Template: StoryFn<typeof Sidebar> = args => <Sidebar {...args} />
+export default meta
 
-export const Default = Template.bind({})
-Default.args = {
-    title: 'My beautiful Sidebar"',
-    expanded: false,
-    children: (
-        <>
+type Story = StoryObj<typeof Sidebar>
+
+export const sidebar: Story = {
+    render: ({ ...args }) => {
+        return (
+            <SidebarStorie>
+                <Sidebar {...args} />
+            </SidebarStorie>
+        )
+    },
+    args: {
+        expanded: false,
+        docked: true,
+        children: (
             <List>
                 <ListItem title='Item 1' icon={<Backup />} />
                 <ListItem title='Item 2' icon={<Backup />} />
                 <ListItem title='Item 3' icon={<Backup />} />
                 <ListItem title='Item 4' icon={<Backup />} />
             </List>
-        </>
-    )
+        )
+    }
 }
