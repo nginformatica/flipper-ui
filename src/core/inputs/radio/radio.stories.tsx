@@ -25,10 +25,10 @@ Checked.args = {
     checked: true
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Secondary = Template.bind({})
+Secondary.args = {
     ...commonArgs,
-    color: 'primary'
+    color: 'secondary'
 }
 
 export const PrimaryChecked = Template.bind({})
