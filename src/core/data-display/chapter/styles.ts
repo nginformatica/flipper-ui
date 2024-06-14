@@ -4,7 +4,7 @@ import { theme } from '@/theme'
 
 const { grays } = theme.colors
 
-export const StyledLine = styled.div<LineProps>`
+export const Line = styled.div<LineProps>`
     height: 1px;
     flex: 1;
     min-height: 0.75px;
@@ -15,12 +15,4 @@ export const StyledLine = styled.div<LineProps>`
 
 export const Container = styled.div`
     display: flex;
-
-    & div:first-child {
-        margin-right: 10px;
-    }
-
-    & div:last-child {
-        margin-left: 10px;
-    }
 `
