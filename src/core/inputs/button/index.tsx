@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ElementType, MouseEvent, ReactNode } from 'react'
 import MuiButton from '@mui/material/Button'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 import type { ButtonProps } from '@mui/material/Button'
 
 export interface IButtonProps extends DefaultProps, ButtonProps {

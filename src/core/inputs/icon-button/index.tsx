@@ -1,7 +1,7 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
 import MuiIconButton from '@mui/material/IconButton'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 
 export interface IconButtonProps extends DefaultProps {
     color?:

@@ -1,7 +1,7 @@
 import React from 'react'
 import MuiDrawer from '@material-ui/core/Drawer'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 import type { DrawerProps as MuiDrawerProps } from '@material-ui/core/Drawer'
 
 export interface DrawerProps extends MuiDrawerProps, DefaultProps {

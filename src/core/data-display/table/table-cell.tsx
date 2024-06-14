@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import MuiTableCell from '@material-ui/core/TableCell'
 import MuiTableSortLabel from '@material-ui/core/TableSortLabel'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 import type { TableCellProps as MuiTableProps } from '@material-ui/core/TableCell'
 import { SortContext } from './table-head'
 

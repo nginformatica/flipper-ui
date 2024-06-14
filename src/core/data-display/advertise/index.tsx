@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 import { AdvertiseTypography, AdvertiseContainer } from './styles'
 
 export interface AdvertiseProps extends DefaultProps {

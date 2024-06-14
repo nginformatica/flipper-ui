@@ -17,7 +17,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { Clear, Help as ContactSupportIcon } from '@mui/icons-material'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 import type {
     InputBaseComponentProps,
     TextFieldProps as MuiTextFieldProps

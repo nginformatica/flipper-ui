@@ -1,6 +1,6 @@
 import React, { cloneElement } from 'react'
 import { Step, StepLabel, Stepper as MuiStepper } from '@material-ui/core'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 
 export interface StepperProps extends DefaultProps {
     active?: number

@@ -4,7 +4,7 @@ import {
     ListSubheader as MuiListHeader
 } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 import type { Theme } from '@material-ui/core/styles'
 
 export interface ListProps extends DefaultProps {

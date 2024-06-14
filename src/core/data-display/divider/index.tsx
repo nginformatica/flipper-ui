@@ -1,6 +1,6 @@
 import React from 'react'
 import MuiDivider from '@mui/material/Divider'
-import type { DefaultProps } from '../../types'
+import type { DefaultProps } from '@/core/types'
 import type { DividerProps } from '@mui/material/Divider'
 
 export interface IDividerProps extends DefaultProps, DividerProps {
