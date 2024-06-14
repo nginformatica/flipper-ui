@@ -16,6 +16,7 @@ export interface IconButtonProps extends DefaultProps {
     role?: string
     disabled?: boolean
     'data-testid'?: string
+    size?: 'small' | 'medium' | 'large'
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 

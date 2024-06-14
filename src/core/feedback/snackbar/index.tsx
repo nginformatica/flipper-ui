@@ -1,22 +1,18 @@
 import React from 'react'
 import type { ReactNode, FunctionComponent, MouseEvent } from 'react'
 import {
-    IconButton as MuiIconButton,
-    Snackbar as MuiSnackbar,
-    SnackbarContent as MuiSnackbarContent
-} from '@material-ui/core'
-import { amber, blue, green, red } from '@material-ui/core/colors'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
-import {
     CheckCircle as IconCheck,
     Close as IconClose,
     Error as IconError,
     Info as IconInfo,
     Warning as IconWarning
 } from '@mui/icons-material'
-import type { DefaultProps } from '../../types'
-import type { Theme } from '@material-ui/core/styles'
-import type { TransitionProps } from '@material-ui/core/transitions/transition'
+import { amber, blue, green, red } from '@mui/material/colors'
+import MuiSnackbar from '@mui/material/Snackbar'
+import MuiSnackbarContent from '@mui/material/SnackbarContent'
+import type { DefaultProps } from '@/core/types'
+import type { TransitionProps } from '@mui/material/transitions'
+import IconButton from '@/core/inputs/icon-button'
 
 export interface SnackBarProps extends DefaultProps {
     autoHide?: number
@@ -60,20 +56,6 @@ const variants = {
     }
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        icon: {
-            fontSize: 20,
-            marginRight: theme.spacing(1),
-            opacity: 0.9
-        },
-        message: {
-            alignItems: 'center',
-            display: 'flex'
-        }
-    })
-)
-
 const SnackBar = (props: SnackBarProps) => {
     const {
         id,
@@ -92,10 +74,9 @@ const SnackBar = (props: SnackBarProps) => {
         TransitionComponent,
         TransitionProps,
         onClick,
-        ...other
+        ...otherProps
     } = props
     const Icon = variants[variant].icon
-    const classes = useStyles()
 
     const cursor = onClick ? 'pointer' : undefined
 
@@ -110,42 +91,51 @@ const SnackBar = (props: SnackBarProps) => {
 
     return (
         <MuiSnackbar
-            anchorOrigin={anchorOrigin}
-            open={open}
             id={id}
-            autoHideDuration={autoHide}
-            style={{ cursor, padding, margin, ...style }}
+            open={open}
             className={className}
-            TransitionComponent={TransitionComponent}
+            anchorOrigin={anchorOrigin}
+            autoHideDuration={autoHide}
             TransitionProps={TransitionProps}
+            TransitionComponent={TransitionComponent}
+            style={{ cursor, padding, margin, ...style }}
             onClick={onClick}
             onClose={onClose}>
             <MuiSnackbarContent
+                aria-describedby='client-snackbar'
                 style={{
                     backgroundColor: variants[variant].color,
                     flexWrap: 'nowrap',
                     cursor
                 }}
-                aria-describedby='client-snackbar'
                 message={
-                    <span id='client-snackbar' className={classes.message}>
-                        {icon || <Icon className={classes.icon} />}
-                        <div style={{ marginLeft: '10px' }}>{message}</div>
+                    <span
+                        id='client-snackbar'
+                        style={{
+                            alignItems: 'center',
+                            display: 'flex',
+                            gap: '12px'
+                        }}>
+                        {icon || (
+                            <Icon fontSize='small' style={{ opacity: 0.9 }} />
+                        )}
+                        <div>{message}</div>
                     </span>
                 }
                 action={
                     action || (
-                        <MuiIconButton
+                        <IconButton
+                            size='small'
                             key='close'
                             role='close-icon-button'
                             aria-label='Close'
                             color='inherit'
                             onClick={handleClose}>
-                            <IconClose />
-                        </MuiIconButton>
+                            <IconClose fontSize='small' />
+                        </IconButton>
                     )
                 }
-                {...other}
+                {...otherProps}
             />
         </MuiSnackbar>
     )
