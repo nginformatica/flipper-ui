@@ -16,6 +16,10 @@ const meta: Meta<typeof Collapse> = {
                 'The collapse timeout. ' +
                 'Can be a `number`, `auto`, or set the object individually `{ enter: 200, exit: 500 }`.'
         },
+        children: {
+            control: 'text',
+            description: 'The collapse content.'
+        },
         margin: {
             control: 'text',
             description: 'The collapse margin.'
@@ -37,11 +41,12 @@ type Story = StoryObj<typeof Collapse>
 
 export const collapse: Story = {
     render: ({ ...args }) => {
-        return <Collapse {...args}>I am open for discussions.</Collapse>
+        return <Collapse {...args} />
     },
     args: {
-        in: false,
+        in: true,
         timeout: { enter: 200, exit: 500 },
+        children: 'I am open for discussions.',
         margin: '',
         padding: '',
         style: {}
