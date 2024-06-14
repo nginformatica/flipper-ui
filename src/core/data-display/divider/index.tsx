@@ -1,9 +1,9 @@
 import React from 'react'
-import { Divider as MuiDivider } from '@material-ui/core'
+import MuiDivider from '@mui/material/Divider'
 import type { DefaultProps } from '../../types'
-import type { DividerProps as MuiDividerProps } from '@material-ui/core'
+import type { DividerProps } from '@mui/material/Divider'
 
-export interface DividerProps extends DefaultProps, MuiDividerProps {
+export interface IDividerProps extends DefaultProps, DividerProps {
     'data-testid'?: string
 }
 
@@ -12,7 +12,7 @@ const Divider = ({
     padding,
     style = {},
     ...otherProps
-}: DividerProps) => (
+}: IDividerProps) => (
     <MuiDivider {...otherProps} style={{ margin, padding, ...style }} />
 )
 
