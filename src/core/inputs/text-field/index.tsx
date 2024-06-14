@@ -6,8 +6,7 @@ import type {
     FocusEvent,
     ReactNode,
     MouseEvent,
-    Ref,
-    HTMLAttributes
+    Ref
 } from 'react'
 import {
     InputAdornment,
@@ -16,12 +15,7 @@ import {
     ListItem
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-    Clear,
-    Help as ContactSupportIcon,
-    Edit,
-    Save
-} from '@mui/icons-material'
+import { Clear, Help as ContactSupportIcon } from '@mui/icons-material'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
 import type { DefaultProps } from '../../types'
 import type {
@@ -91,14 +85,6 @@ interface IHelperProps extends Pick<TextFieldProps, 'helperIcon'> {
     onHelperClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-interface IEditProps extends Pick<TextFieldProps, 'showEdit' | 'style'> {
-    editing: boolean
-    onEditClick: (event: MouseEvent<HTMLButtonElement>) => void
-    onSaveClick: (event: MouseEvent<HTMLButtonElement>) => void
-    editButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
-    saveButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
-}
-
 export const useStyles = makeStyles({
     listOptions: {
         outline: 'none',
@@ -130,7 +116,7 @@ export const useStyles = makeStyles({
     }
 })
 
-export const coerceComboOptions: (input: string) => IOption[] = when(
+const coerceComboOptions: (input: string) => IOption[] = when(
     is(String),
     pipe<string, string[], object, IOption[]>(
         split(';'),
@@ -139,7 +125,7 @@ export const coerceComboOptions: (input: string) => IOption[] = when(
     )
 )
 
-export const toLispCase = (name: string) =>
+const toLispCase = (name: string) =>
     name
         .replace(
             /([a-z])([A-Z])/g,
@@ -177,28 +163,6 @@ export const renderOptions = (
                 {option.label}
             </ListItem>
         ))
-    )
-}
-
-export const EditBox = (props: IEditProps) => {
-    return (
-        <div role='edit-box'>
-            {props.editing ? (
-                <IconButton
-                    {...props.saveButtonProps}
-                    padding='6px 2px'
-                    onClick={props.onSaveClick}>
-                    {<Save fontSize='small' />}
-                </IconButton>
-            ) : (
-                <IconButton
-                    {...props.editButtonProps}
-                    padding='6px 2px'
-                    onClick={props.onEditClick}>
-                    {<Edit fontSize='small' />}
-                </IconButton>
-            )}
-        </div>
     )
 }
 
