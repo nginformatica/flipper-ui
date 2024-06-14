@@ -1,12 +1,12 @@
 import React from 'react'
 import type { ReactElement } from 'react'
-import { Grow as MuiGrow } from '@material-ui/core'
-import type { DefaultProps } from '../../types'
+import MuiGrow from '@mui/material/Grow'
+import type { DefaultProps } from '@/core/types'
 
 export interface GrowProps extends DefaultProps {
     in: boolean
     timeout?: number | { enter?: number; exit?: number } | 'auto'
-    children?: ReactElement<Record<string, unknown>>
+    children: ReactElement<Record<string, unknown>>
 }
 
 const Grow = ({
