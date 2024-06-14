@@ -4,17 +4,20 @@ import type {
     MouseEvent,
     CSSProperties,
     HTMLAttributes,
-    ChangeEvent
+    ChangeEvent,
+    SyntheticEvent
 } from 'react'
-import MuiExpansionPanel from '@material-ui/core/Accordion'
-import MuiExpansionPanelActions from '@material-ui/core/AccordionActions'
-import MuiExpansionPanelDetails from '@material-ui/core/AccordionDetails'
-import MuiExpansionPanelSummary from '@material-ui/core/AccordionSummary'
-import type { PaperProps } from '@/core/surfaces/paper'
-import { EditBox, HelperBox } from '@/core/inputs/text-field'
+import { Edit, Save } from '@mui/icons-material'
+import MuiExpansionPanel from '@mui/material/Accordion'
+import MuiExpansionPanelActions from '@mui/material/AccordionActions'
+import MuiExpansionPanelDetails from '@mui/material/AccordionDetails'
+import MuiExpansionPanelSummary from '@mui/material/AccordionSummary'
+import type { IPaperProps } from '@/core/surfaces/paper'
+import IconButton from '@/core/inputs/icon-button'
+import { HelperBox } from '@/core/inputs/text-field'
 import { ExpansionPanelHeaderWrapper } from './styles'
 
-export interface ExpansionPanelProps extends Omit<PaperProps, 'onChange'> {
+export interface ExpansionPanelProps extends Omit<IPaperProps, 'onChange'> {
     actions?: ReactNode
     defaultExpanded?: boolean
     details?: ReactNode
@@ -36,7 +39,9 @@ export interface ExpansionPanelProps extends Omit<PaperProps, 'onChange'> {
     onEditClick?: () => void
     onSaveClick?: () => void
     onChange?: (
-        event?: ChangeEvent<Record<string, unknown>>,
+        event?:
+            | ChangeEvent<Record<string, unknown>>
+            | SyntheticEvent<Element, Event>,
         expanded?: boolean
     ) => void
     onClick?: (event: MouseEvent<HTMLDivElement>) => void
@@ -53,7 +58,6 @@ const ExpansionPanel = ({
     summaryStyle,
     detailsStyle,
     actionsStyle,
-    editStyle,
     onHelperClick,
     onEditClick,
     onSaveClick,
@@ -107,21 +111,6 @@ const ExpansionPanel = ({
         </>
     )
 
-    const renderEdit = (
-        <>
-            {editable && (
-                <EditBox
-                    editing={!!editing}
-                    style={editStyle}
-                    saveButtonProps={{ role: 'save-button' }}
-                    editButtonProps={{ role: 'edit-button' }}
-                    onEditClick={handleEditClick}
-                    onSaveClick={handleSaveClick}
-                />
-            )}
-        </>
-    )
-
     return (
         <MuiExpansionPanel
             {...otherProps}
@@ -134,7 +123,25 @@ const ExpansionPanel = ({
                     <ExpansionPanelHeaderWrapper {...headerProps}>
                         {helperButtonPosition === 'left' && renderHelper}
                         {summary}
-                        {renderEdit}
+                        {editable && (
+                            <div role='edit-box'>
+                                {editing ? (
+                                    <IconButton
+                                        role='save-button'
+                                        padding='6px 2px'
+                                        onClick={handleSaveClick}>
+                                        {<Save fontSize='small' />}
+                                    </IconButton>
+                                ) : (
+                                    <IconButton
+                                        role='save-button'
+                                        padding='6px 2px'
+                                        onClick={handleEditClick}>
+                                        {<Edit fontSize='small' />}
+                                    </IconButton>
+                                )}
+                            </div>
+                        )}
                         {helperButtonPosition === 'right' && renderHelper}
                     </ExpansionPanelHeaderWrapper>
                 </MuiExpansionPanelSummary>
