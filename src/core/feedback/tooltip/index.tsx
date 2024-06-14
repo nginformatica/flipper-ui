@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactElement, CSSProperties, ReactNode } from 'react'
-import { Tooltip as MuiTooltip } from '@material-ui/core'
-import type { DefaultProps } from '../../types'
+import MuiTooltip from '@mui/material/Tooltip'
+import type { DefaultProps } from '@/core/types'
 
 export interface TooltipProps extends DefaultProps {
     placement?:

@@ -13,7 +13,11 @@ const Template: StoryFn<typeof Tooltip> = args => <Tooltip {...args} />
 export const Default = Template.bind({})
 Default.args = {
     title: 'Tooltip',
-    children: <Button variant='outlined'>Simple tooltip</Button>
+    children: (
+        <span>
+            <Button variant='outlined'>Simple tooltip</Button>
+        </span>
+    )
 }
 
 export const Positioned = () => (
