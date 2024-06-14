@@ -44,7 +44,7 @@ export const fade: Story = {
         )
     },
     args: {
-        in: false,
+        in: true,
         timeout: { enter: 200, exit: 500 },
         margin: '',
         padding: '',
