@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
 import type { DefaultProps } from '../../types'
-import { AdvertiseTypography, Paper } from './styles'
+import { AdvertiseTypography, AdvertiseContainer } from './styles'
 
 export interface AdvertiseProps extends DefaultProps {
     comment: string
@@ -18,7 +18,7 @@ const Advertise = ({
     authorStyle = {},
     ...otherProps
 }: AdvertiseProps) => (
-    <Paper padding={padding} {...otherProps}>
+    <AdvertiseContainer padding={padding} {...otherProps}>
         <AdvertiseTypography
             margin='0 12px'
             padding='6px 18px'
@@ -32,7 +32,7 @@ const Advertise = ({
             style={{ ...authorStyle }}>
             {author}
         </AdvertiseTypography>
-    </Paper>
+    </AdvertiseContainer>
 )
 
 export default Advertise
