@@ -3,9 +3,10 @@
 exports[`Fab should match snapshot 1`] = `
 <div>
   <div
+    aria-label="tooltip-test"
     class=""
+    data-mui-internal-clone-element="true"
     style="display: inherit;"
-    title="tooltip-test"
   >
     <button
       class="MuiButtonBase-root MuiFab-root MuiFab-sizeMedium"

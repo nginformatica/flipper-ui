@@ -7,17 +7,17 @@ exports[`Loading should match snapshot 1`] = `
     data-testid="loading-component"
     style="margin: 48px; padding: 24px;"
   >
-    <div
-      class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
       role="progressbar"
       style="width: 72px; height: 72px;"
     >
       <svg
-        class="MuiCircularProgress-svg"
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
           cx="44"
           cy="44"
           fill="none"
@@ -25,7 +25,7 @@ exports[`Loading should match snapshot 1`] = `
           stroke-width="3.6"
         />
       </svg>
-    </div>
+    </span>
   </div>
 </div>
 `;

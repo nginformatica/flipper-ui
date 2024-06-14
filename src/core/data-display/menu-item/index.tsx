@@ -1,8 +1,6 @@
 import React from 'react'
 import type { MouseEvent, MutableRefObject, ReactNode } from 'react'
-import type { DefaultProps } from '../../types'
-import type { MenuItemClassKey } from '@material-ui/core/MenuItem'
-import type { ClassNameMap } from '@material-ui/core/styles/withStyles'
+import type { DefaultProps } from '@/core/types'
 import { MenuItems } from './styles'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
@@ -13,7 +11,6 @@ export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     onClick?: (event?: MouseEvent) => void
     children?: string | ReactNode
     ref?: MutableRefObject<null>
-    classes?: Partial<ClassNameMap<MenuItemClassKey>> | undefined
 }
 
 const MenuItem = (props: ListItemProps) => {

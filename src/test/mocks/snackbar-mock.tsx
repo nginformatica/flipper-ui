@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { IconButton as MuiIconButton } from '@material-ui/core'
 import { Close as IconClose } from '@mui/icons-material'
 import type { SnackBarProps } from '@/core/feedback/snackbar'
 import SnackBar from '@/core/feedback/snackbar'
 import Button from '@/core/inputs/button'
+import IconButton from '@/core/inputs/icon-button'
 
 interface IProps {
     withAction?: boolean
@@ -17,14 +17,14 @@ const Action = ({
     snackProps: IProps['snackProps']
     handleClose: () => void
 }) => (
-    <MuiIconButton
+    <IconButton
         key='close'
         role='close-icon-button'
         aria-label='Close'
         color='inherit'
         onClick={snackProps?.onClose || handleClose}>
         <IconClose />
-    </MuiIconButton>
+    </IconButton>
 )
 
 const Default = ({ snackProps, withAction }: IProps) => {

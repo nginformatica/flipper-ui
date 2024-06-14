@@ -3,7 +3,7 @@
 exports[`Divider should match snapshot 1`] = `
 <div>
   <hr
-    class="MuiDivider-root"
+    class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
   />
 </div>
 `;

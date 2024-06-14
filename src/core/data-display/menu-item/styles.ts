@@ -1,4 +1,4 @@
-import { MenuItem as MuiMenuItem } from '@mui/material'
+import MuiMenuItem from '@mui/material/MenuItem'
 import { default as styled } from 'styled-components'
 
 export const MenuItems = styled(MuiMenuItem)`
