@@ -3,7 +3,7 @@
 exports[`Card should match snapshot 1`] = `
 <div>
   <div
-    class="MuiPaper-root showable MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 showable css-1ps6pg7-MuiPaper-root"
     data-testid="card"
     name="test"
     role="mui-paper-container"
@@ -19,58 +19,50 @@ exports[`Card should match snapshot 1`] = `
         title
       </h6>
       <button
-        class="MuiButtonBase-root MuiIconButton-root sc-dcJtft kUpVZv"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium sc-dcJtft kUpVZv css-78trlr-MuiButtonBase-root-MuiIconButton-root"
         data-testid="remove-button"
         name="remove-test"
         style="margin: -10px 20px; padding: 0px;"
         tabindex="0"
         type="button"
       >
-        <span
-          class="MuiIconButton-label"
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          color="#D84315"
+          data-testid="DeleteIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            color="#D84315"
-            data-testid="DeleteIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
-            />
-          </svg>
-        </span>
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+          />
+        </svg>
         <span
-          class="MuiTouchRipple-root"
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiIconButton-root sc-dcJtft kUpVZv"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium sc-dcJtft kUpVZv css-78trlr-MuiButtonBase-root-MuiIconButton-root"
         data-testid="edit-button"
         name="cancel-test"
         style="margin: -10px; padding: 0px;"
         tabindex="0"
         type="button"
       >
-        <span
-          class="MuiIconButton-label"
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="CloseIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-testid="CloseIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-            />
-          </svg>
-        </span>
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
         <span
-          class="MuiTouchRipple-root"
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
       </button>
     </div>

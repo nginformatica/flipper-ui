@@ -3,18 +3,17 @@
 exports[`ExpansionPanel should match snapshot 1`] = `
 <div>
   <div
-    class="MuiPaper-root MuiAccordion-root Mui-expanded MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded Mui-expanded MuiAccordion-gutters css-1086bdv-MuiPaper-root-MuiAccordion-root"
     role="mui-expansion-panel"
   >
     <div
-      aria-disabled="false"
       aria-expanded="true"
-      class="MuiButtonBase-root MuiAccordionSummary-root Mui-expanded"
+      class="MuiButtonBase-root MuiAccordionSummary-root Mui-expanded MuiAccordionSummary-gutters css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root"
       role="button"
       tabindex="0"
     >
       <div
-        class="MuiAccordionSummary-content Mui-expanded"
+        class="MuiAccordionSummary-content Mui-expanded MuiAccordionSummary-contentGutters css-eqpfi5-MuiAccordionSummary-content"
       >
         <div
           class="sc-iGgVNO iPPrNl"
@@ -24,20 +23,21 @@ exports[`ExpansionPanel should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="MuiCollapse-root MuiCollapse-entered"
+      class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-pwcg7p-MuiCollapse-root"
       style="min-height: 0px;"
     >
       <div
-        class="MuiCollapse-wrapper"
+        class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
       >
         <div
-          class="MuiCollapse-wrapperInner"
+          class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
         >
           <div
+            class="MuiAccordion-region"
             role="region"
           >
             <div
-              class="MuiAccordionActions-root MuiAccordionActions-spacing"
+              class="MuiAccordionActions-root MuiAccordionActions-spacing css-adcfpp-MuiAccordionActions-root"
             >
               <button
                 role="action-button"
