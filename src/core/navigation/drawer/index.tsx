@@ -1,42 +1,27 @@
 import React from 'react'
-import MuiDrawer from '@material-ui/core/Drawer'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
+import MuiDrawer from '@mui/material/Drawer'
 import type { DefaultProps } from '../../types'
-import type { DrawerProps as MuiDrawerProps } from '@material-ui/core/Drawer'
+import type { DrawerProps } from '@mui/material/Drawer'
 
-export interface DrawerProps extends MuiDrawerProps, DefaultProps {
+export interface IDrawerProps extends DrawerProps, DefaultProps {
     top?: number
     width?: number
 }
 
-const getStyles = (top: number, width?: number) =>
-    makeStyles(() =>
-        createStyles({
-            drawer: {
-                top,
-                width
-            },
-            drawerPaper: {
-                top: 'inherit',
-                width: 'inherit',
-                height: `calc(100% - ${top}px)`
-            }
-        })
-    )
-
-const Drawer = (props: DrawerProps) => {
+const Drawer = (props: IDrawerProps) => {
     const { style, margin, padding, top = 0, width, ...otherProps } = props
-    const useStyles = getStyles(top, width)
-    const classes = useStyles()
 
     return (
         <MuiDrawer
             {...otherProps}
-            classes={{
-                root: classes.drawer,
-                paper: classes.drawerPaper
+            PaperProps={{
+                style: {
+                    top: 'inherit',
+                    width: 'inherit',
+                    height: `calc(100% - ${top}px)`
+                }
             }}
-            style={{ margin, padding, ...style }}>
+            style={{ margin, padding, top, width, ...style }}>
             {props.children}
         </MuiDrawer>
     )
