@@ -1,7 +1,7 @@
 import React from 'react'
 import MuiSlider from '@mui/material/Slider'
 import { makeStyles } from '@mui/styles'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { SliderProps } from '@mui/material/Slider'
 import { theme } from '@/theme'
 

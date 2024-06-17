@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Clear } from '@mui/icons-material'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { SelectProps as MuiSelectProps } from '@material-ui/core'
 
 export interface SelectProps

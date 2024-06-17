@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import Typography from '@/core/data-display/typography'
 import { Container, Line } from './styles'
 

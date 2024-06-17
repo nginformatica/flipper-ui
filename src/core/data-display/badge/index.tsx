@@ -1,6 +1,6 @@
 import React from 'react'
 import MuiBadge from '@mui/material/Badge'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { BadgeProps } from '@mui/material/Badge'
 
 export interface IBadge extends DefaultProps, BadgeProps {

@@ -7,7 +7,7 @@ import {
     KeyboardDateTimePicker,
     MuiPickersUtilsProvider
 } from '@material-ui/pickers'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import type { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import type { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'

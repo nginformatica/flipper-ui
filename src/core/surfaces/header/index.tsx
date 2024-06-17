@@ -1,7 +1,7 @@
 import React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { AppBarProps } from '@mui/material/AppBar'
 
 export interface HeaderProps extends DefaultProps, AppBarProps {

@@ -10,7 +10,7 @@ import {
 import { amber, blue, green, red } from '@mui/material/colors'
 import MuiSnackbar from '@mui/material/Snackbar'
 import MuiSnackbarContent from '@mui/material/SnackbarContent'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { TransitionProps } from '@mui/material/transitions'
 import IconButton from '@/core/inputs/icon-button'
 

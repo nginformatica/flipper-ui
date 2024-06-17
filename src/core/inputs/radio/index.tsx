@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ChangeEvent } from 'react'
 import MuiRadio from '@mui/material/Radio'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { RadioProps } from '@mui/material/Radio'
 
 export interface IRadioProps extends DefaultProps, RadioProps {

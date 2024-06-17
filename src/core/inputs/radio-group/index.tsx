@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormLabel from '@mui/material/FormLabel'
 import Radio from '@mui/material/Radio'
 import MuiRadioGroup from '@mui/material/RadioGroup'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface RadioGroupProps extends DefaultProps {
     row?: boolean

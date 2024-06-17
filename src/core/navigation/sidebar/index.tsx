@@ -4,8 +4,8 @@ import {
     KeyboardArrowRight as IconArrowRight
 } from '@mui/icons-material'
 import Drawer from '@mui/material/Drawer'
+import type { DefaultProps } from '../../types'
 import type { IButtonProps } from '@/core/inputs/button'
-import type { DefaultProps } from '@/core/types'
 import { Action, AnchorButton } from './styles'
 
 export interface SidebarProps extends DefaultProps {

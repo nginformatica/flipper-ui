@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactElement } from 'react'
 import MuiGrow from '@mui/material/Grow'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface GrowProps extends DefaultProps {
     in: boolean
@@ -17,7 +17,7 @@ const Grow = ({
     ...otherProps
 }: GrowProps) => (
     <MuiGrow style={{ padding, margin, ...style }} {...otherProps}>
-        {children}
+        <div>{children}</div>
     </MuiGrow>
 )
 

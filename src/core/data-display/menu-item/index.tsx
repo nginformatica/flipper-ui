@@ -1,6 +1,6 @@
 import React from 'react'
 import type { MouseEvent, MutableRefObject, ReactNode } from 'react'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import { MenuItems } from './styles'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {

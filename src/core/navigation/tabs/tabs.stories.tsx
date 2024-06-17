@@ -13,11 +13,9 @@ const Template: StoryFn<typeof Tabs> = args => <Tabs {...args} />
 export const Default = Template.bind({})
 Default.args = {
     value: 0,
-    children: (
-        <>
-            <Tab label='Profile' />
-            <Tab label='Enterprise' />
-            <Tab label='Billing' />
-        </>
-    )
+    children: [
+        <Tab label='Profile' key='1' />,
+        <Tab label='Enterprise' key='2' />,
+        <Tab label='Billing' key='3' />
+    ]
 }

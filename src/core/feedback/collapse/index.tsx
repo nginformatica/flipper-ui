@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactNode } from 'react'
 import MuiCollapse from '@mui/material/Collapse'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface CollapseProps extends DefaultProps {
     in: boolean
@@ -18,7 +18,7 @@ const Collapse = ({
     ...otherProps
 }: CollapseProps) => (
     <MuiCollapse style={{ padding, margin, ...style }} {...otherProps}>
-        {children}
+        <div>{children}</div>
     </MuiCollapse>
 )
 

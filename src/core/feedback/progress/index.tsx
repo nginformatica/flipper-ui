@@ -2,7 +2,7 @@ import React from 'react'
 import MuiCircularProgress from '@mui/material/CircularProgress'
 import MuiLinearProgress from '@mui/material/LinearProgress'
 import { makeStyles } from '@mui/styles'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 
 export interface ILinear {
     color?:

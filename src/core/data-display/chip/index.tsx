@@ -2,7 +2,7 @@ import React from 'react'
 import type { MouseEventHandler, ReactElement, ReactNode } from 'react'
 import MuiChip from '@mui/material/Chip'
 import { makeStyles } from '@mui/styles'
-import type { DefaultProps } from '@/core/types'
+import type { DefaultProps } from '../../types'
 import type { ChipProps } from '@mui/material/Chip'
 
 export interface IChipProps extends ChipProps, Omit<DefaultProps, 'children'> {
