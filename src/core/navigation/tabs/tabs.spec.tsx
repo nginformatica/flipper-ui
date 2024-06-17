@@ -12,11 +12,11 @@ describe('Tabs', () => {
             </Tabs>
         )
 
-        const tabActive = screen.getByText('Profile').parentElement
-        const tabInactive = screen.getByText('Enterprise').parentElement
+        const tabActive = screen.getByText('Profile')
+        const tabInactive = screen.getByText('Enterprise')
 
-        expect(tabActive?.classList).toContain('Mui-selected')
-        expect(tabInactive?.classList).not.toContain('Mui-selected')
+        expect(tabActive.className).toContain('Mui-selected')
+        expect(tabInactive.className).not.toContain('Mui-selected')
     })
 
     it('should render with custom styles', () => {

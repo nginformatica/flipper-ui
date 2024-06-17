@@ -9,10 +9,12 @@ describe('Fade', () => {
                 <span>Fade Text</span>
             </Fade>
         )
-        const element = screen.getByText('Fade Text')
 
-        expect(element).toHaveProperty('style.visibility', 'hidden')
-        expect(element).toHaveProperty('style.opacity', '0')
+        const element = screen.getByText('Fade Text')
+        const parentDiv = element.parentElement
+
+        expect(parentDiv).toHaveProperty('style.visibility', 'hidden')
+        expect(parentDiv).toHaveProperty('style.opacity', '0')
     })
 
     it('should render opened', () => {
@@ -23,9 +25,10 @@ describe('Fade', () => {
         )
 
         const element = screen.getByText('Fade Text')
+        const parentDiv = element.parentElement
 
-        expect(element).not.toHaveProperty('style.visibility', 'hidden')
-        expect(element).toHaveProperty('style.opacity', '1')
+        expect(parentDiv).not.toHaveProperty('style.visibility', 'hidden')
+        expect(parentDiv).toHaveProperty('style.opacity', '1')
     })
 
     it('should match snapshot', () => {

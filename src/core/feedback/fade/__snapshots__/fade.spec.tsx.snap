@@ -2,20 +2,24 @@
 
 exports[`Fade should match snapshot 1`] = `
 <div>
-  <span
+  <div
     style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
   >
-    Fade Text
-  </span>
+    <span>
+      Fade Text
+    </span>
+  </div>
 </div>
 `;
 
 exports[`Fade should match snapshot 2`] = `
 <div>
-  <span
+  <div
     style="opacity: 0; visibility: hidden;"
   >
-    Fade Text
-  </span>
+    <span>
+      Fade Text
+    </span>
+  </div>
 </div>
 `;

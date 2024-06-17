@@ -36,7 +36,7 @@ const Slider = ({
     padding,
     margin,
     size,
-    color = 'primary',
+    color,
     style = {},
     defaultValue,
     ...otherProps
@@ -46,11 +46,11 @@ const Slider = ({
     return (
         <MuiSlider
             {...otherProps}
-            size={size || 'small'}
             color={color}
-            classes={{ valueLabel: classes.valueLabel }}
+            size={size || 'small'}
             defaultValue={defaultValue}
             style={{ padding, margin, ...style }}
+            classes={{ valueLabel: classes.valueLabel }}
         />
     )
 }

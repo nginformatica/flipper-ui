@@ -13,7 +13,9 @@ exports[`Collapse should match snapshot 1`] = `
       <div
         class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
       >
-        I am open for discussions
+        <div>
+          I am open for discussions
+        </div>
       </div>
     </div>
   </div>

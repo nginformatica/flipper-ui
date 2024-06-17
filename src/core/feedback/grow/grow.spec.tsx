@@ -10,9 +10,10 @@ describe('Grow', () => {
             </Grow>
         )
         const element = screen.getByText('Grow Text')
+        const parentDiv = element.parentElement
 
-        expect(element).toHaveProperty('style.visibility', 'hidden')
-        expect(element).toHaveProperty('style.opacity', '0')
+        expect(parentDiv).toHaveProperty('style.visibility', 'hidden')
+        expect(parentDiv).toHaveProperty('style.opacity', '0')
     })
 
     it('should render opened', () => {
@@ -23,9 +24,10 @@ describe('Grow', () => {
         )
 
         const element = screen.getByText('Grow Text')
+        const parentDiv = element.parentElement
 
-        expect(element).not.toHaveProperty('style.visibility', 'hidden')
-        expect(element).toHaveProperty('style.opacity', '1')
+        expect(parentDiv).not.toHaveProperty('style.visibility', 'hidden')
+        expect(parentDiv).toHaveProperty('style.opacity', '1')
     })
 
     it('should match snapshot', () => {

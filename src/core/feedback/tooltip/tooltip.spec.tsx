@@ -1,11 +1,10 @@
-import React from 'react'
-import { act } from 'react-dom/test-utils'
+import React, { act } from 'react'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import Tooltip from '.'
 
 describe('Tooltip', () => {
-    it('should render a Tooltip', async () => {
+    it('should render', async () => {
         render(
             <Tooltip enterDelay={1} title='Tooltip Message'>
                 <button>Tooltip</button>

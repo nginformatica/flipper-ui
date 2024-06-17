@@ -6,7 +6,7 @@ exports[`StepCard should match snapshot 1`] = `
     class="sc-aYaIB hvFdbM"
   >
     <div
-      class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1086bdv-MuiPaper-root-MuiAccordion-root"
     >
       <div
         class="sc-eqUzNf jwXvAb"
@@ -47,15 +47,14 @@ exports[`StepCard should match snapshot 1`] = `
             justifycontent="end"
           >
             <div
-              aria-disabled="false"
               aria-expanded="false"
-              class="MuiButtonBase-root MuiAccordionSummary-root"
+              class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root"
               role="button"
               style="text-align: center;"
               tabindex="0"
             >
               <div
-                class="MuiAccordionSummary-content"
+                class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-eqpfi5-MuiAccordionSummary-content"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-h6"
@@ -64,28 +63,19 @@ exports[`StepCard should match snapshot 1`] = `
                 </h6>
               </div>
               <div
-                aria-disabled="false"
-                aria-hidden="true"
-                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+                class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
               >
-                <span
-                  class="MuiIconButton-label"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
-                    data-testid="ExpandMoreIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                    />
-                  </svg>
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
               </div>
             </div>
           </div>
@@ -94,40 +84,37 @@ exports[`StepCard should match snapshot 1`] = `
           class="sc-gEvDqW eCImaH"
           minheight="15px"
         >
-          <div
-            class="sc-kAycRU chAgTo MuiBox-root css-0"
+          <span
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="50"
+            class="MuiLinearProgress-root MuiLinearProgress-colorSuccess MuiLinearProgress-determinate css-1hxt08m-MuiLinearProgress-root"
+            role="progressbar"
+            style="height: 16px; width: 100%; background-color: rgb(189, 189, 189);"
           >
-            <div
-              aria-valuemax="100"
-              aria-valuemin="0"
-              aria-valuenow="50"
-              class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
-              role="progressbar"
-              style="height: 16px; background-color: rgb(189, 189, 189);"
-            >
-              <div
-                class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary barColorPrimary MuiLinearProgress-bar1Determinate"
-                style="transform: translateX(-50%);"
-              />
-            </div>
-          </div>
+            <span
+              class="MuiLinearProgress-bar MuiLinearProgress-barColorSuccess MuiLinearProgress-bar1Determinate css-h8g9t7-MuiLinearProgress-bar1"
+              style="transform: translateX(-50%);"
+            />
+          </span>
         </div>
       </div>
       <div
-        class="MuiCollapse-root MuiCollapse-hidden"
+        class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
         style="min-height: 0px;"
       >
         <div
-          class="MuiCollapse-wrapper"
+          class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
         >
           <div
-            class="MuiCollapse-wrapperInner"
+            class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
           >
             <div
+              class="MuiAccordion-region"
               role="region"
             >
               <div
-                class="MuiAccordionDetails-root"
+                class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
                 style="display: flex; justify-content: space-between;"
               >
                 <div

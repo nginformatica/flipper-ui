@@ -156,9 +156,9 @@ describe('StepCard', () => {
 
         const progressBar = screen.getByTestId('normal-progress')
 
-        expect(
-            progressBar.lastElementChild?.firstElementChild?.classList
-        ).toContain('MuiLinearProgress-root')
+        expect(progressBar.lastElementChild?.className).toContain(
+            'MuiLinearProgress-root'
+        )
     })
 
     it('should render step 100% completed', () => {
