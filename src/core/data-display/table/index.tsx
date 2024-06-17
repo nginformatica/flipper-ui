@@ -1,15 +1,13 @@
 import React from 'react'
-import MuiTable from '@material-ui/core/Table'
+import MuiTable from '@mui/material/Table'
 import type { DefaultProps } from '../../types'
-import type { TableProps as MuiTableProps } from '@material-ui/core/Table'
+import type { TableProps } from '@mui/material/Table'
 import { theme } from '@/theme'
 
 const { grays } = theme.colors
 
-export interface TableProps
-    extends DefaultProps,
-        Omit<MuiTableProps, 'padding'> {
-    spacing?: MuiTableProps['padding']
+export interface ITableProps extends DefaultProps, Omit<TableProps, 'padding'> {
+    spacing?: 'normal' | 'checkbox' | 'none'
 }
 
 const Table = ({
@@ -19,7 +17,7 @@ const Table = ({
     spacing,
     children,
     ...otherProps
-}: MuiTableProps & TableProps) => (
+}: ITableProps) => (
     <MuiTable
         {...otherProps}
         padding={spacing}
