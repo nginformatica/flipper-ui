@@ -1,10 +1,10 @@
 import React from 'react'
 import type { MouseEvent, ReactElement } from 'react'
-import { Fab as MuiFab } from '@material-ui/core'
+import MuiFab from '@mui/material/Fab'
 import type { DefaultProps } from '../../types'
-import type { FabProps as MuiFabProps } from '@material-ui/core'
+import type { FabProps } from '@mui/material/Fab'
 
-export interface FabProps extends DefaultProps, MuiFabProps {
+export interface IFabProps extends DefaultProps, FabProps {
     onClick?: (event?: MouseEvent<HTMLElement>) => void
     children: ReactElement<Record<string, unknown>>
 }
@@ -15,7 +15,7 @@ const Fab = ({
     padding,
     style = {},
     ...otherProps
-}: FabProps) => (
+}: IFabProps) => (
     <MuiFab {...otherProps} style={{ margin, padding, ...style }}>
         {children}
     </MuiFab>
