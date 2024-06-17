@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import MuiAccordion from '@material-ui/core/Accordion'
-import { Box, Skeleton } from '@mui/material'
+import MuiAccordion from '@mui/material/Accordion'
+import Skeleton from '@mui/material/Skeleton'
 import {
     Container,
     NormalProgressContainer,
@@ -54,13 +54,15 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                             <TitleContainer>
                                 <Skeleton
                                     variant='text'
-                                    style={{ minWidth: '400px' }}
+                                    style={{ minWidth: '300px' }}
                                     height={40}
                                 />
                                 {subTitleSkeleton && (
                                     <Skeleton
                                         variant='text'
-                                        style={{ minWidth: '400px' }}
+                                        style={{
+                                            minWidth: '300px'
+                                        }}
                                         height={40}
                                     />
                                 )}
@@ -70,7 +72,7 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                             {expandable ? (
                                 <Skeleton
                                     variant='text'
-                                    style={{ minWidth: '400px' }}
+                                    style={{ minWidth: '300px' }}
                                     height={40}
                                 />
                             ) : (
@@ -78,23 +80,22 @@ const StepCardSkeleton = (props: IStepCardPanelProps) => {
                                     <Skeleton
                                         variant='text'
                                         height={40}
-                                        style={{
-                                            minWidth: '100px',
-                                            margin: '4px 0px'
-                                        }}
+                                        style={{ minWidth: '200px' }}
                                     />
-                                    <Box style={{ width: '100%' }}>
-                                        <Skeleton variant='text' />
-                                    </Box>
+                                    <Skeleton
+                                        variant='text'
+                                        style={{ width: '100%' }}
+                                    />
                                 </NormalProgressContainer>
                             )}
                         </StepCardColumn>
                     </StepCardRow>
                     {showBottomPercentage && (
                         <StepCardRow minHeight='15px' fullWidth={fullWidth}>
-                            <Box style={{ width: '100%' }}>
-                                <Skeleton variant='text' />
-                            </Box>
+                            <Skeleton
+                                variant='text'
+                                style={{ width: '100%' }}
+                            />
                         </StepCardRow>
                     )}
                 </StepContainer>

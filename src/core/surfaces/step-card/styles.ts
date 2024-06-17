@@ -1,8 +1,4 @@
-import { Box } from '@mui/material'
 import { default as styled } from 'styled-components'
-import { theme } from '@/theme'
-
-const { feedback } = theme.colors
 
 interface IStepContainerProps {
     padding?: string | number
@@ -92,17 +88,12 @@ export const NormalProgressContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-
-    h6:first-child {
-        margin-bottom: 8px;
-    }
 `
 
-export const BarWrapper = styled(Box)`
+export const NormalProgressContent = styled.div`
     width: 100%;
-
-    & .barColorPrimary {
-        background-color: ${feedback.success};
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
 `

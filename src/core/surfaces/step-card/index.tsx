@@ -1,11 +1,14 @@
 import React from 'react'
-import type { CSSProperties, ChangeEvent, HTMLAttributes } from 'react'
-import { Accordion as MuiAccordion } from '@material-ui/core'
-import type Typography from '@/core/data-display/typography'
 import type {
-    LinearProgress,
-    AccordionDetails as MuiAccordionDetails
-} from '@material-ui/core'
+    CSSProperties,
+    ChangeEvent,
+    HTMLAttributes,
+    SyntheticEvent
+} from 'react'
+import MuiAccordion from '@mui/material/Accordion'
+import type Typography from '@/core/data-display/typography'
+import type { LinearProgress } from '@mui/material'
+import type MuiAccordionDetails from '@mui/material/Accordion'
 import { StepCardDetails } from './step-card-details'
 import { StepCardPanel } from './step-card-panel'
 import StepCardSkeleton from './step-card-skeleton'
@@ -14,8 +17,10 @@ import { Container } from './styles'
 export interface IStepCardProps {
     expanded?: boolean
     onChange?: (
-        event: ChangeEvent<Record<string, unknown>>,
-        expanded: boolean
+        event?:
+            | ChangeEvent<Record<string, unknown>>
+            | SyntheticEvent<Element, Event>,
+        expanded?: boolean
     ) => void
     fullWidth?: boolean
     loading?: boolean
