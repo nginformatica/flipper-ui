@@ -1,13 +1,16 @@
 import React from 'react'
-import { Tab as MuiTab } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import MuiTab from '@mui/material/Tab'
+import type { DefaultProps } from '../../types'
+import type { TabOwnProps } from '@mui/material/Tab'
 
-interface TabProps extends DefaultProps {
-    disabled?: boolean
-    icon?: string | JSX.Element
+interface TabProps extends Omit<DefaultProps, 'children'>, TabOwnProps {
+    href?: string
     label?: string
     value?: unknown
+    minWidth?: string
+    disabled?: boolean
     disableRipple?: boolean
+    icon?: string | JSX.Element
 }
 
 const Tab = ({
@@ -15,11 +18,19 @@ const Tab = ({
     margin,
     disableRipple,
     padding,
+    minWidth = '160px',
+    href = '',
     ...otherProps
 }: TabProps) => (
     <MuiTab
+        href={href}
         disableRipple={disableRipple}
-        style={{ margin, padding, ...style }}
+        style={{
+            margin,
+            padding,
+            minWidth: minWidth,
+            ...style
+        }}
         {...otherProps}
     />
 )

@@ -1,44 +1,34 @@
-import type { ReactNode } from 'react'
 import React from 'react'
-import { Tabs as MuiTabs } from '@material-ui/core'
-import type { DefaultProps } from '@/core/types'
+import type { ReactNode } from 'react'
+import MuiTabs from '@mui/material/Tabs'
+import type { DefaultProps } from '../../types'
 
 export interface TabsProps extends DefaultProps {
     centered?: boolean
-    value: string | number
-    color?: 'default' | 'inherit' | 'primary' | 'secondary'
-    variant?: 'standard' | 'scrollable' | 'fullWidth'
     children?: ReactNode
+    value: string | number
     indicatorColor?: 'primary' | 'secondary'
+    textColor?: 'secondary' | 'primary' | 'inherit'
+    variant?: 'standard' | 'scrollable' | 'fullWidth'
     onChange?: (event: object, value: number) => void
-}
-
-export interface IClasses {
-    classes?: {
-        default: string
-        inherit: string
-        primary: string
-        secondary: string
-        indicator: string
-    }
 }
 
 const Tabs = ({
     children,
-    centered = true,
-    padding = '6px 0 0',
     style,
     margin,
+    centered = true,
+    padding = '6px 0 0',
     variant = 'standard',
     indicatorColor = 'primary',
     ...otherProps
-}: TabsProps & IClasses) => {
+}: TabsProps) => {
     return (
         <MuiTabs
-            indicatorColor={indicatorColor}
-            centered={centered}
             {...otherProps}
             variant={variant}
+            centered={centered}
+            indicatorColor={indicatorColor}
             style={{ padding, margin, ...style }}>
             {children}
         </MuiTabs>
