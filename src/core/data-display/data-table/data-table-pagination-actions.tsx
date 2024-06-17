@@ -6,7 +6,7 @@ import {
     KeyboardArrowLeft,
     KeyboardArrowRight
 } from '@mui/icons-material'
-import IconButton from '@/core/inputs/icon-button'
+import MuiIconButton from '@mui/material/IconButton'
 import { PaginationWrapper } from './styles'
 
 interface DataTablePaginationActionsProps {
@@ -63,32 +63,32 @@ export const makeDataTablePaginationActions =
         return (
             <PaginationWrapper>
                 {showFirstButton && (
-                    <IconButton
+                    <MuiIconButton
                         disabled={page === 0 || clickable}
                         aria-label='first page'
                         onClick={handleFirstPageButtonClick}>
                         <FirstPage />
-                    </IconButton>
+                    </MuiIconButton>
                 )}
-                <IconButton
+                <MuiIconButton
                     disabled={page === 0 || clickable}
                     aria-label='previous page'
                     onClick={handleBackButtonClick}>
                     <KeyboardArrowLeft />
-                </IconButton>
-                <IconButton
+                </MuiIconButton>
+                <MuiIconButton
                     disabled={page >= totalPages || clickable}
                     aria-label='next page'
                     onClick={handleNextButtonClick}>
                     <KeyboardArrowRight />
-                </IconButton>
+                </MuiIconButton>
                 {showLastButton && (
-                    <IconButton
+                    <MuiIconButton
                         disabled={page >= totalPages || clickable}
                         aria-label='last page'
                         onClick={handleLastPageButtonClick}>
                         <LastPage />
-                    </IconButton>
+                    </MuiIconButton>
                 )}
             </PaginationWrapper>
         )

@@ -7,16 +7,16 @@ import type {
     Dispatch,
     SetStateAction
 } from 'react'
-import { Checkbox } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableFooter from '@material-ui/core/TableFooter'
-import TableHead from '@material-ui/core/TableHead'
-import TablePagination from '@material-ui/core/TablePagination'
-import TableRow from '@material-ui/core/TableRow'
+import MuiCheckbox from '@mui/material/Checkbox'
+import MuiPaper from '@mui/material/Paper'
+import MuiTable from '@mui/material/Table'
+import MuiTableBody from '@mui/material/TableBody'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableContainer from '@mui/material/TableContainer'
+import MuiTableFooter from '@mui/material/TableFooter'
+import MuiTableHead from '@mui/material/TableHead'
+import MuiTablePagination from '@mui/material/TablePagination'
+import MuiTableRow from '@mui/material/TableRow'
 import { last } from 'ramda'
 import type {
     ColumnSpec,
@@ -221,15 +221,14 @@ export const DataTable = <D extends Data, V extends StackView>(
                 const mode = rowState?.mode || primaryView
 
                 return (
-                    <TableRow
+                    <MuiTableRow
                         key={row.id}
                         data-id={row.id}
                         style={bodyRowStyle}
                         onClick={event => onRowClick?.(event, row)}>
                         {checkbox && (
-                            <TableCell padding='checkbox'>
-                                <Checkbox
-                                    color='primary'
+                            <MuiTableCell padding='checkbox'>
+                                <MuiCheckbox
                                     checked={
                                         checkboxProps?.checkRow?.[index] !==
                                         undefined
@@ -249,7 +248,7 @@ export const DataTable = <D extends Data, V extends StackView>(
                                         }
                                     }}
                                 />
-                            </TableCell>
+                            </MuiTableCell>
                         )}
                         {view ? (
                             view({ data: row })
@@ -263,7 +262,7 @@ export const DataTable = <D extends Data, V extends StackView>(
                                 onUpdate={setEditableRowState(row.id)}
                             />
                         )}
-                    </TableRow>
+                    </MuiTableRow>
                 )
             }),
         [
@@ -284,13 +283,13 @@ export const DataTable = <D extends Data, V extends StackView>(
     const columnsList = useMemo(
         () =>
             columns.map(column => (
-                <TableCell
+                <MuiTableCell
                     key={column.title}
                     variant='head'
                     style={column.headerStyle}
                     align={column.align}>
                     {column.title}
-                </TableCell>
+                </MuiTableCell>
             )),
         [columns]
     )
@@ -302,8 +301,8 @@ export const DataTable = <D extends Data, V extends StackView>(
         : rowsPerPage - currentRowsNumber
 
     const hiddenRowFiller = hiddenRowsNumber !== 0 && (
-        <TableRow style={bodyRowStyle}>
-            <TableCell
+        <MuiTableRow style={bodyRowStyle}>
+            <MuiTableCell
                 colSpan={columns.length}
                 padding='none'
                 style={{
@@ -312,7 +311,7 @@ export const DataTable = <D extends Data, V extends StackView>(
                         `${hiddenRowHeight * hiddenRowsNumber}px`
                 }}
             />
-        </TableRow>
+        </MuiTableRow>
     )
 
     const rowsElements = (
@@ -342,15 +341,14 @@ export const DataTable = <D extends Data, V extends StackView>(
         rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage)
 
     return (
-        <TableContainer role='data-table-container' component={Paper}>
-            <Table size={size}>
+        <MuiTableContainer role='data-table-container' component={MuiPaper}>
+            <MuiTable size={size}>
                 {!noHeader && (
-                    <TableHead style={headStyle}>
-                        <TableRow style={headRowStyle}>
+                    <MuiTableHead style={headStyle}>
+                        <MuiTableRow style={headRowStyle}>
                             {checkbox && (
-                                <TableCell padding='checkbox'>
-                                    <Checkbox
-                                        color='primary'
+                                <MuiTableCell padding='checkbox'>
+                                    <MuiCheckbox
                                         checked={
                                             checkboxProps?.checkAllRows !==
                                             undefined
@@ -369,28 +367,28 @@ export const DataTable = <D extends Data, V extends StackView>(
                                             }
                                         }}
                                     />
-                                </TableCell>
+                                </MuiTableCell>
                             )}
                             {columnsList}
-                        </TableRow>
-                    </TableHead>
+                        </MuiTableRow>
+                    </MuiTableHead>
                 )}
-                <TableBody style={bodyStyle}>
+                <MuiTableBody style={bodyStyle}>
                     {currentRowsNumber === 0 ? componentForEmpty : rowsElements}
                     {hiddenRowFiller}
                     {renderEmptyRows && emptyRows > 0 && (
-                        <TableRow
+                        <MuiTableRow
                             style={{
                                 height: (size === 'small' ? 33 : 53) * emptyRows
                             }}>
-                            <TableCell colSpan={columns.length} />
-                        </TableRow>
+                            <MuiTableCell colSpan={columns.length} />
+                        </MuiTableRow>
                     )}
-                </TableBody>
+                </MuiTableBody>
                 {!pagination.disabled && (
-                    <TableFooter>
-                        <TableRow>
-                            <TablePagination
+                    <MuiTableFooter>
+                        <MuiTableRow>
+                            <MuiTablePagination
                                 count={data.length}
                                 page={page}
                                 rowsPerPageOptions={
@@ -421,11 +419,11 @@ export const DataTable = <D extends Data, V extends StackView>(
                                     setPage(0)
                                 }}
                             />
-                        </TableRow>
-                    </TableFooter>
+                        </MuiTableRow>
+                    </MuiTableFooter>
                 )}
-            </Table>
-        </TableContainer>
+            </MuiTable>
+        </MuiTableContainer>
     )
 }
 

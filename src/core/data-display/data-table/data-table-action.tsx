@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import IconButton from '@mui/material/IconButton'
+import MuiIconButton from '@mui/material/IconButton'
 
 export type DataTableActionProps = {
     label: string
@@ -15,7 +15,11 @@ export const DataTableAction = ({
     color = 'default',
     onClick
 }: DataTableActionProps) => (
-    <IconButton size='small' color={color} aria-label={label} onClick={onClick}>
+    <MuiIconButton
+        size='small'
+        color={color}
+        aria-label={label}
+        onClick={onClick}>
         {children}
-    </IconButton>
+    </MuiIconButton>
 )
