@@ -1,5 +1,7 @@
 import React, { cloneElement } from 'react'
-import { Step, StepLabel, Stepper as MuiStepper } from '@material-ui/core'
+import MuiStep from '@mui/material/Step'
+import MuiStepLabel from '@mui/material/StepLabel'
+import MuiStepper from '@mui/material/Stepper'
 import type { DefaultProps } from '../../types'
 
 export interface StepperProps extends DefaultProps {
@@ -49,8 +51,8 @@ const Stepper = ({
         style={{ padding, margin, ...style }}
         {...otherProps}>
         {steps.map((step, index) => (
-            <Step key={index}>
-                <StepLabel
+            <MuiStep key={index}>
+                <MuiStepLabel
                     icon={
                         typeof step === 'object' ? (
                             <StepIcon
@@ -62,8 +64,8 @@ const Stepper = ({
                         )
                     }>
                     {typeof step === 'object' ? step.label : step}
-                </StepLabel>
-            </Step>
+                </MuiStepLabel>
+            </MuiStep>
         ))}
     </MuiStepper>
 )
