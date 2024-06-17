@@ -26,15 +26,6 @@ export interface ISelectProps
     ) => void
 }
 
-const useStyles = makeStyles((hasClear?: boolean) => ({
-    select: {
-        padding: `8px 24px 8px ${hasClear ? '18' : '10'}px`
-    },
-    iconOutlined: hasClear
-        ? { right: '2px', position: 'relative', marginLeft: '-22px' }
-        : { right: '2px' }
-}))
-
 const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end'>
         <IconButton
@@ -57,7 +48,16 @@ const Select = ({
     variant = 'outlined',
     ...otherProps
 }: ISelectProps) => {
-    const classes = useStyles({ hasClear })
+    const useStyles = makeStyles(() => ({
+        select: {
+            padding: `8px 24px 8px ${hasClear ? '18' : '10'}px`
+        },
+        iconOutlined: hasClear
+            ? { right: '2px', position: 'relative', marginLeft: '-22px' }
+            : { right: '2px' }
+    }))
+
+    const classes = useStyles()
 
     const handleChange = (
         event:
