@@ -10,7 +10,7 @@ exports[`Select should match snapshot 1`] = `
       aria-controls=":r4:"
       aria-expanded="false"
       aria-haspopup="listbox"
-      class="MuiSelect-select makeStyles-select-9 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+      class="MuiSelect-select makeStyles-select-13 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
       role="combobox"
       tabindex="0"
     >
@@ -26,7 +26,7 @@ exports[`Select should match snapshot 1`] = `
     />
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon makeStyles-iconOutlined-10 MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon makeStyles-iconOutlined-14 MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
       data-testid="ArrowDropDownIcon"
       focusable="false"
       viewBox="0 0 24 24"

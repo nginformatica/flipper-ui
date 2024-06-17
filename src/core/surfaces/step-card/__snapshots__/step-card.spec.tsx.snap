@@ -122,7 +122,7 @@ exports[`StepCard should match snapshot 1`] = `
                   justifycontent="start"
                 >
                   <ul
-                    class="MuiList-root MuiList-padding"
+                    class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
                   >
                     <li
                       class="sc-dcJtft jbcafN"
