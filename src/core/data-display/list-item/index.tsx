@@ -1,16 +1,13 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
-import {
-    ListItem as MuiListItem,
-    ListItemAvatar as MuiListItemAvatar,
-    ListItemIcon as MuiListItemIcon,
-    ListItemSecondaryAction as MuiListItemSecondaryAction,
-    ListItemText as MuiListItemText,
-    MenuItem
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import MuiListItemAvatar from '@mui/material/ListItemAvatar'
+import MuiListItemButton from '@mui/material/ListItemButton'
+import MuiListItemIcon from '@mui/material/ListItemIcon'
+import MuiListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
+import MuiListItemText from '@mui/material/ListItemText'
+import MuiMenuItem from '@mui/material/MenuItem'
+import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
-import type { Theme } from '@material-ui/core'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     avatar?: JSX.Element
@@ -24,13 +21,16 @@ export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     onClick?: (event?: MouseEvent) => void
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
-        ...theme.typography.body2,
-        [theme.breakpoints.up('sm')]: {
-            minHeight: '48px'
-        },
-        color: 'inherit'
+        color: 'inherit',
+        minHeight: '48px',
+        '&:hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.06) !important'
+        }
+    },
+    selected: {
+        backgroundColor: 'rgba(0, 0, 0, 0.08) !important'
     },
     default: {
         color: 'inherit'
@@ -77,8 +77,7 @@ const ListItem = (props: ListItemProps) => {
     }
 
     return props.children ? (
-        <MenuItem
-            button
+        <MuiMenuItem
             id={props.id}
             style={{ padding, margin, ...style }}
             className={className}
@@ -88,19 +87,21 @@ const ListItem = (props: ListItemProps) => {
             value={props.value}
             onClick={props.onClick}>
             {props.children}
-        </MenuItem>
+        </MuiMenuItem>
     ) : (
-        <MuiListItem
-            button
+        <MuiListItemButton
             id={props.id}
             style={{ padding, margin, ...style }}
             className={className}
-            classes={{ root: classes.root }}
+            classes={{
+                root: classes.root,
+                selected: classes.selected
+            }}
             selected={props.selected}
             disabled={props.disabled}
             onClick={props.onClick}>
             {renderCustomItem()}
-        </MuiListItem>
+        </MuiListItemButton>
     )
 }
 
