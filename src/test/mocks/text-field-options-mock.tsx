@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
-import type { IOption, TextFieldProps } from '@/core/inputs/text-field'
+import type { IOption, ITextFieldProps } from '@/core/inputs/text-field'
 import TextField from '@/core/inputs/text-field'
 
 interface IProps {
     initialOption?: string
-    inputProps?: TextFieldProps
+    inputProps?: ITextFieldProps
     options?: IOption[] | string
 }
 

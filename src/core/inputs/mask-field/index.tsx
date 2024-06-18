@@ -2,7 +2,7 @@ import React from 'react'
 import type { ComponentType } from 'react'
 import type { NumberFormatProps } from 'react-number-format'
 import NumberFormat from 'react-number-format'
-import type { TextFieldProps } from '@/core/inputs/text-field'
+import type { ITextFieldProps } from '@/core/inputs/text-field'
 import TextField from '@/core/inputs/text-field'
 
 export interface MaskFieldProps extends NumberFormatProps {
@@ -13,7 +13,7 @@ export interface MaskFieldProps extends NumberFormatProps {
     decimalScale?: number
     thousandSeparator?: boolean | string
     fixedDecimalScale?: boolean
-    customInput?: ComponentType<TextFieldProps>
+    customInput?: ComponentType<ITextFieldProps>
 }
 
 const MaskField = (props: MaskFieldProps) => {

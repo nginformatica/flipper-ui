@@ -4,20 +4,22 @@ exports[`DateTime should match snapshot 1`] = `
 <div>
   <div
     class="MuiFormControl-root MuiTextField-root"
+    style="font-size: 14px;"
   >
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+      style="font-size: 14px;"
     >
       <input
         aria-invalid="false"
         autocomplete="off"
-        class="MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-49 MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
         role="date-picker"
         type="text"
         value="18062024"
       />
       <div
-        class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+        class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
         style="width: 32px;"
       >
         <button
@@ -50,11 +52,11 @@ exports[`DateTime should match snapshot 1`] = `
       </div>
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-53 MuiOutlinedInput-notchedOutline"
+        class="PrivateNotchedOutline-root-17 MuiOutlinedInput-notchedOutline"
         style="padding-left: 8px;"
       >
         <legend
-          class="PrivateNotchedOutline-legend-54"
+          class="PrivateNotchedOutline-legend-18"
           style="width: 0.01px;"
         >
           <span>

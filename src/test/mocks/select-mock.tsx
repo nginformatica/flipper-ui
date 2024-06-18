@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
+import MuiMenuItem from '@mui/material/MenuItem'
 import type { ISelectProps } from '@/core/inputs/select'
-import ListItem from '@/core/data-display/list-item'
 import Select from '@/core/inputs/select'
 
 interface IProps {
@@ -29,9 +29,9 @@ const Default = (props: IProps) => {
             data-testid='select-container'
             onClear={props.selectProps?.onClear ?? handleClear}
             onChange={props.selectProps?.onChange ?? handleChange}>
-            <ListItem value='0'>Option 0</ListItem>
-            <ListItem value='1'>Option 1</ListItem>
-            <ListItem value='2'>Option 2</ListItem>
+            <MuiMenuItem value='0'>Option 0</MuiMenuItem>
+            <MuiMenuItem value='1'>Option 1</MuiMenuItem>
+            <MuiMenuItem value='2'>Option 2</MuiMenuItem>
         </Select>
     )
 }

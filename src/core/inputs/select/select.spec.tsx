@@ -12,7 +12,7 @@ describe('Select', () => {
 
         await act(async () => await userEvent.click(container))
 
-        const options = screen.getAllByRole('menuitem')
+        const options = screen.getAllByRole('option')
 
         expect(options.length).toBe(3)
     })

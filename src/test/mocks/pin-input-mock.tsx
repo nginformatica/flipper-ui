@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import type { PinInputGridProps } from '@/core/inputs/pin-input'
-import Button from '@/core/inputs/button'
 import PinInput from '@/core/inputs/pin-input'
 
 const PIN_LENGTH = 6
@@ -47,12 +46,12 @@ const Mock = ({ pinInputProps }: IProps) => {
                 variant='outlined'
                 onPinChanged={onPinChanged}
             />
-            <Button
+            <button
                 onClick={() => {
                     handleValidation()
                 }}>
                 Validate
-            </Button>
+            </button>
         </>
     )
 }

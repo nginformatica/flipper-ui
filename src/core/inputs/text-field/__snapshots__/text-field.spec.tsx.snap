@@ -6,32 +6,37 @@ exports[`TextField should match snapshot 1`] = `
     class="sc-fqkwJk iUjhJF"
   >
     <div
-      class="MuiFormControl-root MuiTextField-root"
+      class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
       title=""
     >
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
-        data-testid="text-field"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root"
       >
         <div
+          aria-controls=":re:"
+          aria-expanded="false"
           aria-haspopup="listbox"
-          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input makeStyles-outlinedInput-112 MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
-          role="button"
+          aria-labelledby=":rd:"
+          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input makeStyles-input-31 MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd css-18dp293-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+          id=":rd:"
+          role="combobox"
           tabindex="0"
         >
           Elm
         </div>
         <input
           aria-hidden="true"
+          aria-invalid="false"
           autocomplete="off"
-          class="MuiSelect-nativeInput"
+          class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
           placeholder="Description"
           tabindex="-1"
           value="elm"
         />
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined makeStyles-iconOutlined-116"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+          data-testid="ArrowDropDownIcon"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -40,45 +45,41 @@ exports[`TextField should match snapshot 1`] = `
           />
         </svg>
         <div
-          class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+          class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-1laqsz7-MuiInputAdornment-root"
         >
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
             role="clear-button"
+            style="margin: 0px 16px 0px 0px;"
             tabindex="0"
             type="button"
           >
-            <span
-              class="MuiIconButton-label"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+              data-testid="ClearIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="ClearIcon"
-                focusable="false"
-                style="font-size: 15px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                />
-              </svg>
-            </span>
+              <path
+                d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
             <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </button>
         </div>
         <fieldset
           aria-hidden="true"
-          class="PrivateNotchedOutline-root-117 MuiOutlinedInput-notchedOutline"
-          style="padding-left: 8px;"
+          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            class="PrivateNotchedOutline-legend-118"
-            style="width: 0.01px;"
+            class="css-ihdtdm"
           >
-            <span>
+            <span
+              class="notranslate"
+            >
               ​
             </span>
           </legend>
