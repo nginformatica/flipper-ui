@@ -37,6 +37,19 @@ const renderEndAdornment = (onClear?: () => void) => (
     </InputAdornment>
 )
 
+const useStyles = makeStyles((hasClear?: boolean) => ({
+    select: {
+        padding: `8px 24px 8px ${hasClear ? '18' : '10'}px`
+    },
+    iconOutlined: hasClear
+        ? {
+              right: '2px',
+              position: 'relative',
+              marginLeft: '-22px'
+          }
+        : { right: '2px' }
+}))
+
 const Select = ({
     children,
     style = {},
@@ -48,16 +61,7 @@ const Select = ({
     variant = 'outlined',
     ...otherProps
 }: ISelectProps) => {
-    const useStyles = makeStyles(() => ({
-        select: {
-            padding: `8px 24px 8px ${hasClear ? '18' : '10'}px`
-        },
-        iconOutlined: hasClear
-            ? { right: '2px', position: 'relative', marginLeft: '-22px' }
-            : { right: '2px' }
-    }))
-
-    const classes = useStyles()
+    const classes = useStyles({ hasClear })
 
     const handleChange = (
         event:

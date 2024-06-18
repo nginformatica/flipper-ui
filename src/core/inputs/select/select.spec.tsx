@@ -2,6 +2,7 @@ import React, { act } from 'react'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import Select from '@/test/mocks/select-mock'
+import MuiSelect from '.'
 
 describe('Select', () => {
     it('should render', async () => {
@@ -66,8 +67,37 @@ describe('Select', () => {
         expect(input.value).toBe('')
     })
 
+    it('should render with clear button and conditional styles', async () => {
+        const { container } = render(
+            <MuiSelect hasClear value='1' onChange={jest.fn()}>
+                <div>Olá</div>
+            </MuiSelect>
+        )
+
+        const icon = container.querySelector('.MuiSvgIcon-root')
+        const select = container.querySelector('.MuiSelect-select')
+
+        if (icon && select) {
+            const classListIcon = Array.from(icon.classList).join(' ')
+            const classListSelect = Array.from(select.classList).join(' ')
+
+            const regexIcon = /makeStyles-iconOutlined-\d+/
+            const regexSelect = /makeStyles-select-\d+/
+
+            const hasMakeStylesClass =
+                regexIcon.test(classListIcon) &&
+                regexSelect.test(classListSelect)
+
+            expect(hasMakeStylesClass).toBe(true)
+        }
+    })
+
     it('should match snapshot', () => {
-        const { container } = render(<Select initialValue='0' />)
+        const { container } = render(
+            <MuiSelect hasClear value='1' onChange={jest.fn()}>
+                <div>Olá</div>
+            </MuiSelect>
+        )
 
         expect(container).toMatchSnapshot()
     })
