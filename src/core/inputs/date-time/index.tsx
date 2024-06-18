@@ -12,7 +12,6 @@ import type { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
 import type { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
 import type { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
 import type { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
-import { useStyles } from '@/core/inputs/text-field'
 
 export interface IProps {
     locale?: DateFnsUtils['locale']
@@ -53,8 +52,6 @@ const DateTime = ({
     type = 'date',
     ...otherProps
 }: DateTimeProps) => {
-    const classes = useStyles()
-
     const fieldProps = {
         ...otherProps,
         format: format ? format : DEFAULT_FORMATS[type],
@@ -75,25 +72,24 @@ const DateTime = ({
             ...otherProps.InputAdornmentProps
         },
         InputLabelProps: {
-            classes: {
-                outlined:
-                    inputVariant === 'outlined' ? classes.outlinedLabel : ''
-            },
             ...otherProps.InputLabelProps
         },
         InputProps: {
-            classes: {
-                input: inputVariant === 'outlined' ? classes.outlinedInput : '',
-                multiline:
-                    inputVariant === 'outlined' ? classes.outlinedMultiline : ''
-            },
+            style: { fontSize: '14px' },
             ...otherProps.InputProps
         }
     }
-    const renderDatePicker = () => <KeyboardDatePicker {...fieldProps} />
-    const renderTimePicker = () => <KeyboardTimePicker {...fieldProps} />
+
+    const renderDatePicker = () => (
+        <KeyboardDatePicker {...fieldProps} size='small' />
+    )
+
+    const renderTimePicker = () => (
+        <KeyboardTimePicker {...fieldProps} size='small' />
+    )
+
     const renderDateTimePicker = () => (
-        <KeyboardDateTimePicker {...fieldProps} />
+        <KeyboardDateTimePicker {...fieldProps} size='small' />
     )
 
     const renderChildren = () => {
