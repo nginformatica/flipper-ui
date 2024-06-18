@@ -4,7 +4,6 @@ exports[`DateTime should match snapshot 1`] = `
 <div>
   <div
     class="MuiFormControl-root MuiTextField-root"
-    style="font-size: 14px;"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"

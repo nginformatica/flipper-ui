@@ -1,17 +1,18 @@
 import React, { useMemo } from 'react'
 import type { ReactNode } from 'react'
-import type { InputLabelProps } from '@material-ui/core'
 import type { ChipRenderer } from 'material-ui-chip-input'
 import { StyledChipInput } from './styles'
 
-export interface ChipFieldProps<T extends TChipValues> {
+export interface ChipFieldProps {
     allowDuplicates?: boolean
-    values: T[]
+    values: {
+        value: string | number
+    }[]
     variant?: 'outlined' | 'standard' | 'filled'
     disabled?: boolean
     fullWidth?: boolean
     fullWidthInput?: boolean
-    InputLabelProps?: InputLabelProps
+    InputLabelProps?: object
     label?: ReactNode
     placeholder?: string
     readOnly?: boolean
@@ -21,11 +22,7 @@ export interface ChipFieldProps<T extends TChipValues> {
     onDelete: (value: string, index?: number) => void
 }
 
-export type TChipValues = {
-    value: string | number
-}
-
-const ChipField = <T extends TChipValues>(props: ChipFieldProps<T>) => {
+const ChipField = (props: ChipFieldProps) => {
     const values = useMemo(
         () => props.values.map(item => item.value),
         [props.values]

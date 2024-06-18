@@ -100,7 +100,7 @@ describe('Dialog', () => {
         )
     })
 
-    it('should render with scroll unset-body option', () => {
+    it('should render with scroll body option', () => {
         render(
             <Dialog
                 open
@@ -108,7 +108,7 @@ describe('Dialog', () => {
                 title='My beautiful Dialog'
                 text={'Is not it?'}
                 actions={<button onClick={jest.fn()}>Close</button>}
-                scroll='unset-body'
+                scroll='body'
                 onClose={jest.fn()}
             />
         )
@@ -142,15 +142,15 @@ describe('Dialog', () => {
         )
     })
 
-    it('should render with scroll unset-paper option', () => {
+    it('should render with scroll paper option', () => {
         render(
             <Dialog
                 open
+                scroll='paper'
                 aria-title='dialog-paper'
                 title='My beautiful Dialog'
-                text={'Is not it?'}
+                text='Is not it?'
                 actions={<button onClick={jest.fn()}>Close</button>}
-                scroll='unset-paper'
                 onClose={jest.fn()}
             />
         )
