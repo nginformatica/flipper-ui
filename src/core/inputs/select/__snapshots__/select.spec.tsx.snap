@@ -3,13 +3,14 @@
 exports[`Select should match snapshot 1`] = `
 <div>
   <div
-    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-adornedEnd  css-2d5w1o-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-sizeSmall MuiInputBase-adornedEnd  css-2d5w1o-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+    style="min-width: 100px;"
   >
     <div
-      aria-controls=":r5:"
+      aria-controls=":r4:"
       aria-expanded="false"
       aria-haspopup="listbox"
-      class="MuiSelect-select makeStyles-select-11 MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-4ygxeq-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+      class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd css-18dp293-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
       role="combobox"
       tabindex="0"
     >
@@ -29,7 +30,7 @@ exports[`Select should match snapshot 1`] = `
     />
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon makeStyles-iconOutlined-12 MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
       data-testid="ArrowDropDownIcon"
       focusable="false"
       viewBox="0 0 24 24"
@@ -40,6 +41,7 @@ exports[`Select should match snapshot 1`] = `
     </svg>
     <div
       class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
+      style="padding-right: 12px;"
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"

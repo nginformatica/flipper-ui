@@ -40,16 +40,15 @@ exports[`Sidebar should match snapshot 1`] = `
         </button>
       </div>
       <ul
-        class="MuiList-root makeStyles-default-31 undefined MuiList-padding"
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
       >
         <div
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiListItem-root makeStyles-root-35 MuiListItem-gutters MuiListItem-button"
+          class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiListItemIcon-root makeStyles-default-36"
+            class="MuiListItemIcon-root makeStyles-default-18 css-cveggr-MuiListItemIcon-root"
             style="min-width: 42px;"
           >
             <svg
@@ -65,27 +64,26 @@ exports[`Sidebar should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root"
+            class="MuiListItemText-root css-tlelie-MuiListItemText-root"
             data-testid="list-item-undefined"
           >
             <span
-              class="MuiTypography-root makeStyles-default-36 MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 makeStyles-default-18 css-10hburv-MuiTypography-root"
             >
               Item 1
             </span>
           </div>
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </div>
         <div
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiListItem-root makeStyles-root-35 MuiListItem-gutters MuiListItem-button"
+          class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiListItemIcon-root makeStyles-default-36"
+            class="MuiListItemIcon-root makeStyles-default-18 css-cveggr-MuiListItemIcon-root"
             style="min-width: 42px;"
           >
             <svg
@@ -101,17 +99,17 @@ exports[`Sidebar should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root"
+            class="MuiListItemText-root css-tlelie-MuiListItemText-root"
             data-testid="list-item-undefined"
           >
             <span
-              class="MuiTypography-root makeStyles-default-36 MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 makeStyles-default-18 css-10hburv-MuiTypography-root"
             >
               Item 2
             </span>
           </div>
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </div>
       </ul>

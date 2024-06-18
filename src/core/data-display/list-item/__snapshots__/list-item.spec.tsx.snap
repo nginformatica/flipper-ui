@@ -3,20 +3,19 @@
 exports[`ListItem should match snapshot 1`] = `
 <div>
   <div
-    aria-disabled="false"
-    class="MuiButtonBase-root MuiListItem-root makeStyles-root-13 MuiListItem-gutters MuiListItem-button"
+    class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-19 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-19 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
     role="button"
     tabindex="0"
   >
     <div
-      class="MuiListItemAvatar-root"
+      class="MuiListItemAvatar-root css-1e9lk82-MuiListItemAvatar-root"
     >
       <div>
         Avatar
       </div>
     </div>
     <div
-      class="MuiListItemIcon-root makeStyles-default-14"
+      class="MuiListItemIcon-root makeStyles-default-21 css-cveggr-MuiListItemIcon-root"
       style="min-width: 42px;"
     >
       <svg
@@ -32,30 +31,30 @@ exports[`ListItem should match snapshot 1`] = `
       </svg>
     </div>
     <div
-      class="MuiListItemText-root MuiListItemText-multiline"
+      class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
       data-testid="list-item-Subtitle"
       style="margin-right: 36px;"
     >
       <span
-        class="MuiTypography-root makeStyles-default-14 MuiTypography-body1 MuiTypography-displayBlock"
+        class="MuiTypography-root MuiTypography-body1 makeStyles-default-21 css-10hburv-MuiTypography-root"
       >
         Title
       </span>
       <p
-        class="MuiTypography-root makeStyles-default-14 MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+        class="MuiTypography-root MuiTypography-body2 makeStyles-default-21 css-83ijpv-MuiTypography-root"
       >
         Subtitle
       </p>
     </div>
     <div
-      class="MuiListItemSecondaryAction-root makeStyles-default-14"
+      class="MuiListItemSecondaryAction-root makeStyles-default-21 css-518kzi-MuiListItemSecondaryAction-root"
     >
       <div>
         Action
       </div>
     </div>
     <span
-      class="MuiTouchRipple-root"
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </div>
 </div>
