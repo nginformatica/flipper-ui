@@ -7,16 +7,17 @@ export interface IMenuProps extends DefaultProps, MenuProps {
     open: boolean
     anchorEl?: HTMLElement
     withWrapper?: boolean
-    vertical?: 'top' | 'bottom'
-    horizontal?: 'left' | 'right'
+    anchorOrigin?: {
+        vertical: 'top' | 'center' | 'bottom' | number
+        horizontal: 'left' | 'center' | 'right' | number
+    }
 }
 
 const Menu = ({
     children,
     padding,
     margin,
-    vertical,
-    horizontal,
+    anchorOrigin = { vertical: 'top', horizontal: 'left' },
     style = {},
     withWrapper,
     ...otherProps
@@ -24,8 +25,8 @@ const Menu = ({
     <MuiMenu
         {...otherProps}
         anchorOrigin={{
-            vertical: vertical || 'top',
-            horizontal: horizontal || 'left'
+            vertical: anchorOrigin.vertical,
+            horizontal: anchorOrigin.horizontal
         }}
         style={{ padding, margin, ...style }}>
         {withWrapper ? (

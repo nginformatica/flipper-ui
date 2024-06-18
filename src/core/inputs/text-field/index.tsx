@@ -26,7 +26,7 @@ import {
 } from './styles'
 import { theme } from '@/theme'
 
-const { primary, grays } = theme.colors
+const { primary } = theme.colors
 
 export interface IOption {
     label: string
@@ -90,9 +90,12 @@ const useStyles = makeStyles({
     outlinedLabel: {
         fontSize: '14px'
     },
+    selected: {
+        backgroundColor: 'rgba(0, 0, 0, 0.08) !important'
+    },
     listOptions: {
         '&:hover': {
-            backgroundColor: grays.g8
+            backgroundColor: 'rgba(0, 0, 0, 0.06) !important'
         }
     }
 })
@@ -138,7 +141,7 @@ export const renderOptions = (
             key={option.value}
             disabled={option.disabled}
             value={option.value}
-            classes={{ root: classes.listOptions }}>
+            classes={{ root: classes.listOptions, selected: classes.selected }}>
             {option.label}
         </MuiMenuItem>
     ))

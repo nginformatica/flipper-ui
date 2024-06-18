@@ -4,7 +4,6 @@ import { Clear } from '@mui/icons-material'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiSelect from '@mui/material/Select'
-import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import type { SelectChangeEvent, SelectProps } from '@mui/material/Select'
 
@@ -27,7 +26,7 @@ export interface ISelectProps
 }
 
 const renderEndAdornment = (onClear?: () => void) => (
-    <InputAdornment position='end'>
+    <InputAdornment position='end' style={{ paddingRight: '12px' }}>
         <IconButton
             role='end-adornment-component'
             size='small'
@@ -36,19 +35,6 @@ const renderEndAdornment = (onClear?: () => void) => (
         </IconButton>
     </InputAdornment>
 )
-
-const useStyles = makeStyles((hasClear?: boolean) => ({
-    select: {
-        padding: `8px 24px 8px ${hasClear ? '18' : '10'}px`
-    },
-    iconOutlined: hasClear
-        ? {
-              right: '2px',
-              position: 'relative',
-              marginLeft: '-22px'
-          }
-        : { right: '2px' }
-}))
 
 const Select = ({
     children,
@@ -61,8 +47,6 @@ const Select = ({
     variant = 'outlined',
     ...otherProps
 }: ISelectProps) => {
-    const classes = useStyles({ hasClear })
-
     const handleChange = (
         event:
             | ChangeEvent<HTMLSelectElement | HTMLInputElement>
@@ -80,13 +64,10 @@ const Select = ({
 
     return (
         <MuiSelect
-            inputProps={{ 'data-testid': 'select-input' }}
+            size='small'
             variant={variant}
-            classes={{
-                select: classes.select,
-                icon: classes.iconOutlined
-            }}
-            style={{ margin, padding, ...style }}
+            inputProps={{ 'data-testid': 'select-input' }}
+            style={{ margin, padding, minWidth: '100px', ...style }}
             onChange={handleChange}
             {...endAdornment}
             {...otherProps}>

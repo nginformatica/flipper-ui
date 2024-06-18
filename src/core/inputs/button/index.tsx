@@ -30,7 +30,7 @@ export interface IButtonProps extends DefaultProps, ButtonProps {
 
 const Button = ({
     children,
-    color = 'inherit',
+    color,
     dashed,
     href = '',
     margin,
@@ -41,7 +41,7 @@ const Button = ({
 }: IButtonProps) => (
     <MuiButton
         href={href}
-        color={color}
+        color={color || 'inherit'}
         variant={dashed ? 'outlined' : variant}
         style={{
             ...style,
