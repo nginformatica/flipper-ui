@@ -66,6 +66,7 @@ const Select = ({
     ) => {
         onChange(event)
     }
+
     const hasValue = !!otherProps.value
 
     const endAdornment =
