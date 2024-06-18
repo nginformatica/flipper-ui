@@ -1,13 +1,13 @@
 import React from 'react'
 import type { MouseEvent, ReactNode } from 'react'
-import type { DialogProps } from '@/core/feedback/dialog'
+import type { IDialogProps } from '@/core/feedback/dialog'
 import Dialog from '@/core/feedback/dialog'
 import Button from '@/core/inputs/button'
 import { ThemeProviderFlipper, theme } from '@/theme'
 
 const { action, primary } = theme.colors
 
-export interface IProps extends DialogProps {
+export interface IProps extends IDialogProps {
     open: boolean
     title: string
     titleAction?: string | ReactNode

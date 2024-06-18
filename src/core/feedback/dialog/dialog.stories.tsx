@@ -50,7 +50,10 @@ export const dialog: Story = {
                     {...args}
                     open={open}
                     actions={
-                        <Button margin='12px' onClick={() => setOpen(false)}>
+                        <Button
+                            margin='12px'
+                            variant='contained'
+                            onClick={() => setOpen(false)}>
                             Close
                         </Button>
                     }

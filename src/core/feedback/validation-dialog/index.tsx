@@ -132,15 +132,15 @@ const ValidationDialog = ({
         <MuiDialog
             fullWidth
             open={open}
-            title={renderTitle(title, responses)}
+            scroll='body'
             maxWidth='sm'
-            scroll='unset-body'
+            title={renderTitle(title, responses)}
             actions={
                 failed ? (
                     <Button
                         color='primary'
                         variant='contained'
-                        margin='0 12px 12px 0'
+                        margin='12px'
                         padding='6px 31.1px'
                         onClick={onClose}>
                         VOLTAR
@@ -148,7 +148,7 @@ const ValidationDialog = ({
                 ) : (
                     <Actions
                         disabled={!success}
-                        margin='0 10px 10px'
+                        margin='12px'
                         actionButtonColor='secondary'
                         onCancel={onCancel}
                         onConfirm={handleCreate}

@@ -1,13 +1,13 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
-import MuiDialog from '@material-ui/core/Dialog'
-import MuiDialogActions from '@material-ui/core/DialogActions'
-import MuiDialogContent from '@material-ui/core/DialogContent'
-import MuiDialogContentText from '@material-ui/core/DialogContentText'
-import MuiDialogTitle from '@material-ui/core/DialogTitle'
-import { makeStyles } from '@material-ui/core/styles'
+import MuiDialog from '@mui/material/Dialog'
+import MuiDialogActions from '@mui/material/DialogActions'
+import MuiDialogContent from '@mui/material/DialogContent'
+import MuiDialogContentText from '@mui/material/DialogContentText'
+import MuiDialogTitle from '@mui/material/DialogTitle'
+import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
-import type { DialogProps as MuiDialogProps } from '@material-ui/core'
+import type { DialogProps } from '@mui/material/Dialog'
 import {
     PaperContent,
     Snippet,
@@ -16,16 +16,16 @@ import {
     TitleWrapper
 } from './styles'
 
-export interface DialogProps
+export interface IDialogProps
     extends DefaultProps,
-        Omit<MuiDialogProps, 'scroll' | 'title' | 'content'> {
+        Omit<DialogProps, 'title' | 'content'> {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean
     title?: string | ReactNode
     titleAction?: string | ReactNode
     actions?: ReactNode
-    maxWidth?: 'xs' | 'sm' | 'md' | 'lg'
+    maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     content?: ReactNode | string
     text?: string
     snippet?: ReactNode | JSX.Element
@@ -38,14 +38,13 @@ export interface DialogProps
     contentStyle?: CSSProperties
     snippetContentStyle?: CSSProperties
     contentTextStyle?: CSSProperties
-    scroll?: 'body' | 'paper' | 'unset-paper' | 'unset-body'
     'aria-title'?: string
     onClose?: (event: Event) => void
 }
 
 const useStyles = makeStyles({
     root: {
-        overflowY: 'unset' as const
+        overflowY: 'unset'
     }
 })
 
@@ -76,10 +75,10 @@ const Dialog = ({
     snippetContentStyle,
     'aria-title': ariaTitle,
     ...otherProps
-}: DialogProps) => {
+}: IDialogProps) => {
     const classes = useStyles()
 
-    const renderTitle = (title: DialogProps['title']) => {
+    const renderTitle = (title: IDialogProps['title']) => {
         return titleAction ? (
             <TitleWrapper style={titleWrapperStyle}>
                 <MuiDialogTitle
@@ -101,11 +100,7 @@ const Dialog = ({
     const renderContent = (content: ReactNode) => {
         return (
             <MuiDialogContent
-                classes={
-                    scroll === 'unset-paper' || scroll === 'unset-body'
-                        ? { root: classes.root }
-                        : undefined
-                }
+                classes={{ root: classes.root }}
                 style={contentStyle}>
                 {content}
             </MuiDialogContent>
@@ -140,44 +135,31 @@ const Dialog = ({
 
     const renderSnippet = () => {
         return (
-            <Snippet style={snippetStyle}>
+            <>
+                <Snippet style={snippetStyle}>
+                    <SnippetContent style={snippetContentStyle}>
+                        {snippet}
+                    </SnippetContent>
+                </Snippet>
                 <PaperContent>{renderPaperContent()}</PaperContent>
-                <SnippetContent style={snippetContentStyle}>
-                    {snippet}
-                </SnippetContent>
-            </Snippet>
+            </>
         )
-    }
-
-    const scrollMode = () => {
-        if (scroll === 'unset-body') {
-            return 'body'
-        }
-
-        if (scroll === 'unset-paper') {
-            return 'paper'
-        }
-
-        return scroll
     }
 
     return (
         <MuiDialog
             {...otherProps}
             open={open}
-            fullScreen={fullScreen}
-            fullWidth={fullWidth}
+            scroll={scroll}
             maxWidth={maxWidth}
-            scroll={scrollMode()}
+            fullWidth={fullWidth}
+            fullScreen={fullScreen}
+            style={{ padding, margin, ...style }}
             PaperProps={{
                 ...(ariaTitle ? { title: ariaTitle } : {}),
-                classes:
-                    scroll === 'unset-body' || scroll === 'unset-paper'
-                        ? { root: classes.root }
-                        : undefined,
+                classes: { root: classes.root },
                 ...PaperProps
             }}
-            style={{ padding, margin, ...style }}
             onClose={onClose}>
             {snippet ? renderSnippet() : renderPaperContent()}
         </MuiDialog>
