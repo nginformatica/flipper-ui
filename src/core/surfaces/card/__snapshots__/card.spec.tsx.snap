@@ -13,7 +13,7 @@ exports[`Card should match snapshot 1`] = `
       class="sc-gEvDqW eZOuSv"
     >
       <h6
-        class="MuiTypography-root sc-fqkwJk ktlWmc MuiTypography-h6 MuiTypography-colorPrimary"
+        class="MuiTypography-root MuiTypography-h6 sc-fqkwJk ktlWmc css-oblp1g-MuiTypography-root"
         name="test-title"
       >
         title

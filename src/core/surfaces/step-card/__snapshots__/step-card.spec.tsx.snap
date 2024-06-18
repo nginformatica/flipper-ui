@@ -35,7 +35,7 @@ exports[`StepCard should match snapshot 1`] = `
               class="sc-iGgVNO dRwqyP"
             >
               <h6
-                class="MuiTypography-root MuiTypography-h6"
+                class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
                 style="color: rgb(66, 66, 66); font-size: 24px; text-align: center;"
               >
                 Title
@@ -57,7 +57,7 @@ exports[`StepCard should match snapshot 1`] = `
                 class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-eqpfi5-MuiAccordionSummary-content"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-h6"
+                  class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
                 >
                   Summary
                 </h6>
@@ -140,7 +140,7 @@ exports[`StepCard should match snapshot 1`] = `
                         />
                       </svg>
                       <p
-                        class="MuiTypography-root MuiTypography-body1"
+                        class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
                         style="color: rgb(97, 97, 97); font-weight: 600;"
                       >
                         Step 1
@@ -162,7 +162,7 @@ exports[`StepCard should match snapshot 1`] = `
                         />
                       </svg>
                       <p
-                        class="MuiTypography-root MuiTypography-body1"
+                        class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
                         style="color: rgb(97, 97, 97); font-weight: 600;"
                       >
                         Step 2

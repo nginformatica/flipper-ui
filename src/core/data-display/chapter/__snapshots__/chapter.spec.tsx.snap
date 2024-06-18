@@ -9,7 +9,7 @@ exports[`Chapter should match snapshot 1`] = `
       class="sc-aYaIB jcOBwW"
     />
     <p
-      class="MuiTypography-root MuiTypography-body2"
+      class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
       style="margin: 0px 10px;"
     >
       Chapter

@@ -8,13 +8,13 @@ exports[`Advertise should match snapshot 1`] = `
     style="padding: 4px;"
   >
     <p
-      class="MuiTypography-root sc-aYaIB ikghlf MuiTypography-body2"
+      class="MuiTypography-root MuiTypography-body2 sc-aYaIB ikghlf css-e784if-MuiTypography-root"
       style="margin: 0px 12px; padding: 6px 18px;"
     >
       comment
     </p>
     <span
-      class="MuiTypography-root sc-aYaIB ikghlf MuiTypography-caption"
+      class="MuiTypography-root MuiTypography-caption sc-aYaIB ikghlf css-1sn4lm3-MuiTypography-root"
       style="margin: 0px 12px; padding: 6px 18px;"
     >
       author

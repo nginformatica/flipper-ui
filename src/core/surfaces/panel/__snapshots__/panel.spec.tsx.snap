@@ -23,7 +23,7 @@ exports[`Panel should match snapshot 1`] = `
             class="sc-kAycRU FJrwN"
           >
             <h6
-              class="MuiTypography-root sc-imWZod cQNAri MuiTypography-subtitle1 MuiTypography-noWrap"
+              class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-noWrap sc-imWZod cQNAri css-of350e-MuiTypography-root"
             >
               Foo
             </h6>
