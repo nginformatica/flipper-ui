@@ -1,9 +1,9 @@
 import React from 'react'
 import type { MouseEvent, MutableRefObject, ReactNode } from 'react'
+import MuiMenuItem from '@mui/material/MenuItem'
 import type { DefaultProps } from '../../types'
-import { MenuItems } from './styles'
 
-export interface ListItemProps extends Omit<DefaultProps, 'name'> {
+export interface MenuItemProps extends Omit<DefaultProps, 'name'> {
     title?: string
     value?: string | number
     selected?: boolean
@@ -13,11 +13,12 @@ export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     ref?: MutableRefObject<null>
 }
 
-const MenuItem = (props: ListItemProps) => {
+const MenuItem = (props: MenuItemProps) => {
     const { padding, margin, style } = props
 
     return (
-        <MenuItems
+        <MuiMenuItem
+            ref={null}
             id={props.id}
             title={props.title}
             style={{ padding, margin, ...style }}
@@ -26,7 +27,7 @@ const MenuItem = (props: ListItemProps) => {
             value={props.value}
             onClick={props.onClick}>
             {props.children}
-        </MenuItems>
+        </MuiMenuItem>
     )
 }
 
