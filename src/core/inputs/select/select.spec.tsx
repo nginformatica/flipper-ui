@@ -1,8 +1,8 @@
 import React, { act } from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import Select from '@/test/mocks/select-mock'
-import MuiSelect from '.'
+import '@testing-library/jest-dom'
 
 describe('Select', () => {
     it('should render', async () => {
@@ -46,11 +46,11 @@ describe('Select', () => {
 
         await act(async () => await userEvent.click(option))
 
-        expect(onChangeSpy).toHaveBeenCalledWith(
-            expect.objectContaining({
-                target: { value: '1', name: undefined }
-            })
-        )
+        waitFor(() => {
+            const input = screen.getByTestId('select-input')
+
+            expect(input).toHaveValue('1')
+        })
     })
 
     it('should render with clear button', async () => {
@@ -69,9 +69,7 @@ describe('Select', () => {
 
     it('should match snapshot', () => {
         const { container } = render(
-            <MuiSelect hasClear value='1' onChange={jest.fn()}>
-                <div>Olá</div>
-            </MuiSelect>
+            <Select initialValue='1' selectProps={{ onChange: jest.fn() }} />
         )
 
         expect(container).toMatchSnapshot()

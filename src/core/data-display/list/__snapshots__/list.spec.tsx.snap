@@ -3,11 +3,11 @@
 exports[`List should match snapshot 1`] = `
 <div>
   <ul
-    class="MuiList-root MuiList-padding my-custom-class css-h4y409-MuiList-root"
+    class="MuiList-root MuiList-padding makeStyles-default-13 my-custom-class css-h4y409-MuiList-root"
     data-testid="list-container"
   >
     <li
-      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-10 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-10 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
       role="menuitem"
       tabindex="-1"
     >
@@ -17,7 +17,7 @@ exports[`List should match snapshot 1`] = `
       />
     </li>
     <li
-      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-10 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-10 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
       role="menuitem"
       tabindex="-1"
     >
@@ -27,7 +27,7 @@ exports[`List should match snapshot 1`] = `
       />
     </li>
     <li
-      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-10 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-10 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
       role="menuitem"
       tabindex="-1"
     >

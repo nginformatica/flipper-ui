@@ -21,6 +21,21 @@ exports[`ExpansionPanel should match snapshot 1`] = `
           Expansion Panel
         </div>
       </div>
+      <div
+        class="MuiAccordionSummary-expandIconWrapper Mui-expanded css-yw020d-MuiAccordionSummary-expandIconWrapper"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="KeyboardArrowUpIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+          />
+        </svg>
+      </div>
     </div>
     <div
       class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-pwcg7p-MuiCollapse-root"

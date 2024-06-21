@@ -16,7 +16,7 @@ exports[`MaskField should match snapshot 1`] = `
         <input
           aria-invalid="false"
           autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-5 MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+          class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-3 MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
           id=":r1:"
           placeholder="Description"
           type="text"

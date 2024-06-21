@@ -9,7 +9,7 @@ exports[`Fab should match snapshot 1`] = `
     style="display: inherit;"
   >
     <button
-      class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeMedium MuiFab-default MuiFab-root MuiFab-circular MuiFab-sizeMedium MuiFab-default css-1fwudth-MuiButtonBase-root-MuiFab-root"
+      class="MuiButtonBase-root MuiFab-root makeStyles-root-5 MuiFab-circular MuiFab-sizeMedium MuiFab-colorInherit MuiFab-root makeStyles-root-5 MuiFab-circular MuiFab-sizeMedium MuiFab-colorInherit css-hvq4eh-MuiButtonBase-root-MuiFab-root"
       data-testid="fab-button"
       name="action-button"
       tabindex="0"

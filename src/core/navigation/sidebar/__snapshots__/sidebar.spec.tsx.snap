@@ -7,7 +7,7 @@ exports[`Sidebar should match snapshot 1`] = `
     style="width: 220px; top: 64px;"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-12i7wg6-MuiPaper-root-MuiDrawer-paper"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft makeStyles-default-31 css-12i7wg6-MuiPaper-root-MuiDrawer-paper"
     >
       <div
         anchor="left"
@@ -40,15 +40,15 @@ exports[`Sidebar should match snapshot 1`] = `
         </button>
       </div>
       <ul
-        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+        class="MuiList-root MuiList-padding makeStyles-default-33 undefined css-h4y409-MuiList-root"
       >
         <div
-          class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+          class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-35 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-35 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiListItemIcon-root makeStyles-default-18 css-cveggr-MuiListItemIcon-root"
+            class="MuiListItemIcon-root makeStyles-default-36 css-cveggr-MuiListItemIcon-root"
             style="min-width: 42px;"
           >
             <svg
@@ -68,7 +68,7 @@ exports[`Sidebar should match snapshot 1`] = `
             data-testid="list-item-undefined"
           >
             <span
-              class="MuiTypography-root MuiTypography-body1 makeStyles-default-18 css-10hburv-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 makeStyles-default-36 css-10hburv-MuiTypography-root"
             >
               Item 1
             </span>
@@ -78,12 +78,12 @@ exports[`Sidebar should match snapshot 1`] = `
           />
         </div>
         <div
-          class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-16 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+          class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-35 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-35 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiListItemIcon-root makeStyles-default-18 css-cveggr-MuiListItemIcon-root"
+            class="MuiListItemIcon-root makeStyles-default-36 css-cveggr-MuiListItemIcon-root"
             style="min-width: 42px;"
           >
             <svg
@@ -103,7 +103,7 @@ exports[`Sidebar should match snapshot 1`] = `
             data-testid="list-item-undefined"
           >
             <span
-              class="MuiTypography-root MuiTypography-body1 makeStyles-default-18 css-10hburv-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 makeStyles-default-36 css-10hburv-MuiTypography-root"
             >
               Item 2
             </span>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
 import MuiMenuItem from '@mui/material/MenuItem'
 import type { ISelectProps } from '@/core/inputs/select'
+import type { SelectChangeEvent } from '@mui/material'
 import Select from '@/core/inputs/select'
 
 interface IProps {
@@ -13,7 +14,9 @@ const Default = (props: IProps) => {
     const [select, setSelect] = useState(props.initialValue || '')
 
     function handleChange(
-        event: ChangeEvent<HTMLSelectElement | HTMLInputElement>
+        event:
+            | ChangeEvent<HTMLSelectElement | HTMLInputElement>
+            | SelectChangeEvent<string>
     ) {
         setSelect(event.target.value)
     }

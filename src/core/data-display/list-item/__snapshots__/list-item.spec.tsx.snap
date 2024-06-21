@@ -3,7 +3,7 @@
 exports[`ListItem should match snapshot 1`] = `
 <div>
   <div
-    class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-19 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-19 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+    class="MuiButtonBase-root MuiListItemButton-root makeStyles-root-13 MuiListItemButton-gutters MuiListItemButton-root makeStyles-root-13 MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
     role="button"
     tabindex="0"
   >
@@ -15,7 +15,7 @@ exports[`ListItem should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="MuiListItemIcon-root makeStyles-default-21 css-cveggr-MuiListItemIcon-root"
+      class="MuiListItemIcon-root makeStyles-default-14 css-cveggr-MuiListItemIcon-root"
       style="min-width: 42px;"
     >
       <svg
@@ -36,18 +36,18 @@ exports[`ListItem should match snapshot 1`] = `
       style="margin-right: 36px;"
     >
       <span
-        class="MuiTypography-root MuiTypography-body1 makeStyles-default-21 css-10hburv-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 makeStyles-default-14 css-10hburv-MuiTypography-root"
       >
         Title
       </span>
       <p
-        class="MuiTypography-root MuiTypography-body2 makeStyles-default-21 css-83ijpv-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 makeStyles-default-14 css-83ijpv-MuiTypography-root"
       >
         Subtitle
       </p>
     </div>
     <div
-      class="MuiListItemSecondaryAction-root makeStyles-default-21 css-518kzi-MuiListItemSecondaryAction-root"
+      class="MuiListItemSecondaryAction-root makeStyles-default-14 css-518kzi-MuiListItemSecondaryAction-root"
     >
       <div>
         Action
