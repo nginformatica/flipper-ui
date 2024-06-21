@@ -30,20 +30,20 @@ module.exports = {
         [
             'import',
             {
-                libraryName: '@material-ui/core',
-                libraryDirectory: '',
-                camel2DashComponentName: false
-            },
-            'material'
-        ],
-        [
-            'import',
-            {
                 libraryName: '@mui/material',
                 libraryDirectory: '',
                 camel2DashComponentName: false
             },
             'mui'
+        ],
+        [
+            'import',
+            {
+                libraryName: '@mui/styles',
+                libraryDirectory: '',
+                camel2DashComponentName: false
+            },
+            'styles'
         ],
         [
             'import',

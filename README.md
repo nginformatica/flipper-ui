@@ -8,7 +8,7 @@
 <div align="center">
 React UI based on the <br/>
 
-`@material-ui/core` and `@mui/material` <br/>
+`@mui/material` <br/>
 toolkit for the web.
 
 [![npm package](https://img.shields.io/npm/v/flipper-ui/latest.svg)](https://www.npmjs.com/package/flipper-ui)
