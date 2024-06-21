@@ -19,7 +19,8 @@ const Template: StoryFn<typeof IconButton> = args => <IconButton {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-    children: <IconAdd />
+    children: <IconAdd />,
+    size: 'small'
 }
 
 export const Primary = Template.bind({})

@@ -84,19 +84,10 @@ interface IHelperProps {
 const useStyles = makeStyles({
     input: {
         fontSize: '14px',
-        padding: '10px',
         height: 'auto'
     },
     outlinedLabel: {
         fontSize: '14px'
-    },
-    selected: {
-        backgroundColor: 'rgba(0, 0, 0, 0.08) !important'
-    },
-    listOptions: {
-        '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.06) !important'
-        }
     }
 })
 
@@ -128,10 +119,7 @@ export const HelperBox = (props: IHelperProps) => (
 )
 
 /* Jest-ignore-start ignore next */
-export const renderOptions = (
-    options: ITextFieldProps['options'],
-    classes: Record<string, string>
-) => {
+export const renderOptions = (options: ITextFieldProps['options']) => {
     const comboOptions =
         typeof options === 'string' ? coerceComboOptions(options) : options
 
@@ -139,9 +127,8 @@ export const renderOptions = (
         <MuiMenuItem
             id={toLispCase(`option-${option.value}`)}
             key={option.value}
-            disabled={option.disabled}
             value={option.value}
-            classes={{ root: classes.listOptions, selected: classes.selected }}>
+            disabled={option.disabled}>
             {option.label}
         </MuiMenuItem>
     ))
@@ -258,7 +245,7 @@ const TextField = ({
                 }}
                 onChange={handleInputChange}
                 {...otherProps}>
-                {options ? renderOptions(options, classes) : children}
+                {options ? renderOptions(options) : children}
             </MuiTextField>
             {onHelperClick && (
                 <HelperBox

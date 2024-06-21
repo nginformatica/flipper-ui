@@ -94,7 +94,9 @@ const SnackBar = (props: SnackBarProps) => {
             id={id}
             open={open}
             className={className}
-            anchorOrigin={anchorOrigin}
+            anchorOrigin={
+                anchorOrigin ?? { horizontal: 'center', vertical: 'bottom' }
+            }
             autoHideDuration={autoHide}
             TransitionProps={TransitionProps}
             TransitionComponent={TransitionComponent}
@@ -116,22 +118,19 @@ const SnackBar = (props: SnackBarProps) => {
                             display: 'flex',
                             gap: '12px'
                         }}>
-                        {icon || (
-                            <Icon fontSize='small' style={{ opacity: 0.9 }} />
-                        )}
+                        {icon || <Icon style={{ opacity: 0.9 }} />}
                         <div>{message}</div>
                     </span>
                 }
                 action={
                     action || (
                         <IconButton
-                            size='small'
                             key='close'
                             role='close-icon-button'
                             aria-label='Close'
                             color='inherit'
                             onClick={handleClose}>
-                            <IconClose fontSize='small' />
+                            <IconClose />
                         </IconButton>
                     )
                 }

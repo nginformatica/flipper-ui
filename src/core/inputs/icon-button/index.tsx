@@ -24,11 +24,15 @@ const IconButton = ({
     children,
     padding,
     margin,
+    size,
     style,
     ...otherProps
 }: IconButtonProps) => {
     return (
-        <MuiIconButton {...otherProps} style={{ margin, padding, ...style }}>
+        <MuiIconButton
+            {...otherProps}
+            size={size || 'large'}
+            style={{ margin, padding, ...style }}>
             {children}
         </MuiIconButton>
     )

@@ -52,7 +52,7 @@ const Checkbox = (props: ICheckboxProps) => {
             name={props.name}
             checked={props.checked}
             value={props.name}
-            color={props.color}
+            color={props.color || 'secondary'}
             style={props.dense ? DENSE : {}}
             disabled={props.disabled}
             onChange={props.onChange}
@@ -62,11 +62,11 @@ const Checkbox = (props: ICheckboxProps) => {
     const renderSwitch = (checkboxProps?: Omit<CheckboxProps, 'size'>) => (
         <MuiSwitch
             {...checkboxProps}
-            name={props.name}
-            checked={props.checked}
-            value={props.name}
-            color={props.color}
             role='switch'
+            name={props.name}
+            value={props.name}
+            checked={props.checked}
+            color={props.color || 'secondary'}
             disabled={props.disabled}
             onChange={props.onChange}
         />

@@ -13,6 +13,12 @@ export interface ILinear {
         | 'success'
         | 'warning'
         | 'inherit'
+    classes?: {
+        root?: string
+        colorPrimary?: string
+        barColorPrimary?: string
+        barColorSecondary?: string
+    }
     variant?: 'buffer' | 'determinate' | 'indeterminate' | 'query'
     valueBuffer?: number
     rootColor?: string

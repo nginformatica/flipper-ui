@@ -7,7 +7,7 @@ import type {
     ChangeEvent,
     SyntheticEvent
 } from 'react'
-import { Edit, Save } from '@mui/icons-material'
+import { Edit, KeyboardArrowUp, Save } from '@mui/icons-material'
 import MuiExpansionPanel from '@mui/material/Accordion'
 import MuiExpansionPanelActions from '@mui/material/AccordionActions'
 import MuiExpansionPanelDetails from '@mui/material/AccordionDetails'
@@ -117,7 +117,7 @@ const ExpansionPanel = ({
             style={{ margin, padding, ...style }}>
             {summary && (
                 <MuiExpansionPanelSummary
-                    expandIcon={expandIcon}
+                    expandIcon={expandIcon || <KeyboardArrowUp />}
                     style={summaryStyle}
                     onClick={onClick}>
                     <ExpansionPanelHeaderWrapper {...headerProps}>
