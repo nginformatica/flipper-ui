@@ -1,6 +1,6 @@
 export * from './core/data-display/data-table'
 export * from './core/feedback/dialog-v2'
-export * from './core/inputs/auto-complete-lab'
+export * from './core/inputs/autocomplete'
 
 export { default as Actions } from './core/data-display/actions'
 export { default as Advertise } from './core/data-display/advertise'

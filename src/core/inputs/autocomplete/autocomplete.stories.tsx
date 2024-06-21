@@ -1,15 +1,17 @@
 import React from 'react'
 import type { Meta } from '@storybook/react'
 import TextField from '@/core/inputs/text-field'
-import { AutoComplete } from '.'
+import { Autocomplete } from '.'
 
 export default {
     title: 'Inputs/AutoComplete Lab',
-    component: AutoComplete
-} as Meta<typeof AutoComplete>
+    component: Autocomplete
+} as Meta<typeof Autocomplete>
 
 export const AutoCompleteLab = () => (
-    <AutoComplete
+    <Autocomplete
+        fullWidth
+        disableClearable
         options={[
             { label: 'Anemone', value: 'forget-me-not' },
             { label: 'Forget me not', value: 'anemone' },
@@ -18,13 +20,11 @@ export const AutoCompleteLab = () => (
             { label: 'Rose', value: 'rose' }
         ]}
         getOptionLabel={option => option.label}
-        style={{ width: 300 }}
         renderInput={props => (
             <TextField
                 {...props}
                 fullWidth
                 label='Flowers'
-                placeholder='Flowers'
                 variant='outlined'
             />
         )}

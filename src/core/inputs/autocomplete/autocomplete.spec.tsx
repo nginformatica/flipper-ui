@@ -2,13 +2,13 @@ import React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { default as userEvent } from '@testing-library/user-event'
 import TextField from '@/core/inputs/text-field'
-import { AutoComplete } from '.'
+import { Autocomplete } from '.'
 import '@testing-library/jest-dom'
 
-describe('AutoCompleteLab', () => {
+describe('Autocomplete', () => {
     it('should render', () => {
         render(
-            <AutoComplete
+            <Autocomplete
                 options={[
                     { label: 'Anemone', value: 'forget-me-not' },
                     { label: 'Forget me not', value: 'anemone' },
@@ -37,7 +37,7 @@ describe('AutoCompleteLab', () => {
 
     it('should render the correct suggestions', async () => {
         render(
-            <AutoComplete
+            <Autocomplete
                 options={[
                     { label: 'Anemone', value: 'forget-me-not' },
                     { label: 'Forget me not', value: 'anemone' },
@@ -71,7 +71,7 @@ describe('AutoCompleteLab', () => {
         const onChangeMock = jest.fn()
 
         render(
-            <AutoComplete
+            <Autocomplete
                 options={[
                     { label: 'Anemone', value: 'forget-me-not' },
                     { label: 'Forget me not', value: 'anemone' },
@@ -107,7 +107,7 @@ describe('AutoCompleteLab', () => {
         const onChangeMock = jest.fn()
 
         render(
-            <AutoComplete
+            <Autocomplete
                 options={[
                     { label: 'Anemone', value: 'forget-me-not' },
                     { label: 'Forget me not', value: 'anemone' },
