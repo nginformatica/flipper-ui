@@ -21,7 +21,8 @@ export interface ISelectProps
     onChange: (
         event:
             | ChangeEvent<HTMLSelectElement | HTMLInputElement>
-            | SelectChangeEvent<unknown>
+            | SelectChangeEvent<unknown>,
+        child?: ReactNode
     ) => void
 }
 
@@ -50,9 +51,10 @@ const Select = ({
     const handleChange = (
         event:
             | ChangeEvent<HTMLSelectElement | HTMLInputElement>
-            | SelectChangeEvent<unknown>
+            | SelectChangeEvent<unknown | string>,
+        child?: ReactNode
     ) => {
-        onChange(event)
+        onChange(event, child)
     }
 
     const hasValue = !!otherProps.value
@@ -67,7 +69,7 @@ const Select = ({
             size='small'
             variant={variant}
             inputProps={{ 'data-testid': 'select-input' }}
-            style={{ margin, padding, minWidth: '100px', ...style }}
+            style={{ margin, padding, ...style }}
             onChange={handleChange}
             {...endAdornment}
             {...otherProps}>

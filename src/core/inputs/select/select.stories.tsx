@@ -20,9 +20,13 @@ export const Default = () => {
     }
 
     return (
-        <FormControl size='small'>
+        <FormControl fullWidth size='small'>
             <InputLabel>Label</InputLabel>
-            <Select value={select} label='Label' onChange={handleChange}>
+            <Select
+                autoWidth
+                value={select}
+                label='Label'
+                onChange={handleChange}>
                 <ListItem value='0'>Option 0</ListItem>
                 <ListItem value='1'>Option 1</ListItem>
                 <ListItem value='2'>Option 2</ListItem>
@@ -51,6 +55,7 @@ export const WithClear = () => {
 
     return (
         <Select
+            fullWidth
             hasClear
             value={select}
             onClear={handleClear}
