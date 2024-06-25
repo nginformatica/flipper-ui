@@ -8,19 +8,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - name: Install yarn lastest version
+        run: |
+          corepack enable
+          yarn set version berry
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20.15.0'
           registry-url: https://registry.npmjs.org/
       - run: |
           yarn
           yarn docs:build
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.6.1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_ACCESS_SECRET }}
           aws-region: 'us-east-1'
+
       - name: Deploy to S3
         run: aws s3 sync docs s3://flipper-ui.ngi.com.br --delete

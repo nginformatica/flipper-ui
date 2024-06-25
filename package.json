@@ -1,6 +1,6 @@
 {
     "name": "flipper-ui",
-    "version": "0.32.0",
+    "version": "0.33.0",
     "description": "",
     "main": "dist/index.js",
     "homepage": "https://flipper-ui.ngi.com.br/",
@@ -24,7 +24,7 @@
         "lint:quiet": "eslint --quiet .eslintrc.js 'src/**/*.{ts,tsx}'",
         "format": "prettier -w 'src/**/*.{ts,tsx}'",
         "docs:build": "storybook build -o docs",
-        "clean": "rm -rf ./dist/*",
+        "clean": "rm -rf ./dist",
         "type-check": "tsc --noEmit",
         "copy:package": "cp package.json dist/",
         "publish:yalc": "cd dist/ && yalc publish && cd ..",
