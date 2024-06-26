@@ -9,14 +9,24 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - name: Setup node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn build
-      - run: node pre-publish.js
-      - run: npm publish ./dist --access public
+          node-version: '20.15.0'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build package
+        run: yarn build
+
+      - name: Run pre-publish
+        run: node pre-publish.js
+
+      - name: Publish package on npm
+        run: npm publish ./dist --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
