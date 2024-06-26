@@ -46,7 +46,6 @@ const Sidebar = ({
     anchor = 'left',
     className,
     color = 'default',
-
     docked = false,
     expanded = true,
     margin,
