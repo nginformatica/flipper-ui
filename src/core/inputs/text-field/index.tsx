@@ -83,8 +83,7 @@ interface IHelperProps {
 
 const useStyles = makeStyles({
     input: {
-        fontSize: '14px',
-        height: 'auto'
+        fontSize: '14px'
     },
     outlinedLabel: {
         fontSize: '14px'

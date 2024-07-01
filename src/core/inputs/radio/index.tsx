@@ -19,8 +19,18 @@ export interface IRadioProps extends DefaultProps, RadioProps {
     onChange?: (event: ChangeEvent<HTMLElement>) => void
 }
 
-const Radio = ({ padding, margin, style, ...otherProps }: IRadioProps) => (
-    <MuiRadio {...otherProps} style={{ padding, margin, ...style }} />
+const Radio = ({
+    color = 'secondary',
+    padding,
+    margin,
+    style,
+    ...otherProps
+}: IRadioProps) => (
+    <MuiRadio
+        {...otherProps}
+        color={color}
+        style={{ padding, margin, ...style }}
+    />
 )
 
 export default Radio

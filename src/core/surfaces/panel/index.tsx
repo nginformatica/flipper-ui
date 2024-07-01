@@ -1,7 +1,6 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
 import { ExpandMore as IconExpand } from '@mui/icons-material'
-import { defaultTo } from 'ramda'
 import type { IPaperProps } from '@/core/surfaces/paper'
 import { ExpansionPaperPanel, Summary, Title } from './styles'
 
@@ -35,10 +34,10 @@ const Panel = (props: PanelProps) => {
     const {
         hideExpansionIcon,
         expanded,
-        defaultExpanded,
+        defaultExpanded = true,
         id,
         nested,
-        elevation,
+        elevation = DEFAULT_ELEVATION,
         hideSummary,
         title,
         summary,
@@ -64,15 +63,11 @@ const Panel = (props: PanelProps) => {
             expanded={expanded}
             className={className}
             data-testid='panel-component'
-            defaultExpanded={defaultTo(true, defaultExpanded)}
+            defaultExpanded={defaultExpanded}
             actions={actions}
             details={details}
             detailsStyle={detailsStyle}
-            elevation={
-                nested
-                    ? NESTED_ELEVATION
-                    : defaultTo(DEFAULT_ELEVATION, elevation)
-            }
+            elevation={nested ? NESTED_ELEVATION : elevation}
             summary={
                 !hideSummary && (
                     <Summary>

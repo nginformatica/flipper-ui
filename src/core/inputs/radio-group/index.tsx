@@ -14,6 +14,7 @@ export interface RadioGroupProps extends DefaultProps {
     value?: string
     disabled?: boolean
     spacing?: 'default' | 'equal'
+    color?: 'primary' | 'secondary'
     options?: IOption[]
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
@@ -30,6 +31,7 @@ const RadioGroup = ({
     className,
     padding,
     margin,
+    color = 'secondary',
     style = {},
     title,
     value,
@@ -44,7 +46,12 @@ const RadioGroup = ({
         style={{ padding, margin, ...style }}
         {...otherProps}>
         <FormLabel component='legend'>{title}</FormLabel>
-        <MuiRadioGroup row={row} name={name} value={value} onChange={onChange}>
+        <MuiRadioGroup
+            row={row}
+            name={name}
+            value={value}
+            color={color}
+            onChange={onChange}>
             {options.map(option => (
                 <FormControlLabel
                     key={option.value}
