@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import DateTime from '.'
 
@@ -20,7 +20,22 @@ type Story = StoryObj<typeof DateTime>
 
 export const dateTime: Story = {
     render: ({ ...args }) => {
-        return <DateTime {...args} />
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [selectedDate, setSelectedDate] = useState<Date | null>(
+            new Date()
+        )
+
+        const handleDateChange = (date: Date) => {
+            setSelectedDate(date)
+        }
+
+        return (
+            <DateTime
+                {...args}
+                value={selectedDate}
+                onChange={handleDateChange}
+            />
+        )
     },
     args: {
         type: 'date'

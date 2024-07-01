@@ -1,113 +1,367 @@
+/* eslint-disable import/no-duplicates */
 import React from 'react'
-import type { MouseEvent } from 'react'
-import DateFnsUtils from '@date-io/date-fns'
+import { StaticDateTimePicker, renderTimeViewClock } from '@mui/x-date-pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { DatePicker, DatePickerToolbar } from '@mui/x-date-pickers/DatePicker'
 import {
-    KeyboardTimePicker,
-    KeyboardDatePicker,
-    KeyboardDateTimePicker,
-    MuiPickersUtilsProvider
-} from '@material-ui/pickers'
+    DateTimePicker,
+    DateTimePickerToolbar
+} from '@mui/x-date-pickers/DateTimePicker'
+import { ptBR as ptBRTexts } from '@mui/x-date-pickers/locales'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { TimePicker, TimePickerToolbar } from '@mui/x-date-pickers/TimePicker'
+import format from 'date-fns/format'
+import ptBR from 'date-fns/locale/pt-BR'
 import type { DefaultProps } from '../../types'
-import type { KeyboardDatePickerProps } from '@material-ui/pickers/DatePicker'
-import type { KeyboardDateTimePickerProps } from '@material-ui/pickers/DateTimePicker'
-import type { KeyboardTimePickerProps } from '@material-ui/pickers/TimePicker'
-import type { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
+import type {
+    DateOrTimeView,
+    DateTimeValidationError,
+    PickerChangeHandlerContext
+} from '@mui/x-date-pickers'
+import type {
+    DatePickerProps,
+    DatePickerToolbarProps
+} from '@mui/x-date-pickers/DatePicker'
+import type {
+    DateTimePickerProps,
+    DateTimePickerToolbarProps
+} from '@mui/x-date-pickers/DateTimePicker'
+import type {
+    TimePickerProps,
+    TimePickerToolbarProps
+} from '@mui/x-date-pickers/TimePicker'
+import { CustomWrapper } from './styles'
+import { theme } from '@/theme'
+
+const { primary } = theme.colors
 
 export interface IProps {
-    locale?: DateFnsUtils['locale']
     type?: 'date' | 'time' | 'datetime'
-    inputProps?: object
-    onAuxClick?(event: MouseEvent<HTMLDivElement, MouseEvent>): void
-    onAuxClickCapture?(event: MouseEvent<HTMLDivElement, MouseEvent>): void
-    onChange(date: MaterialUiPickersDate | null, value?: string): void
+    error?: boolean
+    required?: boolean
+    disabled?: boolean
+    placeholder?: string
+    fullWidth?: boolean
 }
 
-const DEFAULT_FORMATS = {
-    date: 'dd/MM/yyyy',
-    time: 'HH:mm',
-    datetime: 'dd/MM/yyyy HH:mm'
-}
-
-export type DateTimeProps = Omit<
-    KeyboardDatePickerProps,
-    'margin' | 'onChange'
-> &
-    Omit<KeyboardDateTimePickerProps, 'margin' | 'onChange'> &
-    Omit<KeyboardTimePickerProps, 'margin' | 'onChange'> &
+export type TDateTime = DatePickerProps<Date> &
+    TimePickerProps<Date> &
+    DateTimePickerProps<Date> &
     IProps &
     DefaultProps
+
+const formatter = (weekday: Date) =>
+    format(weekday, 'eee', { locale: ptBR }).slice(0, 3)
+
+const CustomDatePickerToolbar = (props: DatePickerToolbarProps<Date>) => {
+    return (
+        <DatePickerToolbar
+            {...props}
+            sx={{
+                backgroundColor: primary.main,
+                borderRadius: '4px 4px 0 0',
+                padding: '16px',
+                '.MuiTypography-root': {
+                    color: `${primary.contrast}90`
+                },
+                '.MuiDatePickerToolbar-title': {
+                    color: primary.contrast
+                }
+            }}
+        />
+    )
+}
+
+const CustomTimePickerToolbar = (props: TimePickerToolbarProps<Date>) => {
+    return (
+        <TimePickerToolbar
+            {...props}
+            sx={{
+                backgroundColor: primary.main,
+                borderRadius: '4px 4px 0 0',
+                padding: '16px',
+                '.MuiTypography-root': {
+                    color: `${primary.contrast}90`
+                },
+                '.MuiPickersToolbarText-root': {
+                    color: primary.contrast
+                },
+                '.MuiPickersToolbarText-root.Mui-selected': {
+                    color: `${primary.contrast}90`
+                }
+            }}
+        />
+    )
+}
+
+const CustomDateTimePickerToolbar = (
+    props: DateTimePickerToolbarProps<Date>
+) => {
+    return (
+        <DateTimePickerToolbar
+            {...props}
+            sx={{
+                backgroundColor: primary.main,
+                borderRadius: '4px 4px 0 0',
+                padding: '16px',
+                '.MuiTypography-root': {
+                    display: 'none'
+                },
+                '.MuiPickersToolbarText-root': {
+                    color: primary.contrast,
+                    display: 'block'
+                },
+                '.MuiPickersToolbarText-root.Mui-selected': {
+                    color: `${primary.contrast}90`,
+                    display: 'block'
+                }
+            }}
+        />
+    )
+}
+
+const CustomStaticDateTimePicker = (props: {
+    value?: Date | null | undefined
+    onChange:
+        | ((
+              value: Date | null,
+              context: PickerChangeHandlerContext<DateTimeValidationError>
+          ) => void)
+        | undefined
+    onViewChange: ((view: DateOrTimeView) => void) | undefined
+}) => {
+    return (
+        <CustomWrapper>
+            <StaticDateTimePicker
+                value={props.value}
+                slots={{
+                    toolbar: CustomDateTimePickerToolbar,
+                    actionBar: () => null
+                }}
+                slotProps={{
+                    toolbar: {
+                        toolbarFormat: 'dd MMM'
+                    },
+                    layout: {
+                        sx: {
+                            '.MuiTimeClock-root': {
+                                width: 'auto',
+                                padding: '0 4px',
+                                '& .MuiPickersArrowSwitcher-root': {
+                                    display: 'none'
+                                }
+                            },
+                            '.MuiClock-clock': {
+                                padding: '6px'
+                            },
+                            '.MuiClockPointer-thumb': {
+                                left: 'calc(50% - 16px)',
+                                borderWidth: '14px',
+                                top: '-20px'
+                            },
+                            '.css-18tn1jy-MuiClockNumber-root': {
+                                fontSize: '13px'
+                            },
+                            '.MuiDateTimePickerTabs-root': {
+                                minHeight: '36px'
+                            },
+                            '.MuiTab-root': {
+                                padding: '8px 16px',
+                                minHeight: '36px'
+                            },
+                            '.MuiDateCalendar-root': {
+                                maxHeight: '300px'
+                            }
+                        }
+                    }
+                }}
+                dayOfWeekFormatter={(day: Date) => formatter(day)}
+                onChange={props.onChange}
+                onViewChange={props.onViewChange}
+            />
+        </CustomWrapper>
+    )
+}
 
 const DateTime = ({
     padding,
     margin,
     style,
-    format,
-    variant = 'inline',
-    inputVariant = 'outlined',
-    ampm = false,
-    invalidDateMessage = '',
-    minDateMessage = '',
-    maxDateMessage = '',
-    locale,
+    value,
+    onChange,
+    error,
+    minDate,
+    minDateTime,
+    maxDate,
+    maxDateTime,
+    required,
+    disabled,
+    placeholder,
+    fullWidth,
     type = 'date',
     ...otherProps
-}: DateTimeProps) => {
-    const fieldProps = {
+}: TDateTime) => {
+    const commonProps = {
         ...otherProps,
-        format: format ? format : DEFAULT_FORMATS[type],
-        variant,
-        inputVariant,
-        ampm,
-        invalidDateMessage,
-        minDateMessage,
-        maxDateMessage,
-        style: { margin, padding, ...style },
-        inputProps: {
-            autoComplete: 'off',
-            role: 'date-picker',
-            ...otherProps.inputProps
+        value: typeof value === 'string' ? new Date(value) : value,
+        error: error,
+        sx: {
+            '.MuiInputBase-root': {
+                fontSize: '14px'
+            },
+            '.MuiSvgIcon-root': {
+                fontSize: '1.4rem'
+            },
+            '.MuiFormLabel-root': {
+                fontSize: '14px'
+            },
+            margin: margin,
+            padding: padding,
+            ...style
         },
-        InputAdornmentProps: {
-            style: { width: '32px' },
-            ...otherProps.InputAdornmentProps
-        },
-        InputLabelProps: {
-            ...otherProps.InputLabelProps
-        },
-        InputProps: {
-            style: { fontSize: '14px' },
-            ...otherProps.InputProps
-        }
+        onChange: onChange
     }
-
-    const renderDatePicker = () => (
-        <KeyboardDatePicker {...fieldProps} size='small' />
-    )
-
-    const renderTimePicker = () => (
-        <KeyboardTimePicker {...fieldProps} size='small' />
-    )
-
-    const renderDateTimePicker = () => (
-        <KeyboardDateTimePicker {...fieldProps} size='small' />
-    )
 
     const renderChildren = () => {
         if (type === 'date') {
-            return renderDatePicker()
+            return (
+                <DatePicker
+                    {...commonProps}
+                    minDate={
+                        typeof minDate === 'string'
+                            ? new Date(minDate)
+                            : minDate
+                    }
+                    maxDate={
+                        typeof maxDate === 'string'
+                            ? new Date(maxDate)
+                            : maxDate
+                    }
+                    slots={{ toolbar: CustomDatePickerToolbar }}
+                    slotProps={{
+                        textField: {
+                            size: 'small',
+                            error: error,
+                            required: required,
+                            disabled: disabled,
+                            placeholder: placeholder,
+                            fullWidth: fullWidth ?? true,
+                            inputProps: { role: 'date-picker' }
+                        },
+                        toolbar: {
+                            hidden: false,
+                            toolbarFormat: 'eee, dd MMM'
+                        },
+                        popper: { placement: 'bottom-end' },
+                        layout: {
+                            sx: {
+                                '.MuiDateCalendar-root': {
+                                    maxHeight: '300px'
+                                }
+                            }
+                        }
+                    }}
+                    dayOfWeekFormatter={(day: Date) => formatter(day)}
+                />
+            )
         }
 
         if (type === 'time') {
-            return renderTimePicker()
+            return (
+                <TimePicker
+                    {...commonProps}
+                    slots={{
+                        toolbar: CustomTimePickerToolbar,
+                        actionBar: () => null,
+                        leftArrowIcon: () => null,
+                        rightArrowIcon: () => null
+                    }}
+                    slotProps={{
+                        textField: {
+                            size: 'small',
+                            error: error,
+                            required: required,
+                            disabled: disabled,
+                            placeholder: placeholder,
+                            fullWidth: fullWidth ?? true,
+                            inputProps: { role: 'date-picker' }
+                        },
+                        toolbar: { hidden: false },
+                        popper: { placement: 'bottom-end' },
+                        layout: {
+                            sx: {
+                                '.MuiTimeClock-root': {
+                                    width: 'auto',
+                                    padding: '0 4px'
+                                },
+                                '.MuiClock-clock': {
+                                    padding: '6px'
+                                },
+                                '.MuiClockPointer-thumb': {
+                                    left: 'calc(50% - 16px)',
+                                    borderWidth: '14px',
+                                    top: '-20px'
+                                },
+                                '.css-18tn1jy-MuiClockNumber-root': {
+                                    fontSize: '13px'
+                                }
+                            }
+                        }
+                    }}
+                    viewRenderers={{
+                        hours: renderTimeViewClock,
+                        minutes: renderTimeViewClock
+                    }}
+                />
+            )
         }
 
-        return renderDateTimePicker()
+        return (
+            <DateTimePicker
+                {...commonProps}
+                minDate={
+                    typeof minDate === 'string' ? new Date(minDate) : minDate
+                }
+                maxDate={
+                    typeof maxDate === 'string' ? new Date(maxDate) : maxDate
+                }
+                minDateTime={
+                    typeof minDateTime === 'string'
+                        ? new Date(minDateTime)
+                        : minDateTime
+                }
+                maxDateTime={
+                    typeof maxDate === 'string'
+                        ? new Date(maxDateTime as unknown as string)
+                        : maxDateTime
+                }
+                slots={{ layout: CustomStaticDateTimePicker }}
+                slotProps={{
+                    textField: {
+                        size: 'small',
+                        error: error,
+                        required: required,
+                        disabled: disabled,
+                        placeholder: placeholder,
+                        fullWidth: fullWidth ?? true,
+                        inputProps: { role: 'date-picker' }
+                    },
+                    popper: { placement: 'bottom-end' }
+                }}
+            />
+        )
     }
 
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={locale}>
+        <LocalizationProvider
+            adapterLocale={ptBR}
+            dateAdapter={AdapterDateFns}
+            localeText={
+                ptBRTexts.components.MuiLocalizationProvider.defaultProps
+                    .localeText
+            }>
             {renderChildren()}
-        </MuiPickersUtilsProvider>
+        </LocalizationProvider>
     )
 }
 
