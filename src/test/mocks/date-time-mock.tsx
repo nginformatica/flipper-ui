@@ -1,34 +1,24 @@
 import React, { useState } from 'react'
-import { isValid, startOfDay } from 'date-fns'
-import type { DateTimeProps } from '@/core/inputs/date-time'
+import { isValid } from 'date-fns'
 import DateTime from '@/core/inputs/date-time'
 
 interface IProps {
-    initialValue?: string
-    dateProps?: Partial<DateTimeProps>
+    initialValue?: Date
+    dateProps?: object
 }
 
 const Default = ({ dateProps, initialValue }: IProps) => {
-    const [value, setValue] = useState<Date | string | null>(
+    const [value, setValue] = useState<Date | undefined | null>(
         initialValue ?? new Date()
     )
 
-    const handleChange = (date: Date | string | null, value?: string) => {
+    const handleChange = (date: Date | undefined | null) => {
         if (isValid(date)) {
             setValue(date)
-        } else {
-            setValue(value ?? '')
         }
     }
 
-    return (
-        <DateTime
-            value={value}
-            initialFocusedDate={startOfDay(new Date())}
-            onChange={handleChange}
-            {...dateProps}
-        />
-    )
+    return <DateTime value={value} onChange={handleChange} {...dateProps} />
 }
 
 export default Default

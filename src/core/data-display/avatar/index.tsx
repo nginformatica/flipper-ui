@@ -12,7 +12,7 @@ export interface IProps {
 const Avatar = (props: IProps) => {
     const getChild = () => {
         if (props.name) {
-            return props.name.charAt(1).toUpperCase()
+            return props.name.charAt(0).toUpperCase()
         }
 
         return props.icon

@@ -13,6 +13,7 @@ exports[`RadioGroup should match snapshot 1`] = `
     </legend>
     <div
       class="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      color="secondary"
       role="radiogroup"
     >
       <label
