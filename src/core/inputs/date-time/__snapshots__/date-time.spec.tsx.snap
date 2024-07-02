@@ -3,7 +3,7 @@
 exports[`DateTime should match snapshot 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-skpxy5-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1d9pdpz-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
@@ -17,13 +17,13 @@ exports[`DateTime should match snapshot 1`] = `
         placeholder="DDMMAAAA"
         role="date-picker"
         type="text"
-        value="01072024"
+        value="02072024"
       />
       <div
         class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-1laqsz7-MuiInputAdornment-root"
       >
         <button
-          aria-label="Escolha uma data, data selecionada 1 jul 2024"
+          aria-label="Escolha uma data, data selecionada 2 jul 2024"
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
