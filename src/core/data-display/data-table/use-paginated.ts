@@ -19,23 +19,23 @@ interface IPaginated<T> {
     totalItens: number
 }
 
-export const generateRandomDate = (size: number): Data[] => {
+export const generateRandomData = (size: number): Data[] => {
     const content: Array<Data> = []
 
     for (let i = 0; i < size; i++) {
         content.push({
             id: i,
             product: faker.vehicle.model(),
-            price: faker.datatype.float({ min: 0, max: 100000 }),
-            quantity: faker.datatype.number({ min: 0, max: 30 }),
-            date: faker.date.recent(2)
+            price: faker.number.float({ min: 0, max: 100000 }),
+            quantity: faker.number.int({ min: 1, max: 30 }),
+            date: faker.date.recent({ days: 5, refDate: new Date() })
         })
     }
 
     return content
 }
 
-const mockData = generateRandomDate(35)
+const mockData = generateRandomData(35)
 
 const INITIAL_STATE: IPaginated<Data> = {
     items: [],

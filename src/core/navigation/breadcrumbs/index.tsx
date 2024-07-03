@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import MuiBreadcrumbs from '@material-ui/core/Breadcrumbs'
 import { ChevronRight as IconChevronRight } from '@mui/icons-material'
+import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import { addIndex, map } from 'ramda'
 import { BreadcrumbLink, TextTypography } from './styles'
 
@@ -21,7 +21,7 @@ type Props = {
 }
 
 const defaultLinkWrapper = (link: string, label: string) => (
-    <BreadcrumbLink key={link} to={link}>
+    <BreadcrumbLink key={link} href={link}>
         {label}
     </BreadcrumbLink>
 )

@@ -1,11 +1,10 @@
-import React from 'react'
-import { act } from 'react-dom/test-utils'
+import React, { act } from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import Snackbar from '@/test/mocks/snackbar-mock'
 
 describe('Snackbar', () => {
-    it('should render a Snackbar', async () => {
+    it('should render', async () => {
         render(<Snackbar snackProps={{ message: 'Snackbar Message' }} />)
 
         const btn = screen.getByTestId('snackbar-button')

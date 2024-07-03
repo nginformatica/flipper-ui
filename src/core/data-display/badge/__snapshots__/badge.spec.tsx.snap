@@ -3,11 +3,11 @@
 exports[`Badge should match snapshot 1`] = `
 <div>
   <span
-    class="MuiBadge-root"
+    class="MuiBadge-root css-1c32n2y-MuiBadge-root"
   >
     Badge
     <span
-      class="MuiBadge-badge makeStyles-badge-3 MuiBadge-anchorOriginTopRightRectangle"
+      class="MuiBadge-badge MuiBadge-standard MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular css-dlwkee-MuiBadge-badge"
     >
       2
     </span>

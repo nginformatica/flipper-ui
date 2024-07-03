@@ -1,10 +1,10 @@
 import React from 'react'
-import { List } from '@material-ui/core'
-import MuiAccordionDetails from '@material-ui/core/AccordionDetails'
 import {
     CheckCircle as CheckCircleIcon,
     Help as HelpIcon
 } from '@mui/icons-material'
+import MuiAccordionDetails from '@mui/material/AccordionDetails'
+import List from '@mui/material/List'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
 import IconButton from '@/core/inputs/icon-button'

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
-import { Button } from '@material-ui/core'
 import type { Meta, StoryObj } from '@storybook/react'
+import Button from '../button'
 import PinInput from '.'
 import { ButtonContainer, ValidateContainer } from './styles'
 

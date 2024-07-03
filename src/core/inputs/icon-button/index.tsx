@@ -1,13 +1,22 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
-import MuiIconButton from '@material-ui/core/IconButton'
+import MuiIconButton from '@mui/material/IconButton'
 import type { DefaultProps } from '../../types'
 
 export interface IconButtonProps extends DefaultProps {
-    color?: 'default' | 'inherit' | 'primary' | 'secondary'
+    color?:
+        | 'inherit'
+        | 'default'
+        | 'primary'
+        | 'secondary'
+        | 'error'
+        | 'info'
+        | 'success'
+        | 'warning'
+    role?: string
     disabled?: boolean
     'data-testid'?: string
-    role?: string
+    size?: 'small' | 'medium' | 'large'
     onClick?(event: MouseEvent<HTMLButtonElement>): void
 }
 
@@ -15,11 +24,15 @@ const IconButton = ({
     children,
     padding,
     margin,
+    size,
     style,
     ...otherProps
 }: IconButtonProps) => {
     return (
-        <MuiIconButton {...otherProps} style={{ margin, padding, ...style }}>
+        <MuiIconButton
+            {...otherProps}
+            size={size || 'large'}
+            style={{ margin, padding, ...style }}>
             {children}
         </MuiIconButton>
     )

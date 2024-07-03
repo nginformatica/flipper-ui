@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import type { ButtonProps } from '@/core/inputs/button'
+import type { IButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Card from '.'
 import '@testing-library/jest-dom'
@@ -127,7 +127,7 @@ describe('Card', () => {
     })
 
     it('should call onClickAdd', () => {
-        const onAddProps: Partial<ButtonProps> = {
+        const onAddProps: Partial<IButtonProps> = {
             'data-testid': 'add-button'
         }
         const onClickAdd = jest.fn()

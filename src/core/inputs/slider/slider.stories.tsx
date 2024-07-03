@@ -30,6 +30,7 @@ Ranged.args = {
 
 export const FixedLabel = Template.bind({})
 FixedLabel.args = {
+    color: 'error',
     valueLabelDisplay: 'on',
     value: [20, 50],
     children: 'Slider'
@@ -51,7 +52,7 @@ WithMarks.args = {
             label: 'Finish'
         }
     ],
-    valueLabelDisplay: 'on',
+    valueLabelDisplay: 'auto',
     value: [20, 75],
     children: 'Slider'
 }

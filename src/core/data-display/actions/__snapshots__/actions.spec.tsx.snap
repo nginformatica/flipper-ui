@@ -7,37 +7,31 @@ exports[`Actions should match snapshot 1`] = `
     class="sc-aYaIB ivIxy"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit css-1y942vo-MuiButtonBase-root-MuiButton-root"
       data-testid="cancel-action"
+      href=""
       name="cancel-action"
       style="margin: 0px 16px; opacity: 1;"
       tabindex="0"
       type="button"
     >
+      Voltar
       <span
-        class="MuiButton-label"
-      >
-        Voltar
-      </span>
-      <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary css-zcbmsk-MuiButtonBase-root-MuiButton-root"
       data-testid="confirm-action"
+      href=""
       name="confirm-action"
       style="opacity: 1;"
       tabindex="0"
       type="button"
     >
+      Excluir
       <span
-        class="MuiButton-label"
-      >
-        Excluir
-      </span>
-      <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
   </div>

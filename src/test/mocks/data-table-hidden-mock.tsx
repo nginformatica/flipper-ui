@@ -18,8 +18,6 @@ import type {
 import { DataTableAction } from '@/core/data-display/data-table'
 import { DataTable } from '@/core/data-display/data-table/data-table'
 import { RowMode } from '@/core/data-display/data-table/types'
-import Typography from '@/core/data-display/typography'
-import Button from '@/core/inputs/button'
 
 type Data = {
     id: Identifier
@@ -46,7 +44,7 @@ const rows = (
                     padding: '16px',
                     justifyContent: 'space-between'
                 }}>
-                <Typography>Confirm Delete "{data.name}"?</Typography>
+                <div>Confirm Delete "{data.name}"?</div>
                 <div style={{ display: 'flex' }}>
                     <DataTableAction
                         label='CheckIcon'
@@ -309,7 +307,7 @@ const Default = () => {
 
     return (
         <>
-            <Button onClick={handleAdd}>Add Row</Button>
+            <button onClick={handleAdd}>Add Row</button>
             <DataTable
                 hidden
                 data={data}

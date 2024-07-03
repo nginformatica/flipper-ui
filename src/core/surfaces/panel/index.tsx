@@ -1,12 +1,10 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
 import { ExpandMore as IconExpand } from '@mui/icons-material'
-import { defaultTo } from 'ramda'
-import type { PaperProps as FlipperPaperProps } from '@/core/surfaces/paper'
-import { Paper, Summary, Title } from './styles'
+import type { IPaperProps } from '@/core/surfaces/paper'
+import { ExpansionPaperPanel, Summary, Title } from './styles'
 
-export interface PaperProps
-    extends Omit<FlipperPaperProps, 'title' | 'onChange'> {
+export interface PanelProps extends Omit<IPaperProps, 'title' | 'onChange'> {
     expanded?: boolean
     defaultExpanded?: boolean
     hideSummary?: boolean
@@ -32,14 +30,14 @@ export interface PaperProps
 const NESTED_ELEVATION = 0
 const DEFAULT_ELEVATION = 2
 
-const Panel = (props: PaperProps) => {
+const Panel = (props: PanelProps) => {
     const {
         hideExpansionIcon,
         expanded,
-        defaultExpanded,
+        defaultExpanded = true,
         id,
         nested,
-        elevation,
+        elevation = DEFAULT_ELEVATION,
         hideSummary,
         title,
         summary,
@@ -58,17 +56,18 @@ const Panel = (props: PaperProps) => {
         : undefined
 
     return (
-        <Paper
+        <ExpansionPaperPanel
             {...otherProps}
-            expanded={expanded}
             id={id}
+            margin='0px'
+            expanded={expanded}
+            className={className}
             data-testid='panel-component'
-            defaultExpanded={defaultTo(true, defaultExpanded)}
-            elevation={
-                nested
-                    ? NESTED_ELEVATION
-                    : defaultTo(DEFAULT_ELEVATION, elevation)
-            }
+            defaultExpanded={defaultExpanded}
+            actions={actions}
+            details={details}
+            detailsStyle={detailsStyle}
+            elevation={nested ? NESTED_ELEVATION : elevation}
             summary={
                 !hideSummary && (
                     <Summary>
@@ -81,19 +80,14 @@ const Panel = (props: PaperProps) => {
                     </Summary>
                 )
             }
-            details={details}
             expandIcon={
                 !hideExpansionIcon && <IconExpand data-testid='expand-icon' />
             }
-            actions={actions}
-            margin='0px'
             style={{
                 gridArea: area,
                 border: nested ? '1px solid lightgrey' : undefined,
                 ...style
             }}
-            className={className}
-            detailsStyle={detailsStyle}
             onChange={onChange}
             onClick={onClick}
             {...omitCursor}

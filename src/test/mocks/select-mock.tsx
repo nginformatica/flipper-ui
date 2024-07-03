@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
-import type { SelectProps } from '@/core/inputs/select'
-import ListItem from '@/core/data-display/list-item'
+import MuiMenuItem from '@mui/material/MenuItem'
+import type { ISelectProps } from '@/core/inputs/select'
+import type { SelectChangeEvent } from '@mui/material'
 import Select from '@/core/inputs/select'
 
 interface IProps {
     initialValue?: string
-    selectProps?: Partial<SelectProps>
+    selectProps?: Partial<ISelectProps>
 }
 
 const Default = (props: IProps) => {
     const [select, setSelect] = useState(props.initialValue || '')
 
     function handleChange(
-        event: ChangeEvent<HTMLSelectElement | HTMLInputElement>
+        event:
+            | ChangeEvent<HTMLSelectElement | HTMLInputElement>
+            | SelectChangeEvent<string>
     ) {
         setSelect(event.target.value)
     }
@@ -29,9 +32,9 @@ const Default = (props: IProps) => {
             data-testid='select-container'
             onClear={props.selectProps?.onClear ?? handleClear}
             onChange={props.selectProps?.onChange ?? handleChange}>
-            <ListItem value='0'>Option 0</ListItem>
-            <ListItem value='1'>Option 1</ListItem>
-            <ListItem value='2'>Option 2</ListItem>
+            <MuiMenuItem value='0'>Option 0</MuiMenuItem>
+            <MuiMenuItem value='1'>Option 1</MuiMenuItem>
+            <MuiMenuItem value='2'>Option 2</MuiMenuItem>
         </Select>
     )
 }

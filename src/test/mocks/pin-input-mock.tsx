@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Button } from '@material-ui/core'
 import type { PinInputGridProps } from '@/core/inputs/pin-input'
 import PinInput from '@/core/inputs/pin-input'
 
@@ -47,12 +46,12 @@ const Mock = ({ pinInputProps }: IProps) => {
                 variant='outlined'
                 onPinChanged={onPinChanged}
             />
-            <Button
+            <button
                 onClick={() => {
                     handleValidation()
                 }}>
                 Validate
-            </Button>
+            </button>
         </>
     )
 }

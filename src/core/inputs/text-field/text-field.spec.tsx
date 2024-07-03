@@ -1,5 +1,4 @@
-import React from 'react'
-import { act } from 'react-dom/test-utils'
+import React, { act } from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import TextField from '@/test/mocks/text-field-mock'
@@ -68,7 +67,7 @@ describe('TextField', () => {
                 await userEvent.click(helperBox.firstElementChild || helperBox)
         )
 
-        expect(onHelperClick).toBeCalled()
+        expect(onHelperClick).toHaveBeenCalled()
     })
 
     it('should render select with clear button', async () => {

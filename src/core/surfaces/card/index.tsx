@@ -5,18 +5,12 @@ import {
     Edit as IconEdit,
     Delete as IconDelete
 } from '@mui/icons-material'
-import type { ButtonProps } from '@/core/inputs/button'
+import type { IButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Line from '@/core/data-display/line'
 import AddButton from '@/core/inputs/add-button'
-import Paper from '../paper'
-import {
-    CardButton,
-    Header,
-    NESTED_ELEVATION,
-    PAPER_PROPS,
-    Title
-} from './styles'
+import Paper from '@/core/surfaces/paper'
+import { CardButton, Header, Title } from './styles'
 import { theme } from '@/theme'
 
 const { feedback } = theme.colors
@@ -31,7 +25,7 @@ export interface IProps {
     editing?: boolean
     action?: JSX.Element | null
     renderRemove?: boolean
-    onAddProps?: Partial<ButtonProps>
+    onAddProps?: Partial<IButtonProps>
     onEditProps?: Partial<IconButtonProps>
     onRemoveProps?: Partial<IconButtonProps>
     onClickAdd?(): void
@@ -62,12 +56,16 @@ const Card = (props: IProps) => {
     return (
         <Paper
             {...otherProps}
-            name={name}
             id={id}
-            style={PAPER_PROPS}
+            name={name}
             className='showable'
-            elevation={nested ? NESTED_ELEVATION : undefined}
-            padding={nested ? '0' : '24px'}>
+            elevation={nested ? 0 : undefined}
+            padding={nested ? '0px' : '24px'}
+            style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column'
+            }}>
             {title && (
                 <>
                     <Header>

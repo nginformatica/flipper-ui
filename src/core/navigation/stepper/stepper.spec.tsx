@@ -64,7 +64,7 @@ describe('Stepper', () => {
         expect(stepTwoIcon).toBeTruthy()
         expect(stepThree).toBeTruthy()
         expect(stepThreeIcon).toBeTruthy()
-        expect(stepOne.classList).toContain('MuiStepLabel-completed')
+        expect(stepOne.classList).toContain('Mui-completed')
         expect(stepThree.classList).not.toContain('MuiStepLabel-completed')
     })
 

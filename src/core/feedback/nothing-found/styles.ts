@@ -1,7 +1,7 @@
+import MuiTypography from '@mui/material/Typography'
 import { default as styled } from 'styled-components'
-import { default as Typography } from '@/core/data-display/typography'
 
-export const TextTypography = styled(Typography)`
+export const TextTypography = styled(MuiTypography)`
     && {
         flex: 1;
     }

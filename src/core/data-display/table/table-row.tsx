@@ -1,13 +1,13 @@
-import type { MouseEvent } from 'react'
 import React from 'react'
-import MuiTableRow from '@material-ui/core/TableRow'
+import type { MouseEvent } from 'react'
+import MuiTableRow from '@mui/material/TableRow'
 import type { DefaultProps } from '../../types'
-import type { TableRowProps as MuiTableRowProps } from '@material-ui/core/TableRow'
+import type { TableRowProps } from '@mui/material/TableRow'
 import { theme } from '@/theme'
 
 const { grays } = theme.colors
 
-export interface TableRowProps extends DefaultProps {
+export interface ITableRowProps extends DefaultProps, TableRowProps {
     selected?: boolean
     hover?: boolean
     background?: string
@@ -21,7 +21,7 @@ const TableRow = ({
     children,
     background,
     ...otherProps
-}: MuiTableRowProps & TableRowProps) => (
+}: ITableRowProps) => (
     <MuiTableRow
         {...otherProps}
         style={{

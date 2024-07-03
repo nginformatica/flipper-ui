@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
+import { FormControl, InputLabel } from '@mui/material'
 import type { Meta } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import Select from '.'
@@ -10,7 +11,7 @@ export default {
 } as Meta<typeof Select>
 
 export const Default = () => {
-    const [select, setSelect] = useState('3')
+    const [select, setSelect] = useState('')
 
     function handleChange(
         event: ChangeEvent<HTMLSelectElement | HTMLInputElement>
@@ -19,16 +20,23 @@ export const Default = () => {
     }
 
     return (
-        <Select value={select} onChange={handleChange}>
-            <ListItem value='0'>Option 0</ListItem>
-            <ListItem value='1'>Option 1</ListItem>
-            <ListItem value='2'>Option 2</ListItem>
-            <ListItem value='3'>Option 3</ListItem>
-            <ListItem value='4'>Option 4</ListItem>
-            <ListItem value='5'>Option 5</ListItem>
-            <ListItem value='6'>Option 6</ListItem>
-            <ListItem value='7'>Option 7</ListItem>
-        </Select>
+        <FormControl fullWidth size='small'>
+            <InputLabel>Label</InputLabel>
+            <Select
+                autoWidth
+                value={select}
+                label='Label'
+                onChange={handleChange}>
+                <ListItem value='0'>Option 0</ListItem>
+                <ListItem value='1'>Option 1</ListItem>
+                <ListItem value='2'>Option 2</ListItem>
+                <ListItem value='3'>Option 3</ListItem>
+                <ListItem value='4'>Option 4</ListItem>
+                <ListItem value='5'>Option 5</ListItem>
+                <ListItem value='6'>Option 6</ListItem>
+                <ListItem value='7'>Option 7</ListItem>
+            </Select>
+        </FormControl>
     )
 }
 
@@ -47,6 +55,7 @@ export const WithClear = () => {
 
     return (
         <Select
+            fullWidth
             hasClear
             value={select}
             onClear={handleClear}

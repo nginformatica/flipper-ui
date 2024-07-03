@@ -1,48 +1,46 @@
 import React from 'react'
-import type { ReactNode } from 'react'
-import { Badge as MuiBadge } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import MuiBadge from '@mui/material/Badge'
 import type { DefaultProps } from '../../types'
-import type { BadgeProps as MuiBadgeProps } from '@material-ui/core/Badge'
+import type { BadgeProps } from '@mui/material/Badge'
 
-export interface BadgeProps extends DefaultProps, MuiBadgeProps {
-    children: ReactNode
+export interface IBadge extends DefaultProps, BadgeProps {
     counter: number | string
-    position?: {
-        top?: number
-        bottom?: number
-        left?: number
-        right?: number
-    }
+    overlap?: 'rectangular' | 'circular'
+    vertical?: 'top' | 'bottom'
+    horizontal?: 'right' | 'left'
+    color?:
+        | 'default'
+        | 'primary'
+        | 'secondary'
+        | 'error'
+        | 'info'
+        | 'success'
+        | 'warning'
 }
 
-const useBadgeStyles = (position: BadgeProps['position']) => {
-    const getStyles = makeStyles({
-        badge: {
-            ...position
-        }
-    })
-
-    return getStyles()
-}
-
-const Badge = (props: BadgeProps) => {
+const Badge = (props: IBadge) => {
     const {
         children,
+        color,
+        overlap,
         counter,
-        padding,
+        vertical = 'top',
+        horizontal = 'right',
         margin,
-        position,
+        padding,
         style = {},
         ...otherProps
     } = props
 
-    const classes = useBadgeStyles(position)
-
     return (
         <MuiBadge
+            color={color}
+            overlap={overlap}
             badgeContent={counter}
-            classes={classes}
+            anchorOrigin={{
+                vertical: vertical,
+                horizontal: horizontal
+            }}
             style={{ padding, margin, ...style }}
             {...otherProps}>
             {children}

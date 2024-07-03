@@ -1,14 +1,26 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import type { DefaultProps } from '../../types'
-import type { TypographyProps } from '@material-ui/core/Typography'
 import Typography from '@/core/data-display/typography'
-import { Container, StyledLine } from './styles'
+import { Container, Line } from './styles'
 
 export interface LineProps extends DefaultProps {
     primary?: boolean
     width?: string
-    variant?: TypographyProps['variant']
+    variant?:
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6'
+        | 'subtitle1'
+        | 'subtitle2'
+        | 'body1'
+        | 'body2'
+        | 'caption'
+        | 'button'
+        | 'overline'
     childrenStyle?: CSSProperties
     children?: ReactNode
     'data-testid'?: string
@@ -26,17 +38,14 @@ const Chapter = ({
 }: LineProps) => {
     return (
         <Container {...otherProps}>
-            <StyledLine
-                primary={primary}
-                style={{ padding, margin, ...style }}
-            />
-            <Typography variant={variant} style={{ ...childrenStyle }}>
+            <Line primary={primary} style={{ padding, margin, ...style }} />
+            <Typography
+                variant={variant}
+                margin='0px 10px'
+                style={{ ...childrenStyle }}>
                 {children}
             </Typography>
-            <StyledLine
-                primary={primary}
-                style={{ padding, margin, ...style }}
-            />
+            <Line primary={primary} style={{ padding, margin, ...style }} />
         </Container>
     )
 }

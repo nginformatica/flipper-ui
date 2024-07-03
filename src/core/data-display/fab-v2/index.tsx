@@ -1,10 +1,10 @@
 import React from 'react'
 import type { MouseEvent, CSSProperties } from 'react'
-import type { FabProps } from '@/core/data-display/fab'
+import type { IFabProps } from '@/core/data-display/fab'
 import Fab from '@/core/data-display/fab'
 import Tooltip from '@/core/feedback/tooltip'
 
-export interface IProps extends FabProps {
+export interface IProps extends IFabProps {
     mini?: boolean
     className?: string
     name?: string

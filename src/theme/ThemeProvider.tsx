@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import { createTheme, ThemeProvider } from '@material-ui/core/styles'
-import type { ThemeOptions } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import type { ThemeOptions } from '@mui/material/styles'
 
 interface ThemeProviderProps {
     options?: ThemeOptions

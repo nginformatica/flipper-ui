@@ -1,13 +1,12 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Typography from '@/core/data-display/typography'
 import Box from '.'
 
 describe('Advertise', () => {
     it('should render', () => {
         render(
             <Box data-testid='box-container'>
-                <Typography>Box</Typography>
+                <div>Box</div>
             </Box>
         )
 
@@ -22,7 +21,7 @@ describe('Advertise', () => {
     it('should render with custom string margins', () => {
         render(
             <Box margin='10px' padding='12px' data-testid='box-container'>
-                <Typography>Box</Typography>
+                <div>Box</div>
             </Box>
         )
 
@@ -35,7 +34,7 @@ describe('Advertise', () => {
     it('should render with custom number margins', () => {
         render(
             <Box margin={10} padding={12} data-testid='box-container'>
-                <Typography>Box</Typography>
+                <div>Box</div>
             </Box>
         )
 
@@ -48,7 +47,7 @@ describe('Advertise', () => {
     it('should match snapshot', () => {
         const { container } = render(
             <Box margin={10} padding={12} data-testid='box-container'>
-                <Typography>Box</Typography>
+                <div>Box</div>
             </Box>
         )
 

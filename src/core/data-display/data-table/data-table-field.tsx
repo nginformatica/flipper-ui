@@ -1,6 +1,10 @@
 import React from 'react'
 import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react'
-import { Checkbox, Table, TableBody, TableCell, TableHead } from '@mui/material'
+import MuiCheckbox from '@mui/material/Checkbox'
+import MuiTable from '@mui/material/Table'
+import MuiTableBody from '@mui/material/TableBody'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableHead from '@mui/material/TableHead'
 import TextField from '@/core/inputs/text-field'
 import { FieldWrapper, RowTable, TableCellRows } from './styles'
 
@@ -107,10 +111,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
             (event.target as HTMLElement).closest('input[type="checkbox"]') !==
             null
 
-        if (
-            !isCheckboxClick &&
-            (!checkboxProps?.checkRow || !checkboxProps.checkRow[index])
-        ) {
+        if (!isCheckboxClick && !checkboxProps?.checkRow?.[index]) {
             handleSelect(index)
         }
     }
@@ -122,8 +123,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
                     return (
                         <TableCellRows key={i} align='center'>
                             {column.editable &&
-                            checkboxProps?.checkRow &&
-                            checkboxProps.checkRow[index] ? (
+                            checkboxProps?.checkRow?.[index] ? (
                                 <TextField
                                     fullWidth
                                     key={`${column.field}-${i}`}
@@ -169,14 +169,12 @@ export const DataTableField = <D extends Record<string, unknown>>(
                 <RowTable
                     key={index}
                     className={
-                        checkboxProps?.checkRow && checkboxProps.checkRow[index]
-                            ? 'no-hover'
-                            : ''
+                        checkboxProps?.checkRow?.[index] ? 'no-hover' : ''
                     }
                     onClick={event => handleTableRow(event, index)}>
                     {checkbox && (
-                        <TableCell padding='checkbox'>
-                            <Checkbox
+                        <MuiTableCell padding='checkbox'>
+                            <MuiCheckbox
                                 color='primary'
                                 checked={
                                     checkboxProps?.checkRow?.[index] !==
@@ -186,7 +184,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
                                 }
                                 onChange={() => handleSelect(index)}
                             />
-                        </TableCell>
+                        </MuiTableCell>
                     )}
                     {columns}
                 </RowTable>
@@ -194,11 +192,11 @@ export const DataTableField = <D extends Record<string, unknown>>(
         })
 
     return (
-        <Table data-testid='data-table-field'>
-            <TableHead>
+        <MuiTable data-testid='data-table-field'>
+            <MuiTableHead>
                 {checkbox && (
-                    <TableCell padding='checkbox'>
-                        <Checkbox
+                    <MuiTableCell padding='checkbox'>
+                        <MuiCheckbox
                             color='primary'
                             checked={
                                 checkboxProps?.checkAllRows !== undefined
@@ -217,16 +215,16 @@ export const DataTableField = <D extends Record<string, unknown>>(
                                 }
                             }}
                         />
-                    </TableCell>
+                    </MuiTableCell>
                 )}
                 {header.map((item, i) => (
-                    <TableCell key={i} align='center'>
+                    <MuiTableCell key={i} align='center'>
                         {item.title}
-                    </TableCell>
+                    </MuiTableCell>
                 ))}
-            </TableHead>
-            <TableBody>{tableBody(rows, header)}</TableBody>
-        </Table>
+            </MuiTableHead>
+            <MuiTableBody>{tableBody(rows, header)}</MuiTableBody>
+        </MuiTable>
     )
 }
 

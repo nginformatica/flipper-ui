@@ -1,23 +1,37 @@
 import React from 'react'
-import { Chip as MuiChip } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import type { MouseEventHandler, ReactElement, ReactNode } from 'react'
+import MuiChip from '@mui/material/Chip'
+import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
-import type { ChipProps as MuiChipProps } from '@material-ui/core'
+import type { ChipProps } from '@mui/material/Chip'
 
-export interface IChipProps
-    extends MuiChipProps,
-        Omit<DefaultProps, 'children'> {
+export interface IChipProps extends ChipProps, Omit<DefaultProps, 'children'> {
+    label?: ReactNode
+    icon?: ReactElement
+    avatar?: ReactElement
     square?: boolean
+    color?:
+        | 'default'
+        | 'primary'
+        | 'secondary'
+        | 'error'
+        | 'info'
+        | 'success'
+        | 'warning'
+    size?: 'small' | 'medium'
+    variant?: 'outlined' | 'filled'
+    onClick?: MouseEventHandler<HTMLDivElement> | undefined
+    onDelete?: ((event: unknown) => void) | undefined
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(() => ({
     root: {
         borderRadius: '4px'
     },
     avatar: {
         borderRadius: '2px'
     }
-})
+}))
 
 const Chip = ({
     square,

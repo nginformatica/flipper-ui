@@ -68,13 +68,3 @@ Error.args = {
     message: 'In the town where I was born, Lived a man who sailed to sea',
     children: 'Snackbar'
 }
-
-/*
-export const WithLongDuration = Template.bind({})
-WithLongDuration.args = {
-    variant: 'info',
-    // transitionDuration: { enter: 0, exit: 200 },
-    message: 'In the town where I was born, Lived a man who sailed to sea',
-    children: 'Snackbar'
-}
-*/

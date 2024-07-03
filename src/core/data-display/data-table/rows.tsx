@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import type { ReactNode } from 'react'
-import TableCell from '@material-ui/core/TableCell'
-import TableRow from '@material-ui/core/TableRow'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableRow from '@mui/material/TableRow'
 import type { ColumnSpec, Data, Errors, PartialData } from './types'
 import DateTime from '@/core/inputs/date-time'
 import MaskField from '@/core/inputs/mask-field'
@@ -204,12 +204,12 @@ export const StatefulRow = <D extends Data>({
     return (
         <>
             {columns.map((column, i) => (
-                <TableCell
+                <MuiTableCell
                     align={column.align}
                     key={`${column.title}-${i}`}
                     style={column.cellStyle}>
                     {getCorrectViewMode(column, mode, isEditable(column))}
-                </TableCell>
+                </MuiTableCell>
             ))}
         </>
     )
@@ -232,9 +232,9 @@ export const NewRow = <D extends Data>({
     )
 
     return (
-        <TableRow data-testid='table-row'>
+        <MuiTableRow data-testid='table-row'>
             {columns.map((column, i) => (
-                <TableCell
+                <MuiTableCell
                     style={column.cellStyle}
                     align={column.align}
                     key={`${column.title}-${i}`}>
@@ -247,8 +247,8 @@ export const NewRow = <D extends Data>({
                               true
                           )
                         : renderViewMode(column, editableState)}
-                </TableCell>
+                </MuiTableCell>
             ))}
-        </TableRow>
+        </MuiTableRow>
     )
 }

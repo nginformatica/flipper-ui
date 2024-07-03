@@ -1,18 +1,28 @@
 import React from 'react'
-import type { MouseEvent, ReactNode } from 'react'
-import type { DialogProps } from '@/core/feedback/dialog'
+import type { CSSProperties, MouseEvent, ReactNode } from 'react'
+import type { IDialogProps } from '@/core/feedback/dialog'
 import Dialog from '@/core/feedback/dialog'
 import Button from '@/core/inputs/button'
 import { ThemeProviderFlipper, theme } from '@/theme'
 
 const { action, primary } = theme.colors
 
-export interface IProps extends DialogProps {
+export interface IProps extends IDialogProps {
     open: boolean
     title: string
     titleAction?: string | ReactNode
     text?: string
-    primaryButtonColor?: 'default' | 'primary' | 'inherit' | 'secondary'
+    fullWidth?: boolean
+    maxWidth?: 'xs' | 'sm' | 'md' | 'lg'
+    primaryButtonColor?:
+        | 'inherit'
+        | 'primary'
+        | 'secondary'
+        | 'success'
+        | 'error'
+        | 'info'
+        | 'warning'
+    primaryButtonStyle?: CSSProperties
     primaryButtonName?: string
     primaryButtonText: string
     secondaryButtonText?: string
@@ -47,6 +57,7 @@ const DialogV2 = (props: IProps) => {
         titleAction,
         text,
         primaryButtonColor,
+        primaryButtonStyle,
         primaryButtonName,
         primaryButtonText,
         secondaryButtonText,
@@ -54,6 +65,8 @@ const DialogV2 = (props: IProps) => {
         snippet,
         content,
         PaperProps,
+        fullWidth,
+        maxWidth,
         omitActionButtons,
         primaryButtonAction,
         secondaryButtonAction,
@@ -73,6 +86,8 @@ const DialogV2 = (props: IProps) => {
                 text={text}
                 content={content}
                 snippet={snippet}
+                fullWidth={fullWidth}
+                maxWidth={maxWidth}
                 PaperProps={PaperProps}
                 actions={
                     !omitActionButtons && (
@@ -83,6 +98,7 @@ const DialogV2 = (props: IProps) => {
                                         secondaryButtonName ||
                                         'secondary-button'
                                     }
+                                    margin='12px 6px'
                                     onClick={secondaryButtonAction}>
                                     {secondaryButtonText}
                                 </Button>
@@ -91,8 +107,9 @@ const DialogV2 = (props: IProps) => {
                             <Button
                                 name={primaryButtonName || 'primary-button'}
                                 color={primaryButtonColor}
+                                style={primaryButtonStyle}
                                 variant='contained'
-                                margin='6px 12px'
+                                margin='12px 6px'
                                 onClick={primaryButtonAction}>
                                 {primaryButtonText}
                             </Button>

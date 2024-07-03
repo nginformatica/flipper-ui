@@ -1,4 +1,5 @@
 import React from 'react'
+import { Face } from '@mui/icons-material'
 import type { Meta, StoryFn } from '@storybook/react'
 import InputAdornment from '.'
 
@@ -14,5 +15,11 @@ const Template: StoryFn<typeof InputAdornment> = args => (
 export const Default = Template.bind({})
 
 Default.args = {
-    children: 'InputAdornment'
+    children: '$'
+}
+
+export const WithIcon = Template.bind({})
+
+WithIcon.args = {
+    children: <Face />
 }

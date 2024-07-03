@@ -6,28 +6,17 @@ import type {
     FocusEvent,
     ReactNode,
     MouseEvent,
-    Ref,
-    HTMLAttributes
+    Ref
 } from 'react'
-import {
-    InputAdornment,
-    TextField as MuiTextField,
-    IconButton as MuiButton,
-    ListItem
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import {
-    Clear,
-    Help as ContactSupportIcon,
-    Edit,
-    Save
-} from '@mui/icons-material'
+import { Clear, Help as ContactSupportIcon } from '@mui/icons-material'
+import MuiInputAdornment from '@mui/material/InputAdornment'
+import MuiMenuItem from '@mui/material/MenuItem'
+import MuiTextField from '@mui/material/TextField'
+import { makeStyles } from '@mui/styles'
 import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
 import type { DefaultProps } from '../../types'
-import type {
-    InputBaseComponentProps,
-    TextFieldProps as MuiTextFieldProps
-} from '@material-ui/core'
+import type { InputBaseComponentProps } from '@mui/material/InputBase'
+import type { TextFieldProps } from '@mui/material/TextField'
 import IconButton from '../icon-button'
 import {
     CharactersCount,
@@ -46,9 +35,9 @@ export interface IOption {
     value: string | number
 }
 
-export interface TextFieldProps
+export interface ITextFieldProps
     extends DefaultProps,
-        Omit<MuiTextFieldProps, 'margin' | 'variant'> {
+        Omit<TextFieldProps, 'margin'> {
     autoComplete?: string
     options?: IOption[] | string
     autoFocus?: boolean
@@ -65,7 +54,7 @@ export interface TextFieldProps
     select?: boolean
     type?: string
     value?: string | number
-    variant?: 'standard' | 'outlined' | 'filled'
+    variant?: 'filled' | 'outlined' | 'standard'
     inputRef?: Ref<HTMLInputElement>
     inputProps?: InputBaseComponentProps
     InputProps?: object
@@ -87,50 +76,21 @@ export interface TextFieldProps
     onKeyDown?: (event: KeyboardEvent) => void
 }
 
-interface IHelperProps extends Pick<TextFieldProps, 'helperIcon'> {
+interface IHelperProps {
+    helperIcon?: ReactNode
     onHelperClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-interface IEditProps extends Pick<TextFieldProps, 'showEdit' | 'style'> {
-    editing: boolean
-    onEditClick: (event: MouseEvent<HTMLButtonElement>) => void
-    onSaveClick: (event: MouseEvent<HTMLButtonElement>) => void
-    editButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
-    saveButtonProps?: Partial<Omit<HTMLAttributes<HTMLButtonElement>, 'color'>>
-}
-
-export const useStyles = makeStyles({
-    listOptions: {
-        outline: 'none',
-        cursor: 'pointer',
-        fontFamily: '"Roboto", "Helvetica", "Arial", sans- serif',
-        '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.04)'
-        }
-    },
+const useStyles = makeStyles({
     input: {
-        fontSize: '14px',
-        padding: '10px',
-        height: 'auto'
-    },
-    outlinedInput: {
-        fontSize: '14px',
-        padding: '10px',
-        height: 'auto'
+        fontSize: '14px'
     },
     outlinedLabel: {
-        fontSize: '14px',
-        transform: 'translate(14px, 13px) scale(1)'
-    },
-    outlinedMultiline: {
-        padding: '0px'
-    },
-    iconOutlined: {
-        right: '2px'
+        fontSize: '14px'
     }
 })
 
-export const coerceComboOptions: (input: string) => IOption[] = when(
+const coerceComboOptions: (input: string) => IOption[] = when(
     is(String),
     pipe<string, string[], object, IOption[]>(
         split(';'),
@@ -139,7 +99,7 @@ export const coerceComboOptions: (input: string) => IOption[] = when(
     )
 )
 
-export const toLispCase = (name: string) =>
+const toLispCase = (name: string) =>
     name
         .replace(
             /([a-z])([A-Z])/g,
@@ -158,60 +118,37 @@ export const HelperBox = (props: IHelperProps) => (
 )
 
 /* Jest-ignore-start ignore next */
-export const renderOptions = (
-    options: TextFieldProps['options'],
-    classes: Record<string, string>
-) => {
+export const renderOptions = (options: ITextFieldProps['options']) => {
     const comboOptions =
         typeof options === 'string' ? coerceComboOptions(options) : options
 
-    return (
-        options &&
-        comboOptions?.map((option: TextFieldProps) => (
-            <ListItem
-                id={toLispCase(`option-${option.value}`)}
-                key={option.value}
-                disabled={option.disabled}
-                value={option.value}
-                classes={{ root: classes.listOptions }}>
-                {option.label}
-            </ListItem>
-        ))
-    )
+    return comboOptions?.map((option: ITextFieldProps) => (
+        <MuiMenuItem
+            id={toLispCase(`option-${option.value}`)}
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}>
+            {option.label}
+        </MuiMenuItem>
+    ))
 }
 
-export const EditBox = (props: IEditProps) => {
-    return (
-        <div role='edit-box'>
-            {props.editing ? (
-                <IconButton
-                    {...props.saveButtonProps}
-                    padding='6px 2px'
-                    onClick={props.onSaveClick}>
-                    {<Save fontSize='small' />}
-                </IconButton>
-            ) : (
-                <IconButton
-                    {...props.editButtonProps}
-                    padding='6px 2px'
-                    onClick={props.onEditClick}>
-                    {<Edit fontSize='small' />}
-                </IconButton>
-            )}
-        </div>
-    )
-}
-
-const renderEndAdornment = (onClear?: () => void) => (
-    <InputAdornment position='end'>
-        <MuiButton role='clear-button' size='small' onClick={onClear}>
-            <Clear style={{ fontSize: '15px' }} />
-        </MuiButton>
-    </InputAdornment>
+const renderEndAdornment = (disabled?: boolean, onClear?: () => void) => (
+    <MuiInputAdornment position='end'>
+        <IconButton
+            role='clear-button'
+            disabled={disabled || false}
+            size='small'
+            margin='0 16px 0 0'
+            onClick={onClear}>
+            <Clear fontSize='inherit' />
+        </IconButton>
+    </MuiInputAdornment>
 )
 
 const TextField = ({
     options,
+    size,
     margin,
     padding,
     style = {},
@@ -230,23 +167,14 @@ const TextField = ({
     characters,
     children,
     ...otherProps
-}: TextFieldProps) => {
-    const clearStyle = makeStyles({
-        iconOutlined: {
-            position: 'relative',
-            right: '2px',
-            marginLeft: '-20px'
-        }
-    })
-
+}: ITextFieldProps) => {
     const classes = useStyles()
-    const clearClass = clearStyle()
 
     const hasValue = !!otherProps.value
 
     const endAdornment =
         hasValue && hasClear
-            ? { endAdornment: renderEndAdornment(onClear) }
+            ? { endAdornment: renderEndAdornment(otherProps.disabled, onClear) }
             : {}
 
     const handleClick = () => {
@@ -280,11 +208,12 @@ const TextField = ({
         <Wrapper>
             <MuiTextField
                 title=''
+                size={size || 'small'}
                 select={!!options?.length}
                 fullWidth={fullWidth}
                 autoComplete={autoComplete}
                 error={error}
-                variant={variant as 'outlined'}
+                variant={variant}
                 style={{
                     margin,
                     padding,
@@ -298,15 +227,8 @@ const TextField = ({
                     ...InputLabelProps
                 }}
                 InputProps={{
-                    // @ts-expect-error It needs the data-testid for the tests
-                    'data-testid': 'text-field',
                     classes: {
-                        input:
-                            variant === 'outlined' ? classes.outlinedInput : '',
-                        multiline:
-                            variant === 'outlined'
-                                ? classes.outlinedMultiline
-                                : ''
+                        input: variant === 'outlined' ? classes.input : ''
                     },
                     endAdornment: characters && (
                         <CharactersCount>
@@ -317,18 +239,12 @@ const TextField = ({
                     ...InputProps
                 }}
                 SelectProps={{
-                    classes: {
-                        iconOutlined: hasClear
-                            ? clearClass.iconOutlined
-                            : classes.iconOutlined
-                    },
                     ...endAdornment,
                     ...SelectProps
                 }}
-                characters={characters?.toString()}
                 onChange={handleInputChange}
                 {...otherProps}>
-                {options ? renderOptions(options, classes) : children}
+                {options ? renderOptions(options) : children}
             </MuiTextField>
             {onHelperClick && (
                 <HelperBox

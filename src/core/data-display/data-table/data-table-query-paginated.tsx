@@ -5,15 +5,15 @@ import type {
     CSSProperties,
     ReactNode
 } from 'react'
-import Paper from '@material-ui/core/Paper'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableFooter from '@material-ui/core/TableFooter'
-import TableHead from '@material-ui/core/TableHead'
-import TablePagination from '@material-ui/core/TablePagination'
-import TableRow from '@material-ui/core/TableRow'
+import MuiPaper from '@mui/material/Paper'
+import MuiTable from '@mui/material/Table'
+import MuiTableBody from '@mui/material/TableBody'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableContainer from '@mui/material/TableContainer'
+import MuiTableFooter from '@mui/material/TableFooter'
+import MuiTableHead from '@mui/material/TableHead'
+import MuiTablePagination from '@mui/material/TablePagination'
+import MuiTableRow from '@mui/material/TableRow'
 import { last } from 'ramda'
 import type {
     ColumnSpec,
@@ -171,7 +171,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                 const mode = rowState?.mode || RowMode.View
 
                 return (
-                    <TableRow
+                    <MuiTableRow
                         key={row.id}
                         data-id={row.id}
                         style={bodyRowStyle}
@@ -187,7 +187,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                                 onUpdate={setEditableRowState(row.id)}
                             />
                         )}
-                    </TableRow>
+                    </MuiTableRow>
                 )
             }),
         [
@@ -205,13 +205,13 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
     const columnsList = useMemo(
         () =>
             columns.map(column => (
-                <TableCell
+                <MuiTableCell
                     key={column.title}
                     variant='head'
                     style={column.headerStyle}
                     align={column.align}>
                     {column.title}
-                </TableCell>
+                </MuiTableCell>
             )),
         [columns]
     )
@@ -223,8 +223,8 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         : perPage - currentRowsNumber
 
     const hiddenRowFiller = hiddenRowsNumber !== 0 && (
-        <TableRow style={bodyRowStyle}>
-            <TableCell
+        <MuiTableRow style={bodyRowStyle}>
+            <MuiTableCell
                 colSpan={columns.length}
                 padding='none'
                 style={{
@@ -233,7 +233,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                         `${hiddenRowHeight * hiddenRowsNumber}px`
                 }}
             />
-        </TableRow>
+        </MuiTableRow>
     )
 
     const rowsElements = (
@@ -265,23 +265,25 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
     )
 
     return (
-        <TableContainer component={Paper}>
-            <Table>
+        <MuiTableContainer component={MuiPaper}>
+            <MuiTable>
                 {!noHeader && (
-                    <TableHead style={headStyle}>
-                        <TableRow style={headRowStyle}>{columnsList}</TableRow>
-                    </TableHead>
+                    <MuiTableHead style={headStyle}>
+                        <MuiTableRow style={headRowStyle}>
+                            {columnsList}
+                        </MuiTableRow>
+                    </MuiTableHead>
                 )}
-                <TableBody style={bodyStyle}>
+                <MuiTableBody style={bodyStyle}>
                     {currentRowsNumber === 0 || !pagination.clickable
                         ? componentForEmpty
                         : rowsElements}
                     {hiddenRowFiller}
-                </TableBody>
+                </MuiTableBody>
                 {!pagination.disabled && (
-                    <TableFooter>
-                        <TableRow>
-                            <TablePagination
+                    <MuiTableFooter>
+                        <MuiTableRow>
+                            <MuiTablePagination
                                 count={totalElements}
                                 page={page}
                                 rowsPerPageOptions={
@@ -302,11 +304,11 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                                     )
                                 }}
                             />
-                        </TableRow>
-                    </TableFooter>
+                        </MuiTableRow>
+                    </MuiTableFooter>
                 )}
-            </Table>
-        </TableContainer>
+            </MuiTable>
+        </MuiTableContainer>
     )
 }
 

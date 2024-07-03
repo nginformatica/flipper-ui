@@ -3,12 +3,6 @@ import { render, screen } from '@testing-library/react'
 import Breadcrumbs from '.'
 
 describe('Breadcrumbs', () => {
-    const defaultLinkWrapper = (link: string, label: string) => (
-        <a key={link} href={link}>
-            {label}
-        </a>
-    )
-
     it('should render', () => {
         render(
             <Breadcrumbs
@@ -19,7 +13,6 @@ describe('Breadcrumbs', () => {
                     foo: 'Foo',
                     bar: 'Bar'
                 }}
-                linkWrapper={defaultLinkWrapper}
             />
         )
 
@@ -55,7 +48,6 @@ describe('Breadcrumbs', () => {
                     foo: 'Foo',
                     bar: 'Bar'
                 }}
-                linkWrapper={defaultLinkWrapper}
             />
         )
 

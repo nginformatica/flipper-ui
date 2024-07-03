@@ -1,21 +1,26 @@
 import React from 'react'
-import {
-    CircularProgress as MuiCircularProgress,
-    LinearProgress as MuiLinearProgress
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import MuiCircularProgress from '@mui/material/CircularProgress'
+import MuiLinearProgress from '@mui/material/LinearProgress'
+import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 
 export interface ILinear {
-    color?: 'primary' | 'secondary'
-    valueBuffer?: number
-    variant?: 'determinate' | 'indeterminate' | 'buffer' | 'query'
+    color?:
+        | 'primary'
+        | 'secondary'
+        | 'error'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'inherit'
     classes?: {
         root?: string
         colorPrimary?: string
         barColorPrimary?: string
         barColorSecondary?: string
     }
+    variant?: 'buffer' | 'determinate' | 'indeterminate' | 'query'
+    valueBuffer?: number
     rootColor?: string
     primaryColor?: string
     barPrimaryColor?: string
@@ -24,8 +29,15 @@ export interface ILinear {
 
 export interface ICircular {
     size?: string | number
-    color?: 'primary' | 'secondary' | 'inherit'
-    variant?: 'determinate' | 'indeterminate' | 'static'
+    variant?: 'determinate' | 'indeterminate'
+    color?:
+        | 'primary'
+        | 'secondary'
+        | 'error'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'inherit'
 }
 
 export interface ProgressProps extends DefaultProps {

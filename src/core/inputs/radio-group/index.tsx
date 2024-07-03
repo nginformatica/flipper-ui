@@ -1,12 +1,10 @@
-import type { ChangeEvent, ReactNode } from 'react'
 import React from 'react'
-import {
-    FormControl,
-    FormControlLabel,
-    FormLabel,
-    Radio,
-    RadioGroup as MuiRadioGroup
-} from '@material-ui/core'
+import type { ChangeEvent, ReactNode } from 'react'
+import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormLabel from '@mui/material/FormLabel'
+import Radio from '@mui/material/Radio'
+import MuiRadioGroup from '@mui/material/RadioGroup'
 import type { DefaultProps } from '../../types'
 
 export interface RadioGroupProps extends DefaultProps {
@@ -16,6 +14,7 @@ export interface RadioGroupProps extends DefaultProps {
     value?: string
     disabled?: boolean
     spacing?: 'default' | 'equal'
+    color?: 'primary' | 'secondary'
     options?: IOption[]
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
@@ -32,6 +31,7 @@ const RadioGroup = ({
     className,
     padding,
     margin,
+    color = 'secondary',
     style = {},
     title,
     value,
@@ -52,7 +52,7 @@ const RadioGroup = ({
                     key={option.value}
                     label={option.label}
                     value={option.value}
-                    control={<Radio />}
+                    control={<Radio color={color} />}
                     disabled={option.disabled}
                     style={spacing === 'equal' ? { flex: 1 } : {}}
                 />

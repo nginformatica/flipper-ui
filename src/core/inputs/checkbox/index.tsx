@@ -1,17 +1,15 @@
 import React from 'react'
 import type { ChangeEvent, ReactNode } from 'react'
-import {
-    Checkbox as MuiCheckbox,
-    FormControlLabel as MuiFormControlLabel,
-    Switch as MuiSwitch,
-    Typography
-} from '@material-ui/core'
+import MuiCheckbox from '@mui/material/Checkbox'
+import MuiFormControlLabel from '@mui/material/FormControlLabel'
+import MuiSwitch from '@mui/material/Switch'
+import Typography from '@mui/material/Typography'
 import type { DefaultProps } from '../../types'
-import type { CheckboxProps as MuiCheckboxProps } from '@material-ui/core'
+import type { CheckboxProps } from '@mui/material/Checkbox'
 import { HelperBox } from '@/core/inputs/text-field'
 import { CheckFieldsWrapper, DENSE } from './styles'
 
-export interface CheckboxProps extends DefaultProps {
+export interface ICheckboxProps extends DefaultProps {
     name: string
     label?: ReactNode
     color?: 'primary' | 'secondary' | 'default'
@@ -23,10 +21,10 @@ export interface CheckboxProps extends DefaultProps {
     helperIcon?: ReactNode
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLElement>) => void
-    checkboxProps?: MuiCheckboxProps
+    checkboxProps?: CheckboxProps
 }
 
-const Checkbox = (props: CheckboxProps) => {
+const Checkbox = (props: ICheckboxProps) => {
     const {
         type = 'checkbox',
         margin,
@@ -48,33 +46,33 @@ const Checkbox = (props: CheckboxProps) => {
         </>
     )
 
-    const renderCheckbox = (checkboxProps?: MuiCheckboxProps) => (
+    const renderCheckbox = (checkboxProps?: CheckboxProps) => (
         <MuiCheckbox
             {...checkboxProps}
             name={props.name}
             checked={props.checked}
             value={props.name}
-            color={props.color}
+            color={props.color || 'secondary'}
             style={props.dense ? DENSE : {}}
             disabled={props.disabled}
             onChange={props.onChange}
         />
     )
 
-    const renderSwitch = (checkboxProps?: MuiCheckboxProps) => (
+    const renderSwitch = (checkboxProps?: Omit<CheckboxProps, 'size'>) => (
         <MuiSwitch
             {...checkboxProps}
-            name={props.name}
-            checked={props.checked}
-            value={props.name}
-            color={props.color}
             role='switch'
+            name={props.name}
+            value={props.name}
+            checked={props.checked}
+            color={props.color || 'secondary'}
             disabled={props.disabled}
             onChange={props.onChange}
         />
     )
 
-    const renderControl = (props?: MuiCheckboxProps) =>
+    const renderControl = (props?: CheckboxProps) =>
         type === 'checkbox' ? renderCheckbox(props) : renderSwitch(props)
 
     const renderLabel = () =>

@@ -5,7 +5,6 @@ import type {
     ReactNode,
     SetStateAction
 } from 'react'
-import { TableCell, TableRow, Typography } from '@material-ui/core'
 import {
     Cancel as CancelIcon,
     Check as CheckIcon,
@@ -13,7 +12,10 @@ import {
     Edit as EditIcon,
     Save as SaveIcon
 } from '@mui/icons-material'
-import { Skeleton } from '@mui/material'
+import MuiSkeleton from '@mui/material/Skeleton'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableRow from '@mui/material/TableRow'
+import MuiTypography from '@mui/material/Typography'
 import format from 'date-fns/format'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'
@@ -85,16 +87,16 @@ const generateSkeleton = (
 
     for (let i = 0; i < size; i++) {
         const table = (
-            <TableRow key={`skeleton-${i}`} style={{ width: '10px' }}>
+            <MuiTableRow key={`skeleton-${i}`} style={{ width: '10px' }}>
                 {columns.map(column => (
-                    <TableCell
+                    <MuiTableCell
                         align={column.align}
                         key={column.title}
                         style={column.cellStyle}>
-                        <Skeleton />
-                    </TableCell>
+                        <MuiSkeleton />
+                    </MuiTableCell>
                 ))}
-            </TableRow>
+            </MuiTableRow>
         )
 
         result.push(table)
@@ -183,7 +185,7 @@ export const Empty = () => {
                     boxSizing: 'border-box'
                 }}>
                 <div>
-                    <Typography>Empty DataTable</Typography>
+                    <MuiTypography>Empty DataTable</MuiTypography>
                 </div>
             </td>
         </tr>
@@ -354,7 +356,9 @@ export const Crud = () => {
                         padding: '16px',
                         justifyContent: 'space-between'
                     }}>
-                    <Typography>Confirm Delete "{data.product}"?</Typography>
+                    <MuiTypography>
+                        Confirm Delete "{data.product}"?
+                    </MuiTypography>
                     <div style={{ display: 'flex' }}>
                         <DataTableAction
                             label='CheckIcon'

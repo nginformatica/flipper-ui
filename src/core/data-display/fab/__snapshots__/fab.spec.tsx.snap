@@ -3,18 +3,14 @@
 exports[`Fab should match snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiFab-root"
+    class="MuiButtonBase-root MuiFab-root makeStyles-root-3 MuiFab-circular MuiFab-sizeLarge MuiFab-colorInherit MuiFab-root makeStyles-root-3 MuiFab-circular MuiFab-sizeLarge MuiFab-colorInherit css-mg2cnq-MuiButtonBase-root-MuiFab-root"
     data-testid="fab-container"
     tabindex="0"
     type="button"
   >
+    Fab
     <span
-      class="MuiFab-label"
-    >
-      Fab
-    </span>
-    <span
-      class="MuiTouchRipple-root"
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
 </div>

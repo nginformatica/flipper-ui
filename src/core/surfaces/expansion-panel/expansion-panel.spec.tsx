@@ -26,9 +26,8 @@ describe('ExpansionPanel', () => {
 
         const expansionPanel = screen.getByRole('mui-expansion-panel')
 
-        expect(expansionPanel.lastChild).toHaveProperty(
-            'className',
-            'MuiCollapse-root MuiCollapse-entered'
+        expect((expansionPanel.lastChild as HTMLElement).className).toContain(
+            'MuiCollapse-entered'
         )
     })
 
@@ -45,9 +44,8 @@ describe('ExpansionPanel', () => {
 
         const expansionPanel = screen.getByRole('mui-expansion-panel')
 
-        expect(expansionPanel.lastChild).toHaveProperty(
-            'className',
-            'MuiCollapse-root MuiCollapse-hidden'
+        expect((expansionPanel.lastChild as HTMLElement).className).toContain(
+            'MuiCollapse-hidden'
         )
     })
 

@@ -14,6 +14,8 @@ export const TitleAction = styled.div`
 
 export const Snippet = styled.div`
     display: flex;
+    justify-content: flex-end;
+    padding: 6px 6px 0px 0px;
 `
 
 export const SnippetContent = styled.div`

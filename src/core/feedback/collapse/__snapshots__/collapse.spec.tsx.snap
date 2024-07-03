@@ -3,17 +3,19 @@
 exports[`Collapse should match snapshot 1`] = `
 <div>
   <div
-    class="MuiCollapse-root MuiCollapse-entered"
+    class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-pwcg7p-MuiCollapse-root"
     data-testid="collapse-container"
     style="min-height: 0px;"
   >
     <div
-      class="MuiCollapse-wrapper"
+      class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
     >
       <div
-        class="MuiCollapse-wrapperInner"
+        class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
       >
-        I am open for discussions
+        <div>
+          I am open for discussions
+        </div>
       </div>
     </div>
   </div>

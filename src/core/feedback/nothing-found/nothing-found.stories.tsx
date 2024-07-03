@@ -35,7 +35,7 @@ export const nothingFound: Story = {
     },
     args: {
         show: true,
-        customText: '',
+        customText: 'Ops! Não foi encontrado nada.',
         buttonLabel: '',
         searchText: '',
         readonly: false

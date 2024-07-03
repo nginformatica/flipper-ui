@@ -3,19 +3,20 @@
 exports[`Breadcrumbs should match snapshot 1`] = `
 <div>
   <nav
-    class="MuiTypography-root MuiBreadcrumbs-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-63vwl1-MuiTypography-root-MuiBreadcrumbs-root"
   >
     <ol
-      class="MuiBreadcrumbs-ol"
+      class="MuiBreadcrumbs-ol css-4pdmu4-MuiBreadcrumbs-ol"
     >
       <li
         class="MuiBreadcrumbs-li"
       >
         <a
+          class="sc-aYaIB ZmSFF"
           href="/"
         >
           <p
-            class="MuiTypography-root sc-eqUzNf bJIrlA MuiTypography-body2 MuiTypography-colorInherit"
+            class="MuiTypography-root MuiTypography-body2 sc-gEvDqW hxMRUB css-16epbcf-MuiTypography-root"
           >
             Home
           </p>
@@ -23,7 +24,7 @@ exports[`Breadcrumbs should match snapshot 1`] = `
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator"
+        class="MuiBreadcrumbs-separator css-1wuw8dw-MuiBreadcrumbs-separator"
       >
         <svg
           aria-hidden="true"
@@ -41,10 +42,11 @@ exports[`Breadcrumbs should match snapshot 1`] = `
         class="MuiBreadcrumbs-li"
       >
         <a
+          class="sc-aYaIB ZmSFF"
           href="/foo"
         >
           <p
-            class="MuiTypography-root sc-eqUzNf bJIrlA MuiTypography-body2 MuiTypography-colorInherit"
+            class="MuiTypography-root MuiTypography-body2 sc-gEvDqW hxMRUB css-16epbcf-MuiTypography-root"
           >
             Foo
           </p>
@@ -52,7 +54,7 @@ exports[`Breadcrumbs should match snapshot 1`] = `
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator"
+        class="MuiBreadcrumbs-separator css-1wuw8dw-MuiBreadcrumbs-separator"
       >
         <svg
           aria-hidden="true"
@@ -70,7 +72,7 @@ exports[`Breadcrumbs should match snapshot 1`] = `
         class="MuiBreadcrumbs-li"
       >
         <p
-          class="MuiTypography-root sc-eqUzNf bJIrlA MuiTypography-body2 MuiTypography-colorInherit"
+          class="MuiTypography-root MuiTypography-body2 sc-gEvDqW hxMRUB css-16epbcf-MuiTypography-root"
         >
           Bar
         </p>

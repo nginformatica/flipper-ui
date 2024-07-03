@@ -6,39 +6,34 @@ exports[`Checkbox should match snapshot 1`] = `
     class="sc-iGgVNO csexcM"
   >
     <label
-      class="MuiFormControlLabel-root"
+      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
     >
       <span
-        class="MuiSwitch-root"
+        class="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
       >
         <span
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-33 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+          class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorSecondary css-ob1t9r-MuiButtonBase-root-MuiSwitch-switchBase"
           role="switch"
         >
+          <input
+            class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+            name="checkbox-name"
+            type="checkbox"
+            value="checkbox-name"
+          />
           <span
-            class="MuiIconButton-label"
-          >
-            <input
-              class="PrivateSwitchBase-input-36 MuiSwitch-input"
-              name="checkbox-name"
-              type="checkbox"
-              value="checkbox-name"
-            />
-            <span
-              class="MuiSwitch-thumb"
-            />
-          </span>
+            class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+          />
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </span>
         <span
-          class="MuiSwitch-track"
+          class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
         />
       </span>
       <span
-        class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+        class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
       >
         checkbox-label
       </span>

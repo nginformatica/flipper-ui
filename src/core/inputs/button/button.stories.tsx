@@ -74,21 +74,19 @@ Selected.args = {
 export const DashedPrimary = Template.bind({})
 DashedPrimary.args = {
     ...commonArgs,
-    variant: 'dashed',
+    dashed: true,
     color: 'primary'
 }
 
 export const DashedSecondary = Template.bind({})
 DashedSecondary.args = {
     ...commonArgs,
-    variant: 'dashed',
+    dashed: true,
     color: 'secondary'
 }
 
 export const AddIcon = Template.bind({})
 AddIcon.args = {
-    variant: 'fab',
-    color: 'primary',
     margin: 12,
     children: <IconAdd />
 }

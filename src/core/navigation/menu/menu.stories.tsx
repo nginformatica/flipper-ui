@@ -28,7 +28,6 @@ const Template: StoryFn<typeof Menu> = args => {
 export const Default = Template.bind({})
 Default.args = {
     style: { margin: '3em' },
-    title: 'My beautiful Menu"',
     children: (
         <>
             <ListItem icon={<Backup />} title='Menu 1' />

@@ -5,7 +5,7 @@ import type {
     CSSProperties,
     KeyboardEvent
 } from 'react'
-import { TextField } from '@material-ui/core'
+import MuiTextField from '@mui/material/TextField'
 import { Container } from './styles'
 
 export interface PinInputGridProps {
@@ -105,49 +105,37 @@ const PinInput = ({
         }
     }
 
-    const getStyleProps = (): CSSProperties => {
-        const style = {
-            width: size === 'small' ? '40px' : '40px',
-            height: size === 'small' ? '30px' : '40px',
-            marginInline: size === 'small' ? '5px' : '10px',
-            ...styleProps
-        } as CSSProperties
-
-        return style
-    }
-
-    const getInputProps = (): CSSProperties => {
-        const style = {
-            width: size === 'small' ? '40px' : '45px',
-            textAlign: 'center',
-            fontWeight: 'bold',
-            fontSize: size === 'small' ? '16px' : '20px',
-            padding: 'auto',
-            ...inputProps
-        } as CSSProperties
-
-        return style
-    }
-
     return (
         <Container {...otherProps}>
             {Array.from({ length: pinLength }, (_, index) => (
-                <TextField
-                    disabled={isValidating}
-                    variant={variant || 'outlined'}
-                    color='primary'
+                <MuiTextField
+                    key={index}
                     className='pin-input-field'
+                    color='primary'
+                    variant={variant || 'outlined'}
+                    value={pin[index] === 0 ? 0 : pin[index] || ''}
+                    disabled={isValidating}
                     error={validationResult}
-                    style={getStyleProps()}
+                    style={{
+                        width: size === 'small' ? '40px' : '40px',
+                        height: size === 'small' ? '30px' : '40px',
+                        marginInline: size === 'small' ? '5px' : '10px',
+                        ...styleProps
+                    }}
                     InputProps={{
-                        style: getInputProps(),
-                        role: 'pin-input-field'
+                        role: 'pin-input-field',
+                        style: {
+                            width: size === 'small' ? '40px' : '45px',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            fontSize: size === 'small' ? '16px' : '20px',
+                            padding: 'auto',
+                            ...inputProps
+                        }
                     }}
                     inputRef={(el: HTMLInputElement) => {
                         inputRefs.current[index] = el
                     }}
-                    key={index}
-                    value={pin[index] === 0 ? 0 : pin[index] || ''}
                     onKeyDown={event => onKeyDown(event, index)}
                     onPaste={onPaste}
                     onChange={event => {

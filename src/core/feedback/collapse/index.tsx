@@ -1,13 +1,13 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import { Collapse as MuiCollapse } from '@material-ui/core'
+import MuiCollapse from '@mui/material/Collapse'
 import type { DefaultProps } from '../../types'
 
 export interface CollapseProps extends DefaultProps {
-    collapsedHeight?: string
     in: boolean
-    timeout?: number | { enter?: number; exit?: number } | 'auto'
     children?: ReactNode
+    collapsedHeight?: string
+    timeout?: number | { enter?: number; exit?: number } | 'auto'
 }
 
 const Collapse = ({
@@ -18,7 +18,7 @@ const Collapse = ({
     ...otherProps
 }: CollapseProps) => (
     <MuiCollapse style={{ padding, margin, ...style }} {...otherProps}>
-        {children}
+        <div>{children}</div>
     </MuiCollapse>
 )
 

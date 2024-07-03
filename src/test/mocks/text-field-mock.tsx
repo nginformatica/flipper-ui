@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
-import type { TextFieldProps } from '@/core/inputs/text-field'
-import ListItem from '@/core/data-display/list-item'
+import MuiMenuItem from '@mui/material/MenuItem'
+import type { ITextFieldProps } from '@/core/inputs/text-field'
 import TextField from '@/core/inputs/text-field'
 
 interface IProps {
     initialOption?: string
-    inputProps?: TextFieldProps
+    inputProps?: ITextFieldProps
     characters?: boolean
 }
 
@@ -39,9 +39,9 @@ const Default = ({ inputProps, initialOption, characters }: IProps) => {
                 {...inputProps}>
                 {inputProps?.select
                     ? LIST.map(({ label, value }) => (
-                          <ListItem key={value} value={value}>
+                          <MuiMenuItem key={value} value={value}>
                               {label}
-                          </ListItem>
+                          </MuiMenuItem>
                       ))
                     : undefined}
             </TextField>

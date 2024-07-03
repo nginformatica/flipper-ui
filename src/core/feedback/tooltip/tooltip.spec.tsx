@@ -1,15 +1,13 @@
-import React from 'react'
-import { act } from 'react-dom/test-utils'
-import { Button } from '@material-ui/core'
+import React, { act } from 'react'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import Tooltip from '.'
 
 describe('Tooltip', () => {
-    it('should render a Tooltip', async () => {
+    it('should render', async () => {
         render(
             <Tooltip enterDelay={1} title='Tooltip Message'>
-                <Button variant='outlined'>Tooltip</Button>
+                <button>Tooltip</button>
             </Tooltip>
         )
 
@@ -27,7 +25,7 @@ describe('Tooltip', () => {
     it('should render a Tooltip with wrapper', async () => {
         render(
             <Tooltip withWrapper enterDelay={1} title='Tooltip Message'>
-                <Button variant='outlined'>Tooltip</Button>
+                <button>Tooltip</button>
             </Tooltip>
         )
 
@@ -45,7 +43,7 @@ describe('Tooltip', () => {
     it('should not render a Tooltip', async () => {
         render(
             <Tooltip title=''>
-                <Button variant='outlined'>Tooltip</Button>
+                <button>Tooltip</button>
             </Tooltip>
         )
 
@@ -63,7 +61,7 @@ describe('Tooltip', () => {
     it('should match snapshot', () => {
         const { container } = render(
             <Tooltip withWrapper enterDelay={1} title='Tooltip Message'>
-                <Button variant='outlined'>Tooltip</Button>
+                <button>Tooltip</button>
             </Tooltip>
         )
 

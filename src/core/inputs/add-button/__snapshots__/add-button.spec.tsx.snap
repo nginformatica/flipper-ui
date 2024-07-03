@@ -3,7 +3,8 @@
 exports[`Add Button should match snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined sc-aYaIB eiShaW MuiButton-outlinedPrimary"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary sc-aYaIB eiShaW css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+    href=""
     id="id-add-btnName"
     label="Click Me"
     name="add-btnName"
@@ -11,24 +12,20 @@ exports[`Add Button should match snapshot 1`] = `
     tabindex="0"
     type="button"
   >
-    <span
-      class="MuiButton-label"
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="NoteAddIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
     >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-        data-testid="NoteAddIcon"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm2 14h-3v3h-2v-3H8v-2h3v-3h2v3h3zm-3-7V3.5L18.5 9z"
-        />
-      </svg>
-      Click Me
-    </span>
+      <path
+        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm2 14h-3v3h-2v-3H8v-2h3v-3h2v3h3zm-3-7V3.5L18.5 9z"
+      />
+    </svg>
+    Click Me
     <span
-      class="MuiTouchRipple-root"
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
 </div>

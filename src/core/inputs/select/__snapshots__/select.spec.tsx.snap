@@ -3,27 +3,31 @@
 exports[`Select should match snapshot 1`] = `
 <div>
   <div
-    class="MuiInputBase-root MuiOutlinedInput-root"
+    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
     data-testid="select-container"
   >
     <div
+      aria-controls=":r4:"
+      aria-expanded="false"
       aria-haspopup="listbox"
-      class="MuiSelect-root makeStyles-root-35 MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-      role="button"
+      class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+      role="combobox"
       tabindex="0"
     >
-      Option 0
+      Option 1
     </div>
     <input
       aria-hidden="true"
-      class="MuiSelect-nativeInput"
+      aria-invalid="false"
+      class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
       data-testid="select-input"
       tabindex="-1"
-      value="0"
+      value="1"
     />
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSelect-icon makeStyles-iconOutlined-36 MuiSelect-iconOutlined"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+      data-testid="ArrowDropDownIcon"
       focusable="false"
       viewBox="0 0 24 24"
     >
@@ -33,14 +37,14 @@ exports[`Select should match snapshot 1`] = `
     </svg>
     <fieldset
       aria-hidden="true"
-      class="PrivateNotchedOutline-root-37 MuiOutlinedInput-notchedOutline"
-      style="padding-left: 8px;"
+      class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
     >
       <legend
-        class="PrivateNotchedOutline-legend-38"
-        style="width: 0.01px;"
+        class="css-ihdtdm"
       >
-        <span>
+        <span
+          class="notranslate"
+        >
           ​
         </span>
       </legend>

@@ -1,17 +1,17 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import { LinearProgress } from '@material-ui/core'
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import {
     CheckCircle as CheckCircleIcon,
     ExpandMore as ExpandMoreIcon
 } from '@mui/icons-material'
+import MuiAccordionSummary from '@mui/material/AccordionSummary'
+import LinearProgress from '@mui/material/LinearProgress'
 import { sprintf } from 'sprintf-js'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
 import {
-    BarWrapper,
     NormalProgressContainer,
+    NormalProgressContent,
     StepCardColumn,
     StepCardRow,
     StepContainer,
@@ -111,52 +111,43 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                         </MuiAccordionSummary>
                     ) : (
                         <NormalProgressContainer data-testid='normal-progress'>
-                            <Typography variant='h6' {...summaryProps}>
-                                {summary}
-                            </Typography>
-                            <Typography
-                                variant='subtitle2'
+                            <NormalProgressContent>
+                                <Typography variant='h6' {...summaryProps}>
+                                    {summary}
+                                </Typography>
+                                <Typography variant='subtitle2'>
+                                    {`${percentage}%`}
+                                </Typography>
+                            </NormalProgressContent>
+                            <LinearProgress
+                                variant='determinate'
+                                value={percentage}
+                                color='success'
                                 style={{
-                                    position: 'absolute',
-                                    right: 8
-                                }}>{`${percentage}%`}</Typography>
-                            <BarWrapper>
-                                <LinearProgress
-                                    variant='determinate'
-                                    value={percentage}
-                                    color='primary'
-                                    classes={{
-                                        barColorPrimary: 'barColorPrimary'
-                                    }}
-                                    style={{
-                                        borderRadius: 10,
-                                        height: '16px',
-                                        backgroundColor: grays.g5
-                                    }}
-                                    {...summaryLinearProgressBarProps}
-                                />
-                            </BarWrapper>
+                                    width: '100%',
+                                    height: '16px',
+                                    borderRadius: 10,
+                                    backgroundColor: grays.g5
+                                }}
+                                {...summaryLinearProgressBarProps}
+                            />
                         </NormalProgressContainer>
                     )}
                 </StepCardColumn>
             </StepCardRow>
             {showBottomPercentage && (
                 <StepCardRow fullWidth={fullWidth} minHeight='15px'>
-                    <BarWrapper>
-                        <LinearProgress
-                            variant='determinate'
-                            value={percentage}
-                            color='primary'
-                            classes={{
-                                barColorPrimary: 'barColorPrimary'
-                            }}
-                            style={{
-                                height: '16px',
-                                backgroundColor: grays.g5
-                            }}
-                            {...linearProgressBarProps}
-                        />
-                    </BarWrapper>
+                    <LinearProgress
+                        value={percentage}
+                        color='success'
+                        variant='determinate'
+                        style={{
+                            height: '16px',
+                            width: '100%',
+                            backgroundColor: grays.g5
+                        }}
+                        {...linearProgressBarProps}
+                    />
                 </StepCardRow>
             )}
         </StepContainer>

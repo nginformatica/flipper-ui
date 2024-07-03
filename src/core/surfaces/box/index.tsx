@@ -11,15 +11,15 @@ export interface BoxProps extends DefaultProps {
 
 const Box = ({
     children,
+    style = {},
     margin,
     padding = 18,
-    style = {},
     minHeight = 400,
     ...otherProps
 }: BoxProps) => (
     <Paper
-        padding={padding}
         margin={margin}
+        padding={padding}
         style={{ minHeight, ...style }}
         {...otherProps}>
         {children}

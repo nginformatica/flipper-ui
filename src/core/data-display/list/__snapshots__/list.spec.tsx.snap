@@ -3,40 +3,37 @@
 exports[`List should match snapshot 1`] = `
 <div>
   <ul
-    class="MuiList-root makeStyles-default-19 my-custom-class MuiList-padding"
+    class="MuiList-root MuiList-padding makeStyles-default-13 my-custom-class css-h4y409-MuiList-root"
     data-testid="list-container"
   >
     <li
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root makeStyles-root-23 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
       role="menuitem"
       tabindex="-1"
     >
       Item 1
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </li>
     <li
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root makeStyles-root-23 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
       role="menuitem"
       tabindex="-1"
     >
       Item 2
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </li>
     <li
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root makeStyles-root-23 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+      class="MuiButtonBase-root MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters MuiMenuItem-root makeStyles-root-15 MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
       role="menuitem"
       tabindex="-1"
     >
       Item 3
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </li>
   </ul>

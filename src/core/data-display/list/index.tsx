@@ -1,35 +1,26 @@
 import React from 'react'
-import {
-    List as MuiList,
-    ListSubheader as MuiListHeader
-} from '@material-ui/core'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
+import MuiList from '@mui/material/List'
+import MuiListHeader from '@mui/material/ListSubheader'
+import { createStyles, makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
-import type { Theme } from '@material-ui/core/styles'
+import { theme } from '@/theme'
+
+const { app } = theme.colors
 
 export interface ListProps extends DefaultProps {
     title?: string
     dense?: boolean
-    color?: 'primary' | 'secondary' | 'default' | 'inherit'
+    color?: 'default' | 'inherit'
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
     createStyles({
         default: {
-            backgroundColor: theme.palette.background.default,
-            color: theme.palette.text.primary
+            backgroundColor: app.background.main
         },
         inherit: {
             backgroundColor: 'inherit',
             color: 'inherit'
-        },
-        primary: {
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.primary.contrastText
-        },
-        secondary: {
-            backgroundColor: theme.palette.secondary.main,
-            color: theme.palette.secondary.contrastText
         }
     })
 )
@@ -39,9 +30,9 @@ const List = ({
     padding,
     margin,
     style = {},
-    children,
-    className,
     color = 'default',
+    className,
+    children,
     ...otherProps
 }: ListProps) => {
     const classes = useStyles()
@@ -49,11 +40,11 @@ const List = ({
     return (
         <MuiList
             subheader={
-                title ? (
+                title && (
                     <MuiListHeader className={classes[color]}>
                         {title}
                     </MuiListHeader>
-                ) : undefined
+                )
             }
             className={`${classes[color]} ${className}`}
             style={{ padding, margin, ...style }}

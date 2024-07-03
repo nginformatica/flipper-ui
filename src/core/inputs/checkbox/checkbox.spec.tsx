@@ -1,5 +1,5 @@
-import React from 'react'
-import { render, screen, act, waitFor, fireEvent } from '@testing-library/react'
+import React, { act } from 'react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import Checkbox from '.'
 
 describe('Checkbox', () => {

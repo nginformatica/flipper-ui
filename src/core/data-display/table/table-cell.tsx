@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
-import MuiTableCell from '@material-ui/core/TableCell'
-import MuiTableSortLabel from '@material-ui/core/TableSortLabel'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableSortLabel from '@mui/material/TableSortLabel'
 import type { DefaultProps } from '../../types'
-import type { TableCellProps as MuiTableProps } from '@material-ui/core/TableCell'
+import type { TableCellProps } from '@mui/material/TableCell'
 import { SortContext } from './table-head'
 
-export interface TableCellProps extends DefaultProps {
+export interface ITableCellProps
+    extends DefaultProps,
+        Omit<TableCellProps, 'padding'> {
     numeric?: boolean
     variant?: 'head' | 'body' | 'footer'
-    spacing?: MuiTableProps['padding']
+    spacing?: 'normal' | 'checkbox' | 'none'
     padding?: number | string
     align?: 'inherit' | 'left' | 'center' | 'right' | 'justify'
 }
@@ -20,7 +22,7 @@ const TableCell = ({
     children,
     spacing,
     ...otherProps
-}: Omit<MuiTableProps, 'padding'> & TableCellProps) => {
+}: ITableCellProps) => {
     const { onSort, active, direction } = useContext(SortContext)
 
     const handleSort = () => {

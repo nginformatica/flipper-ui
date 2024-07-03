@@ -1,9 +1,9 @@
 import React from 'react'
-import { Paper as MuiPaper } from '@material-ui/core'
+import MuiPaper from '@mui/material/Paper'
 import type { DefaultProps } from '../../types'
-import type { PaperProps as MuiPaperProps } from '@material-ui/core'
+import type { PaperProps } from '@mui/material/Paper'
 
-export interface PaperProps extends DefaultProps, MuiPaperProps {
+export interface IPaperProps extends DefaultProps, PaperProps {
     square?: boolean
     elevation?: number
 }
@@ -14,7 +14,7 @@ const Paper = ({
     padding,
     margin,
     ...otherProps
-}: PaperProps) => (
+}: IPaperProps) => (
     <MuiPaper
         {...otherProps}
         role='mui-paper-container'

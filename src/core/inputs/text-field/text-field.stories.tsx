@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import ListItem from '@/core/data-display/list-item'
 import TextField from '.'
 import { Wrapper } from './styles'
 
@@ -77,25 +76,22 @@ export const withSelectAndClear: Story = {
                 <TextField
                     {...args}
                     value={value}
-                    onClear={onClear}
-                    onChange={handleChange}>
-                    {[
-                        { label: null, value: '' },
+                    options={[
+                        { label: '', value: '' },
                         { label: 'Elm', value: 'elm' },
                         { label: 'ReasonML', value: 'reasonml' },
                         { label: 'Purescript', value: 'purescript' },
                         { label: 'Fable', value: 'fable' }
-                    ].map(({ label, value }) => (
-                        <ListItem key={value} value={value}>
-                            {label}
-                        </ListItem>
-                    ))}
-                </TextField>
+                    ]}
+                    onClear={onClear}
+                    onChange={handleChange}
+                />
             </Wrapper>
         )
     },
     args: {
         select: true,
+        disabled: false,
         hasClear: true,
         fullWidth: true,
         placeholder: '',

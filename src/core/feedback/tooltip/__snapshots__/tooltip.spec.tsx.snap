@@ -3,23 +3,13 @@
 exports[`Tooltip should match snapshot 1`] = `
 <div>
   <div
+    aria-label="Tooltip Message"
     class=""
+    data-mui-internal-clone-element="true"
     style="display: inherit;"
-    title="Tooltip Message"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Tooltip
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
+    <button>
+      Tooltip
     </button>
   </div>
 </div>
