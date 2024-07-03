@@ -46,18 +46,13 @@ const RadioGroup = ({
         style={{ padding, margin, ...style }}
         {...otherProps}>
         <FormLabel component='legend'>{title}</FormLabel>
-        <MuiRadioGroup
-            row={row}
-            name={name}
-            value={value}
-            color={color}
-            onChange={onChange}>
+        <MuiRadioGroup row={row} name={name} value={value} onChange={onChange}>
             {options.map(option => (
                 <FormControlLabel
                     key={option.value}
                     label={option.label}
                     value={option.value}
-                    control={<Radio />}
+                    control={<Radio color={color} />}
                     disabled={option.disabled}
                     style={spacing === 'equal' ? { flex: 1 } : {}}
                 />

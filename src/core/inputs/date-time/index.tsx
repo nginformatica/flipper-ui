@@ -227,6 +227,7 @@ const DateTime = ({
             return (
                 <DatePicker
                     {...commonProps}
+                    disabled={disabled}
                     minDate={
                         typeof minDate === 'string'
                             ? new Date(minDate)
@@ -243,7 +244,6 @@ const DateTime = ({
                             size: 'small',
                             error: error,
                             required: required,
-                            disabled: disabled,
                             placeholder: placeholder,
                             fullWidth: fullWidth ?? true,
                             inputProps: { role: 'date-picker' }
@@ -270,6 +270,7 @@ const DateTime = ({
             return (
                 <TimePicker
                     {...commonProps}
+                    disabled={disabled}
                     slots={{
                         toolbar: CustomTimePickerToolbar,
                         actionBar: () => null,
@@ -281,7 +282,6 @@ const DateTime = ({
                             size: 'small',
                             error: error,
                             required: required,
-                            disabled: disabled,
                             placeholder: placeholder,
                             fullWidth: fullWidth ?? true,
                             inputProps: { role: 'date-picker' }
@@ -319,6 +319,7 @@ const DateTime = ({
         return (
             <DateTimePicker
                 {...commonProps}
+                disabled={disabled}
                 minDate={
                     typeof minDate === 'string' ? new Date(minDate) : minDate
                 }
@@ -341,7 +342,6 @@ const DateTime = ({
                         size: 'small',
                         error: error,
                         required: required,
-                        disabled: disabled,
                         placeholder: placeholder,
                         fullWidth: fullWidth ?? true,
                         inputProps: { role: 'date-picker' }

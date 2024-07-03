@@ -1,5 +1,5 @@
 import React from 'react'
-import type { MouseEvent, ReactNode } from 'react'
+import type { CSSProperties, MouseEvent, ReactNode } from 'react'
 import type { IDialogProps } from '@/core/feedback/dialog'
 import Dialog from '@/core/feedback/dialog'
 import Button from '@/core/inputs/button'
@@ -22,6 +22,7 @@ export interface IProps extends IDialogProps {
         | 'error'
         | 'info'
         | 'warning'
+    primaryButtonStyle?: CSSProperties
     primaryButtonName?: string
     primaryButtonText: string
     secondaryButtonText?: string
@@ -56,6 +57,7 @@ const DialogV2 = (props: IProps) => {
         titleAction,
         text,
         primaryButtonColor,
+        primaryButtonStyle,
         primaryButtonName,
         primaryButtonText,
         secondaryButtonText,
@@ -96,6 +98,7 @@ const DialogV2 = (props: IProps) => {
                                         secondaryButtonName ||
                                         'secondary-button'
                                     }
+                                    margin='12px 6px'
                                     onClick={secondaryButtonAction}>
                                     {secondaryButtonText}
                                 </Button>
@@ -104,8 +107,9 @@ const DialogV2 = (props: IProps) => {
                             <Button
                                 name={primaryButtonName || 'primary-button'}
                                 color={primaryButtonColor}
+                                style={primaryButtonStyle}
                                 variant='contained'
-                                margin='6px 12px'
+                                margin='12px 6px'
                                 onClick={primaryButtonAction}>
                                 {primaryButtonText}
                             </Button>
