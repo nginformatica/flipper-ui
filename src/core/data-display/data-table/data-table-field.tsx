@@ -111,10 +111,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
             (event.target as HTMLElement).closest('input[type="checkbox"]') !==
             null
 
-        if (
-            !isCheckboxClick &&
-            (!checkboxProps?.checkRow || !checkboxProps.checkRow[index])
-        ) {
+        if (!isCheckboxClick && !checkboxProps?.checkRow?.[index]) {
             handleSelect(index)
         }
     }
@@ -126,8 +123,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
                     return (
                         <TableCellRows key={i} align='center'>
                             {column.editable &&
-                            checkboxProps?.checkRow &&
-                            checkboxProps.checkRow[index] ? (
+                            checkboxProps?.checkRow?.[index] ? (
                                 <TextField
                                     fullWidth
                                     key={`${column.field}-${i}`}
@@ -173,9 +169,7 @@ export const DataTableField = <D extends Record<string, unknown>>(
                 <RowTable
                     key={index}
                     className={
-                        checkboxProps?.checkRow && checkboxProps.checkRow[index]
-                            ? 'no-hover'
-                            : ''
+                        checkboxProps?.checkRow?.[index] ? 'no-hover' : ''
                     }
                     onClick={event => handleTableRow(event, index)}>
                     {checkbox && (
