@@ -17,13 +17,13 @@ exports[`DateTime should match snapshot 1`] = `
         placeholder="DDMMAAAA"
         role="date-picker"
         type="text"
-        value="02072024"
+        value="03072024"
       />
       <div
         class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-1laqsz7-MuiInputAdornment-root"
       >
         <button
-          aria-label="Escolha uma data, data selecionada 2 jul 2024"
+          aria-label="Escolha uma data, data selecionada 3 jul 2024"
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
