@@ -64,7 +64,7 @@ export const dialog: Story = {
     },
     args: {
         title: 'Dialog Title',
-        text: 'A content here!',
+        text: 'A text here!',
         content: '',
         snippet: 'here"s the snippet!',
         maxWidth: 'xs',
