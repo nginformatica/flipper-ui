@@ -5,6 +5,7 @@ import MuiDialogActions from '@mui/material/DialogActions'
 import MuiDialogContent from '@mui/material/DialogContent'
 import MuiDialogContentText from '@mui/material/DialogContentText'
 import MuiDialogTitle from '@mui/material/DialogTitle'
+import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import type { DialogProps } from '@mui/material/Dialog'
 import {
@@ -41,6 +42,12 @@ export interface IDialogProps
     onClose?: (event: Event) => void
 }
 
+const useStyles = makeStyles({
+    root: {
+        overflowY: 'unset'
+    }
+})
+
 const Dialog = ({
     snippet,
     style,
@@ -69,6 +76,8 @@ const Dialog = ({
     'aria-title': ariaTitle,
     ...otherProps
 }: IDialogProps) => {
+    const classes = useStyles()
+
     const renderTitle = (title: IDialogProps['title']) => {
         return titleAction ? (
             <TitleWrapper style={titleWrapperStyle}>
@@ -90,7 +99,14 @@ const Dialog = ({
 
     const renderContent = (content: ReactNode) => {
         return (
-            <MuiDialogContent style={contentStyle}>{content}</MuiDialogContent>
+            <MuiDialogContent style={contentStyle}>
+                <div
+                    style={{
+                        padding: '8px 0px 0px'
+                    }}>
+                    {content}
+                </div>
+            </MuiDialogContent>
         )
     }
 
@@ -124,11 +140,11 @@ const Dialog = ({
         return (
             <>
                 <Snippet style={snippetStyle}>
+                    <PaperContent>{renderPaperContent()}</PaperContent>
                     <SnippetContent style={snippetContentStyle}>
                         {snippet}
                     </SnippetContent>
                 </Snippet>
-                <PaperContent>{renderPaperContent()}</PaperContent>
             </>
         )
     }
@@ -144,6 +160,7 @@ const Dialog = ({
             style={{ padding, margin, ...style }}
             PaperProps={{
                 ...(ariaTitle ? { title: ariaTitle } : {}),
+                classes: { root: classes.root },
                 ...PaperProps
             }}
             onClose={onClose}>
