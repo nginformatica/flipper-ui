@@ -30,7 +30,7 @@
         "publish:yalc": "cd dist/ && yalc publish && cd ..",
         "release": "yarn build && node pre-publish.js && npm publish ./dist --access public",
         "test:ci": "yarn test --coverage",
-        "test": "jest --verbose --silent --passWithNoTests --noStackTrace --runInBand"
+        "test": "jest --verbose --silent --passWithNoTests --noStackTrace --runInBand --updateSnapshot"
     },
     "dependencies": {
         "@emotion/react": "11.11.4",
