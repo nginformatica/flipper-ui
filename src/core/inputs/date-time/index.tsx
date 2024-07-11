@@ -184,6 +184,7 @@ const CustomStaticDateTimePicker = (props: {
 }
 
 const DateTime = ({
+    id,
     padding,
     margin,
     style,
@@ -241,6 +242,7 @@ const DateTime = ({
                     slots={{ toolbar: CustomDatePickerToolbar }}
                     slotProps={{
                         textField: {
+                            id: id,
                             size: 'small',
                             error: error,
                             required: required,
@@ -279,6 +281,7 @@ const DateTime = ({
                     }}
                     slotProps={{
                         textField: {
+                            id: id,
                             size: 'small',
                             error: error,
                             required: required,
@@ -339,6 +342,7 @@ const DateTime = ({
                 slots={{ layout: CustomStaticDateTimePicker }}
                 slotProps={{
                     textField: {
+                        id: id,
                         size: 'small',
                         error: error,
                         required: required,
