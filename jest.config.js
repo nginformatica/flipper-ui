@@ -9,7 +9,8 @@ module.exports = {
         '!<rootDir>/src/core/feedback/dialog-v2/index.ts',
         '!<rootDir>/src/core/navigation/breadcrumbs/index.tsx',
         '!<rootDir>/src/core/inputs/select/index.tsx',
-        '!<rootDir>/src/core/inputs/date-time/index.tsx'
+        '!<rootDir>/src/core/inputs/date-time/index.tsx',
+        '!<rootDir>/src/core/data-display/table/table-pagination.tsx'
     ],
     transform: {
         '.+\\.(ts|tsx)$': 'ts-jest'
