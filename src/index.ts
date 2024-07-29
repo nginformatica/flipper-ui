@@ -21,6 +21,8 @@ export { default as TableBody } from './core/data-display/table/table-body'
 export { default as TableCell } from './core/data-display/table/table-cell'
 export { default as TableHead } from './core/data-display/table/table-head'
 export { default as TableRow } from './core/data-display/table/table-row'
+export { default as TableFooter } from './core/data-display/table/table-footer'
+export { default as TablePagination } from './core/data-display/table/table-pagination'
 export { default as Typography } from './core/data-display/typography'
 
 export { default as Collapse } from './core/feedback/collapse'
