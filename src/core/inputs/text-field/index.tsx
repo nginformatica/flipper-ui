@@ -13,7 +13,7 @@ import MuiInputAdornment from '@mui/material/InputAdornment'
 import MuiMenuItem from '@mui/material/MenuItem'
 import MuiTextField from '@mui/material/TextField'
 import { makeStyles } from '@mui/styles'
-import { when, is, pipe, split, map, zipObj, reject, propEq } from 'ramda'
+import { pipe, split, map, reject } from 'ramda'
 import type { DefaultProps } from '../../types'
 import type { InputBaseComponentProps } from '@mui/material/InputBase'
 import type { TextFieldProps } from '@mui/material/TextField'
@@ -90,14 +90,13 @@ const useStyles = makeStyles({
     }
 })
 
-const coerceComboOptions: (input: string) => IOption[] = when(
-    is(String),
-    pipe<string, string[], object, IOption[]>(
+const coerceComboOptions = (input: string): IOption[] => {
+    return pipe(
         split(';'),
-        map(pipe(split('='), zipObj(['value', 'label']))),
-        reject(propEq('value', ''))
-    )
-)
+        map(pipe(split('='), ([value, label]) => ({ value, label }))),
+        reject((option: IOption) => option.value === '')
+    )(input)
+}
 
 const toLispCase = (name: string) =>
     name
