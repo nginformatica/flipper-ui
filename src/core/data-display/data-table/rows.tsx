@@ -81,8 +81,8 @@ const renderEditMode = <D extends Data>(
                 decimalScale={decimalScale}
                 value={numeric}
                 name={column.field.toString()}
-                onChange={event => {
-                    updateRow(column.field, event.target.value as D[keyof D])
+                onValueChange={values => {
+                    updateRow(column.field, values.value as D[keyof D])
                 }}
             />
         )
