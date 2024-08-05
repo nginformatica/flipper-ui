@@ -132,7 +132,6 @@ const rulesTypescript = {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
 
-    '@typescript-eslint/ban-types': 'warn',
     '@typescript-eslint/no-var-requires': 'warn',
     '@typescript-eslint/no-unsafe-argument': 'warn',
     '@typescript-eslint/no-non-null-assertion': 'warn',
