@@ -99,13 +99,12 @@ const Dialog = ({
 
     const renderContent = (content: ReactNode) => {
         return (
-            <MuiDialogContent style={contentStyle}>
-                <div
-                    style={{
-                        padding: '8px 0px 0px'
-                    }}>
-                    {content}
-                </div>
+            <MuiDialogContent
+                style={{
+                    ...contentStyle,
+                    paddingTop: '8px'
+                }}>
+                {content}
             </MuiDialogContent>
         )
     }
