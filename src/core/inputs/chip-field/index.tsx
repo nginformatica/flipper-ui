@@ -11,8 +11,9 @@ export interface ChipFieldProps {
         label?: string
     }[]
     error?: boolean | undefined
+    disabled?: boolean | undefined
     value: (string | undefined)[] | undefined
-    onChange: (
+    onChange?: (
         _event: SyntheticEvent<Element, Event>,
         value: string[],
         reason?: AutocompleteChangeReason
@@ -20,7 +21,7 @@ export interface ChipFieldProps {
 }
 
 const ChipField = (props: ChipFieldProps) => {
-    const { label, list, error, value, onChange } = props
+    const { label, list, error, disabled, value, onChange } = props
 
     return (
         <Autocomplete
@@ -28,6 +29,7 @@ const ChipField = (props: ChipFieldProps) => {
             fullWidth
             open={false}
             options={[]}
+            disabled={disabled}
             forcePopupIcon={false}
             value={value}
             renderInput={props => (
@@ -36,6 +38,7 @@ const ChipField = (props: ChipFieldProps) => {
                     fullWidth
                     label={label}
                     error={error}
+                    disabled={disabled}
                     variant='outlined'
                     onKeyDown={(e: KeyboardEvent<Element>) => {
                         const input = e.target as HTMLInputElement
@@ -57,7 +60,7 @@ const ChipField = (props: ChipFieldProps) => {
                                       )
                                 : []
 
-                            onChange(e, [...labels, input.value])
+                            onChange?.(e, [...labels, input.value])
 
                             input.value = ''
                         }
