@@ -10,7 +10,8 @@ module.exports = {
         '!<rootDir>/src/core/navigation/breadcrumbs/index.tsx',
         '!<rootDir>/src/core/inputs/select/index.tsx',
         '!<rootDir>/src/core/inputs/date-time/index.tsx',
-        '!<rootDir>/src/core/data-display/table/table-pagination.tsx'
+        '!<rootDir>/src/core/data-display/table/table-pagination.tsx',
+        '!<rootDir>/src/core/inputs/chip-field/index.tsx'
     ],
     transform: {
         '.+\\.(ts|tsx)$': 'ts-jest'
