@@ -54,7 +54,6 @@
         "@babel/preset-typescript": "7.24.7",
         "@faker-js/faker": "8.4.1",
         "@storybook/addon-essentials": "7.6.17",
-        "@storybook/addon-styling-webpack": "1.0.0",
         "@storybook/react": "7.6.17",
         "@storybook/react-webpack5": "7.6.17",
         "@stylistic/eslint-plugin": "2.7.2",
