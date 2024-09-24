@@ -11,7 +11,7 @@ import IconButton from '@/core/inputs/icon-button'
 import { ListItemContainer, StepCardColumn } from './styles'
 import { theme } from '@/theme'
 
-const { feedback, grays } = theme.colors
+const { feedback, gray } = theme.colors
 
 interface IStepCardDetailsProps {
     steps: IStepCardProps['steps']
@@ -45,13 +45,13 @@ const StepsList = ({
                 <ListItemContainer key={index}>
                     <CheckCircleIcon
                         style={{
-                            color: step.done ? feedback.success : grays.g3
+                            color: step.done ? feedback.success : gray[600]
                         }}
                     />
                     <Typography
                         variant='body1'
                         style={{
-                            color: grays.g2,
+                            color: gray[700],
                             fontWeight: 600
                         }}>
                         {step.title}

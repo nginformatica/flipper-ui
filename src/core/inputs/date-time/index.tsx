@@ -33,7 +33,7 @@ import type {
 import { CustomWrapper } from './styles'
 import { theme } from '@/theme'
 
-const { primary } = theme.colors
+const { neutral, primary } = theme.colors
 
 export interface IProps {
     type?: 'date' | 'time' | 'datetime'
@@ -62,10 +62,10 @@ const CustomDatePickerToolbar = (props: DatePickerToolbarProps<Date>) => {
                 borderRadius: '4px 4px 0 0',
                 padding: '16px',
                 '.MuiTypography-root': {
-                    color: `${primary.contrast}90`
+                    color: `${neutral[50]}90`
                 },
                 '.MuiDatePickerToolbar-title': {
-                    color: primary.contrast
+                    color: neutral[50]
                 }
             }}
         />
@@ -81,13 +81,13 @@ const CustomTimePickerToolbar = (props: TimePickerToolbarProps<Date>) => {
                 borderRadius: '4px 4px 0 0',
                 padding: '16px',
                 '.MuiTypography-root': {
-                    color: `${primary.contrast}90`
+                    color: `${neutral[50]}90`
                 },
                 '.MuiPickersToolbarText-root': {
-                    color: primary.contrast
+                    color: neutral[50]
                 },
                 '.MuiPickersToolbarText-root.Mui-selected': {
-                    color: `${primary.contrast}90`
+                    color: `${neutral[50]}90`
                 }
             }}
         />
@@ -108,11 +108,11 @@ const CustomDateTimePickerToolbar = (
                     display: 'none'
                 },
                 '.MuiPickersToolbarText-root': {
-                    color: primary.contrast,
+                    color: neutral[50],
                     display: 'block'
                 },
                 '.MuiPickersToolbarText-root.Mui-selected': {
-                    color: `${primary.contrast}90`,
+                    color: `${neutral[50]}90`,
                     display: 'block'
                 }
             }}

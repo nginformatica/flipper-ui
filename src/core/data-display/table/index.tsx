@@ -4,7 +4,7 @@ import type { DefaultProps } from '../../types'
 import type { TableProps } from '@mui/material/Table'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 export interface ITableProps extends DefaultProps, Omit<TableProps, 'padding'> {
     spacing?: 'normal' | 'checkbox' | 'none'
@@ -22,7 +22,7 @@ const Table = ({
         {...otherProps}
         padding={spacing}
         style={{
-            border: `1px solid ${grays.g6}`,
+            border: `1px solid ${gray[300]}`,
             padding,
             margin,
             ...style

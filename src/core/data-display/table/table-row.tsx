@@ -5,7 +5,7 @@ import type { DefaultProps } from '../../types'
 import type { TableRowProps } from '@mui/material/TableRow'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 export interface ITableRowProps extends DefaultProps, TableRowProps {
     selected?: boolean
@@ -26,7 +26,7 @@ const TableRow = ({
         {...otherProps}
         style={{
             background,
-            borderColor: grays.g7,
+            borderColor: gray[200],
             margin,
             padding,
             ...style

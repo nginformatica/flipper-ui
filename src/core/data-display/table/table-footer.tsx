@@ -4,7 +4,7 @@ import type { DefaultProps } from '../../types'
 import type { TableFooterProps } from '@mui/material/TableFooter'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 export interface ITableFooterProps extends DefaultProps, TableFooterProps {}
 
@@ -16,7 +16,7 @@ const TableFooter = ({
 }: ITableFooterProps) => (
     <MuiTableFooter
         style={{
-            borderColor: grays.g7,
+            borderColor: gray[200],
             margin,
             padding,
             ...style

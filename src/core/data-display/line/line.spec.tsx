@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import Line from '.'
 import { theme } from '@/theme'
 
-const { grays, secondary } = theme.colors
+const { gray, secondary } = theme.colors
 
 describe('Line', () => {
     it('should render closed', () => {
@@ -32,7 +32,7 @@ describe('Line', () => {
         expect(element).toHaveProperty('style.padding', '5px')
         expect(element).toHaveProperty(
             'style.border',
-            `1px solid ${grays.g6.toLowerCase()}`
+            `1px solid ${gray[300].toLowerCase()}`
         )
     })
 
