@@ -63,7 +63,7 @@
         "@testing-library/react": "16.0.1",
         "@testing-library/user-event": "14.5.2",
         "@types/jest": "29.5.13",
-        "@types/node": "22.6.1",
+        "@types/node": "22.7.1",
         "@types/ramda": "0.30.2",
         "@types/react": "18.3.9",
         "@types/sprintf-js": "1.1.4",
@@ -92,7 +92,7 @@
         "ts-jest": "29.2.5",
         "ts-loader": "9.5.1",
         "typescript": "5.6.2",
-        "webpack": "5.94.0"
+        "webpack": "5.95.0"
     },
     "peerDependencies": {
         "react": "^17.0.0 || ^18.0.0",
