@@ -38,6 +38,7 @@
         "@mui/icons-material": "6.1.1",
         "@mui/material": "6.1.1",
         "@mui/styles": "6.1.1",
+        "@mui/system": "6.1.1",
         "@mui/x-date-pickers": "7.18.0",
         "date-fns": "2.30.0",
         "ramda": "0.30.1",
