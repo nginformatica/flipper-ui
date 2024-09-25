@@ -167,19 +167,6 @@ const deepOrange = {
     900: '#BF360C'
 }
 
-const brown = {
-    50: '#DAC7BB',
-    100: '#CCB2A1',
-    200: '#BD9C87',
-    300: '#AF876D',
-    400: '#A07252',
-    500: '#925C38',
-    600: '#83471E',
-    700: '#6C3C20',
-    800: '#553221',
-    900: '#3E2723'
-}
-
 const lightBrown = {
     50: '#F7DED6',
     100: '#ECAD98',
@@ -191,6 +178,19 @@ const lightBrown = {
     700: '#B2411F',
     800: '#9E3313',
     900: '#8A2506'
+}
+
+const brown = {
+    50: '#DAC7BB',
+    100: '#CCB2A1',
+    200: '#BD9C87',
+    300: '#AF876D',
+    400: '#A07252',
+    500: '#925C38',
+    600: '#83471E',
+    700: '#6C3C20',
+    800: '#553221',
+    900: '#3E2723'
 }
 
 const gray = {
@@ -213,8 +213,8 @@ const neutral = {
 }
 
 const action = {
-    confirm: green[600],
-    cancel: deepOrange[600]
+    cancel: deepOrange[600],
+    confirm: green[600]
 }
 
 const primary = {
@@ -230,9 +230,9 @@ const secondary = {
 }
 
 const criticality = {
-    high: orange[600],
+    low: lightGreen[400],
     medium: amber[500],
-    low: lightGreen[400]
+    high: orange[600]
 }
 
 const priority = {
@@ -253,10 +253,10 @@ const priority = {
 }
 
 const feedback = {
-    info: blue[600],
-    success: green[400],
+    danger: deepOrange[600],
     warning: orange[600],
-    danger: deepOrange[600]
+    success: green[400],
+    info: blue[600]
 }
 
 export default {
