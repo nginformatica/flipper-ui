@@ -1,4 +1,4 @@
-const red = {
+const red: Record<number, string> = {
     50: '#FFCDD2',
     100: '#FCAEB2',
     200: '#F88F93',
@@ -11,7 +11,7 @@ const red = {
     900: '#99000F'
 }
 
-const pink = {
+const pink: Record<number, string> = {
     50: '#FADADB',
     100: '#F5B4B8',
     200: '#EF8F94',
@@ -24,7 +24,7 @@ const pink = {
     900: '#C60034'
 }
 
-const lightPink = {
+const lightPink: Record<number, string> = {
     50: '#FFD0C1',
     100: '#F2A29A',
     200: '#E57373',
@@ -37,7 +37,7 @@ const lightPink = {
     900: '#C24943'
 }
 
-const purple = {
+const purple: Record<number, string> = {
     50: '#F3E5F5',
     100: '#D7C6E0',
     200: '#C9ABD0',
@@ -50,7 +50,7 @@ const purple = {
     900: '#74007C'
 }
 
-const indigo = {
+const indigo: Record<number, string> = {
     50: '#E0E4FF',
     100: '#C1CDF3',
     200: '#84A0DB',
@@ -63,7 +63,7 @@ const indigo = {
     900: '#1A237E'
 }
 
-const darkBlue = {
+const darkBlue: Record<number, string> = {
     50: '#E8EAF6',
     100: '#858FA4',
     200: '#647188',
@@ -76,7 +76,7 @@ const darkBlue = {
     900: '#0E1C33'
 }
 
-const blue = {
+const blue: Record<number, string> = {
     50: '#DAF2FD',
     100: '#AEE5F9',
     200: '#82D9F6',
@@ -89,7 +89,7 @@ const blue = {
     900: '#0815FC'
 }
 
-const teal = {
+const teal: Record<number, string> = {
     50: '#E0F2F1',
     100: '#B2DFDB',
     200: '#80CBC4',
@@ -102,7 +102,7 @@ const teal = {
     900: '#004D40'
 }
 
-const green = {
+const green: Record<number, string> = {
     50: '#CEE5D8',
     100: '#9FCFA7',
     200: '#6FB975',
@@ -115,7 +115,7 @@ const green = {
     900: '#0B620F'
 }
 
-const lightGreen = {
+const lightGreen: Record<number, string> = {
     50: '#E9F4DD',
     100: '#C3E997',
     200: '#AED581',
@@ -128,7 +128,7 @@ const lightGreen = {
     900: '#33691E'
 }
 
-const amber = {
+const amber: Record<number, string> = {
     50: '#FFF7D5',
     100: '#FFF7B3',
     200: '#F1C555',
@@ -141,7 +141,7 @@ const amber = {
     900: '#985D04'
 }
 
-const orange = {
+const orange: Record<number, string> = {
     50: '#FFE1B4',
     100: '#F8D88F',
     200: '#FCC970',
@@ -154,7 +154,7 @@ const orange = {
     900: '#FF4500'
 }
 
-const deepOrange = {
+const deepOrange: Record<number, string> = {
     50: '#FFCCBC',
     100: '#F5874F',
     200: '#EF7943',
@@ -167,7 +167,7 @@ const deepOrange = {
     900: '#BF360C'
 }
 
-const lightBrown = {
+const lightBrown: Record<number, string> = {
     50: '#F7DED6',
     100: '#ECAD98',
     200: '#FE9275',
@@ -180,7 +180,7 @@ const lightBrown = {
     900: '#8A2506'
 }
 
-const brown = {
+const brown: Record<number, string> = {
     50: '#DAC7BB',
     100: '#CCB2A1',
     200: '#BD9C87',
@@ -193,7 +193,7 @@ const brown = {
     900: '#3E2723'
 }
 
-const gray = {
+const gray: Record<number, string> = {
     50: '#FAFAFA',
     100: '#F5F5F5',
     200: '#EEEEEE',
@@ -206,7 +206,7 @@ const gray = {
     900: '#212121'
 }
 
-const neutral = {
+const neutral: Record<number, string> = {
     50: '#FFFFFF',
     100: '#F6F7FF',
     200: '#000000'
