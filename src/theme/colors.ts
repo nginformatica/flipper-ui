@@ -237,6 +237,7 @@ const criticality = {
 
 const priority = {
     main: {
+        neutral: gray[400],
         minimal: blue[300],
         low: lightGreen[400],
         medium: amber[500],
@@ -244,6 +245,7 @@ const priority = {
         critical: deepOrange[600]
     },
     light: {
+        neutral: gray[100],
         minimal: blue[50],
         low: lightGreen[50],
         medium: amber[50],
