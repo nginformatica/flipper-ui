@@ -89,6 +89,32 @@ const blue: Record<number, string> = {
     900: '#0815FC'
 }
 
+const lightBlue: Record<number, string> = {
+    50: '#E0F5FE',
+    100: '#A3E0FB',
+    200: '#66CBF9',
+    300: '#29B6F6',
+    400: '#039BE5',
+    500: '#0288D1',
+    600: '#0277BD',
+    700: '#01579B',
+    800: '#004A7C',
+    900: '#043658'
+}
+
+const lightTeal: Record<number, string> = {
+    50: '#E7F3F5',
+    100: '#CFE7EA',
+    200: '#B7DCE0',
+    300: '#9FD0D5',
+    400: '#87C4CB',
+    500: '#79B1BC',
+    600: '#6B9FAC',
+    700: '#568395',
+    800: '#487086',
+    900: '#3E6073'
+}
+
 const teal: Record<number, string> = {
     50: '#E0F2F1',
     100: '#B2DFDB',
@@ -269,6 +295,8 @@ export default {
     indigo,
     darkBlue,
     blue,
+    lightBlue,
+    lightTeal,
     teal,
     green,
     lightGreen,
