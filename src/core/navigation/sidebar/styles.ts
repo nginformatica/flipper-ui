@@ -2,7 +2,7 @@ import { default as styled } from 'styled-components'
 import Button from '@/core/inputs/button'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 interface IAction {
     anchor?: 'top' | 'left' | 'bottom' | 'right'
@@ -31,7 +31,7 @@ export const AnchorButton = styled(Button)<{ minwidth: string | number }>`
     }
 
     &:hover {
-        background-color: ${grays.g6} !important;
+        background-color: ${gray[300]} !important;
     }
 `
 

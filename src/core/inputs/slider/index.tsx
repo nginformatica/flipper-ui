@@ -5,6 +5,8 @@ import type { DefaultProps } from '../../types'
 import type { SliderProps } from '@mui/material/Slider'
 import { theme } from '@/theme'
 
+const { feedback, primary, secondary } = theme.colors
+
 export interface ISliderProps
     extends Omit<SliderProps, 'defaultValue'>,
         DefaultProps {
@@ -17,12 +19,12 @@ type TProps = {
 }
 
 const labels = {
-    primary: theme.colors.primary.main,
-    secondary: theme.colors.secondary.main,
-    error: theme.colors.feedback.danger,
-    info: theme.colors.feedback.info,
-    success: theme.colors.feedback.success,
-    warning: theme.colors.feedback.warning
+    primary: primary.main,
+    secondary: secondary.main,
+    error: feedback.danger,
+    info: feedback.info,
+    success: feedback.success,
+    warning: feedback.warning
 }
 
 const useStyles = makeStyles(() => ({

@@ -2,41 +2,22 @@ import colors from './colors'
 
 export const theme = { colors }
 
-/**
- * Options to createMuiTheme
- * */
 export const muiThemeOptions = {
     palette: {
         primary: {
-            main: colors.primary.main
+            main: colors.darkBlue[600]
         },
         secondary: {
-            main: colors.secondary.main
+            main: colors.green[600]
         },
         error: {
-            main: colors.feedback.danger
+            main: colors.deepOrange[600]
         },
         background: {
-            default: colors.app.background.main
+            default: colors.neutral[100]
         },
         text: {
-            primary: colors.app.text.main
+            primary: colors.gray[900]
         }
     }
 }
-
-/**
- * Raw colors
- * */
-export type Colors = typeof colors
-
-export interface Theme {
-    theme: {
-        colors: Colors
-    }
-}
-
-/**
- * Util interface to extend (Props + Theme)
- * */
-export type WithTheme<Props extends object> = Props & Theme

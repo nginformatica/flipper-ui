@@ -7,12 +7,14 @@ import {
     Info as IconInfo,
     Warning as IconWarning
 } from '@mui/icons-material'
-import { amber, blue, green, red } from '@mui/material/colors'
 import MuiSnackbar from '@mui/material/Snackbar'
 import MuiSnackbarContent from '@mui/material/SnackbarContent'
 import type { DefaultProps } from '../../types'
 import type { TransitionProps } from '@mui/material/transitions'
 import IconButton from '@/core/inputs/icon-button'
+import { theme } from '@/theme'
+
+const { blue, green, orange, red } = theme.colors
 
 export interface SnackBarProps extends DefaultProps {
     autoHide?: number
@@ -39,19 +41,19 @@ export interface SnackBarProps extends DefaultProps {
 
 const variants = {
     error: {
-        color: red[700],
+        color: red[500],
         icon: IconError
     },
     info: {
-        color: blue[500],
+        color: blue[600],
         icon: IconInfo
     },
     success: {
-        color: green[700],
+        color: green[400],
         icon: IconCheck
     },
     warning: {
-        color: amber[700],
+        color: orange[600],
         icon: IconWarning
     }
 }

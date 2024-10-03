@@ -19,7 +19,7 @@ import {
 } from './styles'
 import { theme } from '@/theme'
 
-const { feedback, grays } = theme.colors
+const { feedback, gray } = theme.colors
 
 interface IStepCardPanelProps {
     title: string
@@ -72,7 +72,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                                 color:
                                     percentage === 100
                                         ? feedback.success
-                                        : grays.g3
+                                        : gray[600]
                             }}
                         />
                     )}
@@ -80,7 +80,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                         <Typography
                             variant='h6'
                             style={{
-                                color: grays.g1,
+                                color: gray[800],
                                 fontSize: 24,
                                 textAlign: 'center'
                             }}
@@ -91,7 +91,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                             <Typography
                                 variant='h6'
                                 style={{
-                                    color: grays.g3,
+                                    color: gray[600],
                                     textAlign: 'center'
                                 }}
                                 {...titleProps}>
@@ -127,7 +127,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                                     width: '100%',
                                     height: '16px',
                                     borderRadius: 10,
-                                    backgroundColor: grays.g5
+                                    backgroundColor: gray[400]
                                 }}
                                 {...summaryLinearProgressBarProps}
                             />
@@ -144,7 +144,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                         style={{
                             height: '16px',
                             width: '100%',
-                            backgroundColor: grays.g5
+                            backgroundColor: gray[400]
                         }}
                         {...linearProgressBarProps}
                     />

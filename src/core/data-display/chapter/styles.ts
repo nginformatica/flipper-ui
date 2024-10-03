@@ -2,7 +2,7 @@ import { default as styled } from 'styled-components'
 import type { LineProps } from '.'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 export const Line = styled.div<LineProps>`
     height: 1px;
@@ -10,7 +10,7 @@ export const Line = styled.div<LineProps>`
     min-height: 0.75px;
     max-height: 3px;
     align-self: center;
-    background-color: ${props => (props.primary ? grays.g4 : grays.g6)};
+    background-color: ${props => (props.primary ? gray[500] : gray[300])};
 `
 
 export const Container = styled.div`

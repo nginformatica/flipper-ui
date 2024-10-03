@@ -3,6 +3,8 @@ import type { Meta, StoryFn } from '@storybook/react'
 import Progress from '.'
 import { theme } from '@/theme'
 
+const { deepOrange } = theme.colors
+
 export default {
     title: 'Feedback/Progress',
     component: Progress
@@ -85,6 +87,6 @@ LinearWithCustom.args = {
     variant: 'determinate',
     value: 75,
     valueBuffer: 100,
-    primaryColor: `${theme.colors.graphic.red.main}80`,
-    barPrimaryColor: theme.colors.graphic.red.main
+    primaryColor: `${deepOrange[600]}80`,
+    barPrimaryColor: deepOrange[600]
 }

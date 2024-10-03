@@ -1,7 +1,7 @@
 import { default as styled } from 'styled-components'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 export const Wrapper = styled.div``
 
@@ -31,7 +31,7 @@ export const StaticTextFieldWrapper = styled.div`
 `
 
 export const CharactersCount = styled.span`
-    color: ${grays.g3};
+    color: ${gray[600]};
     font-size: 14px;
     font-family:
         Roboto,

@@ -3,11 +3,11 @@ import Typography from '@/core/data-display/typography'
 import Paper from '@/core/surfaces/paper'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 export const AdvertiseTypography = styled(Typography)`
     && {
-        border-left: 1px solid ${grays.g5};
+        border-left: 1px solid ${gray[400]};
     }
 `
 

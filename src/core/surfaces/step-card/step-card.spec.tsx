@@ -174,7 +174,7 @@ describe('StepCard', () => {
 
         const statusIcon = screen.getByTestId('step-card-title-icon')
 
-        expect(statusIcon.style.color).toBe('rgb(14, 144, 67)')
+        expect(statusIcon.style.color).toBe('rgb(40, 153, 57)')
     })
 
     it('should expand without image', async () => {

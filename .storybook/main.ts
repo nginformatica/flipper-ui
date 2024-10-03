@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     features: {
         storyStoreV7: false
     },
-    addons: ['@storybook/addon-essentials', '@storybook/addon-styling-webpack'],
+    addons: ['@storybook/addon-essentials'],
     docs: {
         autodocs: true
     },

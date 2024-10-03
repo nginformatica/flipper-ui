@@ -4,7 +4,7 @@ import MuiTablePagination from '@mui/material/TablePagination'
 import type { TablePaginationProps } from '@mui/material/TablePagination'
 import { theme } from '@/theme'
 
-const { grays } = theme.colors
+const { gray } = theme.colors
 
 interface ITablePaginationProps
     extends Omit<
@@ -54,12 +54,12 @@ const TablePagination = ({
                 return `${from}-${to} de ${count !== -1 ? count : `mais que ${to}`}`
             }}
             style={{
-                borderColor: grays.g7,
+                borderColor: gray[200],
                 padding,
                 ...style
             }}
             sx={{
-                borderBottom: `1px solid ${grays.g7} !important;`
+                borderBottom: `1px solid ${gray[200]} !important;`
             }}
             onPageChange={onPageChange}
             onRowsPerPageChange={onRowsPerPageChange}

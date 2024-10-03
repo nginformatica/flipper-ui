@@ -5,7 +5,7 @@ import { createStyles, makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import { theme } from '@/theme'
 
-const { app } = theme.colors
+const { neutral } = theme.colors
 
 export interface ListProps extends DefaultProps {
     title?: string
@@ -16,7 +16,7 @@ export interface ListProps extends DefaultProps {
 const useStyles = makeStyles(() =>
     createStyles({
         default: {
-            backgroundColor: app.background.main
+            backgroundColor: neutral[100]
         },
         inherit: {
             backgroundColor: 'inherit',
