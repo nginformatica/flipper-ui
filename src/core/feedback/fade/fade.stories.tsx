@@ -8,25 +8,25 @@ const meta: Meta<typeof Fade> = {
     argTypes: {
         in: {
             control: 'boolean',
-            description: 'To open or close the fade.'
+            description: 'To open or close the fade'
         },
         timeout: {
             control: 'object',
             description:
                 'The fade timeout. ' +
-                'Can be a `number`, `auto`, or set the object individually `{ enter: 200, exit: 500 }`.'
+                'Can be a `number`, `auto`, or set the object individually `{ enter: 200, exit: 500 }`'
         },
         margin: {
             control: 'text',
-            description: 'The fade margin.'
+            description: 'The fade margin'
         },
         padding: {
             control: 'text',
-            description: 'The fade padding.'
+            description: 'The fade padding'
         },
         style: {
             control: 'object',
-            description: 'The fade style.'
+            description: 'The fade style'
         }
     }
 }
@@ -46,8 +46,8 @@ export const fade: Story = {
     args: {
         in: true,
         timeout: { enter: 200, exit: 500 },
-        margin: '',
-        padding: '',
+        margin: '0px',
+        padding: '0px',
         style: {}
     }
 }

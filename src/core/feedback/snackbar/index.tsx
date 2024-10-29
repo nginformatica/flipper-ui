@@ -12,6 +12,7 @@ import MuiSnackbarContent from '@mui/material/SnackbarContent'
 import type { DefaultProps } from '../../types'
 import type { TransitionProps } from '@mui/material/transitions'
 import IconButton from '@/core/inputs/icon-button'
+import { Message } from './styles'
 import { theme } from '@/theme'
 
 const { blue, green, orange, red } = theme.colors
@@ -113,16 +114,10 @@ const SnackBar = (props: SnackBarProps) => {
                     cursor
                 }}
                 message={
-                    <span
-                        id='client-snackbar'
-                        style={{
-                            alignItems: 'center',
-                            display: 'flex',
-                            gap: '12px'
-                        }}>
+                    <Message id='client-snackbar'>
                         {icon || <Icon style={{ opacity: 0.9 }} />}
                         <div>{message}</div>
-                    </span>
+                    </Message>
                 }
                 action={
                     action || (

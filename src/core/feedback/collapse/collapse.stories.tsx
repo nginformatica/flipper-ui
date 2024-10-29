@@ -8,29 +8,29 @@ const meta: Meta<typeof Collapse> = {
     argTypes: {
         in: {
             control: 'boolean',
-            description: 'To open or close the collapse.'
+            description: 'To open or close the collapse'
         },
         timeout: {
             control: 'object',
             description:
                 'The collapse timeout. ' +
-                'Can be a `number`, `auto`, or set the object individually `{ enter: 200, exit: 500 }`.'
+                'Can be a `number`, `auto`, or set the object individually `{ enter: 200, exit: 500 }`'
         },
         children: {
             control: 'text',
-            description: 'The collapse content.'
+            description: 'The collapse content'
         },
         margin: {
             control: 'text',
-            description: 'The collapse margin.'
+            description: 'The collapse margin'
         },
         padding: {
             control: 'text',
-            description: 'The collapse padding.'
+            description: 'The collapse padding'
         },
         style: {
             control: 'object',
-            description: 'The collapse style.'
+            description: 'The collapse style'
         }
     }
 }
@@ -47,8 +47,8 @@ export const collapse: Story = {
         in: true,
         timeout: { enter: 200, exit: 500 },
         children: 'I am open for discussions.',
-        margin: '',
-        padding: '',
+        margin: '0px',
+        padding: '0px',
         style: {}
     }
 }
