@@ -1,8 +1,8 @@
 import React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { default as userEvent } from '@testing-library/user-event'
+import { MultipleField } from '@/test/mocks/chip-field-mock'
 import '@testing-library/jest-dom'
-import { MultipleField } from './chip-field.stories'
 
 const mockOnChange = jest.fn()
 

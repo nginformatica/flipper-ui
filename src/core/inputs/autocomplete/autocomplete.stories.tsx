@@ -4,11 +4,11 @@ import TextField from '@/core/inputs/text-field'
 import { Autocomplete } from '.'
 
 export default {
-    title: 'Inputs/AutoComplete Lab',
+    title: 'Inputs/Autocomplete Lab',
     component: Autocomplete
 } as Meta<typeof Autocomplete>
 
-export const AutoCompleteLab = () => (
+export const AutocompleteLab = () => (
     <Autocomplete
         fullWidth
         disableClearable

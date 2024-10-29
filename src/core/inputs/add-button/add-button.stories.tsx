@@ -13,27 +13,27 @@ const meta: Meta<typeof AddButton> = {
         },
         name: {
             control: 'text',
-            description: 'The button name.'
+            description: 'The button name'
         },
         label: {
             control: 'text',
-            description: 'The button label.'
+            description: 'The button label'
         },
         fullWidth: {
             control: 'boolean',
-            description: 'To set if the button is full container width.'
+            description: 'To set if the button is full container width'
         },
         padding: {
             control: 'text',
-            description: 'The button padding.'
+            description: 'The button padding'
         },
         margin: {
             control: 'text',
-            description: 'The button margin.'
+            description: 'The button margin'
         },
         disabled: {
             control: 'boolean',
-            description: 'To set if the button is disabled.'
+            description: 'To set if the button is disabled'
         }
     }
 }

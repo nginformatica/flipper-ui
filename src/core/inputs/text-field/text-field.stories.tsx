@@ -1,6 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
+import type { ITextFieldProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import TextField from '.'
 import { Wrapper } from './styles'
@@ -51,43 +51,51 @@ export const textfield: Story = {
     },
     args: {
         placeholder: 'Description',
+        label: '',
         type: 'text',
-        label: 'Price',
         fullWidth: true,
-        InputLabelProps: { shrink: true },
+        select: false,
+        disabled: false,
+        hasClear: false,
         onHelperClick: () => window.alert('HELP!')
     }
 }
 
+const TextFieldSelectAndClearWrapper = (
+    args: JSX.IntrinsicAttributes & ITextFieldProps
+) => {
+    const [value, setValue] = useState('fable')
+
+    const onClear = () => {
+        setValue('')
+    }
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value)
+    }
+
+    return (
+        <Wrapper>
+            <TextField
+                {...args}
+                value={value}
+                options={[
+                    { label: '', value: '' },
+                    { label: 'Elm', value: 'elm' },
+                    { label: 'ReasonML', value: 'reasonml' },
+                    { label: 'Purescript', value: 'purescript' },
+                    { label: 'Fable', value: 'fable' }
+                ]}
+                onClear={onClear}
+                onChange={handleChange}
+            />
+        </Wrapper>
+    )
+}
+
 export const withSelectAndClear: Story = {
     render: ({ ...args }) => {
-        const [value, setValue] = useState('fable')
-
-        const onClear = () => {
-            setValue('')
-        }
-
-        const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-            setValue(event.target.value)
-        }
-
-        return (
-            <Wrapper>
-                <TextField
-                    {...args}
-                    value={value}
-                    options={[
-                        { label: '', value: '' },
-                        { label: 'Elm', value: 'elm' },
-                        { label: 'ReasonML', value: 'reasonml' },
-                        { label: 'Purescript', value: 'purescript' },
-                        { label: 'Fable', value: 'fable' }
-                    ]}
-                    onClear={onClear}
-                    onChange={handleChange}
-                />
-            </Wrapper>
-        )
+        return <TextFieldSelectAndClearWrapper {...args} />
     },
     args: {
         select: true,
@@ -96,72 +104,39 @@ export const withSelectAndClear: Story = {
         fullWidth: true,
         placeholder: '',
         type: '',
-        label: ''
+        label: 'Select'
     }
 }
 
-export const combobox: Story = {
-    render: ({ ...args }) => {
-        const [value, setValue] = useState('fable')
+const TextFieldCharacterCountWrapper = (
+    args: JSX.IntrinsicAttributes & ITextFieldProps
+) => {
+    const [value, setValue] = useState('')
 
-        const onClear = () => {
-            setValue('')
-        }
-
-        const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-            setValue(event.target.value)
-        }
-
-        return (
-            <Wrapper>
-                <TextField
-                    {...args}
-                    options={[
-                        { label: 'Elm', value: 'elm' },
-                        { label: 'ReasonML', value: 'reasonml' },
-                        { label: 'Purescript', value: 'purescript' },
-                        { label: 'Fable', value: 'fable' }
-                    ]}
-                    value={value}
-                    onClear={onClear}
-                    onChange={handleChange}
-                />
-            </Wrapper>
-        )
-    },
-    args: {
-        select: true,
-        hasClear: true,
-        fullWidth: true,
-        placeholder: '',
-        type: '',
-        label: ''
+    const onClear = () => {
+        setValue('')
     }
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value)
+    }
+
+    return (
+        <Wrapper>
+            <TextField
+                {...args}
+                characters
+                value={value}
+                onClear={onClear}
+                onChange={handleChange}
+            />
+        </Wrapper>
+    )
 }
 
 export const withCharacterCount: Story = {
     render: ({ ...args }) => {
-        const [value, setValue] = useState('')
-
-        const onClear = () => {
-            setValue('')
-        }
-
-        const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-            setValue(event.target.value)
-        }
-
-        return (
-            <Wrapper>
-                <TextField
-                    {...args}
-                    characters
-                    value={value}
-                    onClear={onClear}
-                    onChange={handleChange}
-                />
-            </Wrapper>
-        )
+        return <TextFieldCharacterCountWrapper {...args} />
     },
     args: {
         placeholder: 'Description',
