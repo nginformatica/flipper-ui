@@ -60,6 +60,6 @@ export const list: Story = {
         ),
         margin: '0px',
         padding: '0px',
-        style: { color: '#000000' }
+        style: {}
     }
 }

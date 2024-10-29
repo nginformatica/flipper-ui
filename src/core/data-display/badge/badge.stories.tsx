@@ -23,8 +23,8 @@ const meta: Meta<typeof Badge> = {
             ],
             control: { type: 'radio' },
             description:
-                'The badge color. ' +
-                'Must be `"default" | "primary" | "secondary" | "error" | "info" | "success" | "warning"`' +
+                'The badge color. Must be ' +
+                '`default | primary | secondary | error | info | success | warning`. ' +
                 'If not set, the default is "default"'
         },
         vertical: {
@@ -32,7 +32,7 @@ const meta: Meta<typeof Badge> = {
             control: { type: 'radio' },
             description:
                 'The badge vertical position. ' +
-                'Must be `"top" | "bottom"`' +
+                'Must be `top | bottom`. ' +
                 'If not set, the default is "top"'
         },
         horizontal: {
@@ -40,7 +40,7 @@ const meta: Meta<typeof Badge> = {
             control: { type: 'radio' },
             description:
                 'The badge overlap. ' +
-                'Must be `"right" | "left"`' +
+                'Must be `right | left`. ' +
                 'If not set, the default is "right"'
         },
         variant: {
@@ -48,7 +48,7 @@ const meta: Meta<typeof Badge> = {
             control: { type: 'radio' },
             description:
                 'The badge variant. ' +
-                'Must be `"standard" | "dot"`' +
+                'Must be `standard | dot`. ' +
                 'If not set, the default is "standard"'
         },
         overlap: {
@@ -56,7 +56,7 @@ const meta: Meta<typeof Badge> = {
             control: { type: 'radio' },
             description:
                 'The badge overlap. ' +
-                'Must be `"rectangular" | "circular"`' +
+                'Must be `rectangular | circular`. ' +
                 'If not set, the default is "rectangular"'
         },
         margin: {
@@ -85,7 +85,7 @@ export const badge: Story = {
         horizontal: 'right',
         variant: 'standard',
         overlap: 'rectangular',
-        margin: '',
-        padding: ''
+        margin: '0px',
+        padding: '0px'
     }
 }

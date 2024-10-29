@@ -14,8 +14,8 @@ const meta: Meta<typeof Table> = {
             options: ['normal', 'checkbox', 'none'],
             control: { type: 'radio' },
             description:
-                'The table spacing. ' +
-                'Must be `"normal" | "checkbox" | "none"`' +
+                'The table spacing. Must be ' +
+                '`normal | checkbox | none`' +
                 'If not set, the default is "normal"'
         },
         children: {
@@ -80,6 +80,6 @@ export const table: Story = {
         spacing: 'normal',
         margin: '0px',
         padding: '0px',
-        style: { color: '#000000' }
+        style: {}
     }
 }

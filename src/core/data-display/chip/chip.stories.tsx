@@ -28,7 +28,7 @@ const meta: Meta<typeof Chip> = {
             control: { type: 'radio' },
             description:
                 'The chip color. ' +
-                'Must be `"default" | "primary" | "secondary" | "error" | "info" | "success" | "warning"`' +
+                'Must be `default | primary | secondary | error | info | success | warning`' +
                 'If not set, the default is "default"'
         },
         variant: {
@@ -36,7 +36,7 @@ const meta: Meta<typeof Chip> = {
             control: { type: 'radio' },
             description:
                 'The chip variant. ' +
-                'Must be `"outlined" | "filled"`' +
+                'Must be `outlined | filled`' +
                 'If not set, the default is "filled"'
         },
         size: {
@@ -44,16 +44,16 @@ const meta: Meta<typeof Chip> = {
             control: { type: 'radio' },
             description:
                 'The chip size. ' +
-                'Must be `"small" | "medium"`' +
+                'Must be `small | medium`' +
                 'If not set, the default is "medium"'
         },
         margin: {
             control: 'text',
-            description: 'The badge margin'
+            description: 'The chip margin'
         },
         padding: {
             control: 'text',
-            description: 'The badge padding'
+            description: 'The chip padding'
         },
         avatar: {
             control: false,

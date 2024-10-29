@@ -12,11 +12,11 @@ const meta: Meta<typeof PasswordVisibility> = {
         },
         show: {
             control: 'boolean',
-            description: 'If `true` the visibility icon is shown.'
+            description: 'If `true` the visibility icon is shown'
         },
         onToggle: {
             control: false,
-            description: 'To set the state logic to show the icon.'
+            description: 'To set the state logic to show the icon'
         }
     }
 }

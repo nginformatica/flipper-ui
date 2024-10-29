@@ -26,8 +26,8 @@ const meta: Meta<typeof Typography> = {
             ],
             control: { type: 'radio' },
             description:
-                'The variants based on the HTML tags. ' +
-                'Must be `"h1 | h2 | h3 | h4 | h5 | h6 | subtitle1 | subtitle2 | body1 | body2 | inherit"`. ' +
+                'The variants based on the HTML tags. Must be ' +
+                '`h1 | h2 | h3 | h4 | h5 | h6 | subtitle1 | subtitle2 | body1 | body2 | inherit`. ' +
                 'If not set, the default is "body1"'
         },
         color: {
@@ -41,21 +41,21 @@ const meta: Meta<typeof Typography> = {
             ],
             control: { type: 'radio' },
             description:
-                'The text color. ' +
-                'Must be `"default" | "primary" | "secondary" | "error" | "textSecondary" | "textPrimary"`. ' +
+                'The text color. Must be ' +
+                '`default | primary | secondary | error | textPrimary | textSecondary `. ' +
                 'If not set, the default is "default"'
         },
         margin: {
             control: 'text',
-            description: 'The line margin'
+            description: 'The text margin'
         },
         padding: {
             control: 'text',
-            description: 'The line padding'
+            description: 'The text padding'
         },
         style: {
             control: 'object',
-            description: 'The line style'
+            description: 'The text style'
         }
     }
 }

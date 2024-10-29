@@ -25,12 +25,12 @@ const meta: Meta<typeof Actions> = {
             options: ['flex-end', 'flex-start', 'center'],
             control: { type: 'radio' },
             description:
-                "The buttons position. Must be `'flex-end' | 'flex-start' | 'center'`"
+                'The buttons position. Must be `flex-end | flex-start | center`'
         },
         buttons: {
             control: false,
             description:
-                "The buttons inner text. Must be `Array<'confirm' | 'cancel'>`" +
+                "The buttons inner text. Must be `Array<'confirm' | 'cancel'>`. " +
                 "If not informed, it will be used the default 'Cancelar' and 'Confirmar'"
         },
         labels: {
@@ -56,8 +56,9 @@ const meta: Meta<typeof Actions> = {
             ],
             control: { type: 'radio' },
             description:
-                'The "Confirmar" button color.' +
-                'Must be `"inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning"`' +
+                'The "Confirmar" button color. Must be ' +
+                '`inherit | primary | secondary | `. ' +
+                '`success | error | info | warning`. ' +
                 'If not set, the default is "secondary"'
         },
         padding: {

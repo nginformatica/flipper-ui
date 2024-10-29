@@ -8,23 +8,23 @@ const meta: Meta<typeof Fab> = {
     argTypes: {
         children: {
             control: 'text',
-            description: 'The Fab content. Can be a text or icon'
+            description: 'The fab content. Can be a text or icon'
         },
         style: {
             control: 'object',
-            description: 'The Fab style'
+            description: 'The fab style'
         },
         padding: {
             control: 'text',
-            description: 'The Fab padding'
+            description: 'The fab padding'
         },
         margin: {
             control: 'text',
-            description: 'The Fab margin'
+            description: 'The fab margin'
         },
         onClick: {
             control: false,
-            description: 'The function to call when the Fab is clicked'
+            description: 'The function to call when the fab is clicked'
         }
     }
 }
@@ -41,6 +41,6 @@ export const fab: Story = {
         children: 'Fab',
         margin: '0px',
         padding: '0px',
-        style: { color: '#000000' }
+        style: {}
     }
 }

@@ -6,6 +6,10 @@ const meta: Meta<typeof Line> = {
     title: 'DataDisplay/Line',
     component: Line,
     argTypes: {
+        primary: {
+            control: 'boolean',
+            description: 'To set the line border color'
+        },
         margin: {
             control: 'text',
             description: 'The line margin'
@@ -13,10 +17,6 @@ const meta: Meta<typeof Line> = {
         padding: {
             control: 'text',
             description: 'The line padding'
-        },
-        primary: {
-            control: 'boolean',
-            description: 'To set the line border color'
         },
         style: {
             control: 'object',
@@ -34,9 +34,9 @@ export const line: Story = {
         return <Line {...args} />
     },
     args: {
+        primary: false,
         margin: '0px',
         padding: '0px',
-        primary: false,
         style: {}
     }
 }

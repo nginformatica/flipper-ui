@@ -8,31 +8,31 @@ const meta: Meta<typeof Advertise> = {
     argTypes: {
         comment: {
             control: 'text',
-            description: 'The Avertise upper text'
+            description: 'The advertise upper text'
         },
         author: {
             control: 'text',
-            description: 'The Advertise bottom text'
+            description: 'The advertise bottom text'
         },
         commentStyle: {
             control: 'object',
-            description: 'The Advertise comment style'
+            description: 'The advertise comment style'
         },
         authorStyle: {
             control: 'object',
-            description: 'The Advertise author style'
+            description: 'The advertise author style'
         },
         style: {
             control: 'object',
-            description: 'The Advertise Container style'
+            description: 'The advertise container style'
         },
         padding: {
             control: 'text',
-            description: 'The Advertise Container padding'
+            description: 'The advertise container padding'
         },
         margin: {
             control: 'text',
-            description: 'The Advertise Container margin'
+            description: 'The advertise container margin'
         }
     }
 }
@@ -50,9 +50,9 @@ export const advertise: Story = {
             'Be like water. You put water into a cup. \
         It becomes the cup. You put water into a bottle. It becomes the bottle.',
         author: 'Bruce Lee',
-        commentStyle: { color: '#000000' },
-        authorStyle: { color: '#000000' },
-        style: { backgroundColor: '#FFFFFF' },
+        commentStyle: {},
+        authorStyle: {},
+        style: {},
         margin: '0px',
         padding: '0px'
     }

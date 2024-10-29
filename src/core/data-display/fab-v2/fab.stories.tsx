@@ -22,27 +22,27 @@ const meta: Meta<typeof FabV2> = {
         },
         name: {
             control: 'text',
-            description: 'The Fab name'
+            description: 'The fab name'
         },
         tooltip: {
             control: 'text',
-            description: 'The Fab tooltip label'
+            description: 'The fab tooltip label'
         },
         mini: {
             control: 'boolean',
-            description: 'The Fab size'
+            description: 'The fab size'
         },
         padding: {
             control: 'text',
-            description: 'The Fab padding'
+            description: 'The fab padding'
         },
         margin: {
             control: 'text',
-            description: 'The Fab margin'
+            description: 'The fab margin'
         },
         style: {
             control: 'object',
-            description: 'The Fab style'
+            description: 'The fab style'
         }
     }
 }
