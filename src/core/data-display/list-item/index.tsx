@@ -1,12 +1,11 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
+import MuiListItem from '@mui/material/ListItem'
 import MuiListItemAvatar from '@mui/material/ListItemAvatar'
 import MuiListItemButton from '@mui/material/ListItemButton'
 import MuiListItemIcon from '@mui/material/ListItemIcon'
-import MuiListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 import MuiListItemText from '@mui/material/ListItemText'
 import MuiMenuItem from '@mui/material/MenuItem'
-import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 
 export interface ListItemProps extends Omit<DefaultProps, 'name'> {
@@ -21,25 +20,11 @@ export interface ListItemProps extends Omit<DefaultProps, 'name'> {
     onClick?: (event?: MouseEvent) => void
 }
 
-const useStyles = makeStyles(() => ({
-    root: {
-        color: 'inherit',
-        minHeight: '48px'
-    },
-    default: {
-        color: 'inherit'
-    }
-}))
-
 const ListItem = (props: ListItemProps) => {
     const { padding, margin, style } = props
-    const classes = useStyles()
-    const className = props.className
 
     const renderCustomItem = () => {
         const minWidth = props.title || props.subtitle ? '42px' : '0px'
-        const className = classes.default
-        const typographyProps = { className }
 
         return (
             <>
@@ -47,7 +32,9 @@ const ListItem = (props: ListItemProps) => {
                     <MuiListItemAvatar>{props.avatar}</MuiListItemAvatar>
                 )}
                 {props.icon && (
-                    <MuiListItemIcon className={className} style={{ minWidth }}>
+                    <MuiListItemIcon
+                        style={{ minWidth }}
+                        sx={{ color: 'inherit' }}>
                         {props.icon}
                     </MuiListItemIcon>
                 )}
@@ -55,16 +42,24 @@ const ListItem = (props: ListItemProps) => {
                     <MuiListItemText
                         primary={props.title}
                         secondary={props.subtitle}
-                        primaryTypographyProps={typographyProps}
-                        secondaryTypographyProps={typographyProps}
                         data-testid={`list-item-${props.subtitle}`}
-                        style={props.action ? { marginRight: '36px' } : {}}
+                        style={
+                            props.action
+                                ? { width: '100%', marginRight: '36px' }
+                                : {}
+                        }
                     />
                 )}
                 {props.action && (
-                    <MuiListItemSecondaryAction className={className}>
+                    <MuiListItem
+                        secondaryAction
+                        sx={{
+                            color: 'inherit',
+                            justifyContent: 'flex-end',
+                            paddingRight: '6px'
+                        }}>
                         {props.action}
-                    </MuiListItemSecondaryAction>
+                    </MuiListItem>
                 )}
             </>
         )
@@ -74,10 +69,13 @@ const ListItem = (props: ListItemProps) => {
         <MuiMenuItem
             id={props.id}
             value={props.value}
-            className={className}
             selected={props.selected}
             disabled={props.disabled}
-            classes={{ root: classes.root }}
+            className={props.className}
+            sx={{
+                color: 'inherit',
+                minHeight: '48px'
+            }}
             style={{ padding, margin, ...style }}
             onClick={props.onClick}>
             {props.children}
@@ -85,10 +83,13 @@ const ListItem = (props: ListItemProps) => {
     ) : (
         <MuiListItemButton
             id={props.id}
-            className={className}
             selected={props.selected}
             disabled={props.disabled}
-            classes={{ root: classes.root }}
+            className={props.className}
+            sx={{
+                color: 'inherit',
+                minHeight: '48px'
+            }}
             style={{ padding, margin, ...style }}
             onClick={props.onClick}>
             {renderCustomItem()}
