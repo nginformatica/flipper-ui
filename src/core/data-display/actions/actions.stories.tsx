@@ -16,7 +16,6 @@ const meta: Meta<typeof Actions> = {
                 disable: true
             }
         },
-
         prefix: {
             table: {
                 disable: true
@@ -42,15 +41,7 @@ const meta: Meta<typeof Actions> = {
                 control: 'text'
             },
             description:
-                'The buttons inner label. Must be and object with the cancel and confirm keys.'
-        },
-        padding: {
-            control: 'text',
-            description: 'The buttons padding'
-        },
-        margin: {
-            control: 'text',
-            description: 'The buttons margin.'
+                'The buttons inner label. Must be and object with the cancel and confirm keys'
         },
         actionButtonColor: {
             options: [
@@ -69,17 +60,25 @@ const meta: Meta<typeof Actions> = {
                 'Must be `"inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning"`' +
                 'If not set, the default is "secondary"'
         },
+        padding: {
+            control: 'text',
+            description: 'The buttons padding'
+        },
+        margin: {
+            control: 'text',
+            description: 'The buttons margin'
+        },
         disabled: {
             control: 'boolean',
-            description: 'If `true`, the buttons are disabled.'
+            description: 'If `true`, the buttons are disabled'
         },
         disabledCancel: {
             control: 'boolean',
-            description: 'If `true`, the Cancel button is disabled.'
+            description: 'If `true`, the Cancel button is disabled'
         },
         disabledConfirm: {
             control: 'boolean',
-            description: 'If `true`, the Confirm button is disabled.'
+            description: 'If `true`, the Confirm button is disabled'
         },
         onCancel: {
             control: false,

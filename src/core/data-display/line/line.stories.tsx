@@ -8,19 +8,19 @@ const meta: Meta<typeof Line> = {
     argTypes: {
         margin: {
             control: 'text',
-            description: 'The line margin.'
+            description: 'The line margin'
         },
         padding: {
             control: 'text',
-            description: 'The line padding.'
+            description: 'The line padding'
         },
         primary: {
             control: 'boolean',
-            description: 'To set the line border color.'
+            description: 'To set the line border color'
         },
         style: {
             control: 'object',
-            description: 'The line style.'
+            description: 'The line style'
         }
     }
 }
@@ -34,8 +34,8 @@ export const line: Story = {
         return <Line {...args} />
     },
     args: {
-        margin: '',
-        padding: '',
+        margin: '0px',
+        padding: '0px',
         primary: false,
         style: {}
     }

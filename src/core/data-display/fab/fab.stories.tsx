@@ -1,16 +1,46 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Fab from '.'
 
-export default {
+const meta: Meta<typeof Fab> = {
     title: 'DataDisplay/Fab',
-    component: Fab
-} as Meta<typeof Fab>
+    component: Fab,
+    argTypes: {
+        children: {
+            control: 'text',
+            description: 'The Fab content. Can be a text or icon'
+        },
+        style: {
+            control: 'object',
+            description: 'The Fab style'
+        },
+        padding: {
+            control: 'text',
+            description: 'The Fab padding'
+        },
+        margin: {
+            control: 'text',
+            description: 'The Fab margin'
+        },
+        onClick: {
+            control: false,
+            description: 'The function to call when the Fab is clicked'
+        }
+    }
+}
 
-const Template: StoryFn<typeof Fab> = args => <Fab {...args} />
+export default meta
 
-export const Default = Template.bind({})
+type Story = StoryObj<typeof Fab>
 
-Default.args = {
-    children: 'Fab'
+export const fab: Story = {
+    render: ({ ...args }) => {
+        return <Fab {...args} />
+    },
+    args: {
+        children: 'Fab',
+        margin: '0px',
+        padding: '0px',
+        style: { color: '#000000' }
+    }
 }

@@ -194,34 +194,36 @@ export const DataTableField = <D extends Record<string, unknown>>(
     return (
         <MuiTable data-testid='data-table-field'>
             <MuiTableHead>
-                {checkbox && (
-                    <MuiTableCell padding='checkbox'>
-                        <MuiCheckbox
-                            color='primary'
-                            checked={
-                                checkboxProps?.checkAllRows !== undefined
-                                    ? checkboxProps.checkAllRows
-                                    : false
-                            }
-                            onChange={() => {
-                                if (
-                                    checkboxProps?.setSelectedRow &&
-                                    checkboxProps.setSelectedAllRows
-                                ) {
-                                    handleSelectAllCheckbox(
-                                        checkboxProps.setSelectedRow,
-                                        checkboxProps.setSelectedAllRows
-                                    )
+                <RowTable>
+                    {checkbox && (
+                        <MuiTableCell padding='checkbox'>
+                            <MuiCheckbox
+                                color='primary'
+                                checked={
+                                    checkboxProps?.checkAllRows !== undefined
+                                        ? checkboxProps.checkAllRows
+                                        : false
                                 }
-                            }}
-                        />
-                    </MuiTableCell>
-                )}
-                {header.map((item, i) => (
-                    <MuiTableCell key={i} align='center'>
-                        {item.title}
-                    </MuiTableCell>
-                ))}
+                                onChange={() => {
+                                    if (
+                                        checkboxProps?.setSelectedRow &&
+                                        checkboxProps.setSelectedAllRows
+                                    ) {
+                                        handleSelectAllCheckbox(
+                                            checkboxProps.setSelectedRow,
+                                            checkboxProps.setSelectedAllRows
+                                        )
+                                    }
+                                }}
+                            />
+                        </MuiTableCell>
+                    )}
+                    {header.map((item, i) => (
+                        <MuiTableCell key={i} align='center'>
+                            {item.title}
+                        </MuiTableCell>
+                    ))}
+                </RowTable>
             </MuiTableHead>
             <MuiTableBody>{tableBody(rows, header)}</MuiTableBody>
         </MuiTable>

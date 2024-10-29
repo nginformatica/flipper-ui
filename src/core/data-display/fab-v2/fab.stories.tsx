@@ -7,7 +7,7 @@ import { theme } from '@/theme'
 const { primary } = theme.colors
 
 const meta: Meta<typeof FabV2> = {
-    title: 'DataDisplay/FabV2 v2.0',
+    title: 'DataDisplay/Fab v2.0',
     component: FabV2,
     argTypes: {
         className: {
@@ -22,27 +22,27 @@ const meta: Meta<typeof FabV2> = {
         },
         name: {
             control: 'text',
-            description: 'The Fab name.'
+            description: 'The Fab name'
         },
         tooltip: {
             control: 'text',
-            description: 'The Fab tooltip label.'
+            description: 'The Fab tooltip label'
         },
         mini: {
             control: 'boolean',
-            description: 'The Fab size.'
+            description: 'The Fab size'
         },
         padding: {
             control: 'text',
-            description: 'The Fab padding.'
+            description: 'The Fab padding'
         },
         margin: {
             control: 'text',
-            description: 'The Fab margin.'
+            description: 'The Fab margin'
         },
         style: {
             control: 'object',
-            description: 'The Fab style.'
+            description: 'The Fab style'
         }
     }
 }
@@ -63,8 +63,8 @@ export const fabV2: Story = {
         name: 'Copy',
         mini: true,
         tooltip: 'Copy file',
-        margin: '',
-        padding: '',
+        margin: '0px',
+        padding: '0px',
         style: { color: primary.main }
     }
 }

@@ -9,14 +9,22 @@ const meta: Meta<typeof Avatar> = {
     title: 'DataDisplay/Avatar',
     component: Avatar,
     argTypes: {
+        name: {
+            control: 'text',
+            description: 'The avatar name. Displayed in case there is no image'
+        },
+        src: {
+            control: 'text',
+            description: 'The avatar src image'
+        },
         icon: {
-            table: {
-                disable: true
-            }
+            control: false,
+            description:
+                'The avatar icon. Displayed in case there is no image and no name'
         },
         style: {
             control: 'object',
-            description: 'The avatar style.'
+            description: 'The avatar style'
         }
     }
 }
