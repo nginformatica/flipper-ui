@@ -1,30 +1,81 @@
 import React from 'react'
-import { Delete } from '@mui/icons-material'
-import type { Meta, StoryFn } from '@storybook/react'
+import { Star } from '@mui/icons-material'
+import type { Meta, StoryObj } from '@storybook/react'
 import Stepper from '.'
 
-export default {
+const meta: Meta<typeof Stepper> = {
     title: 'Navigation/Stepper',
-    component: Stepper
-} as Meta<typeof Stepper>
-
-const Template: StoryFn<typeof Stepper> = args => <Stepper {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-    active: 2,
-    steps: ['Name', 'Email', 'Password', 'Photo', 'Be happy!'],
-    children: 'Stepper'
+    component: Stepper,
+    argTypes: {
+        active: {
+            control: 'number',
+            description: 'The active step'
+        },
+        bottomLabel: {
+            control: 'boolean',
+            description: 'The position of the step label'
+        },
+        orientation: {
+            options: ['horizontal', 'vertical'],
+            control: { type: 'radio' },
+            description:
+                'The step orientation. ' +
+                'Must be `horizontal | vertical`. ' +
+                'If not set, the default is "horizontal"'
+        },
+        steps: {
+            control: false,
+            description: 'The steps content'
+        },
+        margin: {
+            control: 'text',
+            description: 'The stepper margin'
+        },
+        padding: {
+            control: 'text',
+            description: 'The stepper padding'
+        },
+        style: {
+            control: 'object',
+            description: 'The stepper style'
+        }
+    }
 }
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-    bottomLabel: true,
-    active: 1,
-    steps: [
-        { label: 'Name', icon: <Delete /> },
-        { label: 'Name', icon: <Delete /> },
-        { label: 'Name', icon: <Delete /> }
-    ],
-    children: 'Stepper'
+export default meta
+
+type Story = StoryObj<typeof Stepper>
+
+export const stepper: Story = {
+    render: ({ ...args }) => {
+        return <Stepper {...args} />
+    },
+    args: {
+        active: 2,
+        bottomLabel: false,
+        orientation: 'horizontal',
+        steps: ['Name', 'Email', 'Password', 'Photo', 'Be happy!'],
+        margin: '',
+        padding: '',
+        style: {}
+    }
+}
+
+export const stepperWithIcon: Story = {
+    render: ({ ...args }) => {
+        return <Stepper {...args} />
+    },
+    args: {
+        active: 1,
+        bottomLabel: true,
+        orientation: 'horizontal',
+        steps: [
+            { label: 'Start', icon: <Star /> },
+            { label: 'You are here!', icon: <Star /> },
+            { label: 'Finish', icon: <Star /> }
+        ],
+        margin: '',
+        padding: '',
+        style: {}
+    }
 }
