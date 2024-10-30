@@ -6,7 +6,6 @@ import {
 } from '@mui/icons-material'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import LinearProgress from '@mui/material/LinearProgress'
-import { sprintf } from 'sprintf-js'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
 import {
@@ -106,7 +105,9 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                             style={{ textAlign: 'center' }}
                             expandIcon={<ExpandMoreIcon fontSize='large' />}>
                             <Typography variant='h6' {...summaryProps}>
-                                {sprintf(summary, remainingSteps, time)}
+                                {summary
+                                    .replace('%i', remainingSteps.toString())
+                                    .replace('%i', time.toString())}
                             </Typography>
                         </MuiAccordionSummary>
                     ) : (
