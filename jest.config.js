@@ -12,7 +12,8 @@ module.exports = {
         '!<rootDir>/src/core/inputs/chip-field/index.tsx',
         '!<rootDir>/src/core/inputs/date-time/index.tsx',
         '!<rootDir>/src/core/inputs/select/index.tsx',
-        '!<rootDir>/src/core/navigation/breadcrumbs/index.tsx'
+        '!<rootDir>/src/core/navigation/breadcrumbs/index.tsx',
+        '!<rootDir>/src/core/surfaces/header/styles.ts',
     ],
     transform: {
         '.+\\.(ts|tsx)$': 'ts-jest'
