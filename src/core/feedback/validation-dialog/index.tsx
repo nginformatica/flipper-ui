@@ -36,6 +36,12 @@ export interface IValidations {
     status: string
 }
 
+export enum ValidationStatus {
+    Loading = 'Loading',
+    Success = 'Success',
+    Error = 'Error'
+}
+
 interface IIcon {
     status: string
     icons: {
@@ -43,12 +49,6 @@ interface IIcon {
         error: ReactNode
         loading: ReactNode
     }
-}
-
-export enum ValidationStatus {
-    Loading = 'Loading',
-    Success = 'Success',
-    Error = 'Error'
 }
 
 const ValidationDialog = ({

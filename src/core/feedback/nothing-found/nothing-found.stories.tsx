@@ -8,19 +8,19 @@ const meta: Meta<typeof NothingFound> = {
     argTypes: {
         customText: {
             control: 'text',
-            description: 'The custom text.'
+            description: 'The custom text'
         },
         buttonLabel: {
             control: 'text',
-            description: 'The button label.'
+            description: 'The button label'
         },
         searchText: {
             control: 'text',
-            description: 'The search text.'
+            description: 'The search text'
         },
         readonly: {
             control: 'boolean',
-            description: 'To set the readonly.'
+            description: 'To set the readonly'
         }
     }
 }

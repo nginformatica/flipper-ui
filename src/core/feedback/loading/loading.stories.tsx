@@ -8,15 +8,15 @@ const meta: Meta<typeof Loading> = {
     argTypes: {
         size: {
             control: 'number',
-            description: 'The Loading size.'
+            description: 'The loading size'
         },
         margin: {
             control: 'text',
-            description: 'The Loading margin.'
+            description: 'The loading margin'
         },
         padding: {
             control: 'text',
-            description: 'The Loading padding.'
+            description: 'The loading padding'
         }
     }
 }
@@ -31,7 +31,7 @@ export const loading: Story = {
     },
     args: {
         size: 72,
-        margin: '',
-        padding: ''
+        margin: '0px',
+        padding: '0px'
     }
 }

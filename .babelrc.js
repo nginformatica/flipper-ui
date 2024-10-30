@@ -39,15 +39,6 @@ module.exports = {
         [
             'import',
             {
-                libraryName: '@mui/styles',
-                libraryDirectory: '',
-                camel2DashComponentName: false
-            },
-            'styles'
-        ],
-        [
-            'import',
-            {
                 libraryName: '@mui/icons-material',
                 libraryDirectory: '',
                 camel2DashComponentName: false

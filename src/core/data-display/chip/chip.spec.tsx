@@ -15,14 +15,11 @@ describe('Chip', () => {
         render(<Chip square label='chip-label' onChange={jest.fn()} />)
 
         const label = screen.getByText('chip-label')
+        const chip = label.parentElement || label
 
-        const findPrimaryClass = Array.from(
-            (label.parentElement || label).classList
-        )
-            .join(' ')
-            .indexOf('makeStyles-root-')
+        const styles = getComputedStyle(chip)
 
-        expect(findPrimaryClass).toBeGreaterThan(-1)
+        expect(styles.borderRadius).toBe('4px')
     })
 
     it('should call onDelete', () => {

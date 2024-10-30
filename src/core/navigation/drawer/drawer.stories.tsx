@@ -1,6 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { Backup as IconBackup } from '@mui/icons-material'
+import type { IDrawerProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
@@ -13,23 +13,23 @@ const meta: Meta<typeof Drawer> = {
     argTypes: {
         top: {
             control: 'number',
-            description: 'The drawer top position.'
+            description: 'The drawer top position'
         },
         width: {
             control: 'number',
-            description: 'The drawer width.'
+            description: 'The drawer width'
         },
         margin: {
             control: 'text',
-            description: 'The drawer margin.'
+            description: 'The drawer margin'
         },
         padding: {
             control: 'text',
-            description: 'The drawer padding.'
+            description: 'The drawer padding'
         },
         style: {
             control: 'object',
-            description: 'The drawer style.'
+            description: 'The drawer style'
         }
     }
 }
@@ -38,27 +38,31 @@ export default meta
 
 type Story = StoryObj<typeof Drawer>
 
+const DrawerWrapper = (args: JSX.IntrinsicAttributes & IDrawerProps) => {
+    const [open, setOpen] = useState(false)
+
+    const handleClick = () => {
+        setOpen(!open)
+    }
+
+    return (
+        <>
+            <Button disabled={open} onClick={handleClick}>
+                Open
+            </Button>
+            <Drawer {...args} open={open} onClick={handleClick}>
+                <List>
+                    <ListItem icon={<IconBackup />} />
+                    <ListItem icon={<IconBackup />} />
+                </List>
+            </Drawer>
+        </>
+    )
+}
+
 export const drawer: Story = {
     render: ({ ...args }) => {
-        const [open, setOpen] = useState(false)
-
-        const handleClick = () => {
-            setOpen(!open)
-        }
-
-        return (
-            <>
-                <Button disabled={open} onClick={handleClick}>
-                    Open
-                </Button>
-                <Drawer {...args} open={open} onClick={handleClick}>
-                    <List>
-                        <ListItem icon={<IconBackup />} />
-                        <ListItem icon={<IconBackup />} />
-                    </List>
-                </Drawer>
-            </>
-        )
+        return <DrawerWrapper {...args} />
     },
     args: {
         top: 0,

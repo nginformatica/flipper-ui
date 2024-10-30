@@ -1,52 +1,83 @@
 import React from 'react'
-import { Face } from '@mui/icons-material'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Avatar from '../avatar'
 import Chip from '.'
 
-export default {
+const meta: Meta<typeof Chip> = {
     title: 'DataDisplay/Chip',
-    component: Chip
-} as Meta<typeof Chip>
-
-const Template: StoryFn<typeof Chip> = args => <Chip {...args} />
-
-const commonArgs = {
-    label: 'Hello darkness my old friend'
+    component: Chip,
+    argTypes: {
+        label: {
+            control: 'text',
+            description: 'The chip label'
+        },
+        square: {
+            control: 'boolean',
+            description: 'The chip format'
+        },
+        color: {
+            options: [
+                'default',
+                'primary',
+                'secondary',
+                'error',
+                'info',
+                'success',
+                'warning'
+            ],
+            control: { type: 'radio' },
+            description:
+                'The chip color. ' +
+                'Must be `default | primary | secondary | error | info | success | warning`' +
+                'If not set, the default is "default"'
+        },
+        variant: {
+            options: ['outlined', 'filled'],
+            control: { type: 'radio' },
+            description:
+                'The chip variant. ' +
+                'Must be `outlined | filled`' +
+                'If not set, the default is "filled"'
+        },
+        size: {
+            options: ['small', 'medium'],
+            control: { type: 'radio' },
+            description:
+                'The chip size. ' +
+                'Must be `small | medium`' +
+                'If not set, the default is "medium"'
+        },
+        margin: {
+            control: 'text',
+            description: 'The chip margin'
+        },
+        padding: {
+            control: 'text',
+            description: 'The chip padding'
+        },
+        avatar: {
+            control: false,
+            description: 'The chip Avatar'
+        }
+    }
 }
 
-export const Default = Template.bind({})
-Default.args = {
-    ...commonArgs
-}
+export default meta
 
-export const Squared = Template.bind({})
-Squared.args = {
-    ...commonArgs,
-    square: true,
-    avatar: <Avatar name='HD' />
-}
+type Story = StoryObj<typeof Chip>
 
-export const WithInitialsAvatar = Template.bind({})
-WithInitialsAvatar.args = {
-    ...commonArgs,
-    avatar: <Avatar name='HD' />
-}
-
-export const WithIconAvatar = Template.bind({})
-WithIconAvatar.args = {
-    ...commonArgs,
-    avatar: <Avatar icon={<Face />} />
-}
-
-export const WithImageAvatar = Template.bind({})
-WithImageAvatar.args = {
-    ...commonArgs,
-    avatar: <Avatar src='https://picsum.photos/40' />
-}
-
-export const SecondaryColor = Template.bind({})
-SecondaryColor.args = {
-    ...commonArgs,
-    color: 'secondary'
+export const chip: Story = {
+    render: ({ ...args }) => {
+        return <Chip {...args} />
+    },
+    args: {
+        label: 'Hello darkness my old friend',
+        square: false,
+        color: 'default',
+        variant: 'filled',
+        size: 'medium',
+        margin: '0px',
+        padding: '0px',
+        avatar: <Avatar name='H' />
+    }
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import MuiSlider from '@mui/material/Slider'
-import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import type { SliderProps } from '@mui/material/Slider'
 import { theme } from '@/theme'
@@ -14,10 +13,6 @@ export interface ISliderProps
     color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
 }
 
-type TProps = {
-    color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
-}
-
 const labels = {
     primary: primary.main,
     secondary: secondary.main,
@@ -26,13 +21,6 @@ const labels = {
     success: feedback.success,
     warning: feedback.warning
 }
-
-const useStyles = makeStyles(() => ({
-    valueLabel: (props: TProps) => ({
-        backgroundColor: labels[props.color || 'primary'],
-        borderRadius: '5px'
-    })
-}))
 
 const Slider = ({
     padding,
@@ -43,8 +31,6 @@ const Slider = ({
     defaultValue,
     ...otherProps
 }: ISliderProps) => {
-    const classes = useStyles({ color })
-
     return (
         <MuiSlider
             {...otherProps}
@@ -52,7 +38,12 @@ const Slider = ({
             size={size || 'small'}
             defaultValue={defaultValue}
             style={{ padding, margin, ...style }}
-            classes={{ valueLabel: classes.valueLabel }}
+            sx={{
+                '.MuiSlider-valueLabel': {
+                    borderRadius: '5px',
+                    backgroundColor: labels[color || 'primary']
+                }
+            }}
         />
     )
 }

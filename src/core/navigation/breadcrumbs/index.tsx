@@ -37,7 +37,7 @@ const Breadcrumbs = ({
     const allChunks = [homeId, ...validChunks]
     const lastChunkIndex = allChunks.length - 1
 
-    const links = imap((term: string, chunkIndex) => {
+    const links = imap((term: string, chunkIndex: number) => {
         const validChunkWord = pathMapping[term]
 
         const link = '/' + allChunks.slice(1, chunkIndex + 1).join('/')

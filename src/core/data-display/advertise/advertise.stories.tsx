@@ -1,20 +1,59 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Advertise from '.'
 
-export default {
+const meta: Meta<typeof Advertise> = {
     title: 'DataDisplay/Advertise',
-    component: Advertise
-} as Meta<typeof Advertise>
+    component: Advertise,
+    argTypes: {
+        comment: {
+            control: 'text',
+            description: 'The advertise upper text'
+        },
+        author: {
+            control: 'text',
+            description: 'The advertise bottom text'
+        },
+        commentStyle: {
+            control: 'object',
+            description: 'The advertise comment style'
+        },
+        authorStyle: {
+            control: 'object',
+            description: 'The advertise author style'
+        },
+        style: {
+            control: 'object',
+            description: 'The advertise container style'
+        },
+        padding: {
+            control: 'text',
+            description: 'The advertise container padding'
+        },
+        margin: {
+            control: 'text',
+            description: 'The advertise container margin'
+        }
+    }
+}
 
-const Template: StoryFn<typeof Advertise> = args => <Advertise {...args} />
+export default meta
 
-export const Default = Template.bind({})
+type Story = StoryObj<typeof Advertise>
 
-Default.args = {
-    comment:
-        'Be like water. You put water into a cup. \
+export const advertise: Story = {
+    render: ({ ...args }) => {
+        return <Advertise {...args} />
+    },
+    args: {
+        comment:
+            'Be like water. You put water into a cup. \
         It becomes the cup. You put water into a bottle. It becomes the bottle.',
-    author: 'Bruce Lee',
-    children: 'Advertise'
+        author: 'Bruce Lee',
+        commentStyle: {},
+        authorStyle: {},
+        style: {},
+        margin: '0px',
+        padding: '0px'
+    }
 }

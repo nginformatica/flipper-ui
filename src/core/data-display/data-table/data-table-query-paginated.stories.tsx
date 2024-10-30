@@ -25,10 +25,107 @@ import { DataTableQueryPaginated } from './data-table-query-paginated'
 import { RowMode } from './types'
 import { usePaginated } from './use-paginated'
 
-export default {
+const meta: Meta<typeof DataTableQueryPaginated> = {
     title: 'DataDisplay/Data Table Query Paginated',
-    component: DataTableQueryPaginated
-} as Meta<typeof DataTableQueryPaginated>
+    component: DataTableQueryPaginated,
+    argTypes: {
+        errors: {
+            table: {
+                disable: true
+            }
+        },
+        noHeader: {
+            table: {
+                disable: true
+            }
+        },
+        componentForEmpty: {
+            table: {
+                disable: true
+            }
+        },
+        bodyStyle: {
+            table: {
+                disable: true
+            }
+        },
+        headStyle: {
+            table: {
+                disable: true
+            }
+        },
+        bodyRowStyle: {
+            table: {
+                disable: true
+            }
+        },
+        headRowStyle: {
+            table: {
+                disable: true
+            }
+        },
+        hiddenRowHeight: {
+            table: {
+                disable: true
+            }
+        },
+        pagination: {
+            table: {
+                disable: true
+            }
+        },
+        controllerRef: {
+            table: {
+                disable: true
+            }
+        },
+        hidden: {
+            table: {
+                disable: true
+            }
+        },
+        rowViews: {
+            table: {
+                disable: true
+            }
+        },
+        onRowClick: {
+            table: {
+                disable: true
+            }
+        },
+        data: {
+            control: false,
+            description: 'The table data'
+        },
+        columns: {
+            control: false,
+            description: 'The table columns'
+        },
+        totalElements: {
+            control: false,
+            description: 'The total elements data'
+        },
+        handleChangePage: {
+            control: false,
+            description: 'The function to change pages'
+        },
+        perPage: {
+            control: false,
+            description: 'The amount of rows per page'
+        },
+        handleChangePerPage: {
+            control: false,
+            description: 'The function to change the amount of rows per page'
+        },
+        page: {
+            control: false,
+            description: 'The current page'
+        }
+    }
+}
+
+export default meta
 
 type DataActual = {
     id: number

@@ -1,7 +1,6 @@
 import React from 'react'
 import MuiList from '@mui/material/List'
 import MuiListHeader from '@mui/material/ListSubheader'
-import { createStyles, makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import { theme } from '@/theme'
 
@@ -13,41 +12,30 @@ export interface ListProps extends DefaultProps {
     color?: 'default' | 'inherit'
 }
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        default: {
-            backgroundColor: neutral[100]
-        },
-        inherit: {
-            backgroundColor: 'inherit',
-            color: 'inherit'
-        }
-    })
-)
-
 const List = ({
     title,
     padding,
     margin,
     style = {},
-    color = 'default',
-    className,
     children,
     ...otherProps
 }: ListProps) => {
-    const classes = useStyles()
-
     return (
         <MuiList
             subheader={
                 title && (
-                    <MuiListHeader className={classes[color]}>
+                    <MuiListHeader
+                        sx={{
+                            backgroundColor: neutral[100]
+                        }}>
                         {title}
                     </MuiListHeader>
                 )
             }
-            className={`${classes[color]} ${className}`}
             style={{ padding, margin, ...style }}
+            sx={{
+                backgroundColor: neutral[100]
+            }}
             {...otherProps}>
             {children}
         </MuiList>

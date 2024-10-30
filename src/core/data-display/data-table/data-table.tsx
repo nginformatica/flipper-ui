@@ -403,11 +403,13 @@ export const DataTable = <D extends Data, V extends StackView>(
                                 labelDisplayedRows={
                                     pagination.labelDisplayedRows
                                 }
-                                SelectProps={
-                                    hideSelect
-                                        ? { style: { display: 'none' } }
-                                        : {}
-                                }
+                                slotProps={{
+                                    select: {
+                                        style: hideSelect
+                                            ? { display: 'none' }
+                                            : {}
+                                    }
+                                }}
                                 ActionsComponent={paginationActionsComponent}
                                 onPageChange={(_, page) => {
                                     setPage(page)

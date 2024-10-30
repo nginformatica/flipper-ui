@@ -1,66 +1,81 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Checkbox from '.'
 
-export default {
+const meta: Meta<typeof Checkbox> = {
     title: 'Inputs/Checkbox',
     component: Checkbox,
     argTypes: {
-        backgroundColor: { control: 'color' }
+        name: {
+            control: 'text',
+            description: 'The component name'
+        },
+        label: {
+            control: 'text',
+            description: 'The component label'
+        },
+        type: {
+            options: ['checkbox', 'switch'],
+            control: { type: 'radio' },
+            description:
+                'The component type. Must be ' +
+                '`checkbox | switch`. ' +
+                'If not set, the default is "checkbox"'
+        },
+        color: {
+            options: ['default', 'primary', 'secondary'],
+            control: { type: 'radio' },
+            description:
+                'The component color. Must be ' +
+                '`default | primary | secondary`. ' +
+                'If not set, the default is "secondary"'
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'To set the disabled state on the component'
+        },
+        margin: {
+            control: 'text',
+            description: 'The component margin'
+        },
+        padding: {
+            control: 'text',
+            description: 'The component padding'
+        },
+        style: {
+            control: 'object',
+            description: 'The component style'
+        },
+        onHelperClick: {
+            control: false,
+            description:
+                'The onHelperClick function, must be `() => void | boolean`'
+        },
+        onChange: {
+            control: false,
+            description: 'The onChange function, must be `() => void`'
+        }
     }
-} as Meta<typeof Checkbox>
-
-const Template: StoryFn<typeof Checkbox> = args => <Checkbox {...args} />
-
-export const Default = () => (
-    <Checkbox
-        label='I agree with the terms'
-        name='terms'
-        onChange={() => alert('You clicked on the checkbox!')}
-    />
-)
-
-export const WithHelper = Template.bind({})
-WithHelper.args = {
-    label: 'I agree with the terms',
-    name: 'terms',
-    onChange: () => alert('You clicked on the checkbox!'),
-    onHelperClick: () => alert('Do you need help?'),
-    children: 'Checkbox'
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
-    label: 'I agree with the terms',
-    name: 'terms',
-    onChange: () => alert('You clicked on the checkbox!'),
-    color: 'primary',
-    children: 'Checkbox'
-}
+export default meta
 
-export const WithoutLabel = Template.bind({})
-WithoutLabel.args = {
-    name: 'terms',
-    onChange: () => alert('You clicked on the checkbox!'),
-    children: 'Checkbox'
-}
+type Story = StoryObj<typeof Checkbox>
 
-export const Switch = Template.bind({})
-Switch.args = {
-    label: 'Bluetooth',
-    name: 'bluetooth',
-    type: 'switch',
-    onChange: () => alert('You clicked on the switcher!'),
-    children: 'Checkbox'
-}
-
-export const SwitchWithHelper = Template.bind({})
-SwitchWithHelper.args = {
-    id: 'with-helper',
-    label: 'Bluetooth',
-    name: 'bluetooth',
-    type: 'switch',
-    onChange: () => alert('You clicked on the switcher!'),
-    onHelperClick: () => alert('Do you need help?'),
-    children: 'Checkbox'
+export const checkbox: Story = {
+    render: ({ ...args }) => {
+        return <Checkbox {...args}>Checkbox</Checkbox>
+    },
+    args: {
+        name: 'terms',
+        label: 'I agree with the terms',
+        color: 'primary',
+        type: 'checkbox',
+        disabled: false,
+        margin: '',
+        padding: '',
+        style: {},
+        onHelperClick: () => alert('Do you need help?'),
+        onChange: () => alert('You clicked on the checkbox!')
+    }
 }

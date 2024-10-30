@@ -16,7 +16,6 @@ const meta: Meta<typeof Actions> = {
                 disable: true
             }
         },
-
         prefix: {
             table: {
                 disable: true
@@ -26,12 +25,12 @@ const meta: Meta<typeof Actions> = {
             options: ['flex-end', 'flex-start', 'center'],
             control: { type: 'radio' },
             description:
-                "The buttons position. Must be `'flex-end' | 'flex-start' | 'center'`"
+                'The buttons position. Must be `flex-end | flex-start | center`'
         },
         buttons: {
             control: false,
             description:
-                "The buttons inner text. Must be `Array<'confirm' | 'cancel'>`" +
+                "The buttons inner text. Must be `Array<'confirm' | 'cancel'>`. " +
                 "If not informed, it will be used the default 'Cancelar' and 'Confirmar'"
         },
         labels: {
@@ -42,15 +41,7 @@ const meta: Meta<typeof Actions> = {
                 control: 'text'
             },
             description:
-                'The buttons inner label. Must be and object with the cancel and confirm keys.'
-        },
-        padding: {
-            control: 'text',
-            description: 'The buttons padding'
-        },
-        margin: {
-            control: 'text',
-            description: 'The buttons margin.'
+                'The buttons inner label. Must be and object with the cancel and confirm keys'
         },
         actionButtonColor: {
             options: [
@@ -65,21 +56,30 @@ const meta: Meta<typeof Actions> = {
             ],
             control: { type: 'radio' },
             description:
-                'The "Confirmar" button color.' +
-                'Must be `"inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning"`' +
+                'The "Confirmar" button color. Must be ' +
+                '`inherit | primary | secondary | `. ' +
+                '`success | error | info | warning`. ' +
                 'If not set, the default is "secondary"'
+        },
+        padding: {
+            control: 'text',
+            description: 'The buttons padding'
+        },
+        margin: {
+            control: 'text',
+            description: 'The buttons margin'
         },
         disabled: {
             control: 'boolean',
-            description: 'If `true`, the buttons are disabled.'
+            description: 'If `true`, the buttons are disabled'
         },
         disabledCancel: {
             control: 'boolean',
-            description: 'If `true`, the Cancel button is disabled.'
+            description: 'If `true`, the Cancel button is disabled'
         },
         disabledConfirm: {
             control: 'boolean',
-            description: 'If `true`, the Confirm button is disabled.'
+            description: 'If `true`, the Confirm button is disabled'
         },
         onCancel: {
             control: false,

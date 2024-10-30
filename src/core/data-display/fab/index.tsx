@@ -1,22 +1,16 @@
 import React from 'react'
 import type { MouseEvent, ReactElement } from 'react'
 import MuiFab from '@mui/material/Fab'
-import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import type { FabProps } from '@mui/material/Fab'
+import { theme } from '@/theme'
+
+const { gray } = theme.colors
 
 export interface IFabProps extends DefaultProps, FabProps {
     onClick?: (event?: MouseEvent<HTMLElement>) => void
-    children: ReactElement<Record<string, unknown>>
+    children: ReactElement<Record<string, unknown>> | string
 }
-
-const useStyles = makeStyles(() => ({
-    root: {
-        '&:hover': {
-            backgroundColor: '#d5d5d5'
-        }
-    }
-}))
 
 const Fab = ({
     children,
@@ -25,17 +19,19 @@ const Fab = ({
     style = {},
     ...otherProps
 }: IFabProps) => {
-    const classes = useStyles()
-
     return (
         <MuiFab
             {...otherProps}
             color='inherit'
-            classes={classes}
             style={{
                 margin,
                 padding,
                 ...style
+            }}
+            sx={{
+                '&:hover': {
+                    backgroundColor: `${gray[500]}80`
+                }
             }}>
             {children}
         </MuiFab>

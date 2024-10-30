@@ -20,10 +20,114 @@ import { DataTableAction } from './data-table-action'
 import { DataTableField } from './data-table-field'
 import { RowMode } from './types'
 
-export default {
-    title: 'DataDisplay/DataTable',
-    component: DataTable
-} as Meta<typeof DataTable>
+const meta: Meta<typeof DataTable> = {
+    title: 'DataDisplay/Data Table',
+    component: DataTable,
+    argTypes: {
+        errors: {
+            table: {
+                disable: true
+            }
+        },
+        noHeader: {
+            table: {
+                disable: true
+            }
+        },
+        componentForEmpty: {
+            table: {
+                disable: true
+            }
+        },
+        bodyStyle: {
+            table: {
+                disable: true
+            }
+        },
+        headStyle: {
+            table: {
+                disable: true
+            }
+        },
+        bodyRowStyle: {
+            table: {
+                disable: true
+            }
+        },
+        headRowStyle: {
+            table: {
+                disable: true
+            }
+        },
+        hiddenRowHeight: {
+            table: {
+                disable: true
+            }
+        },
+        pagination: {
+            table: {
+                disable: true
+            }
+        },
+        controllerRef: {
+            table: {
+                disable: true
+            }
+        },
+        hidden: {
+            table: {
+                disable: true
+            }
+        },
+        rowViews: {
+            table: {
+                disable: true
+            }
+        },
+        renderEmptyRows: {
+            table: {
+                disable: true
+            }
+        },
+        hideSelect: {
+            table: {
+                disable: true
+            }
+        },
+        checkbox: {
+            table: {
+                disable: true
+            }
+        },
+        checkboxProps: {
+            table: {
+                disable: true
+            }
+        },
+        onRowClick: {
+            table: {
+                disable: true
+            }
+        },
+        data: {
+            control: false,
+            description: 'The table data'
+        },
+        columns: {
+            control: false,
+            description: 'The table columns'
+        },
+        size: {
+            control: false,
+            description:
+                'The table size. ' +
+                'Must be `"small" | "medium"`' +
+                'If not set, the default is "medium"'
+        }
+    }
+}
+
+export default meta
 
 type Data = {
     id: number

@@ -11,26 +11,26 @@ const meta: Meta<typeof Dialog> = {
         title: {
             control: 'text',
             description:
-                'The dialog title. It can be a string or a React Component.'
+                'The dialog title. It can be a string or a React Component'
         },
         text: {
             control: 'text',
-            description: 'The dialog text.'
+            description: 'The dialog text'
         },
         content: {
             control: 'text',
             description:
                 'The dialog content. Accepts strings and React Components. ' +
-                'To render, use the `content` or the `text` prop.'
+                'To render, use the `content` or the `text` prop'
         },
         maxWidth: {
             options: ['xs', 'sm', 'md', 'lg'],
             control: { type: 'radio' },
-            description: 'The dialog max width.'
+            description: 'The dialog max width'
         },
         fullWidth: {
             control: 'boolean',
-            description: 'To set the full width on the dialog.'
+            description: 'To set the full width on the dialog'
         }
     }
 }

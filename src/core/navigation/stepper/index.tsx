@@ -16,9 +16,6 @@ type TStep = {
     icon: JSX.Element | ((active?: boolean) => JSX.Element)
 }
 
-const isActive = (index: number, active: StepperProps['active']) =>
-    active !== undefined ? active >= index : undefined
-
 interface StepIconProps {
     icon: TStep['icon']
     active?: boolean
@@ -34,6 +31,9 @@ const StepIcon = ({ icon, active }: StepIconProps) => {
         color: active ? 'primary' : 'disabled'
     })
 }
+
+const isActive = (index: number, active: StepperProps['active']) =>
+    active !== undefined ? active >= index : undefined
 
 const Stepper = ({
     active,

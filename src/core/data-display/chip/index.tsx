@@ -1,7 +1,6 @@
 import React from 'react'
 import type { MouseEventHandler, ReactElement, ReactNode } from 'react'
 import MuiChip from '@mui/material/Chip'
-import { makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import type { ChipProps } from '@mui/material/Chip'
 
@@ -24,15 +23,6 @@ export interface IChipProps extends ChipProps, Omit<DefaultProps, 'children'> {
     onDelete?: ((event: unknown) => void) | undefined
 }
 
-const useStyles = makeStyles(() => ({
-    root: {
-        borderRadius: '4px'
-    },
-    avatar: {
-        borderRadius: '2px'
-    }
-}))
-
 const Chip = ({
     square,
     padding,
@@ -40,12 +30,15 @@ const Chip = ({
     style = {},
     ...otherProps
 }: IChipProps) => {
-    const classes = useStyles()
-
     return (
         <MuiChip
-            classes={square ? classes : undefined}
             style={{ padding, margin, ...style }}
+            sx={{
+                borderRadius: square ? '4px' : '16px',
+                '.MuiChip-avatar': {
+                    borderRadius: square ? '4px' : '16px'
+                }
+            }}
             {...otherProps}
         />
     )

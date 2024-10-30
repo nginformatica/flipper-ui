@@ -1,124 +1,74 @@
 import React from 'react'
-import { Add as IconAdd } from '@mui/icons-material'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Button from '.'
 
-export default {
+const meta: Meta<typeof Button> = {
     title: 'Inputs/Button',
     component: Button,
     argTypes: {
-        backgroundColor: { control: 'color' }
+        size: {
+            options: ['small', 'medium', 'large'],
+            control: { type: 'radio' },
+            description:
+                'The button size. Must be ' +
+                '`small | medium | large`. ' +
+                'If not set, the default is "medium"'
+        },
+        color: {
+            options: ['default', 'primary', 'secondary', 'error'],
+            control: { type: 'radio' },
+            description:
+                'The button color. Must be ' +
+                '`default | primary | secondary | error`. ' +
+                'If not set, the default is "primary"'
+        },
+        variant: {
+            options: ['text', 'outlined', 'contained'],
+            control: { type: 'radio' },
+            description:
+                'The button variant. Must be ' +
+                '`text | outlined | contained`. ' +
+                'If not set, the default is "indeterminate"'
+        },
+        dashed: {
+            control: 'boolean',
+            description: 'To set the dashed style on the button'
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'To set the disabled state on the button'
+        },
+        margin: {
+            control: 'text',
+            description: 'The button margin'
+        },
+        padding: {
+            control: 'text',
+            description: 'The button padding'
+        },
+        style: {
+            control: 'object',
+            description: 'The button style'
+        }
     }
-} as Meta<typeof Button>
-
-const Template: StoryFn<typeof Button> = args => <Button {...args} />
-
-const commonArgs = {
-    margin: 12,
-    children: 'Button'
 }
 
-export const Default = Template.bind({})
-Default.args = {
-    ...commonArgs
-}
+export default meta
 
-export const Primary = Template.bind({})
-Primary.args = {
-    ...commonArgs,
-    color: 'primary'
-}
+type Story = StoryObj<typeof Button>
 
-export const Secondary = Template.bind({})
-Secondary.args = {
-    ...commonArgs,
-    color: 'secondary'
-}
-
-export const ContainedPrimary = Template.bind({})
-ContainedPrimary.args = {
-    ...commonArgs,
-    variant: 'contained',
-    color: 'primary'
-}
-
-export const ContainedSecondary = Template.bind({})
-ContainedSecondary.args = {
-    ...commonArgs,
-    variant: 'contained',
-    color: 'secondary'
-}
-
-export const OutlinedPrimary = Template.bind({})
-OutlinedPrimary.args = {
-    ...commonArgs,
-    variant: 'outlined',
-    color: 'primary'
-}
-
-export const OutlinedSecondary = Template.bind({})
-OutlinedSecondary.args = {
-    ...commonArgs,
-    variant: 'outlined',
-    color: 'secondary'
-}
-
-export const Selected = Template.bind({})
-Selected.args = {
-    ...commonArgs,
-    variant: 'contained',
-    color: 'primary',
-    selected: true
-}
-
-export const DashedPrimary = Template.bind({})
-DashedPrimary.args = {
-    ...commonArgs,
-    dashed: true,
-    color: 'primary'
-}
-
-export const DashedSecondary = Template.bind({})
-DashedSecondary.args = {
-    ...commonArgs,
-    dashed: true,
-    color: 'secondary'
-}
-
-export const AddIcon = Template.bind({})
-AddIcon.args = {
-    margin: 12,
-    children: <IconAdd />
-}
-
-export const Small = Template.bind({})
-Small.args = {
-    ...commonArgs,
-    size: 'small',
-    variant: 'contained',
-    color: 'primary'
-}
-
-export const Medium = Template.bind({})
-Medium.args = {
-    ...commonArgs,
-    size: 'medium',
-    variant: 'contained',
-    color: 'primary'
-}
-
-export const Large = Template.bind({})
-Large.args = {
-    ...commonArgs,
-    size: 'large',
-    variant: 'contained',
-    color: 'primary'
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-    ...commonArgs,
-    variant: 'contained',
-    color: 'primary',
-    disabled: true
+export const button: Story = {
+    render: ({ ...args }) => {
+        return <Button {...args}>This is a Button!</Button>
+    },
+    args: {
+        size: 'medium',
+        color: 'primary',
+        variant: 'contained',
+        dashed: false,
+        disabled: false,
+        margin: '',
+        padding: '',
+        style: {}
+    }
 }

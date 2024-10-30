@@ -19,7 +19,7 @@ const meta: Meta<typeof ValidationDialog> = {
             An object with the three possible scenarios, Loading, Success or Error.`
         },
         validations: {
-            control: 'array',
+            control: false,
             description: `The dialog validation phrases.
             An array of objects with the three possible scenarios,
             Loading, Success or Error.`

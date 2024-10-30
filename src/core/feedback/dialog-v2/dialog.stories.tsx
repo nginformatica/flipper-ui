@@ -10,50 +10,50 @@ const meta: Meta<typeof DialogV2> = {
     argTypes: {
         title: {
             control: 'text',
-            description: 'The dialog title.'
+            description: 'The dialog title'
         },
         text: {
             control: 'text',
-            description: 'The dialog text.'
+            description: 'The dialog text'
         },
         content: {
             control: 'text',
             description:
                 'The dialog content. Accepts strings and React Components. ' +
-                'To render, use the `content` or the `text` prop.'
+                'To render, use the `content` or the `text` prop'
         },
         maxWidth: {
             options: ['xs', 'sm', 'md', 'lg'],
             control: { type: 'radio' },
-            description: 'The dialog max width.'
+            description: 'The dialog max width'
         },
         fullWidth: {
             control: 'boolean',
-            description: 'To set the full width on the dialog.'
+            description: 'To set the full width on the dialog'
         },
         primaryButtonText: {
             control: 'text',
-            description: 'The primary button text.'
+            description: 'The primary button text'
         },
         secondaryButtonText: {
             control: 'text',
             description:
                 'The secondary button text. ' +
                 'To render the secondary button you must have ' +
-                'the `secondaryButtonText` and `secondaryButtonAction` props.'
+                'the `secondaryButtonText` and `secondaryButtonAction` props'
         },
         primaryButtonColor: {
             options: ['inherit', 'primary', 'secondary', 'default'],
             control: { type: 'radio' },
-            description: 'The primary button color.'
+            description: 'The primary button color'
         },
         primaryButtonAction: {
             control: false,
-            description: 'The primary button action function.'
+            description: 'The primary button action function'
         },
         secondaryButtonAction: {
             control: false,
-            description: 'The secondary button action function.'
+            description: 'The secondary button action function'
         }
     }
 }

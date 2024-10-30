@@ -1,31 +1,73 @@
 import React from 'react'
-import type { Meta, StoryFn } from '@storybook/react'
-import InputAdornment from '@/core/inputs/input-adornment'
+import type { Meta, StoryObj } from '@storybook/react'
 import MaskField from '.'
 
-export default {
+const meta: Meta<typeof MaskField> = {
     title: 'Inputs/MaskField',
     component: MaskField,
     argTypes: {
-        helperText: { control: 'text' },
-        value: { control: 'text' }
+        label: {
+            control: 'text',
+            description: 'The mask field label'
+        },
+        hasFormat: {
+            control: 'boolean',
+            description:
+                'To set if the mask field has format or is a number field'
+        },
+        format: {
+            control: 'text',
+            description: 'To set if the mask format on the field'
+        },
+        decimalScale: {
+            control: 'number',
+            description: 'The decimalScale of the number typed'
+        },
+        decimalSeparator: {
+            control: 'text',
+            description: 'The decimalSeparator of the number typed'
+        },
+        thousandSeparator: {
+            control: 'text',
+            description: 'The thousandSeparator of the number typed'
+        },
+        fixedDecimalScale: {
+            control: 'boolean',
+            description: 'To set the fixedDecimalScale number'
+        },
+        margin: {
+            control: 'text',
+            description: 'The mask field margin'
+        },
+        padding: {
+            control: 'text',
+            description: 'The mask field padding'
+        },
+        style: {
+            control: 'object',
+            description: 'The mask field style'
+        }
     }
-} as Meta<typeof MaskField>
+}
 
-const Template: StoryFn<typeof MaskField> = args => <MaskField {...args} />
+export default meta
 
-export const Default = () => <MaskField placeholder='Description' />
+type Story = StoryObj<typeof MaskField>
 
-export const MaskFieldWithInputAdornment = Template.bind({})
-MaskFieldWithInputAdornment.args = {
-    fixedDecimalScale: true,
-    decimalScale: 2,
-    label: 'Price',
-    decimalSeparator: ',',
-    thousandSeparator: '.',
-    InputProps: {
-        startAdornment: <InputAdornment position='start'>$</InputAdornment>
+export const maskField: Story = {
+    render: ({ ...args }) => {
+        return <MaskField {...args} />
     },
-    InputLabelProps: { shrink: true },
-    children: <MaskField />
+    args: {
+        label: 'Price',
+        hasFormat: false,
+        format: '####',
+        decimalScale: 2,
+        decimalSeparator: ',',
+        thousandSeparator: '.',
+        fixedDecimalScale: true,
+        margin: '',
+        padding: '',
+        style: {}
+    }
 }
