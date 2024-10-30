@@ -34,7 +34,6 @@
         "@emotion/styled": "11.13.0",
         "@mui/icons-material": "6.1.5",
         "@mui/material": "6.1.5",
-        "@mui/styles": "6.1.5",
         "@mui/system": "6.1.5",
         "@mui/x-date-pickers": "7.22.0",
         "date-fns": "2.30.0",
