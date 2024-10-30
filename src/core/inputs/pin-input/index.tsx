@@ -110,34 +110,36 @@ const PinInput = ({
             {Array.from({ length: pinLength }, (_, index) => (
                 <MuiTextField
                     key={index}
-                    className='pin-input-field'
                     color='primary'
-                    variant={variant || 'outlined'}
-                    value={pin[index] === 0 ? 0 : pin[index] || ''}
                     disabled={isValidating}
                     error={validationResult}
+                    className='pin-input-field'
+                    variant={variant || 'outlined'}
+                    value={pin[index] === 0 ? 0 : pin[index] || ''}
                     style={{
                         width: size === 'small' ? '40px' : '40px',
                         height: size === 'small' ? '30px' : '40px',
                         marginInline: size === 'small' ? '5px' : '10px',
                         ...styleProps
                     }}
-                    InputProps={{
-                        role: 'pin-input-field',
-                        style: {
-                            width: size === 'small' ? '40px' : '45px',
-                            textAlign: 'center',
-                            fontWeight: 'bold',
-                            fontSize: size === 'small' ? '16px' : '20px',
-                            padding: 'auto',
-                            ...inputProps
+                    slotProps={{
+                        input: {
+                            role: 'pin-input-field',
+                            style: {
+                                fontWeight: 'bold',
+                                textAlign: 'center',
+                                width: size === 'small' ? '40px' : '45px',
+                                fontSize: size === 'small' ? '16px' : '20px',
+                                padding: 'auto',
+                                ...inputProps
+                            }
                         }
                     }}
                     inputRef={(el: HTMLInputElement) => {
                         inputRefs.current[index] = el
                     }}
-                    onKeyDown={event => onKeyDown(event, index)}
                     onPaste={onPaste}
+                    onKeyDown={event => onKeyDown(event, index)}
                     onChange={event => {
                         onChange(event, index)
                     }}

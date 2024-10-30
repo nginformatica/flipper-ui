@@ -12,7 +12,6 @@ import { Clear, Help as ContactSupportIcon } from '@mui/icons-material'
 import MuiInputAdornment from '@mui/material/InputAdornment'
 import MuiMenuItem from '@mui/material/MenuItem'
 import MuiTextField from '@mui/material/TextField'
-import { makeStyles } from '@mui/styles'
 import { pipe, split, map, reject } from 'ramda'
 import type { DefaultProps } from '../../types'
 import type { InputBaseComponentProps } from '@mui/material/InputBase'
@@ -81,15 +80,6 @@ interface IHelperProps {
     onHelperClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-const useStyles = makeStyles({
-    input: {
-        fontSize: '14px'
-    },
-    outlinedLabel: {
-        fontSize: '14px'
-    }
-})
-
 const coerceComboOptions = (input: string): IOption[] => {
     return pipe(
         split(';'),
@@ -135,10 +125,10 @@ export const renderOptions = (options: ITextFieldProps['options']) => {
 const renderEndAdornment = (disabled?: boolean, onClear?: () => void) => (
     <MuiInputAdornment position='end'>
         <IconButton
-            role='clear-button'
-            disabled={disabled || false}
             size='small'
+            role='clear-button'
             margin='0 16px 0 0'
+            disabled={disabled || false}
             onClick={onClear}>
             <Clear fontSize='inherit' />
         </IconButton>
@@ -167,8 +157,6 @@ const TextField = ({
     children,
     ...otherProps
 }: ITextFieldProps) => {
-    const classes = useStyles()
-
     const hasValue = !!otherProps.value
 
     const endAdornment =
@@ -207,39 +195,40 @@ const TextField = ({
         <Wrapper>
             <MuiTextField
                 title=''
-                size={size || 'small'}
-                select={!!options?.length}
-                fullWidth={fullWidth}
-                autoComplete={autoComplete}
                 error={error}
                 variant={variant}
+                size={size || 'small'}
+                fullWidth={fullWidth}
+                select={!!options?.length}
+                autoComplete={autoComplete}
+                slotProps={{
+                    input: {
+                        endAdornment: characters && (
+                            <CharactersCount>
+                                {otherProps.value?.toString().length}/
+                                {otherProps.inputProps?.maxLength}
+                            </CharactersCount>
+                        ),
+                        sx: {
+                            fontSize: '14px'
+                        },
+                        ...InputProps
+                    },
+                    inputLabel: {
+                        sx: {
+                            fontSize: '14px'
+                        },
+                        ...InputLabelProps
+                    },
+                    select: {
+                        ...endAdornment,
+                        ...SelectProps
+                    }
+                }}
                 style={{
                     margin,
                     padding,
                     ...style
-                }}
-                InputLabelProps={{
-                    classes: {
-                        outlined:
-                            variant === 'outlined' ? classes.outlinedLabel : ''
-                    },
-                    ...InputLabelProps
-                }}
-                InputProps={{
-                    classes: {
-                        input: variant === 'outlined' ? classes.input : ''
-                    },
-                    endAdornment: characters && (
-                        <CharactersCount>
-                            {otherProps.value?.toString().length}/
-                            {otherProps.inputProps?.maxLength}
-                        </CharactersCount>
-                    ),
-                    ...InputProps
-                }}
-                SelectProps={{
-                    ...endAdornment,
-                    ...SelectProps
                 }}
                 onChange={handleInputChange}
                 {...otherProps}>
