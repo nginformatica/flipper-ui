@@ -42,18 +42,16 @@ const ListItem = (props: ListItemProps) => {
                     <MuiListItemText
                         primary={props.title}
                         secondary={props.subtitle}
+                        primaryTypographyProps={{ color: 'inherit' }}
+                        secondaryTypographyProps={{ color: 'inherit' }}
                         data-testid={`list-item-${props.subtitle}`}
-                        style={
-                            props.action
-                                ? { width: '100%', marginRight: '36px' }
-                                : {}
-                        }
                     />
                 )}
                 {props.action && (
                     <MuiListItem
                         secondaryAction
                         sx={{
+                            width: 'auto',
                             color: 'inherit',
                             justifyContent: 'flex-end',
                             paddingRight: '6px'

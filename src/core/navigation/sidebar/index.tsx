@@ -4,7 +4,6 @@ import {
     KeyboardArrowRight as IconArrowRight
 } from '@mui/icons-material'
 import Drawer from '@mui/material/Drawer'
-import { createStyles, makeStyles } from '@mui/styles'
 import type { DefaultProps } from '../../types'
 import type { IButtonProps } from '@/core/inputs/button'
 import { Action, AnchorButton } from './styles'
@@ -18,34 +17,19 @@ export interface SidebarProps extends DefaultProps {
     showButton?: boolean
     anchor?: 'top' | 'left' | 'bottom' | 'right'
     variant?: 'persistent' | 'temporary' | 'permanent'
-    color?: 'default' | 'inherit'
     docked?: boolean
     maxWidth?: number | string
     minWidth?: number | string
     top?: number | string
-    paperClasses?: object
     name?: string
     ButtonProps?: IButtonProps
     onToggle: () => void
 }
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        default: {
-            backgroundColor: neutral[100]
-        },
-        inherit: {
-            backgroundColor: 'inherit',
-            color: 'inherit'
-        }
-    })
-)
-
 const Sidebar = ({
     id,
     anchor = 'left',
     className,
-    color = 'default',
     docked = false,
     expanded = true,
     margin,
@@ -54,7 +38,6 @@ const Sidebar = ({
     top = 64,
     open,
     padding,
-    paperClasses,
     showButton = true,
     style,
     variant = 'permanent',
@@ -64,8 +47,6 @@ const Sidebar = ({
     name,
     ...otherProps
 }: SidebarProps) => {
-    const classes = useStyles()
-
     const renderAction = () => {
         const iconToLeft =
             (anchor === 'left' && expanded) || (anchor === 'right' && !expanded)
@@ -102,7 +83,6 @@ const Sidebar = ({
             className={className}
             style={{ width, padding, margin, top, ...style }}
             PaperProps={{
-                className: `${classes[color]}`,
                 style: docked
                     ? {
                           position: 'fixed',
@@ -113,7 +93,9 @@ const Sidebar = ({
                           height: 'inherit'
                       }
                     : {},
-                classes: paperClasses
+                sx: {
+                    backgroundColor: neutral[100]
+                }
             }}>
             {showButton && renderAction()}
             {children}

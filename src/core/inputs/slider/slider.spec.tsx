@@ -46,18 +46,22 @@ describe('Slider', () => {
         expect(container).toHaveProperty('style.padding', '5px')
     })
 
-    it('should render with makeStyles', async () => {
+    it('should render with custom label styles', () => {
         render(
             <Slider
                 data-testid='slider-container'
                 padding={5}
                 margin={10}
                 defaultValue={50}
-                color='success'
-                valueLabelDisplay='auto'>
+                color='primary'
+                valueLabelDisplay='on'>
                 Slider
             </Slider>
         )
+
+        const sliderLabelValue = screen.getByDisplayValue('50')
+
+        expect(sliderLabelValue).toBeDefined()
 
         const slider = screen
             .getByTestId('slider-container')
@@ -65,19 +69,10 @@ describe('Slider', () => {
 
         const sliderLabel = slider?.querySelector('.MuiSlider-valueLabel')
 
-        const sliderLabelValue = await waitFor(() =>
-            screen.getByDisplayValue('50')
-        )
-
-        if (sliderLabel) {
-            const classListString = Array.from(sliderLabel.classList).join(' ')
-            const regex = /makeStyles-valueLabel-\d+/
-            const hasMakeStylesClass = regex.test(classListString)
-
-            expect(hasMakeStylesClass).toBe(true)
-        }
-
-        expect(sliderLabelValue).toBeDefined()
+        waitFor(() => {
+            expect(sliderLabel).toHaveStyle('border-radius: 5px')
+            expect(sliderLabel).toHaveStyle('background-color: #152849')
+        })
     })
 
     it('should match snapshot', async () => {
