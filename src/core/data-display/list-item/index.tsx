@@ -49,15 +49,9 @@ const ListItem = (props: ListItemProps) => {
                 )}
                 {props.action && (
                     <MuiListItem
-                        secondaryAction
-                        sx={{
-                            width: 'auto',
-                            color: 'inherit',
-                            justifyContent: 'flex-end',
-                            paddingRight: '6px'
-                        }}>
-                        {props.action}
-                    </MuiListItem>
+                        secondaryAction={props.action}
+                        sx={{ width: 'auto', color: 'inherit' }}
+                    />
                 )}
             </>
         )
