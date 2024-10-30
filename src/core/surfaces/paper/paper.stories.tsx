@@ -8,23 +8,23 @@ const meta: Meta<typeof Paper> = {
     argTypes: {
         children: {
             control: 'text',
-            description: 'The paper children.'
+            description: 'The paper children'
         },
         square: {
             control: 'boolean',
-            description: 'The paper format.'
+            description: 'The paper format'
         },
         elevation: {
             control: 'number',
-            description: 'The paper elevation.'
+            description: 'The paper elevation'
         },
         margin: {
-            control: 'number',
-            description: 'The paper margin.'
+            control: 'text',
+            description: 'The paper margin'
         },
         padding: {
-            control: 'number',
-            description: 'The paper margin.'
+            control: 'text',
+            description: 'The paper margin'
         }
     }
 }
@@ -38,10 +38,10 @@ export const paper: Story = {
         return <Paper {...args} />
     },
     args: {
-        children: 'I am a Paper.',
+        children: 'I am a Paper',
         square: false,
         elevation: 4,
-        padding: 24,
-        margin: 24
+        padding: '24px',
+        margin: '24px'
     }
 }

@@ -20,44 +20,44 @@ const meta: Meta<typeof Card> = {
         },
         name: {
             control: 'text',
-            description: 'The card name.'
+            description: 'The card name'
         },
         title: {
             control: 'text',
-            description: 'The card title.'
+            description: 'The card title'
         },
         label: {
             control: 'text',
             description:
-                'The card Add Button label. Must be used with the `onClickAdd` prop.'
+                'The card Add Button label. Must be used with the `onClickAdd` prop'
         },
         editing: {
             control: 'boolean',
-            description: 'If `true`, the title is editable.'
+            description: 'If `true`, the title is editable'
         },
         nested: {
             control: 'boolean',
-            description: 'To set the panel nested.'
+            description: 'To set the panel nested'
         },
         onClickAdd: {
             control: 'boolean',
-            description: 'The function to implement on the Add Button.'
+            description: 'The function to implement on the Add Button'
         },
         onToggleEdit: {
             control: 'boolean',
-            description: 'The functon to implement the `editing` toggle.'
+            description: 'The functon to implement the `editing` toggle'
         },
         onRemove: {
             control: 'boolean',
             description:
                 'The functon to implement to remove information.' +
-                'Must be used with the `renderRemove` prop.'
+                'Must be used with the `renderRemove` prop'
         },
         renderRemove: {
             control: 'boolean',
             description:
                 'To render the remove button.' +
-                'Must be used with the `onRemove` prop.'
+                'Must be used with the `onRemove` prop'
         }
     }
 }

@@ -53,32 +53,32 @@ const meta: Meta<typeof Panel> = {
             }
         },
         details: {
-            control: 'text',
-            description: 'The Panel content. Must be a React Component.'
+            control: false,
+            description: 'The panel content. Must be a React Component'
         },
         detailsStyle: {
             control: 'object',
-            description: 'The Panel content style.'
+            description: 'The panel content style'
         },
         actions: {
             control: false,
-            description: 'The Panel action buttons. Must be a React Component.'
+            description: 'The panel action buttons. Must be a React Component'
         },
         title: {
             control: 'text',
-            description: 'The Panel title.'
+            description: 'The panel title'
         },
         expanded: {
             control: 'boolean',
-            description: 'If `true`, the Panel is expanded.'
+            description: 'If `true`, the panel is expanded'
         },
         hideExpansionIcon: {
             control: 'boolean',
-            description: 'If `true`, the icon is not shown.'
+            description: 'If `true`, the icon is not shown'
         },
         style: {
             control: 'object',
-            description: 'The Panel style.'
+            description: 'The panel style'
         }
     }
 }
@@ -89,14 +89,7 @@ type Story = StoryObj<typeof Panel>
 
 export const panel: Story = {
     render: ({ ...args }) => {
-        return (
-            <Panel
-                {...args}
-                actions={
-                    <Actions margin='12px' onConfirm={() => alert('Confirm')} />
-                }
-            />
-        )
+        return <Panel {...args} />
     },
     args: {
         title: 'This is the card Title!',
@@ -104,7 +97,7 @@ export const panel: Story = {
         detailsStyle: { color: 'gray' },
         expanded: true,
         hideExpansionIcon: false,
-        actions: <div>This is the actions component</div>,
+        actions: <Actions margin='12px' onConfirm={() => alert('Confirm')} />,
         style: { padding: '4px' }
     }
 }
