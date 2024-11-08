@@ -1,7 +1,6 @@
-/* eslint-disable import/no-duplicates */
 import React from 'react'
 import { StaticDateTimePicker, renderTimeViewClock } from '@mui/x-date-pickers'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { DatePicker, DatePickerToolbar } from '@mui/x-date-pickers/DatePicker'
 import {
     DateTimePicker,
@@ -10,8 +9,7 @@ import {
 import { ptBR as ptBRTexts } from '@mui/x-date-pickers/locales'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { TimePicker, TimePickerToolbar } from '@mui/x-date-pickers/TimePicker'
-import format from 'date-fns/format'
-import ptBR from 'date-fns/locale/pt-BR'
+import { ptBR } from 'date-fns/locale'
 import type { DefaultProps } from '../../types'
 import type {
     DateOrTimeView,
@@ -50,8 +48,8 @@ export type TDateTime = DatePickerProps<Date> &
     IProps &
     DefaultProps
 
-const formatter = (weekday: Date) =>
-    format(weekday, 'eee', { locale: ptBR }).slice(0, 3)
+const formatter = (day: Date) =>
+    day.toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.', '')
 
 const CustomDatePickerToolbar = (props: DatePickerToolbarProps<Date>) => {
     return (

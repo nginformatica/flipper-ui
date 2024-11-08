@@ -1,7 +1,7 @@
 import React, { act } from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 import type { ColumnSpec } from './types'
 import DataTableWithHidden from '@/test/mocks/data-table-hidden-mock'
 import DataTableWithCrud from '@/test/mocks/data-table-mock'
