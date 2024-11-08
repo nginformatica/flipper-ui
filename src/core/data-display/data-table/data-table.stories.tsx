@@ -9,7 +9,7 @@ import {
     Visibility as VisibilityIcon,
     VisibilityOff as VisibilityOffIcon
 } from '@mui/icons-material'
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'

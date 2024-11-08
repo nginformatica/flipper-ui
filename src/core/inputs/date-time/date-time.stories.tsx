@@ -17,6 +17,38 @@ const meta: Meta<typeof DateTime> = {
             options: ['date', 'time', 'datetime'],
             control: { type: 'radio' },
             description: 'The type of the picker'
+        },
+        placeholder: {
+            control: 'text',
+            description: 'The placeholder of the input'
+        },
+        fullWidth: {
+            control: 'boolean',
+            description: 'The size of the input'
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'The input disabled state'
+        },
+        error: {
+            control: 'boolean',
+            description: 'The input error state'
+        },
+        required: {
+            control: 'boolean',
+            description: 'The input required state'
+        },
+        margin: {
+            control: 'text',
+            description: 'The input margin'
+        },
+        padding: {
+            control: 'text',
+            description: 'The input padding'
+        },
+        style: {
+            control: 'object',
+            description: 'The input style'
         }
     }
 }
@@ -49,6 +81,14 @@ export const dateTime: Story = {
         return <DateTimeWrapper {...args} />
     },
     args: {
-        type: 'date'
+        type: 'date',
+        placeholder: 'Selecione',
+        fullWidth: true,
+        disabled: false,
+        error: false,
+        required: false,
+        margin: '',
+        padding: '',
+        style: {}
     }
 }
