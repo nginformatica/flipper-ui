@@ -1,8 +1,17 @@
+const react = require('eslint-plugin-react')
+const hooks = require('eslint-plugin-react-hooks')
+const parser = require('@typescript-eslint/parser')
+const tseslint = require('typescript-eslint')
+const stylistic = require('@stylistic/eslint-plugin')
+const importplugin = require('eslint-plugin-import')
+const eslintprettier = require('eslint-plugin-prettier')
+const tseslintplugin = require('@typescript-eslint/eslint-plugin')
+
 const rulesReact = {
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/no-unescaped-entities': 'off',
-    
+
     'react/jsx-key': 'warn',
     'react/jsx-pascal-case': 'warn',
     'react/self-closing-comp': 'warn',
@@ -96,11 +105,6 @@ const rulesImport = {
                     position: 'before'
                 },
                 {
-                    pattern: 'react-dom/**',
-                    group: 'external',
-                    position: 'before'
-                },
-                {
                     pattern: '../styles',
                     group: 'index',
                     position: 'after'
@@ -116,7 +120,7 @@ const rulesImport = {
                     position: 'after'
                 }
             ],
-            pathGroupsExcludedImportTypes: ['react', 'react-dom'],
+            pathGroupsExcludedImportTypes: ['react'],
             'newlines-between': 'never',
             alphabetize: {
                 order: 'asc',
@@ -139,7 +143,6 @@ const rulesTypescript = {
     '@typescript-eslint/prefer-optional-chain': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'warn',
     '@typescript-eslint/no-unnecessary-condition': 'warn',
-    '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     '@typescript-eslint/prefer-reduce-type-parameter': 'warn',
     '@typescript-eslint/no-unnecessary-type-constraint': 'warn',
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
@@ -151,49 +154,55 @@ const rulesTypescript = {
     '@typescript-eslint/consistent-type-imports': 'error'
 }
 
-module.exports = {
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true
-        },
-        sourceType: 'module',
-        project: ['./tsconfig.json']
+module.exports = tseslint.config(
+    ...tseslint.configs.recommended,
+    {
+        ignores: [
+            'dist/*',
+            'docs/*',
+            'node_modules/*',
+            'pre-publish.js',
+            'eslint.config.js'
+        ]
     },
-    settings: {
-        react: {
-            version: 'detect'
+    {
+        files: ['src/**/*.{ts,tsx}'],
+        languageOptions: {
+            parser: parser,
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true
+                },
+                projectService: true
+            },
+            ecmaVersion: 'latest',
+            sourceType: 'module'
         },
-        'import/parsers': {
-            '@typescript-eslint/parser': ['.ts', '.tsx']
+        settings: {
+            react: {
+                version: 'detect'
+            },
+            'import/parsers': {
+                tsParser: ['.ts', '.tsx']
+            },
+            'import/resolver': {
+                typescript: true
+            }
         },
-        'import/resolver': {
-            typescript: true
+        plugins: {
+            react: react,
+            import: importplugin,
+            prettier: eslintprettier,
+            'react-hooks': hooks,
+            '@stylistic': stylistic,
+            '@typescript-eslint': tseslintplugin
+        },
+        rules: {
+            'prettier/prettier': 'error',
+            ...rulesReact,
+            ...rulesEslint,
+            ...rulesImport,
+            ...rulesTypescript
         }
-    },
-    extends: [
-        'eslint:recommended',
-        'plugin:react/jsx-runtime',
-        'plugin:react-hooks/recommended',
-        'plugin:react/recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:import/recommended',
-        'plugin:import/typescript',
-        'plugin:prettier/recommended',
-        'prettier'
-    ],
-    rules: {
-        'prettier/prettier': 'error',
-        ...rulesReact,
-        ...rulesEslint,
-        ...rulesImport,
-        ...rulesTypescript
-    },
-    plugins: [
-        'react-hooks',
-        '@typescript-eslint',
-        'import',
-        '@stylistic'
-    ],
-    ignorePatterns: ['.eslintrc.js', 'pre-publish.js', 'jest.config.js']
-}
+    }
+)

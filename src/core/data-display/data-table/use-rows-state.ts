@@ -38,8 +38,6 @@ export const useRowsState = <D extends Data, V extends StackView>(
         }
 
         setState({ internal: nextState })
-        // it works fine
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [rows, !!newRow])
 
     const setRowState = useCallback(
