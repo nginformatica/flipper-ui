@@ -160,6 +160,7 @@ module.exports = tseslint.config(
         ignores: [
             'dist/*',
             'docs/*',
+            'coverage/*',
             'node_modules/*',
             'pre-publish.js',
             'eslint.config.js'

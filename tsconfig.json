@@ -34,10 +34,5 @@
         "./src/**/*.tsx",
         "./src/*.d.ts",
         "./src/lib/**/*"
-    ],
-    "exclude": [
-        "src/test",
-        "**/*.spec.tsx",
-        "**/*.stories.tsx"
     ]
 }
