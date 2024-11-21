@@ -2,13 +2,10 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
-        "module": "esnext",
         "jsx": "react",
+        "module": "esnext",
         "target": "esnext",
-        "types": [
-            "node",
-            "jest"
-        ],
+        "types": ["node", "jest"],
         "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
@@ -37,5 +34,10 @@
         "./src/**/*.tsx",
         "./src/*.d.ts",
         "./src/lib/**/*"
+    ],
+    "exclude": [
+        "src/test",
+        "**/*.spec.tsx",
+        "**/*.stories.tsx"
     ]
 }
