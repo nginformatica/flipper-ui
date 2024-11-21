@@ -12,20 +12,12 @@ module.exports = {
         [
             'import',
             {
+                // remove when ramda is moved to the devDependencies
                 libraryName: 'ramda',
                 libraryDirectory: 'es',
                 camel2DashComponentName: false
             },
             'ramda'
-        ],
-        [
-            'import',
-            {
-                libraryName: 'date-fns',
-                libraryDirectory: '',
-                camel2DashComponentName: false
-            },
-            'date-fns'
         ],
         [
             'import',

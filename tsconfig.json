@@ -2,13 +2,10 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
-        "module": "esnext",
         "jsx": "react",
+        "module": "esnext",
         "target": "esnext",
-        "types": [
-            "node",
-            "jest"
-        ],
+        "types": ["node", "jest"],
         "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
