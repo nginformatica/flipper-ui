@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
-import { ExpandMore } from '@mui/icons-material'
 import type { ExpansionPanelProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
 import TextField from '@/core/inputs/text-field'
+import { IconExpandMore } from '@/icons/mui-icons'
 import ExpansionPanel from '.'
 
 const meta: Meta<typeof ExpansionPanel> = {
@@ -136,7 +136,7 @@ export const expansionPanel: Story = {
         editable: false,
         disabled: false,
         summary: 'Pulp Fiction',
-        expandIcon: <ExpandMore />,
+        expandIcon: <IconExpandMore />,
         actions: (
             <Button color='primary' margin='12px'>
                 Confirm

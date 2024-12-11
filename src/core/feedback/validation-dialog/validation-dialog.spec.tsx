@@ -1,8 +1,8 @@
 import React from 'react'
-import { CheckCircleOutline, CancelOutlined } from '@mui/icons-material'
 import { CircularProgress } from '@mui/material'
 import { render, screen, fireEvent } from '@testing-library/react'
 import type { ITitles, IValidations } from '.'
+import { IconCancelOutlined, IconCheckCircleOutlined } from '@/icons/mui-icons'
 import ValidationDialog, { ValidationStatus } from '.'
 import { theme } from '@/theme'
 
@@ -22,8 +22,8 @@ const stepsTitle = {
 }
 
 const stepsIcons = {
-    success: <CheckCircleOutline htmlColor={secondary.main} />,
-    error: <CancelOutlined htmlColor={action.cancel} />,
+    success: <IconCheckCircleOutlined htmlColor={secondary.main} />,
+    error: <IconCancelOutlined htmlColor={action.cancel} />,
     loading: <CircularProgress size={20} color='inherit' />
 }
 

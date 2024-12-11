@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Backup as IconBackup } from '@mui/icons-material'
 import type { IDrawerProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
 import Button from '@/core/inputs/button'
+import { IconFolderShared } from '@/icons/mui-icons'
 import Drawer from '.'
 
 const meta: Meta<typeof Drawer> = {
@@ -52,8 +52,8 @@ const DrawerWrapper = (args: JSX.IntrinsicAttributes & IDrawerProps) => {
             </Button>
             <Drawer {...args} open={open} onClick={handleClick}>
                 <List>
-                    <ListItem icon={<IconBackup />} />
-                    <ListItem icon={<IconBackup />} />
+                    <ListItem icon={<IconFolderShared />} />
+                    <ListItem icon={<IconFolderShared />} />
                 </List>
             </Drawer>
         </>

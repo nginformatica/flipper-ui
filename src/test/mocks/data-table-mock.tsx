@@ -1,12 +1,5 @@
 import React, { useRef, useState } from 'react'
 import type { Dispatch, MutableRefObject, SetStateAction } from 'react'
-import {
-    Cancel as CancelIcon,
-    Check as CheckIcon,
-    Delete as DeleteIcon,
-    Edit as EditIcon,
-    Save as SaveIcon
-} from '@mui/icons-material'
 import { format } from 'date-fns'
 import type { DataTableController } from '@/core/data-display/data-table'
 import type {
@@ -16,6 +9,13 @@ import type {
 import { DataTableAction } from '@/core/data-display/data-table'
 import { DataTable } from '@/core/data-display/data-table/data-table'
 import { RowMode } from '@/core/data-display/data-table/types'
+import {
+    IconClose,
+    IconCheck,
+    IconDelete,
+    IconEdit,
+    IconSave
+} from '@/icons/mui-icons'
 
 type Data = {
     id: Identifier
@@ -52,14 +52,14 @@ const rows = (
                                 dataList.filter(item => item.id !== data.id)
                             )
                         }}>
-                        <CheckIcon />
+                        <IconCheck />
                     </DataTableAction>
                     <DataTableAction
                         label='CancelIcon'
                         onClick={() => {
                             controllerRef.current.popRowView(data.id)
                         }}>
-                        <CancelIcon />
+                        <IconClose />
                     </DataTableAction>
                 </div>
             </div>
@@ -226,12 +226,12 @@ const Default = () => {
                             <DataTableAction
                                 label='Edit'
                                 onClick={handleEdit(id)}>
-                                <EditIcon />
+                                <IconEdit />
                             </DataTableAction>
                             <DataTableAction
                                 label='Delete'
                                 onClick={handleDelete(id)}>
-                                <DeleteIcon />
+                                <IconDelete />
                             </DataTableAction>
                         </div>
                     )
@@ -242,12 +242,12 @@ const Default = () => {
                         <DataTableAction
                             label='Save'
                             onClick={handleSave(id, isNew)}>
-                            <SaveIcon />
+                            <IconSave />
                         </DataTableAction>
                         <DataTableAction
                             label='Cancel'
                             onClick={handleView(id)}>
-                            <CancelIcon />
+                            <IconClose />
                         </DataTableAction>
                     </div>
                 )

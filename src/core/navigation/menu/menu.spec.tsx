@@ -1,15 +1,15 @@
 import React from 'react'
-import { Backup } from '@mui/icons-material'
 import { render, screen } from '@testing-library/react'
 import ListItem from '@/core/data-display/list-item'
+import { IconFolderShared } from '@/icons/mui-icons'
 import Menu from '.'
 
 describe('Menu', () => {
     it('should render', () => {
         render(
             <Menu open>
-                <ListItem icon={<Backup />} title='Menu 1' />
-                <ListItem icon={<Backup />} title='Menu 2' />
+                <ListItem icon={<IconFolderShared />} title='Menu 1' />
+                <ListItem icon={<IconFolderShared />} title='Menu 2' />
             </Menu>
         )
 
@@ -23,8 +23,8 @@ describe('Menu', () => {
     it('should render closed', () => {
         render(
             <Menu open={false}>
-                <ListItem icon={<Backup />} title='Menu 1' />
-                <ListItem icon={<Backup />} title='Menu 2' />
+                <ListItem icon={<IconFolderShared />} title='Menu 1' />
+                <ListItem icon={<IconFolderShared />} title='Menu 2' />
             </Menu>
         )
 
@@ -85,8 +85,8 @@ describe('Menu', () => {
     it('should match snapshot', () => {
         const { container } = render(
             <Menu open>
-                <ListItem icon={<Backup />} title='Menu 1' />
-                <ListItem icon={<Backup />} title='Menu 2' />
+                <ListItem icon={<IconFolderShared />} title='Menu 1' />
+                <ListItem icon={<IconFolderShared />} title='Menu 2' />
             </Menu>
         )
 

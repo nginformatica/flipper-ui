@@ -1,8 +1,8 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import { ChevronRight as IconChevronRight } from '@mui/icons-material'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import { addIndex, map } from 'ramda'
+import { IconNavigateNext } from '@/icons/mui-icons'
 import { BreadcrumbLink, TextTypography } from './styles'
 
 const imap = addIndex(map)
@@ -54,7 +54,7 @@ const Breadcrumbs = ({
     }, allChunks) as ReactNode[]
 
     return (
-        <MuiBreadcrumbs separator={<IconChevronRight />}>
+        <MuiBreadcrumbs separator={<IconNavigateNext />}>
             {links}
         </MuiBreadcrumbs>
     )

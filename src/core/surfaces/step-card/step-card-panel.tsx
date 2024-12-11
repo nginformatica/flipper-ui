@@ -1,13 +1,10 @@
 import React from 'react'
 import type { CSSProperties } from 'react'
-import {
-    CheckCircle as CheckCircleIcon,
-    ExpandMore as ExpandMoreIcon
-} from '@mui/icons-material'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import LinearProgress from '@mui/material/LinearProgress'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
+import { IconCheckCircle, IconExpandMore } from '@/icons/mui-icons'
 import {
     NormalProgressContainer,
     NormalProgressContent,
@@ -64,7 +61,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                 minHeight={expandable ? '100px' : '100%'}>
                 <StepCardColumn justifyContent='start'>
                     {showIcon && (
-                        <CheckCircleIcon
+                        <IconCheckCircle
                             data-testid='step-card-title-icon'
                             style={{
                                 fontSize: 40,
@@ -103,7 +100,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                     {expandable ? (
                         <MuiAccordionSummary
                             style={{ textAlign: 'center' }}
-                            expandIcon={<ExpandMoreIcon fontSize='large' />}>
+                            expandIcon={<IconExpandMore fontSize='large' />}>
                             <Typography variant='h6' {...summaryProps}>
                                 {summary
                                     .replace('%i', remainingSteps.toString())

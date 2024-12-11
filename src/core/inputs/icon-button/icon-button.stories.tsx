@@ -1,6 +1,6 @@
 import React from 'react'
-import { Add as IconAdd } from '@mui/icons-material'
 import type { Meta, StoryObj } from '@storybook/react'
+import { IconAdd } from '@/icons/mui-icons'
 import IconButton from '.'
 
 const meta: Meta<typeof IconButton> = {

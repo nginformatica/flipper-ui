@@ -1,6 +1,6 @@
 import React from 'react'
-import { Face } from '@mui/icons-material'
 import type { Meta, StoryObj } from '@storybook/react'
+import { IconFace } from '@/icons/mui-icons'
 import Avatar from '.'
 
 const srcImage = 'https://imgflip.com/s/meme/Doge.jpg'
@@ -72,7 +72,7 @@ export const avatarWithCustomIcon: Story = {
     args: {
         name: '',
         src: '',
-        icon: <Face />,
+        icon: <IconFace />,
         style: { width: '64px', height: '64px' }
     }
 }

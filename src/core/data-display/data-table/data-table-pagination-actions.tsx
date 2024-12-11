@@ -1,12 +1,12 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
-import {
-    FirstPage,
-    LastPage,
-    KeyboardArrowLeft,
-    KeyboardArrowRight
-} from '@mui/icons-material'
 import MuiIconButton from '@mui/material/IconButton'
+import {
+    IconFirstPage,
+    IconLastPage,
+    IconNavigateBefore,
+    IconNavigateNext
+} from '@/icons/mui-icons'
 import { PaginationWrapper } from './styles'
 
 interface DataTablePaginationActionsProps {
@@ -67,27 +67,27 @@ export const makeDataTablePaginationActions =
                         disabled={page === 0 || clickable}
                         aria-label='first page'
                         onClick={handleFirstPageButtonClick}>
-                        <FirstPage />
+                        <IconFirstPage />
                     </MuiIconButton>
                 )}
                 <MuiIconButton
                     disabled={page === 0 || clickable}
                     aria-label='previous page'
                     onClick={handleBackButtonClick}>
-                    <KeyboardArrowLeft />
+                    <IconNavigateBefore />
                 </MuiIconButton>
                 <MuiIconButton
                     disabled={page >= totalPages || clickable}
                     aria-label='next page'
                     onClick={handleNextButtonClick}>
-                    <KeyboardArrowRight />
+                    <IconNavigateNext />
                 </MuiIconButton>
                 {showLastButton && (
                     <MuiIconButton
                         disabled={page >= totalPages || clickable}
                         aria-label='last page'
                         onClick={handleLastPageButtonClick}>
-                        <LastPage />
+                        <IconLastPage />
                     </MuiIconButton>
                 )}
             </PaginationWrapper>
