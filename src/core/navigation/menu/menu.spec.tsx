@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import ListItem from '@/core/data-display/list-item'
-import { IconFolderShared } from '@/icons/mui-icons'
+import { IconFolderShared } from '@/icons/mui'
 import Menu from '.'
 
 describe('Menu', () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import { IconFace } from '@/icons/mui-icons'
+import { IconFace } from '@/icons/mui'
 import ListItem from '.'
 import '@testing-library/jest-dom'
 

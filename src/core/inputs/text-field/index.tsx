@@ -15,7 +15,7 @@ import { pipe, split, map, reject } from 'ramda'
 import type { DefaultProps } from '../../types'
 import type { InputBaseComponentProps } from '@mui/material/InputBase'
 import type { TextFieldProps } from '@mui/material/TextField'
-import { IconClose, IconHelp } from '@/icons/mui-icons'
+import { IconClose, IconHelp } from '@/icons/mui'
 import IconButton from '../icon-button'
 import {
     CharactersCount,

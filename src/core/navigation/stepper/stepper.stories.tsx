@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { IconStar } from '@/icons/mui-icons'
+import { IconStar } from '@/icons/mui'
 import Stepper from '.'
 
 const meta: Meta<typeof Stepper> = {

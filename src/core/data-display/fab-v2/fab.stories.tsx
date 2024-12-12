@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { IconFileCopy } from '@/icons/mui-icons'
+import { IconFileCopy } from '@/icons/mui'
 import FabV2 from '.'
 import { theme } from '@/theme'
 

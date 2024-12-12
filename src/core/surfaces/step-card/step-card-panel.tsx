@@ -4,7 +4,7 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import LinearProgress from '@mui/material/LinearProgress'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
-import { IconCheckCircle, IconExpandMore } from '@/icons/mui-icons'
+import { IconCheckCircle, IconExpandMore } from '@/icons/mui'
 import {
     NormalProgressContainer,
     NormalProgressContent,

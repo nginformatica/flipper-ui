@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import MuiSelect from '@mui/material/Select'
 import type { DefaultProps } from '../../types'
 import type { SelectChangeEvent, SelectProps } from '@mui/material/Select'
-import { IconClose } from '@/icons/mui-icons'
+import { IconClose } from '@/icons/mui'
 
 export interface ISelectProps
     extends DefaultProps,

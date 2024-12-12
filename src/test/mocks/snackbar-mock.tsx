@@ -3,7 +3,7 @@ import type { SnackBarProps } from '@/core/feedback/snackbar'
 import SnackBar from '@/core/feedback/snackbar'
 import Button from '@/core/inputs/button'
 import IconButton from '@/core/inputs/icon-button'
-import { IconClose } from '@/icons/mui-icons'
+import { IconClose } from '@/icons/mui'
 
 interface IProps {
     withAction?: boolean

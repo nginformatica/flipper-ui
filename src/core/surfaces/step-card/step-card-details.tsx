@@ -4,7 +4,7 @@ import List from '@mui/material/List'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
 import IconButton from '@/core/inputs/icon-button'
-import { IconCheckCircle, IconHelp } from '@/icons/mui-icons'
+import { IconCheckCircle, IconHelp } from '@/icons/mui'
 import { ListItemContainer, StepCardColumn } from './styles'
 import { theme } from '@/theme'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { IconDelete } from '@/icons/mui-icons'
+import { IconDelete } from '@/icons/mui'
 import Stepper from '.'
 
 describe('Stepper', () => {

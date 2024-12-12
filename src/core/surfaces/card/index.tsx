@@ -5,7 +5,7 @@ import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Line from '@/core/data-display/line'
 import AddButton from '@/core/inputs/add-button'
 import Paper from '@/core/surfaces/paper'
-import { IconClose, IconEdit, IconDelete } from '@/icons/mui-icons'
+import { IconClose, IconEdit, IconDelete } from '@/icons/mui'
 import { CardButton, Header, Title } from './styles'
 import { theme } from '@/theme'
 

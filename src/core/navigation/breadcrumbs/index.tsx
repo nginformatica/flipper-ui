@@ -2,7 +2,7 @@ import React from 'react'
 import type { ReactNode } from 'react'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import { addIndex, map } from 'ramda'
-import { IconNavigateNext } from '@/icons/mui-icons'
+import { IconNavigateNext } from '@/icons/mui'
 import { BreadcrumbLink, TextTypography } from './styles'
 
 const imap = addIndex(map)

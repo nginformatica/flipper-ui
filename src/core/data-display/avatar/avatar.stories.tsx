@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { IconFace } from '@/icons/mui-icons'
+import { IconFace } from '@/icons/mui'
 import Avatar from '.'
 
 const srcImage = 'https://imgflip.com/s/meme/Doge.jpg'

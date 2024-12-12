@@ -14,7 +14,7 @@ import {
     IconSave,
     IconVisibility,
     IconVisibilityOff
-} from '@/icons/mui-icons'
+} from '@/icons/mui'
 import { default as DataTable } from './data-table'
 import { DataTableAction } from './data-table-action'
 import { DataTableField } from './data-table-field'

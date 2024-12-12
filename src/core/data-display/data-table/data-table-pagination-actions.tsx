@@ -6,7 +6,7 @@ import {
     IconLastPage,
     IconNavigateBefore,
     IconNavigateNext
-} from '@/icons/mui-icons'
+} from '@/icons/mui'
 import { PaginationWrapper } from './styles'
 
 interface DataTablePaginationActionsProps {

@@ -11,7 +11,7 @@ import {
     IconError,
     IconInfo,
     IconWarning
-} from '@/icons/mui-icons'
+} from '@/icons/mui'
 import { Message } from './styles'
 import { theme } from '@/theme'
 

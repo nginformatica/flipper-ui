@@ -19,7 +19,7 @@ import {
     IconDelete,
     IconEdit,
     IconSave
-} from '@/icons/mui-icons'
+} from '@/icons/mui'
 import { DataTableAction } from './data-table-action'
 import { DataTableQueryPaginated } from './data-table-query-paginated'
 import { RowMode } from './types'

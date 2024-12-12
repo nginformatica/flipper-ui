@@ -1,6 +1,6 @@
 import React from 'react'
 import type { IButtonProps } from '@/core/inputs/button'
-import { IconNoteAdd } from '@/icons/mui-icons'
+import { IconNoteAdd } from '@/icons/mui'
 import { ButtonAdd } from './styles'
 
 export interface Props extends IButtonProps {

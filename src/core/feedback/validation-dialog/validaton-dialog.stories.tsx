@@ -3,7 +3,7 @@ import { CircularProgress } from '@mui/material'
 import { ThemeProvider } from 'styled-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import Button from '@/core/inputs/button'
-import { IconCancelOutlined, IconCheckCircleOutlined } from '@/icons/mui-icons'
+import { IconCancelOutlined, IconCheckCircleOutlined } from '@/icons/mui'
 import ValidationDialog, { ValidationStatus } from '.'
 import { ThemeProviderFlipper, muiThemeOptions, theme } from '@/theme'
 

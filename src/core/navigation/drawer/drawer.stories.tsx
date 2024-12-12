@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
 import Button from '@/core/inputs/button'
-import { IconFolderShared } from '@/icons/mui-icons'
+import { IconFolderShared } from '@/icons/mui'
 import Drawer from '.'
 
 const meta: Meta<typeof Drawer> = {

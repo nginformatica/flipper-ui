@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
-import { IconFolderShared } from '@/icons/mui-icons'
+import { IconFolderShared } from '@/icons/mui'
 import Avatar from '../avatar'
 import List from '.'
 

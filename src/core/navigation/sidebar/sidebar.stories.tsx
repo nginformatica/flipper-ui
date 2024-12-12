@@ -2,7 +2,7 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
-import { IconFolderShared } from '@/icons/mui-icons'
+import { IconFolderShared } from '@/icons/mui'
 import Sidebar from '.'
 import { SidebarStorie } from './styles'
 

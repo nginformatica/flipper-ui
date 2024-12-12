@@ -17,7 +17,7 @@ import {
     IconSave,
     IconVisibility,
     IconVisibilityOff
-} from '@/icons/mui-icons'
+} from '@/icons/mui'
 
 type Data = {
     id: Identifier

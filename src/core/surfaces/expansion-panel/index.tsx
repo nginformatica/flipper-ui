@@ -14,7 +14,7 @@ import MuiExpansionPanelSummary from '@mui/material/AccordionSummary'
 import type { IPaperProps } from '@/core/surfaces/paper'
 import IconButton from '@/core/inputs/icon-button'
 import { HelperBox } from '@/core/inputs/text-field'
-import { IconEdit, IconExpandLess, IconSave } from '@/icons/mui-icons'
+import { IconEdit, IconExpandLess, IconSave } from '@/icons/mui'
 import { ExpansionPanelHeaderWrapper } from './styles'
 
 export interface ExpansionPanelProps extends Omit<IPaperProps, 'onChange'> {

@@ -3,7 +3,7 @@ import type { IMenuProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import Button from '@/core/inputs/button'
-import { IconFolderShared } from '@/icons/mui-icons'
+import { IconFolderShared } from '@/icons/mui'
 import Menu from '.'
 
 const meta: Meta<typeof Menu> = {

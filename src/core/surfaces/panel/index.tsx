@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
 import type { IPaperProps } from '@/core/surfaces/paper'
-import { IconExpandMore } from '@/icons/mui-icons'
+import { IconExpandMore } from '@/icons/mui'
 import { ExpansionPaperPanel, Summary, Title } from './styles'
 
 export interface PanelProps extends Omit<IPaperProps, 'title' | 'onChange'> {

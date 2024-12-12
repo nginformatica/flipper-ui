@@ -2,7 +2,7 @@ import React from 'react'
 import Drawer from '@mui/material/Drawer'
 import type { DefaultProps } from '../../types'
 import type { IButtonProps } from '@/core/inputs/button'
-import { IconNavigateBefore, IconNavigateNext } from '@/icons/mui-icons'
+import { IconNavigateBefore, IconNavigateNext } from '@/icons/mui'
 import { Action, AnchorButton } from './styles'
 import { theme } from '@/theme'
 

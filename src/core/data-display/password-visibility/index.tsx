@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconVisibility, IconVisibilityOff } from '@/icons/mui-icons'
+import { IconVisibility, IconVisibilityOff } from '@/icons/mui'
 import { StyledButton } from './styles'
 
 export interface IProps {

@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
 import TextField from '@/core/inputs/text-field'
-import { IconExpandMore } from '@/icons/mui-icons'
+import { IconExpandMore } from '@/icons/mui'
 import ExpansionPanel from '.'
 
 const meta: Meta<typeof ExpansionPanel> = {

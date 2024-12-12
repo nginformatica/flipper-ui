@@ -15,7 +15,7 @@ import {
     IconDelete,
     IconEdit,
     IconSave
-} from '@/icons/mui-icons'
+} from '@/icons/mui'
 
 type Data = {
     id: Identifier
