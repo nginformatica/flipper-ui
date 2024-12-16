@@ -5,13 +5,6 @@ import type {
     ReactNode,
     SetStateAction
 } from 'react'
-import {
-    Cancel as CancelIcon,
-    Check as CheckIcon,
-    Delete as DeleteIcon,
-    Edit as EditIcon,
-    Save as SaveIcon
-} from '@mui/icons-material'
 import MuiSkeleton from '@mui/material/Skeleton'
 import MuiTableCell from '@mui/material/TableCell'
 import MuiTableRow from '@mui/material/TableRow'
@@ -20,6 +13,13 @@ import { format } from 'date-fns'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'
 import Button from '@/core/inputs/button'
+import {
+    IconClose,
+    IconCheck,
+    IconDelete,
+    IconEdit,
+    IconSave
+} from '@/icons/mui'
 import { DataTableAction } from './data-table-action'
 import { DataTableQueryPaginated } from './data-table-query-paginated'
 import { RowMode } from './types'
@@ -465,14 +465,14 @@ export const Crud = () => {
                                     dataList.filter(item => item.id !== data.id)
                                 )
                             }}>
-                            <CheckIcon />
+                            <IconCheck />
                         </DataTableAction>
                         <DataTableAction
                             label='CancelIcon'
                             onClick={() => {
                                 controllerRef.current.popRowView(data.id)
                             }}>
-                            <CancelIcon />
+                            <IconClose />
                         </DataTableAction>
                     </div>
                 </div>
@@ -615,12 +615,12 @@ export const Crud = () => {
                             <DataTableAction
                                 label='Edit'
                                 onClick={handleEdit(id)}>
-                                <EditIcon />
+                                <IconEdit />
                             </DataTableAction>
                             <DataTableAction
                                 label='Delete'
                                 onClick={handleDelete(id)}>
-                                <DeleteIcon />
+                                <IconDelete />
                             </DataTableAction>
                         </div>
                     )
@@ -631,12 +631,12 @@ export const Crud = () => {
                         <DataTableAction
                             label='Save'
                             onClick={handleSave(id, isNew)}>
-                            <SaveIcon />
+                            <IconSave />
                         </DataTableAction>
                         <DataTableAction
                             label='Cancel'
                             onClick={handleView(id)}>
-                            <CancelIcon />
+                            <IconClose />
                         </DataTableAction>
                     </div>
                 )

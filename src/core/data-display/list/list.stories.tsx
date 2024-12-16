@@ -1,7 +1,7 @@
 import React from 'react'
-import { Backup } from '@mui/icons-material'
 import type { Meta, StoryObj } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
+import { IconFolderShared } from '@/icons/mui'
 import Avatar from '../avatar'
 import List from '.'
 
@@ -46,8 +46,14 @@ export const list: Story = {
             <>
                 <ListItem title='List Item 1' />
                 <ListItem selected title='List Item 2' />
-                <ListItem icon={<Backup />} title='List Item With Icon 1' />
-                <ListItem icon={<Backup />} title='List Item With Icon 2' />
+                <ListItem
+                    icon={<IconFolderShared />}
+                    title='List Item With Icon 1'
+                />
+                <ListItem
+                    icon={<IconFolderShared />}
+                    title='List Item With Icon 2'
+                />
                 <ListItem
                     avatar={<Avatar name='1' />}
                     title='List Item With Avatar 1'

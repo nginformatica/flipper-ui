@@ -5,6 +5,7 @@ module.exports = {
     coveragePathIgnorePatterns: ['stories.(ts|tsx)'],
     collectCoverageFrom: [
         '<rootDir>/src/core/**/*.(ts|tsx)',
+        '!<rootDir>/src/icons/**/*.(ts|tsx)',
         '!<rootDir>/src/core/data-display/data-table/*.(ts|tsx)',
         '!<rootDir>/src/core/data-display/table/table-pagination.tsx',
         '!<rootDir>/src/core/feedback/dialog-v2/index.ts',

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Delete } from '@mui/icons-material'
 import { render, screen } from '@testing-library/react'
+import { IconDelete } from '@/icons/mui'
 import Stepper from '.'
 
 describe('Stepper', () => {
@@ -35,15 +35,15 @@ describe('Stepper', () => {
                 steps={[
                     {
                         label: 'Name',
-                        icon: <Delete data-testid='step-icon1' />
+                        icon: <IconDelete data-testid='step-icon1' />
                     },
                     {
                         label: 'Email',
-                        icon: () => <Delete data-testid='step-icon2' />
+                        icon: () => <IconDelete data-testid='step-icon2' />
                     },
                     {
                         label: 'Password',
-                        icon: <Delete data-testid='step-icon3' />
+                        icon: <IconDelete data-testid='step-icon3' />
                     }
                 ]}
             />
@@ -75,7 +75,7 @@ describe('Stepper', () => {
                 steps={[
                     {
                         label: 'Name',
-                        icon: <Delete data-testid='step-icon' />
+                        icon: <IconDelete data-testid='step-icon' />
                     }
                 ]}
             />
@@ -99,15 +99,15 @@ describe('Stepper', () => {
                 steps={[
                     {
                         label: 'Name',
-                        icon: <Delete data-testid='step-icon1' />
+                        icon: <IconDelete data-testid='step-icon1' />
                     },
                     {
                         label: 'Email',
-                        icon: () => <Delete data-testid='step-icon2' />
+                        icon: () => <IconDelete data-testid='step-icon2' />
                     },
                     {
                         label: 'Password',
-                        icon: <Delete data-testid='step-icon3' />
+                        icon: <IconDelete data-testid='step-icon3' />
                     }
                 ]}
             />

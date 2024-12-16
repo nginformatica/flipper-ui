@@ -1,6 +1,6 @@
 import React from 'react'
-import { NoteAdd as IconAdd } from '@mui/icons-material'
 import type { IButtonProps } from '@/core/inputs/button'
+import { IconNoteAdd } from '@/icons/mui'
 import { ButtonAdd } from './styles'
 
 export interface Props extends IButtonProps {
@@ -25,7 +25,7 @@ const AddButton = (props: Props) => (
         margin={props.margin || '12px 0 24px'}
         fullWidth={props.fullWidth}
         onClick={props.onClick}>
-        <IconAdd />
+        <IconNoteAdd />
         {props.label}
     </ButtonAdd>
 )

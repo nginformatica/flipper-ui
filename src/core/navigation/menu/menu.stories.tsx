@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Backup } from '@mui/icons-material'
 import type { IMenuProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
 import Button from '@/core/inputs/button'
+import { IconFolderShared } from '@/icons/mui'
 import Menu from '.'
 
 const meta: Meta<typeof Menu> = {
@@ -55,14 +55,14 @@ export const menu: Story = {
     args: {
         children: (
             <>
-                <ListItem icon={<Backup />} title='Menu 1' />
-                <ListItem icon={<Backup />} title='Menu 2' />
-                <ListItem icon={<Backup />} title='Menu 3' />
-                <ListItem icon={<Backup />} title='Menu 4' />
-                <ListItem icon={<Backup />} title='Menu 5' />
-                <ListItem icon={<Backup />} title='Menu 6' />
-                <ListItem icon={<Backup />} title='Menu 7' />
-                <ListItem icon={<Backup />} title='Menu 8' />
+                <ListItem icon={<IconFolderShared />} title='Menu 1' />
+                <ListItem icon={<IconFolderShared />} title='Menu 2' />
+                <ListItem icon={<IconFolderShared />} title='Menu 3' />
+                <ListItem icon={<IconFolderShared />} title='Menu 4' />
+                <ListItem icon={<IconFolderShared />} title='Menu 5' />
+                <ListItem icon={<IconFolderShared />} title='Menu 6' />
+                <ListItem icon={<IconFolderShared />} title='Menu 7' />
+                <ListItem icon={<IconFolderShared />} title='Menu 8' />
             </>
         ),
         margin: '',

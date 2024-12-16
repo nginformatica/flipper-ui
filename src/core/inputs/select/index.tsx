@@ -1,11 +1,11 @@
 import React from 'react'
 import type { ChangeEvent, ReactNode } from 'react'
-import { Clear } from '@mui/icons-material'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiSelect from '@mui/material/Select'
 import type { DefaultProps } from '../../types'
 import type { SelectChangeEvent, SelectProps } from '@mui/material/Select'
+import { IconClose } from '@/icons/mui'
 
 export interface ISelectProps
     extends DefaultProps,
@@ -32,7 +32,7 @@ const renderEndAdornment = (onClear?: () => void) => (
             role='end-adornment-component'
             size='small'
             onClick={onClear}>
-            <Clear style={{ fontSize: '15px' }} />
+            <IconClose sx={{ fontSize: '15px' }} />
         </IconButton>
     </InputAdornment>
 )

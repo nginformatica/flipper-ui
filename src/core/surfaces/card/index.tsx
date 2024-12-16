@@ -1,15 +1,11 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import {
-    Close as IconClose,
-    Edit as IconEdit,
-    Delete as IconDelete
-} from '@mui/icons-material'
 import type { IButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Line from '@/core/data-display/line'
 import AddButton from '@/core/inputs/add-button'
 import Paper from '@/core/surfaces/paper'
+import { IconClose, IconEdit, IconDelete } from '@/icons/mui'
 import { CardButton, Header, Title } from './styles'
 import { theme } from '@/theme'
 

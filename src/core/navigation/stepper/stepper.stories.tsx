@@ -1,6 +1,6 @@
 import React from 'react'
-import { Star } from '@mui/icons-material'
 import type { Meta, StoryObj } from '@storybook/react'
+import { IconStar } from '@/icons/mui'
 import Stepper from '.'
 
 const meta: Meta<typeof Stepper> = {
@@ -70,9 +70,9 @@ export const stepperWithIcon: Story = {
         bottomLabel: true,
         orientation: 'horizontal',
         steps: [
-            { label: 'Start', icon: <Star /> },
-            { label: 'You are here!', icon: <Star /> },
-            { label: 'Finish', icon: <Star /> }
+            { label: 'Start', icon: <IconStar /> },
+            { label: 'You are here!', icon: <IconStar /> },
+            { label: 'Finish', icon: <IconStar /> }
         ],
         margin: '',
         padding: '',

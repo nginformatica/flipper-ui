@@ -1,20 +1,20 @@
 import React, { useState, useRef } from 'react'
 import type { MutableRefObject, Dispatch, SetStateAction } from 'react'
-import {
-    Delete as DeleteIcon,
-    Edit as EditIcon,
-    Save as SaveIcon,
-    Cancel as CancelIcon,
-    Check as CheckIcon,
-    Visibility as VisibilityIcon,
-    VisibilityOff as VisibilityOffIcon
-} from '@mui/icons-material'
 import { format } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'
 import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
+import {
+    IconClose,
+    IconCheck,
+    IconDelete,
+    IconEdit,
+    IconSave,
+    IconVisibility,
+    IconVisibilityOff
+} from '@/icons/mui'
 import { default as DataTable } from './data-table'
 import { DataTableAction } from './data-table-action'
 import { DataTableField } from './data-table-field'
@@ -573,14 +573,14 @@ export const Crud = () => {
                                     dataList.filter(item => item.id !== data.id)
                                 )
                             }}>
-                            <CheckIcon />
+                            <IconCheck />
                         </DataTableAction>
                         <DataTableAction
                             label='CancelIcon'
                             onClick={() => {
                                 controllerRef.current.popRowView(data.id)
                             }}>
-                            <CancelIcon />
+                            <IconClose />
                         </DataTableAction>
                     </div>
                 </div>
@@ -723,12 +723,12 @@ export const Crud = () => {
                             <DataTableAction
                                 label='Edit'
                                 onClick={handleEdit(id)}>
-                                <EditIcon />
+                                <IconEdit />
                             </DataTableAction>
                             <DataTableAction
                                 label='Delete'
                                 onClick={handleDelete(id)}>
-                                <DeleteIcon />
+                                <IconDelete />
                             </DataTableAction>
                         </div>
                     )
@@ -739,12 +739,12 @@ export const Crud = () => {
                         <DataTableAction
                             label='Save'
                             onClick={handleSave(id, isNew)}>
-                            <SaveIcon />
+                            <IconSave />
                         </DataTableAction>
                         <DataTableAction
                             label='Cancel'
                             onClick={handleView(id)}>
-                            <CancelIcon />
+                            <IconClose />
                         </DataTableAction>
                     </div>
                 )
@@ -840,14 +840,14 @@ export const CrudWithoutPagination = () => {
                                     dataList.filter(item => item.id !== data.id)
                                 )
                             }}>
-                            <CheckIcon />
+                            <IconCheck />
                         </DataTableAction>
                         <DataTableAction
                             label='CancelIcon'
                             onClick={() => {
                                 controllerRef?.current.popRowView(data.id)
                             }}>
-                            <CancelIcon />
+                            <IconClose />
                         </DataTableAction>
                     </div>
                 </div>
@@ -1002,17 +1002,17 @@ export const CrudWithoutPagination = () => {
                             <DataTableAction
                                 label='Show'
                                 onClick={handleView(id)}>
-                                <VisibilityIcon />
+                                <IconVisibility />
                             </DataTableAction>
                             <DataTableAction
                                 label='Edit'
                                 onClick={handleEdit(id)}>
-                                <EditIcon />
+                                <IconEdit />
                             </DataTableAction>
                             <DataTableAction
                                 label='Delete'
                                 onClick={handleDelete(id)}>
-                                <DeleteIcon />
+                                <IconDelete />
                             </DataTableAction>
                         </div>
                     )
@@ -1024,17 +1024,17 @@ export const CrudWithoutPagination = () => {
                             <DataTableAction
                                 label='Show'
                                 onClick={handleHide(id)}>
-                                <VisibilityOffIcon />
+                                <IconVisibilityOff />
                             </DataTableAction>
                             <DataTableAction
                                 label='Edit'
                                 onClick={handleEdit(id)}>
-                                <EditIcon />
+                                <IconEdit />
                             </DataTableAction>
                             <DataTableAction
                                 label='Delete'
                                 onClick={handleDelete(id)}>
-                                <DeleteIcon />
+                                <IconDelete />
                             </DataTableAction>
                         </div>
                     )
@@ -1045,12 +1045,12 @@ export const CrudWithoutPagination = () => {
                         <DataTableAction
                             label='Save'
                             onClick={handleSave(id, isNew)}>
-                            <SaveIcon />
+                            <IconSave />
                         </DataTableAction>
                         <DataTableAction
                             label='Cancel'
                             onClick={handleView(id)}>
-                            <CancelIcon />
+                            <IconClose />
                         </DataTableAction>
                     </div>
                 )

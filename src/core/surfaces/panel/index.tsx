@@ -1,7 +1,7 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
-import { ExpandMore as IconExpand } from '@mui/icons-material'
 import type { IPaperProps } from '@/core/surfaces/paper'
+import { IconExpandMore } from '@/icons/mui'
 import { ExpansionPaperPanel, Summary, Title } from './styles'
 
 export interface PanelProps extends Omit<IPaperProps, 'title' | 'onChange'> {
@@ -81,7 +81,9 @@ const Panel = (props: PanelProps) => {
                 )
             }
             expandIcon={
-                !hideExpansionIcon && <IconExpand data-testid='expand-icon' />
+                !hideExpansionIcon && (
+                    <IconExpandMore data-testid='expand-icon' />
+                )
             }
             style={{
                 gridArea: area,

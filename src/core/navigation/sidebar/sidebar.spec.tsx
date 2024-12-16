@@ -1,8 +1,8 @@
 import React from 'react'
-import { Backup } from '@mui/icons-material'
 import { render, screen } from '@testing-library/react'
 import List from '@/core/data-display/list'
 import ListItem from '@/core/data-display/list-item'
+import { IconFolderShared } from '@/icons/mui'
 import Sidebar from '.'
 
 describe('Sidebar', () => {
@@ -10,8 +10,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar open onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<Backup />} />
-                    <ListItem title='Item 2' icon={<Backup />} />
+                    <ListItem title='Item 1' icon={<IconFolderShared />} />
+                    <ListItem title='Item 2' icon={<IconFolderShared />} />
                 </List>
             </Sidebar>
         )
@@ -27,8 +27,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar open={false} onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<Backup />} />
-                    <ListItem title='Item 2' icon={<Backup />} />
+                    <ListItem title='Item 1' icon={<IconFolderShared />} />
+                    <ListItem title='Item 2' icon={<IconFolderShared />} />
                 </List>
             </Sidebar>
         )
@@ -44,8 +44,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar open expanded={false} onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<Backup />} />
-                    <ListItem title='Item 2' icon={<Backup />} />
+                    <ListItem title='Item 1' icon={<IconFolderShared />} />
+                    <ListItem title='Item 2' icon={<IconFolderShared />} />
                 </List>
             </Sidebar>
         )
@@ -61,8 +61,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar open anchor='right' onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<Backup />} />
-                    <ListItem title='Item 2' icon={<Backup />} />
+                    <ListItem title='Item 1' icon={<IconFolderShared />} />
+                    <ListItem title='Item 2' icon={<IconFolderShared />} />
                 </List>
             </Sidebar>
         )
@@ -78,8 +78,8 @@ describe('Sidebar', () => {
         render(
             <Sidebar open docked onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<Backup />} />
-                    <ListItem title='Item 2' icon={<Backup />} />
+                    <ListItem title='Item 1' icon={<IconFolderShared />} />
+                    <ListItem title='Item 2' icon={<IconFolderShared />} />
                 </List>
             </Sidebar>
         )
@@ -95,8 +95,8 @@ describe('Sidebar', () => {
         const { container } = render(
             <Sidebar open onToggle={jest.fn()}>
                 <List>
-                    <ListItem title='Item 1' icon={<Backup />} />
-                    <ListItem title='Item 2' icon={<Backup />} />
+                    <ListItem title='Item 1' icon={<IconFolderShared />} />
+                    <ListItem title='Item 2' icon={<IconFolderShared />} />
                 </List>
             </Sidebar>
         )

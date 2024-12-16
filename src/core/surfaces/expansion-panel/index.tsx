@@ -7,7 +7,6 @@ import type {
     ChangeEvent,
     SyntheticEvent
 } from 'react'
-import { Edit, KeyboardArrowUp, Save } from '@mui/icons-material'
 import MuiExpansionPanel from '@mui/material/Accordion'
 import MuiExpansionPanelActions from '@mui/material/AccordionActions'
 import MuiExpansionPanelDetails from '@mui/material/AccordionDetails'
@@ -15,6 +14,7 @@ import MuiExpansionPanelSummary from '@mui/material/AccordionSummary'
 import type { IPaperProps } from '@/core/surfaces/paper'
 import IconButton from '@/core/inputs/icon-button'
 import { HelperBox } from '@/core/inputs/text-field'
+import { IconEdit, IconExpandLess, IconSave } from '@/icons/mui'
 import { ExpansionPanelHeaderWrapper } from './styles'
 
 export interface ExpansionPanelProps extends Omit<IPaperProps, 'onChange'> {
@@ -117,7 +117,7 @@ const ExpansionPanel = ({
             style={{ margin, padding, ...style }}>
             {summary && (
                 <MuiExpansionPanelSummary
-                    expandIcon={expandIcon || <KeyboardArrowUp />}
+                    expandIcon={expandIcon || <IconExpandLess />}
                     style={summaryStyle}
                     onClick={onClick}>
                     <ExpansionPanelHeaderWrapper {...headerProps}>
@@ -130,14 +130,14 @@ const ExpansionPanel = ({
                                         role='save-button'
                                         padding='6px 2px'
                                         onClick={handleSaveClick}>
-                                        {<Save fontSize='small' />}
+                                        <IconSave fontSize='small' />
                                     </IconButton>
                                 ) : (
                                     <IconButton
                                         role='save-button'
                                         padding='6px 2px'
                                         onClick={handleEditClick}>
-                                        {<Edit fontSize='small' />}
+                                        <IconEdit fontSize='small' />
                                     </IconButton>
                                 )}
                             </div>

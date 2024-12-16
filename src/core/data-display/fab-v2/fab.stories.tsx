@@ -1,6 +1,6 @@
 import React from 'react'
-import { FileCopy } from '@mui/icons-material'
 import type { Meta, StoryObj } from '@storybook/react'
+import { IconFileCopy } from '@/icons/mui'
 import FabV2 from '.'
 import { theme } from '@/theme'
 
@@ -55,7 +55,7 @@ export const fabV2: Story = {
     render: ({ ...args }) => {
         return (
             <FabV2 {...args} onClick={() => alert('Fab clicked!')}>
-                <FileCopy />
+                <IconFileCopy />
             </FabV2>
         )
     },

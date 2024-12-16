@@ -1,11 +1,8 @@
 import React from 'react'
-import {
-    KeyboardArrowLeft as IconArrowLeft,
-    KeyboardArrowRight as IconArrowRight
-} from '@mui/icons-material'
 import Drawer from '@mui/material/Drawer'
 import type { DefaultProps } from '../../types'
 import type { IButtonProps } from '@/core/inputs/button'
+import { IconNavigateBefore, IconNavigateNext } from '@/icons/mui'
 import { Action, AnchorButton } from './styles'
 import { theme } from '@/theme'
 
@@ -61,11 +58,7 @@ const Sidebar = ({
                     minwidth={minWidth}
                     onClick={onToggle}
                     {...ButtonProps}>
-                    {iconToLeft ? (
-                        <IconArrowLeft fontSize='medium' />
-                    ) : (
-                        <IconArrowRight fontSize='medium' />
-                    )}
+                    {iconToLeft ? <IconNavigateBefore /> : <IconNavigateNext />}
                 </AnchorButton>
             </Action>
         )

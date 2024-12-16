@@ -1,14 +1,14 @@
 import React from 'react'
-import { FileCopy } from '@mui/icons-material'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
+import { IconFileCopy } from '@/icons/mui'
 import Fab from '.'
 
 describe('Fab', () => {
     it('should render', () => {
         render(
             <Fab mini onClick={jest.fn()}>
-                <FileCopy />
+                <IconFileCopy />
             </Fab>
         )
 
@@ -20,7 +20,7 @@ describe('Fab', () => {
     it('should render medium', () => {
         render(
             <Fab onClick={jest.fn()}>
-                <FileCopy />
+                <IconFileCopy />
             </Fab>
         )
 
@@ -34,7 +34,7 @@ describe('Fab', () => {
 
         render(
             <Fab onClick={onClickSpy}>
-                <FileCopy />
+                <IconFileCopy />
             </Fab>
         )
 
@@ -52,7 +52,7 @@ describe('Fab', () => {
 
         render(
             <Fab tooltip='tooltip-test' onClick={onClickSpy}>
-                <FileCopy />
+                <IconFileCopy />
             </Fab>
         )
 
@@ -67,7 +67,7 @@ describe('Fab', () => {
     it('should match snapshot', () => {
         const { container } = render(
             <Fab tooltip='tooltip-test' onClick={jest.fn()}>
-                <FileCopy />
+                <IconFileCopy />
             </Fab>
         )
 

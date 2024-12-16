@@ -1,13 +1,10 @@
 import React from 'react'
-import {
-    CheckCircle as CheckCircleIcon,
-    Help as HelpIcon
-} from '@mui/icons-material'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import List from '@mui/material/List'
 import type { IStepCardProps } from '.'
 import Typography from '@/core/data-display/typography'
 import IconButton from '@/core/inputs/icon-button'
+import { IconCheckCircle, IconHelp } from '@/icons/mui'
 import { ListItemContainer, StepCardColumn } from './styles'
 import { theme } from '@/theme'
 
@@ -43,7 +40,7 @@ const StepsList = ({
 
             return (
                 <ListItemContainer key={index}>
-                    <CheckCircleIcon
+                    <IconCheckCircle
                         style={{
                             color: step.done ? feedback.success : gray[600]
                         }}
@@ -64,7 +61,7 @@ const StepsList = ({
                                     backgroundColor: 'unset'
                                 }}
                                 onClick={handleOnClickStepUrl}>
-                                <HelpIcon
+                                <IconHelp
                                     fontSize='small'
                                     style={{ margin: '0px' }}
                                 />

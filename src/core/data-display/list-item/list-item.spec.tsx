@@ -1,6 +1,6 @@
 import React from 'react'
-import { Face } from '@mui/icons-material'
 import { render, screen, waitFor } from '@testing-library/react'
+import { IconFace } from '@/icons/mui'
 import ListItem from '.'
 import '@testing-library/jest-dom'
 
@@ -38,7 +38,9 @@ describe('ListItem', () => {
     })
 
     it('should render with custom width icon', () => {
-        render(<ListItem title='Title' subtitle='Subtitle' icon={<Face />} />)
+        render(
+            <ListItem title='Title' subtitle='Subtitle' icon={<IconFace />} />
+        )
 
         const button = screen.getByRole('button')
         const icon = button.querySelector('.MuiListItemIcon-root')
@@ -49,7 +51,7 @@ describe('ListItem', () => {
     })
 
     it('should not render with custom width icon', () => {
-        render(<ListItem icon={<Face />} />)
+        render(<ListItem icon={<IconFace />} />)
 
         const button = screen.getByRole('button')
         const icon = button.querySelector('.MuiListItemIcon-root')
@@ -64,7 +66,7 @@ describe('ListItem', () => {
             <ListItem
                 title='Title'
                 subtitle='Subtitle'
-                icon={<Face />}
+                icon={<IconFace />}
                 avatar={<div>Avatar</div>}
                 action={<div>Action</div>}
             />

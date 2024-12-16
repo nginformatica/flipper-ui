@@ -1,17 +1,17 @@
 import React from 'react'
 import type { ReactNode, FunctionComponent, MouseEvent } from 'react'
-import {
-    CheckCircle as IconCheck,
-    Close as IconClose,
-    Error as IconError,
-    Info as IconInfo,
-    Warning as IconWarning
-} from '@mui/icons-material'
 import MuiSnackbar from '@mui/material/Snackbar'
 import MuiSnackbarContent from '@mui/material/SnackbarContent'
 import type { DefaultProps } from '../../types'
 import type { TransitionProps } from '@mui/material/transitions'
 import IconButton from '@/core/inputs/icon-button'
+import {
+    IconCheckCircle,
+    IconClose,
+    IconError,
+    IconInfo,
+    IconWarning
+} from '@/icons/mui'
 import { Message } from './styles'
 import { theme } from '@/theme'
 
@@ -51,7 +51,7 @@ const variants = {
     },
     success: {
         color: green[400],
-        icon: IconCheck
+        icon: IconCheckCircle
     },
     warning: {
         color: orange[600],
@@ -79,6 +79,7 @@ const SnackBar = (props: SnackBarProps) => {
         onClick,
         ...otherProps
     } = props
+
     const Icon = variants[variant].icon
 
     const cursor = onClick ? 'pointer' : undefined

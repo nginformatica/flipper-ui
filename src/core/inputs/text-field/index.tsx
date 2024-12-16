@@ -8,7 +8,6 @@ import type {
     MouseEvent,
     Ref
 } from 'react'
-import { Clear, Help as ContactSupportIcon } from '@mui/icons-material'
 import MuiInputAdornment from '@mui/material/InputAdornment'
 import MuiMenuItem from '@mui/material/MenuItem'
 import MuiTextField from '@mui/material/TextField'
@@ -16,6 +15,7 @@ import { pipe, split, map, reject } from 'ramda'
 import type { DefaultProps } from '../../types'
 import type { InputBaseComponentProps } from '@mui/material/InputBase'
 import type { TextFieldProps } from '@mui/material/TextField'
+import { IconClose, IconHelp } from '@/icons/mui'
 import IconButton from '../icon-button'
 import {
     CharactersCount,
@@ -99,9 +99,7 @@ const toLispCase = (name: string) =>
 export const HelperBox = (props: IHelperProps) => (
     <Helper role='helper-box'>
         <IconButton padding='6px 2px' onClick={props.onHelperClick}>
-            {props.helperIcon || (
-                <ContactSupportIcon htmlColor={primary.main} />
-            )}
+            {props.helperIcon || <IconHelp htmlColor={primary.main} />}
         </IconButton>
     </Helper>
 )
@@ -130,7 +128,7 @@ const renderEndAdornment = (disabled?: boolean, onClear?: () => void) => (
             margin='0 16px 0 0'
             disabled={disabled || false}
             onClick={onClear}>
-            <Clear fontSize='inherit' />
+            <IconClose fontSize='inherit' />
         </IconButton>
     </MuiInputAdornment>
 )
