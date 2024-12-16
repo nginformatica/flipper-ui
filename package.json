@@ -69,7 +69,7 @@
         "babel-plugin-import": "1.13.8",
         "babel-plugin-module-resolver": "5.0.2",
         "date-fns": "4.1.0",
-        "eslint": "9.16.0",
+        "eslint": "9.17.0",
         "eslint-config-prettier": "9.1.0",
         "eslint-import-resolver-typescript": "3.7.0",
         "eslint-plugin-import": "2.31.0",
