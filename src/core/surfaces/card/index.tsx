@@ -69,8 +69,8 @@ const Card = (props: IProps) => {
                         {title && (
                             <Typography
                                 name={name + '-title'}
-                                flex={1}
                                 variant='h6'
+                                flexGrow={1}
                                 color='primary'>
                                 {title}
                             </Typography>

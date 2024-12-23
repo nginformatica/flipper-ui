@@ -3,12 +3,6 @@ import MuiTypography from '@mui/material/Typography'
 import type { DefaultProps } from '../../types'
 import type { TypographyProps } from '@mui/material/Typography'
 
-type ITypography = {
-    flex?: number
-}
-
-type CustomTypographyProps = ITypography & TypographyProps & DefaultProps
-
 const Typography = ({
     children,
     margin,
@@ -16,7 +10,7 @@ const Typography = ({
     style = {},
     variant = 'body2',
     ...otherProps
-}: CustomTypographyProps) => (
+}: TypographyProps & DefaultProps) => (
     <MuiTypography
         {...otherProps}
         variant={variant}
