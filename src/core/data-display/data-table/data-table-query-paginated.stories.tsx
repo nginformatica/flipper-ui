@@ -8,7 +8,6 @@ import type {
 import MuiSkeleton from '@mui/material/Skeleton'
 import MuiTableCell from '@mui/material/TableCell'
 import MuiTableRow from '@mui/material/TableRow'
-import MuiTypography from '@mui/material/Typography'
 import { format } from 'date-fns'
 import type { ColumnSpec, DataTableController, Identifier } from './types'
 import type { Meta } from '@storybook/react'
@@ -20,6 +19,7 @@ import {
     IconEdit,
     IconSave
 } from '@/icons/mui'
+import Typography from '../typography'
 import { DataTableAction } from './data-table-action'
 import { DataTableQueryPaginated } from './data-table-query-paginated'
 import { RowMode } from './types'
@@ -282,7 +282,7 @@ export const Empty = () => {
                     boxSizing: 'border-box'
                 }}>
                 <div>
-                    <MuiTypography>Empty DataTable</MuiTypography>
+                    <Typography>Empty DataTable</Typography>
                 </div>
             </td>
         </tr>
@@ -453,9 +453,7 @@ export const Crud = () => {
                         padding: '16px',
                         justifyContent: 'space-between'
                     }}>
-                    <MuiTypography>
-                        Confirm Delete "{data.product}"?
-                    </MuiTypography>
+                    <Typography>Confirm Delete "{data.product}"?</Typography>
                     <div style={{ display: 'flex' }}>
                         <DataTableAction
                             label='CheckIcon'

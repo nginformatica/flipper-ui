@@ -47,9 +47,9 @@ const StepsList = ({
                     />
                     <Typography
                         variant='body1'
-                        style={{
-                            color: gray[700],
-                            fontWeight: 600
+                        fontWeight={600}
+                        sx={{
+                            color: gray[700]
                         }}>
                         {step.title}
                     </Typography>

@@ -22,12 +22,15 @@ const meta: Meta<typeof Typography> = {
                 'subtitle2',
                 'body1',
                 'body2',
-                'inherit'
+                'caption',
+                'button',
+                'overline'
             ],
             control: { type: 'radio' },
             description:
                 'The variants based on the HTML tags. Must be ' +
-                '`h1 | h2 | h3 | h4 | h5 | h6 | subtitle1 | subtitle2 | body1 | body2 | inherit`. ' +
+                '`h1 | h2 | h3 | h4 | h5 | h6 | subtitle1 | subtitle2 | body1 | body2`' +
+                '`| caption | button | overline`. ' +
                 'If not set, the default is "body1"'
         },
         color: {

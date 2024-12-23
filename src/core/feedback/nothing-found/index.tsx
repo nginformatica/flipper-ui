@@ -1,8 +1,7 @@
 import React from 'react'
-import type { TypographyProps } from '@mui/material/Typography'
-import { TextTypography } from './styles'
+import Typography from '@/core/data-display/typography'
 
-export interface IProps extends TypographyProps {
+export interface IProps {
     searchText?: string
     customText?: string
     buttonLabel?: string
@@ -21,16 +20,17 @@ const NothingFound = (props: IProps) => {
     const { customText = message, searchText = '', show, ...otherProps } = rest
 
     return show ? (
-        <TextTypography
-            align='center'
+        <Typography
+            flex={1}
             variant='h5'
+            align='center'
             color='textSecondary'
             padding='48px 0'
             {...otherProps}>
             {searchText !== ''
                 ? `Sua pesquisa "${searchText}" não retornou nenhum resultado.`
                 : customText}
-        </TextTypography>
+        </Typography>
     ) : null
 }
 

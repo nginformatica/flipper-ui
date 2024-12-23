@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactNode } from 'react'
 import Actions from '@/core/data-display/actions'
+import Typography from '@/core/data-display/typography'
 import Button from '@/core/inputs/button'
-import { DialogTypography, MuiDialog, ValidationWrapper } from './styles'
+import { MuiDialog, ValidationWrapper } from './styles'
 
 export interface IValidateProps {
     open: boolean
@@ -100,14 +101,16 @@ const ValidationDialog = ({
         }
     ) => {
         if (status === 'Success') {
-            return <DialogTypography>{description.success}</DialogTypography>
+            return (
+                <Typography variant='body1'>{description.success}</Typography>
+            )
         }
 
         if (status === 'Error') {
-            return <DialogTypography>{description.error}</DialogTypography>
+            return <Typography variant='body1'>{description.error}</Typography>
         }
 
-        return <DialogTypography>{description.loading}</DialogTypography>
+        return <Typography variant='body1'>{description.loading}</Typography>
     }
 
     const renderContent = (
