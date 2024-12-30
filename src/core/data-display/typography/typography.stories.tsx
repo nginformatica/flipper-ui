@@ -1,6 +1,9 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import Typography from '.'
+import { theme } from '@/theme'
+
+const { primary } = theme.colors
 
 const meta: Meta<typeof Typography> = {
     title: 'DataDisplay/Typography',
@@ -29,9 +32,9 @@ const meta: Meta<typeof Typography> = {
             control: { type: 'radio' },
             description:
                 'The variants based on the HTML tags. Must be ' +
-                '`h1 | h2 | h3 | h4 | h5 | h6 | subtitle1 | subtitle2 | body1 | body2`' +
-                '`| caption | button | overline`. ' +
-                'If not set, the default is "body1"'
+                '`h1 | h2 | h3 | h4 | h5 | h6 | subtitle1 | subtitle2 | body1 |` ' +
+                '` body2 | caption | button | overline`. ' +
+                'If not set, the default is `body2`.'
         },
         color: {
             options: [
@@ -40,13 +43,23 @@ const meta: Meta<typeof Typography> = {
                 'secondary',
                 'error',
                 'textPrimary',
-                'textSecondary'
+                'textSecondary',
+                'textDisabled'
             ],
             control: { type: 'radio' },
             description:
                 'The text color. Must be ' +
-                '`default | primary | secondary | error | textPrimary | textSecondary `. ' +
-                'If not set, the default is "default"'
+                '`default | primary | secondary | error |` ' +
+                '`textPrimary | textSecondary | textDisabled.` ' +
+                'If not set, the default is `default`.'
+        },
+        align: {
+            options: ['inherit', 'center', 'right', 'left', 'justify'],
+            control: { type: 'radio' },
+            description:
+                'The text alignment. Must be ' +
+                '`inherit | center | right | left | justify.` ' +
+                'If not set, the default is `left`.'
         },
         margin: {
             control: 'text',
@@ -69,12 +82,37 @@ type Story = StoryObj<typeof Typography>
 
 export const typography: Story = {
     render: ({ ...args }) => {
-        return <Typography {...args} />
+        return (
+            <>
+                <Typography
+                    variant='subtitle2'
+                    color='primary'
+                    align='center'
+                    width='70%'
+                    margin='0 auto 48px'>
+                    Como um utilitário CSS, o componente Typography também
+                    suporta todas as propriedades{' '}
+                    <a
+                        target='_blank'
+                        href='https://mui.com/system/properties/'
+                        style={{
+                            color: primary.light,
+                            textDecoration: 'none'
+                        }}>
+                        system
+                    </a>
+                    . Você pode usá-las como props diretamente no componente.
+                </Typography>
+
+                <Typography {...args} />
+            </>
+        )
     },
     args: {
-        children: 'This is a text!',
+        children: 'This is Typography component text!',
         variant: 'body1',
         color: 'default',
+        align: 'left',
         margin: '0px',
         padding: '0px',
         style: {}
