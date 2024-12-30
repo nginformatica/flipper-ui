@@ -2,8 +2,9 @@ import React from 'react'
 import type { ReactNode } from 'react'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import { addIndex, map } from 'ramda'
+import Typography from '@/core/data-display/typography'
 import { IconNavigateNext } from '@/icons/mui'
-import { BreadcrumbLink, TextTypography } from './styles'
+import { BreadcrumbLink } from './styles'
 
 const imap = addIndex(map)
 
@@ -43,9 +44,9 @@ const Breadcrumbs = ({
         const link = '/' + allChunks.slice(1, chunkIndex + 1).join('/')
 
         const text = (
-            <TextTypography key={link} color='inherit'>
+            <Typography key={link} color='inherit'>
                 {validChunkWord}
-            </TextTypography>
+            </Typography>
         )
 
         const isLastChunk = chunkIndex === lastChunkIndex

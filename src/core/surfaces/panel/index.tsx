@@ -1,8 +1,9 @@
 import React from 'react'
 import type { CSSProperties, ChangeEvent, MouseEvent, ReactNode } from 'react'
 import type { IPaperProps } from '@/core/surfaces/paper'
+import Typography from '@/core/data-display/typography'
 import { IconExpandMore } from '@/icons/mui'
-import { ExpansionPaperPanel, Summary, Title } from './styles'
+import { ExpansionPaperPanel, Summary } from './styles'
 
 export interface PanelProps extends Omit<IPaperProps, 'title' | 'onChange'> {
     expanded?: boolean
@@ -72,9 +73,9 @@ const Panel = (props: PanelProps) => {
                 !hideSummary && (
                     <Summary>
                         {title && (
-                            <Title noWrap variant='subtitle1'>
+                            <Typography noWrap flex={1} variant='subtitle1'>
                                 {title}
-                            </Title>
+                            </Typography>
                         )}
                         {summary}
                     </Summary>

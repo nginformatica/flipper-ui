@@ -42,8 +42,14 @@ const ListItem = (props: ListItemProps) => {
                     <MuiListItemText
                         primary={props.title}
                         secondary={props.subtitle}
-                        primaryTypographyProps={{ color: 'inherit' }}
-                        secondaryTypographyProps={{ color: 'inherit' }}
+                        slotProps={{
+                            primary: {
+                                color: 'inherit'
+                            },
+                            secondary: {
+                                color: 'inherit'
+                            }
+                        }}
                         data-testid={`list-item-${props.subtitle}`}
                     />
                 )}

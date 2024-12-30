@@ -74,11 +74,11 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                     )}
                     <TitleContainer>
                         <Typography
-                            variant='h6'
-                            style={{
-                                color: gray[800],
-                                fontSize: 24,
-                                textAlign: 'center'
+                            variant='h5'
+                            align='center'
+                            fontWeight={500}
+                            sx={{
+                                color: gray[800]
                             }}
                             {...titleProps}>
                             {title}
@@ -86,9 +86,9 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                         {subTitle && (
                             <Typography
                                 variant='h6'
-                                style={{
-                                    color: gray[600],
-                                    textAlign: 'center'
+                                align='center'
+                                sx={{
+                                    color: gray[600]
                                 }}
                                 {...titleProps}>
                                 {subTitle}

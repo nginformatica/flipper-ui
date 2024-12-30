@@ -3,10 +3,11 @@ import type { ReactNode } from 'react'
 import type { IButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Line from '@/core/data-display/line'
+import Typography from '@/core/data-display/typography'
 import AddButton from '@/core/inputs/add-button'
 import Paper from '@/core/surfaces/paper'
 import { IconClose, IconEdit, IconDelete } from '@/icons/mui'
-import { CardButton, Header, Title } from './styles'
+import { CardButton, Header } from './styles'
 import { theme } from '@/theme'
 
 const { feedback } = theme.colors
@@ -66,12 +67,13 @@ const Card = (props: IProps) => {
                 <>
                     <Header>
                         {title && (
-                            <Title
+                            <Typography
                                 name={name + '-title'}
+                                flex={1}
                                 variant='h6'
                                 color='primary'>
                                 {title}
-                            </Title>
+                            </Typography>
                         )}
 
                         {action}
