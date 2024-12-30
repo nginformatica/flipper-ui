@@ -21,8 +21,8 @@ const NothingFound = (props: IProps) => {
 
     return show ? (
         <Typography
+            flex={1}
             variant='h5'
-            flexGrow={1}
             align='center'
             color='textSecondary'
             padding='48px 0'

@@ -73,7 +73,7 @@ const Panel = (props: PanelProps) => {
                 !hideSummary && (
                     <Summary>
                         {title && (
-                            <Typography noWrap flexGrow={1} variant='subtitle1'>
+                            <Typography noWrap flex={1} variant='subtitle1'>
                                 {title}
                             </Typography>
                         )}
