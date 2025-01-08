@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import type { IProps } from '.'
 import type { DefaultProps } from '@/core/types'
-import type {
-    DatePickerProps,
-    TimePickerProps,
-    DateTimePickerProps
-} from '@mui/x-date-pickers'
+import type { DatePickerProps } from '@mui/x-date-pickers/DatePicker'
+import type { DateTimePickerProps } from '@mui/x-date-pickers/DateTimePicker'
+import type { TimePickerProps } from '@mui/x-date-pickers/TimePicker'
 import type { Meta, StoryObj } from '@storybook/react'
 import DateTime from '.'
 

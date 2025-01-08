@@ -6,16 +6,11 @@ import {
     DateTimePicker,
     DateTimePickerToolbar
 } from '@mui/x-date-pickers/DateTimePicker'
-import { ptBR as ptBRTexts } from '@mui/x-date-pickers/locales'
+import { ptBR as ptBRTexts } from '@mui/x-date-pickers/locales/ptBR'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { TimePicker, TimePickerToolbar } from '@mui/x-date-pickers/TimePicker'
-import { ptBR } from 'date-fns/locale'
+import { ptBR } from 'date-fns/locale/pt-BR'
 import type { DefaultProps } from '../../types'
-import type {
-    DateOrTimeView,
-    DateTimeValidationError,
-    PickerChangeHandlerContext
-} from '@mui/x-date-pickers'
 import type {
     DatePickerProps,
     DatePickerToolbarProps
@@ -24,6 +19,11 @@ import type {
     DateTimePickerProps,
     DateTimePickerToolbarProps
 } from '@mui/x-date-pickers/DateTimePicker'
+import type {
+    DateOrTimeView,
+    DateTimeValidationError,
+    PickerChangeHandlerContext
+} from '@mui/x-date-pickers/models'
 import type {
     TimePickerProps,
     TimePickerToolbarProps
