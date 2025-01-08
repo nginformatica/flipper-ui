@@ -1,5 +1,5 @@
 import React from 'react'
-import { CircularProgress } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress'
 import { render, screen, fireEvent } from '@testing-library/react'
 import type { ITitles, IValidations } from '.'
 import { IconCancelOutlined, IconCheckCircleOutlined } from '@/icons/mui'

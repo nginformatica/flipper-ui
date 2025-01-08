@@ -16,9 +16,9 @@ describe('Paper', () => {
     it('should render round paper', () => {
         const children = 'I am a Paper.'
 
-        render(<Paper>{children}</Paper>)
+        render(<Paper data-testid='mui-paper-container'>{children}</Paper>)
 
-        const container = screen.getByRole('mui-paper-container')
+        const container = screen.getByTestId('mui-paper-container')
 
         expect(container.classList).toContain('MuiPaper-rounded')
     })
@@ -26,9 +26,13 @@ describe('Paper', () => {
     it('should render square paper', () => {
         const children = 'I am a Paper.'
 
-        render(<Paper square>{children}</Paper>)
+        render(
+            <Paper square data-testid='mui-paper-container'>
+                {children}
+            </Paper>
+        )
 
-        const container = screen.getByRole('mui-paper-container')
+        const container = screen.getByTestId('mui-paper-container')
 
         expect(container.classList).not.toContain('MuiPaper-rounded')
     })
@@ -36,10 +40,14 @@ describe('Paper', () => {
     it('should render paper with no elevation', () => {
         const children = 'I am a Paper.'
 
-        render(<Paper elevation={0}>{children}</Paper>)
+        render(
+            <Paper elevation={0} data-testid='mui-paper-container'>
+                {children}
+            </Paper>
+        )
 
         const matchingElements = screen.getByText(children)
-        const container = screen.getByRole('mui-paper-container')
+        const container = screen.getByTestId('mui-paper-container')
 
         expect(matchingElements).toBeDefined()
         expect(container.classList).toContain('MuiPaper-elevation0')
@@ -48,10 +56,14 @@ describe('Paper', () => {
     it('should render paper with elevation', () => {
         const children = 'I am a Paper.'
 
-        render(<Paper elevation={12}>{children}</Paper>)
+        render(
+            <Paper elevation={12} data-testid='mui-paper-container'>
+                {children}
+            </Paper>
+        )
 
         const matchingElements = screen.getByText(children)
-        const container = screen.getByRole('mui-paper-container')
+        const container = screen.getByTestId('mui-paper-container')
 
         expect(matchingElements).toBeDefined()
         expect(container.classList).toContain('MuiPaper-elevation12')
@@ -60,10 +72,14 @@ describe('Paper', () => {
     it('should render paper with max elevation', () => {
         const children = 'I am a Paper.'
 
-        render(<Paper elevation={24}>{children}</Paper>)
+        render(
+            <Paper elevation={24} data-testid='mui-paper-container'>
+                {children}
+            </Paper>
+        )
 
         const matchingElements = screen.getByText(children)
-        const container = screen.getByRole('mui-paper-container')
+        const container = screen.getByTestId('mui-paper-container')
 
         expect(matchingElements).toBeDefined()
         expect(container.classList).toContain('MuiPaper-elevation24')

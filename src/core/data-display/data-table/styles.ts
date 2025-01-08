@@ -1,4 +1,5 @@
-import { TableCell, TableRow } from '@mui/material'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableRow from '@mui/material/TableRow'
 import { default as styled } from 'styled-components'
 
 export const FieldWrapper = styled.span``
@@ -8,7 +9,7 @@ export const PaginationWrapper = styled.div`
     margin-left: 12px;
 `
 
-export const TableCellRows = styled(TableCell)`
+export const TableCellRows = styled(MuiTableCell)`
     && {
         width: 400px;
         height: 60px;
@@ -16,7 +17,7 @@ export const TableCellRows = styled(TableCell)`
     }
 `
 
-export const RowTable = styled(TableRow)`
+export const RowTable = styled(MuiTableRow)`
     width: 100%;
     cursor: pointer;
 

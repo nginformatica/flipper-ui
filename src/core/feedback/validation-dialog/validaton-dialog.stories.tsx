@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { CircularProgress } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress'
 import { ThemeProvider } from 'styled-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import Button from '@/core/inputs/button'

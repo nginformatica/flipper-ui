@@ -9,7 +9,7 @@ import {
 import { ptBR as ptBRTexts } from '@mui/x-date-pickers/locales'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { TimePicker, TimePickerToolbar } from '@mui/x-date-pickers/TimePicker'
-import { ptBR } from 'date-fns/locale'
+import { ptBR } from 'date-fns/locale/pt-BR'
 import type { DefaultProps } from '../../types'
 import type {
     DateOrTimeView,

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
-import { Avatar as MuiAvatar } from '@mui/material'
+import MuiAvatar from '@mui/material/Avatar'
 
 export interface IProps {
     name?: string

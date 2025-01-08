@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
-import { FormControl, InputLabel } from '@mui/material'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
 import type { ISelectProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import ListItem from '@/core/data-display/list-item'
