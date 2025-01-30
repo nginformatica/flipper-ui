@@ -17,7 +17,7 @@ import MuiTableFooter from '@mui/material/TableFooter'
 import MuiTableHead from '@mui/material/TableHead'
 import MuiTablePagination from '@mui/material/TablePagination'
 import MuiTableRow from '@mui/material/TableRow'
-import { last } from 'ramda'
+import { equals, last } from 'ramda'
 import type {
     ColumnSpec,
     Data,
@@ -87,11 +87,8 @@ const sliceData = <D,>(data: D[], page: number, rowsPerPage: number) => {
 export const DataTable = <D extends Data, V extends StackView>(
     props: DataTableProps<D, V>
 ) => {
-    const [page, setPage] = useState(0)
-    const pagination = { ...defaultPagination, ...props.pagination }
-    const [rowsPerPage, setRowsPerPage] = useState(pagination.rowsPerPage)
     const {
-        data,
+        data = [],
         columns,
         rowViews,
         onRowClick,
@@ -112,20 +109,28 @@ export const DataTable = <D extends Data, V extends StackView>(
         checkboxProps
     } = props
 
+    const pagination = { ...defaultPagination, ...props.pagination }
+
+    const controller = useRef<DataTableController<D, V>>()
+
+    const [page, setPage] = useState(0)
+    const [rows, setRows] = useState<D[]>([])
     const [newRow, setNewRow] = useState<PartialData<D> | undefined>()
+    const [rowsPerPage, setRowsPerPage] = useState(pagination.rowsPerPage)
 
-    const rows = useMemo(() => {
-        if (pagination.disabled) {
-            return data
+    useEffect(() => {
+        const newRows = pagination.disabled
+            ? data
+            : sliceData(
+                  data,
+                  page,
+                  newRow && page === 0 ? rowsPerPage - 1 : rowsPerPage
+              )
+
+        if (!equals(rows, newRows)) {
+            setRows(newRows)
         }
-
-        // this case is not good for the useRowsMode hook
-        if (newRow && page === 0) {
-            return sliceData(data, page, rowsPerPage - 1)
-        }
-
-        return sliceData(data, page, rowsPerPage)
-    }, [pagination.disabled, data, rowsPerPage, page, newRow])
+    }, [data, page, newRow, rowsPerPage, pagination.disabled])
 
     const {
         getRowState,
@@ -134,8 +139,6 @@ export const DataTable = <D extends Data, V extends StackView>(
         pushRowView,
         popRowView
     } = useRowsState<D, V>(rows, hidden, newRow)
-
-    const controller = useRef<DataTableController<D, V>>()
 
     useEffect(() => {
         const nextController: DataTableController<D, V> = {
@@ -166,7 +169,7 @@ export const DataTable = <D extends Data, V extends StackView>(
             },
             pushRowView,
             popRowView
-        } as const
+        }
 
         controller.current = nextController
 
