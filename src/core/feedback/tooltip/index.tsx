@@ -2,8 +2,9 @@ import React from 'react'
 import type { ReactElement, CSSProperties, ReactNode } from 'react'
 import MuiTooltip from '@mui/material/Tooltip'
 import type { DefaultProps } from '../../types'
+import type { TooltipProps as MuiTooltipProps } from '@mui/material/Tooltip'
 
-export interface TooltipProps extends DefaultProps {
+export interface TooltipProps extends DefaultProps, MuiTooltipProps {
     placement?:
         | 'bottom-end'
         | 'bottom-start'
@@ -35,7 +36,17 @@ const Tooltip = ({
     title,
     ...otherProps
 }: TooltipProps) => (
-    <MuiTooltip title={title || ''} enterDelay={enterDelay} {...otherProps}>
+    <MuiTooltip
+        title={title || ''}
+        enterDelay={enterDelay}
+        slotProps={{
+            popper: {
+                sx: {
+                    zIndex: 9999
+                }
+            }
+        }}
+        {...otherProps}>
         {withWrapper ? (
             <div
                 style={{
