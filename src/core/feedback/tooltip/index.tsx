@@ -26,14 +26,16 @@ export interface TooltipProps extends DefaultProps, MuiTooltipProps {
     open?: boolean
     children: ReactElement<Record<string, unknown>>
     enterDelay?: number
+    zIndex?: number
 }
 
 const Tooltip = ({
+    title,
+    zIndex,
     children,
     withWrapper,
     wrapperStyle,
     enterDelay = 1000,
-    title,
     ...otherProps
 }: TooltipProps) => (
     <MuiTooltip
@@ -42,7 +44,7 @@ const Tooltip = ({
         slotProps={{
             popper: {
                 sx: {
-                    zIndex: 9999
+                    zIndex: zIndex || 9999
                 }
             }
         }}
