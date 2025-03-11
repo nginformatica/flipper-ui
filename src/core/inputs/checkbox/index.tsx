@@ -6,6 +6,7 @@ import MuiSwitch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
 import type { DefaultProps } from '../../types'
 import type { CheckboxProps } from '@mui/material/Checkbox'
+import type { SwitchProps } from '@mui/material/Switch'
 import { HelperBox } from '@/core/inputs/text-field'
 import { CheckFieldsWrapper, DENSE } from './styles'
 
@@ -59,7 +60,7 @@ const Checkbox = (props: ICheckboxProps) => {
         />
     )
 
-    const renderSwitch = (checkboxProps?: Omit<CheckboxProps, 'size'>) => (
+    const renderSwitch = (checkboxProps?: SwitchProps) => (
         <MuiSwitch
             {...checkboxProps}
             role='switch'
@@ -72,8 +73,10 @@ const Checkbox = (props: ICheckboxProps) => {
         />
     )
 
-    const renderControl = (props?: CheckboxProps) =>
-        type === 'checkbox' ? renderCheckbox(props) : renderSwitch(props)
+    const renderControl = (props: CheckboxProps | SwitchProps | undefined) =>
+        type === 'checkbox'
+            ? renderCheckbox(props as CheckboxProps)
+            : renderSwitch(props as SwitchProps)
 
     const renderLabel = () =>
         typeof props.label === 'string' && props.dense ? (
