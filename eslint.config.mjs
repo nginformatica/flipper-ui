@@ -1,11 +1,11 @@
-const react = require('eslint-plugin-react')
-const hooks = require('eslint-plugin-react-hooks')
-const parser = require('@typescript-eslint/parser')
-const tseslint = require('typescript-eslint')
-const stylistic = require('@stylistic/eslint-plugin')
-const importplugin = require('eslint-plugin-import')
-const eslintprettier = require('eslint-plugin-prettier')
-const tseslintplugin = require('@typescript-eslint/eslint-plugin')
+import react from 'eslint-plugin-react'
+import hooks from 'eslint-plugin-react-hooks'
+import parser from '@typescript-eslint/parser'
+import tseslint from 'typescript-eslint'
+import stylistic from '@stylistic/eslint-plugin'
+import importplugin from 'eslint-plugin-import'
+import eslintprettier from 'eslint-plugin-prettier'
+import tseslintplugin from '@typescript-eslint/eslint-plugin'
 
 const rulesReact = {
     'react/prop-types': 'off',
@@ -154,7 +154,7 @@ const rulesTypescript = {
     '@typescript-eslint/consistent-type-imports': 'error'
 }
 
-module.exports = tseslint.config(
+export default tseslint.config(
     ...tseslint.configs.recommended,
     {
         ignores: [
