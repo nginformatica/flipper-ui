@@ -2,7 +2,7 @@ import React, { createContext } from 'react'
 import MuiTableHead from '@mui/material/TableHead'
 import type { DefaultProps } from '../../types'
 
-interface TableHeadProps extends DefaultProps, ISort {
+export interface TableHeadProps extends DefaultProps, ISort {
     color?: string
 }
 
