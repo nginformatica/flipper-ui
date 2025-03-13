@@ -12,8 +12,8 @@ export const IconMap = ({ color, width, height, viewBox }: IIconProps) => (
         viewBox={viewBox || '0 0 24 24'}
         xmlns='http://www.w3.org/2000/svg'>
         <path
-            fill-rule='evenodd'
-            clip-rule='evenodd'
+            fillRule='evenodd'
+            clipRule='evenodd'
             fill={color || primary.main}
             d='M21.8182 2.25H2.18182C0.981818 2.25 0 3.23182 0 4.43182V19.7045C0 20.9045 0.981818 21.8645 2.18182 21.8645H21.8182C23.0182 21.8645 24 20.9045 24 19.7045V4.43182C24 3.23182 23.0182 2.25 21.8182 2.25ZM10.9091 4.41H2.18182V10.9773H5.45455V13.1591L2.18182 13.1536V19.7155H10.9091V14.7955H13.0909V19.7045L21.8182 19.7155V13.1591L16.3636 13.1536V10.9773H21.8182V4.41H13.0909V13.1591H8.72727V10.9773H10.9091V4.41Z'
         />
