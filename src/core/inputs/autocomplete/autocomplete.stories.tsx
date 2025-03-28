@@ -1,15 +1,15 @@
 import React from 'react'
 import type { Meta } from '@storybook/react'
 import TextField from '@/core/inputs/text-field'
-import { Autocomplete } from '.'
+import { Autocomplete as AutocompleteInput } from '.'
 
 export default {
-    title: 'Inputs/Autocomplete Lab',
-    component: Autocomplete
-} as Meta<typeof Autocomplete>
+    title: 'Inputs/Autocomplete',
+    component: AutocompleteInput
+} as Meta<typeof AutocompleteInput>
 
-export const AutocompleteLab = () => (
-    <Autocomplete
+export const Autocomplete = () => (
+    <AutocompleteInput
         fullWidth
         disableClearable
         options={[
