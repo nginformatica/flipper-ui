@@ -8,6 +8,7 @@ export interface IIconProps {
     white?: boolean
     active?: boolean
     viewBox?: string
+    opacity?: string
     disabled?: boolean
     selected?: boolean
     height?: number | string
