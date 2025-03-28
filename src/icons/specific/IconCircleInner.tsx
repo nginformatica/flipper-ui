@@ -4,7 +4,7 @@ import { theme } from '@/theme'
 
 const { lightGreen, gray } = theme.colors
 
-interface ICircleInner extends IIconProps {
+export interface ICircleInner extends IIconProps {
     isGray?: boolean
 }
 

@@ -4,7 +4,7 @@ import { theme } from '@/theme'
 
 const { darkBlue, deepOrange, lightBlue, lightBrown } = theme.colors
 
-interface ITriangleCircleDown extends IIconProps {
+export interface ITriangleCircleDown extends IIconProps {
     isRed?: boolean
 }
 
