@@ -154,6 +154,10 @@ const rulesTypescript = {
     '@typescript-eslint/consistent-type-imports': 'error'
 }
 
+const rulesReactHooks = {
+    'react-hooks/rules-of-hooks': 'error'
+}
+
 export default tseslint.config(
     ...tseslint.configs.recommended,
     {
@@ -203,6 +207,7 @@ export default tseslint.config(
             ...rulesReact,
             ...rulesEslint,
             ...rulesImport,
+            ...rulesReactHooks,
             ...rulesTypescript
         }
     }
