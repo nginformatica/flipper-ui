@@ -59,12 +59,11 @@
         "@testing-library/react": "16.3.0",
         "@testing-library/user-event": "14.6.1",
         "@types/jest": "29.5.14",
-        "@types/node": "22.14.1",
+        "@types/node": "22.15.3",
         "@types/ramda": "0.30.2",
         "@types/react": "18.3.12",
-        "@types/uuid": "10.0.0",
-        "@typescript-eslint/eslint-plugin": "8.31.0",
-        "@typescript-eslint/parser": "8.31.0",
+        "@typescript-eslint/eslint-plugin": "8.31.1",
+        "@typescript-eslint/parser": "8.31.1",
         "babel-loader": "10.0.0",
         "babel-plugin-import": "1.13.8",
         "babel-plugin-module-resolver": "5.0.2",
@@ -88,9 +87,9 @@
         "ts-jest": "29.3.2",
         "ts-loader": "9.5.2",
         "typescript": "5.8.3",
-        "typescript-eslint": "8.31.0",
+        "typescript-eslint": "8.31.1",
         "uuid": "11.1.0",
-        "webpack": "5.99.6"
+        "webpack": "5.99.7"
     },
     "peerDependencies": {
         "date-fns": "^4.0.0",
