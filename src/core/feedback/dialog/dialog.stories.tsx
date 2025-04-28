@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import type { IDialogProps } from '.'
 import type { Meta, StoryObj } from '@storybook/react'
 import Button from '@/core/inputs/button'
 import Dialog from '.'
@@ -38,29 +39,31 @@ export default meta
 
 type Story = StoryObj<typeof Dialog>
 
-export const dialog: Story = {
-    render: ({ ...args }) => {
-        const [open, setOpen] = useState(false)
+const DialogComponent = (args: IDialogProps) => {
+    const [open, setOpen] = useState(false)
 
-        return (
-            <>
-                <Button onClick={() => setOpen(true)}>OPEN DIALOG</Button>
-                <Dialog
-                    {...args}
-                    open={open}
-                    actions={
-                        <Button
-                            margin='12px'
-                            variant='contained'
-                            onClick={() => setOpen(false)}>
-                            Close
-                        </Button>
-                    }
-                    onClose={() => setOpen(false)}
-                />
-            </>
-        )
-    },
+    return (
+        <>
+            <Button onClick={() => setOpen(true)}>OPEN DIALOG</Button>
+            <Dialog
+                {...args}
+                open={open}
+                actions={
+                    <Button
+                        margin='12px'
+                        variant='contained'
+                        onClick={() => setOpen(false)}>
+                        Close
+                    </Button>
+                }
+                onClose={() => setOpen(false)}
+            />
+        </>
+    )
+}
+
+export const dialog: Story = {
+    render: ({ ...args }) => <DialogComponent {...args} />,
     args: {
         title: 'Dialog Title',
         text: 'A text here!',
