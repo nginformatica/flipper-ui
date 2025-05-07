@@ -33,6 +33,23 @@ import { theme } from '@/theme'
 
 const { neutral, primary } = theme.colors
 
+export type Placement =
+    | 'auto'
+    | 'auto-start'
+    | 'auto-end'
+    | 'top'
+    | 'bottom'
+    | 'right'
+    | 'left'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end'
+
 export interface IProps {
     type?: 'date' | 'time' | 'datetime'
     error?: boolean
@@ -40,6 +57,9 @@ export interface IProps {
     disabled?: boolean
     placeholder?: string
     fullWidth?: boolean
+    placementDate?: Placement
+    placementTime?: Placement
+    placementDateTime?: Placement
 }
 
 export type TDateTime = DatePickerProps<Date> &
@@ -198,6 +218,9 @@ const DateTime = ({
     placeholder,
     fullWidth,
     type = 'date',
+    placementDate,
+    placementTime,
+    placementDateTime,
     ...otherProps
 }: TDateTime) => {
     const commonProps = {
@@ -252,7 +275,7 @@ const DateTime = ({
                             hidden: false,
                             toolbarFormat: 'eee, dd MMM'
                         },
-                        popper: { placement: 'bottom-end' },
+                        popper: { placement: placementDate || 'bottom-end' },
                         layout: {
                             sx: {
                                 '.MuiDateCalendar-root': {
@@ -288,7 +311,7 @@ const DateTime = ({
                             inputProps: { role: 'date-picker' }
                         },
                         toolbar: { hidden: false },
-                        popper: { placement: 'bottom-end' },
+                        popper: { placement: placementTime || 'bottom-end' },
                         layout: {
                             sx: {
                                 '.MuiTimeClock-root': {
@@ -348,7 +371,7 @@ const DateTime = ({
                         fullWidth: fullWidth ?? true,
                         inputProps: { role: 'date-picker' }
                     },
-                    popper: { placement: 'bottom-end' }
+                    popper: { placement: placementDateTime || 'bottom-end' }
                 }}
             />
         )
