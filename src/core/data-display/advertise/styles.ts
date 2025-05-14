@@ -1,4 +1,4 @@
-import { default as styled } from 'styled-components'
+import styled from '@emotion/styled'
 import Typography from '@/core/data-display/typography'
 import Paper from '@/core/surfaces/paper'
 import { theme } from '@/theme'

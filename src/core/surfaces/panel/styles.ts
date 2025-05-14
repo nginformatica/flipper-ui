@@ -1,4 +1,4 @@
-import { default as styled } from 'styled-components'
+import styled from '@emotion/styled'
 import ExpansionPanel from '../expansion-panel'
 
 export const ExpansionPaperPanel = styled(ExpansionPanel)`

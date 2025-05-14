@@ -1,4 +1,4 @@
-import { default as styled } from 'styled-components'
+import styled from '@emotion/styled'
 
 interface IStepContainerProps {
     padding?: string | number

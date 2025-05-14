@@ -1,4 +1,4 @@
-import { default as styled } from 'styled-components'
+import styled from '@emotion/styled'
 import { theme } from '@/theme'
 
 const { primary } = theme.colors

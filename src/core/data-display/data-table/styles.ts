@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import MuiTableCell from '@mui/material/TableCell'
 import MuiTableRow from '@mui/material/TableRow'
-import { default as styled } from 'styled-components'
 
 export const FieldWrapper = styled.span``
 
