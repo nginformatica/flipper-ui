@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ChangeEvent, ReactNode } from 'react'
+import type { ChangeEvent, CSSProperties, ReactNode } from 'react'
 import MuiCheckbox from '@mui/material/Checkbox'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 import MuiSwitch from '@mui/material/Switch'
@@ -20,6 +20,7 @@ export interface ICheckboxProps extends DefaultProps {
     dense?: boolean
     type?: 'switch' | 'checkbox'
     helperIcon?: ReactNode
+    sx?: CSSProperties
     onHelperClick?: () => void
     onChange?: (event: ChangeEvent<HTMLElement>) => void
     checkboxProps?: CheckboxProps
@@ -50,9 +51,10 @@ const Checkbox = (props: ICheckboxProps) => {
     const renderCheckbox = (checkboxProps?: CheckboxProps) => (
         <MuiCheckbox
             {...checkboxProps}
+            sx={props.sx}
             name={props.name}
-            checked={props.checked}
             value={props.name}
+            checked={props.checked}
             color={props.color || 'secondary'}
             style={props.dense ? DENSE : {}}
             disabled={props.disabled}
@@ -64,6 +66,7 @@ const Checkbox = (props: ICheckboxProps) => {
         <MuiSwitch
             {...checkboxProps}
             role='switch'
+            sx={props.sx}
             name={props.name}
             value={props.name}
             checked={props.checked}
