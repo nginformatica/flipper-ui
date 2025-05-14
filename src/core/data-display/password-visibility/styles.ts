@@ -1,4 +1,4 @@
-import { default as styled } from 'styled-components'
+import styled from '@emotion/styled'
 import IconButton from '@/core/inputs/icon-button'
 
 export const StyledButton = styled(IconButton)`

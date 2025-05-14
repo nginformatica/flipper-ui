@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
+import { ThemeProvider } from '@emotion/react'
 import CircularProgress from '@mui/material/CircularProgress'
-import { ThemeProvider } from 'styled-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import Button from '@/core/inputs/button'
 import { IconCancelOutlined, IconCheckCircleOutlined } from '@/icons/mui'
