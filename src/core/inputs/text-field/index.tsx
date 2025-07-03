@@ -163,9 +163,7 @@ const TextField = ({
             : {}
 
     const handleClick = () => {
-        if (onHelperClick) {
-            onHelperClick()
-        }
+        onHelperClick?.()
     }
 
     const Wrapper = hasClear ? StaticTextFieldWrapper : TextFieldWrapper

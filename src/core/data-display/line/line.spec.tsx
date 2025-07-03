@@ -1,9 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Line from '.'
-import { theme } from '@/theme'
-
-const { gray, secondary } = theme.colors
 
 describe('Line', () => {
     it('should render closed', () => {
@@ -26,13 +23,13 @@ describe('Line', () => {
 
         const element = screen.getByTestId('line-component')
 
-        expect(element).toHaveProperty('style.flex', '1')
+        expect(element).toHaveProperty('style.flex', '1 1 0%')
         expect(element).toHaveProperty('style.color', 'red')
         expect(element).toHaveProperty('style.margin', '10px')
         expect(element).toHaveProperty('style.padding', '5px')
         expect(element).toHaveProperty(
             'style.border',
-            `1px solid ${gray[300].toLowerCase()}`
+            `1px solid rgb(224, 224, 224)`
         )
     })
 
@@ -43,7 +40,7 @@ describe('Line', () => {
 
         expect(element).toHaveProperty(
             'style.border',
-            `1px solid ${secondary.light.toLowerCase()}`
+            `1px solid rgb(64, 163, 68)`
         )
     })
 

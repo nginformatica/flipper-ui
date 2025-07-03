@@ -21,14 +21,14 @@ describe('Advertise', () => {
             <Advertise
                 comment='comment'
                 author='author'
-                authorStyle={{ padding: '10px 10px' }}
+                authorStyle={{ padding: '10px' }}
             />
         )
 
         const author = screen.getByText('author')
 
         expect(author).toBeDefined()
-        expect(author).toHaveProperty('style.padding', '10px 10px')
+        expect(author).toHaveProperty('style.padding', '10px')
     })
 
     it('should render with custom comment style', () => {
@@ -36,14 +36,14 @@ describe('Advertise', () => {
             <Advertise
                 comment='comment'
                 author='author'
-                commentStyle={{ padding: '10px 10px' }}
+                commentStyle={{ padding: '10px' }}
             />
         )
 
         const comment = screen.getByText('comment')
 
         expect(comment).toBeDefined()
-        expect(comment).toHaveProperty('style.padding', '10px 10px')
+        expect(comment).toHaveProperty('style.padding', '10px')
     })
 
     it('should match snapshot', () => {

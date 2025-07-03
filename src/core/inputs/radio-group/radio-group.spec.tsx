@@ -58,7 +58,7 @@ describe('RadioGroup', () => {
 
         const container = screen.getByRole('radiogroup').firstElementChild
 
-        expect(container).toHaveProperty('style.flex', '1')
+        expect(container).toHaveProperty('style.flex', '1 1 0%')
     })
 
     it('should match snapshot', () => {

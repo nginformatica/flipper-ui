@@ -26,9 +26,7 @@ const TableCell = ({
     const { onSort, active, direction } = useContext(SortContext)
 
     const handleSort = () => {
-        if (onSort) {
-            onSort(otherProps.name || '')
-        }
+        onSort?.(otherProps.name || '')
     }
 
     return (

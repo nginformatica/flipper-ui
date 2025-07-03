@@ -88,9 +88,7 @@ const SnackBar = (props: SnackBarProps) => {
         event.preventDefault()
         event.stopPropagation()
 
-        if (props.onClose) {
-            props.onClose()
-        }
+        props.onClose?.()
     }
 
     return (

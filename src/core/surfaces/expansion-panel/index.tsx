@@ -80,24 +80,18 @@ const ExpansionPanel = ({
     }
 
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-        if (onHelperClick) {
-            event.stopPropagation()
-            onHelperClick()
-        }
+        event.stopPropagation()
+        onHelperClick?.()
     }
 
     const handleEditClick = (event: MouseEvent<HTMLButtonElement>) => {
-        if (onEditClick) {
-            event.stopPropagation()
-            onEditClick()
-        }
+        event.stopPropagation()
+        onEditClick?.()
     }
 
     const handleSaveClick = (event: MouseEvent<HTMLButtonElement>) => {
-        if (onSaveClick) {
-            event.stopPropagation()
-            onSaveClick()
-        }
+        event.stopPropagation()
+        onSaveClick?.()
     }
 
     const renderHelper = (

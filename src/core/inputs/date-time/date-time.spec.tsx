@@ -1,6 +1,6 @@
 import React, { act } from 'react'
 import { render, screen } from '@testing-library/react'
-import { userEvent } from '@testing-library/user-event/'
+import { userEvent } from '@testing-library/user-event'
 import { ptBR } from 'date-fns/locale'
 import DateTime from '@/test/mocks/date-time-mock'
 
