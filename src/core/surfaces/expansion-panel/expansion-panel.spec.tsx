@@ -1,6 +1,7 @@
 import React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import ExpansionPanel from '.'
+import '@testing-library/jest-dom'
 
 const expectToThrow = (fn: () => void, message: string) => {
     // Even though the error is caught, it still gets printed to the console
@@ -47,6 +48,23 @@ describe('ExpansionPanel', () => {
         expect((expansionPanel.lastChild as HTMLElement).className).toContain(
             'MuiCollapse-hidden'
         )
+    })
+
+    it('should render with details', () => {
+        const content = 'This is the details content.'
+
+        render(
+            <ExpansionPanel
+                expanded
+                summary='Expansion Panel'
+                role='mui-expansion-panel'
+                details={<div>{content}</div>}
+            />
+        )
+
+        const detailsElement = screen.getByText(content)
+
+        expect(detailsElement).toBeInTheDocument()
     })
 
     it('should render with actions', () => {

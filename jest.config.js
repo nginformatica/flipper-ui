@@ -8,13 +8,17 @@ module.exports = {
         '!<rootDir>/src/icons/**/*.(ts|tsx)',
         '!<rootDir>/src/core/data-display/data-table/*.(ts|tsx)',
         '!<rootDir>/src/core/data-display/table/table-pagination.tsx',
+        '!<rootDir>/src/core/data-display/table-interactive/index.ts',
+        '!<rootDir>/src/core/data-display/table-interactive/TableInteractiveHead.tsx',
+        '!<rootDir>/src/core/data-display/table-interactive/TableDialogPreferences.tsx',
+        '!<rootDir>/src/core/data-display/table-interactive/TablePaginationActions.tsx',
         '!<rootDir>/src/core/feedback/dialog-v2/index.ts',
         '!<rootDir>/src/core/feedback/tooltip/styles.ts',
         '!<rootDir>/src/core/inputs/chip-field/index.tsx',
         '!<rootDir>/src/core/inputs/date-time/index.tsx',
         '!<rootDir>/src/core/inputs/select/index.tsx',
         '!<rootDir>/src/core/navigation/breadcrumbs/index.tsx',
-        '!<rootDir>/src/core/surfaces/header/styles.ts',
+        '!<rootDir>/src/core/surfaces/header/styles.ts'
     ],
     transform: {
         '.+\\.(ts|tsx)$': 'ts-jest'

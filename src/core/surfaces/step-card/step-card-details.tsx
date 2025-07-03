@@ -28,16 +28,10 @@ const StepsList = ({
               url?: string | undefined
           }[]
         | undefined
-    onStepUrlClick: ((url: string) => void) | undefined
+    onStepUrlClick: ((url: string | undefined) => void) | undefined
 }) => (
     <List>
         {(steps || []).map((step, index) => {
-            const handleOnClickStepUrl = () => {
-                if (onStepUrlClick && step.url) {
-                    onStepUrlClick(step.url)
-                }
-            }
-
             return (
                 <ListItemContainer key={index}>
                     <IconCheckCircle
@@ -60,7 +54,7 @@ const StepsList = ({
                                 style={{
                                     backgroundColor: 'unset'
                                 }}
-                                onClick={handleOnClickStepUrl}>
+                                onClick={() => onStepUrlClick(step.url)}>
                                 <IconHelp
                                     fontSize='small'
                                     style={{ margin: '0px' }}

@@ -21,7 +21,7 @@ const Default = ({ onSort, color }: IProps) => {
 
     return (
         <Table>
-            <TableHead color={color} onSort={onSort ? onSort : undefined}>
+            <TableHead color={color} onSort={onSort}>
                 <TableRow>
                     <TableCell>Table-Head-Name</TableCell>
                     <TableCell>Table-Head-Email</TableCell>

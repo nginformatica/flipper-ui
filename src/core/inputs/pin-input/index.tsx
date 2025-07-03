@@ -21,8 +21,6 @@ export interface PinInputGridProps {
     variant?: 'outlined' | 'standard'
 }
 
-const PIN_MIN_VALUE = 0
-const PIN_MAX_VALUE = 9
 const BACKSPACE_KEY = 'Backspace'
 
 const PinInput = ({
@@ -68,26 +66,27 @@ const PinInput = ({
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index: number
     ) => {
+        const valuesArray = event.target.value.split('')
+        const value = valuesArray.pop()
+
         if (event.target.value.length > 1) {
             return
         }
-        const valuesArray = event.target.value.split('')
-        const value = valuesArray.pop()
 
         if (!value || value === ' ' || value === '') {
             return
         }
+
         const pinNumber = Number(value.trim())
 
         if (isNaN(pinNumber) || value.length === 0) {
             return
         }
 
-        if (pinNumber >= PIN_MIN_VALUE && pinNumber <= PIN_MAX_VALUE) {
-            onPinChanged(pinNumber, index)
-            if (index < pinLength - 1) {
-                changePinFocus(index + 1)
-            }
+        onPinChanged(pinNumber, index)
+
+        if (index < pinLength - 1) {
+            changePinFocus(index + 1)
         }
     }
 
