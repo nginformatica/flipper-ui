@@ -6,7 +6,11 @@ import TextField from '@/core/inputs/text-field'
 import TableCell from '../table/table-cell'
 import TableRow from '../table/table-row'
 import { TableInteractive } from '../table-interactive/TableInteractive'
-import { getInitialColumns, setVisibleColumns } from './utils'
+import {
+    getInitialColumns,
+    getOrderedVisibleColumns,
+    setVisibleColumns
+} from './utils'
 
 const meta: Meta<typeof TableInteractive> = {
     title: 'DataDisplay/Table Interactive',
@@ -137,6 +141,8 @@ const InteractiveTable = (args: ITableInteractive) => {
     )
     const [columnsTemporary, setColumnsTemporary] = useState<string[]>(columns)
 
+    const orderedVisibleColumns = getOrderedVisibleColumns(HEADERS, columns)
+
     const handleOpen = () => {
         setOpen(true)
     }
@@ -157,7 +163,7 @@ const InteractiveTable = (args: ITableInteractive) => {
     const handleContent = () => {
         return TABLE_DATA.map((row, i) => (
             <TableRow key={i}>
-                {columns.map((col, j) => (
+                {orderedVisibleColumns.map((col, j) => (
                     <TableCell key={j}>
                         {row[col as keyof typeof row]}
                     </TableCell>
