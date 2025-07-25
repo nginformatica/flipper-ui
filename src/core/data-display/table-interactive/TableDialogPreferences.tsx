@@ -41,10 +41,11 @@ export const TableDialogPreferences = ({
         const initial = headers.filter(col => col.show).map(col => col.name)
 
         setColumnsTemporary?.(initial)
+    }
 
-        if (onConfirm) {
-            setVisibleColumns(initial, tableIdentifier)
-        }
+    const handleConfirm = () => {
+        setVisibleColumns(columnsTemporary, tableIdentifier)
+        onConfirm?.()
     }
 
     return (
@@ -88,7 +89,7 @@ export const TableDialogPreferences = ({
                     <Actions
                         margin='0 16px 16px 16px'
                         onCancel={onCancel}
-                        onConfirm={onConfirm ?? (() => {})}
+                        onConfirm={handleConfirm}
                     />
                 </ActionsWrapper>
             }
