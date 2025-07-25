@@ -22,3 +22,10 @@ export const TableHeaderContent = styled.div`
         gap: 8px;
     }
 `
+
+export const ActionsWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+`

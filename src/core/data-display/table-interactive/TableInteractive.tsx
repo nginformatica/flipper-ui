@@ -25,6 +25,7 @@ export interface ITableInteractive {
     headers: {
         name: string
         label: string
+        show: boolean
     }[]
     paginated?: boolean
     rowsPerPage?: number
@@ -120,6 +121,7 @@ export const TableInteractive = (props: ITableInteractive) => {
             <TableDialogPreferences
                 open={props.open}
                 headers={props.headers}
+                tableIdentifier={props.name}
                 columnsTemporary={props.columnsTemporary}
                 setColumnsTemporary={props.setColumnsTemporary}
                 onCancel={props.onCancel}

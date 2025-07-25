@@ -270,7 +270,7 @@ describe('Table Interactive', () => {
 
     it('should render empty fallback array when visibleColumns is undefined', () => {
         renderComponent({
-            headers: [{ name: 'id', label: 'ID' }],
+            headers: [{ name: 'id', label: 'ID', show: true }],
             visibleColumns: undefined,
             valuesInvoices: TABLE_DATA
         })

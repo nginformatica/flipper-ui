@@ -2,9 +2,11 @@ import React from 'react'
 import Switch from '@mui/material/Switch'
 import type { ITableInteractive } from './TableInteractive'
 import Dialog from '@/core/feedback/dialog'
+import Button from '@/core/inputs/button'
 import Actions from '../actions'
 import Typography from '../typography'
-import { ContentWrapper } from './styles'
+import { setVisibleColumns } from './utils'
+import { ActionsWrapper, ContentWrapper } from './styles'
 
 export type ITableDialogPreferences = Pick<
     ITableInteractive,
@@ -14,11 +16,14 @@ export type ITableDialogPreferences = Pick<
     | 'onCancel'
     | 'onConfirm'
     | 'setColumnsTemporary'
->
+> & {
+    tableIdentifier: string
+}
 
 export const TableDialogPreferences = ({
     open = false,
     headers,
+    tableIdentifier,
     columnsTemporary = [],
     onCancel,
     onConfirm,
@@ -30,6 +35,13 @@ export const TableDialogPreferences = ({
                 ? prev.filter(col => col !== name)
                 : [...prev, name]
         )
+    }
+
+    const handleReset = () => {
+        const initial = headers.filter(col => col.show).map(col => col.name)
+
+        setColumnsTemporary?.(initial)
+        setVisibleColumns(initial, tableIdentifier)
     }
 
     return (
@@ -65,11 +77,17 @@ export const TableDialogPreferences = ({
                 </>
             }
             actions={
-                <Actions
-                    margin='0 16px 16px 16px'
-                    onCancel={onCancel}
-                    onConfirm={onConfirm ?? (() => {})}
-                />
+                <ActionsWrapper>
+                    <Button margin='0 16px 16px 16px' onClick={handleReset}>
+                        Restaurar preferências
+                    </Button>
+
+                    <Actions
+                        margin='0 16px 16px 16px'
+                        onCancel={onCancel}
+                        onConfirm={onConfirm ?? (() => {})}
+                    />
+                </ActionsWrapper>
             }
         />
     )

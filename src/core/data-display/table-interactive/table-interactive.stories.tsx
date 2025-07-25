@@ -202,6 +202,6 @@ export const interactiveTable: Story = {
     render: ({ ...args }) => <InteractiveTable {...args} />,
     args: {
         isInteractive: true,
-        name: 'users'
+        name: 'info'
     }
 }
