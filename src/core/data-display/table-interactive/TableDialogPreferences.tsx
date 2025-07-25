@@ -41,7 +41,10 @@ export const TableDialogPreferences = ({
         const initial = headers.filter(col => col.show).map(col => col.name)
 
         setColumnsTemporary?.(initial)
-        setVisibleColumns(initial, tableIdentifier)
+
+        if (onConfirm) {
+            setVisibleColumns(initial, tableIdentifier)
+        }
     }
 
     return (
