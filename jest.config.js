@@ -12,6 +12,7 @@ module.exports = {
         '!<rootDir>/src/core/data-display/table-interactive/TableInteractiveHead.tsx',
         '!<rootDir>/src/core/data-display/table-interactive/TableDialogPreferences.tsx',
         '!<rootDir>/src/core/data-display/table-interactive/TablePaginationActions.tsx',
+        '!<rootDir>/src/core/data-display/view-mode/useViewMode.tsx',
         '!<rootDir>/src/core/feedback/dialog-v2/index.ts',
         '!<rootDir>/src/core/feedback/tooltip/styles.ts',
         '!<rootDir>/src/core/inputs/chip-field/index.tsx',

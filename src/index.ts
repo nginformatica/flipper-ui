@@ -24,6 +24,8 @@ export { default as TableRow } from './core/data-display/table/table-row'
 export { default as TableFooter } from './core/data-display/table/table-footer'
 export { default as TablePagination } from './core/data-display/table/table-pagination'
 export { default as Typography } from './core/data-display/typography'
+export { default as ViewMode } from './core/data-display/view-mode'
+export { useViewMode } from './core/data-display/view-mode/useViewMode'
 
 export { default as Collapse } from './core/feedback/collapse'
 export { default as Dialog } from './core/feedback/dialog'
