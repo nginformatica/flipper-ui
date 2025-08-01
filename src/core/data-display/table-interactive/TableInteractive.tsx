@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Dispatch, ReactNode, SetStateAction } from 'react'
 import Box from '@mui/material/Box'
+import type { TableProps } from '@mui/material/Table'
 import Table from '../table'
 import TableBody from '../table/table-body'
 import TableFooter from '../table/table-footer'
@@ -10,13 +11,16 @@ import { TableDialogPreferences } from './TableDialogPreferences'
 import { TableInteractiveHead } from './TableInteractiveHead'
 import { TableInteractiveHeader } from './TableInteractiveHeader'
 import { TablePaginationActions } from './TablePaginationActions'
+import { theme } from '@/theme'
+
+const { gray } = theme.colors
 
 export enum Direction {
     ASCENDENT = 'asc',
     DESCENDENT = 'desc'
 }
 
-export interface ITableInteractive {
+export interface ITableInteractive extends Omit<TableProps, 'children'> {
     name: string
     page?: number
     open?: boolean
@@ -27,6 +31,7 @@ export interface ITableInteractive {
         label: string
         show: boolean
     }[]
+    className?: string
     paginated?: boolean
     rowsPerPage?: number
     direction?: Direction
@@ -77,7 +82,18 @@ export const TableInteractive = (props: ITableInteractive) => {
                         display: 'table',
                         tableLayout: 'fixed'
                     }}>
-                    <Table name={props.name} id={'list-' + props.name}>
+                    <Table
+                        name={props.name}
+                        id={'list-' + props.name}
+                        className={props.className}
+                        style={{
+                            border: props.isInteractive
+                                ? 'none !important'
+                                : `1px solid ${gray[300]}`
+                        }}
+                        sx={{
+                            ...props.sx
+                        }}>
                         <TableInteractiveHead
                             active={props.active}
                             headers={props.headers}
@@ -92,7 +108,7 @@ export const TableInteractive = (props: ITableInteractive) => {
 
                         {props.paginated && (
                             <TableFooter>
-                                <TableRow>
+                                <TableRow className='no-hover'>
                                     <TablePagination
                                         page={page}
                                         count={count}
