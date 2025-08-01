@@ -301,4 +301,24 @@ describe('Table Interactive', () => {
 
         expect(screen.getByText('0-0 de 0')).toBeInTheDocument()
     })
+
+    it('should have no visible external borders when isInteractive', () => {
+        renderComponent({
+            isInteractive: true
+        })
+
+        const table = screen.getByRole('table')
+
+        expect(table).toHaveStyle('border: none !important)')
+    })
+
+    it('should have visible external borders when isInteractive is false', () => {
+        renderComponent({
+            isInteractive: false
+        })
+
+        const table = screen.getByRole('table')
+
+        expect(table).toHaveStyle('border: 1px solid #e0e0e0')
+    })
 })

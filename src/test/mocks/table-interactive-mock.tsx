@@ -40,6 +40,7 @@ export const InteractiveTableWrapper = ({
     setVisibleColumnsMock,
     setPageMock,
     setRowsPerPageMock,
+    isInteractive = true,
     ...props
 }: TableInteractiveWrapperProps) => {
     const [open, setOpen] = useState<boolean>(initialArgs?.open ?? false)
@@ -97,7 +98,7 @@ export const InteractiveTableWrapper = ({
         open: open,
         rowsPerPage: 10,
         paginated: true,
-        isInteractive: true,
+        isInteractive,
         isCollapsible: false,
         headers: HEADERS,
         visibleColumns: columns,
