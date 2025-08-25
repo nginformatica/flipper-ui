@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import TableCell from '../table/table-cell'
 import { theme } from '@/theme'
 
 const { gray } = theme.colors
@@ -28,4 +29,16 @@ export const ActionsWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+`
+
+export const TableCellInteractive = styled(TableCell)<{ width?: string }>`
+    && {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        @media (max-width: 1440px) {
+            padding: 16px 8px;
+        }
+    }
 `

@@ -16,6 +16,7 @@ const Fab = ({
     children,
     margin,
     padding,
+    disabled,
     style = {},
     ...otherProps
 }: IFabProps) => {
@@ -23,6 +24,7 @@ const Fab = ({
         <MuiFab
             {...otherProps}
             color='inherit'
+            disabled={disabled}
             style={{
                 margin,
                 padding,

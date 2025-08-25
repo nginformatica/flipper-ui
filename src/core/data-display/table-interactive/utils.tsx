@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ITableInteractive } from './TableInteractive'
-import TableCell from '../table/table-cell'
+import { TableCellInteractive } from './styles'
 
 export const STORAGE_KEY = 'visible-columns'
 
@@ -40,9 +40,9 @@ export const generateHeader = (
     if (!visibleColumns?.includes(header.name)) return null
 
     return (
-        <TableCell key={header.name + '-header'} name={header.name}>
+        <TableCellInteractive key={header.name + '-header'} name={header.name}>
             {header.label}
-        </TableCell>
+        </TableCellInteractive>
     )
 }
 
