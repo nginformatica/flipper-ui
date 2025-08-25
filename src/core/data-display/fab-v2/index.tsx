@@ -12,20 +12,30 @@ export interface IProps extends IFabProps {
     padding?: string | number
     margin?: string | number
     style?: CSSProperties
+    disabled?: boolean
     children: JSX.Element
     onClick(event: MouseEvent<HTMLButtonElement>): void
 }
 
 const FabV2 = (props: IProps) => {
     const renderButton = () => {
-        const { mini, children, padding, name, margin, style, ...otherProps } =
-            props
+        const {
+            mini,
+            name,
+            style,
+            margin,
+            padding,
+            children,
+            disabled,
+            ...otherProps
+        } = props
 
         return (
             <Fab
-                size={mini ? 'small' : 'medium'}
-                name={name || 'action-button'}
+                disabled={disabled}
                 data-testid='fab-button'
+                name={name || 'action-button'}
+                size={mini ? 'small' : 'medium'}
                 {...otherProps}
                 style={{ margin, padding, ...style }}
                 onClick={props.onClick}>
