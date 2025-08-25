@@ -30,6 +30,7 @@ export interface ITableInteractive extends Omit<TableProps, 'children'> {
         name: string
         label: string
         show: boolean
+        width?: string
     }[]
     className?: string
     paginated?: boolean
@@ -83,6 +84,7 @@ export const TableInteractive = (props: ITableInteractive) => {
                         tableLayout: 'fixed'
                     }}>
                     <Table
+                        {...props}
                         name={props.name}
                         id={'list-' + props.name}
                         className={props.className}
