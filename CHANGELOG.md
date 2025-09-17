@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.37.4
+
+- adjust `<Actions />` component label props
+- remove spread props from `<TableInteractive />` component
+
 ## v0.37.3
 
 - add `<IconAddLink />` and `<IconRemoveLink />` to design system specific icons
