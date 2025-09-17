@@ -2,6 +2,7 @@
 
 ## v0.37.4
 
+- create CHANGELOG.md file
 - adjust `<Actions />` component label props
 - remove spread props from `<TableInteractive />` component
 
