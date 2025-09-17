@@ -1,4 +1,5 @@
 import React from 'react'
+import type { ReactNode } from 'react'
 import Button from '@/core/inputs/button'
 import { Wrapper } from './styles'
 
@@ -21,8 +22,8 @@ export interface IActionsProps {
         confirm: string
     }
     labels?: {
-        cancel: string
-        confirm: string
+        cancel: ReactNode
+        confirm: ReactNode
     }
     readonly?: boolean
     disabled?: boolean

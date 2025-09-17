@@ -84,7 +84,6 @@ export const TableInteractive = (props: ITableInteractive) => {
                         tableLayout: 'fixed'
                     }}>
                     <Table
-                        {...props}
                         name={props.name}
                         id={'list-' + props.name}
                         className={props.className}
