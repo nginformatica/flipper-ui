@@ -121,9 +121,9 @@ export default meta
 type Story = StoryObj<typeof TableInteractive>
 
 const HEADERS = [
-    { name: 'name', label: 'Nome', show: true },
-    { name: 'email', label: 'E-mail', show: false },
-    { name: 'cel', label: 'Celular', show: false }
+    { name: 'name', label: 'Nome', width: '300px', show: true, sortable: true },
+    { name: 'email', label: 'E-mail', show: true, sortable: false },
+    { name: 'cel', label: 'Celular', show: false, sortable: false }
 ]
 
 const TABLE_DATA = [
@@ -176,7 +176,9 @@ const InteractiveTable = (args: ITableInteractive) => {
         <>
             <TableInteractive
                 {...args}
+                fixed
                 open={open}
+                active='name'
                 headers={HEADERS}
                 visibleColumns={columns}
                 columnsTemporary={columnsTemporary}

@@ -25,12 +25,14 @@ export interface ITableInteractive extends Omit<TableProps, 'children'> {
     page?: number
     open?: boolean
     total?: number
+    fixed?: boolean
     active?: string
     headers: {
         name: string
         label: string
         show: boolean
         width?: string
+        sortable?: boolean
     }[]
     className?: string
     paginated?: boolean
@@ -96,6 +98,7 @@ export const TableInteractive = (props: ITableInteractive) => {
                             ...props.sx
                         }}>
                         <TableInteractiveHead
+                            fixed={props.fixed}
                             active={props.active}
                             headers={props.headers}
                             children={props.children}

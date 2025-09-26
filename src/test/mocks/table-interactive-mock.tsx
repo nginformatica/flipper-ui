@@ -20,8 +20,8 @@ interface TableInteractiveWrapperProps extends Partial<ITableInteractive> {
 }
 
 export const HEADERS = [
-    { name: 'name', label: 'Nome', show: true },
-    { name: 'email', label: 'E-mail', show: true },
+    { name: 'name', label: 'Nome', show: true, width: '120px' },
+    { name: 'email', label: 'E-mail', show: true, width: '200px' },
     { name: 'cel', label: 'Celular', show: false }
 ]
 
@@ -96,11 +96,12 @@ export const InteractiveTableWrapper = ({
         name: 'test-table',
         page: 0,
         open: open,
+        fixed: false,
+        isInteractive,
         rowsPerPage: 10,
         paginated: true,
-        isInteractive,
-        isCollapsible: false,
         headers: HEADERS,
+        isCollapsible: false,
         visibleColumns: columns,
         total: TABLE_DATA.length,
         direction: Direction.ASCENDENT,

@@ -7,6 +7,7 @@ import { generateHeader, getVisibleColumns } from './utils'
 
 export type ITableInteractiveHead = Pick<
     ITableInteractive,
+    | 'fixed'
     | 'headers'
     | 'visibleColumns'
     | 'onSort'
@@ -33,9 +34,16 @@ export const TableInteractiveHead = (props: ITableInteractiveHead) => {
             onSort={props.onSort && handleSort}>
             <TableRow>
                 {props.headers.map(header =>
-                    generateHeader(header, visibleColumns)
+                    generateHeader(
+                        header,
+                        visibleColumns,
+                        header.sortable,
+                        props.fixed
+                    )
                 )}
-                {(props.children || props.isCollapsible) && <TableCell />}
+                {(props.children || props.isCollapsible) && (
+                    <TableCell sortable={false} sx={{ width: '50px' }} />
+                )}
             </TableRow>
         </TableHead>
     )

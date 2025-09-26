@@ -321,4 +321,35 @@ describe('Table Interactive', () => {
 
         expect(table).toHaveStyle('border: 1px solid #e0e0e0')
     })
+
+    it('should not apply max-width when fixed is false', () => {
+        renderComponent({
+            fixed: false,
+            headers: [
+                { name: 'name', label: 'Nome', show: true, width: '200px' },
+                { name: 'email', label: 'E-mail', show: true, width: '120px' }
+            ],
+            visibleColumns: ['name', 'email']
+        })
+
+        const column = screen.getByRole('columnheader', { name: /nome/i })
+
+        expect(column).toBeInTheDocument()
+        expect(column).toHaveStyle('max-width: none')
+    })
+
+    it('should apply max-width when fixed is true', () => {
+        renderComponent({
+            fixed: true,
+            headers: [
+                { name: 'name', label: 'Nome', show: true, width: '200px' },
+                { name: 'email', label: 'E-mail', show: true, width: '120px' }
+            ],
+            visibleColumns: ['name', 'email']
+        })
+
+        const column = screen.getByRole('columnheader', { name: /nome/i })
+
+        expect(column).toHaveStyle('max-width: 200px')
+    })
 })
