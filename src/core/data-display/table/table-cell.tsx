@@ -9,9 +9,10 @@ export interface ITableCellProps
     extends DefaultProps,
         Omit<TableCellProps, 'padding'> {
     numeric?: boolean
+    sortable?: boolean
+    padding?: number | string
     variant?: 'head' | 'body' | 'footer'
     spacing?: 'normal' | 'checkbox' | 'none'
-    padding?: number | string
     align?: 'inherit' | 'left' | 'center' | 'right' | 'justify'
 }
 
@@ -21,6 +22,7 @@ const TableCell = ({
     padding,
     children,
     spacing,
+    sortable,
     ...otherProps
 }: ITableCellProps) => {
     const { onSort, active, direction } = useContext(SortContext)
@@ -32,12 +34,12 @@ const TableCell = ({
     return (
         <MuiTableCell
             {...otherProps}
-            style={{ padding, margin, ...style }}
-            padding={spacing}>
-            {onSort ? (
+            padding={spacing}
+            style={{ padding, margin, ...style }}>
+            {(sortable ?? onSort) ? (
                 <MuiTableSortLabel
-                    active={otherProps.name === active}
                     direction={direction}
+                    active={otherProps.name === active}
                     onClick={handleSort}>
                     {children}
                 </MuiTableSortLabel>

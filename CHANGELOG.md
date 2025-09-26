@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.37.5
+
+- apply sortable headers for specific table columns
+
 ## v0.37.4
 
 - create CHANGELOG.md file

@@ -35,12 +35,19 @@ export const setVisibleColumns = (columns: string[], key: string) => {
 
 export const generateHeader = (
     header: ITableInteractive['headers'][number],
-    visibleColumns?: string[] | undefined
+    visibleColumns?: string[] | undefined,
+    sortable?: boolean,
+    fixed?: boolean
 ) => {
     if (!visibleColumns?.includes(header.name)) return null
 
     return (
-        <TableCellInteractive key={header.name + '-header'} name={header.name}>
+        <TableCellInteractive
+            fixed={fixed}
+            name={header.name}
+            sortable={sortable}
+            width={header.width}
+            key={header.name + '-header'}>
             {header.label}
         </TableCellInteractive>
     )
