@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.37.6
+
+- add `<IconWebhook>` to mui icons
+
 ## v0.37.5
 
 - apply sortable headers for specific table columns
