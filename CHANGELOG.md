@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## v0.38.0
+
+- update Node to 22.21.1 (LTS)
+
 ## v0.37.7
 
-- add `<IconPictureAsPdfIcon>` to mui icons
+- add `<IconPictureAsPdf>` to mui icons
 
 ## v0.37.6
 
