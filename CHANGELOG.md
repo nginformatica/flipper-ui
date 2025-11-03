@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.0
+
+- update Node to 24.11.0 (LTS)
+
 ## v0.38.0
 
 - update Node to 22.21.1 (LTS)
