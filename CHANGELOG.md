@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.1
+
+- adjust Date Calendar height and Pickers min-height based on amount of weeks
+
 ## v0.39.0
 
 - update Node to 24.11.0 (LTS)

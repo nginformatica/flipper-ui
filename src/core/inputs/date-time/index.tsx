@@ -188,8 +188,17 @@ const CustomStaticDateTimePicker = (props: {
                                 minHeight: '36px'
                             },
                             '.MuiDateCalendar-root': {
-                                maxHeight: '300px'
-                            }
+                                height: 'unset'
+                            },
+                            '& .MuiPickersSlideTransition-root': {
+                                overflow: 'hidden',
+                                minHeight: '160px',
+                                transition: 'min-height 200ms ease-in-out'
+                            },
+                            '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(5))':
+                                { minHeight: '200px' },
+                            '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(6))':
+                                { minHeight: '240px' }
                         }
                     }
                 }}
@@ -279,8 +288,17 @@ const DateTime = ({
                         layout: {
                             sx: {
                                 '.MuiDateCalendar-root': {
-                                    maxHeight: '300px'
-                                }
+                                    height: 'unset'
+                                },
+                                '& .MuiPickersSlideTransition-root': {
+                                    overflow: 'hidden',
+                                    minHeight: '160px',
+                                    transition: 'min-height 200ms ease-in-out'
+                                },
+                                '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(5))':
+                                    { minHeight: '200px' },
+                                '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(6))':
+                                    { minHeight: '240px' }
                             }
                         }
                     }}
