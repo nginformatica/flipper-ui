@@ -39,8 +39,9 @@ export type RenderCellProps<D extends Data> = {
     isNew?: boolean
 }
 
-interface ColumnSpecDefault<D extends Data>
-    extends ColumnSpecBase<RenderCellProps<PartialData<D>>> {
+interface ColumnSpecDefault<D extends Data> extends ColumnSpecBase<
+    RenderCellProps<PartialData<D>>
+> {
     type: ColumnType
     field: keyof D
     editable?: boolean
@@ -54,8 +55,9 @@ export type ActionsCellProps<D extends Data> = {
     isNew?: boolean
 }
 
-interface ColumnSpecActions<D extends Data>
-    extends ColumnSpecBase<ActionsCellProps<D>> {
+interface ColumnSpecActions<D extends Data> extends ColumnSpecBase<
+    ActionsCellProps<D>
+> {
     type: 'actions'
     renderCell: FunctionComponent<ActionsCellProps<D>>
 }

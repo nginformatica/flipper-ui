@@ -16,8 +16,7 @@ import {
 } from './styles'
 
 export interface IDialogProps
-    extends DefaultProps,
-        Omit<DialogProps, 'title' | 'content'> {
+    extends DefaultProps, Omit<DialogProps, 'title' | 'content'> {
     open: boolean
     fullScreen?: boolean
     fullWidth?: boolean

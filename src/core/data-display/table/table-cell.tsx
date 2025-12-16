@@ -6,8 +6,7 @@ import type { TableCellProps } from '@mui/material/TableCell'
 import { SortContext } from './table-head'
 
 export interface ITableCellProps
-    extends DefaultProps,
-        Omit<TableCellProps, 'padding'> {
+    extends DefaultProps, Omit<TableCellProps, 'padding'> {
     numeric?: boolean
     sortable?: boolean
     padding?: number | string

@@ -4,8 +4,7 @@ import type { DefaultProps } from '../../types'
 import type { InputAdornmentProps } from '@mui/material/InputAdornment'
 
 export interface IInputAdornmentProps
-    extends DefaultProps,
-        InputAdornmentProps {
+    extends DefaultProps, InputAdornmentProps {
     position: 'start' | 'end'
 }
 

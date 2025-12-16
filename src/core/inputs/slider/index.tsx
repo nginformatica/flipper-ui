@@ -7,8 +7,7 @@ import { theme } from '@/theme'
 const { feedback, primary, secondary } = theme.colors
 
 export interface ISliderProps
-    extends Omit<SliderProps, 'defaultValue'>,
-        DefaultProps {
+    extends Omit<SliderProps, 'defaultValue'>, DefaultProps {
     defaultValue?: number | number[]
     color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
 }

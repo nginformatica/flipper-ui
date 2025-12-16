@@ -1,9 +1,10 @@
 import React from 'react'
+import type { ReactNode } from 'react'
 import Typography from '@/core/data-display/typography'
 
 export interface IProps {
     searchText?: string
-    customText?: string
+    customText?: ReactNode
     buttonLabel?: string
     readonly?: boolean
     show: boolean

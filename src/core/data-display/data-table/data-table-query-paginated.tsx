@@ -5,6 +5,7 @@ import type {
     CSSProperties,
     ReactNode
 } from 'react'
+import { Box } from '@mui/material'
 import MuiPaper from '@mui/material/Paper'
 import MuiTable from '@mui/material/Table'
 import MuiTableBody from '@mui/material/TableBody'
@@ -52,15 +53,17 @@ export type DataTableProps<
     pagination?: Partial<PaginationOptions>
     controllerRef?: MutableRefObject<DataTableController<D, V> | undefined>
     hidden?: boolean
+    className?: string
+    responsive?: boolean
     rowViews?: Record<keyof V, RowViewComponent<D>>
     onRowClick?: (event: MouseEvent<HTMLTableRowElement>, rowData: D) => void
 }
 
 const defaultPagination: PaginationOptions = {
     rowsPerPage: 10,
-    labelRowsPerPage: 'Rows per page:',
+    labelRowsPerPage: 'Linhas por página:',
     labelDisplayedRows: ({ from, to, count }) => {
-        return `${from}-${to} of ${count !== -1 ? count : `more than ${to}`}`
+        return `${from}-${to} de ${count !== -1 ? count : `mais que ${to}`}`
     },
     disabled: false,
     showFirstButton: false,
@@ -92,7 +95,9 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         bodyStyle,
         headStyle,
         hiddenRowHeight,
-        hidden
+        hidden,
+        className,
+        responsive = false
     } = props
 
     const [newRow, setNewRow] = useState<PartialData<D> | undefined>()
@@ -264,9 +269,9 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
         ]
     )
 
-    return (
+    const table = (
         <MuiTableContainer component={MuiPaper}>
-            <MuiTable>
+            <MuiTable className={className}>
                 {!noHeader && (
                     <MuiTableHead style={headStyle}>
                         <MuiTableRow style={headRowStyle}>
@@ -282,7 +287,7 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                 </MuiTableBody>
                 {!pagination.disabled && (
                     <MuiTableFooter>
-                        <MuiTableRow>
+                        <MuiTableRow className='no-hover'>
                             <MuiTablePagination
                                 count={totalElements}
                                 page={page}
@@ -309,6 +314,21 @@ export const DataTableQueryPaginated = <D extends Data, V extends StackView>(
                 )}
             </MuiTable>
         </MuiTableContainer>
+    )
+
+    return responsive ? (
+        <Box sx={{ overflow: 'auto' }}>
+            <Box
+                sx={{
+                    width: '100%',
+                    display: 'table',
+                    tableLayout: 'fixed'
+                }}>
+                {table}
+            </Box>
+        </Box>
+    ) : (
+        table
     )
 }
 
