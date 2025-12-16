@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.39.2
+
+- add props `className` and `responsive` to `<DataTableQueryPaginated>`
+- adjust `customText` prop for `<NothingFound>` component to accept ReactNode
+
 ## v0.39.1
 
 - adjust Date Calendar height and Pickers min-height based on amount of weeks

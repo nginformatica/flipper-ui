@@ -6,16 +6,15 @@ import { theme } from '@/theme'
 
 const { gray } = theme.colors
 
-interface ITablePaginationProps
-    extends Omit<
-        TablePaginationProps,
-        | 'component'
-        | 'count'
-        | 'page'
-        | 'rowsPerPage'
-        | 'onPageChange'
-        | 'onRowsPerPageChange'
-    > {
+interface ITablePaginationProps extends Omit<
+    TablePaginationProps,
+    | 'component'
+    | 'count'
+    | 'page'
+    | 'rowsPerPage'
+    | 'onPageChange'
+    | 'onRowsPerPageChange'
+> {
     count: number
     page: number
     rowsPerPage: number

@@ -8,7 +8,8 @@ import type { SelectChangeEvent, SelectProps } from '@mui/material/Select'
 import { IconClose } from '@/icons/mui'
 
 export interface ISelectProps
-    extends DefaultProps,
+    extends
+        DefaultProps,
         Omit<SelectProps, 'margin' | 'value' | 'event' | 'onChange'> {
     autoWidth?: boolean
     value?: string | number
