@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.3
+
+- add specific icon `<IconFilePfx>`
+
 ## v0.39.2
 
 - add props `className` and `responsive` to `<DataTableQueryPaginated>`
