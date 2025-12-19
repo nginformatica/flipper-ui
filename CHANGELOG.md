@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.4
+
+- adjust icons attributes to React format (fill-rule and clip-rule)
+
 ## v0.39.3
 
 - add specific icon `<IconFilePfx>`
