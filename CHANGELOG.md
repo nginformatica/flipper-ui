@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.39.5
+
+- add `rowsPerPageOptions` on `<TableInteractive>`
+- add `getDefaultColumns` function to get default columns from users preferences
+- fix general console props warnings
+
 ## v0.39.4
 
 - adjust icons attributes to React format (fill-rule and clip-rule)

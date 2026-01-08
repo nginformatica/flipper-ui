@@ -82,7 +82,6 @@ export const progress: Story = {
         variant: 'indeterminate',
         linear: false,
         value: 50,
-        valueBuffer: 75,
         margin: '24px',
         padding: '0px'
     }

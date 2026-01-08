@@ -48,6 +48,7 @@ const Progress = ({
     style = {},
     margin,
     padding,
+    valueBuffer,
     primaryColor,
     barPrimaryColor,
     barSecondaryColor,
@@ -56,6 +57,7 @@ const Progress = ({
     return linear ? (
         <MuiLinearProgress
             style={{ margin, padding, ...style }}
+            valueBuffer={valueBuffer}
             sx={{
                 backgroundColor: primaryColor,
                 '.MuiLinearProgress-barColorPrimary': {
