@@ -50,7 +50,7 @@ export const StepCardColumn = styled.div<IColumnProps>`
     ${props => {
         if (props.justifyContent === 'start') {
             return `
-                svg:first-child {
+                svg:first-of-type {
                     margin-right: 40px;
                 }
                 `
@@ -67,13 +67,13 @@ export const ListItemContainer = styled.li`
     height: 30px;
     margin: 16px 0;
 
-    svg:first-child {
+    svg:first-of-type {
         margin-right: 16px;
     }
 `
 
 export const TitleContainer = styled.div`
-    h6:first-child {
+    h6:first-of-type {
         padding-inline: 20px;
     }
 

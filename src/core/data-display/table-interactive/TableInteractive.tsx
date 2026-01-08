@@ -42,8 +42,9 @@ export interface ITableInteractive extends Omit<TableProps, 'children'> {
     isCollapsible?: boolean
     visibleColumns?: string[]
     columnsTemporary?: string[]
+    rowsPerPageOptions?: number[]
+    headerActions?: JSX.Element | undefined
     valuesInvoices?: Record<string, unknown>[]
-    headerActions?: React.JSX.Element | undefined
     onCancel?: () => void
     onConfirm?: () => void
     handleOpen?: () => void
@@ -51,8 +52,8 @@ export interface ITableInteractive extends Omit<TableProps, 'children'> {
     setPage?: Dispatch<SetStateAction<number>>
     setRowsPerPage?: Dispatch<SetStateAction<number>>
     children?: (item: Record<string, unknown>) => ReactNode
+    rowsContent: () => JSX.Element | JSX.Element[] | undefined
     setColumnsTemporary?: (value: SetStateAction<string[]>) => void
-    rowsContent: () => React.JSX.Element | React.JSX.Element[] | undefined
 }
 
 export const TableInteractive = (props: ITableInteractive) => {
@@ -117,7 +118,11 @@ export const TableInteractive = (props: ITableInteractive) => {
                                         page={page}
                                         count={count}
                                         rowsPerPage={props.rowsPerPage ?? 10}
-                                        rowsPerPageOptions={[10, 25, 50, 100]}
+                                        rowsPerPageOptions={
+                                            props.rowsPerPageOptions ?? [
+                                                10, 25, 50, 100
+                                            ]
+                                        }
                                         ActionsComponent={
                                             TablePaginationActions
                                         }

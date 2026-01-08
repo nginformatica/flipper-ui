@@ -4,6 +4,10 @@ import { TableCellInteractive } from './styles'
 
 export const STORAGE_KEY = 'visible-columns'
 
+export const getDefaultColumns = (
+    columns: { name: string; show: boolean }[]
+): string[] => columns.filter(col => col.show).map(col => col.name)
+
 export const getInitialColumns = (
     columns: { name: string; label: string; show: boolean }[],
     key: string
@@ -43,11 +47,11 @@ export const generateHeader = (
 
     return (
         <TableCellInteractive
-            fixed={fixed}
             name={header.name}
             sortable={sortable}
             width={header.width}
-            key={header.name + '-header'}>
+            key={header.name + '-header'}
+            fixed={fixed ? 'fixed' : undefined}>
             {header.label}
         </TableCellInteractive>
     )

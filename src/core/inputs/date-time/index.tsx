@@ -195,9 +195,9 @@ const CustomStaticDateTimePicker = (props: {
                                 minHeight: '160px',
                                 transition: 'min-height 200ms ease-in-out'
                             },
-                            '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(5))':
+                            '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-of-type(5))':
                                 { minHeight: '200px' },
-                            '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(6))':
+                            '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-of-type(6))':
                                 { minHeight: '240px' }
                         }
                     }
@@ -295,9 +295,9 @@ const DateTime = ({
                                     minHeight: '160px',
                                     transition: 'min-height 200ms ease-in-out'
                                 },
-                                '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(5))':
+                                '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-of-type(5))':
                                     { minHeight: '200px' },
-                                '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-child(6))':
+                                '& .MuiPickersSlideTransition-root:has(.MuiDayCalendar-monthContainer > :nth-of-type(6))':
                                     { minHeight: '240px' }
                             }
                         }

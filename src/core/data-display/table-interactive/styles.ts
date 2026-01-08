@@ -33,14 +33,14 @@ export const ActionsWrapper = styled.div`
 
 export const TableCellInteractive = styled(TableCell)<{
     width?: string
-    fixed?: boolean
+    fixed?: string
 }>`
     && {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         min-width: 60px;
-        max-width: ${props => (props.fixed ? props => props.width : 'none')};
+        max-width: ${props => (props.fixed ? props.width : 'none')};
 
         @media (max-width: 1440px) {
             padding: 16px 8px;
