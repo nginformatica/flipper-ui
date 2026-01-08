@@ -9,6 +9,7 @@ module.exports = {
         '!<rootDir>/src/core/data-display/data-table/*.(ts|tsx)',
         '!<rootDir>/src/core/data-display/table/table-pagination.tsx',
         '!<rootDir>/src/core/data-display/table-interactive/index.ts',
+        '!<rootDir>/src/core/data-display/table-interactive/utils.tsx',
         '!<rootDir>/src/core/data-display/table-interactive/TableInteractiveHead.tsx',
         '!<rootDir>/src/core/data-display/table-interactive/TableDialogPreferences.tsx',
         '!<rootDir>/src/core/data-display/table-interactive/TablePaginationActions.tsx',
