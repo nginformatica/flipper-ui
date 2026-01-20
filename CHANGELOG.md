@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.39.6
+
+- refact `HelperBox` to not contain `IconButton` as child
+- export `getDefaultColumns` from `table-interactive`
+- adjust `Tab` label prop to accept `ReactNode`
+
 ## v0.39.5
 
 - add `rowsPerPageOptions` on `<TableInteractive>`

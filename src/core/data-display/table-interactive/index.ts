@@ -1,5 +1,6 @@
 export { TableInteractive } from './TableInteractive'
 export {
+    getDefaultColumns,
     getInitialColumns,
     setVisibleColumns,
     generateHeader,
