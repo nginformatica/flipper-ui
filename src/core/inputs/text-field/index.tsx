@@ -20,12 +20,10 @@ import IconButton from '../icon-button'
 import {
     CharactersCount,
     Helper,
+    HelperButton,
     StaticTextFieldWrapper,
     TextFieldWrapper
 } from './styles'
-import { theme } from '@/theme'
-
-const { primary } = theme.colors
 
 export interface IOption {
     label: string
@@ -76,7 +74,7 @@ export interface ITextFieldProps
 
 interface IHelperProps {
     helperIcon?: ReactNode
-    onHelperClick: (event: MouseEvent<HTMLButtonElement>) => void
+    onHelperClick: (event: MouseEvent) => void
 }
 
 const coerceComboOptions = (input: string): IOption[] => {
@@ -97,9 +95,9 @@ const toLispCase = (name: string) =>
 
 export const HelperBox = (props: IHelperProps) => (
     <Helper role='helper-box'>
-        <IconButton padding='6px 2px' onClick={props.onHelperClick}>
-            {props.helperIcon || <IconHelp htmlColor={primary.main} />}
-        </IconButton>
+        <HelperButton onClick={e => props.onHelperClick(e)}>
+            {props.helperIcon || <IconHelp color='primary' />}
+        </HelperButton>
     </Helper>
 )
 
