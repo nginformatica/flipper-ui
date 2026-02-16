@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.7
+
+- add `IconEditLocationAlt` to design system @mui icons
+
 ## v0.39.6
 
 - refact `HelperBox` to not contain `IconButton` as child
