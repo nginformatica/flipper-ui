@@ -185,7 +185,11 @@ const InteractiveTable = (args: ITableInteractive) => {
                 headerActions={
                     <>
                         <TextField placeholder='Pesquisar' />
-                        <Button fullWidth variant='contained'>
+                        <Button
+                            fullWidth
+                            size='small'
+                            variant='contained'
+                            sx={{ height: 'fit-content' }}>
                             Aplicar Filtros
                         </Button>
                     </>
