@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.39.8
+
+- adjust styles from `<TableInteractiveHeader>`
+- add `<IconCancelNote>`, `<IconViewNote>` and `<IconPendingNote>` to design system specific icons
+- add `<IconDraw>`, `<IconEditNote>`, `<IconInfoOutlined>`, `<IconWarningOutlined>` and `<IconTokenRounded>` to design system @mui icons
+
 ## v0.39.7
 
 - add `IconEditLocationAlt` to design system @mui icons

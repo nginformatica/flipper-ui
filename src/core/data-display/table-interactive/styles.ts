@@ -14,11 +14,12 @@ export const ContentWrapper = styled.div`
 export const TableHeaderContent = styled.div`
     display: flex;
     justify-content: flex-end;
-    gap: 8px;
+    gap: 4px;
     margin: 0 0 8px 0;
 
     & > div {
         display: flex;
+        align-items: center;
         justify-content: flex-end;
         gap: 8px;
     }
