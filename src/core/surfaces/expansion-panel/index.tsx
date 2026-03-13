@@ -122,14 +122,16 @@ const ExpansionPanel = ({
                                 {editing ? (
                                     <IconButton
                                         role='save-button'
-                                        padding='6px 2px'
+                                        padding='2px'
+                                        margin='4px'
                                         onClick={handleSaveClick}>
                                         <IconSave fontSize='small' />
                                     </IconButton>
                                 ) : (
                                     <IconButton
                                         role='save-button'
-                                        padding='6px 2px'
+                                        padding='2px'
+                                        margin='4px'
                                         onClick={handleEditClick}>
                                         <IconEdit fontSize='small' />
                                     </IconButton>
