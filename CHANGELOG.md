@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.9
+
+- update Node to 24.14.0 (LTS)
+
 ## v0.39.8
 
 - adjust styles from `<TableInteractiveHeader>`
