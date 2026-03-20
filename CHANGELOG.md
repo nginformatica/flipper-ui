@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.10
+
+- add `IconCancel`, `IconPostAddOutlined`, `IconRequestQuote` and `IconReport` to design system @mui icons
+
 ## v0.39.9
 
 - update Node to 24.14.0 (LTS)
