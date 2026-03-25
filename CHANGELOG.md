@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.11
+
+- add `IconPCA` to design system specific icons
+
 ## v0.39.10
 
 - add `IconCancel`, `IconPostAddOutlined`, `IconRequestQuote` and `IconReport` to design system @mui icons
