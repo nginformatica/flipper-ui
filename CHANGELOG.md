@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.12
+
+- fix release version
+
 ## v0.39.11
 
 - add `IconPCA` to design system specific icons
