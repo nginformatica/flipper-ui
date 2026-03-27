@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.13
+
+- adjust `<TableCellInteractive>` padding and add `onClose` to `<TableDialogPreferences>` modal
+
 ## v0.39.12
 
 - fix release version
