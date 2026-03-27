@@ -93,6 +93,7 @@ export const TableDialogPreferences = ({
                     />
                 </ActionsWrapper>
             }
+            onClose={onCancel}
         />
     )
 }
