@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.39.14
+
+- create `<SidebarNew>` to implement new layout
+- add `IconAutoAwesome` to design system @mui icons
+
 ## v0.39.13
 
 - adjust `<TableCellInteractive>` padding and add `onClose` to `<TableDialogPreferences>` modal
