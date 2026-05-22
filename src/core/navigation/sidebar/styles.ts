@@ -36,5 +36,14 @@ export const AnchorButton = styled(Button)<{ minwidth: string | number }>`
 `
 
 export const SidebarStorie = styled.div`
-    height: 500px;
+    position: relative;
+    height: 700px;
+    overflow: hidden;
+
+    .MuiDrawer-root,
+    .MuiDrawer-paper {
+        position: absolute !important;
+        top: 0 !important;
+        height: 100% !important;
+    }
 `
