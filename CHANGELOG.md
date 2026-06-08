@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.39.15
+
+- add `href` prop to `<ListItemDark>` to open items in a new tab (ctrl/cmd and middle-click and native context menu)
+- add `actions` prop to `<ListItemDark>` revealed on item hover and focus
+- add tooltip to `<ListItemDark>` shown when the sidebar is collapsed
+- fix `<SidebarNew>` favorites overlapping the list on small screens
+- add `IconAir`, `IconBiotechOutlined`, `IconBloodtypeOutlined`, `IconHeadphones`, `IconHearing`, `IconImageOutlined`, `IconMedicalServicesOutlined`, `IconRemoveRedEyeOutlined`, `IconScienceOutlined`, `IconVerifiedOutlined`, `IconVisibilityOutlined` and `IconWaterDropOutlined` to design system @mui icons
+
 ## v0.39.14
 
 - create `<SidebarNew>` to implement new layout

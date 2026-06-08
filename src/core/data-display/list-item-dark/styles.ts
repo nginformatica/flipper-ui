@@ -11,6 +11,15 @@ interface IRootProps {
     expanded?: boolean
 }
 
+export const FavoriteActions = styled.div`
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 120ms ease;
+`
+
 export const ItemButton = styled(MuiListItemButton)<IRootProps>`
     && {
         display: flex;
@@ -19,7 +28,7 @@ export const ItemButton = styled(MuiListItemButton)<IRootProps>`
         gap: 12px;
         width: 100%;
         border-radius: 4px;
-        padding: ${props => (props.dense ? '6px 12px' : '10px 12px')};
+        padding: ${props => (props.dense ? '8px 12px' : '12px')};
         border-left: 3px solid
             ${props => (props.selected ? orange[600] : 'transparent')};
         background-color: ${props =>
@@ -32,6 +41,24 @@ export const ItemButton = styled(MuiListItemButton)<IRootProps>`
         transition:
             background-color 120ms ease,
             color 120ms ease;
+    }
+
+    & svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        color: inherit;
+    }
+
+    & svg path,
+    & svg circle,
+    & svg rect {
+        fill: currentColor;
+    }
+
+    &:hover .list-item-dark-actions,
+    &:focus-within .list-item-dark-actions {
+        opacity: 1;
     }
 
     &&:hover {

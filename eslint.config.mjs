@@ -167,7 +167,8 @@ export default tseslint.config(
             'coverage/*',
             'node_modules/*',
             'pre-publish.js',
-            'eslint.config.js'
+            'eslint.config.js',
+            '.agent/*'
         ]
     },
     {

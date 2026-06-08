@@ -16,7 +16,7 @@ import {
     HeaderActionsItem,
     HeaderIconButton,
     LogoContainer,
-    MainArea
+    SidebarScrollArea
 } from './styles'
 import { theme } from '@/theme'
 
@@ -150,7 +150,11 @@ const SidebarNew = ({
                 </Header>
             )}
             {showFavoritesArea && (
-                <Collapse unmountOnExit in={favoritesOpen} timeout='auto'>
+                <Collapse
+                    unmountOnExit
+                    timeout='auto'
+                    in={favoritesOpen}
+                    sx={{ flexShrink: 0 }}>
                     <FavoritesSection>
                         <FavoritesHeader
                             type='button'
@@ -175,7 +179,7 @@ const SidebarNew = ({
                     </DividerWrapper>
                 </Collapse>
             )}
-            <MainArea>{children}</MainArea>
+            <SidebarScrollArea>{children}</SidebarScrollArea>
         </Drawer>
     )
 }

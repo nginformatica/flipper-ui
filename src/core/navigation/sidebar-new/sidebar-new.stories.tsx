@@ -8,6 +8,8 @@ import {
     IconAssignment,
     IconAutoAwesome,
     IconDateRange,
+    IconDelete,
+    IconEdit,
     IconFolderShared,
     IconHome,
     IconWarning
@@ -35,13 +37,21 @@ const SidebarNewDemo = (args: SidebarNewArgs) => {
                 <ListItemDark
                     expanded={expanded}
                     title='Início'
+                    href='/inicio'
                     icon={<IconHome />}
                 />
                 <ListItemDark
                     selected
                     expanded={expanded}
                     title='Agenda'
+                    href='/agenda'
                     icon={<IconDateRange />}
+                    actions={
+                        <>
+                            <IconEdit />
+                            <IconDelete />
+                        </>
+                    }
                 />
                 <ListItemDark
                     expanded={expanded}
