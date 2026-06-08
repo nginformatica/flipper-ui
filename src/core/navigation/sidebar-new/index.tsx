@@ -16,7 +16,7 @@ import {
     HeaderActionsItem,
     HeaderIconButton,
     LogoContainer,
-    MainArea
+    SidebarScrollArea
 } from './styles'
 import { theme } from '@/theme'
 
@@ -38,6 +38,8 @@ export interface SidebarNewProps extends DefaultProps {
     favorites?: ReactNode
     favoritesOpen?: boolean
     onFavoritesToggle?: () => void
+    favoritesListOpen?: boolean
+    onFavoritesListToggle?: () => void
     onToggle: () => void
 }
 
@@ -64,16 +66,28 @@ const SidebarNew = ({
     favorites,
     favoritesOpen = false,
     onFavoritesToggle,
+    favoritesListOpen,
+    onFavoritesListToggle,
     ...otherProps
 }: SidebarNewProps) => {
-    const [favoritesListExpanded, setFavoritesListExpanded] = useState(true)
+    const [internalListExpanded, setInternalListExpanded] = useState(true)
+
+    const isListControlled = favoritesListOpen !== undefined
+    const favoritesListExpanded = isListControlled
+        ? favoritesListOpen
+        : internalListExpanded
 
     const hasFavorites = Boolean(favorites)
     const showFavoritesArea = hasFavorites && expanded
     const showHeader = Boolean(logo) || hasFavorites || showButton
 
-    const handleFavoritesListToggle = () =>
-        setFavoritesListExpanded(prev => !prev)
+    const handleFavoritesListToggle = () => {
+        if (isListControlled) {
+            onFavoritesListToggle?.()
+        } else {
+            setInternalListExpanded(prev => !prev)
+        }
+    }
 
     const width = expanded ? maxWidth : minWidth
     const widthTransition = `width ${expanded ? 225 : 195}ms cubic-bezier(0.4, 0, 0.6, 1)`
@@ -150,7 +164,11 @@ const SidebarNew = ({
                 </Header>
             )}
             {showFavoritesArea && (
-                <Collapse unmountOnExit in={favoritesOpen} timeout='auto'>
+                <Collapse
+                    unmountOnExit
+                    timeout='auto'
+                    in={favoritesOpen}
+                    sx={{ flexShrink: 0 }}>
                     <FavoritesSection>
                         <FavoritesHeader
                             type='button'
@@ -175,7 +193,7 @@ const SidebarNew = ({
                     </DividerWrapper>
                 </Collapse>
             )}
-            <MainArea>{children}</MainArea>
+            <SidebarScrollArea>{children}</SidebarScrollArea>
         </Drawer>
     )
 }

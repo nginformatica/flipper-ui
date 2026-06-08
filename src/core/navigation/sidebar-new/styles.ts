@@ -28,6 +28,7 @@ export const Header = styled.div<IHeader>`
         props.anchor === 'right' ? 'row-reverse' : 'row'};
     width: 100%;
     height: 56px;
+    flex-shrink: 0;
     padding: 0 10px;
     border-bottom: 1px solid ${alpha(neutral[50], 0.08)};
     box-sizing: border-box;
@@ -151,7 +152,7 @@ export const DividerWrapper = styled.div`
     align-items: center;
     width: 100%;
     height: 12px;
-    padding: 6px 12px;
+    padding: 6px 12px 0 12px;
     box-sizing: border-box;
 `
 
@@ -161,15 +162,34 @@ export const Divider = styled.div`
     background-color: ${alpha(neutral[50], 0.06)};
 `
 
-export const MainArea = styled.div`
+export const SidebarScrollArea = styled.div`
     display: flex;
-    flex: 1 0 0;
+    flex: 1 1 auto;
     flex-direction: column;
-    min-height: 0;
     width: 100%;
-    padding: 8px 8px 16px;
-    overflow: auto;
-    box-sizing: border-box;
+    min-height: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: ${alpha(neutral[50], 0.2)} transparent;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${alpha(neutral[50], 0.2)};
+        border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: ${alpha(neutral[50], 0.35)};
+    }
 `
 
 export const SidebarNewStorie = styled.div`

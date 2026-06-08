@@ -11,15 +11,43 @@ interface IRootProps {
     expanded?: boolean
 }
 
-export const ItemButton = styled(MuiListItemButton)<IRootProps>`
+export const FavoriteActions = styled.div`
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 120ms ease;
+`
+
+export const ItemLabel = styled('div', {
+    shouldForwardProp: prop => prop !== 'expanded'
+})<{ expanded?: boolean }>`
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    max-width: ${props => (props.expanded === false ? '0px' : '200px')};
+    margin-left: ${props => (props.expanded === false ? '0px' : '12px')};
+    opacity: ${props => (props.expanded === false ? 0 : 1)};
+    transition:
+        max-width 225ms cubic-bezier(0.4, 0, 0.6, 1),
+        margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1),
+        opacity 195ms cubic-bezier(0.4, 0, 0.6, 1);
+`
+
+export const ItemButton = styled(MuiListItemButton, {
+    shouldForwardProp: prop => prop !== 'expanded'
+})<IRootProps>`
     && {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        gap: 12px;
+        justify-content: ${props => (props.expanded ? 'flex-start' : 'center')};
         width: 100%;
         border-radius: 4px;
-        padding: ${props => (props.dense ? '6px 12px' : '10px 12px')};
+        padding: ${props => (props.dense ? '8px 12px' : '12px')};
         border-left: 3px solid
             ${props => (props.selected ? orange[600] : 'transparent')};
         background-color: ${props =>
@@ -32,6 +60,24 @@ export const ItemButton = styled(MuiListItemButton)<IRootProps>`
         transition:
             background-color 120ms ease,
             color 120ms ease;
+    }
+
+    & svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        color: inherit;
+    }
+
+    & svg path,
+    & svg circle,
+    & svg rect {
+        fill: currentColor;
+    }
+
+    &:hover .list-item-dark-actions,
+    &:focus-within .list-item-dark-actions {
+        opacity: 1;
     }
 
     &&:hover {

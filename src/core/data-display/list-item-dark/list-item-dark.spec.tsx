@@ -41,7 +41,52 @@ describe('ListItemDark', () => {
     it('should render unExpanded', () => {
         render(<ListItemDark expanded={false} title='Item 1' />)
 
-        expect(screen.getByText('Item 1')).toBeInTheDocument()
+        expect(screen.getByRole('button')).toHaveAttribute(
+            'aria-label',
+            'Item 1'
+        )
+    })
+
+    it('should render as a link when href is provided', () => {
+        render(<ListItemDark title='Agenda' href='/agenda' />)
+
+        expect(screen.getByRole('link')).toHaveAttribute('href', '/agenda')
+    })
+
+    it('should prevent default navigation and call onClick on a plain click with href', () => {
+        const handleClick = jest.fn()
+
+        render(
+            <ListItemDark title='Agenda' href='/agenda' onClick={handleClick} />
+        )
+
+        fireEvent.click(screen.getByText('Agenda'))
+
+        expect(handleClick).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not call onClick when clicked with a modifier key and href', () => {
+        const handleClick = jest.fn()
+
+        render(
+            <ListItemDark title='Agenda' href='/agenda' onClick={handleClick} />
+        )
+
+        fireEvent.click(screen.getByText('Agenda'), { ctrlKey: true })
+
+        expect(handleClick).not.toHaveBeenCalled()
+    })
+
+    it('should render the actions', () => {
+        render(<ListItemDark title='Item 1' actions={<span>Action</span>} />)
+
+        expect(screen.getByText('Action')).toBeInTheDocument()
+    })
+
+    it('should render the actions without a title', () => {
+        render(<ListItemDark actions={<span>Action</span>} />)
+
+        expect(screen.getByText('Action')).toBeInTheDocument()
     })
 
     it('should match snapshot', () => {
