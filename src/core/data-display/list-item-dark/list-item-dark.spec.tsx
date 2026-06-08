@@ -41,7 +41,11 @@ describe('ListItemDark', () => {
     it('should render unExpanded', () => {
         render(<ListItemDark expanded={false} title='Item 1' />)
 
-        expect(screen.getByText('Item 1')).toBeInTheDocument()
+        expect(screen.queryByText('Item 1')).not.toBeInTheDocument()
+        expect(screen.getByRole('button')).toHaveAttribute(
+            'aria-label',
+            'Item 1'
+        )
     })
 
     it('should render as a link when href is provided', () => {

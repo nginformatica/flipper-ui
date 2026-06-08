@@ -57,13 +57,14 @@ const ListItemDark = ({
                 <ItemButton
                     {...(href ? { component: 'a', href } : {})}
                     dense={dense}
+                    expanded={expanded}
                     selected={selected}
                     disabled={disabled}
                     data-name={name}
                     data-testid={otherProps['data-testid']}
                     onClick={handleClick}>
                     {icon && <IconSlot dense={dense}>{icon}</IconSlot>}
-                    {title && (
+                    {title && expanded && (
                         <Typography
                             flex='1 0 0'
                             variant='body2'
@@ -72,17 +73,14 @@ const ListItemDark = ({
                             fontWeight={selected ? 500 : 400}
                             sx={{
                                 minWidth: 0,
-                                opacity: expanded ? 1 : 0,
                                 overflow: 'hidden',
                                 textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                                transition:
-                                    'opacity 195ms cubic-bezier(0.4, 0, 0.6, 1)'
+                                whiteSpace: 'nowrap'
                             }}>
                             {title}
                         </Typography>
                     )}
-                    {actions && (
+                    {actions && expanded && (
                         <FavoriteActions className='list-item-dark-actions'>
                             {actions}
                         </FavoriteActions>

@@ -20,11 +20,13 @@ export const FavoriteActions = styled.div`
     transition: opacity 120ms ease;
 `
 
-export const ItemButton = styled(MuiListItemButton)<IRootProps>`
+export const ItemButton = styled(MuiListItemButton, {
+    shouldForwardProp: prop => prop !== 'expanded'
+})<IRootProps>`
     && {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: ${props => (props.expanded ? 'flex-start' : 'center')};
         gap: 12px;
         width: 100%;
         border-radius: 4px;
