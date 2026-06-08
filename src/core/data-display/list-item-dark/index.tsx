@@ -3,7 +3,7 @@ import type { MouseEvent } from 'react'
 import { Typography } from '@mui/material'
 import MuiListItem from '@mui/material/ListItem'
 import Tooltip from '@/core/feedback/tooltip'
-import { FavoriteActions, IconSlot, ItemButton } from './styles'
+import { FavoriteActions, IconSlot, ItemButton, ItemLabel } from './styles'
 
 export interface ListItemDarkProps {
     id?: string
@@ -64,26 +64,30 @@ const ListItemDark = ({
                     data-testid={otherProps['data-testid']}
                     onClick={handleClick}>
                     {icon && <IconSlot dense={dense}>{icon}</IconSlot>}
-                    {title && expanded && (
-                        <Typography
-                            flex='1 0 0'
-                            variant='body2'
-                            fontSize='13.5px'
-                            lineHeight='13.5px'
-                            fontWeight={selected ? 500 : 400}
-                            sx={{
-                                minWidth: 0,
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap'
-                            }}>
-                            {title}
-                        </Typography>
-                    )}
-                    {actions && expanded && (
-                        <FavoriteActions className='list-item-dark-actions'>
-                            {actions}
-                        </FavoriteActions>
+                    {(title || actions) && (
+                        <ItemLabel expanded={expanded} aria-hidden={!expanded}>
+                            {title && (
+                                <Typography
+                                    flex='1 0 0'
+                                    variant='body2'
+                                    fontSize='13.5px'
+                                    lineHeight='13.5px'
+                                    fontWeight={selected ? 500 : 400}
+                                    sx={{
+                                        minWidth: 0,
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap'
+                                    }}>
+                                    {title}
+                                </Typography>
+                            )}
+                            {actions && (
+                                <FavoriteActions className='list-item-dark-actions'>
+                                    {actions}
+                                </FavoriteActions>
+                            )}
+                        </ItemLabel>
                     )}
                 </ItemButton>
             </Tooltip>

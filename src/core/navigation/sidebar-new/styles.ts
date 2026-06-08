@@ -152,7 +152,7 @@ export const DividerWrapper = styled.div`
     align-items: center;
     width: 100%;
     height: 12px;
-    padding: 6px 12px;
+    padding: 6px 12px 0 12px;
     box-sizing: border-box;
 `
 

@@ -148,6 +148,30 @@ describe('SidebarNew', () => {
         expect(header.getAttribute('aria-expanded')).toBe('true')
     })
 
+    it('should call onFavoritesListToggle when the list is controlled', () => {
+        const onFavoritesListToggle = jest.fn()
+
+        render(
+            <SidebarNew
+                open
+                favoritesOpen
+                favoritesListOpen={false}
+                favorites={<span>Favorite item</span>}
+                onFavoritesListToggle={onFavoritesListToggle}
+                onToggle={jest.fn()}>
+                <List>
+                    <ListItem title='Item 1' icon={<IconFolderShared />} />
+                </List>
+            </SidebarNew>
+        )
+
+        const header = screen.getByTestId('sidebar-new-favorites-header')
+
+        expect(header.getAttribute('aria-expanded')).toBe('false')
+        fireEvent.click(header)
+        expect(onFavoritesListToggle).toHaveBeenCalled()
+    })
+
     it('should render favorites button with unExpanded', () => {
         render(
             <SidebarNew

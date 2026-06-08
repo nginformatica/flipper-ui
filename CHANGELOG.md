@@ -6,6 +6,8 @@
 - add `actions` prop to `<ListItemDark>` revealed on item hover and focus
 - add tooltip to `<ListItemDark>` shown when the sidebar is collapsed
 - fix `<SidebarNew>` favorites overlapping the list on small screens
+- add `favoritesListOpen` and `onFavoritesListToggle` props to `<SidebarNew>` to allow controlling the favorites list expanded state
+- fix `<ListItemDark>` label abruptly disappearing when collapsing the sidebar by animating its fade and width instead of unmounting
 - add `IconAir`, `IconBiotechOutlined`, `IconBloodtypeOutlined`, `IconHeadphones`, `IconHearing`, `IconImageOutlined`, `IconMedicalServicesOutlined`, `IconRemoveRedEyeOutlined`, `IconScienceOutlined`, `IconVerifiedOutlined`, `IconVisibilityOutlined` and `IconWaterDropOutlined` to design system @mui icons
 
 ## v0.39.14

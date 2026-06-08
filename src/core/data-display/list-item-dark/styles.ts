@@ -20,6 +20,24 @@ export const FavoriteActions = styled.div`
     transition: opacity 120ms ease;
 `
 
+export const ItemLabel = styled('div', {
+    shouldForwardProp: prop => prop !== 'expanded'
+})<{ expanded?: boolean }>`
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    max-width: ${props => (props.expanded === false ? '0px' : '200px')};
+    margin-left: ${props => (props.expanded === false ? '0px' : '12px')};
+    opacity: ${props => (props.expanded === false ? 0 : 1)};
+    transition:
+        max-width 225ms cubic-bezier(0.4, 0, 0.6, 1),
+        margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1),
+        opacity 195ms cubic-bezier(0.4, 0, 0.6, 1);
+`
+
 export const ItemButton = styled(MuiListItemButton, {
     shouldForwardProp: prop => prop !== 'expanded'
 })<IRootProps>`
@@ -27,7 +45,6 @@ export const ItemButton = styled(MuiListItemButton, {
         display: flex;
         align-items: center;
         justify-content: ${props => (props.expanded ? 'flex-start' : 'center')};
-        gap: 12px;
         width: 100%;
         border-radius: 4px;
         padding: ${props => (props.dense ? '8px 12px' : '12px')};

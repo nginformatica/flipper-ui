@@ -41,7 +41,6 @@ describe('ListItemDark', () => {
     it('should render unExpanded', () => {
         render(<ListItemDark expanded={false} title='Item 1' />)
 
-        expect(screen.queryByText('Item 1')).not.toBeInTheDocument()
         expect(screen.getByRole('button')).toHaveAttribute(
             'aria-label',
             'Item 1'
@@ -80,6 +79,12 @@ describe('ListItemDark', () => {
 
     it('should render the actions', () => {
         render(<ListItemDark title='Item 1' actions={<span>Action</span>} />)
+
+        expect(screen.getByText('Action')).toBeInTheDocument()
+    })
+
+    it('should render the actions without a title', () => {
+        render(<ListItemDark actions={<span>Action</span>} />)
 
         expect(screen.getByText('Action')).toBeInTheDocument()
     })
