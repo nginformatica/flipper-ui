@@ -71,7 +71,6 @@ const ListItemDark = ({
                                     flex='1 0 0'
                                     variant='body2'
                                     fontSize='13.5px'
-                                    lineHeight='13.5px'
                                     fontWeight={selected ? 500 : 400}
                                     sx={{
                                         minWidth: 0,

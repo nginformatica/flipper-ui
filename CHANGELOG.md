@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.39.16
+
+- fix `<ListItemDark>` line-height
+- add `IconNumbers`, `IconToggleOn`, `IconFileUpload`, `IconCalendarToday`, `IconInventory2`, `IconMonetizationOnOutlined`, `IconArrowForward` and `IconAccessTimeFilled` to design system @mui icons
+
 ## v0.39.15
 
 - add `href` prop to `<ListItemDark>` to open items in a new tab (ctrl/cmd and middle-click and native context menu)
