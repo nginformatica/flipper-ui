@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.17
+
+- add `IconApiRounded`, `IconDesignServicesOutlined`, `IconDownloadingRounded`, `IconEditNotificationsOutlined` and `IconTuneRounded` to design system @mui icons
+
 ## v0.39.16
 
 - fix `<ListItemDark>` line-height
