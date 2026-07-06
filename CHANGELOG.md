@@ -2,7 +2,7 @@
 
 ## v0.39.19
 
-- add `TipsAndUpdates` to design system @mui icons
+- add `IconTipsAndUpdates` to design system @mui icons
 
 ## v0.39.18
 
