@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.39.19
+
+- add `TipsAndUpdates` to design system @mui icons
+
 ## v0.39.18
 
 - add `IconComputer`, `IconSlowMotionVideo`, `IconSmartphone` and `IconTrendingFlatRounded` to design system @mui icons
