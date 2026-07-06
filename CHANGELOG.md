@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.40.0
+
+- fix release
+
 ## v0.39.19
 
 - add `IconTipsAndUpdates` to design system @mui icons
