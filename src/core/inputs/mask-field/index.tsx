@@ -51,7 +51,7 @@ const MaskField = (props: MaskFieldProps) => {
         return (
             <NumberFormatBase
                 {...otherProps}
-                style={{ ...style, border: '1px solid red' }}
+                style={{ ...style }}
                 customInput={customInput || TextField}
                 isValidInputCharacter={char => /[0-9A-Za-z]/.test(char)}
                 isCharacterSame={({
