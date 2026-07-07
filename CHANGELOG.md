@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.40.1
+
+- add `allowAlphanumeric` prop to `<MaskField>` to allow letters in pattern-formatted fields (e.g. CNPJ with letters)
+
 ## v0.40.0
 
 - fix release
