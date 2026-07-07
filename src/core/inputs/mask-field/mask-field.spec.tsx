@@ -51,4 +51,23 @@ describe('MaskField', () => {
 
         expect(container).toMatchSnapshot()
     })
+
+    it('should accept alphanumeric characters when allowAlphanumeric is set', async () => {
+        render(
+            <MaskField
+                hasFormat
+                allowAlphanumeric
+                placeholder='Description'
+                format='##.###.###/####-##'
+            />
+        )
+
+        const input = screen.getByPlaceholderText(
+            'Description'
+        ) as HTMLInputElement
+
+        await act(async () => await userEvent.type(input, '12abc678000195'))
+
+        expect(input.value).toBe('12.ABC.678/0001-95')
+    })
 })

@@ -61,6 +61,7 @@ export const maskField: Story = {
     args: {
         label: 'Price',
         hasFormat: false,
+        allowAlphanumeric: false,
         format: '####',
         decimalScale: 2,
         decimalSeparator: ',',
