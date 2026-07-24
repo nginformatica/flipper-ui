@@ -8,6 +8,9 @@ jobs:
 
   publish-npm:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -26,7 +29,9 @@ jobs:
       - name: Run pre-publish
         run: node pre-publish.js
 
+      # OIDC trusted publishing needs npm >= 11.5.1
+      - name: Ensure npm supports OIDC
+        run: npm install -g npm@latest
+
       - name: Publish package on npm
         run: npm publish ./dist --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

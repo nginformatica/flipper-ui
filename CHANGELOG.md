@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.40.2
+
+- migrate npm publish workflow to OIDC trusted publishing (removes `NPM_TOKEN`, renames `release.yml` to `publish.yml`)
+
 ## v0.40.1
 
 - add `allowAlphanumeric` prop to `<MaskField>` to allow letters in pattern-formatted fields (e.g. CNPJ with letters)
