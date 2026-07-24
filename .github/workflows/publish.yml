@@ -29,9 +29,5 @@ jobs:
       - name: Run pre-publish
         run: node pre-publish.js
 
-      # OIDC trusted publishing needs npm >= 11.5.1
-      - name: Ensure npm supports OIDC
-        run: npm install -g npm@latest
-
       - name: Publish package on npm
         run: npm publish ./dist --access public
