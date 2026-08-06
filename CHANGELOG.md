@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.40.3
+
+- add `IconAutoFixHigh`, `IconBorderAllRounded`, `IconBorderClearRounded`, `IconBorderInnerRounded`, `IconBorderOuterRounded`, `IconCalendarViewMonthRounded`, `IconCropPortraitRounded`, `IconDeleteSweepRounded`, `IconFileOpenRounded`, `IconFormatAlignCenterRounded`, `IconFormatAlignLeftRounded`, `IconFormatAlignRightRounded`, `IconFormatBold`, `IconFormatItalic`, `IconFormatListBulletedRounded`, `IconFormatListNumberedRounded`, `IconFormatUnderlined`, `IconHeight`, `IconKeyboardDoubleArrowDownRounded`, `IconKeyboardDoubleArrowUpRounded`, `IconLooksOneOutlined`, `IconNotesRounded`, `IconPregnantWoman`, `IconPrintDisabledOutlined`, `IconPrintOutlined`, `IconRedoRounded`, `IconRemove`, `IconRestorePageRounded`, `IconSegmentRounded`, `IconShare`, `IconTocRounded` and `IconUndoRounded` to design system @mui icons
+
 ## v0.40.2
 
 - migrate npm publish workflow to OIDC trusted publishing (removes `NPM_TOKEN`, renames `release.yml` to `publish.yml`)
