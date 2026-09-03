@@ -1,6 +1,7 @@
 import React, { act } from 'react'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import Checkbox from '.'
+import '@testing-library/jest-dom'
 
 describe('Checkbox', () => {
     it('should render', () => {
@@ -55,6 +56,23 @@ describe('Checkbox', () => {
         expect(checkbox).toBeDefined()
     })
 
+    it('should expose the switch state to assistive tech', () => {
+        render(
+            <Checkbox
+                checked
+                type='switch'
+                label='checkbox-label'
+                name='checkbox-name'
+                onChange={jest.fn()}
+            />
+        )
+
+        const checkbox = screen.getByRole('switch')
+
+        expect(checkbox.tagName).toBe('INPUT')
+        expect(checkbox).toBeChecked()
+    })
+
     it('should render with helper', () => {
         render(
             <Checkbox
@@ -65,7 +83,7 @@ describe('Checkbox', () => {
             />
         )
 
-        const helper = screen.getByRole('helper-box')
+        const helper = screen.getByTestId('helper-box')
 
         expect(helper).toBeDefined()
     })
@@ -123,7 +141,7 @@ describe('Checkbox', () => {
             />
         )
 
-        const helper = screen.getByRole('helper-box')
+        const helper = screen.getByTestId('helper-box')
         const button = helper.querySelector('svg')
 
         fireEvent.click(button || helper)

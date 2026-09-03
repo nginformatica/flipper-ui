@@ -34,6 +34,7 @@ export interface ExpansionPanelProps extends Omit<IPaperProps, 'onChange'> {
     editable?: boolean
     editing?: boolean
     role?: string
+    'data-testid'?: string
     helperButtonPosition?: 'left' | 'right'
     onHelperClick?: () => void
     onEditClick?: () => void
@@ -79,7 +80,7 @@ const ExpansionPanel = ({
         }
     }
 
-    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    const handleClick = (event: SyntheticEvent) => {
         event.stopPropagation()
         onHelperClick?.()
     }
@@ -118,10 +119,11 @@ const ExpansionPanel = ({
                         {helperButtonPosition === 'left' && renderHelper}
                         {summary}
                         {editable && (
-                            <div role='edit-box'>
+                            <div data-testid='edit-box'>
                                 {editing ? (
                                     <IconButton
-                                        role='save-button'
+                                        aria-label='Salvar'
+                                        data-testid='save-button'
                                         padding='2px'
                                         margin='4px'
                                         onClick={handleSaveClick}>
@@ -129,7 +131,8 @@ const ExpansionPanel = ({
                                     </IconButton>
                                 ) : (
                                     <IconButton
-                                        role='save-button'
+                                        aria-label='Editar'
+                                        data-testid='save-button'
                                         padding='2px'
                                         margin='4px'
                                         onClick={handleEditClick}>

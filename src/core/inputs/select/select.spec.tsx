@@ -58,7 +58,9 @@ describe('Select', () => {
 
         screen.getByText('Option 1')
 
-        const clearButton = screen.getByRole('end-adornment-component')
+        const clearButton = screen.getByTestId('end-adornment-component')
+
+        expect(clearButton).toHaveAccessibleName('Limpar')
 
         await act(async () => await userEvent.click(clearButton))
 

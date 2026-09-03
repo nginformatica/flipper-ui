@@ -30,7 +30,7 @@ const Menu = ({
         }}
         style={{ padding, margin, ...style }}>
         {withWrapper ? (
-            <div role='menu-wrapper-container'>{children}</div>
+            <div data-testid='menu-wrapper-container'>{children}</div>
         ) : (
             children
         )}

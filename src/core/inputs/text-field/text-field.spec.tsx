@@ -1,6 +1,7 @@
 import React, { act } from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
+import '@testing-library/jest-dom'
 import TextField from '@/test/mocks/text-field-mock'
 import TextFieldOptions from '@/test/mocks/text-field-options-mock'
 
@@ -60,12 +61,39 @@ describe('TextField', () => {
 
         await userEvent.hover(textField)
 
-        const helperBox = screen.getByRole('helper-box')
+        const helperBox = screen.getByTestId('helper-box')
+
+        expect(
+            screen.getByRole('button', { name: 'Ajuda' })
+        ).toBeInTheDocument()
 
         await act(
             async () =>
                 await userEvent.click(helperBox.firstElementChild || helperBox)
         )
+
+        expect(onHelperClick).toHaveBeenCalled()
+    })
+
+    it('should trigger the helper with the keyboard', async () => {
+        const onHelperClick = jest.fn()
+
+        render(
+            <TextField
+                inputProps={{
+                    placeholder: 'Description',
+                    onHelperClick: onHelperClick
+                }}
+            />
+        )
+
+        const helper = screen.getByRole('button', { name: 'Ajuda' })
+
+        helper.focus()
+
+        expect(helper).toHaveFocus()
+
+        await act(async () => await userEvent.keyboard('{Enter}'))
 
         expect(onHelperClick).toHaveBeenCalled()
     })
@@ -88,7 +116,9 @@ describe('TextField', () => {
 
         expect(textField.value).toBe('elm')
 
-        const clearBtn = screen.getByRole('clear-button')
+        const clearBtn = screen.getByTestId('clear-button')
+
+        expect(clearBtn).toHaveAccessibleName('Limpar')
 
         await act(async () => await userEvent.click(clearBtn))
 

@@ -34,7 +34,7 @@ describe('Snackbar', () => {
             await userEvent.click(btn)
         })
 
-        const closeBtn = screen.getByRole('close-icon-button')
+        const closeBtn = screen.getByTestId('close-icon-button')
 
         await act(async () => {
             await userEvent.click(closeBtn)
@@ -90,7 +90,7 @@ describe('Snackbar', () => {
             await userEvent.click(btn)
         })
 
-        const closeBtn = screen.getByRole('close-icon-button')
+        const closeBtn = screen.getByTestId('close-icon-button')
 
         await act(async () => {
             await userEvent.click(closeBtn)

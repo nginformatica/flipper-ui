@@ -122,7 +122,7 @@ const SnackBar = (props: SnackBarProps) => {
                     action || (
                         <IconButton
                             key='close'
-                            role='close-icon-button'
+                            data-testid='close-icon-button'
                             aria-label='Close'
                             color='inherit'
                             onClick={handleClose}>

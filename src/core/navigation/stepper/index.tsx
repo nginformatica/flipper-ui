@@ -45,7 +45,7 @@ const Stepper = ({
     ...otherProps
 }: StepperProps) => (
     <MuiStepper
-        role='stepper-container'
+        data-testid='stepper-container'
         alternativeLabel={bottomLabel}
         activeStep={active}
         style={{ padding, margin, ...style }}

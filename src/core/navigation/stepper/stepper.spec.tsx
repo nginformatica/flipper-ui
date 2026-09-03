@@ -12,7 +12,7 @@ describe('Stepper', () => {
             />
         )
 
-        const container = screen.getByRole('stepper-container')
+        const container = screen.getByTestId('stepper-container')
         const stepOne = screen.getByText('Name')
         const stepTwo = screen.getByText('Email')
         const stepThree = screen.getByText('Password')
@@ -49,7 +49,7 @@ describe('Stepper', () => {
             />
         )
 
-        const container = screen.getByRole('stepper-container')
+        const container = screen.getByTestId('stepper-container')
         const stepOne = screen.getByText('Name')
         const stepOneIcon = screen.getByTestId('step-icon1')
         const stepTwo = screen.getByText('Email')
@@ -81,7 +81,7 @@ describe('Stepper', () => {
             />
         )
 
-        const container = screen.getByRole('stepper-container')
+        const container = screen.getByTestId('stepper-container')
         const stepOne = screen.getByText('Name')
         const stepOneIcon = screen.getByTestId('step-icon')
 

@@ -344,7 +344,9 @@ export const DataTable = <D extends Data, V extends StackView>(
         rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage)
 
     return (
-        <MuiTableContainer role='data-table-container' component={MuiPaper}>
+        <MuiTableContainer
+            data-testid='data-table-container'
+            component={MuiPaper}>
             <MuiTable size={size}>
                 {!noHeader && (
                     <MuiTableHead style={headStyle}>

@@ -30,7 +30,8 @@ export interface ISelectProps
 const renderEndAdornment = (onClear?: () => void) => (
     <InputAdornment position='end' style={{ paddingRight: '12px' }}>
         <IconButton
-            role='end-adornment-component'
+            data-testid='end-adornment-component'
+            aria-label='Limpar'
             size='small'
             onClick={onClear}>
             <IconClose sx={{ fontSize: '15px' }} />

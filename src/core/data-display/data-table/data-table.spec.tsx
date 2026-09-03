@@ -94,7 +94,7 @@ describe('DataTable', () => {
             />
         )
 
-        const container = screen.getByRole('data-table-container')
+        const container = screen.getByTestId('data-table-container')
         const rows = screen.getAllByRole('rowgroup')[1].childElementCount
 
         expect(container).toBeDefined()
