@@ -71,7 +71,7 @@ describe('Typography', () => {
         }
     )
 
-    it('should render the size tokens without explicit theme options', () => {
+    it('should fall back to the size tokens without theme options', () => {
         render(
             <ThemeProviderFlipper>
                 <Typography variant='micro'>Some text</Typography>

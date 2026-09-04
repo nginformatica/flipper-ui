@@ -11,10 +11,11 @@ export const fontSize = {
 
 /**
  * NG size tokens. They live in the MUI theme, so they only reach the DOM when
- * the app renders under `ThemeProviderFlipper` (or passes `muiThemeOptions` to
- * its own `ThemeProvider`). The `Typography` component falls back to these
- * values when the theme does not carry them, so the size is never lost — but a
- * consumer theme can only override a token that the theme actually declares.
+ * the theme is built with `muiThemeOptions` — either through
+ * `<ThemeProviderFlipper options={muiThemeOptions}>` or by merging the options
+ * into the consumer own `ThemeProvider`. The `Typography` component falls back
+ * to these values when the theme does not carry them, so the size is never
+ * lost — but a consumer theme can only override a token that it declares.
  */
 export const typographyVariants = {
     micro: {
