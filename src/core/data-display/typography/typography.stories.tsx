@@ -8,6 +8,31 @@ const { primary } = theme.colors
 const meta: Meta<typeof Typography> = {
     title: 'DataDisplay/Typography',
     component: Typography,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'Besides the MUI variants, Typography ships the NG size ' +
+                    'tokens `micro` (10px), `footnote` (11px), `dense` (13px) ' +
+                    'and `display` (28px).\n\n' +
+                    'These tokens live in the MUI theme, so they need the app ' +
+                    'to render under `ThemeProviderFlipper` — or to pass ' +
+                    '`muiThemeOptions` to its own `ThemeProvider` — for the ' +
+                    'theme to carry them:\n\n' +
+                    '```tsx\n' +
+                    "import { ThemeProviderFlipper } from 'flipper-ui/theme'\n\n" +
+                    '<ThemeProviderFlipper>\n' +
+                    '    <App />\n' +
+                    '</ThemeProviderFlipper>\n' +
+                    '```\n\n' +
+                    'When the theme does not carry the tokens, Typography ' +
+                    'falls back to their default values, so the size is never ' +
+                    'lost. The fallback is a safety net, not the contract: a ' +
+                    'custom theme can only restyle a token it declares, so ' +
+                    'merge `muiThemeOptions` instead of replacing it.'
+            }
+        }
+    },
     argTypes: {
         children: {
             control: 'text',
@@ -27,13 +52,20 @@ const meta: Meta<typeof Typography> = {
                 'body2',
                 'caption',
                 'button',
-                'overline'
+                'overline',
+                'micro',
+                'footnote',
+                'dense',
+                'display'
             ],
             control: { type: 'radio' },
             description:
                 'The variants based on the HTML tags. Must be ' +
                 '`h1 | h2 | h3 | h4 | h5 | h6 | subtitle1 | subtitle2 | body1 |` ' +
                 '` body2 | caption | button | overline`. ' +
+                'The NG size tokens are ' +
+                '`micro` (10px), `footnote` (11px), `dense` (13px) and ' +
+                '`display` (28px), and they are provided by the theme. ' +
                 'If not set, the default is `body2`.'
         },
         color: {

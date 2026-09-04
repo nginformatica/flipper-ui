@@ -1,11 +1,31 @@
 import React from 'react'
+import { useTheme } from '@mui/material/styles'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import ConfirmDialog from './confirm-dialog'
 import DialogV2 from './dialog'
 import RemoveDialog from './remove-dialog'
+import { theme } from '@/theme'
 
 describe('Dialog', () => {
+    it('should keep the size tokens in the theme it provides', () => {
+        const ThemeProbe = () => (
+            <span>{String(useTheme().typography.dense.fontSize)}</span>
+        )
+
+        render(
+            <DialogV2
+                open
+                title='dialog title'
+                primaryButtonText='Close'
+                primaryButtonAction={jest.fn()}
+                content={<ThemeProbe />}
+            />
+        )
+
+        expect(screen.getByText(theme.fontSize.dense)).toBeDefined()
+    })
+
     it('should render', () => {
         const onClickSpy = jest.fn()
 

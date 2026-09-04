@@ -1,11 +1,10 @@
 import React, { useCallback, useState } from 'react'
-import { ThemeProvider } from '@emotion/react'
 import CircularProgress from '@mui/material/CircularProgress'
 import type { Meta, StoryObj } from '@storybook/react'
 import Button from '@/core/inputs/button'
 import { IconCancelOutlined, IconCheckCircleOutlined } from '@/icons/mui'
 import ValidationDialog, { ValidationStatus } from '.'
-import { ThemeProviderFlipper, muiThemeOptions, theme } from '@/theme'
+import { theme } from '@/theme'
 
 const { action, secondary } = theme.colors
 
@@ -153,29 +152,25 @@ const ValidationDialogStorie = () => {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <ThemeProviderFlipper options={muiThemeOptions}>
-                <Button onClick={openDialog}>Open dialog</Button>
+        <>
+            <Button onClick={openDialog}>Open dialog</Button>
 
-                <ValidationDialog
-                    open={open}
-                    title={stepsTitle}
-                    icons={stepsIcons}
-                    validations={validationSteps(validationResponses)}
-                    responses={validationResponses}
-                    failed={
-                        !validationResponses.includes('Loading') &&
-                        validationResponses.includes('Error')
-                    }
-                    success={validationResponses.every(
-                        item => item === 'Success'
-                    )}
-                    handleCreate={handleConfirm}
-                    onCancel={handleClose}
-                    onClose={handleClose}
-                />
-            </ThemeProviderFlipper>
-        </ThemeProvider>
+            <ValidationDialog
+                open={open}
+                title={stepsTitle}
+                icons={stepsIcons}
+                validations={validationSteps(validationResponses)}
+                responses={validationResponses}
+                failed={
+                    !validationResponses.includes('Loading') &&
+                    validationResponses.includes('Error')
+                }
+                success={validationResponses.every(item => item === 'Success')}
+                handleCreate={handleConfirm}
+                onCancel={handleClose}
+                onClose={handleClose}
+            />
+        </>
     )
 }
 

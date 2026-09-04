@@ -3,7 +3,7 @@ import type { CSSProperties, MouseEvent, ReactNode } from 'react'
 import type { IDialogProps } from '@/core/feedback/dialog'
 import Dialog from '@/core/feedback/dialog'
 import Button from '@/core/inputs/button'
-import { ThemeProviderFlipper, theme } from '@/theme'
+import { ThemeProviderFlipper, muiThemeOptions, theme } from '@/theme'
 
 const { action, primary } = theme.colors
 
@@ -36,16 +36,17 @@ export interface IProps extends IDialogProps {
     onClose?(): void
 }
 
+// The dialog keeps its own palette: here `secondary` is the cancel color,
+// not the NG green
 const themeDialog = {
+    typography: muiThemeOptions.typography,
+    components: muiThemeOptions.components,
     palette: {
         primary: {
             main: primary.main
         },
         secondary: {
             main: action.cancel
-        },
-        typography: {
-            useNextVariants: true
         }
     }
 }
@@ -98,7 +99,7 @@ const DialogV2 = (props: IProps) => {
                                         secondaryButtonName ||
                                         'secondary-button'
                                     }
-                                    margin='12px 6px'
+                                    margin='8px 4px 12px 4px'
                                     onClick={secondaryButtonAction}>
                                     {secondaryButtonText}
                                 </Button>
@@ -109,7 +110,7 @@ const DialogV2 = (props: IProps) => {
                                 color={primaryButtonColor}
                                 style={primaryButtonStyle}
                                 variant='contained'
-                                margin='12px 6px'
+                                margin='8px 12px 12px 4px'
                                 onClick={primaryButtonAction}>
                                 {primaryButtonText}
                             </Button>

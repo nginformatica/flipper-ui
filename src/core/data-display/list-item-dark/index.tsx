@@ -1,7 +1,7 @@
 import React from 'react'
 import type { MouseEvent } from 'react'
-import { Typography } from '@mui/material'
 import MuiListItem from '@mui/material/ListItem'
+import Typography from '@/core/data-display/typography'
 import Tooltip from '@/core/feedback/tooltip'
 import { FavoriteActions, IconSlot, ItemButton, ItemLabel } from './styles'
 
@@ -69,8 +69,7 @@ const ListItemDark = ({
                             {title && (
                                 <Typography
                                     flex='1 0 0'
-                                    variant='body2'
-                                    fontSize='13.5px'
+                                    variant='dense'
                                     fontWeight={selected ? 500 : 400}
                                     sx={{
                                         minWidth: 0,

@@ -1,6 +1,7 @@
 import colors from './colors'
+import { fontSize, typographyOptions, variantMapping } from './typography'
 
-export const theme = { colors }
+export const theme = { colors, fontSize }
 
 export const muiThemeOptions = {
     palette: {
@@ -18,6 +19,14 @@ export const muiThemeOptions = {
         },
         text: {
             primary: colors.gray[900]
+        }
+    },
+    typography: typographyOptions,
+    components: {
+        MuiTypography: {
+            defaultProps: {
+                variantMapping
+            }
         }
     }
 }
