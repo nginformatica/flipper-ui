@@ -42,6 +42,6 @@ export const TableCellInteractive = styled(TableCell)<{
         white-space: nowrap;
         min-width: 60px;
         max-width: ${props => (props.fixed ? props.width : 'none')};
-        padding: 16px 8px 16px 16px;
+        padding: 16px 8px;
     }
 `

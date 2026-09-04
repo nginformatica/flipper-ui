@@ -20,102 +20,177 @@ import { DataTableAction } from './data-table-action'
 import { DataTableField } from './data-table-field'
 import { RowMode } from './types'
 
+const COMPONENT_DESCRIPTION = [
+    'A table driven by a **column spec** instead of JSX children. Each',
+    'column declares a `field` and a `type`, and the table decides how to',
+    'read, format and edit that value:',
+    '',
+    '```tsx',
+    'const columns: ColumnSpec<Product>[] = [',
+    "    { title: 'Product', field: 'product', type: 'text', editable: true },",
+    '    {',
+    "        title: 'Price',",
+    "        field: 'price',",
+    "        type: 'numeric-float',",
+    "        getValue: value => value.toFixed(2).replace('.', ',')",
+    '    }',
+    ']',
+    '',
+    '<DataTable data={products} columns={columns} />',
+    '```',
+    '',
+    'Every row has a **mode** — `View`, `Edit` or `Hide` — and the table',
+    'renders a different cell for each. `editable` columns turn into the',
+    'input that matches their `type`; `renderCell` takes over completely',
+    'when you need something else.',
+    '',
+    'Modes are not props. You drive them through a **controller** handed',
+    'to you by `controllerRef`, which is also how rows are added:',
+    '',
+    '```tsx',
+    'const controller = useRef<DataTableController<Product, View>>()',
+    '',
+    'controller.current?.editRow(id)',
+    'controller.current?.addRow({ id: uuid() })',
+    '```',
+    '',
+    'Pagination is built in and slices `data` client side. Pass',
+    '`pagination={{ disabled: true }}` to render every row.',
+    '',
+    '### Truncating a column',
+    '',
+    'Clipping is **per column and opt-in**, because a table that must not',
+    'hide content simply does not ask for it:',
+    '',
+    '```tsx',
+    "{ title: 'Description', field: 'description', type: 'text', truncate: true }",
+    "{ title: 'Note', field: 'note', type: 'text', truncate: 300 }",
+    "{ title: 'Path', field: 'path', type: 'text', truncate: '20rem' }",
+    '```',
+    '',
+    '`true` clips at 150px; a number is read as pixels; a string is used as',
+    'given. It reaches the header cell too, and a `cellStyle` or',
+    '`headerStyle` on the same column still wins.',
+    '',
+    '> The ellipsis is reliable; the width is a ceiling, not a promise.',
+    "> Under the browser's default `table-layout: auto` a column can still",
+    '> render wider than asked when the table has room to spare — a column',
+    '> capped at 180px measured 278px in a 900px table. Only',
+    '> `table-layout: fixed` with an explicit `width` holds the exact',
+    '> number.',
+    '',
+    '> Layout is opt-in. Without `stickyHeader`, `maxHeight`, `cellPadding`,',
+    '> `framed` or `borderRadius` the table renders exactly as it always',
+    '> did — an elevated card with a 4px radius.'
+].join('\n')
+
 const meta: Meta<typeof DataTable> = {
     title: 'DataDisplay/Data Table',
     component: DataTable,
+    parameters: {
+        docs: {
+            description: {
+                component: COMPONENT_DESCRIPTION
+            }
+        }
+    },
     argTypes: {
-        errors: {
-            table: {
-                disable: true
-            }
-        },
-        noHeader: {
-            table: {
-                disable: true
-            }
-        },
-        componentForEmpty: {
-            table: {
-                disable: true
-            }
-        },
-        bodyStyle: {
-            table: {
-                disable: true
-            }
-        },
-        headStyle: {
-            table: {
-                disable: true
-            }
-        },
-        bodyRowStyle: {
-            table: {
-                disable: true
-            }
-        },
-        headRowStyle: {
-            table: {
-                disable: true
-            }
-        },
-        hiddenRowHeight: {
-            table: {
-                disable: true
-            }
-        },
-        pagination: {
-            table: {
-                disable: true
-            }
-        },
-        controllerRef: {
-            table: {
-                disable: true
-            }
-        },
-        hidden: {
-            table: {
-                disable: true
-            }
-        },
-        rowViews: {
-            table: {
-                disable: true
-            }
-        },
-        renderEmptyRows: {
-            table: {
-                disable: true
-            }
-        },
-        hideSelect: {
-            table: {
-                disable: true
-            }
-        },
-        checkbox: {
-            table: {
-                disable: true
-            }
-        },
-        checkboxProps: {
-            table: {
-                disable: true
-            }
-        },
-        onRowClick: {
-            table: {
-                disable: true
-            }
-        },
         data: {
             control: false,
-            description: 'The table data'
+            description: 'The rows to render. Every row needs an `id`'
         },
         columns: {
             control: false,
-            description: 'The table columns'
+            description:
+                'The column spec. Drives the header, the cell rendering ' +
+                'and the edit inputs. `truncate` on a column clips it with ' +
+                'an ellipsis — off unless asked for'
+        },
+        errors: {
+            control: false,
+            description:
+                'Fields to flag as invalid, as `{ [rowId]: Set<field> }`. ' +
+                'Marks the matching edit inputs with an error state'
+        },
+        controllerRef: {
+            control: false,
+            description:
+                'Receives the controller that drives row modes: ' +
+                '`editRow`, `viewRow`, `hideRow`, `addRow`, `getRowData`'
+        },
+        rowViews: {
+            control: false,
+            description:
+                'Named components that replace the whole row when pushed ' +
+                'with `pushRowView`. Used for inline confirmations'
+        },
+        pagination: {
+            control: false,
+            description:
+                'Pagination options. `disabled: true` renders every row ' +
+                'and hides the footer'
+        },
+        componentForEmpty: {
+            control: false,
+            description:
+                'Rendered in place of the rows when there is no data. ' +
+                'Must be table markup, since it lands inside `tbody`'
+        },
+        onRowClick: {
+            control: false,
+            description: 'Called with the event and the row data'
+        },
+        checkboxProps: {
+            control: false,
+            description:
+                'Selection state and setters for the checkbox column. ' +
+                'The table does not own the selection'
+        },
+        noHeader: {
+            control: 'boolean',
+            description: 'Drops the header row'
+        },
+        hidden: {
+            control: 'boolean',
+            description:
+                'Starts every row in `Hide` mode instead of `View`, so ' +
+                'sensitive values render masked until revealed'
+        },
+        checkbox: {
+            control: 'boolean',
+            description: 'Adds the selection column'
+        },
+        hideSelect: {
+            control: 'boolean',
+            description: 'Hides the rows per page select in the footer'
+        },
+        renderEmptyRows: {
+            control: 'boolean',
+            description:
+                'Pads the last page with blank rows so the table keeps ' +
+                'the same height across pages'
+        },
+        hiddenRowHeight: {
+            control: 'number',
+            description:
+                'Height of each padding row, in pixels. Only used while ' +
+                'the page is not full'
+        },
+        bodyStyle: {
+            control: false,
+            description: 'Inline style for `tbody`'
+        },
+        headStyle: {
+            control: false,
+            description: 'Inline style for `thead`'
+        },
+        bodyRowStyle: {
+            control: false,
+            description: 'Inline style applied to every body row'
+        },
+        headRowStyle: {
+            control: false,
+            description: 'Inline style for the header row'
         },
         size: {
             control: false,
@@ -123,6 +198,36 @@ const meta: Meta<typeof DataTable> = {
                 'The table size. ' +
                 'Must be `"small" | "medium"`' +
                 'If not set, the default is "medium"'
+        },
+        stickyHeader: {
+            control: 'boolean',
+            description:
+                'Keeps the header visible while the body scrolls. ' +
+                'Needs `maxHeight` to have something to scroll within'
+        },
+        maxHeight: {
+            control: 'text',
+            description:
+                'Bounds the table container height and lets the body ' +
+                'scroll. Also thins the scrollbar'
+        },
+        cellPadding: {
+            control: 'text',
+            description:
+                'Padding applied to every head and body cell. ' +
+                'A column `cellStyle` or `headerStyle` still wins over it'
+        },
+        framed: {
+            control: 'boolean',
+            description:
+                'Swaps the elevated card for a bordered frame and drops ' +
+                'the last row border'
+        },
+        borderRadius: {
+            control: 'text',
+            description:
+                'Container corner radius. ' +
+                'A bare number is read as pixels. Defaults to 12 when framed'
         }
     }
 }
@@ -156,6 +261,16 @@ type DataCrudWithHidden = {
 type View = {
     confirmDelete(): JSX.Element
 }
+
+const DEFAULT_DESCRIPTION = [
+    'The column spec at its simplest: `field` picks the value, `type`',
+    'decides how it is read and edited, and `getValue` formats it for',
+    'display without touching the underlying data.',
+    '',
+    'The `cellStyle` on the first column is how per column truncation is',
+    'done today — `maxWidth` plus `nowrap`, `overflow` and',
+    '`textOverflow` written by hand.'
+].join('\n')
 
 export const Default = () => {
     const date = () => new Date()
@@ -226,6 +341,174 @@ export const Default = () => {
 
     return <DataTable data={data} columns={columns} />
 }
+
+Default.parameters = {
+    docs: {
+        description: {
+            story: DEFAULT_DESCRIPTION
+        }
+    }
+}
+
+const TRUNCATED_DESCRIPTION = [
+    'Clipping is decided column by column, so a table that cannot hide',
+    'content simply leaves it off. Here the first column clips and the',
+    'second does not — the same long text, side by side.',
+    '',
+    'Note the rendered widths: the clipped column asks for 180px and gets',
+    'more than that, because the default table layout redistributes spare',
+    'room. What the value buys is the ellipsis and a much narrower column,',
+    'not an exact measurement.',
+    '',
+    '```tsx',
+    "{ title: 'Clipped', field: 'clipped', type: 'text', truncate: 180 }",
+    "{ title: 'Full', field: 'full', type: 'text' }",
+    '```',
+    '',
+    '`truncate` also reaches the header cell, so a long title cannot widen',
+    'the column past the limit and defeat the clipping.'
+].join('\n')
+
+export const Truncated = () => {
+    const text = 'A description long enough to need clipping in a narrow column'
+
+    const data = [
+        { id: 1, clipped: text, full: text },
+        { id: 2, clipped: 'Short one', full: 'Short one' }
+    ]
+
+    const columns: ColumnSpec<{
+        id: number
+        clipped: string
+        full: string
+    }>[] = [
+        {
+            title: 'Clipped at 180px',
+            field: 'clipped',
+            type: 'text',
+            truncate: 180
+        },
+        { title: 'Full content', field: 'full', type: 'text' }
+    ]
+
+    return (
+        <DataTable
+            data={data}
+            columns={columns}
+            pagination={{ disabled: true }}
+        />
+    )
+}
+
+Truncated.parameters = {
+    docs: {
+        description: {
+            story: TRUNCATED_DESCRIPTION
+        }
+    }
+}
+
+const FRAMED_DESCRIPTION = [
+    'The frame look: `framed` swaps the elevated card for a bordered',
+    'container, rounds it at 12px and drops the border of the last row',
+    'so it does not collide with the frame.',
+    '',
+    '`borderRadius` overrides the radius. A bare number is read as',
+    'pixels — `borderRadius={20}` is 20px, not a theme multiple.'
+].join('\n')
+
+export const Framed = () => {
+    const data = [
+        { id: 1, product: 'Magazine', price: 13.5, quantity: 12 },
+        { id: 2, product: 'Table', price: 200.49, quantity: 3 },
+        { id: 3, product: 'Chair', price: 53.5, quantity: 9 }
+    ]
+
+    const columns: ColumnSpec<Omit<Data, 'date'>>[] = [
+        { title: 'Product', type: 'text', field: 'product' },
+        {
+            title: 'Price (R$)',
+            field: 'price',
+            type: 'numeric-float',
+            getValue: (value: number) => value.toFixed(2).replace('.', ',')
+        },
+        { title: 'Quantity', field: 'quantity', type: 'numeric-int' }
+    ]
+
+    return (
+        <DataTable
+            framed
+            data={data}
+            columns={columns}
+            pagination={{ disabled: true }}
+        />
+    )
+}
+
+Framed.parameters = {
+    docs: {
+        description: {
+            story: FRAMED_DESCRIPTION
+        }
+    }
+}
+
+const STICKY_HEADER_DESCRIPTION = [
+    'Three props working together. `maxHeight` bounds the container so',
+    'there is something to scroll, `stickyHeader` pins the header while',
+    'the body moves under it, and `cellPadding` sets the padding of',
+    'every head and body cell at once.',
+    '',
+    '`stickyHeader` alone does nothing — sticky needs a bounded',
+    'container. Setting `maxHeight` also thins the scrollbar.'
+].join('\n')
+
+export const StickyHeader = () => {
+    const data = Array.from({ length: 24 }, (_, index) => ({
+        id: index + 1,
+        product: `Product ${index + 1}`,
+        price: (index + 1) * 7.5,
+        quantity: index + 1,
+        date: new Date()
+    }))
+
+    const columns: ColumnSpec<Data>[] = [
+        { title: 'Product', type: 'text', field: 'product' },
+        {
+            title: 'Price (R$)',
+            field: 'price',
+            type: 'numeric-float',
+            getValue: (value: number) => value.toFixed(2).replace('.', ',')
+        },
+        { title: 'Quantity', field: 'quantity', type: 'numeric-int' }
+    ]
+
+    return (
+        <DataTable
+            stickyHeader
+            data={data}
+            columns={columns}
+            maxHeight={320}
+            cellPadding='6px 12px'
+            pagination={{ disabled: true }}
+        />
+    )
+}
+
+StickyHeader.parameters = {
+    docs: {
+        description: {
+            story: STICKY_HEADER_DESCRIPTION
+        }
+    }
+}
+
+const CUSTOM_DESCRIPTION = [
+    'Footer and page shape. `pagination` carries the page size and the',
+    'first/last buttons, `hideSelect` drops the rows per page select,',
+    'and `renderEmptyRows` pads the last page so the table keeps the',
+    'same height while paging.'
+].join('\n')
 
 export const Custom = () => {
     const date = () => new Date()
@@ -309,6 +592,20 @@ export const Custom = () => {
     )
 }
 
+Custom.parameters = {
+    docs: {
+        description: {
+            story: CUSTOM_DESCRIPTION
+        }
+    }
+}
+
+const EMPTY_DESCRIPTION = [
+    '`componentForEmpty` replaces the rows when there is no data. It',
+    'lands inside `tbody`, so it has to be table markup — a `tr` with a',
+    'spanning `td`, not a bare `div`.'
+].join('\n')
+
 export const Empty = () => {
     const columns: ColumnSpec<Data>[] = [
         {
@@ -365,6 +662,19 @@ export const Empty = () => {
         />
     )
 }
+
+Empty.parameters = {
+    docs: {
+        description: {
+            story: EMPTY_DESCRIPTION
+        }
+    }
+}
+
+const NO_HEADER_DESCRIPTION = [
+    '`noHeader` drops the header row entirely. The column titles still',
+    'matter: they are the React keys for the cells.'
+].join('\n')
 
 export const NoHeader = () => {
     const date = () => new Date()
@@ -447,6 +757,19 @@ export const NoHeader = () => {
     )
 }
 
+NoHeader.parameters = {
+    docs: {
+        description: {
+            story: NO_HEADER_DESCRIPTION
+        }
+    }
+}
+
+const NO_PAGINATION_DESCRIPTION = [
+    '`pagination={{ disabled: true }}` renders every row and removes the',
+    'footer. Without it the table always slices `data` client side.'
+].join('\n')
+
 export const NoPagination = () => {
     const date = () => new Date()
 
@@ -525,6 +848,32 @@ export const NoPagination = () => {
         />
     )
 }
+
+NoPagination.parameters = {
+    docs: {
+        description: {
+            story: NO_PAGINATION_DESCRIPTION
+        }
+    }
+}
+
+const CRUD_DESCRIPTION = [
+    'Row modes in practice. The table never receives a mode as a prop —',
+    'it hands you a controller through `controllerRef`, and that is what',
+    'moves a row between `View` and `Edit` or adds a new one.',
+    '',
+    '```tsx',
+    'const controller = useRef<DataTableController<Data, View>>()',
+    '',
+    '<DataTable controllerRef={controller} … />',
+    '',
+    'controller.current?.editRow(id)',
+    'controller.current?.addRow({ id: uuid() })',
+    '```',
+    '',
+    'The delete confirmation is a `rowViews` entry: `pushRowView`',
+    'replaces the whole row with a named component until `popRowView`.'
+].join('\n')
 
 export const Crud = () => {
     const date = () => new Date()
@@ -783,6 +1132,20 @@ export const Crud = () => {
         </>
     )
 }
+
+Crud.parameters = {
+    docs: {
+        description: {
+            story: CRUD_DESCRIPTION
+        }
+    }
+}
+
+const CRUD_WITHOUT_PAGINATION_DESCRIPTION = [
+    'The same controller flow with `pagination={{ disabled: true }}`.',
+    'Worth its own story because adding a row while paginated sends the',
+    'table back to the first page, and without pagination it does not.'
+].join('\n')
 
 export const CrudWithoutPagination = () => {
     const controllerRef =
@@ -1083,6 +1446,21 @@ export const CrudWithoutPagination = () => {
     )
 }
 
+CrudWithoutPagination.parameters = {
+    docs: {
+        description: {
+            story: CRUD_WITHOUT_PAGINATION_DESCRIPTION
+        }
+    }
+}
+
+const WITH_FIELD_DESCRIPTION = [
+    '`DataTableField` wraps the table with the selection column already',
+    'wired. The table itself does not own the selection — `checkboxProps`',
+    'carries the state and the setters, so the page keeps control of',
+    'what is checked.'
+].join('\n')
+
 export const WithField = () => {
     const dataInput = [
         {
@@ -1182,4 +1560,12 @@ export const WithField = () => {
             }}
         />
     )
+}
+
+WithField.parameters = {
+    docs: {
+        description: {
+            story: WITH_FIELD_DESCRIPTION
+        }
+    }
 }

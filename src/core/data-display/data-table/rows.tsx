@@ -1,12 +1,28 @@
 import React, { useState, useCallback } from 'react'
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import MuiTableCell from '@mui/material/TableCell'
 import MuiTableRow from '@mui/material/TableRow'
 import type { ColumnSpec, Data, Errors, PartialData } from './types'
+import type { Truncate } from '../table/styles'
 import DateTime from '@/core/inputs/date-time'
 import MaskField from '@/core/inputs/mask-field'
 import TextField from '@/core/inputs/text-field'
+import { truncateStyle } from '../table/styles'
 import { RowMode } from './types'
+
+export const withCellStyle = (
+    style?: CSSProperties,
+    padding?: CSSProperties['padding'],
+    truncate?: Truncate
+) => {
+    const clip = truncateStyle(truncate)
+
+    if (!clip && padding === undefined) {
+        return style
+    }
+
+    return { ...clip, padding, ...style }
+}
 
 type RowStateUpdater = <D extends Data>(
     field: keyof D,
@@ -17,6 +33,7 @@ type NewRowProps<D extends Data> = {
     data: PartialData<D>
     errors?: Errors<D>
     columns: ColumnSpec<D>[]
+    cellPadding?: CSSProperties['padding']
     onUpdate?(partial: Partial<Data>): void
 }
 
@@ -158,6 +175,7 @@ type StatefulRowProps<D extends Data> = {
     errors?: Errors<D>
     columns: ColumnSpec<D>[]
     isHidden?: boolean
+    cellPadding?: CSSProperties['padding']
     onUpdate?(partial: Partial<Data>): void
 }
 
@@ -167,7 +185,8 @@ export const StatefulRow = <D extends Data>({
     errors,
     columns,
     onUpdate,
-    isHidden
+    isHidden,
+    cellPadding
 }: StatefulRowProps<D>) => {
     const [editableState, setEditableState] = useState(() => data)
 
@@ -207,7 +226,11 @@ export const StatefulRow = <D extends Data>({
                 <MuiTableCell
                     align={column.align}
                     key={`${column.title}-${i}`}
-                    style={column.cellStyle}>
+                    style={withCellStyle(
+                        column.cellStyle,
+                        cellPadding,
+                        column.truncate
+                    )}>
                     {getCorrectViewMode(column, mode, isEditable(column))}
                 </MuiTableCell>
             ))}
@@ -219,7 +242,8 @@ export const NewRow = <D extends Data>({
     data,
     columns,
     errors,
-    onUpdate
+    onUpdate,
+    cellPadding
 }: NewRowProps<D>) => {
     const [editableState, setEditableState] = useState(() => data)
 
@@ -235,7 +259,11 @@ export const NewRow = <D extends Data>({
         <MuiTableRow data-testid='table-row'>
             {columns.map((column, i) => (
                 <MuiTableCell
-                    style={column.cellStyle}
+                    style={withCellStyle(
+                        column.cellStyle,
+                        cellPadding,
+                        column.truncate
+                    )}
                     align={column.align}
                     key={`${column.title}-${i}`}>
                     {isEditable(column)

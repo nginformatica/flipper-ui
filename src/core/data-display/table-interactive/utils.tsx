@@ -41,7 +41,8 @@ export const generateHeader = (
     header: ITableInteractive['headers'][number],
     visibleColumns?: string[] | undefined,
     sortable?: boolean,
-    fixed?: boolean
+    fixed?: boolean,
+    cellPadding?: number | string
 ) => {
     if (!visibleColumns?.includes(header.name)) return null
 
@@ -50,6 +51,7 @@ export const generateHeader = (
             name={header.name}
             sortable={sortable}
             width={header.width}
+            padding={cellPadding}
             key={header.name + '-header'}
             fixed={fixed ? 'fixed' : undefined}>
             {header.label}

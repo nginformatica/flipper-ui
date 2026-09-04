@@ -3,6 +3,7 @@ import type { Dispatch, ReactNode, SetStateAction } from 'react'
 import Box from '@mui/material/Box'
 import type { TableProps } from '@mui/material/Table'
 import Table from '../table'
+import { SCROLLBAR, tableFrame } from '../table/styles'
 import TableBody from '../table/table-body'
 import TableFooter from '../table/table-footer'
 import TablePagination from '../table/table-pagination'
@@ -27,6 +28,10 @@ export interface ITableInteractive extends Omit<TableProps, 'children'> {
     total?: number
     fixed?: boolean
     active?: string
+    maxHeight?: number | string
+    cellPadding?: number | string
+    framed?: boolean
+    borderRadius?: number | string
     headers: {
         name: string
         label: string
@@ -79,7 +84,14 @@ export const TableInteractive = (props: ITableInteractive) => {
                 />
             )}
 
-            <Box sx={{ overflow: 'auto' }}>
+            <Box
+                sx={{
+                    overflow: 'auto',
+                    ...(props.maxHeight
+                        ? { maxHeight: props.maxHeight, ...SCROLLBAR }
+                        : undefined),
+                    ...tableFrame(props.framed, props.borderRadius)
+                }}>
                 <Box
                     sx={{
                         width: '100%',
@@ -90,6 +102,8 @@ export const TableInteractive = (props: ITableInteractive) => {
                         name={props.name}
                         id={'list-' + props.name}
                         className={props.className}
+                        size={props.size}
+                        stickyHeader={props.stickyHeader}
                         style={{
                             border: props.isInteractive
                                 ? 'none !important'
@@ -104,6 +118,7 @@ export const TableInteractive = (props: ITableInteractive) => {
                             headers={props.headers}
                             children={props.children}
                             direction={props.direction}
+                            cellPadding={props.cellPadding}
                             isCollapsible={props.isCollapsible}
                             visibleColumns={props.visibleColumns || []}
                             onSort={props.onSort}
