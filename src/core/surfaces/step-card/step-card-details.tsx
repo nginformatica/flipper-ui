@@ -51,6 +51,7 @@ const StepsList = ({
                         <>
                             <IconButton
                                 data-testid={`step-card-button-${index}`}
+                                aria-label={`Ajuda sobre ${step.title}`}
                                 style={{
                                     backgroundColor: 'unset'
                                 }}

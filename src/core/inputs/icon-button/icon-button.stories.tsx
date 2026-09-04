@@ -31,6 +31,13 @@ const meta: Meta<typeof IconButton> = {
             control: 'boolean',
             description: 'To set the disabled state on the button'
         },
+        'aria-label': {
+            control: 'text',
+            description:
+                'The icon button accessible name. ' +
+                'If not set, it falls back to the `name` prop, ' +
+                'unless the button has a text child of its own'
+        },
         margin: {
             control: 'text',
             description: 'The icon button margin'

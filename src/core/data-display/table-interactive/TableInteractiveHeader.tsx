@@ -13,7 +13,10 @@ export const TableInteractiveHeader = (props: ITableInteractiveHeader) => {
     return (
         <TableHeaderContent>
             <div>{props.headerActions}</div>
-            <IconButton padding='4px 6px' onClick={props.handleOpen}>
+            <IconButton
+                padding='4px 6px'
+                aria-label='Preferências'
+                onClick={props.handleOpen}>
                 <IconSettings color='primary' />
             </IconButton>
         </TableHeaderContent>

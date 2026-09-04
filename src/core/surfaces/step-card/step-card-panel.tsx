@@ -25,6 +25,7 @@ interface IStepCardPanelProps {
     summaryProps: IStepCardProps['summaryProps']
     summaryLinearProgressBarProps: IStepCardProps['summaryLinearProgressBarProps']
     titleProps: IStepCardProps['titleProps']
+    subTitleProps: IStepCardProps['subTitleProps']
     percentage: number
     summary: string
     remainingSteps: number
@@ -50,6 +51,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
         showIcon,
         subTitle,
         titleProps,
+        subTitleProps,
         fullWidth,
         padding
     } = props
@@ -90,7 +92,7 @@ export const StepCardPanel = (props: IStepCardPanelProps) => {
                                 sx={{
                                     color: gray[600]
                                 }}
-                                {...titleProps}>
+                                {...subTitleProps}>
                                 {subTitle}
                             </Typography>
                         )}

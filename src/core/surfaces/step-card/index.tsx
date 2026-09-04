@@ -6,9 +6,9 @@ import type {
     SyntheticEvent
 } from 'react'
 import MuiAccordion from '@mui/material/Accordion'
-import type Typography from '@/core/data-display/typography'
-import type MuiAccordionDetails from '@mui/material/Accordion'
-import type LinearProgress from '@mui/material/LinearProgress'
+import type { ITypographyProps } from '@/core/data-display/typography'
+import type { AccordionDetailsProps } from '@mui/material/AccordionDetails'
+import type { LinearProgressProps } from '@mui/material/LinearProgress'
 import { StepCardDetails } from './step-card-details'
 import { StepCardPanel } from './step-card-panel'
 import StepCardSkeleton from './step-card-skeleton'
@@ -38,11 +38,21 @@ export interface IStepCardProps {
         url?: string
     }[]
     rootProps?: HTMLAttributes<HTMLDivElement>
-    titleProps?: typeof Typography
-    summaryProps?: typeof Typography
-    expansionPanelDetailsProps?: typeof MuiAccordionDetails
-    linearProgressBarProps?: typeof LinearProgress
-    summaryLinearProgressBarProps?: typeof LinearProgress
+    /**
+     * Merged over the title defaults — `variant='h5'`, `align='center'`.
+     * `variant` also sets the heading level, so `{ component: 'h2' }` keeps
+     * the `h5` type scale on an `<h2>` tag.
+     */
+    titleProps?: Partial<ITypographyProps>
+    /**
+     * Merged over the subtitle defaults — `variant='h6'`, `align='center'`.
+     * Same heading-level behaviour as `titleProps`.
+     */
+    subTitleProps?: Partial<ITypographyProps>
+    summaryProps?: Partial<ITypographyProps>
+    expansionPanelDetailsProps?: Partial<AccordionDetailsProps>
+    linearProgressBarProps?: Partial<LinearProgressProps>
+    summaryLinearProgressBarProps?: Partial<LinearProgressProps>
     expandable?: boolean
     showIcon?: boolean
     padding?: CSSProperties['padding']
@@ -61,6 +71,7 @@ const StepCard = ({
     title,
     titleProps,
     subTitle,
+    subTitleProps,
     image,
     showBottomPercentage = true,
     expandable = true,
@@ -104,6 +115,7 @@ const StepCard = ({
                     subTitle={subTitle}
                     percentage={percentage}
                     titleProps={titleProps}
+                    subTitleProps={subTitleProps}
                     summaryProps={summaryProps}
                     summaryLinearProgressBarProps={
                         summaryLinearProgressBarProps

@@ -21,7 +21,7 @@ export const TableHeaderContent = styled.div`
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: 8px;
+        gap: 6px;
     }
 `
 
@@ -42,6 +42,6 @@ export const TableCellInteractive = styled(TableCell)<{
         white-space: nowrap;
         min-width: 60px;
         max-width: ${props => (props.fixed ? props.width : 'none')};
-        padding: 16px 8px;
+        padding: 16px 8px 16px 16px;
     }
 `

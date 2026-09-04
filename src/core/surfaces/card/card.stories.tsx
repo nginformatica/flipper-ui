@@ -1,6 +1,8 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import Typography from '@/core/data-display/typography'
+import IconButton from '@/core/inputs/icon-button'
+import { IconHelp } from '@/icons/mui'
 import Card from '.'
 import { CardWrapper } from './styles'
 
@@ -25,6 +27,14 @@ const meta: Meta<typeof Card> = {
         title: {
             control: 'text',
             description: 'The card title'
+        },
+        titleProps: {
+            control: 'object',
+            description:
+                'The Typography props of the card title, merged over its ' +
+                'defaults (`variant: "h6"`, `color: "primary"`). ' +
+                '`variant` also sets the heading level, so ' +
+                '`{ component: "h2" }` keeps the `h6` scale on an `h2` tag'
         },
         label: {
             control: 'text',
@@ -82,6 +92,11 @@ export const card: Story = {
         name: 'Card Name',
         title: 'This is the Card Title',
         label: "I'm the label!",
+        action: (
+            <IconButton padding='4px'>
+                <IconHelp color='primary' fontSize='small' />
+            </IconButton>
+        ),
         nested: false,
         editing: false,
         renderRemove: false,

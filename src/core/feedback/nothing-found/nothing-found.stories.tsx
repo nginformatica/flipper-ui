@@ -10,6 +10,14 @@ const meta: Meta<typeof NothingFound> = {
             control: 'text',
             description: 'The custom text'
         },
+        variant: {
+            options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+            control: { type: 'radio' },
+            description:
+                'The message variant, which also sets its heading level. ' +
+                'Must be `h1 | h2 | h3 | h4 | h5 | h6`. ' +
+                'If not set, the default is "h5"'
+        },
         buttonLabel: {
             control: 'text',
             description: 'The button label'

@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import StepCard from '@/test/mocks/step-card-mock'
+import '@testing-library/jest-dom'
 
 describe('StepCard', () => {
     it('should render', () => {
@@ -305,6 +306,90 @@ describe('StepCard', () => {
         await userEvent.click(step1InfoButton)
 
         expect(onStepUrlClickSpy).toHaveBeenCalledWith('valid-url')
+    })
+
+    it('should render the title as an h5 by default', () => {
+        render(
+            <StepCard
+                stepProps={{
+                    percentage: 0,
+                    summary: 'Summary',
+                    title: 'Title'
+                }}
+            />
+        )
+
+        expect(screen.getByText('Title').tagName).toBe('H5')
+    })
+
+    it('should render the title with a variant from titleProps', () => {
+        render(
+            <StepCard
+                stepProps={{
+                    percentage: 0,
+                    summary: 'Summary',
+                    title: 'Title',
+                    titleProps: { variant: 'h2' }
+                }}
+            />
+        )
+
+        expect(screen.getByText('Title').tagName).toBe('H2')
+    })
+
+    it('should not let titleProps reach the subTitle', () => {
+        render(
+            <StepCard
+                stepProps={{
+                    percentage: 0,
+                    summary: 'Summary',
+                    title: 'Title',
+                    subTitle: 'Subtitle',
+                    titleProps: { variant: 'h2' }
+                }}
+            />
+        )
+
+        expect(screen.getByText('Title').tagName).toBe('H2')
+        expect(screen.getByText('Subtitle').tagName).toBe('H6')
+    })
+
+    it('should render the subTitle with props of its own', () => {
+        render(
+            <StepCard
+                stepProps={{
+                    percentage: 0,
+                    summary: 'Summary',
+                    title: 'Title',
+                    subTitle: 'Subtitle',
+                    subTitleProps: { variant: 'h4', align: 'left' }
+                }}
+            />
+        )
+
+        const subTitle = screen.getByText('Subtitle')
+
+        expect(subTitle.tagName).toBe('H4')
+        expect(subTitle).toHaveClass('MuiTypography-alignLeft')
+        expect(screen.getByText('Title').tagName).toBe('H5')
+    })
+
+    it('should keep the h5 scale on the heading level from titleProps', () => {
+        render(
+            <StepCard
+                stepProps={{
+                    percentage: 0,
+                    summary: 'Summary',
+                    title: 'Title',
+                    titleProps: { component: 'h2' }
+                }}
+            />
+        )
+
+        const title = screen.getByText('Title')
+
+        expect(title.tagName).toBe('H2')
+        expect(title).toHaveClass('MuiTypography-h5')
     })
 
     it('should match snapshot', () => {
