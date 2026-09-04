@@ -445,6 +445,25 @@ describe('Actions', () => {
         expect(screen.getByTestId('print')).toBeDisabled()
     })
 
+    it('should render custom actions with no name informed', () => {
+        render(
+            <Actions
+                customActions={[
+                    { label: 'Exportar', onClick: jest.fn() },
+                    {
+                        icon: <svg />,
+                        'aria-label': 'Imprimir',
+                        onClick: jest.fn()
+                    }
+                ]}
+                onConfirm={jest.fn()}
+            />
+        )
+
+        expect(screen.getByRole('button', { name: 'Exportar' })).toBeDefined()
+        expect(screen.getByRole('button', { name: 'Imprimir' })).toBeDefined()
+    })
+
     it('should match snapshot', () => {
         const { container } = render(
             <Actions

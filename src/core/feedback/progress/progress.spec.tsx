@@ -159,6 +159,23 @@ describe('Progress', () => {
         expect(computed.backgroundColor).toBe('rgb(1, 2, 3)')
     })
 
+    it('should merge an sx array over the color styles', () => {
+        render(
+            <Progress
+                linear
+                variant='determinate'
+                value={50}
+                primaryColor='rgb(1, 2, 3)'
+                sx={[{ borderRadius: '3px' }]}
+            />
+        )
+
+        const computed = getComputedStyle(screen.getByRole('progressbar'))
+
+        expect(computed.borderRadius).toBe('3px')
+        expect(computed.backgroundColor).toBe('rgb(1, 2, 3)')
+    })
+
     it('should render the circular label inside the ring', () => {
         render(<Progress variant='determinate' value={72} label='72%' />)
 
@@ -197,6 +214,21 @@ describe('Progress', () => {
         expect(screen.getByText('72%').parentElement).not.toBe(
             bar.parentElement
         )
+    })
+
+    it('should read a size in pixels to place the label', () => {
+        render(
+            <Progress
+                size='24px'
+                variant='determinate'
+                value={72}
+                label='72%'
+            />
+        )
+
+        const bar = screen.getByRole('progressbar')
+
+        expect(screen.getByText('72%').parentElement).toBe(bar.parentElement)
     })
 
     it('should force the label beside a ring that would fit it', () => {

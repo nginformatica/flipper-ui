@@ -142,6 +142,18 @@ describe('Typography', () => {
         expect(getComputedStyle(typography).fontSize).toBe('2rem')
     })
 
+    it('should keep an sx array over the fallback size token', () => {
+        render(
+            <Typography variant='micro' sx={[{ fontSize: '2rem' }]}>
+                Some text
+            </Typography>
+        )
+
+        const typography = screen.getByText('Some text')
+
+        expect(getComputedStyle(typography).fontSize).toBe('2rem')
+    })
+
     it('should match snapshot', () => {
         const { container } = render(
             <Typography margin={10} padding={5} style={{ color: 'red' }}>

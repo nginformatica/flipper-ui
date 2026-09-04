@@ -98,6 +98,48 @@ describe('TextField', () => {
         expect(onHelperClick).toHaveBeenCalled()
     })
 
+    it('should trigger the helper with the space key', async () => {
+        const onHelperClick = jest.fn()
+
+        render(
+            <TextField
+                inputProps={{
+                    placeholder: 'Description',
+                    onHelperClick: onHelperClick
+                }}
+            />
+        )
+
+        const helper = screen.getByRole('button', { name: 'Ajuda' })
+
+        helper.focus()
+
+        await act(async () => await userEvent.keyboard('[Space]'))
+
+        expect(onHelperClick).toHaveBeenCalled()
+    })
+
+    it('should not trigger the helper with any other key', async () => {
+        const onHelperClick = jest.fn()
+
+        render(
+            <TextField
+                inputProps={{
+                    placeholder: 'Description',
+                    onHelperClick: onHelperClick
+                }}
+            />
+        )
+
+        const helper = screen.getByRole('button', { name: 'Ajuda' })
+
+        helper.focus()
+
+        await act(async () => await userEvent.keyboard('{Escape}'))
+
+        expect(onHelperClick).not.toHaveBeenCalled()
+    })
+
     it('should render select with clear button', async () => {
         render(
             <TextField
