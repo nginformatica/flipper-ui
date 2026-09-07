@@ -6,6 +6,9 @@
 - add `customActions` prop to `<Actions>`, rendering label or icon buttons in place of the default Cancel/Confirm pair
 - add `label`, `labelPosition`, `ariaLabel`, `thickness` and `borderRadius` props to `<Progress>`, so the same component also serves as a data bar
 - add `stickyHeader`, `maxHeight`, `cellPadding`, `framed`, `borderRadius` and `truncate` props to `<Table>` and `<TableInteractive>`, and export `truncateStyle` and the `Truncate` type
+- make `size='small'` reach the cells of `<Table>` and `<TableInteractive>`, and shrink the pagination footer along with them: toolbar height, labels, select and page buttons
+- match the `<TableInteractive>` body cell padding to its header, and thin the scrollbar even when `maxHeight` is absent
+- fix the `framed` border doubling up on the footer of a `paginated` table; the `<TablePagination>` bottom border is no longer `!important`, so it can be overridden
 - add `titleProps`, `subTitleProps` and `summaryProps` to `<Card>` and `<StepCard>`
 - add `micro`, `footnote`, `dense` and `display` NG typography size tokens to the theme
 - add `aria-label` prop to `<IconButton>`, which falls back to `name` when the button has no text of its own

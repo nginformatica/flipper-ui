@@ -16,6 +16,13 @@ import { theme } from '@/theme'
 
 const { gray } = theme.colors
 
+// body cells are rendered by the consumer, so they default to MUI's padding;
+// match TableCellInteractive's head instead, or the columns sit 8px apart.
+// scoped to tbody so the pagination cell in tfoot keeps its own height
+const BODY_CELL_SX = {
+    '&& tbody td': { padding: '16px 8px' }
+}
+
 export enum Direction {
     ASCENDENT = 'asc',
     DESCENDENT = 'desc'
@@ -87,8 +94,9 @@ export const TableInteractive = (props: ITableInteractive) => {
             <Box
                 sx={{
                     overflow: 'auto',
+                    ...SCROLLBAR,
                     ...(props.maxHeight
-                        ? { maxHeight: props.maxHeight, ...SCROLLBAR }
+                        ? { maxHeight: props.maxHeight }
                         : undefined),
                     ...tableFrame(props.framed, props.borderRadius)
                 }}>
@@ -110,6 +118,7 @@ export const TableInteractive = (props: ITableInteractive) => {
                                 : `1px solid ${gray[300]}`
                         }}
                         sx={{
+                            ...(props.size !== 'small' && BODY_CELL_SX),
                             ...props.sx
                         }}>
                         <TableInteractiveHead

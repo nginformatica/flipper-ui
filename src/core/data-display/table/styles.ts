@@ -55,7 +55,14 @@ export const tableFrame = (
             border: 'none !important'
         },
 
-        '& tbody tr:last-of-type td': {
+        // a footer below the body means the frame no longer closes the last
+        // row, so it only drops that border while the body really is last
+        '& tbody:last-child tr:last-of-type td': {
+            borderBottom: 'none'
+        },
+
+        // the frame draws the bottom edge, so the footer must not draw one too
+        '& tfoot td': {
             borderBottom: 'none'
         }
     }

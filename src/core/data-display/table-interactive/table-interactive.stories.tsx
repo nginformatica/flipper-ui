@@ -231,7 +231,9 @@ const meta: Meta<typeof TableInteractive> = {
             options: ['small', 'medium'],
             description:
                 'Row density. Reaches the body cells too, through the ' +
-                'MUI table context'
+                'MUI table context, and shrinks the pagination footer ' +
+                'along with them — toolbar height, labels, select and ' +
+                'page buttons'
         },
         stickyHeader: {
             control: 'boolean',

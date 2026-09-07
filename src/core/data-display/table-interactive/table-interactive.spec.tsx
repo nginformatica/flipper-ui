@@ -6,7 +6,7 @@ import {
     InteractiveTableWrapper,
     TABLE_DATA
 } from '@/test/mocks/table-interactive-mock'
-import { truncateStyle } from '../table/styles'
+import { tableFrame, truncateStyle } from '../table/styles'
 import {
     getInitialColumns,
     getVisibleColumns,
@@ -438,6 +438,47 @@ describe('Table Interactive', () => {
         expect(container.querySelector('tbody td')).toHaveClass(
             'MuiTableCell-sizeMedium'
         )
+    })
+
+    it('should shrink the pagination footer when size is small', () => {
+        const { container } = renderComponent({ size: 'small' })
+        const toolbar = container.querySelector('.MuiTablePagination-toolbar')
+        const nextPage = screen.getByRole('button', { name: /next page/i })
+
+        expect(getComputedStyle(toolbar as Element).minHeight).toBe('40px')
+        expect(getComputedStyle(nextPage).padding).toBe('4px')
+        expect(
+            getComputedStyle(nextPage.querySelector('svg') as Element).fontSize
+        ).toBe('18px')
+    })
+
+    it('should keep the pagination footer at full size by default', () => {
+        const { container } = renderComponent()
+        const toolbar = container.querySelector('.MuiTablePagination-toolbar')
+        const nextPage = screen.getByRole('button', { name: /next page/i })
+
+        expect(getComputedStyle(toolbar as Element).minHeight).toBe('52px')
+        expect(getComputedStyle(nextPage).padding).toBe('12px')
+    })
+})
+
+describe('tableFrame', () => {
+    it('should return nothing when the table is not framed', () => {
+        expect(tableFrame()).toBeUndefined()
+        expect(tableFrame(false)).toBeUndefined()
+    })
+
+    it('should drop the last body border only while the body is last', () => {
+        const frame = tableFrame(true)
+
+        expect(frame).toHaveProperty('& tbody:last-child tr:last-of-type td')
+        expect(frame).not.toHaveProperty('& tbody tr:last-of-type td')
+    })
+
+    it('should keep the footer from drawing a second bottom edge', () => {
+        expect(tableFrame(true)).toMatchObject({
+            '& tfoot td': { borderBottom: 'none' }
+        })
     })
 })
 
