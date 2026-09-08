@@ -27,6 +27,11 @@ export const HelperButton = styled.div`
         cursor: pointer;
         background-color: ${primary.main}0a;
     }
+
+    &:focus-visible {
+        opacity: 1;
+        background-color: ${primary.main}0a;
+    }
 `
 
 export const TextFieldWrapper = styled.div`

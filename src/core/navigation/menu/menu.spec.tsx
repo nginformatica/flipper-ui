@@ -51,7 +51,7 @@ describe('Menu', () => {
             </Menu>
         )
 
-        const element = screen.getByRole('menu-wrapper-container')
+        const element = screen.getByTestId('menu-wrapper-container')
 
         expect(element).toBeDefined()
         spy.mockRestore()

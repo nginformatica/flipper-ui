@@ -145,6 +145,24 @@ describe('Table', () => {
         expect(getByText('3-4 de 4')).toBeInTheDocument()
     })
 
+    it('should apply an array sx alongside the small size', () => {
+        const { container } = render(
+            <Table size='small' sx={[{ opacity: 0.5 }]}>
+                <TableBody>
+                    <TableRow>
+                        <TableCell>Table-Row-Name-1</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        )
+
+        const table = container.querySelector('table') as HTMLTableElement
+        const cell = container.querySelector('tbody td') as HTMLTableCellElement
+
+        expect(getComputedStyle(table).opacity).toBe('0.5')
+        expect(cell).toHaveClass('MuiTableCell-sizeSmall')
+    })
+
     it('should change rows per page', () => {
         const { getByRole, getAllByRole } = render(<Default />)
 

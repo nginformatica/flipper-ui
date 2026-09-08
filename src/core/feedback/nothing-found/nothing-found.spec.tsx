@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import NothingFound from '.'
+import '@testing-library/jest-dom'
 
 describe('NothingFound', () => {
     it('should render', () => {
@@ -63,6 +64,32 @@ describe('NothingFound', () => {
         )
 
         expect(label).toBeDefined()
+    })
+
+    it('should render the message with a custom variant', () => {
+        render(<NothingFound show variant='h2' />)
+
+        expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+            'Não há nada aqui.'
+        )
+    })
+
+    it('should keep the h5 scale on a custom heading level', () => {
+        render(<NothingFound show readonly component='h2' />)
+
+        const message = screen.getByText('Não há nada aqui.')
+
+        expect(message.tagName).toBe('H2')
+        expect(message).toHaveClass('MuiTypography-h5')
+    })
+
+    it('should merge Typography props over the message defaults', () => {
+        render(<NothingFound show readonly align='left' />)
+
+        const message = screen.getByText('Não há nada aqui.')
+
+        expect(message).toHaveClass('MuiTypography-alignLeft')
+        expect(message).toHaveClass('MuiTypography-h5')
     })
 
     it('should match snapshot', () => {

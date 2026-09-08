@@ -1,4 +1,5 @@
 import type { CSSProperties, FunctionComponent } from 'react'
+import type { Truncate } from '../table/styles'
 import type { IOption } from '@/core/inputs/text-field'
 
 export type RecordUnknown = Record<string, unknown>
@@ -28,6 +29,7 @@ type ColumnSpecBase<F = object> = {
     cellStyle?: CSSProperties
     headerStyle?: CSSProperties
     align?: Align
+    truncate?: Truncate
     renderCell?: FunctionComponent<F>
 }
 

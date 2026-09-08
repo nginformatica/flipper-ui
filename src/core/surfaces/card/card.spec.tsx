@@ -40,6 +40,101 @@ describe('Card', () => {
         expect(title).toBeDefined()
     })
 
+    it('should render the title as an h6 by default', () => {
+        render(
+            <Card name='test' title='test-title'>
+                <span>test</span>
+            </Card>
+        )
+
+        expect(screen.getByRole('heading', { level: 6 })).toHaveTextContent(
+            'test-title'
+        )
+    })
+
+    it('should render the title with a variant from titleProps', () => {
+        render(
+            <Card name='test' title='test-title' titleProps={{ variant: 'h2' }}>
+                <span>test</span>
+            </Card>
+        )
+
+        expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+            'test-title'
+        )
+    })
+
+    it('should keep the h6 scale on the heading level from titleProps', () => {
+        render(
+            <Card
+                name='test'
+                title='test-title'
+                titleProps={{ component: 'h2' }}>
+                <span>test</span>
+            </Card>
+        )
+
+        const title = screen.getByRole('heading', { level: 2 })
+
+        expect(title).toHaveTextContent('test-title')
+        expect(title).toHaveClass('MuiTypography-h6')
+    })
+
+    it('should merge titleProps over the title defaults', () => {
+        render(
+            <Card name='test' title='test-title' titleProps={{ align: 'left' }}>
+                <span>test</span>
+            </Card>
+        )
+
+        const title = screen.getByRole('heading', { level: 6 })
+
+        expect(title).toHaveClass('MuiTypography-alignLeft')
+        expect(title).toHaveClass('MuiTypography-h6')
+    })
+
+    it('should name its own edit and remove buttons', () => {
+        render(
+            <Card
+                renderRemove
+                name='test'
+                title='title'
+                onRemove={jest.fn()}
+                onToggleEdit={jest.fn()}>
+                <h1>test</h1>
+            </Card>
+        )
+
+        expect(screen.getByRole('button', { name: 'Excluir' })).toBeDefined()
+        expect(screen.getByRole('button', { name: 'Editar' })).toBeDefined()
+    })
+
+    it('should name the edit button as cancel while editing', () => {
+        render(
+            <Card editing name='test' title='title' onToggleEdit={jest.fn()}>
+                <h1>test</h1>
+            </Card>
+        )
+
+        expect(screen.getByRole('button', { name: 'Cancelar' })).toBeDefined()
+    })
+
+    it('should let the consumer rename the edit button', () => {
+        render(
+            <Card
+                name='test'
+                title='title'
+                onToggleEdit={jest.fn()}
+                onEditProps={{ 'aria-label': 'Editar cadastro' }}>
+                <h1>test</h1>
+            </Card>
+        )
+
+        expect(
+            screen.getByRole('button', { name: 'Editar cadastro' })
+        ).toBeDefined()
+    })
+
     it('should render add button with label', () => {
         const onAddClickSpy = jest.fn()
 

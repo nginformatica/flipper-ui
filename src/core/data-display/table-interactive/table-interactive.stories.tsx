@@ -12,106 +12,258 @@ import {
     setVisibleColumns
 } from './utils'
 
+const COMPONENT_DESCRIPTION = [
+    'A table whose **body belongs to you**. The component renders the',
+    'header, the footer and the column preferences dialog; the rows come',
+    'from the `rowsContent` render prop:',
+    '',
+    '```tsx',
+    'const renderRows = () =>',
+    '    items.map(item => (',
+    '        <TableRow key={item.id}>',
+    '            {orderedVisibleColumns.map(column => (',
+    '                <TableCell key={column}>{item[column]}</TableCell>',
+    '            ))}',
+    '        </TableRow>',
+    '    ))',
+    '',
+    '<TableInteractive name="products" headers={HEADERS} rowsContent={renderRows} />',
+    '```',
+    '',
+    'That split is the thing to keep in mind: anything about a body cell —',
+    'padding, truncation, click handling — is written by you, not',
+    'configured here. For clipping there is a helper, so the ellipsis rule',
+    'is not copied into every product:',
+    '',
+    '```tsx',
+    "import { truncateStyle } from 'flipper-ui/core/data-display/table-interactive'",
+    '',
+    '<TableCell style={truncateStyle(header.width)}>{value}</TableCell>',
+    '```',
+    '',
+    'It is opt-in per cell: `truncateStyle()` returns nothing, so a column',
+    'that must not hide content just does not call it. `true` clips at',
+    '150px, a number is read as pixels, a string is used as given.',
+    '',
+    '> The ellipsis is reliable; the width is a ceiling, not a promise.',
+    "> Under the browser's default `table-layout: auto` the column can",
+    '> still render wider than asked when there is room to spare.',
+    '',
+    '### Column preferences',
+    '',
+    'Each header carries `show`, and the user can toggle columns in a',
+    'dialog. The choice is persisted in `localStorage` under',
+    '`visible-columns`, keyed by the `name` prop — so `name` is not just a',
+    'label, it is the storage key. The helpers do the wiring:',
+    '',
+    '```tsx',
+    "const [columns, setColumns] = useState(getInitialColumns(HEADERS, 'products'))",
+    '',
+    'const ordered = getOrderedVisibleColumns(HEADERS, columns)',
+    '',
+    "setVisibleColumns(columns, 'products')",
+    '```',
+    '',
+    '`getInitialColumns` reads the stored choice and falls back to `show`;',
+    '`getOrderedVisibleColumns` keeps your rows in the header order.',
+    '',
+    '### Pagination',
+    '',
+    'Controlled. `page` and `rowsPerPage` are yours, and the component',
+    'calls `setPage` and `setRowsPerPage` — it never slices the data.',
+    '',
+    '> Layout is opt-in. Without `stickyHeader`, `maxHeight`, `cellPadding`,',
+    '> `framed` or `borderRadius` the table renders exactly as it always',
+    '> did.'
+].join('\n')
+
 const meta: Meta<typeof TableInteractive> = {
     title: 'DataDisplay/Table Interactive',
     component: TableInteractive,
+    parameters: {
+        docs: {
+            description: {
+                component: COMPONENT_DESCRIPTION
+            }
+        }
+    },
     argTypes: {
         name: {
             control: 'text',
-            description: 'The table name or identifier.'
-        },
-        page: {
-            control: 'number',
-            description: 'Current page number.'
-        },
-        open: {
-            control: 'boolean',
-            description: 'Whether the dialog is open.'
-        },
-        total: {
-            control: 'number',
-            description: 'Total number of items to render on the pagination.'
-        },
-        active: {
-            control: 'text',
-            description: 'Currently active sorted column.'
+            description:
+                'Identifies the table. Also the key the column ' +
+                'preferences are stored under in `localStorage`'
         },
         headers: {
             control: false,
-            description: 'Array of header objects with name and label.'
+            description:
+                'Declares the columns: `name` to match the data, `label` ' +
+                'for the header, `show` for the default visibility, plus ' +
+                'optional `width` and `sortable`'
         },
-        paginated: {
+        rowsContent: {
+            control: false,
+            description:
+                'Render prop returning the body rows. The component does ' +
+                'not render body cells, so their markup and styling are ' +
+                'yours'
+        },
+        children: {
+            control: false,
+            description:
+                'Render prop for a trailing cell on every row, normally ' +
+                'the row actions. Its presence adds the matching empty ' +
+                'header cell'
+        },
+        visibleColumns: {
+            control: false,
+            description:
+                'Columns currently shown. Feed it from `getInitialColumns` ' +
+                'and keep it in state'
+        },
+        columnsTemporary: {
+            control: false,
+            description:
+                'The selection being edited inside the dialog, before ' +
+                'the user confirms it'
+        },
+        setColumnsTemporary: {
+            control: false,
+            description: 'Setter the dialog uses while the user picks columns'
+        },
+        open: {
             control: 'boolean',
-            description: 'Whether pagination footer is visible.'
+            description: 'Whether the column preferences dialog is open'
+        },
+        handleOpen: {
+            control: false,
+            description: 'Opens the column preferences dialog'
+        },
+        onConfirm: {
+            control: false,
+            description:
+                'Called when the user confirms the dialog. Persist with ' +
+                '`setVisibleColumns` here'
+        },
+        onCancel: {
+            control: false,
+            description:
+                'Called when the user dismisses the dialog. Roll the ' +
+                'temporary selection back here'
+        },
+        isInteractive: {
+            control: 'boolean',
+            description:
+                'Shows the toolbar above the table, with the settings ' +
+                'button and any `headerActions`'
+        },
+        headerActions: {
+            control: false,
+            description:
+                'Extra elements rendered in the toolbar next to the ' +
+                'settings button, such as filters or a search field'
+        },
+        isCollapsible: {
+            control: 'boolean',
+            description:
+                'Reserves the trailing header cell for a collapse ' +
+                'control, the same slot `children` uses'
+        },
+        fixed: {
+            control: 'boolean',
+            description:
+                'Applies each header `width` as a `max-width` and ' +
+                'truncates the label with an ellipsis. Header cells only — ' +
+                'body cells come from `rowsContent`'
+        },
+        page: {
+            control: 'number',
+            description: 'Current page. Controlled — the table never sets it'
         },
         rowsPerPage: {
             control: 'number',
-            description: 'Number of rows displayed per page.'
+            description: 'Rows per page. Controlled'
+        },
+        rowsPerPageOptions: {
+            control: false,
+            description: 'Choices in the rows per page select'
+        },
+        total: {
+            control: 'number',
+            description:
+                'Total number of rows, used by the footer to count pages'
+        },
+        paginated: {
+            control: 'boolean',
+            description: 'Renders the pagination footer'
+        },
+        setPage: {
+            control: false,
+            description: 'Called when the user changes page'
+        },
+        setRowsPerPage: {
+            control: false,
+            description: 'Called when the user changes the page size'
+        },
+        active: {
+            control: 'text',
+            description: 'Name of the column currently sorted'
         },
         direction: {
             control: 'radio',
             options: ['asc', 'desc'],
-            description: 'Sorting direction.'
-        },
-        isInteractive: {
-            control: 'boolean',
-            description: 'Whether the table is interactive.'
-        },
-        isCollapsible: {
-            control: 'boolean',
-            description: 'Whether the table can be collapsed.'
-        },
-        visibleColumns: {
-            control: false,
-            description: 'List of currently visible column names.'
-        },
-        columnsTemporary: {
-            control: false,
-            description: 'Temporary state for visible columns.'
-        },
-        valuesInvoices: {
-            control: false,
-            description: 'Table specific data.'
-        },
-        headerActions: {
-            control: false,
-            description: 'To add extra elements with the settings icon.'
-        },
-        onCancel: {
-            control: false,
-            description: 'Callback triggered on cancel.'
-        },
-        onConfirm: {
-            control: false,
-            description: 'Callback triggered on confirm.'
-        },
-        handleOpen: {
-            control: false,
-            description: 'Function to handle opening the dialog.'
+            description: 'Sorting direction of the active column'
         },
         onSort: {
             control: false,
-            description: 'Callback triggered when a column is sorted.'
+            description:
+                'Called with the column name when a sortable header is ' +
+                'clicked. Sorting the data is up to you'
         },
-        setPage: {
+        valuesInvoices: {
             control: false,
-            description: 'State setter for the current page.'
+            description:
+                'Legacy source for the page count, used when `total` is ' +
+                'absent. Prefer `total`'
         },
-        setRowsPerPage: {
-            control: false,
-            description: 'State setter for number of rows per page.'
+        size: {
+            control: 'radio',
+            options: ['small', 'medium'],
+            description:
+                'Row density. Reaches the body cells too, through the ' +
+                'MUI table context, and shrinks the pagination footer ' +
+                'along with them — toolbar height, labels, select and ' +
+                'page buttons'
         },
-        children: {
-            control: false,
-            description: 'To verify the necessity to adjust the header length.'
+        stickyHeader: {
+            control: 'boolean',
+            description:
+                'Keeps the header visible while the body scrolls. ' +
+                'Needs maxHeight to have something to scroll within.'
         },
-        setColumnsTemporary: {
-            control: false,
-            description: 'Setter for temporary visible columns state.'
+        maxHeight: {
+            control: 'text',
+            description:
+                'Bounds the scroll wrapper height and lets the body ' +
+                'scroll. Also thins the scrollbar.'
         },
-        rowsContent: {
-            control: false,
-            description: 'The table body content.'
+        cellPadding: {
+            control: 'text',
+            description:
+                'Padding applied to the header cells. ' +
+                'Body cells come from rowsContent, so their padding is yours.'
+        },
+        framed: {
+            control: 'boolean',
+            description:
+                'Moves the border from the table to a rounded frame and ' +
+                'drops the last row border.'
+        },
+        borderRadius: {
+            control: 'text',
+            description:
+                'Frame corner radius. ' +
+                'A bare number is read as pixels. Defaults to 12 when framed.'
         }
     }
 }
@@ -204,10 +356,84 @@ const InteractiveTable = (args: ITableInteractive) => {
     )
 }
 
+const INTERACTIVE_TABLE_DESCRIPTION = [
+    'The full wiring: toolbar, column preferences dialog and pagination.',
+    '',
+    'Note what the story itself has to own — the visible columns, the',
+    'temporary selection while the dialog is open, and the body rows built',
+    'from `getOrderedVisibleColumns`. The table coordinates that flow, it',
+    'does not hold it.',
+    '',
+    'Toggle a column, confirm, then reload the page: the choice survives,',
+    'because `setVisibleColumns` wrote it to `localStorage` under the',
+    '`name` of the table.'
+].join('\n')
+
+const FRAMED_DESCRIPTION = [
+    'The frame look. `framed` takes the border off the `table` element and',
+    'puts it on a rounded wrapper, then drops the border of the last row so',
+    'it does not collide with the frame.',
+    '',
+    'It matters that the border moves rather than being added: a border on',
+    'the table itself would show square corners inside the rounded frame.',
+    '',
+    '`borderRadius` overrides the 12px default. A bare number is read as',
+    'pixels.'
+].join('\n')
+
+const STICKY_HEADER_DESCRIPTION = [
+    '`maxHeight` bounds the wrapper so there is something to scroll, and',
+    '`stickyHeader` pins the header while the body moves under it.',
+    'Setting `maxHeight` also thins the scrollbar.',
+    '',
+    '`cellPadding` reaches the header cells only. The body cells in this',
+    'story come from `rowsContent`, so their padding is set on the',
+    '`TableCell` the story itself renders.'
+].join('\n')
+
 export const interactiveTable: Story = {
+    parameters: {
+        docs: {
+            description: {
+                story: INTERACTIVE_TABLE_DESCRIPTION
+            }
+        }
+    },
     render: ({ ...args }) => <InteractiveTable {...args} />,
     args: {
         isInteractive: true,
         name: 'info'
+    }
+}
+
+export const framed: Story = {
+    parameters: {
+        docs: {
+            description: {
+                story: FRAMED_DESCRIPTION
+            }
+        }
+    },
+    render: ({ ...args }) => <InteractiveTable {...args} />,
+    args: {
+        framed: true,
+        name: 'framed'
+    }
+}
+
+export const stickyHeader: Story = {
+    parameters: {
+        docs: {
+            description: {
+                story: STICKY_HEADER_DESCRIPTION
+            }
+        }
+    },
+    render: ({ ...args }) => <InteractiveTable {...args} />,
+    args: {
+        stickyHeader: true,
+        maxHeight: 200,
+        cellPadding: '8px 16px',
+        name: 'sticky'
     }
 }

@@ -20,12 +20,12 @@ describe('ExpansionPanel', () => {
                 expanded
                 editing={false}
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
+                data-testid='mui-expansion-panel'
                 onClick={jest.fn()}
             />
         )
 
-        const expansionPanel = screen.getByRole('mui-expansion-panel')
+        const expansionPanel = screen.getByTestId('mui-expansion-panel')
 
         expect((expansionPanel.lastChild as HTMLElement).className).toContain(
             'MuiCollapse-entered'
@@ -38,12 +38,12 @@ describe('ExpansionPanel', () => {
                 expanded={false}
                 editing={false}
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
+                data-testid='mui-expansion-panel'
                 onClick={jest.fn()}
             />
         )
 
-        const expansionPanel = screen.getByRole('mui-expansion-panel')
+        const expansionPanel = screen.getByTestId('mui-expansion-panel')
 
         expect((expansionPanel.lastChild as HTMLElement).className).toContain(
             'MuiCollapse-hidden'
@@ -57,7 +57,7 @@ describe('ExpansionPanel', () => {
             <ExpansionPanel
                 expanded
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
+                data-testid='mui-expansion-panel'
                 details={<div>{content}</div>}
             />
         )
@@ -73,13 +73,13 @@ describe('ExpansionPanel', () => {
                 expanded
                 editing={false}
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
-                actions={<button role='action-button'>Confirm</button>}
+                data-testid='mui-expansion-panel'
+                actions={<button data-testid='action-button'>Confirm</button>}
                 onClick={jest.fn()}
             />
         )
 
-        const expansionPanel = screen.getByRole('action-button')
+        const expansionPanel = screen.getByTestId('action-button')
 
         expect(expansionPanel.parentElement?.classList).toContain(
             'MuiAccordionActions-root'
@@ -95,13 +95,13 @@ describe('ExpansionPanel', () => {
                 helperButtonPosition='left'
                 editing={false}
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
+                data-testid='mui-expansion-panel'
                 onHelperClick={onHelperClick}
                 onClick={jest.fn()}
             />
         )
 
-        const helperIcon = screen.getByRole('helper-box')
+        const helperIcon = screen.getByTestId('helper-box')
 
         expect(helperIcon.nextSibling).toBeTruthy()
     })
@@ -114,13 +114,13 @@ describe('ExpansionPanel', () => {
                 expanded
                 editing={false}
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
+                data-testid='mui-expansion-panel'
                 onHelperClick={onHelperClick}
                 onClick={jest.fn()}
             />
         )
 
-        const helperIcon = await screen.findByRole('helper-box')
+        const helperIcon = await screen.findByTestId('helper-box')
 
         fireEvent.click(helperIcon.firstChild || helperIcon)
 
@@ -136,7 +136,7 @@ describe('ExpansionPanel', () => {
                 editable
                 editing={false}
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
+                data-testid='mui-expansion-panel'
                 onEditClick={onEditClick}
                 onClick={jest.fn()}
                 onSaveClick={jest.fn()}
@@ -144,7 +144,7 @@ describe('ExpansionPanel', () => {
             />
         )
 
-        const editBoxContainer = await screen.findByRole('edit-box')
+        const editBoxContainer = await screen.findByTestId('edit-box')
 
         fireEvent.click(editBoxContainer.firstChild || editBoxContainer)
 
@@ -160,7 +160,7 @@ describe('ExpansionPanel', () => {
                 editable
                 editing
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
+                data-testid='mui-expansion-panel'
                 onEditClick={jest.fn()}
                 onClick={jest.fn()}
                 onSaveClick={onSaveClick}
@@ -168,7 +168,7 @@ describe('ExpansionPanel', () => {
             />
         )
 
-        const editBoxContainer = await screen.findByRole('edit-box')
+        const editBoxContainer = await screen.findByTestId('edit-box')
 
         fireEvent.click(editBoxContainer.firstChild || editBoxContainer)
 
@@ -183,8 +183,10 @@ describe('ExpansionPanel', () => {
                     editing
                     editable
                     summary='Expansion Panel'
-                    role='mui-expansion-panel'
-                    actions={<button role='action-button'>Confirm</button>}
+                    data-testid='mui-expansion-panel'
+                    actions={
+                        <button data-testid='action-button'>Confirm</button>
+                    }
                     onClick={jest.fn()}
                 />
             )
@@ -199,8 +201,10 @@ describe('ExpansionPanel', () => {
                     editing
                     editable
                     summary='Expansion Panel'
-                    role='mui-expansion-panel'
-                    actions={<button role='action-button'>Confirm</button>}
+                    data-testid='mui-expansion-panel'
+                    actions={
+                        <button data-testid='action-button'>Confirm</button>
+                    }
                     onSaveClick={jest.fn()}
                     onClick={jest.fn()}
                 />
@@ -214,8 +218,8 @@ describe('ExpansionPanel', () => {
                 expanded
                 editing={false}
                 summary='Expansion Panel'
-                role='mui-expansion-panel'
-                actions={<button role='action-button'>Confirm</button>}
+                data-testid='mui-expansion-panel'
+                actions={<button data-testid='action-button'>Confirm</button>}
                 onClick={jest.fn()}
             />
         )

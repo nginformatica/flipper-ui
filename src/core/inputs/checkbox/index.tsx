@@ -65,7 +65,7 @@ const Checkbox = (props: ICheckboxProps) => {
     const renderSwitch = (checkboxProps?: SwitchProps) => (
         <MuiSwitch
             {...checkboxProps}
-            role='switch'
+            inputProps={{ role: 'switch' }}
             sx={props.sx}
             name={props.name}
             value={props.name}

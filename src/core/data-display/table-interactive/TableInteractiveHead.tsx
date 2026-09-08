@@ -9,6 +9,7 @@ export type ITableInteractiveHead = Pick<
     ITableInteractive,
     | 'fixed'
     | 'headers'
+    | 'cellPadding'
     | 'visibleColumns'
     | 'onSort'
     | 'active'
@@ -38,7 +39,8 @@ export const TableInteractiveHead = (props: ITableInteractiveHead) => {
                         header,
                         visibleColumns,
                         header.sortable,
-                        props.fixed
+                        props.fixed,
+                        props.cellPadding
                     )
                 )}
                 {(props.children || props.isCollapsible) && (

@@ -6,6 +6,7 @@ import {
     InteractiveTableWrapper,
     TABLE_DATA
 } from '@/test/mocks/table-interactive-mock'
+import { tableFrame, truncateStyle } from '../table/styles'
 import {
     getInitialColumns,
     getVisibleColumns,
@@ -351,5 +352,153 @@ describe('Table Interactive', () => {
         const column = screen.getByRole('columnheader', { name: /nome/i })
 
         expect(column).toHaveStyle('max-width: 200px')
+    })
+
+    it('should not make the header sticky by default', () => {
+        const { container } = renderComponent()
+
+        expect(container.querySelector('table')).not.toHaveClass(
+            'MuiTable-stickyHeader'
+        )
+    })
+
+    it('should make the header sticky when stickyHeader is true', () => {
+        const { container } = renderComponent({ stickyHeader: true })
+
+        expect(container.querySelector('table')).toHaveClass(
+            'MuiTable-stickyHeader'
+        )
+    })
+
+    it('should bound the scroll wrapper when maxHeight is set', () => {
+        const { container } = renderComponent({ maxHeight: 240 })
+        const scroll =
+            container.querySelector('table')?.parentElement?.parentElement
+
+        expect(scroll).toHaveStyle('max-height: 240px')
+    })
+
+    it('should keep the default header padding when cellPadding is absent', () => {
+        renderComponent()
+
+        const column = screen.getByRole('columnheader', { name: /nome/i })
+
+        expect(column).toHaveStyle('padding: 16px 8px')
+    })
+
+    it('should override the header padding when cellPadding is set', () => {
+        renderComponent({ cellPadding: '4px 8px' })
+
+        const column = screen.getByRole('columnheader', { name: /nome/i })
+
+        expect(column).toHaveStyle('padding: 4px 8px')
+    })
+
+    it('should not draw a frame by default', () => {
+        const { container } = renderComponent()
+        const wrapper =
+            container.querySelector('table')?.parentElement?.parentElement
+
+        expect(getComputedStyle(wrapper as Element).borderRadius).toBe('')
+    })
+
+    it('should move the border to a rounded frame when framed', () => {
+        const { container } = renderComponent({ framed: true })
+        const wrapper =
+            container.querySelector('table')?.parentElement?.parentElement
+
+        expect(getComputedStyle(wrapper as Element).borderRadius).toBe('12px')
+        expect(getComputedStyle(wrapper as Element).border).toContain(
+            '1px solid'
+        )
+    })
+
+    it('should let borderRadius override the framed default', () => {
+        const { container } = renderComponent({
+            framed: true,
+            borderRadius: 20
+        })
+        const wrapper =
+            container.querySelector('table')?.parentElement?.parentElement
+
+        expect(getComputedStyle(wrapper as Element).borderRadius).toBe('20px')
+    })
+
+    it('should forward size to the table', () => {
+        const { container } = renderComponent({ size: 'small' })
+
+        expect(container.querySelector('tbody td')).toHaveClass(
+            'MuiTableCell-sizeSmall'
+        )
+    })
+
+    it('should render medium sized cells by default', () => {
+        const { container } = renderComponent()
+
+        expect(container.querySelector('tbody td')).toHaveClass(
+            'MuiTableCell-sizeMedium'
+        )
+    })
+
+    it('should shrink the pagination footer when size is small', () => {
+        const { container } = renderComponent({ size: 'small' })
+        const toolbar = container.querySelector('.MuiTablePagination-toolbar')
+        const nextPage = screen.getByRole('button', { name: /next page/i })
+
+        expect(getComputedStyle(toolbar as Element).minHeight).toBe('40px')
+        expect(getComputedStyle(nextPage).padding).toBe('4px')
+        expect(
+            getComputedStyle(nextPage.querySelector('svg') as Element).fontSize
+        ).toBe('18px')
+    })
+
+    it('should keep the pagination footer at full size by default', () => {
+        const { container } = renderComponent()
+        const toolbar = container.querySelector('.MuiTablePagination-toolbar')
+        const nextPage = screen.getByRole('button', { name: /next page/i })
+
+        expect(getComputedStyle(toolbar as Element).minHeight).toBe('52px')
+        expect(getComputedStyle(nextPage).padding).toBe('12px')
+    })
+})
+
+describe('tableFrame', () => {
+    it('should return nothing when the table is not framed', () => {
+        expect(tableFrame()).toBeUndefined()
+        expect(tableFrame(false)).toBeUndefined()
+    })
+
+    it('should drop the last body border only while the body is last', () => {
+        const frame = tableFrame(true)
+
+        expect(frame).toHaveProperty('& tbody:last-child tr:last-of-type td')
+        expect(frame).not.toHaveProperty('& tbody tr:last-of-type td')
+    })
+
+    it('should keep the footer from drawing a second bottom edge', () => {
+        expect(tableFrame(true)).toMatchObject({
+            '& tfoot td': { borderBottom: 'none' }
+        })
+    })
+})
+
+describe('truncateStyle', () => {
+    it('should return nothing when truncation is off', () => {
+        expect(truncateStyle()).toBeUndefined()
+        expect(truncateStyle(false)).toBeUndefined()
+    })
+
+    it('should clip at 150px by default', () => {
+        expect(truncateStyle(true)).toEqual({
+            maxWidth: '150px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap'
+        })
+    })
+
+    it('should take a width in pixels or as a css length', () => {
+        expect(truncateStyle(300)?.maxWidth).toBe('300px')
+        expect(truncateStyle('20rem')?.maxWidth).toBe('20rem')
     })
 })

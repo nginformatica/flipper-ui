@@ -1,33 +1,38 @@
 import React from 'react'
 import type { ReactNode } from 'react'
+import type { ITypographyProps } from '@/core/data-display/typography'
 import type { IButtonProps } from '@/core/inputs/button'
 import type { IconButtonProps } from '@/core/inputs/icon-button'
 import Line from '@/core/data-display/line'
 import Typography from '@/core/data-display/typography'
 import AddButton from '@/core/inputs/add-button'
+import IconButton from '@/core/inputs/icon-button'
 import Paper from '@/core/surfaces/paper'
 import { IconClose, IconEdit, IconDelete } from '@/icons/mui'
-import { CardButton, Header } from './styles'
-import { theme } from '@/theme'
-
-const { feedback } = theme.colors
+import { ActionsWrapper, Header } from './styles'
 
 export interface IProps {
-    children: ReactNode
-    nested?: boolean
-    title?: string
-    name: string
-    label?: string
     id?: string
+    name: string
+    title?: string
+    label?: string
+    nested?: boolean
     editing?: boolean
-    action?: JSX.Element | null
+    children: ReactNode
     renderRemove?: boolean
+    action?: JSX.Element | null
+    /**
+     * Merged over the title defaults — `variant='h6'`, `color='primary'`.
+     * `variant` also sets the heading level, so `{ component: 'h2' }`
+     * keeps the `h6` type scale on an `<h2>` tag.
+     */
+    titleProps?: Partial<ITypographyProps>
     onAddProps?: Partial<IButtonProps>
     onEditProps?: Partial<IconButtonProps>
     onRemoveProps?: Partial<IconButtonProps>
+    onRemove?(): void
     onClickAdd?(): void
     onToggleEdit?(): void
-    onRemove?(): void
 }
 
 const Card = (props: IProps) => {
@@ -37,6 +42,7 @@ const Card = (props: IProps) => {
         label,
         nested,
         title,
+        titleProps,
         action,
         onToggleEdit,
         editing,
@@ -71,36 +77,46 @@ const Card = (props: IProps) => {
                                 name={name + '-title'}
                                 flex={1}
                                 variant='h6'
-                                color='primary'>
+                                color='primary'
+                                {...titleProps}>
                                 {title}
                             </Typography>
                         )}
 
-                        {action}
+                        <ActionsWrapper>
+                            {action}
 
-                        {onRemove && !!renderRemove && (
-                            <CardButton
-                                {...onRemoveProps}
-                                className={editing ? '' : 'showable-target'}
-                                name={`remove-${name}`}
-                                margin='-10px 20px'
-                                padding='0px'
-                                onClick={onRemove}>
-                                <IconDelete htmlColor={feedback.danger} />
-                            </CardButton>
-                        )}
+                            {onRemove && !!renderRemove && (
+                                <IconButton
+                                    aria-label='Excluir'
+                                    {...onRemoveProps}
+                                    className={editing ? '' : 'showable-target'}
+                                    name={`remove-${name}`}
+                                    padding='4px'
+                                    onClick={onRemove}>
+                                    <IconDelete
+                                        color='error'
+                                        fontSize='small'
+                                    />
+                                </IconButton>
+                            )}
 
-                        {onToggleEdit && (
-                            <CardButton
-                                {...onEditProps}
-                                className={editing ? '' : 'showable-target'}
-                                name={`${editing ? 'cancel' : 'edit'}-${name}`}
-                                margin='-10px'
-                                padding='0px'
-                                onClick={onToggleEdit}>
-                                {editing ? <IconClose /> : <IconEdit />}
-                            </CardButton>
-                        )}
+                            {onToggleEdit && (
+                                <IconButton
+                                    aria-label={editing ? 'Cancelar' : 'Editar'}
+                                    {...onEditProps}
+                                    className={editing ? '' : 'showable-target'}
+                                    name={`${editing ? 'cancel' : 'edit'}-${name}`}
+                                    padding='4px'
+                                    onClick={onToggleEdit}>
+                                    {editing ? (
+                                        <IconClose fontSize='small' />
+                                    ) : (
+                                        <IconEdit fontSize='small' />
+                                    )}
+                                </IconButton>
+                            )}
+                        </ActionsWrapper>
                     </Header>
                     <Line />
                 </>

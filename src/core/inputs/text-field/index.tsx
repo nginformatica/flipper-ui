@@ -5,7 +5,7 @@ import type {
     KeyboardEvent,
     FocusEvent,
     ReactNode,
-    MouseEvent,
+    SyntheticEvent,
     Ref
 } from 'react'
 import MuiInputAdornment from '@mui/material/InputAdornment'
@@ -74,7 +74,7 @@ export interface ITextFieldProps
 
 interface IHelperProps {
     helperIcon?: ReactNode
-    onHelperClick: (event: MouseEvent) => void
+    onHelperClick: (event: SyntheticEvent) => void
 }
 
 const coerceComboOptions = (input: string): IOption[] => {
@@ -94,8 +94,18 @@ const toLispCase = (name: string) =>
         .toLowerCase()
 
 export const HelperBox = (props: IHelperProps) => (
-    <Helper role='helper-box'>
-        <HelperButton onClick={e => props.onHelperClick(e)}>
+    <Helper data-testid='helper-box'>
+        <HelperButton
+            role='button'
+            tabIndex={0}
+            aria-label='Ajuda'
+            onClick={event => props.onHelperClick(event)}
+            onKeyDown={event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    props.onHelperClick(event)
+                }
+            }}>
             {props.helperIcon || <IconHelp color='primary' />}
         </HelperButton>
     </Helper>
@@ -121,7 +131,8 @@ const renderEndAdornment = (disabled?: boolean, onClear?: () => void) => (
     <MuiInputAdornment position='end'>
         <IconButton
             size='small'
-            role='clear-button'
+            aria-label='Limpar'
+            data-testid='clear-button'
             margin='0 16px 0 0'
             disabled={disabled || false}
             onClick={onClear}>

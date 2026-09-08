@@ -15,6 +15,21 @@ const meta: Meta<typeof StepCard> = {
             control: 'text',
             description: 'The step card subTitle'
         },
+        titleProps: {
+            control: 'object',
+            description:
+                'The Typography props of the step card title, merged over ' +
+                'its defaults (`variant: "h5"`, `align: "center"`). ' +
+                '`variant` also sets the heading level, so ' +
+                '`{ component: "h2" }` keeps the `h5` scale on an `h2` tag'
+        },
+        subTitleProps: {
+            control: 'object',
+            description:
+                'The Typography props of the step card subTitle, merged ' +
+                'over its defaults (`variant: "h6"`, `align: "center"`)'
+        },
+
         summary: {
             control: 'text',
             description: 'The step card summary'

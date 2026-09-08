@@ -19,7 +19,7 @@ const Action = ({
 }) => (
     <IconButton
         key='close'
-        role='close-icon-button'
+        data-testid='close-icon-button'
         aria-label='Close'
         color='inherit'
         onClick={snackProps?.onClose || handleClose}>

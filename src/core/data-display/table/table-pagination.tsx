@@ -58,7 +58,7 @@ const TablePagination = ({
                 ...style
             }}
             sx={{
-                borderBottom: `1px solid ${gray[200]} !important;`
+                borderBottom: `1px solid ${gray[200]}`
             }}
             onPageChange={onPageChange}
             onRowsPerPageChange={onRowsPerPageChange}

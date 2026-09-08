@@ -28,8 +28,9 @@ import type {
     StackView,
     PartialData
 } from './types'
+import { SCROLLBAR, tableFrame } from '../table/styles'
 import { makeDataTablePaginationActions } from './data-table-pagination-actions'
-import { StatefulRow, NewRow } from './rows'
+import { StatefulRow, NewRow, withCellStyle } from './rows'
 import { RowMode } from './types'
 import { useRowsState } from './use-rows-state'
 
@@ -52,6 +53,11 @@ export type DataTableProps<
     hidden?: boolean
     rowViews?: Record<keyof V, RowViewComponent<D>>
     size?: 'small' | 'medium'
+    maxHeight?: number | string
+    stickyHeader?: boolean
+    cellPadding?: CSSProperties['padding']
+    framed?: boolean
+    borderRadius?: number | string
     renderEmptyRows?: boolean
     hideSelect?: boolean
     checkbox?: boolean
@@ -99,6 +105,11 @@ export const DataTable = <D extends Data, V extends StackView>(
         errors,
         componentForEmpty,
         size,
+        maxHeight,
+        stickyHeader,
+        cellPadding,
+        framed,
+        borderRadius,
         renderEmptyRows,
         hideSelect,
         bodyStyle,
@@ -262,6 +273,7 @@ export const DataTable = <D extends Data, V extends StackView>(
                                 errors={errors}
                                 mode={mode}
                                 isHidden={hidden}
+                                cellPadding={cellPadding}
                                 onUpdate={setEditableRowState(row.id)}
                             />
                         )}
@@ -277,6 +289,7 @@ export const DataTable = <D extends Data, V extends StackView>(
             checkbox,
             columns,
             errors,
+            cellPadding,
             setEditableRowState,
             onRowClick,
             checkboxProps
@@ -289,12 +302,16 @@ export const DataTable = <D extends Data, V extends StackView>(
                 <MuiTableCell
                     key={column.title}
                     variant='head'
-                    style={column.headerStyle}
+                    style={withCellStyle(
+                        column.headerStyle,
+                        cellPadding,
+                        column.truncate
+                    )}
                     align={column.align}>
                     {column.title}
                 </MuiTableCell>
             )),
-        [columns]
+        [columns, cellPadding]
     )
 
     const currentRowsNumber = rows.length + (newRow ? 1 : 0)
@@ -324,6 +341,7 @@ export const DataTable = <D extends Data, V extends StackView>(
                     data={newRow}
                     errors={errors}
                     columns={columns}
+                    cellPadding={cellPadding}
                     onUpdate={setEditableRowState(newRow.id)}
                 />
             )}
@@ -344,8 +362,14 @@ export const DataTable = <D extends Data, V extends StackView>(
         rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage)
 
     return (
-        <MuiTableContainer role='data-table-container' component={MuiPaper}>
-            <MuiTable size={size}>
+        <MuiTableContainer
+            data-testid='data-table-container'
+            component={MuiPaper}
+            sx={{
+                ...(maxHeight ? { maxHeight, ...SCROLLBAR } : undefined),
+                ...tableFrame(framed, borderRadius)
+            }}>
+            <MuiTable size={size} stickyHeader={stickyHeader}>
                 {!noHeader && (
                     <MuiTableHead style={headStyle}>
                         <MuiTableRow style={headRowStyle}>
