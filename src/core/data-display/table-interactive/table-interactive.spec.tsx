@@ -593,8 +593,8 @@ describe('STICKY_FOOTER', () => {
         expect(footer.backgroundColor).toBe('#FFFFFF')
     })
 
-    it('should draw the divider with a shadow, not a border', () => {
-        expect(footer).not.toHaveProperty('borderBottom')
+    it('should draw the divider with a shadow and drop the cell bottom border', () => {
+        expect(footer.borderBottom).toBe('none')
         expect(footer.boxShadow).toContain(`0 -1px 0 ${theme.colors.gray[200]}`)
     })
 })

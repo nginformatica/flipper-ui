@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.42.1
+
+- fix the sticky head cell of the tables painting `background.default` instead of white; `muiThemeOptions` now overrides `MuiTableCell.stickyHeader` with `neutral[50]`
+- fix the `stickyFooter` pagination drawing a bottom border under the stuck cell
+
 ## v0.42.0
 
 - add `stickyFooter` prop to `<DataTable>` and `<TableInteractive>`, pinning the pagination to the bottom of the scroll container while the rows scroll under it; like `stickyHeader`, it needs `maxHeight` to scroll within and flips the table to `border-collapse: separate`, so the stuck footer paints its own white background and `gray[200]` shadow
