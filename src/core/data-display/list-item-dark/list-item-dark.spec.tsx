@@ -1,6 +1,6 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { IconFace } from '@/icons/mui'
+import { IconDelete, IconFace } from '@/icons/mui'
 import ListItemDark from '.'
 import '@testing-library/jest-dom'
 
@@ -87,6 +87,50 @@ describe('ListItemDark', () => {
         render(<ListItemDark actions={<span>Action</span>} />)
 
         expect(screen.getByText('Action')).toBeInTheDocument()
+    })
+
+    it.each([true, false])(
+        'should size the icon from dense alone, expanded=%s',
+        expanded => {
+            const dense = render(
+                <ListItemDark
+                    dense
+                    expanded={expanded}
+                    title='Perfil'
+                    icon={<IconFace />}
+                />
+            )
+            const normal = render(
+                <ListItemDark
+                    expanded={expanded}
+                    title='Agenda'
+                    icon={<IconFace />}
+                />
+            )
+
+            const denseSlot =
+                dense.container.querySelector('svg')?.parentElement
+            const normalSlot =
+                normal.container.querySelector('svg')?.parentElement
+
+            expect(denseSlot).toHaveStyle({ width: '14px', height: '14px' })
+            expect(normalSlot).toHaveStyle({ width: '18px', height: '18px' })
+        }
+    )
+
+    it('should keep the action icons at their own size on a dense item', () => {
+        const { container } = render(
+            <ListItemDark
+                dense
+                title='Perfil'
+                icon={<IconFace />}
+                actions={<IconDelete />}
+            />
+        )
+
+        const action = container.querySelector('.list-item-dark-actions svg')
+
+        expect(action).toHaveStyle({ width: '18px', height: '18px' })
     })
 
     it('should match snapshot', () => {

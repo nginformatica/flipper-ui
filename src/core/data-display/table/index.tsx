@@ -36,6 +36,9 @@ const SMALL_SIZE_SX = {
     },
     '&& tfoot .MuiIconButton-root': {
         padding: '4px'
+    },
+    '&& thead .MuiTableSortLabel-icon': {
+        fontSize: '14px'
     }
 }
 

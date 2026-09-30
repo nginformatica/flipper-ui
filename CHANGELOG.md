@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.42.0
+
+- add `stickyFooter` prop to `<DataTable>` and `<TableInteractive>`, pinning the pagination to the bottom of the scroll container while the rows scroll under it; like `stickyHeader`, it needs `maxHeight` to scroll within and flips the table to `border-collapse: separate`, so the stuck footer paints its own white background and `gray[200]` shadow
+- add `footerActions` prop to `<TableInteractive>` and `<TablePagination>`, rendering content in the pagination footer opposite the page controls; without it the pagination `slotProps` pass through untouched
+- add `headerMargin` prop to `<TableInteractive>`, replacing the `0 0 8px 0` margin of the header row that carries `headerActions` and the preferences button; a number is read as `px`
+- make `size='small'` also reach the `<TableInteractive>` preferences icon (20px) and the `<Table>` sort icon (14px)
+- center the `<TableInteractive>` header row and square the preferences button padding to `4px`
+- fix the `<ListItemDark>` `dense` icon growing to 18px when a later-rendered variant of the item won the cascade; the slot now always sizes its icon, and the action icons keep 18px
+- add `IconFlagRounded` to design system @mui icons
+
 ## v0.41.1
 
 - add `IconWifi` to design system @mui icons

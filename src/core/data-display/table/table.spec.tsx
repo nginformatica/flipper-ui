@@ -163,6 +163,73 @@ describe('Table', () => {
         expect(cell).toHaveClass('MuiTableCell-sizeSmall')
     })
 
+    it('should shrink the sort icon when the table is small', () => {
+        const { container } = render(
+            <Table size='small'>
+                <TableHead onSort={jest.fn()}>
+                    <TableRow>
+                        <TableCell name='name'>Table-Head-Name</TableCell>
+                    </TableRow>
+                </TableHead>
+            </Table>
+        )
+
+        const icon = container.querySelector(
+            '.MuiTableSortLabel-icon'
+        ) as HTMLElement
+
+        expect(icon).toHaveStyle('font-size: 14px')
+    })
+
+    it('should render footerActions opposite the pagination controls', () => {
+        const { getByText, container } = render(
+            <Table>
+                <TableFooter>
+                    <TableRow>
+                        <TablePagination
+                            page={0}
+                            count={4}
+                            rowsPerPage={2}
+                            footerActions={<span>2 selecionados</span>}
+                            onPageChange={jest.fn()}
+                            onRowsPerPageChange={jest.fn()}
+                        />
+                    </TableRow>
+                </TableFooter>
+            </Table>
+        )
+
+        const spacer = container.querySelector('.MuiTablePagination-spacer')
+
+        expect(spacer).toContainElement(getByText('2 selecionados'))
+    })
+
+    it('should keep the consumer spacer slotProps when footerActions is not set', () => {
+        const { container } = render(
+            <Table>
+                <TableFooter>
+                    <TableRow>
+                        <TablePagination
+                            page={0}
+                            count={4}
+                            rowsPerPage={2}
+                            slotProps={{
+                                spacer: { className: 'legacy-spacer' }
+                            }}
+                            onPageChange={jest.fn()}
+                            onRowsPerPageChange={jest.fn()}
+                        />
+                    </TableRow>
+                </TableFooter>
+            </Table>
+        )
+
+        const spacer = container.querySelector('.MuiTablePagination-spacer')
+
+        expect(spacer).toHaveClass('legacy-spacer')
+        expect(spacer).toBeEmptyDOMElement()
+    })
+
     it('should change rows per page', () => {
         const { getByRole, getAllByRole } = render(<Default />)
 

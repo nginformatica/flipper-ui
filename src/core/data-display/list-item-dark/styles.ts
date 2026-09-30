@@ -18,6 +18,11 @@ export const FavoriteActions = styled.div`
     margin-left: auto;
     opacity: 0;
     transition: opacity 120ms ease;
+
+    & svg {
+        width: 18px;
+        height: 18px;
+    }
 `
 
 export const ItemLabel = styled('div', {
@@ -63,8 +68,6 @@ export const ItemButton = styled(MuiListItemButton, {
     }
 
     & svg {
-        width: 18px;
-        height: 18px;
         flex-shrink: 0;
         color: inherit;
     }

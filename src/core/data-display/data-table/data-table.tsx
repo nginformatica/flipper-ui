@@ -28,7 +28,7 @@ import type {
     StackView,
     PartialData
 } from './types'
-import { SCROLLBAR, tableFrame } from '../table/styles'
+import { SCROLLBAR, STICKY_FOOTER, tableFrame } from '../table/styles'
 import { makeDataTablePaginationActions } from './data-table-pagination-actions'
 import { StatefulRow, NewRow, withCellStyle } from './rows'
 import { RowMode } from './types'
@@ -55,6 +55,7 @@ export type DataTableProps<
     size?: 'small' | 'medium'
     maxHeight?: number | string
     stickyHeader?: boolean
+    stickyFooter?: boolean
     cellPadding?: CSSProperties['padding']
     framed?: boolean
     borderRadius?: number | string
@@ -107,6 +108,7 @@ export const DataTable = <D extends Data, V extends StackView>(
         size,
         maxHeight,
         stickyHeader,
+        stickyFooter,
         cellPadding,
         framed,
         borderRadius,
@@ -369,7 +371,10 @@ export const DataTable = <D extends Data, V extends StackView>(
                 ...(maxHeight ? { maxHeight, ...SCROLLBAR } : undefined),
                 ...tableFrame(framed, borderRadius)
             }}>
-            <MuiTable size={size} stickyHeader={stickyHeader}>
+            <MuiTable
+                size={size}
+                stickyHeader={stickyHeader}
+                sx={stickyFooter ? STICKY_FOOTER : undefined}>
                 {!noHeader && (
                     <MuiTableHead style={headStyle}>
                         <MuiTableRow style={headRowStyle}>

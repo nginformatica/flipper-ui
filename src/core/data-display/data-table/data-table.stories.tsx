@@ -205,6 +205,13 @@ const meta: Meta<typeof DataTable> = {
                 'Keeps the header visible while the body scrolls. ' +
                 'Needs `maxHeight` to have something to scroll within'
         },
+        stickyFooter: {
+            control: 'boolean',
+            description:
+                'Keeps the pagination visible while the body scrolls. ' +
+                'Needs `maxHeight` to have something to scroll within, ' +
+                'and a footer that is not disabled by `pagination`'
+        },
         maxHeight: {
             control: 'text',
             description:
@@ -499,6 +506,61 @@ StickyHeader.parameters = {
     docs: {
         description: {
             story: STICKY_HEADER_DESCRIPTION
+        }
+    }
+}
+
+const STICKY_FOOTER_DESCRIPTION = [
+    '`stickyFooter` pins the pagination to the bottom of the container',
+    'while the rows scroll under it, so the page controls stay reachable',
+    'without scrolling to the end of the list.',
+    '',
+    'Same precondition as `stickyHeader` — it needs `maxHeight` to have',
+    'something to scroll within — and it needs a footer, so it does',
+    'nothing under `pagination={{ disabled: true }}`.',
+    '',
+    '`stickyFooter` also flips the table to `border-collapse: separate`,',
+    'the way `stickyHeader` already does. Under `collapse` a cell paints',
+    'neither its own border nor a shadow — both belong to the table grid',
+    'and stay behind when the cell moves — so the stuck footer would come',
+    'out with no divider at all.'
+].join('\n')
+
+export const StickyFooter = () => {
+    const data = Array.from({ length: 24 }, (_, index) => ({
+        id: index + 1,
+        product: `Product ${index + 1}`,
+        price: (index + 1) * 7.5,
+        quantity: index + 1,
+        date: new Date()
+    }))
+
+    const columns: ColumnSpec<Data>[] = [
+        { title: 'Product', type: 'text', field: 'product' },
+        {
+            title: 'Price (R$)',
+            field: 'price',
+            type: 'numeric-float',
+            getValue: (value: number) => value.toFixed(2).replace('.', ',')
+        },
+        { title: 'Quantity', field: 'quantity', type: 'numeric-int' }
+    ]
+
+    return (
+        <DataTable
+            stickyFooter
+            data={data}
+            columns={columns}
+            maxHeight={320}
+            cellPadding='6px 12px'
+        />
+    )
+}
+
+StickyFooter.parameters = {
+    docs: {
+        description: {
+            story: STICKY_FOOTER_DESCRIPTION
         }
     }
 }

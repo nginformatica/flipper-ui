@@ -3,7 +3,7 @@ import type { Dispatch, ReactNode, SetStateAction } from 'react'
 import Box from '@mui/material/Box'
 import type { TableProps } from '@mui/material/Table'
 import Table from '../table'
-import { SCROLLBAR, tableFrame } from '../table/styles'
+import { SCROLLBAR, STICKY_FOOTER, tableFrame } from '../table/styles'
 import TableBody from '../table/table-body'
 import TableFooter from '../table/table-footer'
 import TablePagination from '../table/table-pagination'
@@ -50,12 +50,15 @@ export interface ITableInteractive extends Omit<TableProps, 'children'> {
     paginated?: boolean
     rowsPerPage?: number
     direction?: Direction
+    stickyFooter?: boolean
     isInteractive?: boolean
     isCollapsible?: boolean
     visibleColumns?: string[]
     columnsTemporary?: string[]
     rowsPerPageOptions?: number[]
+    headerMargin?: number | string
     headerActions?: JSX.Element | undefined
+    footerActions?: ReactNode
     valuesInvoices?: Record<string, unknown>[]
     onCancel?: () => void
     onConfirm?: () => void
@@ -86,6 +89,8 @@ export const TableInteractive = (props: ITableInteractive) => {
         <>
             {props.isInteractive && (
                 <TableInteractiveHeader
+                    size={props.size}
+                    headerMargin={props.headerMargin}
                     headerActions={props.headerActions}
                     handleOpen={props.handleOpen}
                 />
@@ -119,6 +124,7 @@ export const TableInteractive = (props: ITableInteractive) => {
                         }}
                         sx={{
                             ...(props.size !== 'small' && BODY_CELL_SX),
+                            ...(props.stickyFooter && STICKY_FOOTER),
                             ...props.sx
                         }}>
                         <TableInteractiveHead
@@ -142,6 +148,7 @@ export const TableInteractive = (props: ITableInteractive) => {
                                         page={page}
                                         count={count}
                                         rowsPerPage={props.rowsPerPage ?? 10}
+                                        footerActions={props.footerActions}
                                         rowsPerPageOptions={
                                             props.rowsPerPageOptions ?? [
                                                 10, 25, 50, 100
