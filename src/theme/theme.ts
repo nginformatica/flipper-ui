@@ -27,6 +27,16 @@ export const muiThemeOptions = {
             defaultProps: {
                 variantMapping
             }
+        },
+        // a sticky head cell needs an opaque background or the rows scroll
+        // through it, and MUI paints it with background.default — the page
+        // colour set above, not the surface the table sits on
+        MuiTableCell: {
+            styleOverrides: {
+                stickyHeader: {
+                    backgroundColor: colors.neutral[50]
+                }
+            }
         }
     }
 }

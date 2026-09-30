@@ -46,6 +46,7 @@ export const STICKY_FOOTER = {
         zIndex: 2,
         bottom: 0,
         position: 'sticky',
+        borderBottom: 'none',
         backgroundColor: neutral[50],
         boxShadow: `0 -1px 0 ${gray[200]}, 0 -4px 12px ${alpha(gray[800], 0.04)}`
     }
