@@ -360,6 +360,43 @@ describe('DataTable layout props', () => {
         ).toBe('320px')
     })
 
+    it('should not stick the footer by default', () => {
+        const { container } = render(
+            <DataTable data={items} columns={columns} />
+        )
+        const footer = container.querySelector('tfoot td') as HTMLElement
+
+        expect(getComputedStyle(footer).position).not.toBe('sticky')
+    })
+
+    it('should stick the footer when stickyFooter is true', () => {
+        const { container } = render(
+            <DataTable
+                stickyFooter
+                data={items}
+                columns={columns}
+                maxHeight={320}
+            />
+        )
+        const footer = container.querySelector('tfoot td') as HTMLElement
+
+        expect(getComputedStyle(footer).position).toBe('sticky')
+    })
+
+    it('should separate the borders so the stuck footer can paint its own', () => {
+        const { container } = render(
+            <DataTable
+                stickyFooter
+                data={items}
+                columns={columns}
+                maxHeight={320}
+            />
+        )
+        const table = container.querySelector('table') as HTMLElement
+
+        expect(getComputedStyle(table).borderCollapse).toBe('separate')
+    })
+
     it('should apply cellPadding to head and body cells', () => {
         const { container } = render(
             <DataTable data={items} columns={columns} cellPadding='2px 6px' />

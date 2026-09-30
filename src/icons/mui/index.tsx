@@ -84,6 +84,7 @@ export { default as IconFileOpenRounded } from '@mui/icons-material/FileOpenRoun
 export { default as IconFileUpload } from '@mui/icons-material/FileUpload'
 export { default as IconFilterList } from '@mui/icons-material/FilterList'
 export { default as IconFirstPage } from '@mui/icons-material/FirstPage'
+export { default as IconFlagRounded } from '@mui/icons-material/FlagRounded'
 export { default as IconFolderShared } from '@mui/icons-material/FolderShared'
 export { default as IconFormatAlignCenterRounded } from '@mui/icons-material/FormatAlignCenterRounded'
 export { default as IconFormatAlignLeftRounded } from '@mui/icons-material/FormatAlignLeftRounded'

@@ -6,18 +6,23 @@ import { TableHeaderContent } from './styles'
 
 export type ITableInteractiveHeader = Pick<
     ITableInteractive,
-    'handleOpen' | 'headerActions'
+    'handleOpen' | 'headerActions' | 'headerMargin' | 'size'
 >
 
 export const TableInteractiveHeader = (props: ITableInteractiveHeader) => {
+    const isSmall = props.size === 'small'
+
     return (
-        <TableHeaderContent>
+        <TableHeaderContent margin={props.headerMargin}>
             <div>{props.headerActions}</div>
             <IconButton
-                padding='4px 6px'
+                padding='4px'
                 aria-label='Preferências'
                 onClick={props.handleOpen}>
-                <IconSettings color='primary' />
+                <IconSettings
+                    color='primary'
+                    fontSize={isSmall ? 'small' : 'medium'}
+                />
             </IconButton>
         </TableHeaderContent>
     )

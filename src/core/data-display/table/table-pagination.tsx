@@ -1,10 +1,18 @@
 import React from 'react'
-import type { ChangeEvent, CSSProperties, MouseEvent } from 'react'
+import type { ChangeEvent, CSSProperties, MouseEvent, ReactNode } from 'react'
 import MuiTablePagination from '@mui/material/TablePagination'
 import type { TablePaginationProps } from '@mui/material/TablePagination'
 import { theme } from '@/theme'
 
 const { gray } = theme.colors
+
+// the toolbar lays its children out left to right and the spacer is the first
+// of them, so filling the spacer is what puts content opposite the controls
+const FOOTER_ACTIONS_SX = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px'
+}
 
 interface ITablePaginationProps extends Omit<
     TablePaginationProps,
@@ -26,6 +34,7 @@ interface ITablePaginationProps extends Omit<
     onRowsPerPageChange: (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => void
+    footerActions?: ReactNode
     style?: CSSProperties
 }
 
@@ -36,6 +45,8 @@ const TablePagination = ({
     rowsPerPageOptions,
     onPageChange,
     onRowsPerPageChange,
+    footerActions,
+    slotProps,
     style,
     padding,
     ...props
@@ -60,6 +71,17 @@ const TablePagination = ({
             sx={{
                 borderBottom: `1px solid ${gray[200]}`
             }}
+            slotProps={
+                footerActions
+                    ? {
+                          ...slotProps,
+                          spacer: {
+                              children: footerActions,
+                              sx: FOOTER_ACTIONS_SX
+                          }
+                      }
+                    : slotProps
+            }
             onPageChange={onPageChange}
             onRowsPerPageChange={onRowsPerPageChange}
             {...props}

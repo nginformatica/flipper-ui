@@ -6,13 +6,14 @@ import {
     InteractiveTableWrapper,
     TABLE_DATA
 } from '@/test/mocks/table-interactive-mock'
-import { tableFrame, truncateStyle } from '../table/styles'
+import { STICKY_FOOTER, tableFrame, truncateStyle } from '../table/styles'
 import {
     getInitialColumns,
     getVisibleColumns,
     setVisibleColumns,
     STORAGE_KEY
 } from './utils'
+import { theme } from '@/theme'
 import '@testing-library/jest-dom'
 
 describe('getInitialColumns', () => {
@@ -370,6 +371,37 @@ describe('Table Interactive', () => {
         )
     })
 
+    it('should not stick the footer by default', () => {
+        const { container } = renderComponent()
+        const footer = container.querySelector('tfoot td') as HTMLElement
+
+        expect(getComputedStyle(footer).position).not.toBe('sticky')
+    })
+
+    it('should stick the footer when stickyFooter is true', () => {
+        const { container } = renderComponent({ stickyFooter: true })
+        const footer = container.querySelector('tfoot td') as HTMLElement
+
+        expect(getComputedStyle(footer).position).toBe('sticky')
+    })
+
+    it('should separate the borders so the stuck footer can paint its own', () => {
+        const { container } = renderComponent({ stickyFooter: true })
+        const table = container.querySelector('table') as HTMLElement
+
+        expect(getComputedStyle(table).borderCollapse).toBe('separate')
+    })
+
+    it('should forward footerActions into the pagination footer', () => {
+        const { container } = renderComponent({
+            footerActions: <span>2 selecionados</span>
+        })
+
+        const spacer = container.querySelector('.MuiTablePagination-spacer')
+
+        expect(spacer).toContainElement(screen.getByText('2 selecionados'))
+    })
+
     it('should bound the scroll wrapper when maxHeight is set', () => {
         const { container } = renderComponent({ maxHeight: 240 })
         const scroll =
@@ -460,6 +492,74 @@ describe('Table Interactive', () => {
         expect(getComputedStyle(toolbar as Element).minHeight).toBe('52px')
         expect(getComputedStyle(nextPage).padding).toBe('12px')
     })
+
+    it('should shrink the preferences icon when size is small', () => {
+        renderComponent({ size: 'small' })
+
+        const icon = screen.getByTestId('SettingsIcon')
+        const settings = icon.closest('button') as HTMLButtonElement
+
+        expect(icon).toHaveClass('MuiSvgIcon-fontSizeSmall')
+        expect(getComputedStyle(settings).padding).toBe('4px')
+    })
+
+    it('should keep the preferences icon at full size by default', () => {
+        renderComponent()
+
+        const icon = screen.getByTestId('SettingsIcon')
+        const settings = icon.closest('button') as HTMLButtonElement
+
+        expect(icon).toHaveClass('MuiSvgIcon-fontSizeMedium')
+        expect(getComputedStyle(settings).padding).toBe('4px')
+    })
+
+    it('should keep 8px under the header by default', () => {
+        renderComponent()
+
+        const header = screen
+            .getByTestId('SettingsIcon')
+            .closest('div') as HTMLDivElement
+
+        expect(getComputedStyle(header).marginBottom).toBe('8px')
+    })
+
+    it('should override the header margin when headerMargin is set', () => {
+        renderComponent({ headerMargin: '0 0 24px 0' })
+
+        const header = screen
+            .getByTestId('SettingsIcon')
+            .closest('div') as HTMLDivElement
+
+        expect(getComputedStyle(header).marginBottom).toBe('24px')
+    })
+
+    it.each([
+        [16, '16px'],
+        [0, '0px']
+    ])(
+        'should convert the numeric headerMargin %s to px',
+        (margin, expected) => {
+            renderComponent({ headerMargin: margin })
+
+            const header = screen
+                .getByTestId('SettingsIcon')
+                .closest('div') as HTMLDivElement
+
+            expect(getComputedStyle(header).margin).toBe(expected)
+        }
+    )
+
+    it('should size the preferences button by its icon, not by the row', () => {
+        renderComponent({
+            headerActions: <button style={{ height: '48px' }}>Filtrar</button>
+        })
+
+        const header = screen
+            .getByTestId('SettingsIcon')
+            .closest('div') as HTMLDivElement
+
+        expect(getComputedStyle(header).alignItems).toBe('center')
+    })
 })
 
 describe('tableFrame', () => {
@@ -479,6 +579,23 @@ describe('tableFrame', () => {
         expect(tableFrame(true)).toMatchObject({
             '& tfoot td': { borderBottom: 'none' }
         })
+    })
+})
+
+describe('STICKY_FOOTER', () => {
+    const footer = STICKY_FOOTER['& tfoot td']
+
+    it('should pin the footer cell to the bottom of the scroll container', () => {
+        expect(footer).toMatchObject({ position: 'sticky', bottom: 0 })
+    })
+
+    it('should paint the footer opaque so the rows do not show through', () => {
+        expect(footer.backgroundColor).toBe('#FFFFFF')
+    })
+
+    it('should draw the divider with a shadow, not a border', () => {
+        expect(footer).not.toHaveProperty('borderBottom')
+        expect(footer.boxShadow).toContain(`0 -1px 0 ${theme.colors.gray[200]}`)
     })
 })
 

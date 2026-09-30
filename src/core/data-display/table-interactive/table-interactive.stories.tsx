@@ -241,6 +241,19 @@ const meta: Meta<typeof TableInteractive> = {
                 'Keeps the header visible while the body scrolls. ' +
                 'Needs maxHeight to have something to scroll within.'
         },
+        headerMargin: {
+            control: 'text',
+            description:
+                'Margin of the header row that carries headerActions and ' +
+                'the preferences button. Defaults to `0 0 8px 0`'
+        },
+        stickyFooter: {
+            control: 'boolean',
+            description:
+                'Keeps the pagination visible while the body scrolls. ' +
+                'Needs maxHeight to have something to scroll within, and ' +
+                'paginated to have a footer at all.'
+        },
         maxHeight: {
             control: 'text',
             description:
@@ -435,5 +448,39 @@ export const stickyHeader: Story = {
         maxHeight: 200,
         cellPadding: '8px 16px',
         name: 'sticky'
+    }
+}
+
+const STICKY_FOOTER_DESCRIPTION = [
+    '`stickyFooter` pins the pagination to the bottom of the wrapper while',
+    'the rows scroll under it, so the page controls stay reachable without',
+    'scrolling to the end of the list.',
+    '',
+    'Same precondition as `stickyHeader` — it needs `maxHeight` to have',
+    'something to scroll within — plus `paginated`, since there is no',
+    'footer to pin otherwise. The two stick independently and combine.',
+    '',
+    '`stickyFooter` also flips the table to `border-collapse: separate`,',
+    'the way `stickyHeader` already does. Under `collapse` a cell paints',
+    'neither its own border nor a shadow — both belong to the table grid',
+    'and stay behind when the cell moves — so the stuck footer would come',
+    'out with no divider at all.'
+].join('\n')
+
+export const stickyFooter: Story = {
+    parameters: {
+        docs: {
+            description: {
+                story: STICKY_FOOTER_DESCRIPTION
+            }
+        }
+    },
+    render: ({ ...args }) => <InteractiveTable {...args} />,
+    args: {
+        paginated: true,
+        stickyFooter: true,
+        maxHeight: 200,
+        total: TABLE_DATA.length,
+        name: 'sticky-footer'
     }
 }

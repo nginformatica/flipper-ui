@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import { alpha } from '@mui/material/styles'
 import { theme } from '@/theme'
 
-const { gray } = theme.colors
+const { gray, neutral } = theme.colors
 
 const DEFAULT_RADIUS = 12
 const DEFAULT_MAX_WIDTH = 150
@@ -10,7 +10,7 @@ const DEFAULT_MAX_WIDTH = 150
 export type Truncate = boolean | number | string
 
 // sx reads a bare number as a theme multiple, so pin the unit
-const toPx = (value: number | string) =>
+export const toPx = (value: number | string) =>
     typeof value === 'number' ? `${value}px` : value
 
 export const SCROLLBAR = {
@@ -33,6 +33,21 @@ export const SCROLLBAR = {
 
     '&::-webkit-scrollbar-thumb:hover': {
         backgroundColor: alpha(gray[900], 0.35)
+    }
+} as const
+
+// under border-collapse a cell paints neither its own borders nor a shadow —
+// both belong to the table grid and stay behind when the stuck cell moves. MUI
+// only flips to separate for stickyHeader, so the footer has to flip it too
+export const STICKY_FOOTER = {
+    borderCollapse: 'separate',
+
+    '& tfoot td': {
+        zIndex: 2,
+        bottom: 0,
+        position: 'sticky',
+        backgroundColor: neutral[50],
+        boxShadow: `0 -1px 0 ${gray[200]}, 0 -4px 12px ${alpha(gray[800], 0.04)}`
     }
 } as const
 

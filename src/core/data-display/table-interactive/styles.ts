@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { toPx } from '../table/styles'
 import TableCell from '../table/table-cell'
 import { theme } from '@/theme'
 
@@ -11,11 +12,15 @@ export const ContentWrapper = styled.div`
     border-bottom: 2px solid ${gray[300]};
 `
 
-export const TableHeaderContent = styled.div`
+export const TableHeaderContent = styled.div<{
+    margin?: number | string
+}>`
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     gap: 4px;
-    margin: 0 0 8px 0;
+    margin: ${props =>
+        props.margin === undefined ? '0 0 8px 0' : toPx(props.margin)};
 
     & > div {
         display: flex;
