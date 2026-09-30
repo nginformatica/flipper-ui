@@ -218,4 +218,5 @@ export { default as IconWarningOutlined } from '@mui/icons-material/WarningAmber
 export { default as IconWaterDrop } from '@mui/icons-material/WaterDrop'
 export { default as IconWaterDropOutlined } from '@mui/icons-material/WaterDropOutlined'
 export { default as IconWebhook } from '@mui/icons-material/Webhook'
+export { default as IconWifiRounded } from '@mui/icons-material/WifiRounded'
 export { default as IconWifiOff } from '@mui/icons-material/WifiOff'
