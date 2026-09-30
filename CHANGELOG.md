@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.41.1
+
+- add `IconWifi` to design system @mui icons
+
 ## v0.41.0
 
 - add `nonLinear` and `onStepClick` props to `<Stepper>`, plus per-step `completed`, `disabled` and `caption`, making the trail navigable; `icon` is now optional on a step
