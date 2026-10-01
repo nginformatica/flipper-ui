@@ -2,7 +2,7 @@
 
 ## v0.42.2
 
-- fix the pagination footer padding its left side 24px against ~10px on the right; the toolbar now insets `footerActions` as far as the last page icon sits from the edge, 14px by default and 12px with `size='small'`
+- fix the pagination footer padding its left side 24px; the toolbar now pads it 12px by default and 8px with `size='small'`
 
 ## v0.42.1
 

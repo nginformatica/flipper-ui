@@ -14,8 +14,7 @@ const SMALL_SIZE_SX = {
     },
     // the pagination cell keeps its own padding of 0, so the footer shrinks
     // through the toolbar instead. 8px here plus the 4px below leave the last
-    // icon 12px from the edge, the same inset the small cells use — and the
-    // `footerActions` on the left get the same 12px
+    // icon 12px from the edge, the same inset the small cells use
     '&& tfoot .MuiTablePagination-toolbar': {
         minHeight: '40px',
         paddingLeft: '8px',
