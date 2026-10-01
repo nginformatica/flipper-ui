@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.42.3
+
+- make the `<TableInteractive>` `headerActions` wrapper grow to fill the header row, so the content passed in can lay itself out across it; content that does not grow stays aligned right
+
 ## v0.42.2
 
 - fix the pagination footer padding its left side 24px; the toolbar now pads it 12px by default and 8px with `size='small'`

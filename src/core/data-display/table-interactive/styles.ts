@@ -23,6 +23,7 @@ export const TableHeaderContent = styled.div<{
         props.margin === undefined ? '0 0 8px 0' : toPx(props.margin)};
 
     & > div {
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: flex-end;
