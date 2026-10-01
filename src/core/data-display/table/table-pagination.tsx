@@ -69,7 +69,10 @@ const TablePagination = ({
                 ...style
             }}
             sx={{
-                borderBottom: `1px solid ${gray[200]}`
+                borderBottom: `1px solid ${gray[200]}`,
+                '&& .MuiTablePagination-toolbar': {
+                    paddingLeft: '12px'
+                }
             }}
             slotProps={
                 footerActions

@@ -17,6 +17,7 @@ const SMALL_SIZE_SX = {
     // icon 12px from the edge, the same inset the small cells use
     '&& tfoot .MuiTablePagination-toolbar': {
         minHeight: '40px',
+        paddingLeft: '8px',
         paddingRight: '8px'
     },
     // the labels are `p` elements, and their default `1em` margin is what
