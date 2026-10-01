@@ -351,7 +351,6 @@ const InteractiveTable = (args: ITableInteractive) => {
                     <>
                         <TextField placeholder='Pesquisar' />
                         <Button
-                            fullWidth
                             size='small'
                             variant='contained'
                             sx={{ height: 'fit-content' }}>
