@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.42.4
+
+- add `IconLibraryAddCheckOutlined`, `IconLibraryAddCheckRounded`, `IconSecurity`, `IconShield` and `IconShieldOutlined` to design system @mui icons
+
 ## v0.42.3
 
 - make the `<TableInteractive>` `headerActions` wrapper grow to fill the header row, so the content passed in can lay itself out across it; content that does not grow stays aligned right
